@@ -1,0 +1,21 @@
+.Hero {
+    .Information {
+        .Scroll {
+            transform: rotate(-90deg);
+            transform-origin: center;
+            display: inline-block;
+            position: absolute;
+            bottom: -30px;
+            left: 150px;
+
+            p {
+                color: #FFF;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: 140%;
+                letter-spacing: 3.5px;
+            }
+        }
+    }
+}
