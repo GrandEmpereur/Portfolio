@@ -5,12 +5,18 @@ import './scss/styles.scss';
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import { cn } from '@/lib/utils';
+import { Analytics } from "@vercel/analytics/react"
 
 const inter = Poppins({
   weight: ['400', '700'],
   style: ['normal', 'italic'],
   subsets: ['latin'],
   display: 'swap',
+});
+
+
+Analytics({
+  framework: 'next',
 });
 
 export const metadata: Metadata = {
