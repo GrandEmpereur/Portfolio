@@ -1,3 +1,4 @@
+import { inter, mono } from "@/app/layout"
 import type { Config } from "tailwindcss"
 
 const config = {
@@ -7,7 +8,7 @@ const config = {
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
-	],
+  ],
   prefix: "",
   theme: {
     container: {
@@ -18,6 +19,10 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["Poppins", "sans-serif"],
+        mono: ["Plus Jakarta Sans", "monospace"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

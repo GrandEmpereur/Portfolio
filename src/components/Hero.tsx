@@ -25,7 +25,7 @@ const states = [
 function Hero() {
     return (
         <MaxWidthWrapper className='mt-8'>
-            <div className='Hero relative flex flex-col w-full '>
+            <section id='hero' className='hero relative flex flex-col w-full '>
                 <span className='relative' style={{ left: "-20px" }}>
                     <Image src={'/shape/img7.png'} alt={'shape'} width={55} height={55} />
                 </span>
@@ -108,7 +108,7 @@ function Hero() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
         </MaxWidthWrapper>
     )
 }

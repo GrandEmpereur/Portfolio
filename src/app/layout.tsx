@@ -1,14 +1,21 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Poppins, Plus_Jakarta_Sans  } from "next/font/google";
 import "./globals.css";
-import './scss/styles.scss';
+import '@/scss/styles.scss';
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import { cn } from '@/lib/utils';
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
-const inter = Poppins({
+export const inter = Poppins({
+  weight: ['400', '700'],
+  style: ['normal', 'italic'],
+  subsets: ['latin'],
+  display: 'swap',
+});
+
+export const mono = Plus_Jakarta_Sans({
   weight: ['400', '700'],
   style: ['normal', 'italic'],
   subsets: ['latin'],
@@ -16,8 +23,8 @@ const inter = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio - Patrick",
-  description: "Welcome to my portfolio, my name is Patrick and i am a fullstack developer, specializing in React and JavaScript ecosystem.",
+  title: "Bartosik Patrick - Portfolio",
+  description: "Welcome to my portfolio! I'm a fullstack developer with a passion for creating beautiful and functional web applications using modern technologies like React, Next.js, and Tailwind CSS.",
 };
 
 export default function RootLayout({
@@ -29,7 +36,7 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <body className={cn(
             'min-h-screen font-sans antialiased grainy',
-            inter.className
+            inter.className, 
           )}>
         <NavBar />
         {children}

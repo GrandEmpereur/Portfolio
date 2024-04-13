@@ -9,7 +9,6 @@ export const links = [
     { href: '/about', label: 'About' },
     { href: '/services', label: 'Services' },
     { href: '/portfolio', label: 'Portfolio' },
-    { href: '/works', label: 'Lasted Work' },
     { href: '/contact', label: 'Contact' },
 ]
 
