@@ -8,14 +8,14 @@ import { cn } from '@/lib/utils';
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
-export const inter = Poppins({
+const inter = Poppins({
   weight: ['400', '700'],
   style: ['normal', 'italic'],
   subsets: ['latin'],
   display: 'swap',
 });
 
-export const mono = Plus_Jakarta_Sans({
+const mono = Plus_Jakarta_Sans({
   weight: ['400', '700'],
   style: ['normal', 'italic'],
   subsets: ['latin'],
