@@ -1,4 +1,3 @@
-import { inter, mono } from "@/app/layout"
 import type { Config } from "tailwindcss"
 
 const config = {
