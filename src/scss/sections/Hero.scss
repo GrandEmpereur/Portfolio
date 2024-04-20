@@ -1,6 +1,6 @@
-.Hero {
-    .Information {
-        .Scroll {
+.hero {
+    .hero__information {
+        .hero__scroll {
             transform: rotate(-90deg);
             transform-origin: center;
             display: inline-block;
@@ -8,7 +8,7 @@
             bottom: -30px;
             left: 150px;
 
-            p {
+            .hero__scroll-container p {
                 color: #FFF;
                 font-size: 14px;
                 font-style: normal;

@@ -1,11 +1,11 @@
 .services {
-    .service .image {
+    .services__list .services__item-icon {
         z-index: -1;
-        left: -50px;
+        left: -55px;
         top: -10px;
     }
 
-    .service .letterWithoutFill {
+    .services__title-container .letterWithoutFill {
         color: transparent;
         -webkit-text-fill-color: transparent;
         -webkit-text-stroke-width: 1px;

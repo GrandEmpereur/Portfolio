@@ -1,18 +1,18 @@
 .about {
-    .img {
-        .shape1 {
+    .about__image-container {
+        .about__shape1 {
             top: -65px;
             right: -90px;
             right: -90px;
             z-index: -1;
         }
 
-        .shape2 {
+        .about__shape2 {
             bottom: -20px;
             left: -50px;
         }
 
-        .deco {
+        .about__decoration {
             width: 500px;
             height: 200px;
             background-color: #333333;
