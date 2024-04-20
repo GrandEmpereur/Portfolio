@@ -1,5 +1,7 @@
 @import './sections/Hero.scss';
 @import './sections/About.scss';
+@import './sections/Footer.scss';
+@import './sections/Services.scss';
 
 
 h3 {
@@ -35,4 +37,32 @@ p {
     font-style: normal;
     font-weight: 500;
     line-height: 140%;
+}
+
+.CustomButton {
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        left: -27px;
+        top: -20px;
+        width: 60px;
+        height: 60px;
+        background: #333;
+        border-radius: 50%;
+        z-index: -1;
+        transition: all 0.3s ease;
+    }
+
+    span {
+        color: #FFF;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 140%;
+        /* 22.4px */
+        letter-spacing: 2.88px;
+    }
 }
