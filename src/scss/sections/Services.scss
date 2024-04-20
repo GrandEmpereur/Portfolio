@@ -1,0 +1,14 @@
+.services {
+    .service .image {
+        z-index: -1;
+        left: -50px;
+        top: -10px;
+    }
+
+    .service .letterWithoutFill {
+        color: transparent;
+        -webkit-text-fill-color: transparent;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: white;
+    }
+}
