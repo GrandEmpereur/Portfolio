@@ -5,49 +5,52 @@ import Link from 'next/link'
 
 function Footer() {
   return (
-    <MaxWidthWrapper className='my-12'>
+    <MaxWidthWrapper className='footer-wrapper my-12'>
       <footer id='footer' className='footer flex flex-col justify-between'>
-        <div className='top flex items-start justify-between'>
-          <div className='flex flex-col gap-y-5'>
-            <p>Prêts à accélérer ?</p>
-            <p>
-              Que vous souhaitiez un audit SEO, une refonte, optimiser votre site web, contactez-nous pour en discuter.</p>
-            <Link href="#">
-              <Button>Demander un devis</Button>
+        <div className='footer__top flex items-start justify-between'>
+          <div className='footer__column footer__column--left flex flex-col gap-y-5'>
+            <p className='footer__intro'>Ready to accelerate your online presence?</p>
+            <p className='footer__call-to-action'>
+              Explore how our comprehensive SEO, redesign, and website optimization services can elevate your project. Contact us to discuss your needs.
+            </p>
+            <Link href="/contact">
+              <Button className='footer__button'>Request a Quote</Button>
             </Link>
           </div>
 
-          <div className='flex items-start gap-x-40'>
-            <div className='flex flex-col gap-5'>
-              <h2>Contact</h2>
-              <li>BartosikPatrickPro@gmail.com</li>
-              <div>
-                <li><a href="#">Instagram</a></li>
-                <li><a href="#">Github</a></li>
-                <li><a href="#">LinkedIn</a></li>
+          <div className='footer__column footer__column--right flex items-start gap-x-40'>
+            <div className='footer__contacts flex flex-col gap-5'>
+              <h2 className='footer__heading'>Contact Us</h2>
+              <p className='footer__email'>Email: BartosikPatrickPro@gmail.com</p>
+              <div className='footer__social-links flex flex-col gap-2'>
+                <li><a href="https://instagram.com" className='footer__link' rel="noopener noreferrer" target="_blank">Instagram</a></li>
+                <li><a href="https://github.com" className='footer__link' rel="noopener noreferrer" target="_blank">GitHub</a></li>
+                <li><a href="https://linkedin.com" className='footer__link' rel="noopener noreferrer" target="_blank">LinkedIn</a></li>
               </div>
             </div>
-            <div className='flex flex-col gap-5'>
-              <h2>Quick Links</h2>
-              <div><li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">Sitemap</a></li></div>
+            <div className='footer__quick-links flex flex-col gap-5'>
+              <h2 className='footer__heading'>Quick Links</h2>
+              <div className='flex flex-col gap-2'>
+                <li><a href="/home" className='footer__link'>Home</a></li>
+                <li><a href="/about" className='footer__link'>About</a></li>
+                <li><a href="/services" className='footer__link'>Services</a></li>
+                <li><a href="/contact" className='footer__link'>Contact</a></li>
+                <li><a href="/sitemap.xml" className='footer__link'>Sitemap</a></li>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className='bottom flex flex-col items-center justify-center'>
-          <div className='deco'></div>
-          <div className='flex gap-x-5'>
-            <Link href={"#"}>
-              <Button variant={'link'}>
+        <div className='footer__bottom flex flex-col items-center justify-center'>
+        <div className='deco'></div>
+          <div className='footer__legal-links flex gap-x-5'>
+            <Link href="/terms">
+              <Button variant={'link'} className='footer__legal-button'>
                 Terms of Use
               </Button>
             </Link>
-            <Link href={"#"}>
-              <Button variant={'link'}>
+            <Link href="/privacy">
+              <Button variant={'link'} className='footer__legal-button'>
                 Privacy Policy
               </Button>
             </Link>

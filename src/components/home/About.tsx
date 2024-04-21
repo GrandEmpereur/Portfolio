@@ -22,10 +22,10 @@ function About() {
                     </div>
 
                     <div className='about__description w-1/2 flex flex-col gap-y-8'>
-                        <p className='about__description-title'>Welcome to My Portfolio</p>
-                        <p className='about__description-text'>I'm a passionate Full Stack Developer with over 4 years of development experience, specializing in the vibrant world of the JavaScript ecosystem. My expertise lies in crafting dynamic, user-centric applications using the React ecosystem, including advanced frameworks like React.js and Next.js.</p>
+                        <h2 className='about__description-title'>Discover the Art of Code with me</h2>
+                        <p className='about__description-text'>Embark on a journey through cutting-edge web development with me, a seasoned Full Stack Developer. With over four years of experience in the dynamic JavaScript landscape, I specialize in building immersive, user-focused experiences. My toolkit, rich with modern frameworks like React.js and Next.js, powers businesses and individuals alike towards digital excellence.</p>
                         <Link href='/about'>
-                            <span className='about__learn-more-button CustomButton'>Learn More</span>
+                            <Button className='about__learn-more-button' size={'lg'} >Explore More</Button>
                         </Link>
                     </div>
                 </div>
