@@ -23,8 +23,8 @@ const mono = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Bartosik Patrick - Portfolio",
-  description: "Welcome to my portfolio! I'm a fullstack developer with a passion for creating beautiful and functional web applications using modern technologies like React, Next.js, and Tailwind CSS.",
+  title: "Bartosik Patrick - Full Stack Developer | Expert in React, Next.js, & Tailwind CSS",
+  description: "Discover the cutting-edge portfolio of Bartosik Patrick, a seasoned Full Stack Developer specializing in React, Next.js, and Tailwind CSS. Dive into a showcase of innovative web applications that blend aesthetics with functionality, crafted to push the boundaries of digital experiences.",
 };
 
 export default function RootLayout({
