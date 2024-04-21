@@ -21,11 +21,11 @@ function Footer() {
           <div className='footer__column footer__column--right flex items-start gap-x-40'>
             <div className='footer__contacts flex flex-col gap-5'>
               <h2 className='footer__heading'>Contact Us</h2>
-              <p className='footer__email'>Email: BartosikPatrickPro@gmail.com</p>
+              <a href="mailto:bartosikpatrickpro@gmail.com" className='footer__email'>Email: BartosikPatrickPro@gmail.com</a>
               <div className='footer__social-links flex flex-col gap-2'>
-                <li><a href="https://instagram.com" className='footer__link' rel="noopener noreferrer" target="_blank">Instagram</a></li>
-                <li><a href="https://github.com" className='footer__link' rel="noopener noreferrer" target="_blank">GitHub</a></li>
-                <li><a href="https://linkedin.com" className='footer__link' rel="noopener noreferrer" target="_blank">LinkedIn</a></li>
+                <li><a href="https://www.instagram.com/empereur.patrick/" className='footer__link' rel="noopener noreferrer" target="_blank">Instagram</a></li>
+                <li><a href="https://github.com/GrandEmpereur" className='footer__link' rel="noopener noreferrer" target="_blank">GitHub</a></li>
+                <li><a href="https://www.linkedin.com/in/patrick-bartosik/" className='footer__link' rel="noopener noreferrer" target="_blank">LinkedIn</a></li>
               </div>
             </div>
             <div className='footer__quick-links flex flex-col gap-5'>
