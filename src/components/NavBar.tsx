@@ -1,8 +1,10 @@
-import React from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
-import MobileNav from './MobileNav'
-import MaxWidthWrapper from './MaxWidthWrapper'
+'use client'
+import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import MobileNav from './MobileNav';
+import MaxWidthWrapper from './MaxWidthWrapper';
+import { usePathname } from 'next/navigation'
 
 export const links = [
     { href: '/', label: 'Home' },
@@ -10,9 +12,10 @@ export const links = [
     { href: '/services', label: 'Services' },
     { href: '/portfolio', label: 'Portfolio' },
     { href: '/contact', label: 'Contact' },
-]
+];
 
 function NavBar() {
+    const pathname = usePathname();
     return (
         <MaxWidthWrapper>
             <nav className='sticky pt-5 inset-x-0 top-0 z-30 w-full border-b border-transparent backdrop-blur-lg transition-all'>
@@ -31,7 +34,7 @@ function NavBar() {
                                 return (
                                     <li key={index}>
                                         <Link href={href}>
-                                            <span className='transition ease-in-out delay-150 text-white hover:text-yellow-500 duration-200'>{label}</span>
+                                            <span className={`transition ease-in-out delay-150 hover:text-[#E3B27D] duration-200 ${pathname === href ? 'text-[#E3B27D]' : 'text-white'}`}>{label}</span>
                                         </Link>
                                     </li>
                                 )
@@ -47,4 +50,3 @@ function NavBar() {
 }
 
 export default NavBar
-
