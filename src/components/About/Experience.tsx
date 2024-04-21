@@ -66,7 +66,7 @@ function Experience() {
                                 <div className='flex items-center gap-x-5'>
                                     <div className='experience__sphere'></div>
                                     <div>
-                                        <Badge className='experience__date'>{item.date}</Badge></div>
+                                        <Badge className='experience__date p-2'>{item.date}</Badge></div>
                                 </div>
                                 <div className='flex flex-col gap-2 w-1/2'>
                                     <h3 className='experience__title'>{item.title}</h3>
