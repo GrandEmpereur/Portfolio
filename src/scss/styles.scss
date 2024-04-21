@@ -1,44 +1,33 @@
-@import './sections/Hero.scss';
-@import './sections/About.scss';
-@import './sections/Footer.scss';
-@import './sections/Services.scss';
-@import './sections/LastWorks.scss';
+/*
+Important notice :
+Some styles below come from base.css, the original base file of Dawn.
+In such case, we delete the style definition in base.css and the component is restyled in common.scss or its imports.
+*/
 
+// ---------------------------------------------------------------------------------------------------------------------
+// Core is a SCSS helpers and contains no CSS - meant to included in every styles files
+// ---------------------------------------------------------------------------------------------------------------------
+// @import "./core";
 
-h3 {
-    color: #888;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 160%;
-    letter-spacing: 2.1px;
-}
+// ---------------------------------------------------------------------------------------------------------------------
+// Global style used in all files and templates
+// ---------------------------------------------------------------------------------------------------------------------
+@import "./settings/reset";
+@import "./settings/typography";
 
-h2 {
-    color: #FFF;
-    font-size: 40px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 135%;
-}
+// ---------------------------------------------------------------------------------------------------------------------
+// Global sections used in all templates
+// ---------------------------------------------------------------------------------------------------------------------
+@import './sections/Hero';
+@import './sections/About';
+@import './sections/Footer';
+@import './sections/Services';
+@import './sections/LastWorks';
+@import './sections/Newsletter';
 
-h1 {
-    color: #FFF;
-    font-size: 100px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 135%;
-}
-
-p {
-    color: #AAA;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 140%;
-}
+// ---------------------------------------------------------------------------------------------------------------------
+// Components used in all templates
+// ---------------------------------------------------------------------------------------------------------------------
 
 .CustomButton {
     position: relative;
@@ -50,7 +39,7 @@ p {
         top: -20px;
         width: 60px;
         height: 60px;
-        background: #333;
+        background: #333333;
         border-radius: 50%;
         z-index: -1;
         transition: all 0.3s ease;
@@ -66,4 +55,10 @@ p {
         /* 22.4px */
         letter-spacing: 2.88px;
     }
+}
+
+.home-bg {
+    background-color: #181818;
+    padding-top: 50px;
+    padding-bottom: 10px;
 }

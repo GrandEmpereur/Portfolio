@@ -1,0 +1,32 @@
+.newsletter {
+    .newsletter__content {
+        width: 1305px;
+        height: 370px;
+        flex-shrink: 0;
+        background: #222;
+        position: absolute;
+        bottom: -20%;
+        left: 0;
+        gap: 150px;
+
+        .newsletter__title {
+            width: 668px;
+        }
+
+        .newsletter__contact {
+            width: 250px;
+            height: 250px;
+            background-color: #E3B27D;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            span {
+                font-size: 16px;
+                letter-spacing: 0.18em;
+                line-height: 140%;
+            }
+        }
+    }
+}
