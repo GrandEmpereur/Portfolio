@@ -1,8 +1,28 @@
+.services-bg {
+    background-color: #222;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
 .services {
-    .services__list .services__item-icon {
-        z-index: -1;
-        left: -55px;
-        top: -10px;
+    .services__list {
+        .services__item-icon {
+            z-index: 1;
+            left: -55px;
+            top: -10px;
+        }
+
+        .services__item-description {
+            width: 350px;
+        }
+
+        .services__title-container {
+            z-index: 2;
+        }
+
+        .services__item-list li {
+            list-style: inside;
+        }
     }
 
     .services__title-container .letterWithoutFill {

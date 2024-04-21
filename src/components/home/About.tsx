@@ -25,7 +25,7 @@ function About() {
                         <p className='about__description-title'>Welcome to My Portfolio</p>
                         <p className='about__description-text'>I'm a passionate Full Stack Developer with over 4 years of development experience, specializing in the vibrant world of the JavaScript ecosystem. My expertise lies in crafting dynamic, user-centric applications using the React ecosystem, including advanced frameworks like React.js and Next.js.</p>
                         <Link href='/about'>
-                            <Button className='about__learn-more-button'>Learn More</Button>
+                            <span className='about__learn-more-button CustomButton'>Learn More</span>
                         </Link>
                     </div>
                 </div>

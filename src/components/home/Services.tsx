@@ -78,13 +78,13 @@ function Services() {
     }
 
     return (
-        <MaxWidthWrapper>
-            <section id='services' className='services flex flex-col items-start justify-between w-full h-full mt-40'>
+        <MaxWidthWrapper className='services-bg mt-40'>
+            <section id='services' className='services flex flex-col items-start justify-between w-full h-full'>
                 <div className="services__header title">
                     <h3 className='services__header-subtitle font-mono'>Services</h3>
                     <h2 className='services__header-main-title'>My services</h2>
                 </div>
-                <div className='services__list flex pt-10'>
+                <div className='services__list flex justify-between w-full pt-10'>
                     {services.map((service, index) => (
                         <div key={index} className='services__item service relative flex flex-col'>
                             <Image src={service.icon} alt={service.iconAlt} width={service.iconWidth} height={service.iconHeight} className='services__item-icon image absolute' />
