@@ -83,7 +83,7 @@ function Services() {
         <MaxWidthWrapper className='services-bg mt-40'>
             <section id='services' className='services flex flex-col items-start justify-between w-full h-full'>
                 <div className="services__header title">
-                    <h3 className='services__header-subtitle font-mono'>Services</h3>
+                    <h4 className='services__header-subtitle font-mono keep-color'>Services</h4>
                     <h2 className='services__header-main-title'>Explore My Expertise</h2>
                 </div>
                 <div className='services__list flex justify-between w-full pt-10'>

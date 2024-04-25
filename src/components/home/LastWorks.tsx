@@ -22,7 +22,7 @@ function LastWorks() {
             <section id='lastWorks' className='portfolio lastWorks mt-40 flex flex-col items-start justify-between w-full h-full'>
                 <div className='portfolio__header flex w-full justify-between'>
                     <div className="portfolio__title">
-                        <h3 className='portfolio__subtitle font-mono'>PORTFOLIO</h3>
+                        <h4 className='portfolio__subtitle font-mono keep-color'>PORTFOLIO</h4>
                         <h2 className='portfolio__main-title'>Recent Projects</h2>
                     </div>
                     <div className="portfolio__description flex flex-col gap-y-10">

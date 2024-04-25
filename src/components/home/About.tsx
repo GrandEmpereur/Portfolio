@@ -9,7 +9,7 @@ function About() {
         <MaxWidthWrapper>
             <section id='about' className='about flex w-full h-full flex-col gap-y-8'>
                 <div className="about__title">
-                    <h3 className='about__title-sub font-mono'>About me</h3>
+                    <h4 className='about__title-sub font-mon keep-color'>About me</h4>
                     <h2 className='about__title-main'>I Create Digital World Class Business Web Store / Site</h2>
                 </div>
 

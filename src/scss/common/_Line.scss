@@ -1,0 +1,26 @@
+.line-wrapper {
+    width: 100%;
+    /* Prend toute la largeur de son conteneur parent */
+    margin: 0 auto;
+    /* Centrage horizontal si nécessaire */
+    height: 100vh;
+    /* Prend toute la hauteur de la fenêtre de visualisation */
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    z-index: -1;
+    /* Assure que le conteneur est derrière d'autres éléments */
+    left: 0;
+    /* Assure que le conteneur commence du côté gauche de la page */
+    right: 0;
+    /* Assure que le conteneur s'étend jusqu'au côté droit de la page */
+
+    .line {
+        width: 1px;
+        /* Largeur de la ligne */
+        height: 100%;
+        /* La ligne prend toute la hauteur de son conteneur */
+        background: rgba(255, 255, 255, 0.05);
+        /* Couleur de la ligne avec une transparence */
+    }
+}
