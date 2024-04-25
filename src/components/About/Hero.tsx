@@ -9,7 +9,7 @@ function Hero() {
             <section id='About-hero' className='About-hero flex flex-col w-full gap-y-12'>
                 <div className="about__title">
                     <h3 className='about__title-sub font-mono'>About me</h3>
-                    <h2 className='about__title-main'>All You Want to Know About Me</h2>
+                    <h4 className='about__title-main keep-color '>All You Want to Know About Me</h4>
                 </div>
 
                 <div className='w-full'>

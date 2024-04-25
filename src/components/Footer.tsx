@@ -20,7 +20,7 @@ function Footer() {
 
           <div className='footer__column footer__column--right flex items-start gap-x-40'>
             <div className='footer__contacts flex flex-col gap-5'>
-              <h2 className='footer__heading'>Contact Us</h2>
+              <h3 className='footer__heading'>Contact Us</h3>
               <a href="mailto:bartosikpatrickpro@gmail.com" className='footer__email'>Email: BartosikPatrickPro@gmail.com</a>
               <div className='footer__social-links flex flex-col gap-2'>
                 <li><a href="https://www.instagram.com/empereur.patrick/" className='footer__link' rel="noopener noreferrer" target="_blank">Instagram</a></li>
@@ -29,7 +29,7 @@ function Footer() {
               </div>
             </div>
             <div className='footer__quick-links flex flex-col gap-5'>
-              <h2 className='footer__heading'>Quick Links</h2>
+              <h3 className='footer__heading'>Quick Links</h3>
               <div className='flex flex-col gap-2'>
                 <li><a href="/home" className='footer__link'>Home</a></li>
                 <li><a href="/about" className='footer__link'>About</a></li>

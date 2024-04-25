@@ -7,7 +7,7 @@ In such case, we delete the style definition in base.css and the component is re
 // ---------------------------------------------------------------------------------------------------------------------
 // Core is a SCSS helpers and contains no CSS - meant to included in every styles files
 // ---------------------------------------------------------------------------------------------------------------------
-// @import "./core";
+@import "./core/breakpoints";
 
 // ---------------------------------------------------------------------------------------------------------------------
 // Global style used in all files and templates
@@ -25,6 +25,7 @@ In such case, we delete the style definition in base.css and the component is re
 @import './sections/LastWorks';
 @import './sections/Newsletter';
 @import './sections/Experience.scss';
+@import './sections/Skills.scss';
 
 // ---------------------------------------------------------------------------------------------------------------------
 // Components used in all templates
@@ -34,6 +35,7 @@ In such case, we delete the style definition in base.css and the component is re
 // Common styles used in all templates
 // ---------------------------------------------------------------------------------------------------------------------
 @import './common/Footer';
+@import './common/Line';
 
 .CustomButton {
     position: relative;
