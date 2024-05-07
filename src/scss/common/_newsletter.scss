@@ -1,4 +1,7 @@
 .newsletter {
+    position: relative;
+    z-index: 10;
+
     .newsletter__content {
         width: 1305px;
         height: 370px;
