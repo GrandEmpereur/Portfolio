@@ -17,8 +17,8 @@ export const links = [
 function NavBar() {
     const pathname = usePathname();
     return (
-        <MaxWidthWrapper>
-            <nav className='sticky pt-5 inset-x-0 top-0 z-30 w-full border-b border-transparent backdrop-blur-lg transition-all'>
+        <nav className='sticky py-5 inset-x-0 top-0 z-30 w-full border-b border-transparent backdrop-blur-lg transition-all'>
+            <MaxWidthWrapper>
                 <div className='flex h-14 items-center justify-between'>
                     <Link
                         href='/'
@@ -44,8 +44,8 @@ function NavBar() {
                     </div>
                     <div></div>
                 </div>
-            </nav>
-        </MaxWidthWrapper>
+            </MaxWidthWrapper>
+        </nav>
     )
 }
 

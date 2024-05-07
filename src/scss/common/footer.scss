@@ -1,4 +1,14 @@
 .footer {
+    .footer__call-to-action {
+        width: 450px;
+    }
+
+    .footer__column li {
+        list-style: inside;
+    }
+}
+
+.footer {
     .deco {
         width: 100%;
         height: 1px;

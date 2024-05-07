@@ -18,14 +18,12 @@ In such case, we delete the style definition in base.css and the component is re
 // ---------------------------------------------------------------------------------------------------------------------
 // Global sections used in all templates
 // ---------------------------------------------------------------------------------------------------------------------
-@import './sections/Hero';
-@import './sections/About';
-@import './sections/Footer';
-@import './sections/Services';
-@import './sections/LastWorks';
-@import './sections/Newsletter';
-@import './sections/Experience.scss';
-@import './sections/Skills.scss';
+@import './sections/Home/Hero';
+@import './sections/Home/About';
+@import './sections/Home/Services';
+@import './sections/Home/LastWorks';
+@import './sections/About/Experience.scss';
+@import './sections/About/Skills.scss';
 
 // ---------------------------------------------------------------------------------------------------------------------
 // Components used in all templates
@@ -34,38 +32,18 @@ In such case, we delete the style definition in base.css and the component is re
 // ---------------------------------------------------------------------------------------------------------------------
 // Common styles used in all templates
 // ---------------------------------------------------------------------------------------------------------------------
-@import './common/Footer';
-@import './common/Line';
+@import './common/line';
+@import './common/newsletter';
+@import './common//footer';
 
-.CustomButton {
-    position: relative;
 
-    &::before {
-        content: "";
-        position: absolute;
-        left: -27px;
-        top: -20px;
-        width: 60px;
-        height: 60px;
-        background: #333333;
-        border-radius: 50%;
-        z-index: -1;
-        transition: all 0.3s ease;
-    }
 
-    span {
-        color: #FFF;
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: 140%;
-        /* 22.4px */
-        letter-spacing: 2.88px;
-    }
-}
+// ---------------------------------------------------------------------------------------------------------------------
+
 
 .home-bg {
+    position: relative;
+    z-index: 10;
     background-color: #181818;
     padding-top: 50px;
     padding-bottom: 10px;
