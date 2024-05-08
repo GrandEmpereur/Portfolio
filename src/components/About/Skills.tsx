@@ -89,10 +89,10 @@ function Skills() {
                             <h3 className='skills__heading variant'>My Core Programming Technologies</h3>
                             <h4 className='keep-color'>Discover the key technologies I specialize in for building modern and scalable applications.</h4>
                         </div>
-                        <div className='skills__icons flex flex-wrap w-full items-center justify-between'>
+                        <div className='skills__icons flex flex-wrap w-full items-center justify-evenly gap-5'>
                             {MainStack.map((item, index) => (
-                                <div key={index} className='skill__item flex flex-wrap flex-col items-center gap-y-4'>
-                                    <Image src={item.icon} alt={`${item.name} icon`} width={60} height={60} style={{ objectFit: 'cover' }} />
+                                <div key={index} className='skill__item flex flex-wrap flex-col items-center gap-4'>
+                                    <Image src={item.icon} alt={`${item.name} icon`} width={40} height={40} style={{ objectFit: 'cover' }} />
                                     <span className='skill__name'>{item.name}</span>
                                 </div>
                             ))}
@@ -104,10 +104,10 @@ function Skills() {
                             <h3 className='skills__heading'>I Can Work with Other Programming Technologies</h3>
                             <h4 className='keep-color'>Discover other programming langue i have learn during side projet or during school cours</h4>
                         </div>
-                        <div className='skills__icons flex flex-wrap w-full items-center justify-between'>
+                        <div className='skills__icons flex flex-wrap w-full items-center justify-evenly gap-5'>
                             {OtherStack.map((item, index) => (
                                 <div key={index} className='skill__item flex flex-wrap flex-col items-center gap-y-4'>
-                                    <Image src={item.icon} alt={`${item.name} icon`} width={60} height={60} style={{ objectFit: 'cover' }} />
+                                    <Image src={item.icon} alt={`${item.name} icon`} width={40} height={40} style={{ objectFit: 'cover' }} />
                                     <span className='skill__name'>{item.name}</span>
                                 </div>
                             ))}
@@ -117,7 +117,7 @@ function Skills() {
                     <article className="skills__section w-full flex flex-col gap-y-8">
                         <h3 className='skills__heading'>Language Proficiencies</h3>
                         <h4 className='keep-color'>My linguistic capabilities span multiple languages, allowing for effective communication in diverse environments.</h4>
-                        <div className='skills__icons flex w-full items-center justify-between '>
+                        <div className='skills__icons flex flex-col w-full gap-y-6 items-center justify-between | md:flex-row md:gap-y-0 '>
                             {Languages.map((item, index) => (
                                 <div key={index} className='language__item flex flex-col items-center gap-y-2 '>
                                     <span className='language__name text-xl font-semibold'>{item.name}</span>

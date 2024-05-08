@@ -56,21 +56,24 @@ function Experience() {
     return (
         <MaxWidthWrapper className='experience-wrapper mt-20'>
             <section id='experience' className='experience relative flex flex-col w-full gap-y-12'>
-                <Image src={'/shape/img2.png'} alt={'a geometrical shape'} width={180} height={75} className='experience__shape1 absolute' />
-                <Image src={'/shape/img6.png'} alt={'a geometrical shape'} width={140} height={65} className='experience__shape2 absolute' />
+                <Image src={'/shape/img2.png'} alt={'a geometrical shape'} width={180} height={75} className='experience__shape1 absolute w-max' />
+                <Image src={'/shape/img6.png'} alt={'a geometrical shape'} width={140} height={65} className='experience__shape2 absolute w-max' />
 
-                <div className='flex gap-x-10'>
-                    <div className='experience__education w-1/2 flex flex-col gap-10'>
+                <div className='flex gap-x-10 flex-col lg:flex-row '>
+                    <div className='experience__education w-full flex flex-col gap-10 lg:w-1/2'>
                         <h3 className='experience__heading'>Education</h3>
                         {EducationItems.map((item, index) => (
                             <div key={index} className='experience__item flex w-full justify-between items-center'>
-                                <div className='flex items-center gap-x-5'>
-                                    <div className='experience__sphere'></div>
+                                <div className='hidden items-center gap-x-5 gap-y-5  | md:flex '>
+                                    <div className='experience__sphere '></div>
                                     <div>
                                         <Badge className='experience__date p-2'>{item.date}</Badge>
                                     </div>
                                 </div>
-                                <div className='flex flex-col gap-2 w-1/2'>
+                                <div className='flex flex-col gap-2 w-full | md:w-1/2'>
+                                    <div className='block md:hidden'>
+                                        <Badge className='experience__date p-2'>{item.date}</Badge>
+                                    </div>
                                     <h4 className='experience__title'>{item.title}</h4>
                                     <p className='experience__location'>{item.location}</p>
                                     <p className='experience__description'>{item.description}</p>
@@ -78,16 +81,20 @@ function Experience() {
                             </div>
                         ))}
                     </div>
-                    <div className='experience__professional w-1/2 flex flex-col gap-10'>
+                    <div className='experience__professional w-full flex flex-col gap-10 lg:w-1/2'>
                         <h3 className='experience__heading'>Experience</h3>
                         {ExperienceItems.map((item, index) => (
                             <div key={index} className='experience__item flex w-full justify-between items-center'>
-                                <div className='flex items-center gap-x-5'>
-                                    <div className='experience__sphere'></div>
+                                <div className='hidden items-center gap-x-5 gap-y-5 | md:flex '>
+                                    <div className='experience__sphere '></div>
                                     <div>
-                                        <Badge className='experience__date p-2'>{item.date}</Badge></div>
+                                        <Badge className='experience__date p-2'>{item.date}</Badge>
+                                    </div>
                                 </div>
-                                <div className='flex flex-col gap-2 w-1/2'>
+                                <div className='flex flex-col gap-2 w-full | md:w-1/2'>
+                                    <div className='block md:hidden'>
+                                        <Badge className='experience__date p-2'>{item.date}</Badge>
+                                    </div>
                                     <h4 className='experience__title'>{item.title}</h4>
                                     <p className='experience__location'>{item.location}</p>
                                     <p className='experience__description'>{item.description}</p>

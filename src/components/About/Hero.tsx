@@ -13,7 +13,7 @@ function Hero() {
                 </div>
 
                 <div className='w-full'>
-                    <Image src={'/img/about/aboutHero.png'} alt={''} width={1108} height={537} style={{ width: '100%', objectFit: 'cover'}}/>
+                    <Image src={'/img/about/aboutHero.png'} alt={''} width={1108} height={537} style={{ width: '100%', objectFit: 'cover' }} />
                 </div>
 
                 <div className='flex flex-col w-full gap-y-5'>
@@ -26,7 +26,9 @@ function Hero() {
                         <p>One of my specialties is taking an idea from scratch and creating a full-fledged platform. I go beyond to produce sites with a unique, outstanding, contemporary look-and-feel. With extensive knowledge of web mechanics, I’m able to optimize complex integrations to require little-to-no maintenance while running on their own for years.</p>
                     </div>
                     <div>
-                        <Button size={'lg'}>Download My Resume</Button>
+                        <a href={'/CV.pdf'} download="/CV.pdf">
+                            <Button size={'lg'} >Download My Resume</Button>
+                        </a>
                     </div>
                 </div>
             </section>
