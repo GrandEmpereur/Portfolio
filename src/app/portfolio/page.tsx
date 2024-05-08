@@ -30,7 +30,7 @@ function GalleryPage() {
 
         <div className='portfolio__gallery grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 place-items-center'>
           {projects.map((project, index) => (
-            <div key={index} className="portfolio__item max-w-sm rounded overflow-hidden shadow-lg relative">
+            <div key={index} className="portfolio__item rounded overflow-hidden shadow-lg relative">
               <Link href={project.url} className="group">
                 <Image className='portfolio__image w-full object-cover rounded-lg overflow-hidden group-hover:scale-105 transition-transform duration-300'
                   width={400}

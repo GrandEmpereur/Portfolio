@@ -10,6 +10,14 @@
     top: 0;
     left: 0;
 
+    @include media-breakpoint-down(lg) {
+        padding: 0 100px;
+    }
+
+    @include media-breakpoint-down(md) {
+        padding: 0 50px;
+    }
+
     .line {
         width: 1px;
         height: 100%;

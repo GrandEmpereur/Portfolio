@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 function Newsletter() {
     return (
-        <section id='newsletter' className='newsletter relative flex w-full h-full flex-col gap-y-8 pt-28 mb-56'>
+        <section id='newsletter' className='newsletter relative flex w-full h-full flex-col gap-y-8 pt-28 mb-5 lg:mb-56'>
             <div className='newsletter__image-wrapper flex justify-end'>
                 <Image src={'/img/newsletter/img1.png'} alt={'Engaging Newsletter Visual'} width={1305} height={500} />
                 <span className='newsletter__sphere-deco'></span>
