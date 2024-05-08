@@ -34,25 +34,25 @@ function LastWorks() {
                 </div>
                 <div className='portfolio__body w-full pt-6'>
                     {LastWorksItems().map((item, index) => (
-                        <div
-                            key={item.id}
-                            className='portfolio__item flex justify-between w-full hover:cursor-pointer pt-8 relative'
-                            onMouseEnter={() => setHoverIndex(index)}
-                            onMouseLeave={() => setHoverIndex(-1)}
-                        >
-                            <div className='portfolio__item-text flex gap-x-5'>
-                                <p className='portfolio__item-number'>0{item.id}.</p>
-                                <h2 className='portfolio__item-title'>{item.title}</h2>
-                            </div>
-                            <div className={`portfolio__item-image absolute flex justify-center items-center transition-all duration-300 ease-in-out transform ${hoverIndex === index ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
-                                <Image src={item.image} alt={`${item.title} - preview`} width={250} height={200} objectFit='cover' />
-                            </div>
-                            <Link href={`/portfolio/${item.id}`}>
+                        <Link href={`/portfolio/${item.id}`}>
+                            <div
+                                key={item.id}
+                                className='portfolio__item flex justify-between w-full hover:cursor-pointer pt-8 relative'
+                                onMouseEnter={() => setHoverIndex(index)}
+                                onMouseLeave={() => setHoverIndex(-1)}
+                            >
+                                <div className='portfolio__item-text flex gap-x-5'>
+                                    <p className='portfolio__item-number'>0{item.id}.</p>
+                                    <h2 className='portfolio__item-title'>{item.title}</h2>
+                                </div>
+                                <div className={`portfolio__item-image absolute flex justify-center items-center transition-all duration-300 ease-in-out transform ${hoverIndex === index ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
+                                    <Image src={item.image} alt={`${item.title} - preview`} width={250} height={200} objectFit='cover' />
+                                </div>
                                 <div className={`portfolio__item-icon transition-all duration-300 ease-in-out transform ${hoverIndex === index ? '-rotate-45 text-[#E3B27D]' : 'text-white'}`}>
                                     <ArrowRight className='cursor-pointer' size={30} />
                                 </div>
-                            </Link>
-                        </div>
+                            </div>
+                        </Link>
                     ))}
                 </div>
             </section>
