@@ -14,6 +14,10 @@
 
         .services__item-description {
             width: 350px;
+
+            @include media-breakpoint-down(lg) {
+                width: 100%;
+            }
         }
 
         .services__title-container {
@@ -23,6 +27,13 @@
         .services__item-list li {
             list-style: inside;
         }
+
+        @include media-breakpoint-down(lg) {
+            .services__item {
+                align-items: center;
+                text-align: center;
+            }
+        }
     }
 
     .services__title-container .letterWithoutFill {
@@ -30,5 +41,13 @@
         -webkit-text-fill-color: transparent;
         -webkit-text-stroke-width: 1px;
         -webkit-text-stroke-color: white;
+    }
+
+    @include media-breakpoint-down(lg) {
+        .services__title-container {
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+        }
     }
 }

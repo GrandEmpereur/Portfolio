@@ -38,7 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={cn(
-            'min-h-screen relative font-sans antialiased grainy',
+            'min-h-screen relative font-sans antialiased grainy ',
             inter.className, 
           )}>
         <NavBar />

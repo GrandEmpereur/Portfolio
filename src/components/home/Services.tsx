@@ -59,19 +59,21 @@ const services = [
 function Services() {
     const splitTitle = (title: string) => {
         const words = title.split(' ');
-        const firstWord = words.shift(); // Retire le premier mot et le garde dans firstWord
-        const remainingWords = words.join(' '); // Rejoint les mots restants en une seule chaîne
+        const firstWord = words.shift();
+        const remainingWords = words.join(' ');
 
         return (
-            <div className='services__title-container flex flex-col'>
-                <h2 className='services__title-primary letterWithoutFill'>
+            <div className='services__title-container flex flex-col '>
+                <h2 className='services__title-primary letterWithoutFill keep-size'>
                     {firstWord}
                 </h2>
-                <div className='services__title-secondary flex items-center'>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="1" viewBox="0 0 30 1" fill="none">
-                        <line x1="30" y1="0.5" x2="0" y2="0.5" stroke="white" />
-                    </svg>
-                    <h2 className='services__title-secondary-text pl-4'>
+                <div className='services__title-secondary flex items-center flex-col lg:flex-row '>
+                    <span className='py-5 lg:py-0'>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="1" viewBox="0 0 30 1" fill="none">
+                            <line x1="30" y1="0.5" x2="0" y2="0.5" stroke="white" />
+                        </svg>
+                    </span>
+                    <h2 className='services__title-secondary-text pl-4 keep-size'>
                         {remainingWords}
                     </h2>
                 </div>
@@ -80,19 +82,19 @@ function Services() {
     };
 
     return (
-        <MaxWidthWrapper className='services-bg mt-40'>
+        <MaxWidthWrapper className='services-bg mt-20 lg:mt-40'>
             <section id='services' className='services flex flex-col items-start justify-between w-full h-full'>
                 <div className="services__header title">
-                    <h4 className='services__header-subtitle font-mono keep-color'>Services</h4>
-                    <h2 className='services__header-main-title'>Explore My Expertise</h2>
+                    <h4 className='services__header-subtitle font-mono keep-color '>Services</h4>
+                    <h2 className='services__header-main-title '>Explore My Expertise</h2>
                 </div>
-                <div className='services__list flex justify-between w-full pt-10'>
+                <div className='services__list flex flex-col lg:flex-row items-center gap-y-10 justify-between w-full pt-10 '>
                     {services.map((service, index) => (
-                        <div key={index} className='services__item service relative flex flex-col'>
-                            <Image src={service.icon} alt={service.iconAlt} width={service.iconWidth} height={service.iconHeight} className='services__item-icon image absolute' />
+                        <div key={index} className='services__item service relative flex flex-col w-full lg:w-max'>
+                            <Image src={service.icon} alt={service.iconAlt} width={service.iconWidth} height={service.iconHeight} className='services__item-icon image pb-5 lg:pb-0 lg:absolute ' />
                             {splitTitle(service.title)}
-                            <p className='services__item-description pt-5'>{service.description}</p>
-                            <div className='services__item-list pt-3 pb-10'>
+                            <p className='services__item-description pt-5 '>{service.description}</p>
+                            <div className='services__item-list pt-3 pb-10 '>
                                 {service.service.map((item, index) => (
                                     <li key={index} className='services__item-list-entry'>{item}</li>
                                 ))}

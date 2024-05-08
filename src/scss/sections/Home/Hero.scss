@@ -1,5 +1,73 @@
 .hero {
+    @include media-breakpoint-down(lg) {
+        .hero__shape--top-left {
+            width: max-content;
+            left: 45% !important;
+        }
+
+        .hero__shape--bottom-right {
+            width: max-content;
+            bottom: 340px !important;
+        }
+    }
+
+    @include media-breakpoint-down(md) {
+        .hero__shape--top-left {
+            left: 40% !important;
+        }
+
+        .hero__shape--bottom-right {
+            bottom: 550px !important;
+            left: 125px !important;
+        }
+    }
+
+
     .hero__information {
+        .hero__content {
+            width: 670px;
+            padding: 0 0 120px 0;
+
+            @include media-breakpoint-down(lg) {
+                margin-top: 80px;
+
+                .hero__play-button {
+                    top: -60px !important;
+                    left: 35% !important;
+                }
+            }
+
+            @include media-breakpoint-down(md) {
+                width: 100%;
+                padding: 20px 20px 20px 20px;
+                align-items: center;
+
+                .hero__stats {
+                    padding-top: 20px;
+                    flex-wrap: wrap;
+                }
+            }
+        }
+
+        @include media-breakpoint-down(lg) {
+            .hero__description {
+                text-align: center;
+
+                h1 {
+                    width: 100% !important;
+                    font-size: 80px !important;
+
+                    @include media-breakpoint-down(md) {
+                        font-size: 60px !important;
+                    }
+                }
+
+                p {
+                    width: 100% !important;
+                }
+            }
+        }
+
         .hero__scroll {
             transform: rotate(-90deg);
             transform-origin: center;
@@ -7,6 +75,10 @@
             position: absolute;
             bottom: -30px;
             left: 150px;
+
+            @include media-breakpoint-down(lg) {
+                display: none;
+            }
 
             .hero__scroll-container p {
                 color: #FFF;
