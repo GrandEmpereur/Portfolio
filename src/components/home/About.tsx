@@ -14,8 +14,8 @@ function About() {
                 </div>
 
                 <div className='about__content flex flex-col lg:flex-row justify-between items-start gap-y-20 md:gap-x-32'>
-                    <div className="about__image-container relative w-full md:w-auto">
-                        <Image src={'/img/home-about.jpg'} alt={'image at working desk'} width={700} height={530} className='about__main-image inline-block rounded-lg' />
+                    <div className="about__image-container relative w-full md:w-max">
+                        <Image src={'/img/home-about.jpg'} alt={'image at working desk'} width={1200} height={530} className='about__main-image inline-block rounded-lg' />
                         <Image src={'/shape/img2.png'} alt={'a geometrical shape'} width={180} height={75} className='about__shape1 absolute w-max' />
                         <Image src={'/shape/img6.png'} alt={'a geometrical shape'} width={140} height={65} className='about__shape2 absolute' />
                     </div>
