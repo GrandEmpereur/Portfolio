@@ -24,7 +24,7 @@ function NavBar() {
                     <Link
                         href='/'
                         className='flex z-40 font-semibold'>
-                        <Image src='/img/Logo.png' alt='My Logo' width={60} height={60} priority />
+                        <Image src='/img/Logo.png' alt='My Logo' width={60} height={60} priority style={{ objectFit: 'cover', width: '100%', height:'100%' }} />
                     </Link>
 
                     <MobileNav />
