@@ -1,0 +1,36 @@
+export const projects = [
+    {
+        title: 'Project 1',
+        slug: '/project-test',
+        description: "SummitPath est une initiative née de la passion pour l'aventure en montagne et du désir de rendre l'expérience de randonnée plus accessible, sécurisée et agréable. Ce side projet vise à améliorer l'organisation des randonnées en montagne à travers une application mobile intuitive qui sert à la fois de guide et de planificateur pour les amateurs de plein air. Elle offre des fonctionnalités telles que des cartes hors ligne, le suivi de parcours en temps réel, la planification de l'itinéraire en fonction de la météo et des conditions du terrain, ainsi que des conseils pratiques pour une préparation optimale. SummitPath aspire à devenir un outil indispensable pour la communauté des randonneurs, en facilitant l'organisation de leurs sorties et en renforçant la sécurité de chaque aventure montagneuse. ",
+        placeholder: '/img/lastWorks/project3.png',
+        Slider: [
+            { image: '/img/lastWorks/project3.png', alt: 'image 1' },
+            { image: '/img/lastWorks/project3.png', alt: 'image 2' },
+            { image: '/img/lastWorks/project3.png', alt: 'image 3' },
+            { image: '/img/lastWorks/project3.png', alt: 'image 4' },
+            { image: '/img/lastWorks/project3.png', alt: 'image 5' },
+        ],
+        tags: ['React', 'Tailwind', 'Firebase', 'Firebase', 'Firebase', 'Firebase'],
+        otherTags: ['Fullstack', 'Frontend', 'Backend', 'Database', 'Authentication', 'Hosting'],
+        url: '/portfolio/project-test',
+        redirectToProd: '/portfolio/project-test',
+    },
+    {
+        title: 'Project 2',
+        slug: '/project-test-2',
+        description: 'This is a test project',
+        placeholder: '/img/lastWorks/project1.png',
+        Slider: [
+            { image: '/img/lastWorks/project1.png', alt: 'image 1' },
+            { image: '/img/lastWorks/project1.png', alt: 'image 2' },
+            { image: '/img/lastWorks/project1.png', alt: 'image 3' },
+            { image: '/img/lastWorks/project1.png', alt: 'image 4' },
+            { image: '/img/lastWorks/project1.png', alt: 'image 5' },
+        ],
+        tags: ['React', 'Tailwind', 'Firebase', 'Firebase', 'Firebase', 'Firebase'],
+        otherTags: ['Fullstack', 'Frontend', 'Backend', 'Database', 'Authentication', 'Hosting'],
+        url: '/portfolio/project-test',
+        redirectToProd: '/portfolio/project-test',
+    },
+]

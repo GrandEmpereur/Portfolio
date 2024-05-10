@@ -3,19 +3,7 @@ import { Badge } from '@/components/ui/badge'
 import Link from 'next/link'
 import React from 'react'
 import Image from 'next/image';
-
-const projects = [
-  { title: 'Project 1', image: '/img/lastWorks/project3.png', tags: ['React', 'Tailwind', 'Firebase', 'Firebase', 'Firebase', 'Firebase'], url: '/portfolio/project-test' },
-  { title: 'Project 2', image: '/img/lastWorks/project3.png', tags: ['React', 'Tailwind', 'Firebase'], url: '#' },
-  { title: 'Project 3', image: '/img/lastWorks/project3.png', tags: ['React', 'Tailwind', 'Firebase'], url: '#' },
-  { title: 'Project 4', image: '/img/lastWorks/project3.png', tags: ['React', 'Tailwind', 'Firebase'], url: '#' },
-  { title: 'Project 5', image: '/img/lastWorks/project3.png', tags: ['React', 'Tailwind', 'Firebase'], url: '#' },
-  { title: 'Project 6', image: '/img/lastWorks/project3.png', tags: ['React', 'Tailwind', 'Firebase'], url: '#' },
-  { title: 'Project 7', image: '/img/lastWorks/project3.png', tags: ['React', 'Tailwind', 'Firebase'], url: '#' },
-  { title: 'Project 8', image: '/img/lastWorks/project3.png', tags: ['React', 'Tailwind', 'Firebase'], url: '#' },
-  { title: 'Project 9', image: '/img/lastWorks/project3.png', tags: ['React', 'Tailwind', 'Firebase'], url: '#' },
-  { title: 'Project 10', image: '/img/lastWorks/project3.png', tags: ['React', 'Tailwind', 'Firebase'], url: '#' },
-]
+import { projects } from '@/lib/data/portfolio';
 
 function GalleryPage() {
   return (
@@ -35,7 +23,7 @@ function GalleryPage() {
                 <Image className='portfolio__image w-full object-cover rounded-lg overflow-hidden group-hover:scale-105 transition-transform duration-300'
                   width={400}
                   height={400}
-                  src={project.image}
+                  src={project.placeholder}
                   alt={`Project image of ${project.title}`}
                 />
                 <div className="portfolio__tags absolute bottom-2 left-2 flex flex-wrap gap-2" style={{width: '250px'}}>
