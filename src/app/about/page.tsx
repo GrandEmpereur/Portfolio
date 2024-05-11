@@ -12,8 +12,8 @@ function page() {
             <div className='relative '>
                 <Line />
 
-                <section id='About-hero' className='About-hero flex flex-col w-full gap-y-12'>
-                    <MaxWidthWrapper >
+                <MaxWidthWrapper >
+                    <section id='About-hero' className='About-hero flex flex-col w-full gap-y-12'>
                         <div className="about__title">
                             <h3 className='about__title-sub font-mono'>About me</h3>
                             <h4 className='about__title-main keep-color '>All You Want to Know About Me</h4>
@@ -24,22 +24,24 @@ function page() {
                         </div>
 
                         <div className='flex flex-col w-full gap-y-5'>
-                            <div>
-                                <h2 className='about__title-main'>Bartosik Patrick</h2>
+                            <div className='flex flex-col gap-y-2'>
+                                <h2 className='about__title-main'>M. Patrick</h2>
                                 <p>Full stack Web Developer </p>
                             </div>
                             <div className='flex flex-col w-full gap-y-5'>
-                                <p>Hi, my name is Adriano Smith and I began using WordPress when it first began. I’ve spent most of my waking hours for the last ten years designing, programming and operating WordPress sites.</p>
-                                <p>One of my specialties is taking an idea from scratch and creating a full-fledged platform. I go beyond to produce sites with a unique, outstanding, contemporary look-and-feel. With extensive knowledge of web mechanics, I’m able to optimize complex integrations to require little-to-no maintenance while running on their own for years.</p>
+                                <p>Hello, I am Patrick, a seasoned Full Stack Developer with a deep focus on the JavaScript ecosystem, specializing in building scalable and performant web applications using React and Next.js.</p>
+                                <p>Over the years, I have honed my skills in JavaScript, mastering frameworks and libraries essential for modern web development. My expertise in React and Next.js allows me to deliver dynamic, SEO-friendly websites that provide excellent user experiences and meet the high standards of today's web applications.</p>
+                                <p>My professional journey has been dedicated to developing robust solutions, optimizing web performance, and integrating advanced features that ensure minimal maintenance and high efficiency. Whether it's enhancing existing applications or crafting new ones from the ground up, my goal is always to leverage my technical skills to produce cutting-edge, accessible, and easy-to-maintain web platforms.</p>
                             </div>
+
                             <div>
                                 <a href={'/CV.pdf'} download="/CV.pdf">
                                     <Button size={'lg'} >Download My Resume</Button>
                                 </a>
                             </div>
                         </div>
-                    </MaxWidthWrapper>
-                </section>
+                    </section>
+                </MaxWidthWrapper>
 
                 <MaxWidthWrapper className='experience-wrapper mt-20'>
                     <section id='experience' className='experience relative flex flex-col w-full gap-y-12'>

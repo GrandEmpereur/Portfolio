@@ -23,17 +23,15 @@ export default function Page({ params }: { params: { slug: string } }) {
                 </div>
                 <div className=" flex flex-col gap-y-10">
                     <div className="slider flex">
-                        {project?.Slider.map((slide, index) => (
-                            <div key={index} className="slide">
-                                <Image src={slide.image} alt={slide.alt} width={400} height={400} />
-                            </div>
-                        ))}
+                        <div className='w-full'>
+                            <Image src={project?.placeholder ? project.placeholder : '' } alt={project?.title ? project?.title : ''} width={1108} height={537} style={{ width: '100%', objectFit: 'cover' }} />
+                        </div>
                     </div>
 
                     <div className="wraper w-full flex flex-wrap justify-between gap-8">
                         <div>
                             <h4> {project?.title} </h4>
-                            <p className="w-[506px] pt-5"> {project?.description} </p>
+                            <p className="w-full pt-5 lg:w-[506px]"> {project?.description} </p>
                         </div>
 
                         <div className="flex flex-wrap flex-col gap-8">
