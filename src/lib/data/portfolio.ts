@@ -1,5 +1,6 @@
 export const projects = [
     {
+        id: 1,
         title: 'M. Moustache',
         slug: '/m-moustache',
         description: " M. Moustache is an e-commerce project I had the privilege to work on during my internship and apprenticeship at W3lead. My primary role involved integrating front-end solutions and developing robust APIs for the Shopify platform. I implemented both RESTful and GraphQL APIs in TypeScript to enhance the site's interactive features, thereby facilitating an enriched and efficient user experience.This project enabled me to deepen my full-stack development skills, focusing especially on front-end integration and API interface creation for an effective and secure online commerce environment.",
@@ -11,6 +12,7 @@ export const projects = [
         redirectToProd: 'https://www.m-moustache.com/pages/homme',
     },
     {
+        id: 2,
         title: 'Tartine & Chocolat',
         slug: '/tartine-chocolat',
         description: 'This is a test project',
@@ -22,6 +24,7 @@ export const projects = [
         redirectToProd: 'https://www.tartine-et-chocolat.com',
     },
     {
+        id: 3,
         title: 'Qwetch',
         slug: '/qwetch',
         description: 'This is a test project',
@@ -33,6 +36,7 @@ export const projects = [
         redirectToProd: 'https://www.qwetch.com/',
     },
     {
+        id: 4,
         title: 'Easy Clothes',
         slug: '/easy-clothes',
         description: 'This is a test project',
@@ -44,6 +48,7 @@ export const projects = [
         redirectToProd: 'https://www.easy-clothes.com/',
     },
     {
+        id: 5,
         title: 'Le -1Store',
         slug: '/le-1store',
         description: 'This is a test project',
@@ -55,6 +60,7 @@ export const projects = [
         redirectToProd: 'https://www.le-1.store/',
     },
     {
+        id: 6,
         title: 'BAP Châtenay-Malabry',
         slug: '/bap-chatenay-malabry',
         description: 'This is a test project',
@@ -66,6 +72,7 @@ export const projects = [
         redirectToProd: 'https://bap-k7nu.vercel.app/',
     },
     {
+        id: 7,
         title: 'React NBA',
         slug: '/react-nba',
         description: 'This is a test project',

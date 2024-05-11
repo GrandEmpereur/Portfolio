@@ -4,7 +4,8 @@ import Line from '@/components/Line';
 import Image from 'next/image';
 import { ArrowRight, ChevronsLeft, ChevronsRight } from 'lucide-react';
 
-import { states, stacks, LastWorksItems } from '@/lib/data/home';
+import { states, stacks } from '@/lib/data/home';
+import { projects } from '@/lib/data/portfolio';
 import { services } from '@/lib/data/services';
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -13,6 +14,8 @@ import MaxWidthWrapper from '@/components/MaxWidthWrapper';
 
 export default function Home() {
     const [hoverIndex, setHoverIndex] = useState(-1);
+    const lastFiveProjects = projects.slice(-5).reverse();
+
     const splitTitle = (title: string) => {
         const words = title.split(' ');
         const firstWord = words.shift();
@@ -164,14 +167,14 @@ export default function Home() {
                             </div>
                             <div className="portfolio__description flex flex-col gap-y-10">
                                 <p className='portfolio__description-text font-mono'>Explore my diverse project gallery to see innovative solutions tailored to meet unique business needs.</p>
-                                <Link href="/portfolio/all" className='portfolio__link-button text-center lg:text-left'>
+                                <Link href="/portfolio" className='portfolio__link-button text-center lg:text-left'>
                                     <Button size={'lg'}>Discover More</Button>
                                 </Link>
                             </div>
                         </div>
                         <div className='portfolio__body w-full pt-6'>
-                            {LastWorksItems().map((item, index) => (
-                                <Link href={`/portfolio/${item.id}`} key={index}>
+                            {lastFiveProjects.map((item, index) => (
+                                <Link href={`${item.url}`} key={index}>
                                     <div
                                         key={item.id}
                                         className='portfolio__item flex justify-between w-full hover:cursor-pointer pt-8 relative'
@@ -179,11 +182,11 @@ export default function Home() {
                                         onMouseLeave={() => setHoverIndex(-1)}
                                     >
                                         <div className='portfolio__item-text flex gap-x-5'>
-                                            <p className='portfolio__item-number'>0{item.id}.</p>
+                                            <p className='portfolio__item-number'>0{index + 1 }.</p>
                                             <h2 className='portfolio__item-title'>{item.title}</h2>
                                         </div>
                                         <div className={`portfolio__item-image absolute flex justify-center items-center transition-all duration-300 ease-in-out transform ${hoverIndex === index ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
-                                            <Image src={item.image} alt={`${item.title} - preview`} width={250} height={200} style={{
+                                            <Image src={item.placeholder} alt={`${item.title} - preview`} width={250} height={200} style={{
                                                 objectFit: 'cover',
                                                 width: '100%',
                                                 height: '100%',
