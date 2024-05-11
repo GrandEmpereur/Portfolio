@@ -25,18 +25,18 @@ function page() {
 
         <div className='flex flex-col gap-y-8'>
           {services.map((service, index) => (
-            <div id={service.id} key={index} className="services__item rounded overflow-hidden shadow-lg relative">
-              <div className="group w-full flex justify-between">
-                <div className="services__content flex flex-col gap-y-8">
+            <div key={index} id={service.id}  className="services__item rounded overflow-hidden shadow-lg relative ">
+              <div className="group w-full flex flex-col justify-between lg:flex-row">
+                <div className="services__content flex flex-col gap-y-8 ">
                   <h4 className="services__title underline">{service.title}</h4>
-                  <p className="services__description w-[613px]">{service.description}</p>
+                  <p className="services__description w-full md:w-[613px]">{service.generalDescription}</p>
                   <div className="services__accordion">
                   </div>
                 </div>
 
-                <div className='w-[600px]'>
+                <div className='w-full md:w-[600px]'>
                   <Accordion type="single" collapsible>
-                    {service.accordion.map((accordion, idx) => (
+                    {service.detailedDescription.map((accordion, idx) => (
                         <AccordionItem key={idx} value={`${idx}`}>
                           <AccordionTrigger>{accordion.title}</AccordionTrigger>
                           <AccordionContent style={{borderBottom: '1px solid white'}}>

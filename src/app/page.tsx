@@ -4,7 +4,8 @@ import Line from '@/components/Line';
 import Image from 'next/image';
 import { ArrowRight, ChevronsLeft, ChevronsRight } from 'lucide-react';
 
-import { states, stacks, LastWorksItems, services } from '@/lib/data/home';
+import { states, stacks, LastWorksItems } from '@/lib/data/home';
+import { services } from '@/lib/data/services';
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
@@ -139,10 +140,10 @@ export default function Home() {
                                 <div key={index} className='services__item service relative flex flex-col w-full lg:w-max'>
                                     <Image src={service.icon} alt={service.iconAlt} width={service.iconWidth} height={service.iconHeight} className='services__item-icon image pb-5 lg:pb-0 lg:absolute ' />
                                     {splitTitle(service.title)}
-                                    <p className='services__item-description pt-5 '>{service.description}</p>
+                                    <p className='services__item-description pt-5 '>{service.generalDescription }</p>
                                     <div className='services__item-list pt-3 pb-10 '>
-                                        {service.service.map((item, index) => (
-                                            <li key={index} className='services__item-list-entry'>{item}</li>
+                                        {service.detailedDescription.map((item, index) => (
+                                            <li key={index} className='services__item-list-entry'>{item.title}</li>
                                         ))}
                                     </div>
                                     <Link href={service.buttonLink} className='services__item-button'>
