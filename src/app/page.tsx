@@ -45,7 +45,7 @@ export default function Home() {
             <section id='hero' className='hero relative flex flex-col w-full'>
                 <MaxWidthWrapper>
 
-                    <span className='hero__shape--top-left relative' style={{ left: "-20px" }}>
+                    <span className='hero__shape--top-left relative block w-max' style={{ left: "-20px" }}>
                         <Image src={'/shape/img7.png'} alt={'shape'} width={55} height={55} />
                     </span>
                     <span className='hero__shape--bottom-right absolute' style={{ left: "300px", bottom: "225px" }}>
@@ -104,20 +104,20 @@ export default function Home() {
                 </MaxWidthWrapper>
             </section>
 
-            <div className='home-bg relative'>
+            <section className='home-bg relative'>
                 <Line />
 
-                <section id='about' className='about flex w-full h-full flex-col gap-y-8'>
+                <section id='about' className='about flex w-full h-full flex-col gap-y-8s'>
                     <MaxWidthWrapper>
-                        <div className="about__title">
+                        <div className="about__title pb-5">
                             <h4 className='about__title-sub font-mono keep-color keep-size'>About me</h4>
-                            <h2 className='about__title-main w-max keep-size'>I Create Digital World Class Business Web Store / Site</h2>
+                            <h2 className='about__title-main w-max keep-size text-2xl md:text-4xl '>I Create Digital World Class Business Web Store / Site</h2>
                         </div>
 
-                        <div className='about__content flex flex-col lg:flex-row justify-between items-start gap-y-20 md:gap-x-32'>
-                            <div className="about__image-container relative w-full md:w-max">
-                                <Image src={'/img/home-about.jpg'} alt={'image at working desk'} width={1200} height={530} className='about__main-image inline-block rounded-lg' />
-                                <Image src={'/shape/img2.png'} alt={'a geometrical shape'} width={180} height={75} className='about__shape1 absolute w-max' />
+                        <div className='w-full h-full about__content flex flex-col lg:flex-row justify-between items-start gap-y-20 md:gap-x-32'>
+                            <div className="about__image-container relative w-full">
+                                <Image src={'/img/home-about.jpg'} alt={'image at working desk'} width={1200} height={530} className='about__main-image inline-block rounded-lg w-full lg:w-[1200px]' />
+                                <Image src={'/shape/img2.png'} alt={'a geometrical shape'} width={180} height={75} className='about__shape1 absolute' />
                                 <Image src={'/shape/img6.png'} alt={'a geometrical shape'} width={140} height={65} className='about__shape2 absolute' />
                             </div>
 
@@ -135,15 +135,15 @@ export default function Home() {
                 <MaxWidthWrapper className='services-bg mt-20 lg:mt-40'>
                     <section id='services' className='services flex flex-col items-start justify-between w-full h-full'>
                         <div className="services__header title">
-                            <h4 className='services__header-subtitle font-mono keep-color '>Services</h4>
-                            <h2 className='services__header-main-title '>Explore My Expertise</h2>
+                            <h4 className='services__header-subtitle font-mono keep-color keep-size '>Services</h4>
+                            <h2 className='services__header-main-title keep-size text-2xl md:text-4xl '>Explore My Expertise</h2>
                         </div>
                         <div className='services__list flex flex-col lg:flex-row items-center gap-y-10 justify-between w-full pt-10 '>
                             {services.map((service, index) => (
                                 <div key={index} className='services__item service relative flex flex-col w-full lg:w-max'>
                                     <Image src={service.icon} alt={service.iconAlt} width={service.iconWidth} height={service.iconHeight} className='services__item-icon image pb-5 lg:pb-0 lg:absolute ' />
                                     {splitTitle(service.title)}
-                                    <p className='services__item-description pt-5 '>{service.generalDescription }</p>
+                                    <p className='services__item-description pt-5 '>{service.generalDescription}</p>
                                     <div className='services__item-list pt-3 pb-10 '>
                                         {service.detailedDescription.map((item, index) => (
                                             <li key={index} className='services__item-list-entry'>{item.title}</li>
@@ -158,12 +158,12 @@ export default function Home() {
                     </section>
                 </MaxWidthWrapper>
 
-                <section id='lastWorks' className='portfolio lastWorks mt-40 flex flex-col items-start justify-between w-full h-full'>
+                <section id='lastWorks' className='portfolio lastWorks mt-20 lg:mt-40 flex flex-col items-start justify-between w-full h-full'>
                     <MaxWidthWrapper>
                         <div className='portfolio__header flex flex-col w-full justify-between gap-y-5 lg:flex-row lg:gap-y-0 '>
                             <div className="portfolio__title">
-                                <h4 className='portfolio__subtitle font-mono keep-color'>PORTFOLIO</h4>
-                                <h2 className='portfolio__main-title'>Recent Projects</h2>
+                                <h4 className='portfolio__subtitle font-mono keep-color keep-size'>PORTFOLIO</h4>
+                                <h2 className='portfolio__main-title keep-size text-2xl md:text-4xl '>Recent Projects</h2>
                             </div>
                             <div className="portfolio__description flex flex-col gap-y-10">
                                 <p className='portfolio__description-text font-mono'>Explore my diverse project gallery to see innovative solutions tailored to meet unique business needs.</p>
@@ -177,24 +177,45 @@ export default function Home() {
                                 <Link href={`${item.url}`} key={index}>
                                     <div
                                         key={item.id}
-                                        className='portfolio__item flex justify-between w-full hover:cursor-pointer pt-8 relative'
+                                        className='portfolio__item flex flex-col justify-between w-full hover:cursor-pointer pt-8 relative gap-y-8'
                                         onMouseEnter={() => setHoverIndex(index)}
                                         onMouseLeave={() => setHoverIndex(-1)}
                                     >
-                                        <div className='portfolio__item-text flex gap-x-5'>
-                                            <p className='portfolio__item-number'>0{index + 1 }.</p>
-                                            <h2 className='portfolio__item-title'>{item.title}</h2>
+                                        <div className='flex justify-between items-center'>
+                                            <div className='portfolio__item-text flex gap-x-5'>
+                                                <p className='portfolio__item-number'>0{index + 1}.</p>
+                                                <h2 className='portfolio__item-title'>{item.title}</h2>
+                                            </div>
+                                            <div className={`hidden lg:flex portfolio__item-image absolute  justify-center items-center transition-all duration-300 ease-in-out transform ${hoverIndex === index ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
+                                            <Image
+                                                src={item.placeholder}
+                                                alt={`${item.title} - preview`}
+                                                width={450}
+                                                height={300}
+                                                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 450px"
+                                                style={{
+                                                    objectFit: 'cover'
+                                                }}
+                                            />
+                                            </div>
+                                            <div className={`portfolio__item-icon transition-all duration-300 ease-in-out transform ${hoverIndex === index ? '-rotate-45 text-[#E3B27D]' : 'text-white'}`}>
+                                                <ArrowRight className='cursor-pointer' size={30} />
+                                            </div>
                                         </div>
-                                        <div className={`portfolio__item-image absolute flex justify-center items-center transition-all duration-300 ease-in-out transform ${hoverIndex === index ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
-                                            <Image src={item.placeholder} alt={`${item.title} - preview`} width={250} height={200} style={{
-                                                objectFit: 'cover',
-                                                width: '100%',
-                                                height: '100%',
-                                            }} />
+
+                                        <div className={`portfolio__item-image flex lg:hidden w-full`}>
+                                            <Image
+                                                src={item.placeholder}
+                                                alt={`${item.title} - preview`}
+                                                width={250}
+                                                height={200}
+                                                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 250px"
+                                                style={{
+                                                    objectFit: 'cover'
+                                                }}
+                                            />
                                         </div>
-                                        <div className={`portfolio__item-icon transition-all duration-300 ease-in-out transform ${hoverIndex === index ? '-rotate-45 text-[#E3B27D]' : 'text-white'}`}>
-                                            <ArrowRight className='cursor-pointer' size={30} />
-                                        </div>
+
                                     </div>
                                 </Link>
                             ))}
@@ -220,7 +241,7 @@ export default function Home() {
                         </div>
                     </MaxWidthWrapper>
                 </section>
-            </div>
+            </section>
         </main>
     );
 }

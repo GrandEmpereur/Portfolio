@@ -9,6 +9,10 @@
             top: 0;
             right: 100px;
             rotate: 15deg;
+
+            @include media-breakpoint-down(lg) {
+                rotate: 0deg;
+            }
         }
     }
 }
