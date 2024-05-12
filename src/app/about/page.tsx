@@ -20,7 +20,7 @@ function page() {
                         </div>
 
                         <div className='w-full'>
-                            <Image src={'/img/about/aboutHero.png'} alt={''} width={1108} height={537} style={{ width: '100%', objectFit: 'cover' }} />
+                            <Image src={'/img/about/aboutHero.png'} alt={''} width={1108} height={537} style={{ width: '100%', objectFit: 'cover' }} loading='eager' />
                         </div>
 
                         <div className='flex flex-col w-full gap-y-5'>

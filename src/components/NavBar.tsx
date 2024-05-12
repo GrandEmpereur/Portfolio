@@ -44,6 +44,7 @@ function NavBar() {
                             height={90}
                             style={{ objectFit: 'cover' }}
                             className='lg:w-[90px] w-[60px]'
+                            loading='eager'
                         />
                     </Link>
 

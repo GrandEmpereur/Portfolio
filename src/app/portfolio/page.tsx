@@ -30,6 +30,7 @@ function GalleryPage() {
                   style={{
                     aspectRatio: '9 / 8'
                   }}
+                  loading='lazy'
                 />
                 <div className="portfolio__tags absolute bottom-2 left-2 hidden md:flex flex-wrap gap-2 w-[300px]">
                   {project.tags.map((tag, idx) => (

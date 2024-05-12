@@ -16,6 +16,7 @@ function NotFound() {
                     style={{ objectFit: 'cover', width: '100%', height: '100%'}}
                     className="w-full h-full"
                     priority
+                    loading='eager'
                 />
                 <div className="absolute top-0 left-0 right-0 bottom-0 bg-black opacity-50"></div>
             </div>
