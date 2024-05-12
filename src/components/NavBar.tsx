@@ -50,8 +50,7 @@ function NavBar() {
 
                     <MobileNav />
 
-                    <div className={`hidden items-center space-x-10 sm:flex ${!isActive ? 'bg-secondary px-10 py-5 rounded-full' : '' // Appliquer le style à la div si aucun lien n'est actif
-                        }`}>
+                    <div className={`hidden items-center space-x-10 sm:flex ${!isActive ? 'bg-secondary px-10 py-5 rounded-full' : ''}`}>s
                         <ul className='flex items-center justify-around gap-x-10'>
                             {links.map(({ href, label }, index) => (
                                 <li key={index}>
