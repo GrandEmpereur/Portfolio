@@ -56,6 +56,11 @@ function Footer() {
                                 Privacy Policy
                             </Button>
                         </Link>
+                        <Link href="/gtu">
+                            <Button variant={'link'} className='footer__legal-button'>
+                                GTU
+                            </Button>
+                        </Link>
                     </div>
                 </div>
             </footer>
