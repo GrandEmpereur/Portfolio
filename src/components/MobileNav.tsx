@@ -1,53 +1,43 @@
 'use client'
 
-import { ArrowRight, Menu } from 'lucide-react'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { useEffect, useState } from 'react'
-import { links } from './NavBar'
+import { ArrowRight, Menu } from 'lucide-react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { MobilLinks } from '@/lib/data/navigation';
+import Image from 'next/image';
 
 const MobileNav = () => {
-  const [isOpen, setOpen] = useState<boolean>(false)
-
-  const toggleOpen = () => setOpen((prev) => !prev)
-
-  const pathname = usePathname()
+  const [isOpen, setOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
-    if (isOpen) toggleOpen()
-  }, [pathname])
-
-  const closeOnCurrent = (href: string) => {
-    if (pathname === href) {
-      toggleOpen()
+    if (isOpen) {
+      toggleOpen();
     }
-  }
+  }, [pathname]);
+
+  const toggleOpen = () => setOpen(prev => !prev);
 
   return (
     <div className='sm:hidden'>
-      <Menu
-        onClick={toggleOpen}
-        className='relative z-50 h-5 w-5 text-zinc-700'
-      />
+      <Menu onClick={toggleOpen} className='relative z-50 h-5 w-5 text-primary' />
 
-      {isOpen ? (
-        <div className='fixed animate-in slide-in-from-top-5 fade-in-20 inset-0 z-0 w-full'>
-          <ul className='absolute bg-white border-b border-zinc-200 shadow-xl grid w-full gap-3 px-10 pt-20 pb-8'>
-            {links.map(({ href, label }, index) => {
-              return (
-                <li key={index}>
-                  <Link href={href}>
-                    <span className='transition ease-in-out delay-150 text-black'>{label}</span>
-                  </Link>
-                </li>
-              )
-            }
-            )}
+      {isOpen && (
+        <div className='fixed inset-0 z-0 w-full h-screen bg-secondary animate-slideDown'>
+          <ul className='flex flex-col gap-8 px-5 pt-24 pb-8'>
+            {MobilLinks.map(({ href, label }, index) => (
+              <li key={index} className='animate-fadeInUp opacity-0'>
+                <Link href={href} onClick={() => toggleOpen()}>
+                  <span className='block text-primary text-2xl'>{label}</span>
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
-      ) : null}
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default MobileNav
+export default MobileNav;

@@ -1,209 +1,203 @@
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import React from 'react'
+import { formatLegalText } from '@/lib/formatLegalText'
+
+
+const rawLegalText = `
+Privacy Policy
+
+Article 1: Preamble
+This privacy policy applies to the site: Patrick Bartosik.
+
+This privacy policy aims to expose to the users of the site:
+
+- The manner in which their personal data are collected and processed. Should be considered as personal data all data that can identify a user. This includes first name and last name, age, postal address, email address, user's location or even his IP address;
+- What rights users have regarding these data;
+- Who is responsible for the processing of the collected and processed personal data;
+- To whom these data are transmitted;
+- Optionally, the site’s policy on "cookies".
+
+This privacy policy supplements the legal notices.
+
+Article 2: General principles regarding data collection and processing
+In accordance with the provisions of Article 5 of the European Regulation 2016/679, the collection and processing of user data from the site respect the following principles:
+
+- Legality, fairness, and transparency: data can only be collected and processed with the consent of the data owner. Whenever personal data will be collected, the user will be informed that his data is being collected, and why his data is being collected;
+- Limited purposes: data collection and processing are executed to meet one or more objectives specified in these terms of use;
+- Minimizing the collection and processing of data: only the data necessary for the proper execution of the objectives pursued by the site are collected;
+- Reduced data retention in time: data is stored for a limited period of which the user is informed. If this information cannot be communicated, the user is informed of the criteria used to determine the duration of conservation;
+- Integrity and confidentiality of the collected and processed data: the data controller commits to ensure the integrity and confidentiality of the collected data.
+
+To be lawful, and in accordance with the requirements of Article 6 of the European Regulation 2016/679, the collection and processing of personal data may only occur if they comply with at least one of the following conditions:
+
+- The user has expressly consented to the processing;
+- Processing is necessary for the proper performance of a contract;
+- The processing meets a legal obligation;
+- The processing is explained by a need linked to the protection of the vital interests of the concerned individual or another person;
+- The processing can be explained by a necessity linked to the performance of a mission of public interest or that relates to the exercise of public authority;
+- The processing and collection of personal data are necessary for the legitimate private interests pursued by the data controller or by a third party.
+
+Article 3: Personal data collected and processed in the framework of site navigation
+A. Data collected and processed and collection mode
+The personal data collected on the Patrick Bartosik site are as follows:
+
+- IP addresses and browser cookies.
+- First name, last name, email address, telephone, and company.
+
+These data are collected when the user performs one of the following operations on the site:
+
+- When the user visits one of the site's pages.
+- When the user uses one of the contact forms.
+
+The data controller will keep in the computer systems of the site and under reasonable security conditions all the data collected for a duration of: 26 months.
+
+The collection and processing of the data serve the following purposes:
+
+- Analysis of site traffic.
+- To allow recontacting the user.
+
+B. Transmission of data to third parties
+The data may be transmitted to the following third party(ies):
+
+Google and Vercel
+
+C. Data hosting
+The Patrick Bartosik site is hosted by: Vercel, whose headquarters is located at the following address:
+
+San Francisco in the United States.
+
+The data collected and processed by the site are transferred to the following country(ies): France, Ireland, and the United States. This transfer of personal data outside the European Union justifies the following reasons:
+
+Location of the headquarters of third parties.
+
+Article 4: Data Controller
+A. The data controller
+The data controller for personal data is: Gary Trojanowski. He can be contacted as follows:
+
+By email: BartosikPatrickPro@gmail.com
+
+The data controller is responsible for determining the purposes and means used in the processing of personal data.
+
+B. Obligations of the data controller
+The data controller commits to protect the collected personal data, not to transmit them to third parties without the user having been informed, and to respect the purposes for which these data were collected.
+
+The site has an SSL certificate to ensure that the information and the transfer of data passing through the site are secured.
+
+An SSL ("Secure Socket Layer" Certificate) aims to secure the data exchanged between the user and the site.
+
+Moreover, the data controller commits to notify the user in case of correction or deletion of the data, unless this entails for him disproportionate formalities, costs, and steps.
+
+In the case where the integrity, confidentiality, or security of the user's personal data is compromised, the data controller commits to inform the user by any means.
+
+Article 5
+
+: User rights
+In accordance with the regulation concerning the processing of personal data, the user has the rights listed below.
+
+In order for the data controller to comply with his request, the user is required to communicate: his first name and last name as well as his email address.
+
+The data controller is required to respond to the user within a maximum of 30 (thirty) days.
+
+A. Presentation of the user's rights in data collection and processing
+a. Right of access, rectification, and right to erasure
+The user can take knowledge, update, modify or request the deletion of data concerning him, following the procedure set out below:
+
+The user must send an email to the personal data processing manager, specifying the subject of his request and using the contact email address provided above.
+
+b. Right to data portability
+The user has the right to request the portability of his personal data, held by the site, to another site, by complying with the following procedure:
+
+The user must make a request for the portability of his personal data to the data controller, by sending an email to the address provided above.
+
+c. Right to limitation and opposition of data processing
+The user has the right to request the limitation or to oppose the processing of his data by the site, without the site being able to refuse, except to demonstrate legitimate and compelling reasons, which can prevail over the interests and rights and freedoms of the user.
+
+To request the limitation of data processing or to formulate an opposition to data processing, the user must follow the following procedure:
+
+The user must make a request for limitation to the processing of his personal data to the data controller, by sending an email to the address provided above.
+
+d. Right not to be the subject of a decision based exclusively on an automated process
+In accordance with the provisions of Regulation 2016/679, the user has the right not to be the subject of a decision based exclusively on an automated process if the decision produces legal effects concerning him, or similarly significantly affects him.
+
+e. Right to decide the fate of data after death
+It is reminded to the user that he can organize what should be the future of his data collected and processed if he dies, in accordance with Law No. 2016-1321 of October 7, 2016.
+
+f. Right to seize the competent control authority
+In the event that the data controller decides not to respond to the user's request, and the user wishes to contest this decision, or, if he thinks that one of the rights listed above is infringed, he is entitled to seize the CNIL (National Commission on Informatics and Liberty, https://www.cnil.fr) or any competent judge.
+
+B. Personal data of minor persons
+In accordance with the provisions of Article 8 of the European Regulation 2016/679 and the Data Protection Act, only minors aged 15 years or more can consent to the processing of their personal data.
+
+If the user is a minor under 15 years old, the agreement of a legal representative will be required so that personal data can be collected and processed.
+
+The site publisher reserves the right to verify by any means that the user is over 15 years old, or that he will have obtained the agreement of a legal representative before browsing the site.
+
+Article 6: Use of "Cookies" files
+The site may have recourse to the techniques of "cookies".
+
+A "cookie" is a small file (less than 4 ko), stored by the site on the user's hard drive, containing information related to the user's browsing habits.
+
+These files allow him to process statistics and traffic information, facilitate navigation and improve the service for the user's comfort.
+
+For the use of "cookie" files involving the storage and analysis of personal data, the user's consent is necessarily asked.
+
+This user's consent is considered valid for a duration of 13 (thirteen) months maximum. At the end of this period, the site will again ask for the user's authorization to save "cookies" files on his hard drive.
+
+a. User's opposition to the use of "cookies" files by the site
+It is brought to the user's knowledge that he can oppose the recording of these "cookies" by configuring his navigation software.
+
+For information, the user can find at the following addresses the steps to follow in order to configure his navigation software to oppose the recording of "cookie" files:
+
+- Chrome: https://support.google.com/accounts/answer/61416?hl=en
+
+- Firefox: https://support.mozilla.org/en-US/kb/enable-and-disable-cookies-website-preferences
+
+- Safari: http://www.apple.com/legal/privacy/en-ww/
+
+- Internet Explorer: https://support.microsoft.com/en-us/help/17442/windows-internet-explorer-delete-manage-cookies
+
+- Opera: http://www.opera.com/help/tutorials/security/cookies/
+
+In the case where the user decides to disable the "cookies" files, he may continue his navigation on the site. However, any dysfunction of
+
+ the site caused by this manipulation could not be considered as being due to the site publisher.
+
+b. Description of the "cookies" files used by the site
+The site publisher draws the user's attention to the fact that the following cookies are used during his navigation:
+
+Cookies authorized and recorded by browsers.
+
+By browsing on the site, it is brought to the user's knowledge that "cookie" files of third parties may be recorded.
+
+It is more particularly the following third parties:
+
+Third parties listed in Article 3.B above.
+
+Moreover, the site incorporates social network buttons, allowing the user to share his activity on the site. "Cookie" files of these social networks are therefore likely to be stored on the user's computer when he uses these features.
+
+The user's attention is drawn to the fact that these sites have their own privacy policies and terms and conditions of use possibly different from the site. The site publisher invites users to consult the privacy policies and the terms and conditions of use of these sites.
+
+Article 7: Condition of modification of the privacy policy
+This privacy policy can be consulted at any time at the address indicated below:
+
+https://Patrick.Bartosik.com/policy
+
+The site publisher reserves the right to modify it to ensure its compliance with the law in force.
+
+Therefore, the user is invited to come regularly consult this privacy policy to stay informed of the latest changes that will be brought to it.
+
+It is brought to the user's knowledge that the last update of this privacy policy occurred on: 01/01/2020.
+
+Article 8: Acceptance by the user of the privacy policy
+By browsing on the site, the user attests having read and understood this privacy policy and accepts its conditions, particularly concerning the collection and processing of his personal data, as well as the use of "cookie" files.
+`;
 
 function page() {
+    const formattedText = formatLegalText(rawLegalText);
     return (
         <MaxWidthWrapper>
-            <div>
-                Politique de confidentialité
-                Article 1 : Préambule
-                Cette politique de confidentialité s'applique au site : Patrick Bartosik .
-
-                La présente politique de confidentialité a pour but d'exposer aux utilisateurs du site :
-
-                La manière dont sont collectées et traitées leurs données à caractère personnel. Doivent être considérées comme données personnelles toutes les données étant susceptibles d'identifier un utilisateur. Il s'agit notamment du prénom et du nom, de l'âge, de l'adresse postale, l'adresse mail, la localisation de l'utilisateur ou encore son adresse IP
-
-                Quels sont les droits des utilisateurs concernant ces données
-
-                Qui est responsable du traitement des données à caractère personnel collectées et traitées
-
-                À qui ces données sont transmises
-
-                Éventuellement, la politique du site en matière de fichiers "cookies".
-
-                Cette politique de confidentialité complète les mentions légales et les Conditions Générales d'Utilisation que les utilisateurs peuvent consulter à l'adresse ci-après :
-
-                https://www.Patrick Bartosik .com/cgu
-
-                Article 2 : Principes généraux en matière de collecte et de traitement de données
-                Conformément aux dispositions de l'article 5 du Règlement européen 2016/679, la collecte et le traitement des données des utilisateurs du site respectent les principes suivants :
-
-                Licéité, loyauté et transparence : les données ne peuvent être collectées et traitées qu'avec le consentement de l'utilisateur propriétaire des données. A chaque fois que des données à caractère personnel seront collectées, il sera indiqué à l'utilisateur que ses données sont collectées, et pour quelles raisons ses données sont collectées ;
-
-                Finalités limitées : la collecte et le traitement des données sont exécutés pour répondre à un ou plusieurs objectifs déterminés dans les présentes conditions générales d'utilisation ;
-
-                Minimisation de la collecte et du traitement des données : seules les données nécessaires à la bonne exécution des objectifs poursuivis par le site sont collectées ;
-
-                Conservation des données réduites dans le temps : les données sont conservées pour une durée limitée, dont l'utilisateur est informé. Lorsque cette information ne peut pas être communiquée, l'utilisateur est informé des critères utilisés pour déterminer la durée de conservation ;
-
-                Intégrité et confidentialité des données collectées et traitées : le responsable du traitement des données s'engage à garantir l'intégrité et la confidentialité des données collectées.
-
-                Afin d'être licites, et ce, conformément aux exigences de l'article 6 du règlement européen 2016/679, la collecte et le traitement des données à caractère personnel ne pourront intervenir que s'ils respectent au moins l'une des conditions ci-après énumérées :
-
-                L'utilisateur a expressément consenti au traitement ;
-
-                Le traitement est nécessaire à la bonne exécution d'un contrat ;
-
-                Le traitement répond à une obligation légale ;
-
-                Le traitement s'explique par une nécessité liée à la sauvegarde des intérêts vitaux de la personne concernée ou d'une autre personne physique ;
-
-                Le traitement peut s'expliquer par une nécessité liée à l'exécution d'une mission d'intérêt public ou qui relève de l'exercice de l'autorité publique ;
-
-                Le traitement et la collecte des données à caractère personnel sont nécessaires aux fins des intérêts légitimes et privés poursuivis par le responsable du traitement ou par un tiers.
-
-                Article 3 : Données à caractère personnel collectées et traitées dans le cadre de la navigation sur le site
-                A. Données collectées et traitées et mode de collecte
-                Les données à caractère personnel collectées sur le site Patrick Bartosik  sont les suivantes :
-
-                Adresse IP et cookies navigateurs.
-
-                Prénom, nom, adresse e-mail, téléphone et société.
-
-                Ces données sont collectées lorsque l'utilisateur effectue l'une des opérations suivantes sur le site :
-
-                Lorsque l'utilisateur se rend sur l'une des pages du site.
-
-                Lorsque l'utilisateur utilise l'un des formulaires de contact.
-
-                Le responsable du traitement conservera dans ses systèmes informatiques du site et dans des conditions raisonnables de sécurité l'ensemble des données collectées pour une durée de : 26 mois.
-
-                La collecte et le traitement des données répondent aux finalités suivantes :
-
-                Analyse du trafic du site.
-
-                Permettre de recontacter l'utilisateur.
-
-                B. Transmission des données à des tiers
-                Les données peuvent être transmises au(x) tiers ci-après énuméré(s) :
-
-                Google, Typeform, Hotjar et Netlify
-
-                C. Hébergement des données
-                Le site Patrick Bartosik  est hébergé par : Netlify, dont le siège est situé à l'adresse ci-après :
-
-                44 Montgomery Street, Suite 300, San Francisco, California 94104 aux États-Unis.
-
-                Les données collectées et traitées par le site sont transférées vers le(s) pays suivant(s) : France, Irlande et États-Unis. Ce transfert de données à caractère personnel en dehors de l'Union européenne se justifie par les raisons ci-après :
-
-                Emplacement des sièges sociaux des tiers.
-
-                Article 4 : Responsable du traitement des données
-                A. Les responsable du traitement des données
-                Le responsable du traitement des données à caractère personnel est : Gary Trojanowski. Il peut être contacté de la manière suivante :
-
-                Par e-mail : contact@Patrick Bartosik .com
-
-                Le responsable du traitement des données est chargé de déterminer les finalités et les moyens mis au service du traitement des données à caractère personnel.
-
-                B. Obligations du responsable du traitement des données
-                Le responsable du traitement s'engage à protéger les données à caractère personnel collectées, à ne pas les transmettre à des tiers sans que l'utilisateur n'en ait été informé et à respecter les finalités pour lesquelles ces données ont été collectées.
-
-                Le site dispose d'un certificat SSL afin de garantir que les informations et le transfert des données transitant par le site sont sécurisés.
-
-                Un certificat SSL ("Secure Socket Layer" Certificate) a pour but de sécuriser les données échangées entre l'utilisateur et le site.
-
-                De plus, le responsable du traitement des données s'engage à notifier l'utilisateur en cas de rectification ou de suppression des données, à moins que cela n'entraîne pour lui des formalités, coûts et démarches disproportionnés.
-
-                Dans le cas où l'intégrité, la confidentialité ou la sécurité des données à caractère personnel de l'utilisateur est compromise, le responsable du traitement s'engage à informer l'utilisateur par tout moyen.
-
-                Article 5 : Droits de l'utilisateur
-                Conformément à la réglementation concernant le traitement des données à caractère personnel, l'utilisateur possède les droits ci-après énumérés.
-
-                Afin que le responsable du traitement des données fasse droit à sa demande, l'utilisateur est tenu de lui communiquer : ses prénom et nom ainsi que son adresse e-mail.
-
-                Le responsable du traitement des données est tenu de répondre à l'utilisateur dans un délai de 30 (trente) jours maximum.
-
-                A. Présentation des droits de l'utilisateur en metière de collecte et de traitement de données
-                a. Droit d'accès, de rectification et droit à l'effacement
-                L'utilisateur peut prendre connaissance, mettre à jour, modifier ou demander la suppression des données le concernant, en respectant la procédure ci-après énoncée :
-
-                L'utilisateur doit envoyer un e-mail au responsable du traitement des données personnelles, en précisant l'objet de sa demande et en utilisant l'adresse e-mail de contact qui est fournie plus haut.
-
-                b. Droit à la portabilité des données
-                L'utilisateur a le droit de demander la portabilité de ses données personnelles, détenues par le site, vers un autre site, en se conformant à la procédure ci-après :
-
-                L'utilisateur doit faire une demande de portabilité de ses données personnelles auprès du responsable du traitement des données, en envoyant un e-mail à l'adresse prévue ci-dessus.
-
-                c. Droit à la limitation et à l'opposition du traitement des données
-                L'utilisateur a le droit de demander la limitation ou de s'opposer au traitement de ses données par le site, sans que le site ne puisse refuser, sauf à démontrer l'existence de motifs légitimes et impérieux, pouvant prévaloir sur les intérêts et les droits et libertés de l'utilisateur.
-
-                Afin de demander la limitation du traitement de ses données ou de formuler une opposition au traitement de ses données, l'utilisateur doit suivre la procédure suivante :
-
-                L'utilisateur doit faire une demande de limitation au traitement de ses données personnelles auprès du responsable du traitement des données, en envoyant un e-mail à l'adresse prévue ci-dessus.
-
-                d. Droit de ne pas faire l'objet d'une décision fondée exclusivement sur un procédé automatisé
-                Conformément aux dispositions du règlement 2016/679, l'utilisateur a le droit de ne pas faire l'objet d'une décision fondée exclusivement sur un procédé automatisé si la décision produit des effets juridiques le concernant, ou l'affecte de manière significative de façon similaire.
-
-                e. Droit de déterminer le sort des données après la mort
-                Il est rappelé à l'utilisateur qu'il peut organiser quel doit être le devenir de ses données collectées et traitées s'il décède, conformément à la loi n°2016-1321 du 7 octobre 2016.
-
-                f. Droit de saisir l'autorité de contrôle compétente
-                Dans le cas où le responsable du traitement des données décide de ne pas répondre à la demande de l'utilisateur, et que l'utilisateur souhaite contester cette décision, ou, s'il pense qu'il est porté atteinte à l'un des droits énumérés ci-dessus, il est en droit de saisir la CNIL (Commission Nationale de l'Informatique et des Libertés, https://www.cnil.fr) ou tout juge compétent.
-
-                B. Données personnelles des personnes mineures
-                Conformément aux dispositions de l'article 8 du règlement européen 2016/679 et à la loi Informatique et Libertés, seuls les mineurs âgés de 15 ans ou plus peuvent consentir au traitement de leurs données personnelles.
-
-                Si l'utilisateur est un mineur de moins de 15 ans, l'accord d'un représentant légal sera requis afin que des données à caractère personnel puissent être collectées et traitées.
-
-                L'éditeur du site se réserve le droit de vérifier par tout moyen que l'utilisateur est âgé de plus de 15 ans, ou qu'il aura obtenu l'accord d'un représentant légal avant de naviguer sur le site.
-
-                Article 6 : utilisation des fichiers "Cookies"
-                Le site a éventuellement recours aux techniques de "cookies".
-
-                Un "cookie" est un fichier de petite taille (moins de 4 ko), stocké par le site sur le disque dur de l'utilisateur, contenant des informations relatives aux habitudes de navigation de l'utilisateur.
-
-                Ces fichiers lui permettent de traiter des statistiques et des informations sur le trafic, de faciliter la navigation et d'améliorer le service pour le confort de l'utilisateur.
-
-                Pour l'utilisation de fichiers "cookies" impliquant la sauvegarde et l'analyse de données à caractère personnel, le consentement de l'utilisateur est nécessairement demandé.
-
-                Ce consentement de l'utilisateur est considéré comme valide pour une durée de 13 (treize) mois maximum. A l'issue de cette période, le site demandera à nouveau l'autorisation de l'utilisateur pour enregistrer des fichiers "cookies" sur son disque dur.
-
-                a. Opposition de l'utilisateur à l'utilisation de fichiers "cookies" par le site
-                Il est porté à la connaissance de l'utilisateur qu'il peut s'opposer à l'enregistrement de ces fichiers "cookies" en configurant son logiciel de navigation.
-
-                Pour information, l'utilisateur peut trouver aux adresses suivantes les démarches à suivre afin de configurer son logiciel de navigation pour s'opposer à l'enregistrement des fichiers "cookies" :
-
-                Chrome : https://support.google.com/accounts/answer/61416?hl=fr
-
-                Firefox : https://support.mozilla.org/fr/kb/enable-and-disable-cookies-website-preferences
-
-                Safari : http://www.apple.com/legal/privacy/fr-ww/
-
-                Internet Explorer : https://support.microsoft.com/fr-fr/help/17442/windows-internet-explorer-delete-manage-cookies
-
-                Opera : http://www.opera.com/help/tutorials/security/cookies/
-
-                Dans le cas où l'utilisateur décide de désactiver les fichiers "cookies", il pourra poursuivre sa navigation sur le site. Toutefois, tout dysfonctionnement du site provoqué par cette manipulation ne pourrait être considéré comme étant du fait de l'éditeur du site.
-
-                b. Description des fichiers "cookies" utilisés par le site
-                L'éditeur du site attire l'attention de l'utilisateur sur le fait que les cookies suivants sont utilisés lors de sa navigation :
-
-                Cookies autorisés et enregistrés par les navigateurs.
-
-                En naviguant sur le site, il est porté à connaissance de l'utilisateur que des fichiers "cookies" de tiers peuvent être enregistrés.
-
-                Il s'agit plus particulièrement des tiers suivants :
-
-                Tiers listés dans l'article 3.B ci-dessus.
-
-                De plus, le site intègre des boutons de réseaux sociaux, permettant à l'utilisateur de partager son activité sur le site. Des fichiers "cookies" de ces réseaux sociaux sont par conséquent susceptibles d'être stockés sur l'ordinateur de l'utilisateur lorsqu'il utilise ces fonctionnalités.
-
-                L'attention de l'utilisateur est portée sur le fait que ces sites disposent de politiques de confidentialité propres et de conditions générales d'utilisation possiblement différentes du site. L'éditeur du site invite les utilisateurs à consulter les politiques de confidentialité et les conditions générales d'utilisation de ces sites.
-
-                Article 7 : Condition de modification de la politique de confidentialité
-                La présente politique de confidentialité peut être consultée à tout moment à l'adresse ci-après indiquée :
-
-                https://www.Patrick Bartosik.com/politique-confidentialite
-
-                L'éditeur du site se réserve le droit de la modifier afin de garantir sa conformité avec le droit en vigueur.
-
-                Par conséquent, l'utilisateur est invité à venir consulter régulièrement cette politique de confidentialité afin de se tenir informé des derniers changements qui lui seront apportés.
-
-                Il est porté à la connaissance de l'utilisateur que la dernière mise à jour de la présente politique de confidentialité est intervenue le : 01/01/2020.
-
-                Article 8 : Acceptation par l'utilisateur de la politique de confidentialité
-                En naviguant sur le site, l'utilisateur atteste avoir lu et compris la présente politique de confidentialité et en accepte les conditions, en ce qui concerne plus particulièrement la collecte et le traitement de ses données à caractère personnel, ainsi que l'utilisation de fichiers "cookies".
+            <div className="py-10 px-6 sm:px-10 lg:px-16">
+                {formattedText}
             </div>
         </MaxWidthWrapper>
     )
