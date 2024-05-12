@@ -1,6 +1,6 @@
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import React from 'react'
-import { formatLegalText } from '@/app/terms/page'
+import { formatLegalText } from '@/lib/formatLegalText'
 
 
 const rawLegalText = `
