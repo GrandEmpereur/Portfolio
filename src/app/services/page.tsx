@@ -19,8 +19,8 @@ function page() {
           <h4 className='services__title-main keep-color '>This section regroup all my services and explanations</h4>
         </div>
 
-        <div className='w-full'>
-          <Image src={'/img/services/services.png'} alt={'Image'} width={1200} height={537} style={{ width: '100%', height: '100%', objectFit: 'cover' }} loading='eager' />
+        <div className='w-full lg:h-[350px]'>
+          <Image src={'/img/services/services.png'} alt={'Image'} width={1200} height={537} sizes="100vw" style={{ width: '100%', height:'100%',  objectFit: 'cover'  }} loading='eager' />
         </div>
 
         <div className='flex flex-col gap-y-8'>
