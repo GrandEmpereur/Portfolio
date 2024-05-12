@@ -72,7 +72,7 @@ Location of the headquarters of third parties.
 
 Article 4: Data Controller
 A. The data controller
-The data controller for personal data is: Gary Trojanowski. He can be contacted as follows:
+The data controller for personal data is: Patrick Bartosik. He can be contacted as follows:
 
 By email: BartosikPatrickPro@gmail.com
 
