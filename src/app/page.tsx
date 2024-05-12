@@ -125,7 +125,7 @@ export default function Home() {
                                 <h2 className='about__description-title'>Discover the Art of Code with me</h2>
                                 <p className='about__description-text'>Embark on a journey through cutting-edge web development with me, a seasoned Full Stack Developer. With over four years of experience in the dynamic JavaScript landscape, I specialize in building immersive, user-focused experiences. My toolkit, rich with modern frameworks like React.js and Next.js, powers businesses and individuals alike towards digital excellence.</p>
                                 <Link href='/about'>
-                                    <Button className='about__learn-more-button' size={'lg'} >Explore More</Button>
+                                    <Button className='rounded-full ' variant={'other'} size={'lg'} >Explore More</Button>
                                 </Link>
                             </div>
                         </div>
@@ -150,7 +150,7 @@ export default function Home() {
                                         ))}
                                     </div>
                                     <Link href={service.buttonLink} className='services__item-button'>
-                                        <Button size={'lg'}>{service.buttonLabel}</Button>
+                                        <Button className='rounded-full ' variant={'other'} size={'lg'}>{service.buttonLabel}</Button>
                                     </Link>
                                 </div>
                             ))}
@@ -168,7 +168,7 @@ export default function Home() {
                             <div className="portfolio__description flex flex-col gap-y-10">
                                 <p className='portfolio__description-text font-mono'>Explore my diverse project gallery to see innovative solutions tailored to meet unique business needs.</p>
                                 <Link href="/portfolio" className='portfolio__link-button text-center lg:text-left'>
-                                    <Button size={'lg'}>Discover More</Button>
+                                    <Button className='rounded-full ' variant={'other'} size={'lg'}>Discover More</Button>
                                 </Link>
                             </div>
                         </div>

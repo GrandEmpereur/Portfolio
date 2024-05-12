@@ -36,7 +36,7 @@ function page() {
 
                             <div>
                                 <a href={'/CV.pdf'} download="/CV.pdf">
-                                    <Button size={'lg'} >Download My Resume</Button>
+                                    <Button className='rounded-full ' variant={'other'} size={'lg'} >Download My Resume</Button>
                                 </a>
                             </div>
                         </div>
