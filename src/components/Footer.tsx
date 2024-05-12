@@ -15,7 +15,7 @@ function Footer() {
                             Contact us to discuss your needs.
                         </p>
                         <Link href="/contact">
-                            <Button className='footer__button'>Request a Quote</Button>
+                            <Button className='rounded-full ' variant={'other'} size={'lg'}>Request a Quote</Button>
                         </Link>
                     </div>
 

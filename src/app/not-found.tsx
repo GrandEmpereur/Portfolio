@@ -16,6 +16,7 @@ function NotFound() {
                     style={{ objectFit: 'cover', width: '100%', height: '100%'}}
                     className="w-full h-full"
                     priority
+                    loading='eager'
                 />
                 <div className="absolute top-0 left-0 right-0 bottom-0 bg-black opacity-50"></div>
             </div>
@@ -25,12 +26,12 @@ function NotFound() {
                 <p className="text-xl mb-6">The current page you are searching is not found</p>
                 <div className="flex gap-4 justify-center">
                     <Link href="/">
-                        <Button size={'lg'} className="bg-yellow-500 text-black py-2 px-4 rounded hover:bg-yellow-600 transition-colors">
+                        <Button className='rounded-full ' variant={'other'} size={'lg'}>
                             Go back to Home
                         </Button>
                     </Link>
                     <Link href="/portfolio">
-                        <Button size={'lg'} className="bg-yellow-500 text-black py-2 px-4 rounded hover:bg-yellow-600 transition-colors">
+                        <Button className='rounded-full ' variant={'other'} size={'lg'}>
                             See My Projects
                         </Button>
                     </Link>

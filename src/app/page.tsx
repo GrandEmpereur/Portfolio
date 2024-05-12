@@ -75,7 +75,7 @@ export default function Home() {
                                 </span>
 
                                 <div className='hero__image-container'>
-                                    <Image src={'/img/Hero-img.png'} alt={'My face'} width={500} height={630} />
+                                    <Image src={'/img/Hero-img.png'} alt={'My face'} width={500} height={630} loading='eager' />
                                 </div>
 
                                 <div className='hero__stats px-8 pt-20 flex flex-col gap-y-5'>
@@ -95,7 +95,7 @@ export default function Home() {
                         <div className='hero__stacks-list flex flex-wrap justify-center lg:justify-start gap-10 pt-9 pb-14 '>
                             {stacks.map((stack, index) => (
                                 <div key={index} className='hero__stack flex flex-col items-center justify-center gap-y-3'>
-                                    <Image src={stack.src} alt={stack.alt} width={60} height={60} />
+                                    <Image src={stack.src} alt={stack.alt} width={60} height={60} loading='lazy' />
                                     <span>{stack.name}</span>
                                 </div>
                             ))}
@@ -116,7 +116,7 @@ export default function Home() {
 
                         <div className='w-full h-full about__content flex flex-col lg:flex-row justify-between items-start gap-y-20 md:gap-x-32'>
                             <div className="about__image-container relative w-full">
-                                <Image src={'/img/home-about.jpg'} alt={'image at working desk'} width={1200} height={530} className='about__main-image inline-block rounded-lg w-full lg:w-[1200px]' />
+                                <Image src={'/img/home-about.jpg'} alt={'image at working desk'} width={1200} height={530} className='about__main-image inline-block rounded-lg w-full lg:w-[1200px]' loading='eager' />
                                 <Image src={'/shape/img2.png'} alt={'a geometrical shape'} width={180} height={75} className='about__shape1 absolute' />
                                 <Image src={'/shape/img6.png'} alt={'a geometrical shape'} width={140} height={65} className='about__shape2 absolute' />
                             </div>
@@ -125,7 +125,7 @@ export default function Home() {
                                 <h2 className='about__description-title'>Discover the Art of Code with me</h2>
                                 <p className='about__description-text'>Embark on a journey through cutting-edge web development with me, a seasoned Full Stack Developer. With over four years of experience in the dynamic JavaScript landscape, I specialize in building immersive, user-focused experiences. My toolkit, rich with modern frameworks like React.js and Next.js, powers businesses and individuals alike towards digital excellence.</p>
                                 <Link href='/about'>
-                                    <Button className='about__learn-more-button' size={'lg'} >Explore More</Button>
+                                    <Button className='rounded-full ' variant={'other'} size={'lg'} >Explore More</Button>
                                 </Link>
                             </div>
                         </div>
@@ -150,7 +150,7 @@ export default function Home() {
                                         ))}
                                     </div>
                                     <Link href={service.buttonLink} className='services__item-button'>
-                                        <Button size={'lg'}>{service.buttonLabel}</Button>
+                                        <Button className='rounded-full ' variant={'other'} size={'lg'}>{service.buttonLabel}</Button>
                                     </Link>
                                 </div>
                             ))}
@@ -168,7 +168,7 @@ export default function Home() {
                             <div className="portfolio__description flex flex-col gap-y-10">
                                 <p className='portfolio__description-text font-mono'>Explore my diverse project gallery to see innovative solutions tailored to meet unique business needs.</p>
                                 <Link href="/portfolio" className='portfolio__link-button text-center lg:text-left'>
-                                    <Button size={'lg'}>Discover More</Button>
+                                    <Button className='rounded-full ' variant={'other'} size={'lg'}>Discover More</Button>
                                 </Link>
                             </div>
                         </div>

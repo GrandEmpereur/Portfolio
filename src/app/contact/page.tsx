@@ -3,14 +3,6 @@
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import React from 'react'
 import Image from 'next/image';
-import { Label } from "@/components/ui/label"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Button } from "@/components/ui/button"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
-import { Form, FormField, FormMessage, FormDescription, FormItem, FormControl, FormLabel } from "@/components/ui/form"
 
 function page() {
   return (
@@ -22,7 +14,7 @@ function page() {
         </div>
 
         <div className='w-full'>
-          <Image src={'/img/contact/banner.jpg'} alt={''} width={1108} height={537} style={{ width: '100%', objectFit: 'cover' }} />
+          <Image src={'/img/contact/banner.jpg'} alt={''} width={1108} height={537} style={{ width: '100%', objectFit: 'cover' }} loading='eager' />
         </div>
 
         <section className="my-12 px-4 md:px-6 lg:my-24">
