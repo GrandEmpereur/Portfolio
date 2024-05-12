@@ -23,12 +23,12 @@ export default function Page({ params }: { params: { slug: string } }) {
                 </div>
                 <div className=" flex flex-col gap-y-10">
                     <div className="slider flex">
-                        <div className='w-full'>
-                            <Image src={project?.placeholder ? project.placeholder : '' } alt={project?.title ? project?.title : ''} width={1108} height={537} style={{ width: '100%', objectFit: 'cover' }} />
+                        <div className='w-full lg:h-[350px]'>
+                            <Image src={project?.placeholder ? project.placeholder : '' } alt={project?.title ? project?.title : ''} width={1108} height={537} sizes="100vw" style={{ width: '100%', height:'100%',  objectFit: 'cover'  }} />
                         </div>
                     </div>
 
-                    <div className="wraper w-full flex flex-wrap justify-between gap-8">
+                    <div className="w-full flex flex-wrap justify-between gap-8">
                         <div>
                             <h4> {project?.title} </h4>
                             <p className="w-full pt-5 lg:w-[506px]"> {project?.description} </p>

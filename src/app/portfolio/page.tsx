@@ -10,9 +10,9 @@ function GalleryPage() {
     <MaxWidthWrapper className='mt-8'>
       <section className='portfolio__section flex flex-col w-full gap-y-12'>
         <header className="portfolio__header space-y-4 text-center">
-          <h1 className="portfolio__title text-3xl md:text-4xl font-bold">Explore My Photography Portfolio</h1>
+          <h1 className="portfolio__title text-3xl md:text-4xl font-bold">Explore All My Project </h1>
           <p className="portfolio__description text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">
-            Discover a showcase of diverse photographic styles and subjects that highlight my best work.
+            Discover in this gallery all the projects I have worked on. From e-commerce to school projects and side projects, you will find a wide range of web applications that I have developed or contributed to.
           </p>
         </header>
 
