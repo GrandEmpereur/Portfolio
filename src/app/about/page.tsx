@@ -5,6 +5,12 @@ import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { EducationItems, ExperienceItems, MainStack, OtherStack, Languages, SoftSkills } from '@/lib/data/about';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: "Bartosik Patrick - About Me ",
+    description: "Discover the cutting-edge portfolio of Bartosik Patrick, a seasoned Full Stack Developer specializing in React, Next.js, and Tailwind CSS. Dive into a showcase of innovative web applications that blend aesthetics with functionality, crafted to push the boundaries of digital experiences.",
+};
 
 function page() {
     return (
@@ -15,7 +21,7 @@ function page() {
                 <MaxWidthWrapper >
                     <section id='About-hero' className='About-hero flex flex-col w-full gap-y-12'>
                         <div className="about__title">
-                            <h3 className='about__title-sub font-mono'>About me</h3>
+                            <h1 className='about__title-sub font-semibold text-2xl '>About me</h1>
                             <h4 className='about__title-main keep-color '>All You Want to Know About Me</h4>
                         </div>
 
@@ -103,7 +109,7 @@ function page() {
                         </div>
 
                         <div className='skills__sections w-full flex flex-col gap-y-14'>
-                            <article className="skills__section w-full flex flex-col gap-y-8">
+                            <div className="skills__section w-full flex flex-col gap-y-8">
                                 <div className='flex flex-col gap-y-2'>
                                     <h3 className='skills__heading variant'>My Core Programming Technologies</h3>
                                     <h4 className='keep-color'>Discover the key technologies I specialize in for building modern and scalable applications.</h4>
@@ -116,9 +122,9 @@ function page() {
                                         </div>
                                     ))}
                                 </div>
-                            </article>
+                            </div>
 
-                            <article className="skills__section w-full flex flex-col gap-y-8">
+                            <div className="skills__section w-full flex flex-col gap-y-8">
                                 <div className='flex flex-col gap-y-2'>
                                     <h3 className='skills__heading'>I Can Work with Other Programming Technologies</h3>
                                     <h4 className='keep-color'>Discover other programming langue i have learn during side projet or during school cours</h4>
@@ -131,9 +137,9 @@ function page() {
                                         </div>
                                     ))}
                                 </div>
-                            </article>
+                            </div>
 
-                            <article className="skills__section w-full flex flex-col gap-y-8">
+                            <div className="skills__section w-full flex flex-col gap-y-8">
                                 <h3 className='skills__heading'>Language Proficiencies</h3>
                                 <h4 className='keep-color'>My linguistic capabilities span multiple languages, allowing for effective communication in diverse environments.</h4>
                                 <div className='skills__icons flex flex-col w-full gap-y-6 items-center justify-between | md:flex-row md:gap-y-0 '>
@@ -144,9 +150,9 @@ function page() {
                                         </div>
                                     ))}
                                 </div>
-                            </article>
+                            </div>
 
-                            <article className="skills__section w-full flex flex-col gap-y-8">
+                            <div className="skills__section w-full flex flex-col gap-y-8">
                                 <div className='flex flex-col gap-y-2'>
                                     <h3 className='skills__heading'>Soft Skills</h3>
                                     <h4 className='keep-color'>Discover all SoftSkills noting i have seen during school class & self experience</h4>
@@ -158,7 +164,7 @@ function page() {
                                         </div>
                                     ))}
                                 </div>
-                            </article>
+                            </div>
                         </div>
                     </section>
                 </MaxWidthWrapper>

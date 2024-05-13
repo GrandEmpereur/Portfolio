@@ -187,16 +187,16 @@ export default function Home() {
                                                 <h2 className='portfolio__item-title'>{item.title}</h2>
                                             </div>
                                             <div className={`hidden lg:flex portfolio__item-image absolute  justify-center items-center transition-all duration-300 ease-in-out transform ${hoverIndex === index ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
-                                            <Image
-                                                src={item.placeholder}
-                                                alt={`${item.title} - preview`}
-                                                width={450}
-                                                height={300}
-                                                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 450px"
-                                                style={{
-                                                    objectFit: 'cover'
-                                                }}
-                                            />
+                                                <Image
+                                                    src={item.placeholder}
+                                                    alt={`${item.title} - preview`}
+                                                    width={450}
+                                                    height={300}
+                                                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 450px"
+                                                    style={{
+                                                        objectFit: 'cover'
+                                                    }}
+                                                />
                                             </div>
                                             <div className={`portfolio__item-icon transition-all duration-300 ease-in-out transform ${hoverIndex === index ? '-rotate-45 text-[#E3B27D]' : 'text-white'}`}>
                                                 <ArrowRight className='cursor-pointer' size={30} />

@@ -8,14 +8,19 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
+import { Metadata } from 'next';
 
+export const metadata: Metadata = {
+  title: "Bartosik Patrick - Services ",
+  description: "Discover the cutting-edge portfolio of Bartosik Patrick, a seasoned Full Stack Developer specializing in React, Next.js, and Tailwind CSS. Dive into a showcase of innovative web applications that blend aesthetics with functionality, crafted to push the boundaries of digital experiences.",
+};
 
 function page() {
   return (
     <MaxWidthWrapper className='mt-8'>
       <section id='Services' className='services flex flex-col w-full gap-y-12'>
         <div className="services__title">
-          <h3 className='services__title-sub font-mono'>Services</h3>
+          <h1 className='services__title-sub font-semibold text-2xl'>Services</h1>
           <h4 className='services__title-main keep-color '>This section regroup all my services and explanations</h4>
         </div>
 
