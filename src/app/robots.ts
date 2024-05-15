@@ -13,6 +13,6 @@ export default function robots(): MetadataRoute.Robots {
                 disallow: ['/'],
             },
         ],
-        sitemap: 'https://portfolio.empereur.me/sitemap.xml',
+        sitemap: 'https://patrick.bartosik.fr/sitemap.xml',
     }
 }

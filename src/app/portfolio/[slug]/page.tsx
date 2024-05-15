@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { Metadata } from 'next';
+import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
     title: `Bartosik Patrick - Portfolio`,
@@ -28,7 +29,7 @@ export default function Page({ params }: { params: { slug: string } }) {
                 <div className=" flex flex-col gap-y-10">
                     <div className="slider flex">
                         <div className='w-full lg:h-[350px]'>
-                            <Image src={project?.placeholder ? project.placeholder : '' } alt={project?.title ? project?.title : ''} width={1108} height={537} sizes="100vw" style={{ width: '100%', height:'100%',  objectFit: 'cover'  }} />
+                            <Image src={project?.placeholder ? project.placeholder : ''} alt={project?.title ? project?.title : ''} width={1108} height={537} sizes="100vw" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                         </div>
                     </div>
 
@@ -36,6 +37,11 @@ export default function Page({ params }: { params: { slug: string } }) {
                         <div>
                             <h4> {project?.title} </h4>
                             <p className="w-full pt-5 lg:w-[506px]"> {project?.description} </p>
+                            {project?.redirectToProd && (
+                                <a href={project.redirectToProd} target="_blank">
+                                    <Button variant={'other'} size={'lg'} className='mt-5 rounded-full'>Visit the website</Button>
+                                </a>
+                            )}
                         </div>
 
                         <div className="flex flex-wrap flex-col gap-8">
