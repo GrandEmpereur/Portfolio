@@ -33,7 +33,7 @@ function NavBar() {
     }, [lastScrollY]);
 
     return (
-        <nav className={`sticky py-10 inset-x-0 top-0 z-30 w-full ${navHidden ? 'translate-y-[-100%] transition-transform duration-300' : 'translate-y-0 transition-transform duration-300'}`}>
+        <nav className={`sticky py-10 inset-x-0 top-0 z-30 w-full backdrop-blur ${navHidden ? 'translate-y-[-100%] transition-transform duration-300' : 'translate-y-0 transition-transform duration-300'}`}>
             <MaxWidthWrapper>
                 <div className='flex h-max items-center justify-between'>
                     <Link href='/' className='flex z-40 font-semibold'>
