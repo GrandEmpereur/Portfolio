@@ -1,21 +1,23 @@
-'use client'
-
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
+import TypeFromWidget from '@/components/TypeFromWidget'
+import { Metadata } from 'next';
 import React from 'react'
-import { Widget } from '@typeform/embed-react'
+
+export const metadata: Metadata = {
+  title: "Bartosik Patrick - Contact Me ",
+  description: "Discover the cutting-edge portfolio of Bartosik Patrick, a seasoned Full Stack Developer specializing in React, Next.js, and Tailwind CSS. Dive into a showcase of innovative web applications that blend aesthetics with functionality, crafted to push the boundaries of digital experiences.",
+};
 
 function page() {
   return (
     <MaxWidthWrapper className='mt-8'>
       <section id='Contact' className='contact flex flex-col w-full gap-y-12'>
         <div className="contact__title">
-          <h3 className='contact__title-sub font-mono'>Contact Me</h3>
+          <h1 className='contact__title-sub font-semibold text-2xl'>Contact Me</h1>
           <h4 className='contact__title-main keep-color'>Let's Discuss About Your Project</h4>
         </div>
 
-        <section className="my-5">
-          <Widget id="ULVw4QxO" style={{ width: '100%', height: '800px' }} className="h-[400px] md:w-[800px]" />
-        </section>
+        <TypeFromWidget />
       </section>
     </MaxWidthWrapper>  
   )

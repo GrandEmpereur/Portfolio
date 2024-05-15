@@ -1,6 +1,12 @@
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import React from 'react'
 import { formatLegalText } from '@/lib/formatLegalText'
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: "Bartosik Patrick - Legal Notices ",
+    description: "Discover the cutting-edge portfolio of Bartosik Patrick, a seasoned Full Stack Developer specializing in React, Next.js, and Tailwind CSS. Dive into a showcase of innovative web applications that blend aesthetics with functionality, crafted to push the boundaries of digital experiences.",
+};
 
 const rawLegalText = `
 Legal Notices

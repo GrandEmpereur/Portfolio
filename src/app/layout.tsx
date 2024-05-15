@@ -7,7 +7,6 @@ import Footer from "@/components/Footer";
 import { cn } from '@/lib/utils';
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
-import Line from "@/components/Line";
 
 const inter = Poppins({
   weight: ['400', '700'],

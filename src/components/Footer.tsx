@@ -33,7 +33,7 @@ function Footer() {
                         <div className='footer__quick-links flex flex-col gap-5'>
                             <h3 className='footer__heading'>Quick Links</h3>
                             <div className='flex flex-col gap-2'>
-                                <li><a href="/home" className='footer__link'>Home</a></li>
+                                <li><a href="/" className='footer__link'>Home</a></li>
                                 <li><a href="/about" className='footer__link'>About</a></li>
                                 <li><a href="/services" className='footer__link'>Services</a></li>
                                 <li><a href="/contact" className='footer__link'>Contact</a></li>
