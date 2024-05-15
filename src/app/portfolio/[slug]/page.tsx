@@ -28,9 +28,18 @@ export default function Page({ params }: { params: { slug: string } }) {
                 </div>
                 <div className=" flex flex-col gap-y-10">
                     <div className="slider flex">
-                        <div className='w-full lg:h-[350px]'>
-                            <Image src={project?.placeholder ? project.placeholder : ''} alt={project?.title ? project?.title : ''} width={1108} height={537} sizes="100vw" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                        <div className='w-full lg:h-[350px] overflow-hidden'>
+                            <Image
+                                src={project?.placeholder ? project.placeholder : '/default-placeholder.png'}
+                                alt={project?.title ? `Project image of ${project.title}` : 'Default image'}
+                                width={1108}
+                                height={537}
+                                layout="responsive"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 100vw"
+                                priority
+                            />
                         </div>
+
                     </div>
 
                     <div className="w-full flex flex-wrap justify-between gap-8">
@@ -48,9 +57,9 @@ export default function Page({ params }: { params: { slug: string } }) {
                             <div className="flex flex-col gap-y-5">
                                 <h4>Techno Used on this project</h4>
                                 <div className="flex flex-wrap gap-5">
-                                    {project?.tags.map(tag => (
-                                        <div>
-                                            <Badge key={tag} variant={'secondary'} className='tag p-2'>{tag}</Badge>
+                                    {project?.tags.map((tag, index) => (
+                                        <div key={index}>
+                                            <Badge variant={'secondary'} className='tag p-2' >{tag}</Badge>
                                         </div>
                                     ))}
                                 </div>
@@ -59,9 +68,9 @@ export default function Page({ params }: { params: { slug: string } }) {
                             <div className="flex flex-col gap-y-5">
                                 <h4>Other Tags</h4>
                                 <div className="flex flex-wrap gap-5">
-                                    {project?.otherTags.map(tag => (
-                                        <div>
-                                            <Badge key={tag} variant={'secondary'} className='tag p-2' >{tag}</Badge>
+                                    {project?.otherTags.map((tag, index) => (
+                                        <div key={index}>
+                                            <Badge variant={'secondary'} className='tag p-2' >{tag}</Badge>
                                         </div>
                                     ))}
                                 </div>

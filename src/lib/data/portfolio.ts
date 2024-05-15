@@ -4,7 +4,7 @@ export const projects = [
         title: 'M. Moustache',
         slug: '/m-moustache',
         description: " During my internship and apprenticeship at W3lead, I was responsible for front-end development on the Shopify platform for M. Moustache. My tasks included website integration, development of a gift card API, and implementation of a Point of Sale (POS) system. These roles allowed me to enhance my skills in both front-end integration and backend API development, focusing on creating efficient, secure online shopping experiences.",
-        placeholder: '/img/portfolio/m-moustache.png',
+        placeholder: '/img/portfolio/m-moustache.webp',
         Slider: [],
         tags: ['Shopify', 'Frontend', 'Backend', 'API Development', 'RESTful APIs', 'GraphQL', 'TypeScript'],
         otherTags: [],

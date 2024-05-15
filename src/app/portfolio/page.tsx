@@ -27,17 +27,16 @@ function GalleryPage() {
             <div key={index} className="portfolio__item rounded overflow-hidden shadow-lg relative">
               <Link href={project.url} className="group">
                 <Image
-                  className='portfolio__image w-full h-full object-cover rounded-lg lg:overflow-hidden lg:group-hover:scale-105 lg:transition-transform lg:duration-1000'
+                  className='portfolio__image w-full h-full object-contain rounded-lg lg:overflow-hidden lg:group-hover:scale-105 lg:transition-transform lg:duration-1000'
                   src={project.placeholder}
                   alt={`Project image of ${project.title}`}
+                  layout='responsive'
                   width={900}
                   height={800}
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 900px"
-                  style={{
-                    aspectRatio: '9 / 8'
-                  }}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 100vw"
                   loading='lazy'
                 />
+
                 <div className="portfolio__tags absolute bottom-2 left-2 hidden md:flex flex-wrap gap-2 w-[300px]">
                   {project.tags.map((tag, idx) => (
                     <Badge key={idx} className="badge__item p-2" variant={"secondary"}>{tag}</Badge>
