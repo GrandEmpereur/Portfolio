@@ -2,6 +2,7 @@ import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import React from 'react'
 import { formatLegalText } from '@/lib/formatLegalText'
 import { Metadata } from 'next';
+import { Locale } from '@/i18nConfig';
 
 export const metadata: Metadata = {
     title: "Bartosik Patrick - General Terms of Use ",
@@ -51,7 +52,11 @@ Conclusion
 These GTU ensure the proper and fair functioning of the Site. By accessing the Site, you signify your agreement to these GTU. If you have any questions about these terms, please contact us at BartosikPatrickPro@gmail.com.
 `;
 
-function page() {
+function page({
+    params: { lang },
+}: {
+    params: { lang: Locale };
+}) {
     const formattedText = formatLegalText(rawLegalText);
     return (
         <MaxWidthWrapper>

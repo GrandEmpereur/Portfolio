@@ -2,8 +2,15 @@ import React from 'react'
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import { Locale } from '@/i18nConfig';
 
-function NotFound() {
+type NotFoundProps = {
+    params?: { lang?: Locale };
+};
+
+const NotFound: React.FC<NotFoundProps> = ({ params }) => {
+    const lang = params?.lang || 'en'; // Utiliser 'en' comme langue par défaut si params ou lang est undefined
+
     return (
         <div className="relative min-h-screen flex items-center justify-center bg-black text-white">
             <div className="absolute top-0 left-0 right-0 bottom-0 z-0">
@@ -13,7 +20,7 @@ function NotFound() {
                     width={0}
                     height={0}
                     sizes='100vw 100vh'
-                    style={{ objectFit: 'cover', width: '100%', height: '100%'}}
+                    style={{ objectFit: 'cover', width: '100%', height: '100%' }}
                     className="w-full h-full"
                     priority
                     loading='eager'
@@ -25,12 +32,12 @@ function NotFound() {
                 <h1 className="text-6xl font-bold mb-4">404</h1>
                 <p className="text-xl mb-6">The current page you are searching is not found</p>
                 <div className="flex gap-4 justify-center">
-                    <Link href="/">
+                    <Link href={`/${lang}`}>
                         <Button className='rounded-full ' variant={'other'} size={'lg'}>
                             Go back to Home
                         </Button>
                     </Link>
-                    <Link href="/portfolio">
+                    <Link href={`/${lang}/portfolio`}>
                         <Button className='rounded-full ' variant={'other'} size={'lg'}>
                             See My Projects
                         </Button>

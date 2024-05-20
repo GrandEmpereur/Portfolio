@@ -2,6 +2,7 @@ import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import React from 'react'
 import { formatLegalText } from '@/lib/formatLegalText'
 import { Metadata } from 'next';
+import { Locale } from '@/i18nConfig';
 
 export const metadata: Metadata = {
     title: "Bartosik Patrick - Privacy Policy ",
@@ -197,7 +198,11 @@ Article 8: Acceptance by the user of the privacy policy
 By browsing on the site, the user attests having read and understood this privacy policy and accepts its conditions, particularly concerning the collection and processing of his personal data, as well as the use of "cookie" files.
 `;
 
-function page() {
+function page({
+    params: { lang },
+}: {
+    params: { lang: Locale };
+}) {
     const formattedText = formatLegalText(rawLegalText);
     return (
         <MaxWidthWrapper>

@@ -1,9 +1,14 @@
-import React from 'react'
-import MaxWidthWrapper from './MaxWidthWrapper'
-import { Button } from '@/components/ui/button'
-import Link from 'next/link'
+import React from 'react';
+import MaxWidthWrapper from './MaxWidthWrapper';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+import { Locale } from '@/i18nConfig';
 
-function Footer() {
+type FooterProps = {
+    params: { lang: Locale };
+};
+
+const Footer: React.FC<FooterProps> = ({ params }) => {
     return (
         <MaxWidthWrapper className='footer-wrapper my-12'>
             <footer id='footer' className='footer flex flex-col justify-between'>
@@ -14,7 +19,7 @@ function Footer() {
                             Explore how our comprehensive SEO, redesign, and website optimization services can elevate your project.
                             Contact us to discuss your needs.
                         </p>
-                        <Link href="/contact">
+                        <Link href={`/${params.lang}/contact`}>
                             <Button className='rounded-full ' variant={'other'} size={'lg'}>Request a Quote</Button>
                         </Link>
                     </div>
@@ -33,11 +38,11 @@ function Footer() {
                         <div className='footer__quick-links flex flex-col gap-5'>
                             <h3 className='footer__heading'>Quick Links</h3>
                             <div className='flex flex-col gap-2'>
-                                <li><a href="/" className='footer__link'>Home</a></li>
-                                <li><a href="/about" className='footer__link'>About</a></li>
-                                <li><a href="/services" className='footer__link'>Services</a></li>
-                                <li><a href="/contact" className='footer__link'>Contact</a></li>
-                                <li><a href="/sitemap.xml" className='footer__link'>Sitemap</a></li>
+                                <li><Link href={`/${params.lang}`} className='footer__link'>Home</Link></li>
+                                <li><Link href={`/${params.lang}/about`} className='footer__link'>About</Link></li>
+                                <li><Link href={`/${params.lang}/services`} className='footer__link'>Services</Link></li>
+                                <li><Link href={`/${params.lang}/contact`} className='footer__link'>Contact</Link></li>
+                                <li><Link href={`/sitemap.xml`} className='footer__link'>Sitemap</Link></li>
                             </div>
                         </div>
                     </div>
@@ -46,17 +51,17 @@ function Footer() {
                 <div className='footer__bottom flex flex-col items-center justify-center mt-5 lg:mt-0 lg:justify-between w-full '>
                     <div className='deco'></div>
                     <div className='footer__legal-links flex gap-x-5'>
-                        <Link href="/terms">
+                        <Link href={`/${params.lang}/terms`}>
                             <Button variant={'link'} className='footer__legal-button'>
                                 Terms of Use
                             </Button>
                         </Link>
-                        <Link href="/privacy">
+                        <Link href={`/${params.lang}/privacy`}>
                             <Button variant={'link'} className='footer__legal-button'>
                                 Privacy Policy
                             </Button>
                         </Link>
-                        <Link href="/gtu">
+                        <Link href={`/${params.lang}/gtu`}>
                             <Button variant={'link'} className='footer__legal-button'>
                                 GTU
                             </Button>
@@ -65,7 +70,7 @@ function Footer() {
                 </div>
             </footer>
         </MaxWidthWrapper>
-    )
-}
+    );
+};
 
 export default Footer;

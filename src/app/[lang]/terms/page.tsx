@@ -2,6 +2,7 @@ import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import React from 'react'
 import { formatLegalText } from '@/lib/formatLegalText'
 import { Metadata } from 'next';
+import { Locale } from '@/i18nConfig';
 
 export const metadata: Metadata = {
     title: "Bartosik Patrick - Legal Notices ",
@@ -53,7 +54,11 @@ Article 4 - Contact
 For any reporting of illegal content or activities, the User may contact the publisher at the following address: BartosikPatrickPro@gmail.com, or by registered mail with acknowledgment of receipt sent to the publisher at the coordinates specified in these legal notices.
 `;
 
-export default function page() {
+export default function page({
+    params: { lang },
+}: {
+    params: { lang: Locale };
+}) {
     const formattedText = formatLegalText(rawLegalText);
     return (
         <MaxWidthWrapper>

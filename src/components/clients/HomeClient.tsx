@@ -1,18 +1,23 @@
 'use client';
 
+import React, { useState } from 'react';
 import Line from '@/components/Line';
 import Image from 'next/image';
 import { ArrowRight, ChevronsLeft, ChevronsRight } from 'lucide-react';
-
 import { states, stacks } from '@/lib/data/home';
 import { projects } from '@/lib/data/portfolio';
 import { services } from '@/lib/data/services';
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
 import MaxWidthWrapper from '@/components/MaxWidthWrapper';
+import { Locale } from "@/i18nConfig";
 
-export default function Home() {
+type HomeClientProps = {
+    lang: Locale;
+    dictionary: any;
+};
+
+const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
     const [hoverIndex, setHoverIndex] = useState(-1);
     const lastFiveProjects = projects.slice(-5).reverse();
 
@@ -41,29 +46,28 @@ export default function Home() {
     };
 
     return (
-        <main id='template-home' className='home' >
+        <main id='template-home' className='home'>
             <section id='hero' className='hero relative flex flex-col w-full'>
                 <MaxWidthWrapper>
-
                     <span className='hero__shape--top-left relative block w-max' style={{ left: "-20px" }}>
                         <Image src={'/shape/img7.png'} alt={'shape'} width={55} height={55} />
                     </span>
-                    <span className='hero__shape--bottom-right absolute' style={{ left: "300px", bottom: "225px" }}>
+                    <span className='hero__shape--bottom-right absolute' style={{ left: "350px", bottom: "300px" }}>
                         <Image src={'/shape/img1.png'} alt={'shape'} width={62.31} height={60} />
                     </span>
 
                     <div className='hero__information w-full flex flex-col items-center relative lg:flex-row lg:justify-between '>
                         <div className='hero__description'>
                             <h1 style={{ fontSize: '100px', lineHeight: '135%', width: '470px' }}>
-                                Expert Full Stack Developer
+                                {dictionary.home.hero.hero_title}
                             </h1>
                             <p className='hero__description-text py-5' style={{ width: '470px' }}>
-                                Specializing in React and Next.js, I build advanced, scalable web applications tailored to meet business needs. Leverage my expertise in state-of-the-art technology to bring your projects to life.
+                                {dictionary.home.hero.hero_description}
                             </p>
                             <div className='hero__scroll'>
-                                <div className='hero__scroll-container flex items-center gap-x-1' >
+                                <div className='hero__scroll-container flex items-center gap-x-1'>
                                     <ChevronsLeft color={'white'} size={14} />
-                                    <p style={{ fontSize: "14px", lineHeight: "140%", letterSpacing: "25%" }}>SCROLL</p>
+                                    <p style={{ fontSize: "14px", lineHeight: "140%", letterSpacing: "25%" }}>{dictionary.home.hero.hero_scroll}</p>
                                 </div>
                             </div>
                         </div>
@@ -73,11 +77,9 @@ export default function Home() {
                                 <span className='hero__play-button absolute' style={{ left: "-70px", top: "170px" }}>
                                     <Image src={'/shape/img8.png'} alt={'shape'} width={138} height={138} />
                                 </span>
-
                                 <div className='hero__image-container'>
                                     <Image src={'/img/Hero-img.png'} alt={'My face'} width={500} height={630} loading='eager' />
                                 </div>
-
                                 <div className='hero__stats px-8 pt-20 flex flex-col gap-y-5'>
                                     {states.map((state, index) => (
                                         <div key={index} className='hero__stat'>
@@ -91,7 +93,7 @@ export default function Home() {
                     </div>
 
                     <div className='hero__stacks flex flex-col gap-y-5 mt-32'>
-                        <h3 className='keep-size text-center lg:text-left'>My Technical Stack</h3>
+                        <h3 className='keep-size text-center lg:text-left'>{dictionary.home.tech_stack.title}</h3>
                         <div className='hero__stacks-list flex flex-wrap justify-center lg:justify-start gap-10 pt-9 pb-14 '>
                             {stacks.map((stack, index) => (
                                 <div key={index} className='hero__stack flex flex-col items-center justify-center gap-y-3'>
@@ -106,14 +108,12 @@ export default function Home() {
 
             <section className='home-bg relative'>
                 <Line />
-
-                <section id='about' className='about flex w-full h-full flex-col gap-y-8s'>
+                <section id='about' className='about flex w-full h-full flex-col gap-y-8'>
                     <MaxWidthWrapper>
                         <div className="about__title pb-5">
-                            <h4 className='about__title-sub font-mono keep-color keep-size'>About me</h4>
-                            <h2 className='about__title-main w-max keep-size text-2xl md:text-4xl '>I Create Digital World Class Business Web Store / Site</h2>
+                            <h4 className='about__title-sub font-mono keep-color keep-size'>{dictionary.home.about.subtitle}</h4>
+                            <h2 className='about__title-main w-max keep-size text-2xl md:text-4xl '>{dictionary.home.about.title}</h2>
                         </div>
-
                         <div className='w-full h-full about__content flex flex-col lg:flex-row justify-between items-start gap-y-20 md:gap-x-32'>
                             <div className="about__image-container relative w-full">
                                 <Image src={'/img/home-about.jpg'} alt={'image at working desk'} width={1200} height={530} className='about__main-image inline-block rounded-lg w-full lg:w-[1200px]' loading='eager' />
@@ -122,10 +122,10 @@ export default function Home() {
                             </div>
 
                             <div className='about__description w-full md:w-full flex flex-col gap-y-8'>
-                                <h2 className='about__description-title'>Discover the Art of Code with me</h2>
-                                <p className='about__description-text'>Embark on a journey through cutting-edge web development with me, a seasoned Full Stack Developer. With over four years of experience in the dynamic JavaScript landscape, I specialize in building immersive, user-focused experiences. My toolkit, rich with modern frameworks like React.js and Next.js, powers businesses and individuals alike towards digital excellence.</p>
-                                <Link href='/about'>
-                                    <Button className='rounded-full ' variant={'other'} size={'lg'} >Explore More</Button>
+                                <h2 className='about__description-title'>{dictionary.home.about.description_title}</h2>
+                                <p className='about__description-text'>{dictionary.home.about.description}</p>
+                                <Link href={`/${lang}/about`}>
+                                    <Button className='rounded-full ' variant={'other'} size={'lg'} >{dictionary.home.about.button}</Button>
                                 </Link>
                             </div>
                         </div>
@@ -135,8 +135,8 @@ export default function Home() {
                 <MaxWidthWrapper className='services-bg mt-20 lg:mt-40'>
                     <section id='services' className='services flex flex-col items-start justify-between w-full h-full'>
                         <div className="services__header title">
-                            <h4 className='services__header-subtitle font-mono keep-color keep-size '>Services</h4>
-                            <h2 className='services__header-main-title keep-size text-2xl md:text-4xl '>Explore My Expertise</h2>
+                            <h4 className='services__header-subtitle font-mono keep-color keep-size '>{dictionary.home.services.subtitle}</h4>
+                            <h2 className='services__header-main-title keep-size text-2xl md:text-4xl '>{dictionary.home.services.title}</h2>
                         </div>
                         <div className='services__list flex flex-col lg:flex-row items-center gap-y-10 justify-between w-full pt-10 '>
                             {services.map((service, index) => (
@@ -149,7 +149,7 @@ export default function Home() {
                                             <li key={index} className='services__item-list-entry'>{item.title}</li>
                                         ))}
                                     </div>
-                                    <Link href={service.buttonLink} className='services__item-button'>
+                                    <Link href={`${lang}${service.buttonLink}`} className='services__item-button'>
                                         <Button className='rounded-full ' variant={'other'} size={'lg'}>{service.buttonLabel}</Button>
                                     </Link>
                                 </div>
@@ -162,13 +162,13 @@ export default function Home() {
                     <MaxWidthWrapper>
                         <div className='portfolio__header flex flex-col w-full justify-between gap-y-5 lg:flex-row lg:gap-y-0 '>
                             <div className="portfolio__title">
-                                <h4 className='portfolio__subtitle font-mono keep-color keep-size'>PORTFOLIO</h4>
-                                <h2 className='portfolio__main-title keep-size text-2xl md:text-4xl '>Recent Projects</h2>
+                                <h4 className='portfolio__subtitle font-mono keep-color keep-size'>{dictionary.home.portfolio.subtitle}</h4>
+                                <h2 className='portfolio__main-title keep-size text-2xl md:text-4xl '>{dictionary.home.portfolio.title}</h2>
                             </div>
                             <div className="portfolio__description flex flex-col gap-y-10">
-                                <p className='portfolio__description-text font-mono'>Explore my diverse project gallery to see innovative solutions tailored to meet unique business needs.</p>
+                                <p className='portfolio__description-text font-mono'>{dictionary.home.portfolio.description}</p>
                                 <Link href="/portfolio" className='portfolio__link-button text-center lg:text-left'>
-                                    <Button className='rounded-full ' variant={'other'} size={'lg'}>Discover More</Button>
+                                    <Button className='rounded-full ' variant={'other'} size={'lg'}>{dictionary.home.portfolio.button}</Button>
                                 </Link>
                             </div>
                         </div>
@@ -232,11 +232,11 @@ export default function Home() {
                         </div>
                         <div className='newsletter__content flex items-center justify-center'>
                             <h2 className='newsletter__title'>
-                                Join Our Journey — <span className='newsletter__title-emphasis text-[#E3B27D]'>Create With Us!</span>
+                                {dictionary.home.newsletter.title}
                             </h2>
                             <Link href={'/contact'}>
                                 <div className='newsletter__contact btn btn-primary'>
-                                    <span>Connect Now</span>
+                                    <span>{dictionary.home.newsletter.button}</span>
                                 </div>
                             </Link>
                         </div>
@@ -245,4 +245,6 @@ export default function Home() {
             </section>
         </main>
     );
-}
+};
+
+export default HomeClient;

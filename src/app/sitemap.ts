@@ -1,36 +1,60 @@
-import { MetadataRoute } from 'next'
+import { MetadataRoute } from 'next';
+import { projects } from '@/lib/data/portfolio'; // Assuming you have your projects data here
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    return [
+    const baseUrl = 'https://portfolio.empereur.me';
+
+    const staticRoutes: MetadataRoute.Sitemap = [
         {
-            url: 'https://portfolio.empereur.me',
+            url: baseUrl,
             lastModified: new Date(),
             changeFrequency: 'yearly',
             priority: 1,
         },
         {
-            url: 'https://portfolio.empereur.me/about',
+            url: `${baseUrl}/about`,
             lastModified: new Date(),
             changeFrequency: 'monthly',
             priority: 0.8,
         },
         {
-            url: 'https://portfolio.empereur.me/services',
+            url: `${baseUrl}/contact`,
             lastModified: new Date(),
             changeFrequency: 'weekly',
             priority: 0.5,
         },
         {
-            url: 'https://portfolio.empereur.me/portfolio',
+            url: `${baseUrl}/gtu`,
+            lastModified: new Date(),
+            changeFrequency: 'yearly',
+            priority: 0.3,
+        },
+        {
+            url: `${baseUrl}/portfolio`,
             lastModified: new Date(),
             changeFrequency: 'weekly',
             priority: 0.5,
         },
         {
-            url: 'https://portfolio.empereur.me/contact',
+            url: `${baseUrl}/privacy`,
+            lastModified: new Date(),
+            changeFrequency: 'yearly',
+            priority: 0.3,
+        },
+        {
+            url: `${baseUrl}/services`,
             lastModified: new Date(),
             changeFrequency: 'weekly',
             priority: 0.5,
         },
-    ]
+        {
+            url: `${baseUrl}/terms`,
+            lastModified: new Date(),
+            changeFrequency: 'yearly',
+            priority: 0.3,
+        },
+    ];
+
+
+    return [...staticRoutes,];
 }

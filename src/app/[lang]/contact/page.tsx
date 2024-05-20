@@ -1,5 +1,6 @@
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import TypeFromWidget from '@/components/TypeFromWidget'
+import { Locale } from '@/i18nConfig';
 import { Metadata } from 'next';
 import React from 'react'
 
@@ -8,7 +9,11 @@ export const metadata: Metadata = {
   description: "Discover the cutting-edge portfolio of Bartosik Patrick, a seasoned Full Stack Developer specializing in React, Next.js, and Tailwind CSS. Dive into a showcase of innovative web applications that blend aesthetics with functionality, crafted to push the boundaries of digital experiences.",
 };
 
-function page() {
+function page({
+  params: { lang },
+}: {
+  params: { lang: Locale };
+}) {
   return (
     <MaxWidthWrapper className='mt-8'>
       <section id='Contact' className='contact flex flex-col w-full gap-y-12'>

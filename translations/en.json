@@ -1,0 +1,92 @@
+{
+    "home": {
+        "hero": {
+            "hero_title": "Expert Full Stack Developer",
+            "hero_description": "Specializing in React and Next.js, I build advanced, scalable web applications tailored to meet business needs. Leverage my expertise in state-of-the-art technology to bring your projects to life.",
+            "hero_scroll": "SCROLL"
+        },
+        "tech_stack": {
+            "title": "My Technical Stack"
+        },
+        "about": {
+            "subtitle": "About me",
+            "title": "I Create Digital World Class Business Web Store / Site",
+            "description_title": "Discover the Art of Code with me",
+            "description": "Embark on a journey through cutting-edge web development with me, a seasoned Full Stack Developer. With over four years of experience in the dynamic JavaScript landscape, I specialize in building immersive, user-focused experiences. My toolkit, rich with modern frameworks like React.js and Next.js, powers businesses and individuals alike towards digital excellence.",
+            "button": "Explore More"
+        },
+        "services": {
+            "subtitle": "Services",
+            "title": "Explore My Expertise"
+        },
+        "portfolio": {
+            "subtitle": "PORTFOLIO",
+            "title": "Recent Projects",
+            "description": "Explore my diverse project gallery to see innovative solutions tailored to meet unique business needs.",
+            "button": "Discover More"
+        },
+        "newsletter": {
+            "title": "Join Our Journey — Create With Us!",
+            "button": "Connect Now"
+        }
+    },
+    "about": {
+        "header": {
+            "title": "About Me"
+        },
+        "content": {
+            "intro": "Hello, I am Patrick Bartosik, a seasoned Full Stack Developer..."
+        }
+    },
+    "services": {
+        "header": {
+            "title": "Our Services"
+        },
+        "content": {
+            "description": "We offer a wide range of services to meet your needs..."
+        }
+    },
+    "portfolio": {
+        "header": {
+            "title": "My Work"
+        },
+        "content": {
+            "description": "Explore my projects..."
+        }
+    },
+    "contact": {
+        "header": {
+            "title": "Contact Us"
+        },
+        "form": {
+            "name": "Name",
+            "email": "Email",
+            "message": "Message",
+            "submit": "Send"
+        }
+    },
+    "footer": {
+        "contact": {
+            "title": "Contact Us",
+            "email": "Email: BartosikPatrickPro@gmail.com",
+            "social": {
+                "instagram": "Instagram",
+                "github": "GitHub",
+                "linkedin": "LinkedIn"
+            }
+        },
+        "quick_links": {
+            "title": "Quick Links",
+            "home": "Home",
+            "about": "About",
+            "services": "Services",
+            "contact": "Contact",
+            "sitemap": "Sitemap"
+        },
+        "legal": {
+            "terms": "Terms of Use",
+            "privacy": "Privacy Policy",
+            "gtu": "GTU"
+        }
+    }
+}

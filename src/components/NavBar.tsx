@@ -1,4 +1,5 @@
-'use client'
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -7,12 +8,16 @@ import MaxWidthWrapper from './MaxWidthWrapper';
 import { usePathname } from 'next/navigation';
 import { Button } from './ui/button';
 import { links } from '@/lib/data/navigation';
+import { Locale } from '@/i18nConfig';
 
-function NavBar() {
+type NavBarProps = {
+    params: { lang: Locale };
+};
+
+const NavBar: React.FC<NavBarProps> = ({ params }) => {
     const pathname = usePathname();
     const [lastScrollY, setLastScrollY] = useState(0);
     const [navHidden, setNavHidden] = useState(false);
-    const isActive = links.some(link => link.href === pathname);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -36,7 +41,7 @@ function NavBar() {
         <nav className={`sticky py-10 inset-x-0 top-0 z-30 w-full backdrop-blur ${navHidden ? 'translate-y-[-100%] transition-transform duration-300' : 'translate-y-0 transition-transform duration-300'}`}>
             <MaxWidthWrapper>
                 <div className='flex h-max items-center justify-between'>
-                    <Link href='/' className='flex z-40 font-semibold'>
+                    <Link href={`/${params.lang}`} className='flex z-40 font-semibold'>
                         <Image
                             src="/svg/Logo.svg"
                             alt="My Logo"
@@ -48,17 +53,17 @@ function NavBar() {
                         />
                     </Link>
 
-                    <MobileNav />
+                    <MobileNav params={params} />
 
-                    <div className={`hidden items-center space-x-10 sm:flex ${!isActive ? 'bg-secondary px-10 py-5 rounded-full' : ''}`}>
+                    <div className={`hidden items-center space-x-10 sm:flex ${!links.some(link => pathname.startsWith(`/${params.lang}${link.href}`)) ? 'bg-secondary px-10 py-5 rounded-full' : ''}`}>
                         <ul className='flex items-center justify-around gap-x-10'>
                             {links.map(({ href, label }, index) => (
                                 <li key={index}>
-                                    <Link href={href}>
-                                        <span className={`transition ease-in-out delay-150 hover:text-[#E3B27D] duration-200 ${pathname === href
-                                                ? 'bg-secondary px-10 py-5 rounded-full text-[#E3B27D]'
-                                                : 'text-white'
-                                            }`}>
+                                    <Link href={`/${params.lang}${href}`}>
+                                        <span className={`transition ease-in-out delay-150 hover:text-[#E3B27D] duration-200 ${pathname.startsWith(`/${params.lang}${href}`)
+                                            ? 'bg-secondary px-10 py-5 rounded-full text-[#E3B27D]'
+                                            : 'text-white'
+                                        }`}>
                                             {label}
                                         </span>
                                     </Link>
@@ -70,7 +75,7 @@ function NavBar() {
                     <div className='hidden items-center space-x-4 sm:flex'>
                         <ul className='flex items-center justify-around gap-x-8'>
                             <li>
-                                <Link href="/contact">
+                                <Link href={`/${params.lang}/contact`}>
                                     <Button className='rounded-full ' variant={'other'} size={'lg'}>Start Project ?</Button>
                                 </Link>
                             </li>
@@ -80,6 +85,6 @@ function NavBar() {
             </MaxWidthWrapper>
         </nav>
     );
-}
+};
 
 export default NavBar;
