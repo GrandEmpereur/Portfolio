@@ -5,19 +5,19 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { Metadata } from 'next';
 import { Button } from "@/components/ui/button";
+import { Locale } from "@/i18nConfig";
 
 export const metadata: Metadata = {
     title: `Bartosik Patrick - Portfolio`,
     description: "Discover the cutting-edge portfolio of Bartosik Patrick, a seasoned Full Stack Developer specializing in React, Next.js, and Tailwind CSS. Dive into a showcase of innovative web applications that blend aesthetics with functionality, crafted to push the boundaries of digital experiences.",
 };
 
-export default function Page({ params }: { params: { slug: string } }) {
+export default function Page({ params }: { params: { slug: string, lang: Locale } }) {
     const project = projects.find(project => project.slug === `/${params.slug}`)
 
     if (!project) {
         useRouter().push('/404')
     }
-
 
     return (
         <MaxWidthWrapper className='mt-8'>

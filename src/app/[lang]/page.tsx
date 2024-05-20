@@ -11,8 +11,14 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import MaxWidthWrapper from '@/components/MaxWidthWrapper';
+import { Locale } from "@/i18nConfig";
+import { getDictionary } from "@/get-dictionary";
 
-export default function Home() {
+export default function Home({
+    params: { lang },
+}: {
+    params: { lang: Locale };
+}) {
     const [hoverIndex, setHoverIndex] = useState(-1);
     const lastFiveProjects = projects.slice(-5).reverse();
 
@@ -124,7 +130,7 @@ export default function Home() {
                             <div className='about__description w-full md:w-full flex flex-col gap-y-8'>
                                 <h2 className='about__description-title'>Discover the Art of Code with me</h2>
                                 <p className='about__description-text'>Embark on a journey through cutting-edge web development with me, a seasoned Full Stack Developer. With over four years of experience in the dynamic JavaScript landscape, I specialize in building immersive, user-focused experiences. My toolkit, rich with modern frameworks like React.js and Next.js, powers businesses and individuals alike towards digital excellence.</p>
-                                <Link href='/about'>
+                                <Link href={`/${lang}/about`}>
                                     <Button className='rounded-full ' variant={'other'} size={'lg'} >Explore More</Button>
                                 </Link>
                             </div>
@@ -149,7 +155,7 @@ export default function Home() {
                                             <li key={index} className='services__item-list-entry'>{item.title}</li>
                                         ))}
                                     </div>
-                                    <Link href={service.buttonLink} className='services__item-button'>
+                                    <Link href={`${lang}${service.buttonLink}`} className='services__item-button'>
                                         <Button className='rounded-full ' variant={'other'} size={'lg'}>{service.buttonLabel}</Button>
                                     </Link>
                                 </div>

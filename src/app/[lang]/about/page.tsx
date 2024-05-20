@@ -6,13 +6,18 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { EducationItems, ExperienceItems, MainStack, OtherStack, Languages, SoftSkills } from '@/lib/data/about';
 import { Metadata } from 'next';
+import { Locale } from '@/i18nConfig';
 
 export const metadata: Metadata = {
     title: "Bartosik Patrick - About Me ",
     description: "Discover the cutting-edge portfolio of Bartosik Patrick, a seasoned Full Stack Developer specializing in React, Next.js, and Tailwind CSS. Dive into a showcase of innovative web applications that blend aesthetics with functionality, crafted to push the boundaries of digital experiences.",
 };
 
-function page() {
+function page({
+    params: { lang },
+}: {
+    params: { lang: Locale };
+}) {
     return (
         <>
             <div className='relative '>

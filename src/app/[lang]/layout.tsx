@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import { cn } from '@/lib/utils';
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { i18n, type Locale } from "@/i18nConfig";
 
 const inter = Poppins({
   weight: ['400', '700'],
@@ -29,20 +30,26 @@ export const metadata: Metadata = {
   description: "Discover the cutting-edge portfolio of Bartosik Patrick, a seasoned Full Stack Developer specializing in React, Next.js, and Tailwind CSS. Dive into a showcase of innovative web applications that blend aesthetics with functionality, crafted to push the boundaries of digital experiences.",
 };
 
+export async function generateStaticParams() {
+  return i18n.locales.map((locale) => ({ lang: locale }));
+}
+
 export default function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params: { lang: Locale };
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang={params.lang} className="dark">
       <body className={cn(
             'min-h-screen relative font-sans antialiased grainy ',
             inter.className, 
           )}>
-        <NavBar />
+        <NavBar params={params} />
         {children}
-        <Footer />
+        <Footer params={params} />
         <SpeedInsights />
         <Analytics />
       </body>
