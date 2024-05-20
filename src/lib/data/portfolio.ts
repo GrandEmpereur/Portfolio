@@ -10,6 +10,7 @@ export const projects = [
         otherTags: [],
         url: '/portfolio/m-moustache',
         redirectToProd: 'https://www.m-moustache.com/pages/homme',
+        lastModified: '20-05-2024',
     },
     {
         id: 2,
@@ -22,6 +23,7 @@ export const projects = [
         otherTags: [],
         url: '/portfolio/tartine-chocolat',
         redirectToProd: 'https://www.tartine-et-chocolat.com',
+        lastModified: '20-05-2024',
     },
     {
         id: 3,
@@ -34,6 +36,7 @@ export const projects = [
         otherTags: [],
         url: '/portfolio/qwetch',
         redirectToProd: 'https://www.qwetch.com/',
+        lastModified: '20-05-2024',
     },
     {
         id: 4,
@@ -46,6 +49,7 @@ export const projects = [
         otherTags: [],
         url: '/portfolio/easy-clothes',
         redirectToProd: 'https://www.easy-clothes.com/',
+        lastModified: '20-05-2024',
     },
     {
         id: 5,
@@ -58,6 +62,7 @@ export const projects = [
         otherTags: [],
         url: '/portfolio/le-1store',
         redirectToProd: 'https://www.le-1.store/',
+        lastModified: '20-05-2024',
     },
     {
         id: 6,
@@ -70,6 +75,7 @@ export const projects = [
         otherTags: [],
         url: '/portfolio/bap-chatenay-malabry',
         redirectToProd: 'https://bap-k7nu.vercel.app/',
+        lastModified: '20-05-2024',
     },
     {
         id: 7,
@@ -82,6 +88,7 @@ export const projects = [
         otherTags: [],
         url: '/portfolio/react-nba',
         redirectToProd: 'https://react-nba-delta.vercel.app/app',
+        lastModified: '20-05-2024',
     },
     {
         id: 8,
@@ -94,6 +101,7 @@ export const projects = [
         otherTags: [],
         url: '/portfolio/marshall-motors',
         redirectToProd: '',
+        lastModified: '20-05-2024',
     },
     {
         id: 9,
@@ -106,5 +114,6 @@ export const projects = [
         otherTags: [],
         url: '/portfolio/technical-city-shopify',
         redirectToProd: '',
+        lastModified: '20-05-2024',
     },
 ]
