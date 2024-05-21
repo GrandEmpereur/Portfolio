@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins, Plus_Jakarta_Sans } from "next/font/google";
-import "./[lang]/globals.css";
+import "./globals.css";
 import '@/scss/styles.scss';
-import NavBar from "@/components/NavBar";
-import Footer from "@/components/Footer";
 import { cn } from '@/lib/utils';
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
@@ -45,9 +43,7 @@ export default function RootLayout({
         'min-h-screen relative font-sans antialiased grainy ',
         inter.className,
       )}>
-        <NavBar params={params} />
         {children}
-        <Footer params={params} />
         <SpeedInsights />
         <Analytics />
       </body>
