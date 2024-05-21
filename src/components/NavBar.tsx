@@ -36,6 +36,7 @@ const NavBar: React.FC<NavBarProps> = ({ params }) => {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, [lastScrollY]);
+    
 
     return (
         <nav className={`sticky py-10 inset-x-0 top-0 z-30 w-full backdrop-blur ${navHidden ? 'translate-y-[-100%] transition-transform duration-300' : 'translate-y-0 transition-transform duration-300'}`}>

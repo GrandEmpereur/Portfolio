@@ -1,92 +1,624 @@
 {
-    "home": {
-        "hero": {
-            "hero_title": "Développeur Full Stack ",
-            "hero_description": "Spécialisé dans React et Next.js, je construis des applications web avancées et évolutives adaptées aux besoins des entreprises. Profitez de mon expertise en technologie de pointe pour donner vie à vos projets.",
-            "hero_scroll": "DÉFILER"
-        },
-        "tech_stack": {
-            "title": "Ma Stack Technique"
-        },
-        "about": {
-            "subtitle": "À propos de moi",
-            "title": "Je Crée des Sites Web de Classe Mondiale",
-            "description_title": "Découvrez l'Art du Code avec moi",
-            "description": "Embarquez dans un voyage à travers le développement web de pointe avec moi, un développeur Full Stack expérimenté. Avec plus de quatre ans d'expérience dans le paysage dynamique de JavaScript, je me spécialise dans la création d'expériences utilisateur immersives. Mon outil de travail, riche en frameworks modernes comme React.js et Next.js, propulse les entreprises et les individus vers l'excellence numérique.",
-            "button": "Explorez Plus"
-        },
-        "services": {
-            "subtitle": "Services",
-            "title": "Explorez Mon Expertise"
-        },
-        "portfolio": {
-            "subtitle": "PORTFOLIO",
-            "title": "Projets Récents",
-            "description": "Explorez ma galerie de projets divers pour voir des solutions innovantes adaptées aux besoins uniques des entreprises.",
-            "button": "Découvrez Plus"
-        },
-        "newsletter": {
-            "title": "Rejoignez Notre Aventure — Créez Avec Nous!",
-            "button": "Connectez-vous Maintenant"
-        }
-    },
-    "about": {
-        "header": {
-            "title": "À Propos de Moi"
-        },
-        "content": {
-            "intro": "Bonjour, je suis Patrick Bartosik, un développeur Full Stack expérimenté..."
-        }
-    },
-    "services": {
-        "header": {
-            "title": "Nos Services"
-        },
-        "content": {
-            "description": "Nous offrons une large gamme de services pour répondre à vos besoins..."
-        }
-    },
-    "portfolio": {
-        "header": {
-            "title": "Mon Travail"
-        },
-        "content": {
-            "description": "Explorez mes projets..."
-        }
-    },
-    "contact": {
-        "header": {
-            "title": "Contactez-Nous"
-        },
-        "form": {
-            "name": "Nom",
-            "email": "Email",
-            "message": "Message",
-            "submit": "Envoyer"
-        }
-    },
-    "footer": {
-        "contact": {
-            "title": "Contactez-Nous",
-            "email": "Email: BartosikPatrickPro@gmail.com",
-            "social": {
-                "instagram": "Instagram",
-                "github": "GitHub",
-                "linkedin": "LinkedIn"
+    "TemplateHome": {
+        "home": {
+            "hero": {
+                "hero_title": "Développeur Full Stack Expérimenté",
+                "hero_description": "Spécialisé dans React et Next.js, je construis des applications web avancées et évolutives adaptées aux besoins des entreprises. Profitez de mon expertise en technologie de pointe pour donner vie à vos projets. En tant que développeur Full Stack chevronné, j'assure que chaque application web est optimisée pour les performances, le SEO et l'expérience utilisateur.",
+                "hero_scroll": "DÉFILER"
+            },
+            "tech_stack": {
+                "title": "Ma Stack Technique"
+            },
+            "about": {
+                "subtitle": "À propos de moi",
+                "title": "Je Crée des Sites Web de Classe Mondiale",
+                "description_title": "Découvrez l'Art du Code avec un Développeur Full Stack",
+                "description": "Embarquez dans un voyage à travers le développement web de pointe avec moi, un développeur Full Stack expérimenté. Avec plus de quatre ans d'expérience dans le paysage dynamique de JavaScript, je me spécialise dans la création d'expériences utilisateur immersives. Mon arsenal, riche en frameworks modernes comme React.js et Next.js, propulse les entreprises et les individus vers l'excellence numérique. Que ce soit une application web complexe ou une simple page de destination, je me concentre sur la livraison de code de haute qualité qui améliore à la fois la fonctionnalité et l'esthétique.",
+                "button": "Explorez Plus"
+            },
+            "services": {
+                "subtitle": "Services",
+                "title": "Explorez Mon Expertise en Développement Full Stack",
+                "description": "Offrant une gamme complète de services, du développement front-end avec React aux solutions back-end avec Node.js, je réponds à tous vos besoins en développement web. Mon expertise inclut la création de designs responsives, l'intégration d'APIs, et l'optimisation des applications pour la vitesse et le SEO. Partenaires avec moi pour transformer votre présence digitale."
+            },
+            "portfolio": {
+                "subtitle": "Portfolio",
+                "title": "Projets Récents",
+                "description": "Explorez ma galerie de projets divers pour voir des solutions innovantes adaptées aux besoins uniques des entreprises. Chaque projet met en valeur ma capacité à m'adapter à différents secteurs et exigences, démontrant des compétences à la fois en design et en développement.",
+                "button": "Découvrez Plus"
+            },
+            "newsletter": {
+                "title": "Rejoignez Notre Aventure Créative — Créez Avec Nous!",
+                "description": "Restez informé des dernières tendances en développement web, recevez des insights d'un développeur Full Stack et rejoignez une communauté passionnée par la technologie. Abonnez-vous à notre newsletter et commencez votre voyage vers l'excellence numérique.",
+                "button": "Connectez-vous Maintenant"
             }
         },
-        "quick_links": {
-            "title": "Liens Rapides",
-            "home": "Accueil",
-            "about": "À propos",
-            "services": "Services",
-            "contact": "Contact",
-            "sitemap": "Plan du site"
+        "about": {
+            "header": {
+                "title": "À Propos de Moi"
+            },
+            "content": {
+                "intro": "Bonjour, je suis Patrick Bartosik, un développeur Full Stack expérimenté passionné par la création d'applications web robustes et évolutives. Mon parcours dans le monde de la tech a commencé il y a plus de quatre ans, et depuis, j'ai maîtrisé une variété de frameworks et de technologies. De la création d'interfaces utilisateur dynamiques avec React à la construction d'applications côté serveur efficaces avec Node.js, mon ensemble de compétences est à la fois diversifié et approfondi. J'adore résoudre des problèmes complexes et fournir des solutions qui non seulement répondent mais dépassent les attentes des clients. Mon approche du développement web est holistique, garantissant que chaque projet est performant, accessible et visuellement attrayant."
+            }
         },
-        "legal": {
-            "terms": "Conditions d'Utilisation",
-            "privacy": "Politique de Confidentialité",
-            "gtu": "CGU"
+        "services": {
+            "header": {
+                "title": "Nos Services"
+            },
+            "content": {
+                "description": "Nous offrons une large gamme de services pour répondre à vos besoins, y compris le développement full stack, l'intégration front-end et back-end, le développement d'APIs et l'optimisation des performances. Notre expertise s'étend aux solutions cloud, à la gestion de bases de données et au développement de logiciels personnalisés. Que vous soyez une startup cherchant à créer un nouveau produit ou une entreprise établie souhaitant améliorer votre présence digitale, nous avons les compétences et l'expérience pour vous aider à réussir."
+            }
+        },
+        "portfolio": {
+            "header": {
+                "title": "Mon Travail"
+            },
+            "content": {
+                "description": "Explorez mes projets pour voir des exemples de mon travail en action. Chaque projet est un témoignage de ma capacité à livrer des applications web de haute qualité qui sont à la fois fonctionnelles et esthétiquement plaisantes. Des plateformes de commerce électronique aux blogs personnels, mon portfolio démontre ma polyvalence et mon engagement envers l'excellence. Découvrez comment je peux vous aider à atteindre vos objectifs numériques avec des solutions innovantes et efficaces."
+            }
         }
+    },
+    "TemplateAbout": {
+        "metadata": {
+            "title": "À propos de Patrick Bartosik - Développeur Full Stack Innovant",
+            "description": "Découvrez le parcours et l'expertise de Patrick Bartosik, un développeur Full Stack passionné par React, Next.js et Tailwind CSS. Plongez dans ses expériences et ses compétences pour voir comment il transforme des idées en solutions numériques performantes. Avec un focus sur le SEO, la performance et l'expérience utilisateur, Patrick assure que chaque projet est non seulement visuellement impressionnant mais aussi techniquement supérieur."
+        },
+        "aboutMe": {
+            "titleSub": "À propos de moi",
+            "titleMain": "Tout ce que vous voulez savoir sur moi",
+            "heroImageAlt": "Image de Patrick Bartosik",
+            "name": "M. Patrick",
+            "role": "Développeur Web Full Stack",
+            "introduction": [
+                "Bonjour, je suis Patrick, un développeur Full Stack expérimenté avec un fort accent sur l'écosystème JavaScript, spécialisé dans la création d'applications web évolutives et performantes en utilisant React et Next.js. Au fil des ans, j'ai perfectionné mes compétences en JavaScript, maîtrisant les frameworks et bibliothèques essentiels pour le développement web moderne. Mon expertise en React et Next.js me permet de livrer des sites web dynamiques, optimisés pour le SEO, qui offrent d'excellentes expériences utilisateur et répondent aux normes élevées des applications web d'aujourd'hui.",
+                "Mon parcours professionnel a été consacré à développer des solutions robustes, à optimiser les performances web et à intégrer des fonctionnalités avancées qui garantissent une maintenance minimale et une haute efficacité. Que ce soit pour améliorer des applications existantes ou en créer de nouvelles à partir de zéro, mon objectif est toujours de tirer parti de mes compétences techniques pour produire des plateformes web de pointe, accessibles et faciles à maintenir. Mes projets impliquent souvent une approche complète, allant du concept initial et de la conception à la déploiement final et à la maintenance.",
+                "Au-delà de mes compétences techniques, je m'engage profondément à rester à jour avec les dernières tendances et les meilleures pratiques en développement web. Cet apprentissage continu me permet d'offrir des solutions innovantes qui sont non seulement efficaces mais aussi pérennes. Je crois au pouvoir de la collaboration et m'efforce de construire des relations solides avec mes clients, en comprenant leurs besoins et en livrant des résultats qui assurent leur succès."
+            ],
+            "downloadResume": "Télécharger Mon CV"
+        },
+        "experience": {
+            "education": "Éducation",
+            "experience": "Expérience Professionnelle"
+        },
+        "skills": {
+            "title": "Tout ce que vous devez savoir sur mes compétences",
+            "coreTechnologies": "Mes Principales Technologies de Programmation",
+            "coreTechnologiesDescription": "Découvrez les technologies clés que je maîtrise pour créer des applications modernes et évolutives. Ma maîtrise inclut React, Next.js, Node.js, et Tailwind CSS, assurant que chaque projet est construit avec les meilleurs outils pour une performance et une évolutivité optimales.",
+            "otherTechnologies": "Je peux travailler avec d'autres technologies de programmation",
+            "otherTechnologiesDescription": "Explorez d'autres langages de programmation et outils que j'ai appris lors de projets parallèles et de cours académiques. Cela inclut Python, Ruby on Rails et PHP, montrant ma polyvalence et ma capacité à m'adapter à différents environnements de développement.",
+            "languages": "Compétences Linguistiques",
+            "languagesDescription": "Mes capacités linguistiques couvrent plusieurs langues, permettant une communication efficace dans des environnements diversifiés. Cela inclut la maîtrise de l'anglais, du français et de l'espagnol, facilitant la collaboration avec une clientèle mondiale.",
+            "softSkills": "Compétences Interpersonnelles",
+            "softSkillsDescription": "Découvrez les compétences interpersonnelles que j'ai acquises au cours de mes cours scolaires et de mes expériences personnelles, y compris le travail en équipe, la résolution de problèmes et la communication efficace. Ces compétences complètent mon expertise technique et contribuent à mon efficacité globale en tant que développeur."
+        }
+    },
+    "TemplatePortfolio": {
+        "metadata": {
+            "title": "Portfolio de Développement Web - Patrick Bartosik",
+            "description": "Explorez le portfolio de Patrick Bartosik, développeur Full Stack spécialisé en React, Next.js et Tailwind CSS. Découvrez une vitrine de projets web innovants qui allient esthétique et fonctionnalité."
+        },
+        "portfolioPage": {
+            "header": {
+                "title": "Explorez Tous Mes Projets",
+                "description": "Découvrez dans cette galerie tous les projets sur lesquels j'ai travaillé. Des projets e-commerce aux projets scolaires et personnels, vous trouverez une large gamme d'applications web que j'ai développées ou auxquelles j'ai contribué."
+            },
+            "visitWebsite": "Visitez le site web",
+            "techUsed": "Technologies utilisées dans ce projet",
+            "otherTags": "Autres tags",
+            "projects": [
+                {
+                    "id": 1,
+                    "title": "M. Moustache",
+                    "slug": "/m-moustache",
+                    "description": "Lors de mon stage et apprentissage chez W3lead, j'étais responsable du développement front-end sur la plateforme Shopify pour M. Moustache. Mes tâches comprenaient l'intégration du site, le développement d'une API pour les cartes cadeaux et la mise en place d'un système de point de vente (POS). Ces rôles m'ont permis de renforcer mes compétences en intégration front-end et en développement d'API backend, en me concentrant sur la création d'expériences de shopping en ligne efficaces et sécurisées.",
+                    "placeholder": "/img/portfolio/m-moustache.webp",
+                    "Slider": [],
+                    "tags": [
+                        "Shopify",
+                        "Frontend",
+                        "Backend",
+                        "Développement d'API",
+                        "API RESTful",
+                        "GraphQL",
+                        "TypeScript"
+                    ],
+                    "otherTags": [
+                        "Scrum",
+                        "Agile",
+                        "Gestion de projet"
+                    ],
+                    "url": "/portfolio/m-moustache",
+                    "redirectToProd": "https://www.m-moustache.com/pages/homme",
+                    "lastModified": "20-05-2024",
+                    "buttonLabel": "Visitez le site web"
+                },
+                {
+                    "id": 2,
+                    "title": "Tartine & Chocolat",
+                    "slug": "/tartine-chocolat",
+                    "description": "Dans le cadre de mon apprentissage, je me suis concentré sur l'intégration et le développement d'une API pour connecter un système ERP au site de Tartine & Chocolat pour les pré-commandes en magasin et l'affichage des magasins disponibles. Ce projet a amélioré ma capacité à gérer à la fois l'intégration front-end et les systèmes backend dans un contexte de commerce électronique réel.",
+                    "placeholder": "/img/portfolio/tartine-chocolat.png",
+                    "Slider": [],
+                    "tags": [
+                        "Shopify",
+                        "Développement d'API",
+                        "Intégration ERP",
+                        "JavaScript",
+                        "Frontend",
+                        "Backend"
+                    ],
+                    "otherTags": [
+                        "Scrum",
+                        "Agile",
+                        "Gestion de projet"
+                    ],
+                    "url": "/portfolio/tartine-chocolat",
+                    "redirectToProd": "https://www.tartine-et-chocolat.com",
+                    "lastModified": "20-05-2024",
+                    "buttonLabel": "Visitez le site web"
+                },
+                {
+                    "id": 3,
+                    "title": "Qwetch",
+                    "slug": "/qwetch",
+                    "description": "Mes principales responsabilités chez Qwetch comprenaient l'intégration du site web et la mise en œuvre de widgets Trustpilot. J'ai également travaillé sur la refonte du Checkout V2 de Shopify, améliorant l'expérience utilisateur et l'efficacité des transactions pendant mon apprentissage en cours.",
+                    "placeholder": "/img/portfolio/qwetch.png",
+                    "Slider": [],
+                    "tags": [
+                        "Shopify",
+                        "Intégration Trustpilot",
+                        "JavaScript",
+                        "Frontend",
+                        "Refonte du Checkout V2"
+                    ],
+                    "otherTags": [
+                        "Scrum",
+                        "Agile",
+                        "Tests utilisateurs"
+                    ],
+                    "url": "/portfolio/qwetch",
+                    "redirectToProd": "https://www.qwetch.com/",
+                    "lastModified": "20-05-2024",
+                    "buttonLabel": "Visitez le site web"
+                },
+                {
+                    "id": 4,
+                    "title": "Easy Clothes",
+                    "slug": "/easy-clothes",
+                    "description": "Ce projet de test.",
+                    "placeholder": "/img/portfolio/easy-clothes.png",
+                    "Slider": [],
+                    "tags": [
+                        "Shopify",
+                        "JavaScript",
+                        "Frontend",
+                        "Amélioration du processus de paiement"
+                    ],
+                    "otherTags": [
+                        "Scrum",
+                        "Agile"
+                    ],
+                    "url": "/portfolio/easy-clothes",
+                    "redirectToProd": "https://www.easy-clothes.com/",
+                    "lastModified": "20-05-2024",
+                    "buttonLabel": "Visitez le site web"
+                },
+                {
+                    "id": 5,
+                    "title": "Le -1Store",
+                    "slug": "/le-1store",
+                    "description": "Mon rôle chez Le -1Store impliquait le développement front-end similaire aux tâches que j'ai effectuées pour Easy Clothes, en me concentrant sur l'amélioration de l'interface utilisateur du site web et l'intégration de fonctionnalités essentielles pour soutenir efficacement les opérations en ligne.",
+                    "placeholder": "/img/portfolio/le-1store.png",
+                    "Slider": [],
+                    "tags": [
+                        "Shopify",
+                        "JavaScript",
+                        "Frontend",
+                        "Optimisation du commerce électronique"
+                    ],
+                    "otherTags": [
+                        "Scrum",
+                        "Agile"
+                    ],
+                    "url": "/portfolio/le-1store",
+                    "redirectToProd": "https://www.le-1.store/",
+                    "lastModified": "20-05-2024",
+                    "buttonLabel": "Visitez le site web"
+                },
+                {
+                    "id": 6,
+                    "title": "BAP Châtenay-Malabry",
+                    "slug": "/bap-chatenay-malabry",
+                    "description": "Pour ce projet académique, j'ai développé une solution full-stack visant à améliorer les processus RH pour détecter le burnout professionnel. La solution comprenait un tableau de bord interactif qui agrège les données des réponses des utilisateurs, offrant des informations et des étapes concrètes pour les situations de burnout professionnel potentielles.",
+                    "placeholder": "/img/portfolio/bap-chatenay-malabry.png",
+                    "Slider": [],
+                    "tags": [
+                        "Développement Fullstack",
+                        "React",
+                        "Next.js",
+                        "TypeScript",
+                        "Design de tableau de bord",
+                        "Agrégation de données"
+                    ],
+                    "otherTags": [
+                        "Scrum",
+                        "Agile",
+                        "Gestion de projet"
+                    ],
+                    "url": "/portfolio/bap-chatenay-malabry",
+                    "redirectToProd": "https://bap-k7nu.vercel.app/",
+                    "lastModified": "20-05-2024",
+                    "buttonLabel": "Visitez le site web"
+                },
+                {
+                    "id": 7,
+                    "title": "React NBA",
+                    "slug": "/react-nba",
+                    "description": "Dans ce projet scolaire visant à créer une application de paris sportifs pour les matchs NBA, j'étais responsable du développement backend, en me concentrant sur la sécurité des données et l'authentification des utilisateurs pour garantir un environnement de pari sûr et fiable.",
+                    "placeholder": "/img/portfolio/react-nba.png",
+                    "Slider": [],
+                    "tags": [
+                        "React",
+                        "TypeScript",
+                        "Sécurité des API",
+                        "Authentification des utilisateurs",
+                        "Application de paris sportifs"
+                    ],
+                    "otherTags": [
+                        "Scrum",
+                        "Agile"
+                    ],
+                    "url": "/portfolio/react-nba",
+                    "redirectToProd": "https://react-nba-delta.vercel.app/app",
+                    "lastModified": "20-05-2024",
+                    "buttonLabel": "Visitez le site web"
+                },
+                {
+                    "id": 8,
+                    "title": "Marshall Motors",
+                    "slug": "/marshall-motors",
+                    "description": "En tant que développeur front-end pour le projet Marshall Motors, j'étais chargé d'intégrer le site web pour un garage spécialisé dans la rénovation de voitures vintage, en fournissant une interface utilisateur élégante et conviviale reflétant la qualité des services du garage.",
+                    "placeholder": "/img/portfolio/marshall-motors.jpg",
+                    "Slider": [],
+                    "tags": [
+                        "Développement Frontend",
+                        "Symphony",
+                        "Twig",
+                        "PHP",
+                        "Voitures vintage"
+                    ],
+                    "otherTags": [
+                        "Scrum",
+                        "Agile"
+                    ],
+                    "url": "/portfolio/marshall-motors",
+                    "redirectToProd": "",
+                    "lastModified": "20-05-2024",
+                    "buttonLabel": "Visitez le site web"
+                },
+                {
+                    "id": 9,
+                    "title": "Technical City Shopify",
+                    "slug": "/technical-city-shopify",
+                    "description": "Dans ce rôle, j'ai réalisé des preuves de concept techniques et des mini-projets pour explorer et démontrer les dernières mises à jour de Shopify. Travaillant en étroite collaboration avec mon mentor lors de mon apprentissage chez W3lead, j'ai développé de nouvelles fonctionnalités pour le checkout V2 de Shopify et d'autres fonctionnalités, principalement en utilisant Rust et React en plus des API Shopify.",
+                    "placeholder": "/img/portfolio/checkoutV2.png",
+                    "Slider": [],
+                    "tags": [
+                        "Shopify",
+                        "Rust",
+                        "React",
+                        "Développement d'API",
+                        "Checkout V2",
+                        "Preuve de concept"
+                    ],
+                    "otherTags": [
+                        "Scrum",
+                        "Agile",
+                        "Gestion de projet"
+                    ],
+                    "url": "/portfolio/technical-city-shopify",
+                    "redirectToProd": "",
+                    "lastModified": "20-05-2024",
+                    "buttonLabel": "Visitez le site web"
+                }
+            ]
+        }
+    },
+    "TemplateServices": {
+        "metadata": {
+            "title": "Services de Développement Web - Patrick Bartosik",
+            "description": "Découvrez les services de développement web de Patrick Bartosik. Spécialisé en React, Next.js et Tailwind CSS, Patrick offre des solutions innovantes pour des applications web performantes et esthétiques."
+        },
+        "servicesPage": {
+            "titleSub": "Services",
+            "titleMain": "Tous mes services et explications",
+            "imageAlt": "Image des services de Patrick Bartosik",
+            "servicesList": [
+                {
+                    "id": "custom-web-development",
+                    "title": "Développement Front-End",
+                    "generalDescription": "Création d'interfaces utilisateur dynamiques et réactives avec les dernières technologies.",
+                    "detailedDescription": [
+                        {
+                            "title": "React",
+                            "description": "Développement d'applications web performantes et modulaires avec React."
+                        },
+                        {
+                            "title": "Next.js",
+                            "description": "Création de sites web statiques et dynamiques optimisés pour le SEO avec Next.js."
+                        }
+                    ]
+                },
+                {
+                    "id": "creative-web-design",
+                    "title": "Développement Back-End",
+                    "generalDescription": "Conception et implémentation de serveurs robustes et scalables.",
+                    "detailedDescription": [
+                        {
+                            "title": "Node.js",
+                            "description": "Développement de serveurs rapides et efficaces avec Node.js."
+                        },
+                        {
+                            "title": "API REST",
+                            "description": "Création d'API RESTful pour des échanges de données fluides et sécurisés."
+                        }
+                    ]
+                },
+                {
+                    "id": "seo-and-digital-marketing",
+                    "title": "UI/UX Design",
+                    "generalDescription": "Conception d'expériences utilisateur intuitives et esthétiques.",
+                    "detailedDescription": [
+                        {
+                            "title": "Prototypage",
+                            "description": "Réalisation de prototypes interactifs pour valider les concepts de design."
+                        },
+                        {
+                            "title": "Tests Utilisateurs",
+                            "description": "Mise en œuvre de tests utilisateurs pour garantir une expérience optimale."
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "TemplateContact": {
+        "metadata": {
+            "title": "Contactez Patrick Bartosik - Développeur Full Stack",
+            "description": "Contactez Patrick Bartosik, un développeur Full Stack expérimenté spécialisé dans React, Next.js et Tailwind CSS. Discutons de vos projets et découvrons comment je peux vous aider à transformer vos idées en solutions numériques performantes."
+        },
+        "contactMe": {
+            "titleSub": "Contactez Moi",
+            "titleMain": "Discutons de Votre Projet",
+            "description": "Je suis impatient de discuter de vos idées de projet et de voir comment je peux vous aider à les réaliser. Que vous ayez besoin de développement front-end, de solutions back-end ou de conseils en SEO, je suis là pour vous aider. Remplissez le formulaire ci-dessous et je vous recontacterai dès que possible."
+        }
+    },
+    "TemplateFooter": {
+        "footer": {
+            "contact": {
+                "title": "Contactez-Nous",
+                "email": "Email: BartosikPatrickPro@gmail.com",
+                "social": {
+                    "instagram": "Instagram",
+                    "github": "GitHub",
+                    "linkedin": "LinkedIn"
+                }
+            },
+            "quick_links": {
+                "title": "Liens Rapides",
+                "home": "Accueil",
+                "about": "À propos",
+                "services": "Services",
+                "contact": "Contact",
+                "sitemap": "Plan du site"
+            },
+            "legal": {
+                "terms": "Conditions d'Utilisation",
+                "privacy": "Politique de Confidentialité",
+                "gtu": "CGU"
+            }
+        }
+    },
+    "TemplateGTU": {
+        "metadata": {
+            "title": "Conditions Générales d'Utilisation - Patrick Bartosik",
+            "description": "Lisez les Conditions Générales d'Utilisation du site de Patrick Bartosik. Découvrez comment votre accès et utilisation du site sont régis et quelles responsabilités vous avez en tant qu'utilisateur."
+        },
+        "legalText": [
+            "Conditions Générales d'Utilisation (CGU)",
+            "Article 1: Introduction",
+            "Bienvenue sur le site de Patrick Bartosik. Ces Conditions Générales d'Utilisation régissent votre accès à notre site web et son utilisation. En accédant à notre site ou en l'utilisant, vous acceptez d'être lié par ces termes et toutes les conditions incorporées par référence. Si vous n'acceptez pas tous ces termes, n'utilisez pas notre site.",
+            "Article 2: Mentions Légales",
+            "Le site patrick.bartosik.fr (ci-après \"le Site\") est exploité par Patrick Bartosik, dont le siège social est situé au 28bis Rue Honoré Sohier, 93600 Aulnays-Sous-Bois, France, enregistré sous le numéro 90093821800014.",
+            "Article 3: Accès et Utilisation du Site",
+            "Le Site offre aux utilisateurs un accès à diverses ressources, y compris, mais sans s'y limiter:",
+            "- Contenu informatif",
+            "- Interfaces utilisateur",
+            "- Outils logiciels",
+            "L'accès au Site est gratuit pour tout utilisateur disposant d'un accès à internet. Tous les coûts nécessaires pour accéder aux services (accès à internet, équipement informatique, etc.) sont à la charge de l'utilisateur. L'accès à certains services spécifiques sur le Site peut nécessiter la création d'un compte et la fourniture de certaines informations personnelles.",
+            "Le Site s'efforce de fournir des informations exactes et à jour. Cependant, des inexactitudes ou des omissions peuvent survenir. L'exploitant du Site ne peut être tenu responsable de toute omission, inexactitude ou carence dans la mise à jour, qu'elle soit causée par le Site ou par des partenaires tiers qui fournissent ces informations.",
+            "Article 4: Responsabilités des Utilisateurs",
+            "Les utilisateurs sont responsables de la sécurité de leurs identifiants d'accès au compte. Toute utilisation du site à partir du compte d'un utilisateur est réputée avoir été effectuée par cet utilisateur. Le Site se réserve le droit de demander aux utilisateurs de respecter ces CGU sous peine de suspension temporaire ou permanente du compte.",
+            "Les utilisateurs s'engagent à ne pas perturber le fonctionnement du service offert par www.patrickbartosik.com de quelque manière que ce soit. En particulier, les utilisateurs s'engagent à s'abstenir de publier des messages illégaux, diffamatoires ou pornographiques sur ou par le biais du Site.",
+            "Article 5: Propriété Intellectuelle",
+            "Le contenu du Site, y compris, mais sans s'y limiter, les textes, graphiques, images, logos, icônes et clips audio, est la propriété de l'exploitant du site ou est utilisé avec l'autorisation des propriétaires respectifs et est protégé par les droits d'auteur et autres droits de propriété intellectuelle en vertu des lois nationales et des traités internationaux.",
+            "Les utilisateurs ne peuvent pas utiliser, reproduire, distribuer, modifier, transmettre, réutiliser, reposter ou utiliser le contenu du Site à des fins publiques ou commerciales sans l'autorisation écrite expresse de l'exploitant du Site.",
+            "Article 6: Protection des Données et Vie Privée",
+            "Pour plus d'informations sur la manière dont les informations des utilisateurs sont collectées, utilisées et divulguées par nous en relation avec votre utilisation du Site, veuillez consulter notre Politique de Confidentialité.",
+            "Article 7: Droit Applicable et Juridiction",
+            "Ces CGU sont régies par et interprétées conformément aux lois de la France, sans tenir compte des principes de conflits de lois. Tout litige découlant de ces termes ou lié à l'utilisation du Site est soumis à la juridiction exclusive des tribunaux de France.",
+            "Article 8: Modifications des Conditions Générales d'Utilisation",
+            "Le Site se réserve le droit de modifier le contenu de ces CGU à tout moment sans préavis. Les utilisateurs sont encouragés à vérifier périodiquement ces termes pour prendre connaissance des changements. Votre utilisation continue du site après la publication des modifications constitue votre acceptation contraignante de ces changements.",
+            "Conclusion",
+            "Ces CGU assurent le bon fonctionnement du Site. En accédant au Site, vous signifiez votre accord avec ces CGU. Si vous avez des questions concernant ces termes, veuillez nous contacter à BartosikPatrickPro@gmail.com."
+        ]
+    },
+    "TemplatePrivacyPolicy": {
+        "metadata": {
+            "title": "Politique de Confidentialité - Patrick Bartosik",
+            "description": "Lisez la Politique de Confidentialité du site de Patrick Bartosik. Découvrez comment vos données personnelles sont collectées, utilisées et protégées lorsque vous utilisez notre site."
+        },
+        "legalText": [
+            "Politique de Confidentialité",
+            "Article 1: Préambule",
+            "Cette politique de confidentialité s'applique au site : Patrick Bartosik.",
+            "Cette politique de confidentialité a pour but d'exposer aux utilisateurs du site :",
+            "- La manière dont sont collectées et traitées leurs données à caractère personnel. Doivent être considérées comme données personnelles toutes les données étant susceptibles d'identifier un utilisateur. Il s'agit notamment du prénom et du nom, de l'âge, de l'adresse postale, de l'adresse e-mail, de la localisation de l'utilisateur ou encore de son adresse IP ;",
+            "- Quels sont les droits des utilisateurs concernant ces données ;",
+            "- Qui est responsable du traitement des données à caractère personnel collectées et traitées ;",
+            "- À qui ces données sont transmises ;",
+            "- Éventuellement, la politique du site en matière de fichiers \"cookies\".",
+            "Cette politique de confidentialité complète les mentions légales.",
+            "Article 2: Principes généraux en matière de collecte et de traitement des données",
+            "Conformément aux dispositions de l'article 5 du Règlement européen 2016/679, la collecte et le traitement des données des utilisateurs du site respectent les principes suivants :",
+            "- Légalité, loyauté et transparence : les données ne peuvent être collectées et traitées qu'avec le consentement de l'utilisateur propriétaire des données. À chaque fois que des données à caractère personnel seront collectées, il sera indiqué à l'utilisateur que ses données sont collectées, et pour quelles raisons ses données sont collectées ;",
+            "- Finalités limitées : la collecte et le traitement des données sont exécutés pour répondre à un ou plusieurs objectifs déterminés dans les présentes conditions générales d'utilisation ;",
+            "- Minimisation de la collecte et du traitement des données : seules les données nécessaires à la bonne exécution des objectifs poursuivis par le site sont collectées ;",
+            "- Conservation des données réduites dans le temps : les données sont conservées pour une durée limitée, dont l'utilisateur est informé. Lorsque cette information ne peut pas être communiquée, l'utilisateur est informé des critères utilisés pour déterminer la durée de conservation ;",
+            "- Intégrité et confidentialité des données collectées et traitées : le responsable du traitement des données s'engage à garantir l'intégrité et la confidentialité des données collectées.",
+            "Pour être licites, et conformément aux exigences de l'article 6 du Règlement européen 2016/679, la collecte et le traitement des données à caractère personnel ne peuvent intervenir que s'ils respectent au moins l'une des conditions ci-après énumérées :",
+            "- L'utilisateur a expressément consenti au traitement ;",
+            "- Le traitement est nécessaire à la bonne exécution d'un contrat ;",
+            "- Le traitement répond à une obligation légale ;",
+            "- Le traitement s'explique par une nécessité liée à la sauvegarde des intérêts vitaux de la personne concernée ou d'une autre personne physique ;",
+            "- Le traitement peut s'expliquer par une nécessité liée à l'exécution d'une mission d'intérêt public ou qui relève de l'exercice de l'autorité publique ;",
+            "- La collecte et le traitement des données à caractère personnel sont nécessaires aux fins des intérêts légitimes et privés poursuivis par le responsable du traitement ou par un tiers.",
+            "Article 3: Données à caractère personnel collectées et traitées dans le cadre de la navigation sur le site",
+            "A. Données collectées et traitées et mode de collecte",
+            "Les données à caractère personnel collectées sur le site Patrick Bartosik sont les suivantes :",
+            "- Adresses IP et cookies du navigateur.",
+            "- Prénom, nom, adresse e-mail, téléphone et entreprise.",
+            "Ces données sont collectées lorsque l'utilisateur effectue l'une des opérations suivantes sur le site :",
+            "- Lorsque l'utilisateur visite une des pages du site.",
+            "- Lorsque l'utilisateur utilise l'un des formulaires de contact.",
+            "Le responsable du traitement conservera dans les systèmes informatiques du site et dans des conditions raisonnables de sécurité l'ensemble des données collectées pour une durée de : 26 mois.",
+            "La collecte et le traitement des données répondent aux finalités suivantes :",
+            "- Analyse du trafic du site.",
+            "- Permettre de recontacter l'utilisateur.",
+            "B. Transmission des données à des tiers",
+            "Les données peuvent être transmises au(x) tiers suivant(s) :",
+            "Google et Vercel",
+            "C. Hébergement des données",
+            "Le site Patrick Bartosik est hébergé par : Vercel, dont le siège est situé à l'adresse suivante :",
+            "San Francisco aux États-Unis.",
+            "Les données collectées et traitées par le site sont transférées vers le(s) pays suivant(s) : France, Irlande, et États-Unis. Ce transfert de données à caractère personnel en dehors de l'Union européenne se justifie par les raisons suivantes :",
+            "Localisation des sièges sociaux des tiers.",
+            "Article 4: Responsable du traitement des données",
+            "A. Le responsable du traitement des données",
+            "Le responsable du traitement des données à caractère personnel est : Patrick Bartosik. Il peut être contacté de la manière suivante :",
+            "Par e-mail : BartosikPatrickPro@gmail.com",
+            "Le responsable du traitement des données est chargé de déterminer les finalités et les moyens mis au service du traitement des données à caractère personnel.",
+            "B. Obligations du responsable du traitement des données",
+            "Le responsable du traitement des données s'engage à protéger les données à caractère personnel collectées, à ne pas les transmettre à des tiers sans que l'utilisateur n'en ait été informé et à respecter les finalités pour lesquelles ces données ont été collectées.",
+            "Le site dispose d'un certificat SSL afin de garantir que les informations et le transfert des données transitant par le site sont sécurisés.",
+            "Un certificat SSL (\"Secure Socket Layer\" Certificate) a pour but de sécuriser les données échangées entre l'utilisateur et le site.",
+            "De plus, le responsable du traitement des données s'engage à notifier l'utilisateur en cas de rectification ou de suppression des données, sauf si cela entraîne pour lui des formalités, coûts et démarches disproportionnés.",
+            "Dans le cas où l'intégrité, la confidentialité ou la sécurité des données personnelles de l'utilisateur est compromise, le responsable du traitement s'engage à informer l'utilisateur par tout moyen.",
+            "Article 5: Droits de l'utilisateur",
+            "Conformément à la réglementation concernant le traitement des données à caractère personnel, l'utilisateur possède les droits énumérés ci-dessous.",
+            "Afin que le responsable du traitement des données fasse droit à sa demande, l'utilisateur est tenu de lui communiquer : ses prénom et nom ainsi que son adresse e-mail.",
+            "Le responsable du traitement des données est tenu de répondre à l'utilisateur dans un délai de 30 (trente) jours maximum.",
+            "A. Présentation des droits de l'utilisateur en matière de collecte et de traitement des données",
+            "a. Droit d'accès, de rectification et droit à l'effacement",
+            "L'utilisateur peut prendre connaissance, mettre à jour, modifier ou demander la suppression des données le concernant, en suivant la procédure ci-après énoncée :",
+            "L'utilisateur doit envoyer un e-mail au responsable du traitement des données personnelles, en précisant l'objet de sa demande et en utilisant l'adresse e-mail de contact fournie ci-dessus.",
+            "b. Droit à la portabilité des données",
+            "L'utilisateur a le droit de demander la portabilité de ses données personnelles, détenues par le site, vers un autre site, en suivant la procédure ci-après :",
+            "L'utilisateur doit faire une demande de portabilité de ses données personnelles auprès du responsable du traitement des données, en envoyant un e-mail à l'adresse fournie ci-dessus.",
+            "c. Droit à la limitation et à l'opposition du traitement des données",
+            "L'utilisateur a le droit de demander la limitation ou de s'opposer au traitement de ses données par le site, sans que le site puisse refuser, sauf à démontrer l'existence de motifs légitimes et impérieux, pouvant prévaloir sur les intérêts et les droits et libertés de l'utilisateur.",
+            "Pour demander la limitation du traitement de ses données ou pour formuler une opposition au traitement de ses données, l'utilisateur doit suivre la procédure suivante :",
+            "L'utilisateur doit faire une demande de limitation au traitement de ses données personnelles auprès du responsable du traitement des données, en envoyant un e-mail à l'adresse fournie ci-dessus.",
+            "d. Droit de ne pas faire l'objet d'une décision fondée exclusivement sur un procédé automatisé",
+            "Conformément aux dispositions du règlement 2016/679, l'utilisateur a le droit de ne pas faire l'objet d'une décision fondée exclusivement sur un procédé automatisé si la décision produit des effets juridiques le concernant, ou l'affecte de manière significative de façon similaire.",
+            "e. Droit de déterminer le sort des données après la mort",
+            "Il est rappelé à l'utilisateur qu'il peut organiser ce qu'il advient de ses données collectées et traitées s'il décède, conformément à la loi n°2016-1321 du 7 octobre 2016.",
+            "f. Droit de saisir l'autorité de contrôle compétente",
+            "Dans le cas où le responsable du traitement des données décide de ne pas répondre à la demande de l'utilisateur, et que l'utilisateur souhaite contester cette décision, ou, s'il pense qu'il est porté atteinte à l'un des droits énumérés ci-dessus, il est en droit de saisir la CNIL (Commission Nationale de l'Informatique et des Libertés, https://www.cnil.fr) ou tout juge compétent.",
+            "B. Données personnelles des personnes mineures",
+            "Conformément aux dispositions de l'article 8 du règlement européen 2016/679 et à la loi Informatique et Libertés, seuls les mineurs âgés de 15 ans ou plus peuvent consentir au traitement de leurs données personnelles.",
+            "Si l'utilisateur est un mineur de moins de 15 ans, l'accord d'un représentant légal sera requis afin que des données personnelles puissent être collectées et traitées.",
+            "L'éditeur du site se réserve le droit de vérifier par tout moyen que l'utilisateur est âgé de plus de 15 ans, ou qu'il aura obtenu l'accord d'un représentant légal avant de naviguer sur le site.",
+            "Article 6: Utilisation des fichiers \"cookies\"",
+            "Le site peut avoir recours aux techniques de \"cookies\".",
+            "Un \"cookie\" est un petit fichier (moins de 4 ko), stocké par le site sur le disque dur de l'utilisateur, contenant des informations relatives aux habitudes de navigation de l'utilisateur.",
+            "Ces fichiers lui permettent de traiter des statistiques et des informations sur le trafic, de faciliter la navigation et d'améliorer le service pour le confort de l'utilisateur.",
+            "Pour l'utilisation de fichiers \"cookies\" impliquant la sauvegarde et l'analyse de données à caractère personnel, le consentement de l'utilisateur est nécessairement demandé.",
+            "Ce consentement de l'utilisateur est considéré comme valable pour une durée de 13 (treize) mois maximum. À l'issue de cette période, le site demandera à nouveau l'autorisation de l'utilisateur pour enregistrer des fichiers \"cookies\" sur son disque dur.",
+            "a. Opposition de l'utilisateur à l'utilisation de fichiers \"cookies\" par le site",
+            "Il est porté à la connaissance de l'utilisateur qu'il peut s'opposer à l'enregistrement de ces fichiers \"cookies\" en configurant son logiciel de navigation.",
+            "Pour information, l'utilisateur peut trouver aux adresses suivantes les démarches à suivre afin de configurer son logiciel de navigation pour s'opposer à l'enregistrement des fichiers \"cookies\" :",
+            "- Chrome : https://support.google.com/accounts/answer/61416?hl=fr",
+            "- Firefox : https://support.mozilla.org/fr/kb/activer-desactiver-cookies-preferences",
+            "- Safari : http://www.apple.com/legal/privacy/fr-ww/",
+            "- Internet Explorer : https://support.microsoft.com/fr-fr/help/17442/windows-internet-explorer-delete-manage-cookies",
+            "- Opera : http://www.opera.com/help/tutorials/security/cookies/",
+            "Dans le cas où l'utilisateur décide de désactiver les fichiers \"cookies\", il pourra poursuivre sa navigation sur le site. Cependant, tout dysfonctionnement du site provoqué par cette manipulation ne pourrait être considéré comme étant du fait de l'éditeur du site.",
+            "b. Description des fichiers \"cookies\" utilisés par le site",
+            "L'éditeur du site attire l'attention de l'utilisateur sur le fait que les cookies suivants sont utilisés lors de sa navigation :",
+            "Cookies autorisés et enregistrés par les navigateurs.",
+            "En naviguant sur le site, il est porté à la connaissance de l'utilisateur que des fichiers \"cookies\" de tiers peuvent être enregistrés.",
+            "Il s'agit plus particulièrement des tiers suivants :",
+            "Tiers listés à l'Article 3.B ci-dessus.",
+            "De plus, le site intègre des boutons de réseaux sociaux, permettant à l'utilisateur de partager son activité sur le site. Des fichiers \"cookies\" de ces réseaux sociaux sont donc susceptibles d'être stockés sur l'ordinateur de l'utilisateur lorsqu'il utilise ces fonctionnalités.",
+            "L'attention de l'utilisateur est portée sur le fait que ces sites possèdent leurs propres politiques de confidentialité et conditions générales d'utilisation possiblement différentes du site. L'éditeur du site invite les utilisateurs à consulter les politiques de confidentialité et les conditions générales d'utilisation de ces sites.",
+            "Article 7: Conditions de modification de la politique de confidentialité",
+            "Cette politique de confidentialité peut être consultée à tout moment à l'adresse ci-après indiquée :",
+            "https://Patrick.Bartosik.com/policy",
+            "L'éditeur du site se réserve le droit de la modifier afin de garantir sa conformité avec le droit en vigueur.",
+            "Par conséquent, l'utilisateur est invité à venir consulter régulièrement cette politique de confidentialité afin de se tenir informé des derniers changements qui lui seront apportés.",
+            "Il est porté à la connaissance de l'utilisateur que la dernière mise à jour de cette politique de confidentialité est intervenue le : 21/05/2024.",
+            "Article 8: Acceptation par l'utilisateur de la politique de confidentialité",
+            "En naviguant sur le site, l'utilisateur atteste avoir lu et compris la présente politique de confidentialité et en accepte les conditions, notamment en ce qui concerne la collecte et le traitement de ses données à caractère personnel, ainsi que l'utilisation des fichiers \"cookies\"."
+        ]
+    },
+    "TemplateLegalNotices": {
+        "metadata": {
+            "title": "Mentions Légales - Patrick Bartosik",
+            "description": "Lisez les mentions légales du site de Patrick Bartosik. Découvrez les informations légales sur l'éditeur du site, l'hébergeur et les conditions d'utilisation."
+        },
+        "legalText": [
+            "Mentions Légales",
+            "Conformément aux dispositions des Articles 6-III et 19 de la Loi n° 2004-575 du 21 juin 2004 pour la Confiance dans l'Économie Numérique, dite L.C.E.N., il est porté à la connaissance des utilisateurs et visiteurs du site Patrick Bartosik les présentes mentions légales.",
+            "Le site Patrick Bartosik est accessible à l'adresse suivante : Patrick.Bartosik.fr (ci-après \"le Site\"). L'accès et l'utilisation du Site sont soumis aux présentes \"Mentions Légales\" détaillées ci-après ainsi qu'aux lois et/ou règlements applicables.",
+            "La connexion, l'utilisation et l'accès à ce Site impliquent l'acceptation intégrale et sans réserve de l'internaute de toutes les dispositions des présentes Mentions Légales.",
+            "Article 1 : Informations légales",
+            "En vertu de l'article 6 de la Loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique, cet article précise l'identité des différents intervenants dans le cadre de sa réalisation et de son suivi.",
+            "A. Éditeur du site",
+            "Le site Patrick Bartosik est édité par :",
+            "Patrick Bartosik, domicilié à l'adresse suivante : 28bis rue Honoré Sohier, et immatriculée sous le numéro : 90093821800014 - Paris.",
+            "Capital social : 1000 euros",
+            "Téléphone : +33 (0)6 58 29 23 30",
+            "Adresse e-mail : BartosikPatrickPro@gmail.com",
+            "ci-après \"l'Éditeur\"",
+            "B. Directeur de la publication",
+            "Le Directeur de la publication est :",
+            "Bartosik Patrick",
+            "ci-après \"le Directeur de la publication\"",
+            "C. Hébergeur du site",
+            "Le site Patrick Bartosik est hébergé par :",
+            "Vercel Inc., dont le siège est situé à l'adresse suivante : San Francisco, États-Unis.",
+            "ci-après \"l'Hébergeur\"",
+            "D. Utilisateurs",
+            "Sont considérés comme utilisateurs tous les internautes qui naviguent, lisent, visionnent et utilisent le site Patrick Bartosik.",
+            "ci-après \"les Utilisateurs\"",
+            "Article 2 - Accessibilité",
+            "Le Site est en principe accessible aux utilisateurs 24/24h et 7/7j, sauf interruption, programmée ou non, pour des besoins de maintenance ou en cas de force majeure.",
+            "En cas d'impossibilité d'accès au Site, celui-ci s'engage à faire son maximum afin de rétablir l'accès. Le Site ne saurait être tenu pour responsable de tout dommage, quelle qu'en soit la nature, résultant de son indisponibilité.",
+            "Article 3 - Droit applicable et juridiction",
+            "Les présentes Mentions Légales sont régies par la loi française. En cas de litige et à défaut d'accord amiable, le litige sera porté devant les tribunaux français conformément aux règles de compétence en vigueur.",
+            "Article 4 - Contact",
+            "Pour tout signalement de contenus ou d'activités illicites, l'Utilisateur peut contacter l'Éditeur à l'adresse suivante : BartosikPatrickPro@gmail.com, ou par courrier recommandé avec accusé de réception adressé à l'Éditeur aux coordonnées précisées dans les présentes mentions légales."
+        ]
+    },
+    "notFound": {
+        "metadata": {
+            "title": "Page non trouvée - Bartosik Patrick",
+            "description": "La page que vous recherchez n'existe pas. Explorez le portfolio de Bartosik Patrick, un développeur Full Stack expérimenté.",
+            "imageAlt": "404 Non Trouvée"
+        },
+        "description": "La page que vous cherchez est introuvable",
+        "buttonHome": "Retour à l'accueil",
+        "buttonPortfolio": "Voir mes projets"
     }
 }
