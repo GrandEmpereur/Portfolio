@@ -92,6 +92,296 @@
             "softSkillsDescription": "Découvrez les compétences interpersonnelles que j'ai acquises au cours de mes cours scolaires et de mes expériences personnelles, y compris le travail en équipe, la résolution de problèmes et la communication efficace. Ces compétences complètent mon expertise technique et contribuent à mon efficacité globale en tant que développeur."
         }
     },
+    "TemplatePortfolio": {
+        "metadata": {
+            "title": "Portfolio de Développement Web - Patrick Bartosik",
+            "description": "Explorez le portfolio de Patrick Bartosik, développeur Full Stack spécialisé en React, Next.js et Tailwind CSS. Découvrez une vitrine de projets web innovants qui allient esthétique et fonctionnalité."
+        },
+        "portfolioPage": {
+            "header": {
+                "title": "Explorez Tous Mes Projets",
+                "description": "Découvrez dans cette galerie tous les projets sur lesquels j'ai travaillé. Des projets e-commerce aux projets scolaires et personnels, vous trouverez une large gamme d'applications web que j'ai développées ou auxquelles j'ai contribué."
+            },
+            "visitWebsite": "Visitez le site web",
+            "techUsed": "Technologies utilisées dans ce projet",
+            "otherTags": "Autres tags",
+            "projects": [
+                {
+                    "id": 1,
+                    "title": "M. Moustache",
+                    "slug": "/m-moustache",
+                    "description": "Lors de mon stage et apprentissage chez W3lead, j'étais responsable du développement front-end sur la plateforme Shopify pour M. Moustache. Mes tâches comprenaient l'intégration du site, le développement d'une API pour les cartes cadeaux et la mise en place d'un système de point de vente (POS). Ces rôles m'ont permis de renforcer mes compétences en intégration front-end et en développement d'API backend, en me concentrant sur la création d'expériences de shopping en ligne efficaces et sécurisées.",
+                    "placeholder": "/img/portfolio/m-moustache.webp",
+                    "Slider": [],
+                    "tags": [
+                        "Shopify",
+                        "Frontend",
+                        "Backend",
+                        "Développement d'API",
+                        "API RESTful",
+                        "GraphQL",
+                        "TypeScript"
+                    ],
+                    "otherTags": [
+                        "Scrum",
+                        "Agile",
+                        "Gestion de projet"
+                    ],
+                    "url": "/portfolio/m-moustache",
+                    "redirectToProd": "https://www.m-moustache.com/pages/homme",
+                    "lastModified": "20-05-2024",
+                    "buttonLabel": "Visitez le site web"
+                },
+                {
+                    "id": 2,
+                    "title": "Tartine & Chocolat",
+                    "slug": "/tartine-chocolat",
+                    "description": "Dans le cadre de mon apprentissage, je me suis concentré sur l'intégration et le développement d'une API pour connecter un système ERP au site de Tartine & Chocolat pour les pré-commandes en magasin et l'affichage des magasins disponibles. Ce projet a amélioré ma capacité à gérer à la fois l'intégration front-end et les systèmes backend dans un contexte de commerce électronique réel.",
+                    "placeholder": "/img/portfolio/tartine-chocolat.png",
+                    "Slider": [],
+                    "tags": [
+                        "Shopify",
+                        "Développement d'API",
+                        "Intégration ERP",
+                        "JavaScript",
+                        "Frontend",
+                        "Backend"
+                    ],
+                    "otherTags": [
+                        "Scrum",
+                        "Agile",
+                        "Gestion de projet"
+                    ],
+                    "url": "/portfolio/tartine-chocolat",
+                    "redirectToProd": "https://www.tartine-et-chocolat.com",
+                    "lastModified": "20-05-2024",
+                    "buttonLabel": "Visitez le site web"
+                },
+                {
+                    "id": 3,
+                    "title": "Qwetch",
+                    "slug": "/qwetch",
+                    "description": "Mes principales responsabilités chez Qwetch comprenaient l'intégration du site web et la mise en œuvre de widgets Trustpilot. J'ai également travaillé sur la refonte du Checkout V2 de Shopify, améliorant l'expérience utilisateur et l'efficacité des transactions pendant mon apprentissage en cours.",
+                    "placeholder": "/img/portfolio/qwetch.png",
+                    "Slider": [],
+                    "tags": [
+                        "Shopify",
+                        "Intégration Trustpilot",
+                        "JavaScript",
+                        "Frontend",
+                        "Refonte du Checkout V2"
+                    ],
+                    "otherTags": [
+                        "Scrum",
+                        "Agile",
+                        "Tests utilisateurs"
+                    ],
+                    "url": "/portfolio/qwetch",
+                    "redirectToProd": "https://www.qwetch.com/",
+                    "lastModified": "20-05-2024",
+                    "buttonLabel": "Visitez le site web"
+                },
+                {
+                    "id": 4,
+                    "title": "Easy Clothes",
+                    "slug": "/easy-clothes",
+                    "description": "Ce projet de test.",
+                    "placeholder": "/img/portfolio/easy-clothes.png",
+                    "Slider": [],
+                    "tags": [
+                        "Shopify",
+                        "JavaScript",
+                        "Frontend",
+                        "Amélioration du processus de paiement"
+                    ],
+                    "otherTags": [
+                        "Scrum",
+                        "Agile"
+                    ],
+                    "url": "/portfolio/easy-clothes",
+                    "redirectToProd": "https://www.easy-clothes.com/",
+                    "lastModified": "20-05-2024",
+                    "buttonLabel": "Visitez le site web"
+                },
+                {
+                    "id": 5,
+                    "title": "Le -1Store",
+                    "slug": "/le-1store",
+                    "description": "Mon rôle chez Le -1Store impliquait le développement front-end similaire aux tâches que j'ai effectuées pour Easy Clothes, en me concentrant sur l'amélioration de l'interface utilisateur du site web et l'intégration de fonctionnalités essentielles pour soutenir efficacement les opérations en ligne.",
+                    "placeholder": "/img/portfolio/le-1store.png",
+                    "Slider": [],
+                    "tags": [
+                        "Shopify",
+                        "JavaScript",
+                        "Frontend",
+                        "Optimisation du commerce électronique"
+                    ],
+                    "otherTags": [
+                        "Scrum",
+                        "Agile"
+                    ],
+                    "url": "/portfolio/le-1store",
+                    "redirectToProd": "https://www.le-1.store/",
+                    "lastModified": "20-05-2024",
+                    "buttonLabel": "Visitez le site web"
+                },
+                {
+                    "id": 6,
+                    "title": "BAP Châtenay-Malabry",
+                    "slug": "/bap-chatenay-malabry",
+                    "description": "Pour ce projet académique, j'ai développé une solution full-stack visant à améliorer les processus RH pour détecter le burnout professionnel. La solution comprenait un tableau de bord interactif qui agrège les données des réponses des utilisateurs, offrant des informations et des étapes concrètes pour les situations de burnout professionnel potentielles.",
+                    "placeholder": "/img/portfolio/bap-chatenay-malabry.png",
+                    "Slider": [],
+                    "tags": [
+                        "Développement Fullstack",
+                        "React",
+                        "Next.js",
+                        "TypeScript",
+                        "Design de tableau de bord",
+                        "Agrégation de données"
+                    ],
+                    "otherTags": [
+                        "Scrum",
+                        "Agile",
+                        "Gestion de projet"
+                    ],
+                    "url": "/portfolio/bap-chatenay-malabry",
+                    "redirectToProd": "https://bap-k7nu.vercel.app/",
+                    "lastModified": "20-05-2024",
+                    "buttonLabel": "Visitez le site web"
+                },
+                {
+                    "id": 7,
+                    "title": "React NBA",
+                    "slug": "/react-nba",
+                    "description": "Dans ce projet scolaire visant à créer une application de paris sportifs pour les matchs NBA, j'étais responsable du développement backend, en me concentrant sur la sécurité des données et l'authentification des utilisateurs pour garantir un environnement de pari sûr et fiable.",
+                    "placeholder": "/img/portfolio/react-nba.png",
+                    "Slider": [],
+                    "tags": [
+                        "React",
+                        "TypeScript",
+                        "Sécurité des API",
+                        "Authentification des utilisateurs",
+                        "Application de paris sportifs"
+                    ],
+                    "otherTags": [
+                        "Scrum",
+                        "Agile"
+                    ],
+                    "url": "/portfolio/react-nba",
+                    "redirectToProd": "https://react-nba-delta.vercel.app/app",
+                    "lastModified": "20-05-2024",
+                    "buttonLabel": "Visitez le site web"
+                },
+                {
+                    "id": 8,
+                    "title": "Marshall Motors",
+                    "slug": "/marshall-motors",
+                    "description": "En tant que développeur front-end pour le projet Marshall Motors, j'étais chargé d'intégrer le site web pour un garage spécialisé dans la rénovation de voitures vintage, en fournissant une interface utilisateur élégante et conviviale reflétant la qualité des services du garage.",
+                    "placeholder": "/img/portfolio/marshall-motors.jpg",
+                    "Slider": [],
+                    "tags": [
+                        "Développement Frontend",
+                        "Symphony",
+                        "Twig",
+                        "PHP",
+                        "Voitures vintage"
+                    ],
+                    "otherTags": [
+                        "Scrum",
+                        "Agile"
+                    ],
+                    "url": "/portfolio/marshall-motors",
+                    "redirectToProd": "",
+                    "lastModified": "20-05-2024",
+                    "buttonLabel": "Visitez le site web"
+                },
+                {
+                    "id": 9,
+                    "title": "Technical City Shopify",
+                    "slug": "/technical-city-shopify",
+                    "description": "Dans ce rôle, j'ai réalisé des preuves de concept techniques et des mini-projets pour explorer et démontrer les dernières mises à jour de Shopify. Travaillant en étroite collaboration avec mon mentor lors de mon apprentissage chez W3lead, j'ai développé de nouvelles fonctionnalités pour le checkout V2 de Shopify et d'autres fonctionnalités, principalement en utilisant Rust et React en plus des API Shopify.",
+                    "placeholder": "/img/portfolio/checkoutV2.png",
+                    "Slider": [],
+                    "tags": [
+                        "Shopify",
+                        "Rust",
+                        "React",
+                        "Développement d'API",
+                        "Checkout V2",
+                        "Preuve de concept"
+                    ],
+                    "otherTags": [
+                        "Scrum",
+                        "Agile",
+                        "Gestion de projet"
+                    ],
+                    "url": "/portfolio/technical-city-shopify",
+                    "redirectToProd": "",
+                    "lastModified": "20-05-2024",
+                    "buttonLabel": "Visitez le site web"
+                }
+            ]
+        }
+    },
+    "TemplateServices": {
+        "metadata": {
+            "title": "Services de Développement Web - Patrick Bartosik",
+            "description": "Découvrez les services de développement web de Patrick Bartosik. Spécialisé en React, Next.js et Tailwind CSS, Patrick offre des solutions innovantes pour des applications web performantes et esthétiques."
+        },
+        "servicesPage": {
+            "titleSub": "Services",
+            "titleMain": "Tous mes services et explications",
+            "imageAlt": "Image des services de Patrick Bartosik",
+            "servicesList": [
+                {
+                    "id": "custom-web-development",
+                    "title": "Développement Front-End",
+                    "generalDescription": "Création d'interfaces utilisateur dynamiques et réactives avec les dernières technologies.",
+                    "detailedDescription": [
+                        {
+                            "title": "React",
+                            "description": "Développement d'applications web performantes et modulaires avec React."
+                        },
+                        {
+                            "title": "Next.js",
+                            "description": "Création de sites web statiques et dynamiques optimisés pour le SEO avec Next.js."
+                        }
+                    ]
+                },
+                {
+                    "id": "creative-web-design",
+                    "title": "Développement Back-End",
+                    "generalDescription": "Conception et implémentation de serveurs robustes et scalables.",
+                    "detailedDescription": [
+                        {
+                            "title": "Node.js",
+                            "description": "Développement de serveurs rapides et efficaces avec Node.js."
+                        },
+                        {
+                            "title": "API REST",
+                            "description": "Création d'API RESTful pour des échanges de données fluides et sécurisés."
+                        }
+                    ]
+                },
+                {
+                    "id": "seo-and-digital-marketing",
+                    "title": "UI/UX Design",
+                    "generalDescription": "Conception d'expériences utilisateur intuitives et esthétiques.",
+                    "detailedDescription": [
+                        {
+                            "title": "Prototypage",
+                            "description": "Réalisation de prototypes interactifs pour valider les concepts de design."
+                        },
+                        {
+                            "title": "Tests Utilisateurs",
+                            "description": "Mise en œuvre de tests utilisateurs pour garantir une expérience optimale."
+                        }
+                    ]
+                }
+            ]
+        }
+    },
     "TemplateContact": {
         "metadata": {
             "title": "Contactez Patrick Bartosik - Développeur Full Stack",
@@ -320,5 +610,15 @@
             "Article 4 - Contact",
             "Pour tout signalement de contenus ou d'activités illicites, l'Utilisateur peut contacter l'Éditeur à l'adresse suivante : BartosikPatrickPro@gmail.com, ou par courrier recommandé avec accusé de réception adressé à l'Éditeur aux coordonnées précisées dans les présentes mentions légales."
         ]
+    },
+    "notFound": {
+        "metadata": {
+            "title": "Page non trouvée - Bartosik Patrick",
+            "description": "La page que vous recherchez n'existe pas. Explorez le portfolio de Bartosik Patrick, un développeur Full Stack expérimenté.",
+            "imageAlt": "404 Non Trouvée"
+        },
+        "description": "La page que vous cherchez est introuvable",
+        "buttonHome": "Retour à l'accueil",
+        "buttonPortfolio": "Voir mes projets"
     }
 }

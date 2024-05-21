@@ -1,5 +1,4 @@
 import { MetadataRoute } from 'next';
-import { projects } from '@/lib/data/portfolio'; // Assuming you have your projects data here
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = 'https://portfolio.empereur.me';

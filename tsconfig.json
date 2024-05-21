@@ -24,7 +24,10 @@
     "paths": {
       "@/*": [
         "./src/*"
-      ]
+      ],
+      "@translations/*": [
+        "./translations/*"
+      ],
     }
   },
   "include": [

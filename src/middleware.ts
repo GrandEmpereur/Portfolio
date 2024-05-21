@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 import { i18n } from "@/i18nConfig";
+import { projects } from '@/lib/data/portfolio';
 
 import { match as matchLocale } from "@formatjs/intl-localematcher";
 import Negotiator from "negotiator";
@@ -44,11 +45,24 @@ export function middleware(request: NextRequest) {
         }
     }
 
+    // Check if the request is for a portfolio project
+    const isPortfolioPage = pathname.startsWith('/portfolio/');
+    if (isPortfolioPage) {
+        const slug = pathname.split('/').pop();
+        const projectExists = projects.some(project => project.slug === `/${slug}`);
+
+        if (!projectExists) {
+            const locale = getLocale(request);
+            const newUrl = locale ? `/${locale}/404` : `/404`;
+            return NextResponse.rewrite(new URL(newUrl, request.url));
+        }
+    }
+
     return NextResponse.next();
 }
 
 export const config = {
     matcher: [
-        "/((?!api|_next/static|_next/image|favicon.ico|img/*|shape/*|stack/*|svg/*|CV.pdf|robots.txt|sitemap.xml).*)",
+        "/((?!api|_next/static|_next/image|favicon.ico|img/*|shape/*|stack/*|svg/*|CV.pdf|robots.txt|sitemap.xml|not-found.tsx).*)",
     ],
 };
