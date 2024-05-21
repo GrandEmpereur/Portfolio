@@ -1,92 +1,119 @@
 {
-    "home": {
-        "hero": {
-            "hero_title": "Expert Full Stack Developer",
-            "hero_description": "Specializing in React and Next.js, I build advanced, scalable web applications tailored to meet business needs. Leverage my expertise in state-of-the-art technology to bring your projects to life.",
-            "hero_scroll": "SCROLL"
-        },
-        "tech_stack": {
-            "title": "My Technical Stack"
-        },
-        "about": {
-            "subtitle": "About me",
-            "title": "I Create Digital World Class Business Web Store / Site",
-            "description_title": "Discover the Art of Code with me",
-            "description": "Embark on a journey through cutting-edge web development with me, a seasoned Full Stack Developer. With over four years of experience in the dynamic JavaScript landscape, I specialize in building immersive, user-focused experiences. My toolkit, rich with modern frameworks like React.js and Next.js, powers businesses and individuals alike towards digital excellence.",
-            "button": "Explore More"
-        },
-        "services": {
-            "subtitle": "Services",
-            "title": "Explore My Expertise"
-        },
-        "portfolio": {
-            "subtitle": "PORTFOLIO",
-            "title": "Recent Projects",
-            "description": "Explore my diverse project gallery to see innovative solutions tailored to meet unique business needs.",
-            "button": "Discover More"
-        },
-        "newsletter": {
-            "title": "Join Our Journey — Create With Us!",
-            "button": "Connect Now"
-        }
-    },
-    "about": {
-        "header": {
-            "title": "About Me"
-        },
-        "content": {
-            "intro": "Hello, I am Patrick Bartosik, a seasoned Full Stack Developer..."
-        }
-    },
-    "services": {
-        "header": {
-            "title": "Our Services"
-        },
-        "content": {
-            "description": "We offer a wide range of services to meet your needs..."
-        }
-    },
-    "portfolio": {
-        "header": {
-            "title": "My Work"
-        },
-        "content": {
-            "description": "Explore my projects..."
-        }
-    },
-    "contact": {
-        "header": {
-            "title": "Contact Us"
-        },
-        "form": {
-            "name": "Name",
-            "email": "Email",
-            "message": "Message",
-            "submit": "Send"
-        }
-    },
-    "footer": {
-        "contact": {
-            "title": "Contact Us",
-            "email": "Email: BartosikPatrickPro@gmail.com",
-            "social": {
-                "instagram": "Instagram",
-                "github": "GitHub",
-                "linkedin": "LinkedIn"
+    "TemplateHome": {
+        "home": {
+            "hero": {
+                "hero_title": "Développeur Full Stack ",
+                "hero_description": "Spécialisé dans React et Next.js, je construis des applications web avancées et évolutives adaptées aux besoins des entreprises. Profitez de mon expertise en technologie de pointe pour donner vie à vos projets.",
+                "hero_scroll": "DÉFILER"
+            },
+            "tech_stack": {
+                "title": "Ma Stack Technique"
+            },
+            "about": {
+                "subtitle": "À propos de moi",
+                "title": "Je Crée des Sites Web de Classe Mondiale",
+                "description_title": "Découvrez l'Art du Code avec moi",
+                "description": "Embarquez dans un voyage à travers le développement web de pointe avec moi, un développeur Full Stack expérimenté. Avec plus de quatre ans d'expérience dans le paysage dynamique de JavaScript, je me spécialise dans la création d'expériences utilisateur immersives. Mon outil de travail, riche en frameworks modernes comme React.js et Next.js, propulse les entreprises et les individus vers l'excellence numérique.",
+                "button": "Explorez Plus"
+            },
+            "services": {
+                "subtitle": "Services",
+                "title": "Explorez Mon Expertise"
+            },
+            "portfolio": {
+                "subtitle": "PORTFOLIO",
+                "title": "Projets Récents",
+                "description": "Explorez ma galerie de projets divers pour voir des solutions innovantes adaptées aux besoins uniques des entreprises.",
+                "button": "Découvrez Plus"
+            },
+            "newsletter": {
+                "title": "Rejoignez Notre Aventure — Créez Avec Nous!",
+                "button": "Connectez-vous Maintenant"
             }
         },
-        "quick_links": {
-            "title": "Quick Links",
-            "home": "Home",
-            "about": "About",
-            "services": "Services",
-            "contact": "Contact",
-            "sitemap": "Sitemap"
+        "about": {
+            "header": {
+                "title": "À Propos de Moi"
+            },
+            "content": {
+                "intro": "Bonjour, je suis Patrick Bartosik, un développeur Full Stack expérimenté..."
+            }
         },
-        "legal": {
-            "terms": "Terms of Use",
-            "privacy": "Privacy Policy",
-            "gtu": "GTU"
+        "services": {
+            "header": {
+                "title": "Nos Services"
+            },
+            "content": {
+                "description": "Nous offrons une large gamme de services pour répondre à vos besoins..."
+            }
+        },
+        "portfolio": {
+            "header": {
+                "title": "Mon Travail"
+            },
+            "content": {
+                "description": "Explorez mes projets..."
+            }
+        }
+    },
+    "TemplateAbout": {
+        "metadata": {
+            "title": "À propos de Bartosik Patrick - Développeur Full Stack Innovant",
+            "description": "Découvrez le parcours et l'expertise de Bartosik Patrick, un développeur Full Stack passionné par React, Next.js et Tailwind CSS. Plongez dans ses expériences et ses compétences pour voir comment il transforme des idées en solutions numériques performantes."
+        },
+        "aboutMe": {
+            "titleSub": "À propos de moi",
+            "titleMain": "Tout ce que vous voulez savoir sur moi",
+            "heroImageAlt": "Image de Bartosik Patrick",
+            "name": "M. Patrick",
+            "role": "Développeur Web Full Stack",
+            "introduction": [
+                "Bonjour, je suis Patrick, un développeur Full Stack expérimenté avec un fort accent sur l'écosystème JavaScript, spécialisé dans la création d'applications web évolutives et performantes en utilisant React et Next.js.",
+                "Au fil des ans, j'ai perfectionné mes compétences en JavaScript, maîtrisant les frameworks et bibliothèques essentiels pour le développement web moderne. Mon expertise en React et Next.js me permet de livrer des sites web dynamiques, optimisés pour le SEO, qui offrent d'excellentes expériences utilisateur et répondent aux normes élevées des applications web d'aujourd'hui.",
+                "Mon parcours professionnel a été consacré à développer des solutions robustes, à optimiser les performances web et à intégrer des fonctionnalités avancées qui garantissent une maintenance minimale et une haute efficacité. Que ce soit pour améliorer des applications existantes ou en créer de nouvelles à partir de zéro, mon objectif est toujours de tirer parti de mes compétences techniques pour produire des plateformes web de pointe, accessibles et faciles à maintenir."
+            ],
+            "downloadResume": "Télécharger mon CV"
+        },
+        "experience": {
+            "education": "Éducation",
+            "experience": "Expérience"
+        },
+        "skills": {
+            "title": "Tout ce que vous devez savoir sur mes compétences",
+            "coreTechnologies": "Mes principales technologies de programmation",
+            "coreTechnologiesDescription": "Découvrez les technologies clés que je maîtrise pour créer des applications modernes et évolutives.",
+            "otherTechnologies": "Je peux travailler avec d'autres technologies de programmation",
+            "otherTechnologiesDescription": "Découvrez d'autres langages de programmation que j'ai appris lors de projets parallèles ou au cours de mes études.",
+            "languages": "Compétences linguistiques",
+            "languagesDescription": "Mes capacités linguistiques couvrent plusieurs langues, permettant une communication efficace dans des environnements divers.",
+            "softSkills": "Compétences interpersonnelles",
+            "softSkillsDescription": "Découvrez toutes les compétences interpersonnelles que j'ai acquises au cours de mes cours scolaires et de mon expérience personnelle."
+        }
+    },
+    "TemplateFooter": {
+        "footer": {
+            "contact": {
+                "title": "Contactez-Nous",
+                "email": "Email: BartosikPatrickPro@gmail.com",
+                "social": {
+                    "instagram": "Instagram",
+                    "github": "GitHub",
+                    "linkedin": "LinkedIn"
+                }
+            },
+            "quick_links": {
+                "title": "Liens Rapides",
+                "home": "Accueil",
+                "about": "À propos",
+                "services": "Services",
+                "contact": "Contact",
+                "sitemap": "Plan du site"
+            },
+            "legal": {
+                "terms": "Conditions d'Utilisation",
+                "privacy": "Politique de Confidentialité",
+                "gtu": "CGU"
+            }
         }
     }
 }

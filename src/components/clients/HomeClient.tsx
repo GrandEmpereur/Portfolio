@@ -59,15 +59,15 @@ const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
                     <div className='hero__information w-full flex flex-col items-center relative lg:flex-row lg:justify-between '>
                         <div className='hero__description'>
                             <h1 style={{ fontSize: '100px', lineHeight: '135%', width: '470px' }}>
-                                {dictionary.home.hero.hero_title}
+                                {dictionary.TemplateHome.home.hero.hero_title}
                             </h1>
                             <p className='hero__description-text py-5' style={{ width: '470px' }}>
-                                {dictionary.home.hero.hero_description}
+                                {dictionary.TemplateHome.home.hero.hero_description}
                             </p>
                             <div className='hero__scroll'>
                                 <div className='hero__scroll-container flex items-center gap-x-1'>
                                     <ChevronsLeft color={'white'} size={14} />
-                                    <p style={{ fontSize: "14px", lineHeight: "140%", letterSpacing: "25%" }}>{dictionary.home.hero.hero_scroll}</p>
+                                    <p style={{ fontSize: "14px", lineHeight: "140%", letterSpacing: "25%" }}>{dictionary.TemplateHome.home.hero.hero_scroll}</p>
                                 </div>
                             </div>
                         </div>
@@ -93,7 +93,7 @@ const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
                     </div>
 
                     <div className='hero__stacks flex flex-col gap-y-5 mt-32'>
-                        <h3 className='keep-size text-center lg:text-left'>{dictionary.home.tech_stack.title}</h3>
+                        <h3 className='keep-size text-center lg:text-left'>{dictionary.TemplateHome.home.tech_stack.title}</h3>
                         <div className='hero__stacks-list flex flex-wrap justify-center lg:justify-start gap-10 pt-9 pb-14 '>
                             {stacks.map((stack, index) => (
                                 <div key={index} className='hero__stack flex flex-col items-center justify-center gap-y-3'>
@@ -111,8 +111,8 @@ const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
                 <section id='about' className='about flex w-full h-full flex-col gap-y-8'>
                     <MaxWidthWrapper>
                         <div className="about__title pb-5">
-                            <h4 className='about__title-sub font-mono keep-color keep-size'>{dictionary.home.about.subtitle}</h4>
-                            <h2 className='about__title-main w-max keep-size text-2xl md:text-4xl '>{dictionary.home.about.title}</h2>
+                            <h4 className='about__title-sub font-mono keep-color keep-size'>{dictionary.TemplateHome.home.about.subtitle}</h4>
+                            <h2 className='about__title-main w-max keep-size text-2xl md:text-4xl '>{dictionary.TemplateHome.home.about.title}</h2>
                         </div>
                         <div className='w-full h-full about__content flex flex-col lg:flex-row justify-between items-start gap-y-20 md:gap-x-32'>
                             <div className="about__image-container relative w-full">
@@ -122,10 +122,10 @@ const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
                             </div>
 
                             <div className='about__description w-full md:w-full flex flex-col gap-y-8'>
-                                <h2 className='about__description-title'>{dictionary.home.about.description_title}</h2>
-                                <p className='about__description-text'>{dictionary.home.about.description}</p>
+                                <h2 className='about__description-title'>{dictionary.TemplateHome.home.about.description_title}</h2>
+                                <p className='about__description-text'>{dictionary.TemplateHome.home.about.description}</p>
                                 <Link href={`/${lang}/about`}>
-                                    <Button className='rounded-full ' variant={'other'} size={'lg'} >{dictionary.home.about.button}</Button>
+                                    <Button className='rounded-full ' variant={'other'} size={'lg'} >{dictionary.TemplateHome.home.about.button}</Button>
                                 </Link>
                             </div>
                         </div>
@@ -135,8 +135,8 @@ const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
                 <MaxWidthWrapper className='services-bg mt-20 lg:mt-40'>
                     <section id='services' className='services flex flex-col items-start justify-between w-full h-full'>
                         <div className="services__header title">
-                            <h4 className='services__header-subtitle font-mono keep-color keep-size '>{dictionary.home.services.subtitle}</h4>
-                            <h2 className='services__header-main-title keep-size text-2xl md:text-4xl '>{dictionary.home.services.title}</h2>
+                            <h4 className='services__header-subtitle font-mono keep-color keep-size '>{dictionary.TemplateHome.home.services.subtitle}</h4>
+                            <h2 className='services__header-main-title keep-size text-2xl md:text-4xl '>{dictionary.TemplateHome.home.services.title}</h2>
                         </div>
                         <div className='services__list flex flex-col lg:flex-row items-center gap-y-10 justify-between w-full pt-10 '>
                             {services.map((service, index) => (
@@ -162,13 +162,13 @@ const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
                     <MaxWidthWrapper>
                         <div className='portfolio__header flex flex-col w-full justify-between gap-y-5 lg:flex-row lg:gap-y-0 '>
                             <div className="portfolio__title">
-                                <h4 className='portfolio__subtitle font-mono keep-color keep-size'>{dictionary.home.portfolio.subtitle}</h4>
-                                <h2 className='portfolio__main-title keep-size text-2xl md:text-4xl '>{dictionary.home.portfolio.title}</h2>
+                                <h4 className='portfolio__subtitle font-mono keep-color keep-size'>{dictionary.TemplateHome.home.portfolio.subtitle}</h4>
+                                <h2 className='portfolio__main-title keep-size text-2xl md:text-4xl '>{dictionary.TemplateHome.home.portfolio.title}</h2>
                             </div>
                             <div className="portfolio__description flex flex-col gap-y-10">
-                                <p className='portfolio__description-text font-mono'>{dictionary.home.portfolio.description}</p>
+                                <p className='portfolio__description-text font-mono'>{dictionary.TemplateHome.home.portfolio.description}</p>
                                 <Link href="/portfolio" className='portfolio__link-button text-center lg:text-left'>
-                                    <Button className='rounded-full ' variant={'other'} size={'lg'}>{dictionary.home.portfolio.button}</Button>
+                                    <Button className='rounded-full ' variant={'other'} size={'lg'}>{dictionary.TemplateHome.home.portfolio.button}</Button>
                                 </Link>
                             </div>
                         </div>
@@ -232,11 +232,11 @@ const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
                         </div>
                         <div className='newsletter__content flex items-center justify-center'>
                             <h2 className='newsletter__title'>
-                                {dictionary.home.newsletter.title}
+                                {dictionary.TemplateHome.home.newsletter.title}
                             </h2>
                             <Link href={'/contact'}>
                                 <div className='newsletter__contact btn btn-primary'>
-                                    <span>{dictionary.home.newsletter.button}</span>
+                                    <span>{dictionary.TemplateHome.home.newsletter.button}</span>
                                 </div>
                             </Link>
                         </div>

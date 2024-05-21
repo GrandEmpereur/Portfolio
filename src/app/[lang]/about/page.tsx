@@ -1,53 +1,84 @@
-import React from 'react'
+import React from 'react';
 import Line from '@/components/Line';
 import MaxWidthWrapper from '@/components/MaxWidthWrapper';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { EducationItems, ExperienceItems, MainStack, OtherStack, Languages, SoftSkills } from '@/lib/data/about';
-import { Metadata } from 'next';
 import { Locale } from '@/i18nConfig';
+import { getDictionary } from '@/get-dictionary';
 
-export const metadata: Metadata = {
-    title: "Bartosik Patrick - About Me ",
-    description: "Discover the cutting-edge portfolio of Bartosik Patrick, a seasoned Full Stack Developer specializing in React, Next.js, and Tailwind CSS. Dive into a showcase of innovative web applications that blend aesthetics with functionality, crafted to push the boundaries of digital experiences.",
-};
+export async function generateMetadata({ params: { lang } }: { params: { lang: Locale } }) {
+    const dict = await getDictionary(lang);
 
-function page({
+    return {
+        title: dict.TemplateAbout.metadata.title,
+        description: dict.TemplateAbout.metadata.description,
+        openGraph: {
+            title: dict.TemplateAbout.metadata.title,
+            description: dict.TemplateAbout.metadata.description,
+            url: `https://patrick.bartosik.fr/${lang}/about`,
+            type: 'website',
+            images: [
+                {
+                    url: 'https://patrick.bartosik.fr/img/about/aboutHero.png', 
+                    width: 800,
+                    height: 600,
+                    alt: dict.TemplateAbout.aboutMe.heroImageAlt,
+                },
+            ],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: dict.TemplateAbout.metadata.title,
+            description: dict.TemplateAbout.metadata.description,
+            images: [
+                {
+                    url: 'https://patrick.bartosik.fr/img/about/aboutHero.png',
+                    alt: dict.TemplateAbout.aboutMe.heroImageAlt,
+                },
+            ],
+        },
+    };
+}
+
+async function Page({
     params: { lang },
 }: {
     params: { lang: Locale };
 }) {
+    const dict = await getDictionary(lang);
+
     return (
         <>
             <div className='relative '>
                 <Line />
 
-                <MaxWidthWrapper >
+                <MaxWidthWrapper>
                     <section id='About-hero' className='About-hero flex flex-col w-full gap-y-12'>
                         <div className="about__title">
-                            <h1 className='about__title-sub font-semibold text-2xl '>About me</h1>
-                            <h4 className='about__title-main keep-color '>All You Want to Know About Me</h4>
+                            <h1 className='about__title-sub font-semibold text-2xl '>{dict.TemplateAbout.aboutMe.titleSub}</h1>
+                            <h4 className='about__title-main keep-color '>{dict.TemplateAbout.aboutMe.titleMain}</h4>
                         </div>
 
                         <div className='w-full lg:h-[350px]'>
-                            <Image src={'/img/about/aboutHero.png'} alt={''} width={1108} height={537} sizes="100vw" style={{ width: '100%', height:'100%',  objectFit: 'cover'  }} loading='eager' />
+                            <Image src={'/img/about/aboutHero.png'} alt={dict.TemplateAbout.aboutMe.heroImageAlt} width={1108} height={537} sizes="100vw" style={{ width: '100%', height:'100%', objectFit: 'cover' }} loading='eager' />
                         </div>
 
                         <div className='flex flex-col w-full gap-y-5'>
                             <div className='flex flex-col gap-y-2'>
-                                <h2 className='about__title-main'>M. Patrick</h2>
-                                <p>Full stack Web Developer </p>
+                                <h2 className='about__title-main'>{dict.TemplateAbout.aboutMe.name}</h2>
+                                <p>{dict.TemplateAbout.aboutMe.role}</p>
                             </div>
                             <div className='flex flex-col w-full gap-y-5'>
-                                <p>Hello, I am Patrick, a seasoned Full Stack Developer with a deep focus on the JavaScript ecosystem, specializing in building scalable and performant web applications using React and Next.js.</p>
-                                <p>Over the years, I have honed my skills in JavaScript, mastering frameworks and libraries essential for modern web development. My expertise in React and Next.js allows me to deliver dynamic, SEO-friendly websites that provide excellent user experiences and meet the high standards of today's web applications.</p>
-                                <p>My professional journey has been dedicated to developing robust solutions, optimizing web performance, and integrating advanced features that ensure minimal maintenance and high efficiency. Whether it's enhancing existing applications or crafting new ones from the ground up, my goal is always to leverage my technical skills to produce cutting-edge, accessible, and easy-to-maintain web platforms.</p>
+                                {dict.TemplateAbout.aboutMe.introduction.map((paragraph: string, index: number) => (
+                                    <p key={index}>{paragraph}</p>
+                                ))}
                             </div>
 
                             <div>
                                 <a href={'/CV.pdf'} download="/CV.pdf">
-                                    <Button className='rounded-full ' variant={'other'} size={'lg'} >Download My Resume</Button>
+                                    <Button className='rounded-full ' variant={'other'} size={'lg'}>{dict.TemplateAbout.aboutMe.downloadResume}</Button>
                                 </a>
                             </div>
                         </div>
@@ -61,10 +92,10 @@ function page({
 
                         <div className='flex gap-x-10 flex-col lg:flex-row '>
                             <div className='experience__education w-full flex flex-col gap-10 lg:w-1/2'>
-                                <h3 className='experience__heading'>Education</h3>
+                                <h3 className='experience__heading'>{dict.TemplateAbout.experience.education}</h3>
                                 {EducationItems.map((item, index) => (
                                     <div key={index} className='experience__item flex w-full justify-between items-center'>
-                                        <div className='hidden items-center gap-x-5 gap-y-5  | md:flex '>
+                                        <div className='hidden items-center gap-x-5 gap-y-5 | md:flex '>
                                             <div className='experience__sphere '></div>
                                             <div>
                                                 <Badge className='experience__date p-2'>{item.date}</Badge>
@@ -82,7 +113,7 @@ function page({
                                 ))}
                             </div>
                             <div className='experience__professional w-full flex flex-col gap-10 lg:w-1/2'>
-                                <h3 className='experience__heading'>Experience</h3>
+                                <h3 className='experience__heading'>{dict.TemplateAbout.experience.experience}</h3>
                                 {ExperienceItems.map((item, index) => (
                                     <div key={index} className='experience__item flex w-full justify-between items-center'>
                                         <div className='hidden items-center gap-x-5 gap-y-5 | md:flex '>
@@ -109,15 +140,15 @@ function page({
                 <MaxWidthWrapper className='skills-wrapper mt-52'>
                     <section id='skills' className='skills skills__container flex flex-col w-full gap-y-12'>
                         <div className="skills__header">
-                            <h3 className='skills__subtitle'>About Me</h3>
-                            <h4 className='skills__title keep-color'>Everything You Need to Know About My Skills</h4>
+                            <h3 className='skills__subtitle'>{dict.TemplateAbout.skills.title}</h3>
+                            <h4 className='skills__title keep-color'>{dict.TemplateAbout.skills.coreTechnologiesDescription}</h4>
                         </div>
 
                         <div className='skills__sections w-full flex flex-col gap-y-14'>
                             <div className="skills__section w-full flex flex-col gap-y-8">
                                 <div className='flex flex-col gap-y-2'>
-                                    <h3 className='skills__heading variant'>My Core Programming Technologies</h3>
-                                    <h4 className='keep-color'>Discover the key technologies I specialize in for building modern and scalable applications.</h4>
+                                    <h3 className='skills__heading variant'>{dict.TemplateAbout.skills.coreTechnologies}</h3>
+                                    <h4 className='keep-color'>{dict.TemplateAbout.skills.coreTechnologiesDescription}</h4>
                                 </div>
                                 <div className='skills__icons flex flex-wrap w-full items-center justify-evenly gap-5'>
                                     {MainStack.map((item, index) => (
@@ -131,8 +162,8 @@ function page({
 
                             <div className="skills__section w-full flex flex-col gap-y-8">
                                 <div className='flex flex-col gap-y-2'>
-                                    <h3 className='skills__heading'>I Can Work with Other Programming Technologies</h3>
-                                    <h4 className='keep-color'>Discover other programming langue i have learn during side projet or during school cours</h4>
+                                    <h3 className='skills__heading'>{dict.TemplateAbout.skills.otherTechnologies}</h3>
+                                    <h4 className='keep-color'>{dict.TemplateAbout.skills.otherTechnologiesDescription}</h4>
                                 </div>
                                 <div className='skills__icons flex flex-wrap w-full items-center justify-evenly gap-5'>
                                     {OtherStack.map((item, index) => (
@@ -145,8 +176,8 @@ function page({
                             </div>
 
                             <div className="skills__section w-full flex flex-col gap-y-8">
-                                <h3 className='skills__heading'>Language Proficiencies</h3>
-                                <h4 className='keep-color'>My linguistic capabilities span multiple languages, allowing for effective communication in diverse environments.</h4>
+                                <h3 className='skills__heading'>{dict.TemplateAbout.skills.languages}</h3>
+                                <h4 className='keep-color'>{dict.TemplateAbout.skills.languagesDescription}</h4>
                                 <div className='skills__icons flex flex-col w-full gap-y-6 items-center justify-between | md:flex-row md:gap-y-0 '>
                                     {Languages.map((item, index) => (
                                         <div key={index} className='language__item flex flex-col items-center gap-y-2 '>
@@ -159,8 +190,8 @@ function page({
 
                             <div className="skills__section w-full flex flex-col gap-y-8">
                                 <div className='flex flex-col gap-y-2'>
-                                    <h3 className='skills__heading'>Soft Skills</h3>
-                                    <h4 className='keep-color'>Discover all SoftSkills noting i have seen during school class & self experience</h4>
+                                    <h3 className='skills__heading'>{dict.TemplateAbout.skills.softSkills}</h3>
+                                    <h4 className='keep-color'>{dict.TemplateAbout.skills.softSkillsDescription}</h4>
                                 </div>
                                 <div className='skills__icons flex flex-wrap w-full items-center gap-5'>
                                     {SoftSkills.map((item, index) => (
@@ -175,7 +206,7 @@ function page({
                 </MaxWidthWrapper>
             </div>
         </>
-    )
+    );
 }
 
-export default page
+export default Page;
