@@ -28,8 +28,6 @@ export const metadata: Metadata = {
   description: "Discover the cutting-edge portfolio of Bartosik Patrick, a seasoned Full Stack Developer specializing in React, Next.js. Dive into a showcase of innovative web applications that blend aesthetics with functionality, crafted to push the boundaries of digital experiences.",
 };
 
-//@ts-nocheck
-// @ts-ignore
 export default function RootLayout({
   children,
   params,
