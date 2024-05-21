@@ -2,98 +2,111 @@
     "TemplateHome": {
         "home": {
             "hero": {
-                "hero_title": "Développeur Full Stack ",
-                "hero_description": "Spécialisé dans React et Next.js, je construis des applications web avancées et évolutives adaptées aux besoins des entreprises. Profitez de mon expertise en technologie de pointe pour donner vie à vos projets.",
-                "hero_scroll": "DÉFILER"
+                "hero_title": "Experienced Full Stack Developer",
+                "hero_description": "Specializing in React and Next.js, I build advanced, scalable web applications tailored to business needs. Benefit from my cutting-edge technology expertise to bring your projects to life. As a seasoned Full Stack Developer, I ensure that each web application is optimized for performance, SEO, and user experience.",
+                "hero_scroll": "SCROLL"
             },
             "tech_stack": {
-                "title": "Ma Stack Technique"
+                "title": "My Technical Stack"
             },
             "about": {
-                "subtitle": "À propos de moi",
-                "title": "Je Crée des Sites Web de Classe Mondiale",
-                "description_title": "Découvrez l'Art du Code avec moi",
-                "description": "Embarquez dans un voyage à travers le développement web de pointe avec moi, un développeur Full Stack expérimenté. Avec plus de quatre ans d'expérience dans le paysage dynamique de JavaScript, je me spécialise dans la création d'expériences utilisateur immersives. Mon outil de travail, riche en frameworks modernes comme React.js et Next.js, propulse les entreprises et les individus vers l'excellence numérique.",
-                "button": "Explorez Plus"
+                "subtitle": "About Me",
+                "title": "Creating World-Class Websites",
+                "description_title": "Discover the Art of Coding with a Full Stack Developer",
+                "description": "Embark on a journey through cutting-edge web development with me, an experienced Full Stack Developer. With over four years of experience in the dynamic JavaScript landscape, I specialize in creating immersive user experiences. My toolkit, rich with modern frameworks like React.js and Next.js, propels businesses and individuals towards digital excellence. Whether it's a complex web application or a simple landing page, I focus on delivering high-quality code that enhances both functionality and aesthetics.",
+                "button": "Explore More"
             },
             "services": {
                 "subtitle": "Services",
-                "title": "Explorez Mon Expertise"
+                "title": "Explore My Expertise in Full Stack Development",
+                "description": "Offering a comprehensive range of services, from front-end development with React to back-end solutions with Node.js, I cater to all your web development needs. My expertise includes creating responsive designs, integrating APIs, and optimizing applications for speed and SEO. Partner with me to transform your digital presence."
             },
             "portfolio": {
-                "subtitle": "PORTFOLIO",
-                "title": "Projets Récents",
-                "description": "Explorez ma galerie de projets divers pour voir des solutions innovantes adaptées aux besoins uniques des entreprises.",
-                "button": "Découvrez Plus"
+                "subtitle": "Portfolio",
+                "title": "Recent Projects",
+                "description": "Explore my diverse project gallery to see innovative solutions tailored to the unique needs of businesses. Each project highlights my ability to adapt to different industries and requirements, showcasing skills in both design and development.",
+                "button": "Discover More"
             },
             "newsletter": {
-                "title": "Rejoignez Notre Aventure — Créez Avec Nous!",
-                "button": "Connectez-vous Maintenant"
+                "title": "Join Our Creative Journey — Create With Us!",
+                "description": "Stay updated with the latest trends in web development, receive insights from a Full Stack Developer, and join a community passionate about technology. Subscribe to our newsletter and start your journey towards digital excellence.",
+                "button": "Connect Now"
             }
         },
         "about": {
             "header": {
-                "title": "À Propos de Moi"
+                "title": "About Me"
             },
             "content": {
-                "intro": "Bonjour, je suis Patrick Bartosik, un développeur Full Stack expérimenté..."
+                "intro": "Hello, I'm Patrick Bartosik, an experienced Full Stack Developer with a passion for building robust and scalable web applications. My journey in the tech world started over four years ago, and since then, I have mastered a variety of frameworks and technologies. From creating dynamic user interfaces with React to building efficient server-side applications with Node.js, my skill set is both diverse and deep. I thrive on solving complex problems and delivering solutions that not only meet but exceed client expectations. My approach to web development is holistic, ensuring that every project is performant, accessible, and visually appealing."
             }
         },
         "services": {
             "header": {
-                "title": "Nos Services"
+                "title": "Our Services"
             },
             "content": {
-                "description": "Nous offrons une large gamme de services pour répondre à vos besoins..."
+                "description": "We offer a wide range of services to meet your needs, including full stack development, front-end and back-end integration, API development, and performance optimization. Our expertise extends to cloud solutions, database management, and custom software development. Whether you're a startup looking to build a new product or an established business seeking to improve your digital presence, we have the skills and experience to help you succeed."
             }
         },
         "portfolio": {
             "header": {
-                "title": "Mon Travail"
+                "title": "My Work"
             },
             "content": {
-                "description": "Explorez mes projets..."
+                "description": "Explore my projects to see examples of my work in action. Each project is a testament to my ability to deliver high-quality web applications that are both functional and aesthetically pleasing. From e-commerce platforms to personal blogs, my portfolio demonstrates my versatility and commitment to excellence. Learn how I can help you achieve your digital goals with innovative and effective solutions."
             }
         }
     },
     "TemplateAbout": {
         "metadata": {
-            "title": "À propos de Bartosik Patrick - Développeur Full Stack Innovant",
-            "description": "Découvrez le parcours et l'expertise de Bartosik Patrick, un développeur Full Stack passionné par React, Next.js et Tailwind CSS. Plongez dans ses expériences et ses compétences pour voir comment il transforme des idées en solutions numériques performantes."
+            "title": "About Patrick Bartosik - Innovative Full Stack Developer",
+            "description": "Discover the journey and expertise of Patrick Bartosik, a Full Stack Developer passionate about React, Next.js, and Tailwind CSS. Dive into his experiences and skills to see how he transforms ideas into high-performing digital solutions. With a focus on SEO, performance, and user experience, Patrick ensures that every project is not only visually stunning but also technically superior."
         },
         "aboutMe": {
-            "titleSub": "À propos de moi",
-            "titleMain": "Tout ce que vous voulez savoir sur moi",
-            "heroImageAlt": "Image de Bartosik Patrick",
-            "name": "M. Patrick",
-            "role": "Développeur Web Full Stack",
+            "titleSub": "About Me",
+            "titleMain": "Everything You Want to Know About Me",
+            "heroImageAlt": "Image of Patrick Bartosik",
+            "name": "Mr. Patrick",
+            "role": "Full Stack Web Developer",
             "introduction": [
-                "Bonjour, je suis Patrick, un développeur Full Stack expérimenté avec un fort accent sur l'écosystème JavaScript, spécialisé dans la création d'applications web évolutives et performantes en utilisant React et Next.js.",
-                "Au fil des ans, j'ai perfectionné mes compétences en JavaScript, maîtrisant les frameworks et bibliothèques essentiels pour le développement web moderne. Mon expertise en React et Next.js me permet de livrer des sites web dynamiques, optimisés pour le SEO, qui offrent d'excellentes expériences utilisateur et répondent aux normes élevées des applications web d'aujourd'hui.",
-                "Mon parcours professionnel a été consacré à développer des solutions robustes, à optimiser les performances web et à intégrer des fonctionnalités avancées qui garantissent une maintenance minimale et une haute efficacité. Que ce soit pour améliorer des applications existantes ou en créer de nouvelles à partir de zéro, mon objectif est toujours de tirer parti de mes compétences techniques pour produire des plateformes web de pointe, accessibles et faciles à maintenir."
+                "Hello, I'm Patrick, an experienced Full Stack Developer with a strong focus on the JavaScript ecosystem, specializing in building scalable and performant web applications using React and Next.js. Over the years, I have honed my skills in JavaScript, mastering essential frameworks and libraries for modern web development. My expertise in React and Next.js enables me to deliver dynamic, SEO-friendly websites that provide excellent user experiences and meet the high standards of today's web applications.",
+                "My professional journey has been dedicated to developing robust solutions, optimizing web performance, and integrating advanced features that ensure minimal maintenance and high efficiency. Whether enhancing existing applications or building new ones from the ground up, my goal is always to leverage my technical skills to produce cutting-edge, accessible, and easy-to-maintain web platforms. My projects often involve a comprehensive approach, from initial concept and design to final deployment and maintenance.",
+                "Beyond my technical skills, I am deeply committed to staying updated with the latest trends and best practices in web development. This continuous learning ensures that I can offer innovative solutions that are not only effective but also future-proof. I believe in the power of collaboration and strive to build strong relationships with my clients, understanding their needs and delivering results that drive success."
             ],
-            "downloadResume": "Télécharger mon CV"
+            "downloadResume": "Download My Resume"
         },
         "experience": {
-            "education": "Éducation",
-            "experience": "Expérience"
+            "education": "Education",
+            "experience": "Professional Experience"
         },
         "skills": {
-            "title": "Tout ce que vous devez savoir sur mes compétences",
-            "coreTechnologies": "Mes principales technologies de programmation",
-            "coreTechnologiesDescription": "Découvrez les technologies clés que je maîtrise pour créer des applications modernes et évolutives.",
-            "otherTechnologies": "Je peux travailler avec d'autres technologies de programmation",
-            "otherTechnologiesDescription": "Découvrez d'autres langages de programmation que j'ai appris lors de projets parallèles ou au cours de mes études.",
-            "languages": "Compétences linguistiques",
-            "languagesDescription": "Mes capacités linguistiques couvrent plusieurs langues, permettant une communication efficace dans des environnements divers.",
-            "softSkills": "Compétences interpersonnelles",
-            "softSkillsDescription": "Découvrez toutes les compétences interpersonnelles que j'ai acquises au cours de mes cours scolaires et de mon expérience personnelle."
+            "title": "Everything You Need to Know About My Skills",
+            "coreTechnologies": "My Core Programming Technologies",
+            "coreTechnologiesDescription": "Discover the key technologies I specialize in for building modern and scalable applications. My proficiency includes React, Next.js, Node.js, and Tailwind CSS, ensuring that each project is built with the best tools for optimal performance and scalability.",
+            "otherTechnologies": "I Can Work with Other Programming Technologies",
+            "otherTechnologiesDescription": "Explore other programming languages and tools I have learned during side projects and academic courses. This includes Python, Ruby on Rails, and PHP, showcasing my versatility and ability to adapt to different development environments.",
+            "languages": "Language Proficiencies",
+            "languagesDescription": "My linguistic capabilities span multiple languages, allowing for effective communication in diverse environments. This includes proficiency in English, French, and Spanish, facilitating collaboration with a global clientele.",
+            "softSkills": "Soft Skills",
+            "softSkillsDescription": "Discover the soft skills I have acquired during school classes and personal experiences, including teamwork, problem-solving, and effective communication. These skills complement my technical expertise and contribute to my overall effectiveness as a developer."
+        }
+    },
+    "TemplateContact": {
+        "metadata": {
+            "title": "Contact Patrick Bartosik - Full Stack Developer",
+            "description": "Get in touch with Patrick Bartosik, an experienced Full Stack Developer specializing in React, Next.js, and Tailwind CSS. Let's discuss your projects and see how I can help transform your ideas into high-performing digital solutions."
+        },
+        "contactMe": {
+            "titleSub": "Contact Me",
+            "titleMain": "Let's Discuss Your Project",
+            "description": "I'm eager to discuss your project ideas and see how I can help you realize them. Whether you need front-end development, back-end solutions, or SEO advice, I'm here to help. Fill out the form below, and I'll get back to you as soon as possible."
         }
     },
     "TemplateFooter": {
         "footer": {
             "contact": {
-                "title": "Contactez-Nous",
+                "title": "Contact Us",
                 "email": "Email: BartosikPatrickPro@gmail.com",
                 "social": {
                     "instagram": "Instagram",
@@ -102,18 +115,210 @@
                 }
             },
             "quick_links": {
-                "title": "Liens Rapides",
-                "home": "Accueil",
-                "about": "À propos",
+                "title": "Quick Links",
+                "home": "Home",
+                "about": "About",
                 "services": "Services",
                 "contact": "Contact",
-                "sitemap": "Plan du site"
+                "sitemap": "Sitemap"
             },
             "legal": {
-                "terms": "Conditions d'Utilisation",
-                "privacy": "Politique de Confidentialité",
-                "gtu": "CGU"
+                "terms": "Terms of Use",
+                "privacy": "Privacy Policy",
+                "gtu": "GTU"
             }
         }
+    },
+    "TemplateGTU": {
+        "metadata": {
+            "title": "General Terms of Use - Patrick Bartosik",
+            "description": "Read the General Terms of Use for Patrick Bartosik's website. Discover how your access and use of the site are governed and what responsibilities you have as a user."
+        },
+        "legalText": [
+            "General Terms of Use (GTU)",
+            "Article 1: Introduction",
+            "Welcome to the Patrick Bartosik website. These General Terms of Use govern your access to and use of our website and its associated services. By accessing or using our website, you agree to be bound by these terms and all terms incorporated by reference. If you do not agree to all of these terms, do not use our website.",
+            "Article 2: Legal Notice",
+            "The website patrick.bartosik.fr (hereafter \"the Site\") is operated by Patrick Bartosik, whose registered office is located at 28bis Rue Honoré Sohier, 93600 Aulnays-Sous-Bois, France, registered under the number 90093821800014.",
+            "Article 3: Website Access and Usage",
+            "The Site provides users with access to a variety of resources, including but not limited to:",
+            "- Informational content",
+            "- User interfaces",
+            "- Software tools",
+            "Access to the Site is free of charge to any user with internet access. All costs necessary for the access to services (internet access, computer equipment, etc.) are borne by the user. Access to specific services on the Site may require the user to create an account and provide certain personal information.",
+            "The Site strives to provide accurate information and updates. However, inaccuracies or omissions may occur. The operator in charge of the Site cannot be held responsible for any omission, inaccuracy, or deficiency in the update, whether caused by the Site or by third-party partners who provide this information.",
+            "Article 4: User Responsibilities",
+            "Users are responsible for the security of their account access credentials. Any usage of the site from a user’s account is deemed to have been used by that user. The Site reserves the right to request users to adhere to these GTU under penalty of temporary or permanent suspension of the account.",
+            "Users agree not to disrupt the operation of the service offered by www.patrickbartosik.com in any way whatsoever. In particular, users agree to refrain from posting illegal, defamatory, or pornographic messages on or through the Site.",
+            "Article 5: Intellectual Property",
+            "Content on the Site, including but not limited to text, graphics, images, logos, icons, and audio clips, is the property of the site operator or is used with permission of the respective owners and is subject to copyright and other intellectual property rights under national laws and international treaties.",
+            "Users may not use, reproduce, distribute, modify, transmit, reuse, repost, or use the content of the Site for public or commercial purposes without the express written permission of the Site operator.",
+            "Article 6: Data Protection and Privacy",
+            "For information on how user information is collected, used, and disclosed by us in connection with your use of the Site, please consult our Privacy Policy.",
+            "Article 7: Applicable Law and Jurisdiction",
+            "These GTU are governed by and construed in accordance with the laws of France, without giving effect to any principles of conflicts of law. Any dispute arising from these terms or related to the use of the Site is subject to the exclusive jurisdiction of the courts of France.",
+            "Article 8: Changes to the General Terms of Use",
+            "The Site reserves the right to modify the contents of these GTU at any time without prior notice. Users are encouraged to check these terms periodically for changes. Your continued use of the site after the posting of changes constitutes your binding acceptance of such changes.",
+            "Conclusion",
+            "These GTU ensure the proper and fair functioning of the Site. By accessing the Site, you signify your agreement to these GTU. If you have any questions about these terms, please contact us at BartosikPatrickPro@gmail.com."
+        ]
+    },
+    "TemplatePrivacyPolicy": {
+        "metadata": {
+            "title": "Privacy Policy - Patrick Bartosik",
+            "description": "Read the Privacy Policy for Patrick Bartosik's website. Discover how your personal data is collected, used, and protected when you use our site."
+        },
+        "legalText": [
+            "Privacy Policy",
+            "Article 1: Preamble",
+            "This privacy policy applies to the site: Patrick Bartosik.",
+            "This privacy policy aims to expose to the users of the site:",
+            "- The manner in which their personal data are collected and processed. Should be considered as personal data all data that can identify a user. This includes first name and last name, age, postal address, email address, user's location or even his IP address;",
+            "- What rights users have regarding these data;",
+            "- Who is responsible for the processing of the collected and processed personal data;",
+            "- To whom these data are transmitted;",
+            "- Optionally, the site’s policy on \"cookies\".",
+            "This privacy policy supplements the legal notices.",
+            "Article 2: General principles regarding data collection and processing",
+            "In accordance with the provisions of Article 5 of the European Regulation 2016/679, the collection and processing of user data from the site respect the following principles:",
+            "- Legality, fairness, and transparency: data can only be collected and processed with the consent of the data owner. Whenever personal data will be collected, the user will be informed that his data is being collected, and why his data is being collected;",
+            "- Limited purposes: data collection and processing are executed to meet one or more objectives specified in these terms of use;",
+            "- Minimizing the collection and processing of data: only the data necessary for the proper execution of the objectives pursued by the site are collected;",
+            "- Reduced data retention in time: data is stored for a limited period of which the user is informed. If this information cannot be communicated, the user is informed of the criteria used to determine the duration of conservation;",
+            "- Integrity and confidentiality of the collected and processed data: the data controller commits to ensure the integrity and confidentiality of the collected data.",
+            "To be lawful, and in accordance with the requirements of Article 6 of the European Regulation 2016/679, the collection and processing of personal data may only occur if they comply with at least one of the following conditions:",
+            "- The user has expressly consented to the processing;",
+            "- Processing is necessary for the proper performance of a contract;",
+            "- The processing meets a legal obligation;",
+            "- The processing is explained by a need linked to the protection of the vital interests of the concerned individual or another person;",
+            "- The processing can be explained by a necessity linked to the performance of a mission of public interest or that relates to the exercise of public authority;",
+            "- The processing and collection of personal data are necessary for the legitimate private interests pursued by the data controller or by a third party.",
+            "Article 3: Personal data collected and processed in the framework of site navigation",
+            "A. Data collected and processed and collection mode",
+            "The personal data collected on the Patrick Bartosik site are as follows:",
+            "- IP addresses and browser cookies.",
+            "- First name, last name, email address, telephone, and company.",
+            "These data are collected when the user performs one of the following operations on the site:",
+            "- When the user visits one of the site's pages.",
+            "- When the user uses one of the contact forms.",
+            "The data controller will keep in the computer systems of the site and under reasonable security conditions all the data collected for a duration of: 26 months.",
+            "The collection and processing of the data serve the following purposes:",
+            "- Analysis of site traffic.",
+            "- To allow recontacting the user.",
+            "B. Transmission of data to third parties",
+            "The data may be transmitted to the following third party(ies):",
+            "Google and Vercel",
+            "C. Data hosting",
+            "The Patrick Bartosik site is hosted by: Vercel, whose headquarters is located at the following address:",
+            "San Francisco in the United States.",
+            "The data collected and processed by the site are transferred to the following country(ies): France, Ireland, and the United States. This transfer of personal data outside the European Union justifies the following reasons:",
+            "Location of the headquarters of third parties.",
+            "Article 4: Data Controller",
+            "A. The data controller",
+            "The data controller for personal data is: Patrick Bartosik. He can be contacted as follows:",
+            "By email: BartosikPatrickPro@gmail.com",
+            "The data controller is responsible for determining the purposes and means used in the processing of personal data.",
+            "B. Obligations of the data controller",
+            "The data controller commits to protect the collected personal data, not to transmit them to third parties without the user having been informed, and to respect the purposes for which these data were collected.",
+            "The site has an SSL certificate to ensure that the information and the transfer of data passing through the site are secured.",
+            "An SSL (\"Secure Socket Layer\" Certificate) aims to secure the data exchanged between the user and the site.",
+            "Moreover, the data controller commits to notify the user in case of correction or deletion of the data, unless this entails for him disproportionate formalities, costs, and steps.",
+            "In the case where the integrity, confidentiality, or security of the user's personal data is compromised, the data controller commits to inform the user by any means.",
+            "Article 5: User rights",
+            "In accordance with the regulation concerning the processing of personal data, the user has the rights listed below.",
+            "In order for the data controller to comply with his request, the user is required to communicate: his first name and last name as well as his email address.",
+            "The data controller is required to respond to the user within a maximum of 30 (thirty) days.",
+            "A. Presentation of the user's rights in data collection and processing",
+            "a. Right of access, rectification, and right to erasure",
+            "The user can take knowledge, update, modify or request the deletion of data concerning him, following the procedure set out below:",
+            "The user must send an email to the personal data processing manager, specifying the subject of his request and using the contact email address provided above.",
+            "b. Right to data portability",
+            "The user has the right to request the portability of his personal data, held by the site, to another site, by complying with the following procedure:",
+            "The user must make a request for the portability of his personal data to the data controller, by sending an email to the address provided above.",
+            "c. Right to limitation and opposition of data processing",
+            "The user has the right to request the limitation or to oppose the processing of his data by the site, without the site being able to refuse, except to demonstrate legitimate and compelling reasons, which can prevail over the interests and rights and freedoms of the user.",
+            "To request the limitation of data processing or to formulate an opposition to data processing, the user must follow the following procedure:",
+            "The user must make a request for limitation to the processing of his personal data to the data controller, by sending an email to the address provided above.",
+            "d. Right not to be the subject of a decision based exclusively on an automated process",
+            "In accordance with the provisions of Regulation 2016/679, the user has the right not to be the subject of a decision based exclusively on an automated process if the decision produces legal effects concerning him, or similarly significantly affects him.",
+            "e. Right to decide the fate of data after death",
+            "It is reminded to the user that he can organize what should be the future of his data collected and processed if he dies, in accordance with Law No. 2016-1321 of October 7, 2016.",
+            "f. Right to seize the competent control authority",
+            "In the event that the data controller decides not to respond to the user's request, and the user wishes to contest this decision, or, if he thinks that one of the rights listed above is infringed, he is entitled to seize the CNIL (National Commission on Informatics and Liberty, https://www.cnil.fr) or any competent judge.",
+            "B. Personal data of minor persons",
+            "In accordance with the provisions of Article 8 of the European Regulation 2016/679 and the Data Protection Act, only minors aged 15 years or more can consent to the processing of their personal data.",
+            "If the user is a minor under 15 years old, the agreement of a legal representative will be required so that personal data can be collected and processed.",
+            "The site publisher reserves the right to verify by any means that the user is over 15 years old, or that he will have obtained the agreement of a legal representative before browsing the site.",
+            "Article 6: Use of \"Cookies\" files",
+            "The site may have recourse to the techniques of \"cookies\".",
+            "A \"cookie\" is a small file (less than 4 ko), stored by the site on the user's hard drive, containing information related to the user's browsing habits.",
+            "These files allow him to process statistics and traffic information, facilitate navigation and improve the service for the user's comfort.",
+            "For the use of \"cookie\" files involving the storage and analysis of personal data, the user's consent is necessarily asked.",
+            "This user's consent is considered valid for a duration of 13 (thirteen) months maximum. At the end of this period, the site will again ask for the user's authorization to save \"cookies\" files on his hard drive.",
+            "a. User's opposition to the use of \"cookies\" files by the site",
+            "It is brought to the user's knowledge that he can oppose the recording of these \"cookies\" by configuring his navigation software.",
+            "For information, the user can find at the following addresses the steps to follow in order to configure his navigation software to oppose the recording of \"cookie\" files:",
+            "- Chrome: https://support.google.com/accounts/answer/61416?hl=en",
+            "- Firefox: https://support.mozilla.org/en-US/kb/enable-and-disable-cookies-website-preferences",
+            "- Safari: http://www.apple.com/legal/privacy/en-ww/",
+            "- Internet Explorer: https://support.microsoft.com/en-us/help/17442/windows-internet-explorer-delete-manage-cookies",
+            "- Opera: http://www.opera.com/help/tutorials/security/cookies/",
+            "In the case where the user decides to disable the \"cookies\" files, he may continue his navigation on the site. However, any dysfunction of the site caused by this manipulation could not be considered as being due to the site publisher.",
+            "b. Description of the \"cookies\" files used by the site",
+            "The site publisher draws the user's attention to the fact that the following cookies are used during his navigation:",
+            "Cookies authorized and recorded by browsers.",
+            "By browsing on the site, it is brought to the user's knowledge that \"cookie\" files of third parties may be recorded.",
+            "It is more particularly the following third parties:",
+            "Third parties listed in Article 3.B above.",
+            "Moreover, the site incorporates social network buttons, allowing the user to share his activity on the site. \"Cookie\" files of these social networks are therefore likely to be stored on the user's computer when he uses these features.",
+            "The user's attention is drawn to the fact that these sites have their own privacy policies and terms and conditions of use possibly different from the site. The site publisher invites users to consult the privacy policies and the terms and conditions of use of these sites.",
+            "Article 7: Condition of modification of the privacy policy",
+            "This privacy policy can be consulted at any time at the address indicated below:",
+            "https://Patrick.Bartosik.com/policy",
+            "The site publisher reserves the right to modify it to ensure its compliance with the law in force.",
+            "Therefore, the user is invited to come regularly consult this privacy policy to stay informed of the latest changes that will be brought to it.",
+            "It is brought to the user's knowledge that the last update of this privacy policy occurred on: 21/05/2024.",
+            "Article 8: Acceptance by the user of the privacy policy",
+            "By browsing on the site, the user attests having read and understood this privacy policy and accepts its conditions, particularly concerning the collection and processing of his personal data, as well as the use of \"cookie\" files."
+        ]
+    },
+    "TemplateLegalNotices": {
+        "metadata": {
+            "title": "Legal Notices - Patrick Bartosik",
+            "description": "Read the legal notices for Patrick Bartosik's website. Discover the legal information about the site publisher, host, and terms of use."
+        },
+        "legalText": [
+            "Legal Notices",
+            "In accordance with the provisions of Articles 6-III and 19 of the Law No. 2004-575 of June 21, 2004, for Confidence in the Digital Economy, known as L.C.E.N., users and visitors of Patrick Bartosik's website are hereby informed of these legal notices.",
+            "The Patrick Bartosik website is accessible at the following address: Patrick.Bartosik.fr (hereinafter \"the Site\"). Access and use of the Site are subject to these \"Legal Notices\" detailed below as well as applicable laws and/or regulations.",
+            "Connecting to, using, and accessing this Site implies full and unconditional acceptance by the user of all the provisions of these Legal Notices.",
+            "Article 1: Legal Information",
+            "Under Article 6 of Law No. 2004-575 of June 21, 2004, for confidence in the digital economy, this article specifies the identity of the various parties involved in its implementation and monitoring.",
+            "A. Site Publisher",
+            "The Patrick Bartosik site is published by:",
+            "Patrick Bartosik, having its registered office at the following address: 28bis rue Honoré Sohier, and registered under the number: 90093821800014 - Paris.",
+            "Share capital: 1000 euros",
+            "Phone: +33 (0)6 58 29 23 30",
+            "Email address: BartosikPatrickPro@gmail.com",
+            "hereinafter \"the Publisher\"",
+            "B. Publishing Director",
+            "The Publishing Director is:",
+            "Bartosik Patrick",
+            "hereinafter \"the Publishing Director\"",
+            "C. Site Host",
+            "The Patrick Bartosik site is hosted by:",
+            "Vercel Inc., located at the following address: San Francisco in the United States.",
+            "hereinafter \"the Host\"",
+            "D. Users",
+            "All Internet users who browse, read, view, and use the Patrick Bartosik site are considered users.",
+            "hereinafter \"the Users\"",
+            "Article 2 - Accessibility",
+            "The Site is in principle accessible to Users 24/24h and 7/7d, except for interruption, scheduled or not, for maintenance needs or in case of force majeure.",
+            "Should access to the Site become impossible, efforts will be made to restore access as soon as possible. The Site cannot be held responsible for any damage of any nature resulting from its unavailability.",
+            "Article 3 - Applicable Law and Jurisdiction",
+            "These Legal Notices are governed by French law. In case of dispute and in the absence of an amicable agreement, the dispute will be brought before the French courts in accordance with the rules of jurisdiction in force.",
+            "Article 4 - Contact",
+            "For any reporting of illegal content or activities, the User may contact the publisher at the following address: BartosikPatrickPro@gmail.com, or by registered mail with acknowledgment of receipt sent to the publisher at the coordinates specified in these legal notices."
+        ]
     }
 }
