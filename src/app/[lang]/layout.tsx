@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Poppins, Plus_Jakarta_Sans  } from "next/font/google";
+import { Poppins, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import '@/scss/styles.scss';
 import NavBar from "@/components/NavBar";
@@ -26,10 +26,12 @@ const mono = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Bartosik Patrick - Full Stack Developer | Expert in React, Next.js, & Tailwind CSS",
-  description: "Discover the cutting-edge portfolio of Bartosik Patrick, a seasoned Full Stack Developer specializing in React, Next.js, and Tailwind CSS. Dive into a showcase of innovative web applications that blend aesthetics with functionality, crafted to push the boundaries of digital experiences.",
+  title: "Bartosik Patrick - Full Stack Developer | Expert in React & Next.js",
+  description: "Discover the cutting-edge portfolio of Bartosik Patrick, a seasoned Full Stack Developer specializing in React, Next.js. Dive into a showcase of innovative web applications that blend aesthetics with functionality, crafted to push the boundaries of digital experiences.",
 };
 
+//@ts-nocheck
+// @ts-ignore
 export default function RootLayout({
   children,
   params,
@@ -40,9 +42,9 @@ export default function RootLayout({
   return (
     <html lang={params.lang} className="dark">
       <body className={cn(
-            'min-h-screen relative font-sans antialiased grainy ',
-            inter.className, 
-          )}>
+        'min-h-screen relative font-sans antialiased grainy ',
+        inter.className,
+      )}>
         <NavBar params={params} />
         {children}
         <Footer params={params} />
