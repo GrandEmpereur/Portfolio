@@ -4,7 +4,6 @@ import MaxWidthWrapper from '@/components/MaxWidthWrapper';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { EducationItems, ExperienceItems, MainStack, OtherStack, Languages, SoftSkills } from '@/lib/data/about';
 import { Locale } from '@/i18nConfig';
 import { getDictionary } from '@/get-dictionary';
 
@@ -92,18 +91,18 @@ async function Page({
 
                         <div className='flex gap-x-10 flex-col lg:flex-row '>
                             <div className='experience__education w-full flex flex-col gap-10 lg:w-1/2'>
-                                <h3 className='experience__heading'>{dict.TemplateAbout.experience.education}</h3>
-                                {EducationItems.map((item, index) => (
+                                <h3 className='experience__heading'>{dict.TemplateAbout.experience.education_title}</h3>
+                                {dict.TemplateAbout.experience.education.map((item, index ) => (
                                     <div key={index} className='experience__item flex w-full justify-between items-center'>
                                         <div className='hidden items-center gap-x-5 gap-y-5 | md:flex '>
                                             <div className='experience__sphere '></div>
                                             <div>
-                                                <Badge className='experience__date p-2'>{item.date}</Badge>
+                                                <Badge className='experience__date p-2'>{item.period}</Badge>
                                             </div>
                                         </div>
                                         <div className='flex flex-col gap-2 w-full | md:w-1/2'>
                                             <div className='block md:hidden'>
-                                                <Badge className='experience__date p-2'>{item.date}</Badge>
+                                                <Badge className='experience__date p-2'>{item.period}</Badge>
                                             </div>
                                             <h4 className='experience__title'>{item.title}</h4>
                                             <p className='experience__location'>{item.location}</p>
@@ -113,18 +112,18 @@ async function Page({
                                 ))}
                             </div>
                             <div className='experience__professional w-full flex flex-col gap-10 lg:w-1/2'>
-                                <h3 className='experience__heading'>{dict.TemplateAbout.experience.experience}</h3>
-                                {ExperienceItems.map((item, index) => (
+                                <h3 className='experience__heading'>{dict.TemplateAbout.experience.professional_title}</h3>
+                                {dict.TemplateAbout.experience.professional.map((item, index) => (
                                     <div key={index} className='experience__item flex w-full justify-between items-center'>
                                         <div className='hidden items-center gap-x-5 gap-y-5 | md:flex '>
                                             <div className='experience__sphere '></div>
                                             <div>
-                                                <Badge className='experience__date p-2'>{item.date}</Badge>
+                                                <Badge className='experience__date p-2'>{item.period}</Badge>
                                             </div>
                                         </div>
                                         <div className='flex flex-col gap-2 w-full | md:w-1/2'>
                                             <div className='block md:hidden'>
-                                                <Badge className='experience__date p-2'>{item.date}</Badge>
+                                                <Badge className='experience__date p-2'>{item.period}</Badge>
                                             </div>
                                             <h4 className='experience__title'>{item.title}</h4>
                                             <p className='experience__location'>{item.location}</p>
@@ -151,7 +150,7 @@ async function Page({
                                     <h4 className='keep-color'>{dict.TemplateAbout.skills.coreTechnologiesDescription}</h4>
                                 </div>
                                 <div className='skills__icons flex flex-wrap w-full items-center justify-evenly gap-5'>
-                                    {MainStack.map((item, index) => (
+                                    {dict.TemplateAbout.skills.mainStack.map((item, index) => (
                                         <div key={index} className='skill__item flex flex-wrap flex-col items-center gap-4'>
                                             <Image src={item.icon} alt={`${item.name} icon`} width={40} height={40} style={{ objectFit: 'cover' }} />
                                             <span className='skill__name'>{item.name}</span>
@@ -166,7 +165,7 @@ async function Page({
                                     <h4 className='keep-color'>{dict.TemplateAbout.skills.otherTechnologiesDescription}</h4>
                                 </div>
                                 <div className='skills__icons flex flex-wrap w-full items-center justify-evenly gap-5'>
-                                    {OtherStack.map((item, index) => (
+                                    {dict.TemplateAbout.skills.otherStack.map((item, index) => (
                                         <div key={index} className='skill__item flex flex-wrap flex-col items-center gap-y-4'>
                                             <Image src={item.icon} alt={`${item.name} icon`} width={40} height={40} style={{ objectFit: 'cover' }} />
                                             <span className='skill__name'>{item.name}</span>
@@ -179,7 +178,7 @@ async function Page({
                                 <h3 className='skills__heading'>{dict.TemplateAbout.skills.languages}</h3>
                                 <h4 className='keep-color'>{dict.TemplateAbout.skills.languagesDescription}</h4>
                                 <div className='skills__icons flex flex-col w-full gap-y-6 items-center justify-between | md:flex-row md:gap-y-0 '>
-                                    {Languages.map((item, index) => (
+                                    {dict.TemplateAbout.skills.languagesItems.map((item, index) => (
                                         <div key={index} className='language__item flex flex-col items-center gap-y-2 '>
                                             <span className='language__name text-xl font-semibold'>{item.name}</span>
                                             <p className='language__description w-1/2 text-center'>{item.description}</p>
@@ -194,7 +193,7 @@ async function Page({
                                     <h4 className='keep-color'>{dict.TemplateAbout.skills.softSkillsDescription}</h4>
                                 </div>
                                 <div className='skills__icons flex flex-wrap w-full items-center gap-5'>
-                                    {SoftSkills.map((item, index) => (
+                                    {dict.TemplateAbout.skills.softSkillsItems.map((item, index) => (
                                         <div key={index} className='skill__item'>
                                             <span className='skill__name'>{item.name}</span>
                                         </div>

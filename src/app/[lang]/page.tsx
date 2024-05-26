@@ -1,5 +1,5 @@
 // pages/index.tsx ou src/app/page.tsx
-import ServerSideTranslations from '@/components/ServerSideTranslations';
+import ServerSideTranslations from '@/components/serveur/ServerSideTranslations';
 import { Locale } from '@/i18nConfig';
 
 export default function Home({

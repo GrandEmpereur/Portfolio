@@ -4,9 +4,7 @@ import React, { useState } from 'react';
 import Line from '@/components/Line';
 import Image from 'next/image';
 import { ArrowRight, ChevronsLeft, ChevronsRight } from 'lucide-react';
-import { states, stacks } from '@/lib/data/home';
 import { projects } from '@/lib/data/portfolio';
-import { services } from '@/lib/data/services';
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import MaxWidthWrapper from '@/components/MaxWidthWrapper';
@@ -81,7 +79,7 @@ const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
                                     <Image src={'/img/Hero-img.png'} alt={'My face'} width={500} height={630} loading='eager' />
                                 </div>
                                 <div className='hero__stats px-8 pt-20 flex flex-col gap-y-5'>
-                                    {states.map((state, index) => (
+                                    {dictionary.TemplateHome.home.states.map((state: (any), index: (number)) => (
                                         <div key={index} className='hero__stat'>
                                             <p className='hero__stat-number font-semibold text-white' style={{ fontSize: '40px' }}>{state.number}</p>
                                             <p className='hero__stat-description text-sm text-white'>{state.description}</p>
@@ -95,7 +93,7 @@ const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
                     <div className='hero__stacks flex flex-col gap-y-5 mt-32'>
                         <h3 className='keep-size text-center lg:text-left'>{dictionary.TemplateHome.home.tech_stack.title}</h3>
                         <div className='hero__stacks-list flex flex-wrap justify-center lg:justify-start gap-10 pt-9 pb-14 '>
-                            {stacks.map((stack, index) => (
+                            {dictionary.TemplateHome.home.stacks.map((stack: (any), index: (number)) => (
                                 <div key={index} className='hero__stack flex flex-col items-center justify-center gap-y-3'>
                                     <Image src={stack.src} alt={stack.alt} width={60} height={60} loading='lazy' />
                                     <span>{stack.name}</span>
@@ -139,13 +137,13 @@ const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
                             <h2 className='services__header-main-title keep-size text-2xl md:text-4xl '>{dictionary.TemplateHome.home.services.title}</h2>
                         </div>
                         <div className='services__list flex flex-col lg:flex-row items-center gap-y-10 justify-between w-full pt-10 '>
-                            {services.map((service, index) => (
+                            {dictionary.TemplateHome.home.services.servicesList.map((service: (any), index: (number)) => (
                                 <div key={index} className='services__item service relative flex flex-col w-full lg:w-max'>
                                     <Image src={service.icon} alt={service.iconAlt} width={service.iconWidth} height={service.iconHeight} className='services__item-icon image pb-5 lg:pb-0 lg:absolute ' />
                                     {splitTitle(service.title)}
                                     <p className='services__item-description pt-5 '>{service.generalDescription}</p>
                                     <div className='services__item-list pt-3 pb-10 '>
-                                        {service.detailedDescription.map((item, index) => (
+                                        {service.detailedDescription.map((item: (any), index: (number)) => (
                                             <li key={index} className='services__item-list-entry'>{item.title}</li>
                                         ))}
                                     </div>
@@ -160,14 +158,14 @@ const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
 
                 <section id='lastWorks' className='portfolio lastWorks mt-20 lg:mt-40 flex flex-col items-start justify-between w-full h-full'>
                     <MaxWidthWrapper>
-                        <div className='portfolio__header flex flex-col w-full justify-between gap-y-5 lg:flex-row lg:gap-y-0 '>
+                        <div className='portfolio__header w-full flex flex-col justify-between gap-y-5 lg:flex-row lg:gap-y-0 '>
                             <div className="portfolio__title">
                                 <h4 className='portfolio__subtitle font-mono keep-color keep-size'>{dictionary.TemplateHome.home.portfolio.subtitle}</h4>
                                 <h2 className='portfolio__main-title keep-size text-2xl md:text-4xl '>{dictionary.TemplateHome.home.portfolio.title}</h2>
                             </div>
-                            <div className="portfolio__description flex flex-col gap-y-10">
-                                <p className='portfolio__description-text font-mono'>{dictionary.TemplateHome.home.portfolio.description}</p>
-                                <Link href="/portfolio" className='portfolio__link-button text-center lg:text-left'>
+                            <div className="portfolio__description flex justify-between flex-col gap-y-10">
+                                <p className='portfolio__description-text font-mono w-full md:w-[600px] '>{dictionary.TemplateHome.home.portfolio.description}</p>
+                                <Link href="/portfolio" className='portfolio__link-button text-center w-max lg:text-left'>
                                     <Button className='rounded-full ' variant={'other'} size={'lg'}>{dictionary.TemplateHome.home.portfolio.button}</Button>
                                 </Link>
                             </div>

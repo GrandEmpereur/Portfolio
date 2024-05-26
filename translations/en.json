@@ -3,114 +3,480 @@
         "home": {
             "hero": {
                 "hero_title": "Experienced Full Stack Developer",
-                "hero_description": "Specializing in React and Next.js, I build advanced, scalable web applications tailored to business needs. Benefit from my cutting-edge technology expertise to bring your projects to life. As a seasoned Full Stack Developer, I ensure that each web application is optimized for performance, SEO, and user experience.",
+                "hero_description": "Specialized in React and Next.js, I build advanced and scalable web applications tailored to business needs. Leverage my expertise in cutting-edge technology to bring your projects to life. As a seasoned Full Stack Developer, I ensure that each web application is optimized for performance, SEO, and user experience.",
                 "hero_scroll": "SCROLL"
             },
             "tech_stack": {
-                "title": "My Technical Stack"
+                "title": "My Tech Stack"
             },
+            "states": [
+                {
+                    "number": "20+",
+                    "description": "Projects Completed"
+                },
+                {
+                    "number": "5+",
+                    "description": "Major Projects Delivered"
+                },
+                {
+                    "number": "3+",
+                    "description": "Years of In-depth Experience"
+                },
+                {
+                    "number": "20+",
+                    "description": "Technologies Mastered"
+                }
+            ],
+            "stacks": [
+                {
+                    "src": "/stack/react.png",
+                    "alt": "React",
+                    "name": "React"
+                },
+                {
+                    "src": "/stack/nextjs.png",
+                    "alt": "Next.js",
+                    "name": "Next.js"
+                },
+                {
+                    "src": "/stack/typescript.png",
+                    "alt": "TypeScript",
+                    "name": "TypeScript"
+                },
+                {
+                    "src": "/stack/sass.png",
+                    "alt": "Sass",
+                    "name": "Sass"
+                },
+                {
+                    "src": "/stack/adonisjs.png",
+                    "alt": "AdonisJS",
+                    "name": "AdonisJS"
+                },
+                {
+                    "src": "/stack/vercel.png",
+                    "alt": "Vercel",
+                    "name": "Vercel"
+                },
+                {
+                    "src": "/stack/mongodb.png",
+                    "alt": "MongoDB",
+                    "name": "MongoDB"
+                },
+                {
+                    "src": "/stack/supabase.png",
+                    "alt": "Supabase",
+                    "name": "Supabase"
+                }
+            ],
             "about": {
                 "subtitle": "About Me",
-                "title": "Creating World-Class Websites",
-                "description_title": "Discover the Art of Coding with a Full Stack Developer",
-                "description": "Embark on a journey through cutting-edge web development with me, an experienced Full Stack Developer. With over four years of experience in the dynamic JavaScript landscape, I specialize in creating immersive user experiences. My toolkit, rich with modern frameworks like React.js and Next.js, propels businesses and individuals towards digital excellence. Whether it's a complex web application or a simple landing page, I focus on delivering high-quality code that enhances both functionality and aesthetics.",
+                "title": "I Create World-Class Websites",
+                "description_title": "Discover the Art of Code with a Full Stack Developer",
+                "description": "Embark on a journey through cutting-edge web development with me, an experienced Full Stack Developer. With over four years of experience in the dynamic JavaScript landscape, I specialize in creating immersive user experiences. My arsenal, rich with modern frameworks like React.js and Next.js, propels businesses and individuals toward digital excellence. Whether it's a complex web application or a simple landing page, I focus on delivering high-quality code that enhances both functionality and aesthetics.",
                 "button": "Explore More"
             },
             "services": {
                 "subtitle": "Services",
-                "title": "Explore My Expertise in Full Stack Development",
-                "description": "Offering a comprehensive range of services, from front-end development with React to back-end solutions with Node.js, I cater to all your web development needs. My expertise includes creating responsive designs, integrating APIs, and optimizing applications for speed and SEO. Partner with me to transform your digital presence."
+                "title": "Explore My Full Stack Development Expertise",
+                "description": "Discover how I can transform your ideas into high-performing web solutions. Whether it's creating websites, SaaS applications, or optimizing your development processes, I offer comprehensive services tailored to your needs.",
+                "servicesList": [
+                    {
+                        "id": "frontend-backend-development",
+                        "title": "Web Solutions Development",
+                        "generalDescription": "Create dynamic and responsive websites with React and Next.js, and robust back-ends with AdonisJS. Explore the full section to discover how I can bring your project to life.",
+                        "detailedDescription": [
+                            {
+                                "title": "Front-End Development",
+                                "description": "Develop dynamic and responsive user interfaces with the latest front-end technologies, including React and Next.js."
+                            },
+                            {
+                                "title": "Back-End Development",
+                                "description": "Create robust and scalable back-ends with AdonisJS, integrating APIs, content management systems, and more."
+                            },
+                            {
+                                "title": "SaaS Creation",
+                                "description": "Launch high-performing and scalable SaaS applications tailored to your company's specific needs."
+                            },
+                            {
+                                "title": "E-commerce Site Creation",
+                                "description": "Develop high-performing and secure e-commerce sites optimized for conversion and user experience."
+                            },
+                            {
+                                "title": "Secure API Creation",
+                                "description": "I help you create and secure your APIs for optimal use, or if you already have solutions, I assist in integrating them directly into your projects."
+                            }
+                        ],
+                        "icon": "/shape/img5.png",
+                        "iconWidth": 83,
+                        "iconHeight": 83,
+                        "iconAlt": "Web Solutions Development Icon",
+                        "buttonLabel": "See More",
+                        "buttonLink": "/services#frontend-backend-development"
+                    },
+                    {
+                        "id": "devops-and-deployment",
+                        "title": "DevOps and Deployment",
+                        "generalDescription": "Ensure continuous and reliable delivery with advanced DevOps practices. Discover how I can optimize your development pipeline.",
+                        "detailedDescription": [
+                            {
+                                "title": "Dockerize Your Applications",
+                                "description": "Standardize and isolate your development environment with Docker for greater flexibility and security."
+                            },
+                            {
+                                "title": "CI/CD",
+                                "description": "Implement CI/CD pipelines to ensure automated deployments and continuous integration."
+                            },
+                            {
+                                "title": "Unit and Functional Testing",
+                                "description": "Guarantee the quality of your code with rigorous unit and functional testing."
+                            },
+                            {
+                                "title": "Deployment",
+                                "description": "Deploy your applications securely and efficiently with solutions tailored to your specific needs."
+                            },
+                            {
+                                "title": "Monitoring and Maintenance",
+                                "description": "Monitor and maintain your applications to ensure optimal performance and continuous availability."
+                            }
+                        ],
+                        "icon": "/shape/img6.png",
+                        "iconWidth": 83,
+                        "iconHeight": 83,
+                        "iconAlt": "DevOps and Deployment Icon",
+                        "buttonLabel": "See More",
+                        "buttonLink": "/services#devops-and-deployment"
+                    },
+                    {
+                        "id": "ux-ui-design",
+                        "title": "UX/UI Design",
+                        "generalDescription": "Create intuitive and engaging user experiences with high-quality UX/UI designs. Discover how I can enhance user interaction with your product.",
+                        "detailedDescription": [
+                            {
+                                "title": "UX/UI Design",
+                                "description": "Develop intuitive and aesthetically pleasing user interfaces to enhance user experience and customer satisfaction."
+                            },
+                            {
+                                "title": "Prototyping and Wireframing",
+                                "description": "Create interactive prototypes and wireframes to validate your design concepts before development."
+                            },
+                            {
+                                "title": "User Testing",
+                                "description": "Implement user testing to ensure optimal experience and identify friction points."
+                            },
+                            {
+                                "title": "Branding and Mockups",
+                                "description": "Develop a strong brand identity and create high-quality mockups with tools like Figma."
+                            }
+                        ],
+                        "icon": "/shape/img3.png",
+                        "iconWidth": 78,
+                        "iconHeight": 80,
+                        "iconAlt": "UX/UI Design Icon",
+                        "buttonLabel": "Learn More",
+                        "buttonLink": "/services#ux-ui-design"
+                    }
+                ]
             },
             "portfolio": {
                 "subtitle": "Portfolio",
                 "title": "Recent Projects",
-                "description": "Explore my diverse project gallery to see innovative solutions tailored to the unique needs of businesses. Each project highlights my ability to adapt to different industries and requirements, showcasing skills in both design and development.",
+                "description": "Explore my gallery of diverse projects to see innovative solutions tailored to unique business needs. Each project showcases my ability to adapt to different sectors and requirements, demonstrating skills in both design and development.",
                 "button": "Discover More"
             },
             "newsletter": {
                 "title": "Join Our Creative Journey — Create With Us!",
-                "description": "Stay updated with the latest trends in web development, receive insights from a Full Stack Developer, and join a community passionate about technology. Subscribe to our newsletter and start your journey towards digital excellence.",
+                "description": "Stay updated on the latest web development trends, receive insights from a Full Stack Developer, and join a community passionate about technology. Subscribe to our newsletter and start your journey towards digital excellence.",
                 "button": "Connect Now"
-            }
-        },
-        "about": {
-            "header": {
-                "title": "About Me"
-            },
-            "content": {
-                "intro": "Hello, I'm Patrick Bartosik, an experienced Full Stack Developer with a passion for building robust and scalable web applications. My journey in the tech world started over four years ago, and since then, I have mastered a variety of frameworks and technologies. From creating dynamic user interfaces with React to building efficient server-side applications with Node.js, my skill set is both diverse and deep. I thrive on solving complex problems and delivering solutions that not only meet but exceed client expectations. My approach to web development is holistic, ensuring that every project is performant, accessible, and visually appealing."
-            }
-        },
-        "services": {
-            "header": {
-                "title": "Our Services"
-            },
-            "content": {
-                "description": "We offer a wide range of services to meet your needs, including full stack development, front-end and back-end integration, API development, and performance optimization. Our expertise extends to cloud solutions, database management, and custom software development. Whether you're a startup looking to build a new product or an established business seeking to improve your digital presence, we have the skills and experience to help you succeed."
-            }
-        },
-        "portfolio": {
-            "header": {
-                "title": "My Work"
-            },
-            "content": {
-                "description": "Explore my projects to see examples of my work in action. Each project is a testament to my ability to deliver high-quality web applications that are both functional and aesthetically pleasing. From e-commerce platforms to personal blogs, my portfolio demonstrates my versatility and commitment to excellence. Learn how I can help you achieve your digital goals with innovative and effective solutions."
             }
         }
     },
     "TemplateAbout": {
         "metadata": {
             "title": "About Patrick Bartosik - Innovative Full Stack Developer",
-            "description": "Discover the journey and expertise of Patrick Bartosik, a Full Stack Developer passionate about React, Next.js, and Tailwind CSS. Dive into his experiences and skills to see how he transforms ideas into high-performing digital solutions. With a focus on SEO, performance, and user experience, Patrick ensures that every project is not only visually stunning but also technically superior."
+            "description": "Discover the journey and expertise of Patrick Bartosik, a Full Stack Developer passionate about React, Next.js, and Tailwind CSS. Dive into his experiences and skills to see how he transforms ideas into high-performing digital solutions. With a focus on SEO, performance, and user experience, Patrick ensures that every project is not only visually impressive but also technically superior."
         },
         "aboutMe": {
             "titleSub": "About Me",
             "titleMain": "Everything You Want to Know About Me",
             "heroImageAlt": "Image of Patrick Bartosik",
-            "name": "Mr. Patrick",
+            "name": "Patrick Bartosik",
             "role": "Full Stack Web Developer",
             "introduction": [
-                "Hello, I'm Patrick, an experienced Full Stack Developer with a strong focus on the JavaScript ecosystem, specializing in building scalable and performant web applications using React and Next.js. Over the years, I have honed my skills in JavaScript, mastering essential frameworks and libraries for modern web development. My expertise in React and Next.js enables me to deliver dynamic, SEO-friendly websites that provide excellent user experiences and meet the high standards of today's web applications.",
-                "My professional journey has been dedicated to developing robust solutions, optimizing web performance, and integrating advanced features that ensure minimal maintenance and high efficiency. Whether enhancing existing applications or building new ones from the ground up, my goal is always to leverage my technical skills to produce cutting-edge, accessible, and easy-to-maintain web platforms. My projects often involve a comprehensive approach, from initial concept and design to final deployment and maintenance.",
-                "Beyond my technical skills, I am deeply committed to staying updated with the latest trends and best practices in web development. This continuous learning ensures that I can offer innovative solutions that are not only effective but also future-proof. I believe in the power of collaboration and strive to build strong relationships with my clients, understanding their needs and delivering results that drive success."
+                "Hello, I am Patrick Bartosik, an experienced Full Stack Developer with a strong focus on the JavaScript ecosystem, specializing in creating scalable and high-performing web applications using React and Next.js. Over the years, I have honed my skills in JavaScript, mastering the essential frameworks and libraries for modern web development. My expertise in React and Next.js allows me to deliver dynamic websites, optimized for SEO, that provide excellent user experiences and meet the high standards of today's web applications.",
+                "My professional journey has been dedicated to developing robust solutions, optimizing web performance, and integrating advanced functionalities that ensure minimal maintenance and high efficiency. Whether it's improving existing applications or creating new ones from scratch, my goal is always to leverage my technical skills to produce cutting-edge web platforms that are accessible and easy to maintain. My projects often involve a comprehensive approach, from initial concept and design to final deployment and maintenance.",
+                "Beyond my technical skills, I am deeply committed to staying up-to-date with the latest trends and best practices in web development. This continuous learning allows me to offer innovative solutions that are not only effective but also future-proof. I believe in the power of collaboration and strive to build strong relationships with my clients, understanding their needs and delivering results that ensure their success.",
+                "I have worked on various projects, ranging from creating custom e-commerce sites to implementing complex SaaS solutions. My expertise covers not only front-end development with React and Next.js but also back-end architecture using AdonisJS and orchestration with Docker. I am also skilled in integrating systems such as CRMs and ERPs, as well as deploying solutions on cloud platforms like Vercel and Supabase.",
+                "I am passionate about developing innovative web solutions that not only meet user needs but exceed them. My approach is based on a deep understanding of client requirements, designing tailored solutions, and implementing cutting-edge technologies to ensure optimal performance. I strive to create immersive user experiences that engage and retain users."
             ],
             "downloadResume": "Download My Resume"
         },
         "experience": {
-            "education": "Education",
-            "experience": "Professional Experience"
+            "education_title": "Education",
+            "professional_title": "Professional Experience",
+            "education": [
+                {
+                    "period": "2019 - 2020",
+                    "title": "Baccalauréat in Science and Industrial Technology Development (STI2D)",
+                    "location": "Lycée Général et Technologique Jules Richard",
+                    "description": "Completed the French Baccalauréat with a focus on science and technology, preparing for higher education in technology-related fields."
+                },
+                {
+                    "period": "2020 - 2023",
+                    "title": "Bachelor in Coding & Digital Innovation",
+                    "location": "IIM - Digital School Paris",
+                    "description": "Earned a Bachelor’s degree specializing in coding and digital innovation, gaining practical skills and theoretical knowledge in digital technologies and software development."
+                },
+                {
+                    "period": "2023 - 2025",
+                    "title": "Master in Web and Mobile Engineering",
+                    "location": "IIM - Digital School Paris",
+                    "description": "Currently pursuing a Master’s degree in Web and Mobile Engineering, focusing on advanced concepts in mobile solutions, web technologies, and application development."
+                }
+            ],
+            "professional": [
+                {
+                    "period": "2022 - present",
+                    "title": "Full Stack Developer",
+                    "location": "Personal Project - Portfolio",
+                    "description": "Designed and developed a headless site for a restaurant chain, utilizing React for the front-end and Strapi for the back-end. Managed hosting, domain name creation, and SEO optimization."
+                },
+                {
+                    "period": "2021 - 2022",
+                    "title": "Front-end Developer",
+                    "location": "Marshall Motors - School Project [BAP]",
+                    "description": "Developed the front-end of a showcase website for an automotive garage using SCSS and Twig, integrated with a Symfony back-end. Designed a visual system and structured classes for better visual consistency. Implemented Google Business to optimize online visibility."
+                },
+                {
+                    "period": "2022 - 2023",
+                    "title": "Full Stack Developer (apprenticeship)",
+                    "location": "W3lead",
+                    "description": "Designed and deployed e-commerce stores on Shopify using HTML, CSS, JS, and Liquid for the front-end. Developed the back-end using Node.js, TypeScript, REST APIs, GraphQL, and JWT authentication in Rust. Additional contributions include writing documentation, conducting code reviews, and R&D on new Shopify features."
+                },
+                {
+                    "period": "2024 - 2025",
+                    "title": "Full Stack Developer",
+                    "location": "Euroclear",
+                    "description": "Currently working as a full stack developer, responsible for developing and maintaining various software solutions that enhance the efficiency and functionality of financial services."
+                }
+            ]
         },
         "skills": {
             "title": "Everything You Need to Know About My Skills",
             "coreTechnologies": "My Core Programming Technologies",
-            "coreTechnologiesDescription": "Discover the key technologies I specialize in for building modern and scalable applications. My proficiency includes React, Next.js, Node.js, and Tailwind CSS, ensuring that each project is built with the best tools for optimal performance and scalability.",
+            "coreTechnologiesDescription": "Discover the key technologies I master to create modern and scalable applications. My expertise includes React, Next.js, Node.js, and Tailwind CSS, ensuring that each project is built with the best tools for optimal performance and scalability.",
             "otherTechnologies": "I Can Work with Other Programming Technologies",
-            "otherTechnologiesDescription": "Explore other programming languages and tools I have learned during side projects and academic courses. This includes Python, Ruby on Rails, and PHP, showcasing my versatility and ability to adapt to different development environments.",
-            "languages": "Language Proficiencies",
-            "languagesDescription": "My linguistic capabilities span multiple languages, allowing for effective communication in diverse environments. This includes proficiency in English, French, and Spanish, facilitating collaboration with a global clientele.",
-            "softSkills": "Soft Skills",
-            "softSkillsDescription": "Discover the soft skills I have acquired during school classes and personal experiences, including teamwork, problem-solving, and effective communication. These skills complement my technical expertise and contribute to my overall effectiveness as a developer."
+            "otherTechnologiesDescription": "Explore other programming languages and tools I have learned through side projects and academic courses. This includes Python, Ruby on Rails, and PHP, showcasing my versatility and ability to adapt to different development environments.",
+            "languages": "Language Skills",
+            "languagesDescription": "My language skills cover several languages, allowing for effective communication in diverse environments. This includes fluency in English, French, and Spanish, facilitating collaboration with a global clientele.",
+            "softSkills": "Interpersonal Skills",
+            "softSkillsDescription": "Discover the interpersonal skills I have acquired through my schooling and personal experiences, including teamwork, problem-solving, and effective communication. These skills complement my technical expertise and contribute to my overall effectiveness as a developer.",
+            "mainStack": [
+                {
+                    "name": "TypeScript",
+                    "icon": "/img/about/skills/typescript.png"
+                },
+                {
+                    "name": "React",
+                    "icon": "/img/about/skills/react.png"
+                },
+                {
+                    "name": "Next.js",
+                    "icon": "/img/about/skills/nextjs.png"
+                },
+                {
+                    "name": "SASS",
+                    "icon": "/img/about/skills/sass.png"
+                },
+                {
+                    "name": "Tailwind CSS",
+                    "icon": "/img/about/skills/tailwindcss.png"
+                },
+                {
+                    "name": "Docker",
+                    "icon": "/img/about/skills/docker.png"
+                },
+                {
+                    "name": "GitHub",
+                    "icon": "/img/about/skills/github.png"
+                },
+                {
+                    "name": "Postman",
+                    "icon": "/img/about/skills/postman.png"
+                },
+                {
+                    "name": "Koa API",
+                    "icon": "/img/about/skills/koa.png"
+                },
+                {
+                    "name": "Supabase",
+                    "icon": "/img/about/skills/supabase.png"
+                },
+                {
+                    "name": "MongoDB",
+                    "icon": "/img/about/skills/mongodb.png"
+                },
+                {
+                    "name": "Vercel",
+                    "icon": "/img/about/skills/vercel.png"
+                }
+            ],
+            "otherStack": [
+                {
+                    "name": "HTML",
+                    "icon": "/img/about/skills/html.png"
+                },
+                {
+                    "name": "CSS",
+                    "icon": "/img/about/skills/css.png"
+                },
+                {
+                    "name": "JavaScript",
+                    "icon": "/img/about/skills/js.png"
+                },
+                {
+                    "name": "Nuxt.js",
+                    "icon": "/img/about/skills/nuxtjs.png"
+                },
+                {
+                    "name": "Vue.js",
+                    "icon": "/img/about/skills/vue.png"
+                },
+                {
+                    "name": "Angular",
+                    "icon": "/img/about/skills/angular.png"
+                },
+                {
+                    "name": "Storybook",
+                    "icon": "/img/about/skills/storybook.png"
+                },
+                {
+                    "name": "Neon",
+                    "icon": "/img/about/skills/neon.png"
+                },
+                {
+                    "name": "Cloudflare",
+                    "icon": "/img/about/skills/cloudflare.png"
+                },
+                {
+                    "name": "Stripe",
+                    "icon": "/img/about/skills/stripe.png"
+                },
+                {
+                    "name": "GraphQL",
+                    "icon": "/img/about/skills/graphql.png"
+                },
+                {
+                    "name": "AdonisJS",
+                    "icon": "/img/about/skills/adonisjs.png"
+                },
+                {
+                    "name": "Shopify",
+                    "icon": "/img/about/skills/shopify.png"
+                },
+                {
+                    "name": "Heroku",
+                    "icon": "/img/about/skills/heroku.png"
+                },
+                {
+                    "name": "Figma",
+                    "icon": "/img/about/skills/figma.png"
+                }
+            ],
+            "languagesItems": [
+                {
+                    "name": "French",
+                    "level": "Native",
+                    "description": "Fluent in French as a native speaker, I possess complete command of the language, including idiomatic expressions and specialized vocabulary."
+                },
+                {
+                    "name": "Polish",
+                    "level": "Native",
+                    "description": "As a native speaker of Polish, I have full proficiency in the language, enabling me to engage in all forms of communication effectively."
+                },
+                {
+                    "name": "English",
+                    "level": "Professional",
+                    "description": "I am proficient in English with a professional level of fluency that allows me to handle complex technical discussions and documentation."
+                }
+            ],
+            "softSkillsItems": [
+                {
+                    "name": "Problem Solving"
+                },
+                {
+                    "name": "Teamwork"
+                },
+                {
+                    "name": "Communication"
+                },
+                {
+                    "name": "Time Management"
+                },
+                {
+                    "name": "Adaptability"
+                },
+                {
+                    "name": "Creativity"
+                },
+                {
+                    "name": "Leadership"
+                },
+                {
+                    "name": "Critical Thinking"
+                },
+                {
+                    "name": "Attention to Detail"
+                },
+                {
+                    "name": "Conflict Resolution"
+                },
+                {
+                    "name": "Decision Making"
+                },
+                {
+                    "name": "Empathy"
+                },
+                {
+                    "name": "Flexibility"
+                },
+                {
+                    "name": "Organization"
+                },
+                {
+                    "name": "Perseverance"
+                },
+                {
+                    "name": "Positive Attitude"
+                },
+                {
+                    "name": "Stress Management"
+                },
+                {
+                    "name": "Work Ethic"
+                }
+            ]
         }
     },
     "TemplatePortfolio": {
         "metadata": {
             "title": "Web Development Portfolio - Patrick Bartosik",
-            "description": "Explore the portfolio of Patrick Bartosik, a Full Stack Developer specializing in React, Next.js, and Tailwind CSS. Discover a showcase of innovative web projects that blend aesthetics and functionality."
+            "description": "Explore the portfolio of Patrick Bartosik, a Full Stack Developer specializing in React, Next.js, and Tailwind CSS. Discover a showcase of innovative web projects that combine aesthetics and functionality."
         },
         "portfolioPage": {
             "header": {
                 "title": "Explore All My Projects",
-                "description": "Discover in this gallery all the projects I have worked on. From e-commerce to school projects and side projects, you will find a wide range of web applications that I have developed or contributed to."
+                "description": "Discover in this gallery all the projects I have worked on. From e-commerce projects to school and personal projects, you will find a wide range of web applications that I have developed or contributed to."
             },
-            "visitWebsite": "Visit the website",
-            "techUsed": "Technologies used in this project",
-            "otherTags": "Other tags",
+            "visitWebsite": "Visit the Website",
+            "techUsed": "Technologies Used in This Project",
+            "otherTags": "Other Tags",
             "projects": [
                 {
                     "id": 1,
                     "title": "M. Moustache",
                     "slug": "/m-moustache",
-                    "description": "During my internship and apprenticeship at W3lead, I was responsible for front-end development on the Shopify platform for M. Moustache. My tasks included website integration, development of a gift card API, and implementation of a Point of Sale (POS) system. These roles allowed me to enhance my skills in both front-end integration and backend API development, focusing on creating efficient, secure online shopping experiences.",
+                    "description": "During my internship and apprenticeship at W3lead, I was responsible for front-end development on the Shopify platform for M. Moustache. My tasks included site integration, developing an API for gift cards, and setting up a point of sale (POS) system. These roles allowed me to strengthen my front-end integration skills and back-end API development, focusing on creating efficient and secure online shopping experiences.",
                     "placeholder": "/img/portfolio/m-moustache.webp",
                     "Slider": [],
                     "tags": [
@@ -118,7 +484,7 @@
                         "Frontend",
                         "Backend",
                         "API Development",
-                        "RESTful APIs",
+                        "RESTful API",
                         "GraphQL",
                         "TypeScript"
                     ],
@@ -130,13 +496,13 @@
                     "url": "/portfolio/m-moustache",
                     "redirectToProd": "https://www.m-moustache.com/pages/homme",
                     "lastModified": "20-05-2024",
-                    "buttonLabel": "Visit the website"
+                    "buttonLabel": "Visit the Website"
                 },
                 {
                     "id": 2,
                     "title": "Tartine & Chocolat",
                     "slug": "/tartine-chocolat",
-                    "description": "As part of my apprenticeship, I focused on integrating and developing an API to connect an ERP system with the Tartine & Chocolat website for in-store pre-orders and displaying available stores. This project enhanced my ability to handle both front-end integration and backend systems in a real-world e-commerce setting.",
+                    "description": "As part of my apprenticeship, I focused on integrating and developing an API to connect an ERP system to the Tartine & Chocolat site for in-store pre-orders and displaying available stores. This project enhanced my ability to manage both front-end integration and back-end systems in a real e-commerce context.",
                     "placeholder": "/img/portfolio/tartine-chocolat.png",
                     "Slider": [],
                     "tags": [
@@ -155,13 +521,13 @@
                     "url": "/portfolio/tartine-chocolat",
                     "redirectToProd": "https://www.tartine-et-chocolat.com",
                     "lastModified": "20-05-2024",
-                    "buttonLabel": "Visit the website"
+                    "buttonLabel": "Visit the Website"
                 },
                 {
                     "id": 3,
                     "title": "Qwetch",
                     "slug": "/qwetch",
-                    "description": "My main responsibilities at Qwetch included website integration and implementing Trustpilot widgets. I also worked on the redesign of Shopify's Checkout V2, improving user experience and transaction efficiency during my ongoing apprenticeship.",
+                    "description": "My main responsibilities at Qwetch included integrating the website and implementing Trustpilot widgets. I also worked on the Shopify Checkout V2 redesign, improving user experience and transaction efficiency during my ongoing apprenticeship.",
                     "placeholder": "/img/portfolio/qwetch.png",
                     "Slider": [],
                     "tags": [
@@ -179,20 +545,20 @@
                     "url": "/portfolio/qwetch",
                     "redirectToProd": "https://www.qwetch.com/",
                     "lastModified": "20-05-2024",
-                    "buttonLabel": "Visit the website"
+                    "buttonLabel": "Visit the Website"
                 },
                 {
                     "id": 4,
                     "title": "Easy Clothes",
                     "slug": "/easy-clothes",
-                    "description": "This is a test project.",
+                    "description": "This test project involved...",
                     "placeholder": "/img/portfolio/easy-clothes.png",
                     "Slider": [],
                     "tags": [
                         "Shopify",
                         "JavaScript",
                         "Frontend",
-                        "Checkout Process Enhancement"
+                        "Payment Process Improvement"
                     ],
                     "otherTags": [
                         "Scrum",
@@ -201,13 +567,13 @@
                     "url": "/portfolio/easy-clothes",
                     "redirectToProd": "https://www.easy-clothes.com/",
                     "lastModified": "20-05-2024",
-                    "buttonLabel": "Visit the website"
+                    "buttonLabel": "Visit the Website"
                 },
                 {
                     "id": 5,
                     "title": "Le -1Store",
                     "slug": "/le-1store",
-                    "description": "My role in Le -1Store involved front-end development similar to the tasks I performed for Easy Clothes, focusing on enhancing the website's user interface and integrating essential e-commerce functionalities to support online operations effectively.",
+                    "description": "My role at Le -1Store involved similar front-end development tasks as those I performed for Easy Clothes, focusing on improving the website's user interface and integrating essential features to effectively support online operations.",
                     "placeholder": "/img/portfolio/le-1store.png",
                     "Slider": [],
                     "tags": [
@@ -223,13 +589,13 @@
                     "url": "/portfolio/le-1store",
                     "redirectToProd": "https://www.le-1.store/",
                     "lastModified": "20-05-2024",
-                    "buttonLabel": "Visit the website"
+                    "buttonLabel": "Visit the Website"
                 },
                 {
                     "id": 6,
                     "title": "BAP Châtenay-Malabry",
                     "slug": "/bap-chatenay-malabry",
-                    "description": "For this academic project, I developed a full-stack solution aimed at enhancing HR processes to detect professional burnout. The solution included an interactive dashboard that aggregates data from user responses, offering insights and actionable steps for potential professional burnout situations.",
+                    "description": "For this academic project, I developed a full-stack solution aimed at improving HR processes for detecting professional burnout. The solution included an interactive dashboard that aggregates user response data, providing insights and actionable steps for potential burnout situations.",
                     "placeholder": "/img/portfolio/bap-chatenay-malabry.png",
                     "Slider": [],
                     "tags": [
@@ -248,13 +614,13 @@
                     "url": "/portfolio/bap-chatenay-malabry",
                     "redirectToProd": "https://bap-k7nu.vercel.app/",
                     "lastModified": "20-05-2024",
-                    "buttonLabel": "Visit the website"
+                    "buttonLabel": "Visit the Website"
                 },
                 {
                     "id": 7,
                     "title": "React NBA",
                     "slug": "/react-nba",
-                    "description": "In this school project aimed at creating a sports betting app for NBA games, I was responsible for backend development, focusing on data security and user authentication to ensure a safe and reliable betting environment.",
+                    "description": "In this school project aimed at creating a sports betting application for NBA games, I was responsible for backend development, focusing on data security and user authentication to ensure a safe and reliable betting environment.",
                     "placeholder": "/img/portfolio/react-nba.png",
                     "Slider": [],
                     "tags": [
@@ -262,7 +628,7 @@
                         "TypeScript",
                         "API Security",
                         "User Authentication",
-                        "Sports Betting App"
+                        "Sports Betting Application"
                     ],
                     "otherTags": [
                         "Scrum",
@@ -271,13 +637,13 @@
                     "url": "/portfolio/react-nba",
                     "redirectToProd": "https://react-nba-delta.vercel.app/app",
                     "lastModified": "20-05-2024",
-                    "buttonLabel": "Visit the website"
+                    "buttonLabel": "Visit the Website"
                 },
                 {
                     "id": 8,
                     "title": "Marshall Motors",
                     "slug": "/marshall-motors",
-                    "description": "As a frontend developer for the Marshall Motors project, I was tasked with integrating the website for a garage specializing in vintage car renovations, providing a sleek, user-friendly interface that reflects the quality of the garage's services.",
+                    "description": "As a front-end developer for the Marshall Motors project, I was responsible for integrating the website for a garage specializing in vintage car restoration, providing an elegant and user-friendly interface reflecting the quality of the garage's services.",
                     "placeholder": "/img/portfolio/marshall-motors.jpg",
                     "Slider": [],
                     "tags": [
@@ -294,13 +660,13 @@
                     "url": "/portfolio/marshall-motors",
                     "redirectToProd": "",
                     "lastModified": "20-05-2024",
-                    "buttonLabel": "Visit the website"
+                    "buttonLabel": "Visit the Website"
                 },
                 {
                     "id": 9,
                     "title": "Technical City Shopify",
                     "slug": "/technical-city-shopify",
-                    "description": "In this role, I conducted technical proof of concepts and mini-projects to explore and demonstrate Shopify's latest updates. Working closely with my mentor during my apprenticeship at W3lead, I developed new features for Shopify's V2 checkout and other functionalities, primarily using Rust and React alongside Shopify APIs.",
+                    "description": "In this role, I conducted technical proofs of concept and mini-projects to explore and demonstrate the latest Shopify updates. Working closely with my mentor during my apprenticeship at W3lead, I developed new features for Shopify Checkout V2 and other functionalities, primarily using Rust and React in addition to Shopify APIs.",
                     "placeholder": "/img/portfolio/checkoutV2.png",
                     "Slider": [],
                     "tags": [
@@ -319,7 +685,7 @@
                     "url": "/portfolio/technical-city-shopify",
                     "redirectToProd": "",
                     "lastModified": "20-05-2024",
-                    "buttonLabel": "Visit the website"
+                    "buttonLabel": "Visit the Website"
                 }
             ]
         }
@@ -327,55 +693,110 @@
     "TemplateServices": {
         "metadata": {
             "title": "Web Development Services - Patrick Bartosik",
-            "description": "Discover the web development services offered by Patrick Bartosik. Specializing in React, Next.js, and Tailwind CSS, Patrick provides innovative solutions for high-performance and aesthetic web applications."
+            "description": "Discover the web development services offered by Patrick Bartosik. Specializing in React, Next.js, and Tailwind CSS, Patrick provides innovative solutions for high-performance and aesthetically pleasing web applications."
         },
         "servicesPage": {
             "titleSub": "Services",
-            "titleMain": "All my services and explanations",
+            "titleMain": "All My Services and Explanations",
             "imageAlt": "Image of Patrick Bartosik's services",
             "servicesList": [
                 {
                     "id": "custom-web-development",
                     "title": "Front-End Development",
-                    "generalDescription": "Creating dynamic and responsive user interfaces using the latest technologies.",
+                    "generalDescription": "Creating dynamic and responsive user interfaces with the latest technologies.",
                     "detailedDescription": [
                         {
                             "title": "React",
-                            "description": "Developing high-performance, modular web applications with React."
+                            "description": "Developing high-performance and modular web applications with React. Mastery of hooks, state management with Redux or Context API, and API integration for dynamic and interactive interfaces. React allows for the creation of reusable components that enhance development efficiency and maintainability."
                         },
                         {
                             "title": "Next.js",
-                            "description": "Building SEO-optimized static and dynamic websites with Next.js."
+                            "description": "Creating static and dynamic websites optimized for SEO with Next.js. Utilizing server-side rendering (SSR) and static site generation (SSG) for optimal performance and a seamless user experience. Next.js simplifies the development process by offering built-in routing and API handling."
+                        },
+                        {
+                            "title": "Tailwind CSS",
+                            "description": "Using Tailwind CSS to design elegant and consistent user interfaces. Creating reusable and customizable components, ensuring a modern and responsive design. Tailwind CSS enhances the styling process by providing utility-first CSS classes that streamline the design workflow."
+                        },
+                        {
+                            "title": "Front-End Testing",
+                            "description": "Performing unit and functional testing with tools like Jest and React Testing Library to ensure the reliability and maintainability of front-end code. Testing helps identify and fix bugs early, ensuring a robust and stable application."
                         }
                     ]
                 },
                 {
-                    "id": "creative-web-design",
+                    "id": "backend-development",
                     "title": "Back-End Development",
                     "generalDescription": "Designing and implementing robust and scalable servers.",
                     "detailedDescription": [
                         {
                             "title": "Node.js",
-                            "description": "Creating fast and efficient servers with Node.js."
+                            "description": "Developing fast and efficient servers with Node.js. Using Express.js to create RESTful APIs, session management, and secure authentication with JWT. Node.js provides a non-blocking, event-driven architecture that allows for handling numerous connections simultaneously."
                         },
                         {
-                            "title": "REST APIs",
-                            "description": "Developing RESTful APIs for smooth and secure data exchanges."
+                            "title": "AdonisJS",
+                            "description": "Using AdonisJS to build structured and maintainable back-end applications. Creating data models, managing migrations, and implementing controllers for CRUD operations. AdonisJS offers a clean and modular structure, making it easier to develop and maintain complex applications."
+                        },
+                        {
+                            "title": "REST and GraphQL APIs",
+                            "description": "Creating RESTful and GraphQL APIs for smooth and secure data exchanges. Documenting APIs with Swagger or GraphQL Playground to facilitate integration and use by front-end developers. APIs enable seamless communication between the server and client, enhancing the application's functionality."
+                        },
+                        {
+                            "title": "Databases",
+                            "description": "Integrating and managing relational and non-relational databases, such as PostgreSQL, MongoDB, and Supabase. Setting up data schemas, optimizing queries, and managing transactions. Efficient database management ensures data integrity and improves application performance."
+                        },
+                        {
+                            "title": "Security and Authentication",
+                            "description": "Implementing security solutions to protect data and users. Managing roles and permissions, encrypting sensitive data, and implementing measures to prevent common attacks (XSS, CSRF, etc.). Security is crucial for maintaining user trust and protecting application data."
                         }
                     ]
                 },
                 {
-                    "id": "seo-and-digital-marketing",
-                    "title": "UI/UX Design",
+                    "id": "devops-and-deployment",
+                    "title": "DevOps and Deployment",
+                    "generalDescription": "Ensuring continuous and reliable delivery with advanced DevOps practices.",
+                    "detailedDescription": [
+                        {
+                            "title": "Docker",
+                            "description": "Standardizing and isolating your development environment with Docker for greater flexibility and security. Creating Dockerfiles and managing containers to deploy applications consistently across different environments. Docker ensures that applications run the same way in development, testing, and production."
+                        },
+                        {
+                            "title": "CI/CD",
+                            "description": "Setting up CI/CD pipelines to ensure automated deployments and continuous integration. Using GitHub Actions or GitLab CI to automate testing, builds, and deployments. CI/CD pipelines enhance development productivity by reducing manual intervention and speeding up the deployment process."
+                        },
+                        {
+                            "title": "Unit and Functional Testing",
+                            "description": "Ensuring code quality with rigorous unit and functional testing. Using testing frameworks like Mocha, Chai, Jest, and Cypress for comprehensive test coverage. Testing is essential for identifying issues early and maintaining a high-quality codebase."
+                        },
+                        {
+                            "title": "Deployment",
+                            "description": "Deploying your applications securely and efficiently, with solutions tailored to your specific needs. Using platforms like Vercel, Heroku, AWS, or DigitalOcean for deploying your applications. Efficient deployment strategies minimize downtime and ensure a seamless user experience."
+                        },
+                        {
+                            "title": "Monitoring and Maintenance",
+                            "description": "Monitoring and maintaining your applications to ensure optimal performance and continuous availability. Using monitoring tools like Prometheus, Grafana, and Sentry to quickly detect and resolve issues. Continuous monitoring helps in maintaining application health and performance."
+                        }
+                    ]
+                },
+                {
+                    "id": "ui-ux-design",
+                    "title": "UX/UI Design",
                     "generalDescription": "Designing intuitive and aesthetic user experiences.",
                     "detailedDescription": [
                         {
-                            "title": "Prototyping",
-                            "description": "Creating interactive prototypes to validate design concepts."
+                            "title": "UI/UX Design",
+                            "description": "Developing intuitive and aesthetic user interfaces to enhance user experience and customer satisfaction. Using Figma or Sketch to create coherent and attractive designs. Effective UI/UX design focuses on usability, accessibility, and aesthetics, ensuring a positive user experience."
+                        },
+                        {
+                            "title": "Prototyping and Wireframing",
+                            "description": "Creating interactive prototypes and wireframes to validate your design concepts before developing them. Using Marvel or InVision to test and refine user interactions. Prototyping allows for early feedback and iterative improvements, reducing the risk of costly changes later."
                         },
                         {
                             "title": "User Testing",
-                            "description": "Conducting user tests to ensure optimal user experience."
+                            "description": "Implementing user testing to ensure an optimal experience and identify friction points. Collecting qualitative and quantitative feedback to continuously improve the user interface. User testing provides valuable insights into user behavior, helping to refine and enhance the product."
+                        },
+                        {
+                            "title": "Branding and Mockups",
+                            "description": "Developing a strong brand identity and creating quality mockups with tools like Figma. Ensuring visual consistency across all user touchpoints. Strong branding helps create a memorable user experience and reinforces the company's identity."
                         }
                     ]
                 }
@@ -385,17 +806,67 @@
     "TemplateContact": {
         "metadata": {
             "title": "Contact Patrick Bartosik - Full Stack Developer",
-            "description": "Get in touch with Patrick Bartosik, an experienced Full Stack Developer specializing in React, Next.js, and Tailwind CSS. Let's discuss your projects and see how I can help transform your ideas into high-performing digital solutions."
+            "description": "Contact Patrick Bartosik, an experienced Full Stack Developer specializing in React, Next.js, and Tailwind CSS. Let's discuss your projects and discover how I can help you transform your ideas into high-performing digital solutions."
         },
         "contactMe": {
             "titleSub": "Contact Me",
             "titleMain": "Let's Discuss Your Project",
-            "description": "I'm eager to discuss your project ideas and see how I can help you realize them. Whether you need front-end development, back-end solutions, or SEO advice, I'm here to help. Fill out the form below, and I'll get back to you as soon as possible."
+            "description": "I look forward to discussing your project ideas and seeing how I can help you realize them. Whether you need front-end development, back-end solutions, or SEO advice, I am here to help. Fill out the form below, and I will get back to you as soon as possible."
         }
+    },
+    "TemplateNavigations": {
+        "links": [
+            {
+                "href": "/portfolio",
+                "label": "My Portfolio"
+            },
+            {
+                "href": "/services",
+                "label": "Services"
+            },
+            {
+                "href": "/about",
+                "label": "About Me"
+            }
+        ],
+        "MobilLinks": [
+            {
+                "href": "/portfolio",
+                "label": "My Portfolio"
+            },
+            {
+                "href": "/services",
+                "label": "Services"
+            },
+            {
+                "href": "/about",
+                "label": "About Me"
+            },
+            {
+                "href": "/contact",
+                "label": "Contact"
+            }
+        ]
+    },
+    "footer": {
+        "contactUs": "Start Project ?"
     },
     "TemplateFooter": {
         "footer": {
-            "contact": {
+            "readyToAccelerate": "Ready to accelerate your online presence?",
+            "exploreServices": "Explore how our comprehensive SEO, redesign, and website optimization services can elevate your project. Contact us to discuss your needs.",
+            "requestQuote": "Request a Quote",
+            "contactUs": "Contact Us",
+            "quickLinks": "Quick Links",
+            "home": "Home",
+            "about": "About",
+            "services": "Services",
+            "contact": "Contact",
+            "sitemap": "Sitemap",
+            "termsOfUse": "Terms of Use",
+            "privacyPolicy": "Privacy Policy",
+            "gtu": "GTU",
+            "contactItems": {
                 "title": "Contact Us",
                 "email": "Email: BartosikPatrickPro@gmail.com",
                 "social": {
@@ -418,6 +889,16 @@
                 "gtu": "GTU"
             }
         }
+    },
+    "notFound": {
+        "metadata": {
+            "title": "Page Not Found - Patrick Bartosik",
+            "description": "The page you are looking for does not exist. Explore the portfolio of Patrick Bartosik, an experienced Full Stack Developer.",
+            "imageAlt": "404 Not Found"
+        },
+        "description": "The page you are looking for is not found",
+        "buttonHome": "Back to Home",
+        "buttonPortfolio": "See My Projects"
     },
     "TemplateGTU": {
         "metadata": {
@@ -610,15 +1091,5 @@
             "Article 4 - Contact",
             "For any reporting of illegal content or activities, the User may contact the publisher at the following address: BartosikPatrickPro@gmail.com, or by registered mail with acknowledgment of receipt sent to the publisher at the coordinates specified in these legal notices."
         ]
-    },
-    "notFound": {
-        "metadata": {
-            "title": "Page Not Found - Bartosik Patrick",
-            "description": "The page you are looking for does not exist. Explore the portfolio of Bartosik Patrick, a seasoned Full Stack Developer.",
-            "imageAlt": "404 Not Found"
-        },
-        "description": "The current page you are searching is not found",
-        "buttonHome": "Go back to Home",
-        "buttonPortfolio": "See My Projects"
     }
 }

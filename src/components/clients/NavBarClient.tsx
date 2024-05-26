@@ -1,20 +1,22 @@
+// components/clients/NavBarClient.tsx
 'use client';
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import MobileNav from './MobileNav';
-import MaxWidthWrapper from './MaxWidthWrapper';
+import MobileNavClient from '@/components/clients/MobileNavClient';
+import MaxWidthWrapper from '@/components/MaxWidthWrapper';
 import { usePathname } from 'next/navigation';
-import { Button } from './ui/button';
-import { links } from '@/lib/data/navigation';
-import { Locale } from '@/i18nConfig';
+import { Button } from '@/components/ui/button';
+import { Locale } from "@/i18nConfig";
+import { Dictionary, Link as NavLink } from '@/types/Navigation.types';
 
-type NavBarProps = {
-    params: { lang: Locale };
+type NavBarClientProps = {
+    lang: Locale;
+    dictionary: Dictionary;
 };
 
-const NavBar: React.FC<NavBarProps> = ({ params }) => {
+const NavBarClient: React.FC<NavBarClientProps> = ({ lang, dictionary }) => {
     const pathname = usePathname();
     const [lastScrollY, setLastScrollY] = useState(0);
     const [navHidden, setNavHidden] = useState(false);
@@ -32,17 +34,18 @@ const NavBar: React.FC<NavBarProps> = ({ params }) => {
             setLastScrollY(currentScrollY);
         };
 
-        // Add and remove the scroll listener
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, [lastScrollY]);
-    
+
+    const links: NavLink[] = dictionary.TemplateNavigations.links;
+    const contactText: string = dictionary.footer.contactUs;
 
     return (
         <nav className={`sticky py-10 inset-x-0 top-0 z-30 w-full backdrop-blur ${navHidden ? 'translate-y-[-100%] transition-transform duration-300' : 'translate-y-0 transition-transform duration-300'}`}>
             <MaxWidthWrapper>
                 <div className='flex h-max items-center justify-between'>
-                    <Link href={`/${params.lang}`} className='flex z-40 font-semibold'>
+                    <Link href={`/${lang}`} className='flex z-40 font-semibold'>
                         <Image
                             src="/svg/Logo.svg"
                             alt="My Logo"
@@ -54,17 +57,17 @@ const NavBar: React.FC<NavBarProps> = ({ params }) => {
                         />
                     </Link>
 
-                    <MobileNav params={params} />
+                    <MobileNavClient lang={lang} dictionary={dictionary} />
 
-                    <div className={`hidden items-center space-x-10 sm:flex ${!links.some(link => pathname.startsWith(`/${params.lang}${link.href}`)) ? 'bg-secondary px-10 py-5 rounded-full' : ''}`}>
+                    <div className={`hidden items-center space-x-10 sm:flex ${!links.some(link => pathname.startsWith(`/${lang}${link.href}`)) ? 'bg-secondary px-10 py-5 rounded-full' : ''}`}>
                         <ul className='flex items-center justify-around gap-x-10'>
                             {links.map(({ href, label }, index) => (
                                 <li key={index}>
-                                    <Link href={`/${params.lang}${href}`}>
-                                        <span className={`transition ease-in-out delay-150 hover:text-[#E3B27D] duration-200 ${pathname.startsWith(`/${params.lang}${href}`)
+                                    <Link href={`/${lang}${href}`}>
+                                        <span className={`transition ease-in-out delay-150 hover:text-[#E3B27D] duration-200 ${pathname.startsWith(`/${lang}${href}`)
                                             ? 'bg-secondary px-10 py-5 rounded-full text-[#E3B27D]'
                                             : 'text-white'
-                                        }`}>
+                                            }`}>
                                             {label}
                                         </span>
                                     </Link>
@@ -76,8 +79,8 @@ const NavBar: React.FC<NavBarProps> = ({ params }) => {
                     <div className='hidden items-center space-x-4 sm:flex'>
                         <ul className='flex items-center justify-around gap-x-8'>
                             <li>
-                                <Link href={`/${params.lang}/contact`}>
-                                    <Button className='rounded-full ' variant={'other'} size={'lg'}>Start Project ?</Button>
+                                <Link href={`/${lang}/contact`}>
+                                    <Button className='rounded-full ' variant={'other'} size={'lg'}>{contactText}</Button>
                                 </Link>
                             </li>
                         </ul>
@@ -88,4 +91,4 @@ const NavBar: React.FC<NavBarProps> = ({ params }) => {
     );
 };
 
-export default NavBar;
+export default NavBarClient;

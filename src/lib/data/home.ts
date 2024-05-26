@@ -1,24 +1,3 @@
-/* ------------------------------ Hero Section ------------------------------ */
-
-
-export const states = [
-    { number: "20+", description: 'Projects Completed' },
-    { number: "5+", description: 'Major Projects Delivered' },
-    { number: "3+", description: 'Years of In-depth Experience' },
-    { number: "20+", description: 'Technologies Mastered' },
-];
-
-export const stacks = [
-    { src: '/stack/react.png', alt: 'React', name: 'React' },
-    { src: '/stack/nextjs.png', alt: 'Next.js', name: 'Next.js' },
-    { src: '/stack/typescript.png', alt: 'TypeScript', name: 'TypeScript' },
-    { src: '/stack/sass.png', alt: 'Sass', name: 'Sass' },
-    { src: '/stack/adonisjs.png', alt: 'AdonisJS', name: 'AdonisJS' },
-    { src: '/stack/vercel.png', alt: 'Vercel', name: 'Vercel' },
-    { src: '/stack/mongodb.png', alt: 'MongoDB', name: 'MongoDB' },
-    { src: '/stack/supabase.png', alt: 'Supabase', name: 'Supabase' },
-];
-
 /* -------------------------------- Last Works Sections -------------------------------- */
 
 export const LastWorksItems = () => [
