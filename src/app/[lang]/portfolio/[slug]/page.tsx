@@ -1,4 +1,4 @@
-import ServerSideProject from "@/components/ServerSideProject";
+import ServerSideProject from "@/components/serveur/ServerSideProject";
 import { Locale } from "@/i18nConfig";
 import { projects } from '@/lib/data/portfolio';
 import { getDictionary } from '@/get-dictionary';

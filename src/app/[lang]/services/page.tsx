@@ -2,7 +2,6 @@ import MaxWidthWrapper from '@/components/MaxWidthWrapper';
 import React from 'react';
 import Image from 'next/image';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Metadata } from 'next';
 import { Locale } from '@/i18nConfig';
 import { getDictionary } from '@/get-dictionary';
 
