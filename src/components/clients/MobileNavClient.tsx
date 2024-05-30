@@ -31,7 +31,7 @@ const MobileNavClient: React.FC<MobileNavClientProps> = ({ lang, dictionary }) =
             <Menu onClick={toggleOpen} className='relative z-50 h-5 w-5 text-primary' />
 
             {isOpen && (
-                <div className='fixed inset-0 z-0 w-full h-screen bg-secondary animate-slideDown'>
+                <div className='fixed inset-0 z-0 w-full h-screen bg-secondary animate-slideDown pt-8'>
                     <ul className='flex flex-col gap-8 px-5 pt-24 pb-8'>
                         {MobilLinks.map(({ href, label }, index) => (
                             <li key={index} className='animate-fadeInUp opacity-0'>
