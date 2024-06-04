@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://portfolio.empereur.me';
+    const baseUrl = 'https://patrick.bartosik.fr';
 
     const staticRoutes: MetadataRoute.Sitemap = [
         {
