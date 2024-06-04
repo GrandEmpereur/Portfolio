@@ -622,7 +622,7 @@
                         "Gestion de projet"
                     ],
                     "url": "/portfolio/bap-chatenay-malabry",
-                    "redirectToProd": "https://bap-k7nu.vercel.app/",
+                    "redirectToProd": "",
                     "lastModified": "20-05-2024",
                     "buttonLabel": "Visitez le site web"
                 },
