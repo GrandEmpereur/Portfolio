@@ -1,14 +1,19 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Line from '@/components/Line';
 import Image from 'next/image';
-import { ArrowRight, ChevronsLeft, ChevronsRight } from 'lucide-react';
+import { ArrowRight, ChevronsDown } from 'lucide-react';
 import { projects } from '@/lib/data/portfolio';
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import MaxWidthWrapper from '@/components/MaxWidthWrapper';
 import { Locale } from "@/i18nConfig";
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { TextPlugin } from 'gsap/TextPlugin';
+
+gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
 type HomeClientProps = {
     lang: Locale;
@@ -18,6 +23,58 @@ type HomeClientProps = {
 const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
     const [hoverIndex, setHoverIndex] = useState(-1);
     const lastFiveProjects = projects.slice(-5).reverse();
+    const sectionsRef = useRef<HTMLDivElement[]>([]);
+    const heroRef = useRef<HTMLDivElement | null>(null);
+    const titleRef = useRef<HTMLHeadingElement | null>(null);
+    const scrollTextRef = useRef<HTMLDivElement | null>(null);
+
+    useEffect(() => {
+        if (heroRef.current) {
+            gsap.fromTo(heroRef.current, { opacity: 0 }, { opacity: 1, duration: 1 });
+        }
+
+        sectionsRef.current.forEach((section) => {
+            if (section) {
+                gsap.fromTo(section, { opacity: 0, y: 50 }, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    scrollTrigger: {
+                        trigger: section,
+                        start: 'top 80%',
+                        end: 'bottom 60%',
+                        toggleActions: 'play none none reverse',
+                        markers: false, // mettre à true pour voir les déclencheurs
+                    },
+                });
+            }
+        });
+
+        if (titleRef.current) {
+            const texts = [
+                dictionary.TemplateHome.home.hero.hero_title,
+                dictionary.TemplateHome.home.hero.hero_title2,
+                dictionary.TemplateHome.home.hero.hero_title3,
+                dictionary.TemplateHome.home.hero.hero_title,
+            ];
+
+            const titleTimeline = gsap.timeline({ repeat: -1, repeatDelay: 2 });
+            texts.forEach((text, index) => {
+                if (index !== 0) {
+                    titleTimeline.to(titleRef.current, { text: text, duration: 2, ease: "power2.inOut" }, '+=2');
+                }
+            });
+        }
+
+        if (scrollTextRef.current) {
+            gsap.to(scrollTextRef.current, {
+                y: 10,
+                repeat: -1,
+                yoyo: true,
+                duration: 1,
+            });
+        }
+    }, []);
 
     const splitTitle = (title: string) => {
         const words = title.split(' ');
@@ -43,9 +100,15 @@ const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
         );
     };
 
+    const setSectionRef = (index: number) => (el: HTMLDivElement | null) => {
+        if (el) {
+            sectionsRef.current[index] = el;
+        }
+    };
+
     return (
         <main id='template-home' className='home'>
-            <section id='hero' className='hero relative flex flex-col w-full'>
+            <section ref={heroRef} id='hero' className='hero relative flex flex-col w-full'>
                 <MaxWidthWrapper>
                     <span className='hero__shape--top-left relative block w-max' style={{ left: "-20px" }}>
                         <Image src={'/shape/img7.png'} alt={'shape'} width={55} height={55} />
@@ -56,16 +119,16 @@ const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
 
                     <div className='hero__information w-full flex flex-col items-center relative lg:flex-row lg:justify-between '>
                         <div className='hero__description'>
-                            <h1 style={{ fontSize: '100px', lineHeight: '135%', width: '470px' }}>
-                                {dictionary.TemplateHome.home.hero.hero_title}
+                            <h1 ref={titleRef} style={{ fontSize: '100px', lineHeight: '135%', width: '470px' }}>
+                                Développeur Full Stack Expérimenté
                             </h1>
                             <p className='hero__description-text py-5' style={{ width: '470px' }}>
                                 {dictionary.TemplateHome.home.hero.hero_description}
                             </p>
-                            <div className='hero__scroll'>
-                                <div className='hero__scroll-container flex items-center gap-x-1'>
-                                    <ChevronsLeft color={'white'} size={14} />
-                                    <p style={{ fontSize: "14px", lineHeight: "140%", letterSpacing: "25%" }}>{dictionary.TemplateHome.home.hero.hero_scroll}</p>
+                            <div className='hero__scroll' ref={scrollTextRef}>
+                                <div className='hero__scroll-container flex items-center justify-center gap-x-1'>
+                                    <ChevronsDown color={'white'} size={24} className={'rotate-90'} />
+                                    <p style={{ fontSize: "14px", lineHeight: "140%", letterSpacing: "25%" }}>DÉFILER</p>
                                 </div>
                             </div>
                         </div>
@@ -104,7 +167,7 @@ const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
                 </MaxWidthWrapper>
             </section>
 
-            <section className='home-bg relative'>
+            <section ref={setSectionRef(0)} className='home-bg relative'>
                 <Line />
                 <section id='about' className='about flex w-full h-full flex-col gap-y-8'>
                     <MaxWidthWrapper>
@@ -131,7 +194,7 @@ const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
                 </section>
 
                 <MaxWidthWrapper className='services-bg mt-20 lg:mt-40'>
-                    <section id='services' className='services flex flex-col items-start justify-between w-full h-full'>
+                    <section ref={setSectionRef(1)} id='services' className='services flex flex-col items-start justify-between w-full h-full'>
                         <div className="services__header title">
                             <h4 className='services__header-subtitle font-mono keep-color keep-size '>{dictionary.TemplateHome.home.services.subtitle}</h4>
                             <h2 className='services__header-main-title keep-size text-2xl md:text-4xl '>{dictionary.TemplateHome.home.services.title}</h2>
@@ -156,7 +219,7 @@ const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
                     </section>
                 </MaxWidthWrapper>
 
-                <section id='lastWorks' className='portfolio lastWorks mt-20 lg:mt-40 flex flex-col items-start justify-between w-full h-full'>
+                <section ref={setSectionRef(2)} id='lastWorks' className='portfolio lastWorks mt-20 lg:mt-40 flex flex-col items-start justify-between w-full h-full'>
                     <MaxWidthWrapper>
                         <div className='portfolio__header w-full flex flex-col justify-between gap-y-5 lg:flex-row lg:gap-y-0 '>
                             <div className="portfolio__title">
@@ -222,7 +285,7 @@ const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
                     </MaxWidthWrapper>
                 </section>
 
-                <section id='newsletter' className='newsletter relative flex w-full h-full flex-col gap-y-8 pt-28 mb-5 lg:mb-56'>
+                <section ref={setSectionRef(3)} id='newsletter' className='newsletter relative flex w-full h-full flex-col gap-y-8 pt-28 mb-5 lg:mb-56'>
                     <MaxWidthWrapper>
                         <div className='newsletter__image-wrapper flex justify-end'>
                             <Image src={'/img/newsletter/img1.png'} alt={'Engaging Newsletter Visual'} width={1305} height={500} />
@@ -246,3 +309,4 @@ const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
 };
 
 export default HomeClient;
+

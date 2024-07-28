@@ -3,6 +3,8 @@
         "home": {
             "hero": {
                 "hero_title": "Experienced Full Stack Developer",
+                "hero_title2": "Developer React & Next.js",
+                "hero_title3": "UI/UX Designer",
                 "hero_description": "Specialized in React and Next.js, I build advanced and scalable web applications tailored to business needs. Leverage my expertise in cutting-edge technology to bring your projects to life. As a seasoned Full Stack Developer, I ensure that each web application is optimized for performance, SEO, and user experience.",
                 "hero_scroll": "SCROLL"
             },
