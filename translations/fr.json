@@ -31,51 +31,61 @@
             ],
             "stacks": [
                 {
-                    "src": "/stack/react.png",
+                    "src": "/stack/react.svg",
                     "alt": "React",
                     "name": "React"
                 },
                 {
-                    "src": "/stack/nextjs.png",
+                    "src": "/stack/nextjs.svg",
                     "alt": "Next.js",
                     "name": "Next.js"
                 },
                 {
-                    "src": "/stack/typescript.png",
+                    "src": "/stack/typescript.svg",
                     "alt": "TypeScript",
                     "name": "TypeScript"
                 },
                 {
-                    "src": "/stack/sass.png",
+                    "src": "/stack/sass.svg",
                     "alt": "Sass",
                     "name": "Sass"
                 },
                 {
-                    "src": "/stack/adonisjs.png",
+                    "src": "/stack/adonisjs.svg",
                     "alt": "AdonisJS",
                     "name": "AdonisJS"
                 },
                 {
-                    "src": "/stack/vercel.png",
+                    "src": "/stack/vercel.svg",
                     "alt": "Vercel",
                     "name": "Vercel"
                 },
                 {
-                    "src": "/stack/mongodb.png",
+                    "src": "/stack/mongodb.svg",
                     "alt": "MongoDB",
                     "name": "MongoDB"
                 },
                 {
-                    "src": "/stack/supabase.png",
+                    "src": "/stack/supabase.svg",
                     "alt": "Supabase",
                     "name": "Supabase"
+                },
+                {
+                    "src": "/stack/postman.svg",
+                    "alt": "Postman",
+                    "name": "Postman"
+                },
+                {
+                    "src": "/stack/docker.svg",
+                    "alt": "Docker",
+                    "name": "Docker"
                 }
             ],
             "about": {
                 "subtitle": "À propos de moi",
                 "title": "Je Crée des Sites Web de Classe Mondiale",
                 "description_title": "Découvrez l'Art du Code avec un Développeur Full Stack",
-                "description": "Embarquez dans un voyage à travers le développement web de pointe avec moi, un développeur Full Stack expérimenté. Avec plus de quatre ans d'expérience dans le paysage dynamique de JavaScript, je me spécialise dans la création d'expériences utilisateur immersives. Mon arsenal, riche en frameworks modernes comme React.js et Next.js, propulse les entreprises et les individus vers l'excellence numérique. Que ce soit une application web complexe ou une simple page de destination, je me concentre sur la livraison de code de haute qualité qui améliore à la fois la fonctionnalité et l'esthétique.",
+                "description": "Plongez dans l'univers du développement web avec moi, développeur Full Stack passionné et expérimenté. Fort de plus de quatre ans d'expérience avec JavaScript, je crée des expériences utilisateur captivantes. Mon expertise avec des frameworks modernes comme React.js et Next.js permet aux entreprises et aux individus de briller dans le monde numérique. Que vous ayez besoin d'une application web complexe ou d'une simple page de destination, je m'engage à fournir un code de qualité exceptionnelle, alliant performance et design élégant. Ensemble, donnons vie à vos idées les plus audacieuses.",
                 "button": "Explorez Plus"
             },
             "services": {
@@ -614,7 +624,7 @@
                         "Gestion de projet"
                     ],
                     "url": "/portfolio/bap-chatenay-malabry",
-                    "redirectToProd": "https://bap-k7nu.vercel.app/",
+                    "redirectToProd": "",
                     "lastModified": "20-05-2024",
                     "buttonLabel": "Visitez le site web"
                 },
@@ -705,7 +715,7 @@
                 {
                     "id": "custom-web-development",
                     "title": "Développement Front-End",
-                    "generalDescription": "Création d'interfaces utilisateur dynamiques et réactives avec les dernières technologies.",
+                    "generalDescription": "Plongez dans l'univers du développement front-end avec une expertise inégalée. En utilisant les technologies les plus récentes, nous créons des interfaces utilisateur dynamiques et réactives qui captivent les utilisateurs et répondent parfaitement aux besoins des entreprises et des startups. Avec une maîtrise approfondie de frameworks modernes comme React et Next.js, nous garantissons des applications web performantes, optimisées pour le SEO et offrant une expérience utilisateur fluide. Grâce à Tailwind CSS, nous concevons des designs élégants et cohérents, tout en assurant la fiabilité de notre code avec des tests rigoureux. Faites confiance à notre savoir-faire pour transformer vos idées en réalités numériques exceptionnelles.",
                     "detailedDescription": [
                         {
                             "title": "React",
@@ -728,7 +738,7 @@
                 {
                     "id": "backend-development",
                     "title": "Développement Back-End",
-                    "generalDescription": "Conception et implémentation de serveurs robustes et évolutifs.",
+                    "generalDescription": "Construisez des fondations solides pour vos applications avec notre expertise en développement back-end. Nous concevons et mettons en œuvre des serveurs robustes et évolutifs qui répondent aux exigences les plus strictes. En utilisant Node.js et AdonisJS, nous développons des API performantes et sécurisées, facilitant des échanges de données fluides entre le serveur et le client. Que ce soit pour la gestion de bases de données relationnelles ou non relationnelles, nous optimisons chaque aspect pour garantir l'intégrité et la performance des données. Notre engagement en matière de sécurité assure une protection maximale des informations sensibles, renforçant ainsi la confiance de vos utilisateurs.",
                     "detailedDescription": [
                         {
                             "title": "Node.js",
@@ -755,7 +765,7 @@
                 {
                     "id": "devops-and-deployment",
                     "title": "DevOps et Déploiement",
-                    "generalDescription": "Assurer une livraison continue et fiable avec des pratiques DevOps avancées.",
+                    "generalDescription": "Garantissez une livraison continue et fiable de vos applications grâce à nos pratiques avancées de DevOps. Nous utilisons Docker pour standardiser et isoler vos environnements de développement, assurant une flexibilité et une sécurité optimales. Avec des pipelines CI/CD bien établis, nous automatisons les déploiements et les intégrations continues, réduisant ainsi les interventions manuelles et accélérant le processus de mise en production. Nos stratégies de déploiement, sur des plateformes comme Vercel, Heroku, AWS, ou DigitalOcean, minimisent les temps d'arrêt et offrent une expérience utilisateur sans faille. En surveillant et en maintenant vos applications en permanence, nous nous assurons qu'elles restent performantes et disponibles.",
                     "detailedDescription": [
                         {
                             "title": "Docker",
@@ -782,7 +792,7 @@
                 {
                     "id": "ui-ux-design",
                     "title": "Conception UX/UI",
-                    "generalDescription": "Conception d'expériences utilisateur intuitives et esthétiques.",
+                    "generalDescription": "Offrez à vos utilisateurs des expériences intuitives et esthétiques grâce à notre expertise en design UX/UI. Nous développons des interfaces utilisateur cohérentes et attractives, utilisant des outils comme Figma et Sketch pour créer des designs centrés sur l'utilisateur. Nos prototypes interactifs et wireframes permettent de valider les concepts avant leur développement, assurant une expérience utilisateur optimale dès le début. Grâce aux tests utilisateurs, nous identifions et éliminons les points de friction, garantissant une satisfaction maximale. Avec un branding fort et des maquettes de qualité, nous créons une identité visuelle mémorable qui renforce l'image de votre entreprise.",
                     "detailedDescription": [
                         {
                             "title": "Design UI/UX",
@@ -824,7 +834,7 @@
             },
             {
                 "href": "/services",
-                "label": "Services"
+                "label": "Mes Services"
             },
             {
                 "href": "/about",
@@ -838,7 +848,7 @@
             },
             {
                 "href": "/services",
-                "label": "Services"
+                "label": "Mes Services"
             },
             {
                 "href": "/about",
@@ -846,7 +856,7 @@
             },
             {
                 "href": "/contact",
-                "label": "Contact"
+                "label": "Me Contacté"
             }
         ]
     },
@@ -872,9 +882,9 @@
                 "title": "Contactez-Nous",
                 "email": "Email: BartosikPatrickPro@gmail.com",
                 "social": {
-                    "instagram": "Instagram",
-                    "github": "GitHub",
-                    "linkedin": "LinkedIn"
+                    "instagram": "Mon Instagram",
+                    "github": "Mon GitHub",
+                    "linkedin": "Mon LinkedIn"
                 }
             },
             "quick_links": {
