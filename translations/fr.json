@@ -3,7 +3,9 @@
         "home": {
             "hero": {
                 "hero_title": "Développeur Full Stack Expérimenté",
-                "hero_description": "Spécialisé dans l’écosystème JavaScript, en particulier React, je construis des applications web modernes et évolutives, adaptées aux besoins des entreprises et des startups. Profitez de mon expertise à la pointe des technologies pour donner vie à votre projet de rêve. En tant que développeur Full Stack chevronné, je m'assure que chaque application web est optimisée et sécurisé, avec un design élégant et une facilité d'utilisation pour tous types d'utilisateurs.",
+                "hero_title2": "Développeur React et Next.js",
+                "hero_title3": "UI/UX Designer Passionné",
+                "hero_description": "Spécialisé dans React et Next.js, je construis des applications web avancées et évolutives adaptées aux besoins des entreprises. Profitez de mon expertise en technologie de pointe pour donner vie à vos projets. En tant que développeur Full Stack chevronné, j'assure que chaque application web est optimisée pour les performances, le SEO et l'expérience utilisateur.",
                 "hero_scroll": "DÉFILER"
             },
             "tech_stack": {
