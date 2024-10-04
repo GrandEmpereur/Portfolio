@@ -25,19 +25,19 @@ const mono = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: "Bartosik Patrick - Développeur Full Stack | Expert React & Next.js",
-  description: "Découvrez le portfolio innovant de Bartosik Patrick, développeur Full Stack spécialisé en React et Next.js. Explorez des applications web alliant esthétique et fonctionnalité, conçues pour repousser les limites des expériences digitales.",
+  description: "Développeur Full Stack spécialisé en React et Next.js. Création d'applications web innovantes, performantes et optimisées SEO pour propulser votre projet ou entreprise.",
   keywords: "Développeur Full Stack, React, Next.js, Applications Web, SEO, Performance Web",
   openGraph: {
     title: "Bartosik Patrick - Développeur Full Stack | Expert React & Next.js",
-    description: "Découvrez le portfolio innovant de Bartosik Patrick, développeur Full Stack spécialisé en React et Next.js.",
+    description: "Développeur Full Stack spécialisé en React et Next.js. Création d'applications web innovantes et performantes.",
     type: "website",
     locale: "fr_FR",
     url: "https://patrick.bartosik.fr",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Bartosik Patrick - Développeur Full Stack",
-    description: "Expert en React et Next.js, créateur d'applications web innovantes.",
+    title: "Bartosik Patrick - Développeur Full Stack | Expert React & Next.js",
+    description: "Expert en React et Next.js, créateur d'applications web innovantes et performantes.",
   },
 };
 

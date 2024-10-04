@@ -8,11 +8,11 @@ export async function generateMetadata({ params: { lang } }: { params: { lang: L
 
     return {
         title: `${dict.TemplateHome.home.hero.hero_title} | Patrick Bartosik`,
-        description: dict.TemplateHome.home.hero.hero_description,
+        description: "Développeur Full Stack spécialisé en React et Next.js. Création d'applications web innovantes, performantes et optimisées SEO pour propulser votre projet ou entreprise.",
         keywords: "Développeur Full Stack, React, Next.js, Applications Web, SEO, Performance Web",
         openGraph: {
             title: `${dict.TemplateHome.home.hero.hero_title} | Patrick Bartosik`,
-            description: dict.TemplateHome.home.hero.hero_description,
+            description: "Développeur Full Stack spécialisé en React et Next.js. Création d'applications web innovantes, performantes et optimisées SEO pour propulser votre projet ou entreprise.",
             url: `https://patrick.bartosik.fr/${lang}`,
             siteName: 'Patrick Bartosik - Développeur Full Stack',
             images: [
@@ -29,7 +29,7 @@ export async function generateMetadata({ params: { lang } }: { params: { lang: L
         twitter: {
             card: 'summary_large_image',
             title: `${dict.TemplateHome.home.hero.hero_title} | Patrick Bartosik`,
-            description: dict.TemplateHome.home.hero.hero_description,
+            description: "Développeur Full Stack spécialisé en React et Next.js. Création d'applications web innovantes, performantes et optimisées SEO pour propulser votre projet ou entreprise.",
             images: ['https://patrick.bartosik.fr/img/og-image.jpg'],
         },
         alternates: {
