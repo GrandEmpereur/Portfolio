@@ -1,4 +1,5 @@
 import React from 'react';
+import { Metadata } from 'next';
 import Line from '@/components/Line';
 import MaxWidthWrapper from '@/components/MaxWidthWrapper';
 import Image from 'next/image';
@@ -7,36 +8,41 @@ import { Button } from '@/components/ui/button';
 import { Locale } from '@/i18nConfig';
 import { getDictionary } from '@/get-dictionary';
 
-export async function generateMetadata({ params: { lang } }: { params: { lang: Locale } }) {
+export async function generateMetadata({ params: { lang } }: { params: { lang: Locale } }): Promise<Metadata> {
     const dict = await getDictionary(lang);
 
     return {
         title: dict.TemplateAbout.metadata.title,
         description: dict.TemplateAbout.metadata.description,
+        keywords: "Développeur Full Stack, React, Next.js, Tailwind CSS, Expérience professionnelle, Compétences techniques",
         openGraph: {
             title: dict.TemplateAbout.metadata.title,
             description: dict.TemplateAbout.metadata.description,
             url: `https://patrick.bartosik.fr/${lang}/about`,
-            type: 'website',
+            siteName: 'Patrick Bartosik - Développeur Full Stack',
             images: [
                 {
-                    url: 'https://patrick.bartosik.fr/img/about/aboutHero.png', 
-                    width: 800,
-                    height: 600,
+                    url: 'https://patrick.bartosik.fr/img/about/aboutHero.png',
+                    width: 1200,
+                    height: 630,
                     alt: dict.TemplateAbout.aboutMe.heroImageAlt,
                 },
             ],
+            locale: lang,
+            type: 'website',
         },
         twitter: {
             card: 'summary_large_image',
             title: dict.TemplateAbout.metadata.title,
             description: dict.TemplateAbout.metadata.description,
-            images: [
-                {
-                    url: 'https://patrick.bartosik.fr/img/about/aboutHero.png',
-                    alt: dict.TemplateAbout.aboutMe.heroImageAlt,
-                },
-            ],
+            images: ['https://patrick.bartosik.fr/img/about/aboutHero.png'],
+        },
+        alternates: {
+            canonical: `https://patrick.bartosik.fr/${lang}/about`,
+            languages: {
+                'fr': 'https://patrick.bartosik.fr/fr/about',
+                'en': 'https://patrick.bartosik.fr/en/about',
+            },
         },
     };
 }
@@ -181,6 +187,7 @@ async function Page({
                                     {dict.TemplateAbout.skills.languagesItems.map((item, index) => (
                                         <div key={index} className='language__item flex flex-col items-center gap-y-2 '>
                                             <span className='language__name text-xl font-semibold'>{item.name}</span>
+                                            <p className='language__description w-1/2 text-center'>{item.level}</p>
                                             <p className='language__description w-1/2 text-center'>{item.description}</p>
                                         </div>
                                     ))}

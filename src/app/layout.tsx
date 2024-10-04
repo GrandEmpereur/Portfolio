@@ -24,8 +24,21 @@ const mono = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Bartosik Patrick - Full Stack Developer | Expert in React & Next.js",
-  description: "Discover the cutting-edge portfolio of Bartosik Patrick, a seasoned Full Stack Developer specializing in React, Next.js. Dive into a showcase of innovative web applications that blend aesthetics with functionality, crafted to push the boundaries of digital experiences.",
+  title: "Bartosik Patrick - Développeur Full Stack | Expert React & Next.js",
+  description: "Découvrez le portfolio innovant de Bartosik Patrick, développeur Full Stack spécialisé en React et Next.js. Explorez des applications web alliant esthétique et fonctionnalité, conçues pour repousser les limites des expériences digitales.",
+  keywords: "Développeur Full Stack, React, Next.js, Applications Web, SEO, Performance Web",
+  openGraph: {
+    title: "Bartosik Patrick - Développeur Full Stack | Expert React & Next.js",
+    description: "Découvrez le portfolio innovant de Bartosik Patrick, développeur Full Stack spécialisé en React et Next.js.",
+    type: "website",
+    locale: "fr_FR",
+    url: "https://patrick.bartosik.fr",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Bartosik Patrick - Développeur Full Stack",
+    description: "Expert en React et Next.js, créateur d'applications web innovantes.",
+  },
 };
 
 export default function RootLayout({
@@ -37,6 +50,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang={params.lang} className="dark">
+      <head>
+        <link rel="canonical" href="https://patrick.bartosik.fr" />
+      </head>
       <body className={cn(
         'min-h-screen relative font-sans antialiased grainy ',
         inter.className,
