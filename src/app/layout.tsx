@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Poppins, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import '@/scss/styles.scss';
@@ -41,6 +41,14 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  themeColor: 'black',
+}
+
 export default function RootLayout({
   children,
   params,
@@ -51,7 +59,7 @@ export default function RootLayout({
   return (
     <html lang={params.lang} className="dark">
       <head>
-        <link rel="canonical" href="https://patrick.bartosik.fr" />
+        <link rel="icon" href="/favicon.ico" />
       </head>
       <body className={cn(
         'min-h-screen relative font-sans antialiased grainy ',
