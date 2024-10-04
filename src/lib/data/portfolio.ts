@@ -22,7 +22,7 @@ export const projects = [
         ],
         "url": "/portfolio/m-moustache",
         "redirectToProd": "https://www.m-moustache.com/pages/homme",
-        "lastModified": "20-05-2024",
+        "lastModified": "20/05/2024",
         "buttonLabel": "Visit the website"
     },
     {
@@ -47,7 +47,7 @@ export const projects = [
         ],
         "url": "/portfolio/tartine-chocolat",
         "redirectToProd": "https://www.tartine-et-chocolat.com",
-        "lastModified": "20-05-2024",
+        "lastModified": "20/05/2024",
         "buttonLabel": "Visit the website"
     },
     {
@@ -71,7 +71,7 @@ export const projects = [
         ],
         "url": "/portfolio/qwetch",
         "redirectToProd": "https://www.qwetch.com/",
-        "lastModified": "20-05-2024",
+        "lastModified": "20/05/2024",
         "buttonLabel": "Visit the website"
     },
     {
@@ -93,7 +93,7 @@ export const projects = [
         ],
         "url": "/portfolio/easy-clothes",
         "redirectToProd": "https://www.easy-clothes.com/",
-        "lastModified": "20-05-2024",
+        "lastModified": "20/05/2024",
         "buttonLabel": "Visit the website"
     },
     {
@@ -115,7 +115,7 @@ export const projects = [
         ],
         "url": "/portfolio/le-1store",
         "redirectToProd": "https://www.le-1.store/",
-        "lastModified": "20-05-2024",
+        "lastModified": "20/05/2024",
         "buttonLabel": "Visit the website"
     },
     {
@@ -140,7 +140,7 @@ export const projects = [
         ],
         "url": "/portfolio/bap-chatenay-malabry",
         "redirectToProd": "https://bap-k7nu.vercel.app/",
-        "lastModified": "20-05-2024",
+        "lastModified": "20/05/2024",
         "buttonLabel": "Visit the website"
     },
     {
@@ -163,7 +163,7 @@ export const projects = [
         ],
         "url": "/portfolio/react-nba",
         "redirectToProd": "https://react-nba-delta.vercel.app/app",
-        "lastModified": "20-05-2024",
+        "lastModified": "20/05/2024",
         "buttonLabel": "Visit the website"
     },
     {
@@ -186,7 +186,7 @@ export const projects = [
         ],
         "url": "/portfolio/marshall-motors",
         "redirectToProd": "",
-        "lastModified": "20-05-2024",
+        "lastModified": "20/05/2024",
         "buttonLabel": "Visit the website"
     },
     {
@@ -211,7 +211,7 @@ export const projects = [
         ],
         "url": "/portfolio/technical-city-shopify",
         "redirectToProd": "",
-        "lastModified": "20-05-2024",
+        "lastModified": "20/05/2024",
         "buttonLabel": "Visit the website"
     }
 ]

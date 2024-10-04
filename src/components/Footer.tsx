@@ -52,7 +52,7 @@ const Footer: React.FC<FooterProps> = async ({ params }) => {
 
                 <div className='footer__bottom flex flex-col items-center justify-center mt-5 lg:mt-0 lg:justify-between w-full '>
                     <div className='deco'></div>
-                    <div className='footer__legal-links flex flex-col items-center gap-x-5 md:flex-row'>
+                    <div className='footer__legal-links flex gap-x-5'>
                         <Link href={`/${params.lang}/terms`}>
                             <Button variant={'link'} className='footer__legal-button'>
                                 {dict.TemplateFooter.footer.termsOfUse}

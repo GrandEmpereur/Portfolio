@@ -1,15 +1,17 @@
-import Head from 'next/head'
-import React from 'react'
+import Head from 'next/head';
+import { useRouter } from 'next/router';
 
-export default function HeadComponent() {
+export default function MyPage({ params }: { params: { lang: string } }) {
+    const { asPath } = useRouter();
+    const currentPath = asPath.split('?')[0]; // Pour enlever les paramètres de requête
+
+    const baseUrl = 'https://patrick.bartosik.fr';
+
     return (
-        <div>
-            <Head>
-                <title>My page title</title>
-                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-                <link rel="canonical" href="https://patrick.bartosik.fr" />
-                
-            </Head>
-        </div>
-    )
+        <Head>
+            <link rel="alternate" hrefLang="fr" href={`${baseUrl}${currentPath}`} />
+            <link rel="alternate" hrefLang="en" href={`${baseUrl}/en${currentPath}`} />
+            <link rel="alternate" hrefLang="x-default" href={`${baseUrl}${currentPath}`} />
+        </Head>
+    );
 }

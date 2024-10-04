@@ -2,67 +2,49 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 import { i18n } from "@/i18nConfig";
-import { projects } from '@/lib/data/portfolio';
-
 import { match as matchLocale } from "@formatjs/intl-localematcher";
 import Negotiator from "negotiator";
 
-function getLocale(request: NextRequest): string | undefined {
-    // Negotiator expects plain object so we need to transform headers
+function getLocale(request: NextRequest): string {
     const negotiatorHeaders: Record<string, string> = {};
     request.headers.forEach((value, key) => (negotiatorHeaders[key] = value));
-
-    const locales: string[] = [...i18n.locales]; // Copy the readonly array to a mutable array
-
+    const locales = [...i18n.locales];
     const languages = new Negotiator({ headers: negotiatorHeaders }).languages(locales);
-
-    const locale = matchLocale(languages, locales, i18n.defaultLocale);
-
-    return locale;
+    return matchLocale(languages, locales, i18n.defaultLocale);
 }
 
 export function middleware(request: NextRequest) {
     const pathname = request.nextUrl.pathname;
 
-    // Exclude paths like /robots.txt and /sitemap.xml
-    if (pathname === '/robots.txt' || pathname === '/sitemap.xml') {
+    // Exclure les chemins spécifiques
+    if (
+        pathname.startsWith('/api/') ||
+        pathname.startsWith('/_next/') ||
+        pathname.includes('/img/') ||
+        pathname.includes('/shape/') ||
+        pathname.includes('/stack/') ||
+        pathname.includes('/svg/') ||
+        pathname === '/robots.txt' ||
+        pathname === '/sitemap.xml' ||
+        pathname === '/CV.pdf'
+    ) {
         return NextResponse.next();
     }
 
-    // Check if there is any supported locale in the pathname
-    const pathnameIsMissingLocale = i18n.locales.every(
-        (locale) =>
-            !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
+    // Vérifier si le pathname commence par un locale valide
+    const pathnameIsMissingValidLocale = !i18n.locales.some(
+        locale => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
     );
 
-    // Redirect if there is no locale
-    if (pathnameIsMissingLocale) {
+    if (pathnameIsMissingValidLocale) {
         const locale = getLocale(request);
-
-        if (locale) {
-            const newUrl = pathname === "/" ? `/${locale}` : `/${locale}${pathname}`;
-            return NextResponse.redirect(new URL(newUrl, request.url));
-        }
-    }
-
-    // Check if the request is for a portfolio project
-    const isPortfolioPage = pathname.startsWith('/portfolio/');
-    if (isPortfolioPage) {
-        const slug = pathname.split('/').pop();
-        const projectExists = projects.some(project => project.slug === `/${slug}`);
-
-        if (!projectExists) {
-            const locale = getLocale(request);
-            const newUrl = locale ? `/${locale}/404` : `/404`;
-            return NextResponse.rewrite(new URL(newUrl, request.url));
-        }
+        // Rediriger vers la version localisée
+        return NextResponse.redirect(new URL(`/${locale}${pathname}`, request.url));
     }
 
     return NextResponse.next();
 }
 
 export const config = {
-    matcher: [
-        "/((?!api|_next/static|_next/image|favicon.ico|img/*|shape/*|stack/*|svg/*|CV.pdf|robots.txt|sitemap.xml|not-found.tsx).*)",
-    ],
+    matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
 };

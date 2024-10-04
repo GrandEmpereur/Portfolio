@@ -31,54 +31,44 @@
             ],
             "stacks": [
                 {
-                    "src": "/stack/react.svg",
+                    "src": "/stack/react.png",
                     "alt": "React",
                     "name": "React"
                 },
                 {
-                    "src": "/stack/nextjs.svg",
+                    "src": "/stack/nextjs.png",
                     "alt": "Next.js",
                     "name": "Next.js"
                 },
                 {
-                    "src": "/stack/typescript.svg",
+                    "src": "/stack/typescript.png",
                     "alt": "TypeScript",
                     "name": "TypeScript"
                 },
                 {
-                    "src": "/stack/sass.svg",
+                    "src": "/stack/sass.png",
                     "alt": "Sass",
                     "name": "Sass"
                 },
                 {
-                    "src": "/stack/adonisjs.svg",
+                    "src": "/stack/adonisjs.png",
                     "alt": "AdonisJS",
                     "name": "AdonisJS"
                 },
                 {
-                    "src": "/stack/vercel.svg",
+                    "src": "/stack/vercel.png",
                     "alt": "Vercel",
                     "name": "Vercel"
                 },
                 {
-                    "src": "/stack/mongodb.svg",
+                    "src": "/stack/mongodb.png",
                     "alt": "MongoDB",
                     "name": "MongoDB"
                 },
                 {
-                    "src": "/stack/supabase.svg",
+                    "src": "/stack/supabase.png",
                     "alt": "Supabase",
                     "name": "Supabase"
-                },
-                {
-                    "src": "/stack/postman.svg",
-                    "alt": "Postman",
-                    "name": "Postman"
-                },
-                {
-                    "src": "/stack/docker.svg",
-                    "alt": "Docker",
-                    "name": "Docker"
                 }
             ],
             "about": {
@@ -624,7 +614,7 @@
                         "Project Management"
                     ],
                     "url": "/portfolio/bap-chatenay-malabry",
-                    "redirectToProd": "",
+                    "redirectToProd": "https://bap-k7nu.vercel.app/",
                     "lastModified": "20-05-2024",
                     "buttonLabel": "Visit the Website"
                 },

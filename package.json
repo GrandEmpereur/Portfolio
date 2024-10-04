@@ -20,6 +20,7 @@
     "@types/negotiator": "^0.6.3",
     "@vercel/analytics": "^1.2.2",
     "@vercel/speed-insights": "^1.0.10",
+    "caniuse-lite": "^1.0.30001667",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "gsap": "^3.12.5",
