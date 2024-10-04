@@ -400,8 +400,8 @@ export const projects = [
     {
         "id": 13,
         "title": {
-            "fr": "[PIE] Bookish - Réseau Social Révolutionnaire pour Lecteurs",
-            "en": "[PIE] Bookish - Revolutionary Social Network for Readers"
+            "fr": " Bookish - Réseau Social Révolutionnaire pour Lecteurs",
+            "en": " Bookish - Revolutionary Social Network for Readers"
         },
         "slug": "/bookish",
         "description": {
