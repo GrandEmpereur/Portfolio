@@ -29,7 +29,7 @@ export const projects = [
             "Sales Conversion Optimization"
         ],
         "url": "/portfolio/m-moustache",
-        "redirectToProd": "https://www.m-moustache.com/pages/homme",
+        "redirectToProd": "https://www.odaje.com",
         "lastModified": "20/05/2024",
         "buttonLabel": {
             "fr": "Découvrez la Révolution E-commerce",
@@ -133,7 +133,7 @@ export const projects = [
         ],
         "url": "/portfolio/balzac",
         "lastModified": "20/05/2024",
-        "redirectToProd": "",
+        "redirectToProd": "https://balzac-paris.com/",
         "buttonLabel": {
             "fr": "Découvrir l'Innovation Marketing",
             "en": "Explore Marketing Innovation"
@@ -232,7 +232,7 @@ export const projects = [
         ],
         "url": "/portfolio/shopify-technical-watch",
         "redirectToProd": "",
-        "lastModified": "20-05-2024",
+        "lastModified": "20/05/2024",
         "buttonLabel": {
             "fr": "Explorer l'Innovation E-commerce",
             "en": "Explore E-commerce Innovation"
@@ -390,8 +390,8 @@ export const projects = [
             "Performance Optimization"
         ],
         "url": "/portfolio/react-nba",
-        "redirectToProd": "https://react-nba-delta.vercel.app/app",
-        "lastModified": "20-05-2024",
+        "redirectToProd": "",
+        "lastModified": "20/05/2024",
         "buttonLabel": {
             "fr": "Découvrir la Plateforme de Paris",
             "en": "Explore the Betting Platform"
