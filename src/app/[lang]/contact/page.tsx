@@ -4,6 +4,13 @@ import { Locale } from '@/i18nConfig';
 import { Metadata } from 'next';
 import React from 'react'
 import { getDictionary } from '@/get-dictionary';
+import { Button } from '@/components/ui/button';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 
 export async function generateMetadata({ params: { lang } }: { params: { lang: Locale } }): Promise<Metadata> {
   const dict = await getDictionary(lang);
@@ -51,15 +58,31 @@ export default async function page({
 }) {
   const dict = await getDictionary(lang);
   return (
-    <MaxWidthWrapper className='mt-8'>
-      <section id='Contact' className='contact flex flex-col w-full gap-y-12'>
+    <MaxWidthWrapper>
+      <section id='Contact' className='contact flex flex-col w-full gap-y-5'>
         <div className="contact__title">
           <h1 className='contact__title-sub font-semibold text-2xl'>{dict.TemplateContact.contactMe.titleSub}</h1>
-          <h4 className='contact__title-main keep-color'>{dict.TemplateContact.contactMe.titleMain}</h4>
-          <p className='pt-2'>{dict.TemplateContact.contactMe.description}</p>
+          <h2 className='contact__title-main keep-color text-4xl font-bold mb-4'>{dict.TemplateContact.contactMe.titleMain}</h2>
+          <p className='text-lg mb-6'>{dict.TemplateContact.contactMe.description}</p>
+        </div>
+        
+        <TypeFromWidget />
+
+        <div className="contact__benefits mb-8">
+          <h3 className='text-2xl font-semibold mb-4'>{dict.TemplateContact.contactMe.callToAction}</h3>
+          <Accordion type="single" collapsible className="w-full">
+            {dict.TemplateContact.contactMe.benefits.map((benefit, index) => (
+              <AccordionItem key={index} value={`item-${index}`}>
+                <AccordionTrigger>{benefit.title}</AccordionTrigger>
+                <AccordionContent>
+                  {benefit.description}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
 
-        <TypeFromWidget />
+        <p className='text-lg mb-1'>{dict.TemplateContact.contactMe.formIntro}</p>
       </section>
     </MaxWidthWrapper>
   )

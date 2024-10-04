@@ -187,6 +187,7 @@ async function Page({
                                     {dict.TemplateAbout.skills.languagesItems.map((item, index) => (
                                         <div key={index} className='language__item flex flex-col items-center gap-y-2 '>
                                             <span className='language__name text-xl font-semibold'>{item.name}</span>
+                                            <p className='language__description w-1/2 text-center'>{item.level}</p>
                                             <p className='language__description w-1/2 text-center'>{item.description}</p>
                                         </div>
                                     ))}
