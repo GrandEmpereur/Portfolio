@@ -337,8 +337,8 @@ export const projects = [
     {
         "id": 11,
         "title": {
-            "fr": "[Dev Lab] Châtenay-Malabry - Solution Innovante contre l'Usure Professionnelle",
-            "en": "[Dev Lab] Châtenay-Malabry - Innovative Solution Against Professional Burnout"
+            "fr": " Châtenay-Malabry - Solution Innovante contre l'Usure Professionnelle",
+            "en": " Châtenay-Malabry - Innovative Solution Against Professional Burnout"
         },
         "slug": "/chatenay-malabry",
         "description": {
