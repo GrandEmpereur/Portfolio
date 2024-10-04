@@ -2,11 +2,11 @@
     "TemplateHome": {
         "home": {
             "hero": {
-                "hero_title": "Experienced Full Stack Developer",
-                "hero_title2": "Developer React & Next.js",
-                "hero_title3": "UI/UX Designer",
-                "hero_description": "Specialized in React and Next.js, I build advanced and scalable web applications tailored to business needs. Leverage my expertise in cutting-edge technology to bring your projects to life. As a seasoned Full Stack Developer, I ensure that each web application is optimized for performance, SEO, and user experience.",
-                "hero_scroll": "SCROLL"
+                "hero_title": "React & Next.js Expert | Full Stack",
+                "hero_title2": "Innovative & SEO Web Solutions",
+                "hero_title3": "Exceptional Performance & UX/UI",
+                "hero_description": "Propel your business with custom-built, high-performance, and SEO-optimized web applications. As a React and Next.js expert, I transform your ideas into captivating digital experiences that drive growth and retain customers. Discover how my Full Stack expertise can revolutionize your online presence.",
+                "hero_scroll": "EXPLORE"
             },
             "tech_stack": {
                 "title": "My Tech Stack"
@@ -72,11 +72,11 @@
                 }
             ],
             "about": {
-                "subtitle": "About Me",
-                "title": "I Create World-Class Websites",
-                "description_title": "Discover the Art of Code with a Full Stack Developer",
-                "description": "Embark on a journey through cutting-edge web development with me, an experienced Full Stack Developer. With over four years of experience in the dynamic JavaScript landscape, I specialize in creating immersive user experiences. My arsenal, rich with modern frameworks like React.js and Next.js, propels businesses and individuals toward digital excellence. Whether it's a complex web application or a simple landing page, I focus on delivering high-quality code that enhances both functionality and aesthetics.",
-                "button": "Explore More"
+                "subtitle": "Your Competitive Edge",
+                "title": "Full Stack Expertise for Your Digital Success",
+                "description_title": "Comprehensive and Tailored Web Solutions",
+                "description": "As a freelance Full Stack developer specializing in React and Next.js, I am your strategic partner for digital dominance. My holistic approach ensures robust, scalable, and SEO-optimized web applications, from back-end architecture to user interface. Together, let's transform your challenges into growth opportunities and create an online presence that captivates your audience, boosts your conversions, and retains your customers. Ready to outperform your competitors?",
+                "button": "Boost Your Web Project Now"
             },
             "services": {
                 "subtitle": "Services",
@@ -187,9 +187,9 @@
                 "button": "Discover More"
             },
             "newsletter": {
-                "title": "Join Our Creative Journey — Create With Us!",
-                "description": "Stay updated on the latest web development trends, receive insights from a Full Stack Developer, and join a community passionate about technology. Subscribe to our newsletter and start your journey towards digital excellence.",
-                "button": "Connect Now"
+                "title": "Gain a Competitive Edge in Digital",
+                "description": "Join my exclusive newsletter and receive concrete strategies to optimize your online presence, expert advice on the latest web trends, and special offers to propel your digital growth. Don't let your competitors get ahead!",
+                "button": "Receive Exclusive Insights"
             }
         }
     },
@@ -472,224 +472,7 @@
             },
             "visitWebsite": "Visit the Website",
             "techUsed": "Technologies Used in This Project",
-            "otherTags": "Other Tags",
-            "projects": [
-                {
-                    "id": 1,
-                    "title": "M. Moustache",
-                    "slug": "/m-moustache",
-                    "description": "During my internship and apprenticeship at W3lead, I was responsible for front-end development on the Shopify platform for M. Moustache. My tasks included site integration, developing an API for gift cards, and setting up a point of sale (POS) system. These roles allowed me to strengthen my front-end integration skills and back-end API development, focusing on creating efficient and secure online shopping experiences.",
-                    "placeholder": "/img/portfolio/m-moustache.webp",
-                    "Slider": [],
-                    "tags": [
-                        "Shopify",
-                        "Frontend",
-                        "Backend",
-                        "API Development",
-                        "RESTful API",
-                        "GraphQL",
-                        "TypeScript"
-                    ],
-                    "otherTags": [
-                        "Scrum",
-                        "Agile",
-                        "Project Management"
-                    ],
-                    "url": "/portfolio/m-moustache",
-                    "redirectToProd": "https://www.m-moustache.com/pages/homme",
-                    "lastModified": "20-05-2024",
-                    "buttonLabel": "Visit the Website"
-                },
-                {
-                    "id": 2,
-                    "title": "Tartine & Chocolat",
-                    "slug": "/tartine-chocolat",
-                    "description": "As part of my apprenticeship, I focused on integrating and developing an API to connect an ERP system to the Tartine & Chocolat site for in-store pre-orders and displaying available stores. This project enhanced my ability to manage both front-end integration and back-end systems in a real e-commerce context.",
-                    "placeholder": "/img/portfolio/tartine-chocolat.png",
-                    "Slider": [],
-                    "tags": [
-                        "Shopify",
-                        "API Development",
-                        "ERP Integration",
-                        "JavaScript",
-                        "Frontend",
-                        "Backend"
-                    ],
-                    "otherTags": [
-                        "Scrum",
-                        "Agile",
-                        "Project Management"
-                    ],
-                    "url": "/portfolio/tartine-chocolat",
-                    "redirectToProd": "https://www.tartine-et-chocolat.com",
-                    "lastModified": "20-05-2024",
-                    "buttonLabel": "Visit the Website"
-                },
-                {
-                    "id": 3,
-                    "title": "Qwetch",
-                    "slug": "/qwetch",
-                    "description": "My main responsibilities at Qwetch included integrating the website and implementing Trustpilot widgets. I also worked on the Shopify Checkout V2 redesign, improving user experience and transaction efficiency during my ongoing apprenticeship.",
-                    "placeholder": "/img/portfolio/qwetch.png",
-                    "Slider": [],
-                    "tags": [
-                        "Shopify",
-                        "Trustpilot Integration",
-                        "JavaScript",
-                        "Frontend",
-                        "Checkout V2 Redesign"
-                    ],
-                    "otherTags": [
-                        "Scrum",
-                        "Agile",
-                        "User Testing"
-                    ],
-                    "url": "/portfolio/qwetch",
-                    "redirectToProd": "https://www.qwetch.com/",
-                    "lastModified": "20-05-2024",
-                    "buttonLabel": "Visit the Website"
-                },
-                {
-                    "id": 4,
-                    "title": "Easy Clothes",
-                    "slug": "/easy-clothes",
-                    "description": "This test project involved...",
-                    "placeholder": "/img/portfolio/easy-clothes.png",
-                    "Slider": [],
-                    "tags": [
-                        "Shopify",
-                        "JavaScript",
-                        "Frontend",
-                        "Payment Process Improvement"
-                    ],
-                    "otherTags": [
-                        "Scrum",
-                        "Agile"
-                    ],
-                    "url": "/portfolio/easy-clothes",
-                    "redirectToProd": "https://www.easy-clothes.com/",
-                    "lastModified": "20-05-2024",
-                    "buttonLabel": "Visit the Website"
-                },
-                {
-                    "id": 5,
-                    "title": "Le -1Store",
-                    "slug": "/le-1store",
-                    "description": "My role at Le -1Store involved similar front-end development tasks as those I performed for Easy Clothes, focusing on improving the website's user interface and integrating essential features to effectively support online operations.",
-                    "placeholder": "/img/portfolio/le-1store.png",
-                    "Slider": [],
-                    "tags": [
-                        "Shopify",
-                        "JavaScript",
-                        "Frontend",
-                        "E-commerce Optimization"
-                    ],
-                    "otherTags": [
-                        "Scrum",
-                        "Agile"
-                    ],
-                    "url": "/portfolio/le-1store",
-                    "redirectToProd": "https://www.le-1.store/",
-                    "lastModified": "20-05-2024",
-                    "buttonLabel": "Visit the Website"
-                },
-                {
-                    "id": 6,
-                    "title": "BAP Châtenay-Malabry",
-                    "slug": "/bap-chatenay-malabry",
-                    "description": "For this academic project, I developed a full-stack solution aimed at improving HR processes for detecting professional burnout. The solution included an interactive dashboard that aggregates user response data, providing insights and actionable steps for potential burnout situations.",
-                    "placeholder": "/img/portfolio/bap-chatenay-malabry.png",
-                    "Slider": [],
-                    "tags": [
-                        "Fullstack Development",
-                        "React",
-                        "Next.js",
-                        "TypeScript",
-                        "Dashboard Design",
-                        "Data Aggregation"
-                    ],
-                    "otherTags": [
-                        "Scrum",
-                        "Agile",
-                        "Project Management"
-                    ],
-                    "url": "/portfolio/bap-chatenay-malabry",
-                    "redirectToProd": "https://bap-k7nu.vercel.app/",
-                    "lastModified": "20-05-2024",
-                    "buttonLabel": "Visit the Website"
-                },
-                {
-                    "id": 7,
-                    "title": "React NBA",
-                    "slug": "/react-nba",
-                    "description": "In this school project aimed at creating a sports betting application for NBA games, I was responsible for backend development, focusing on data security and user authentication to ensure a safe and reliable betting environment.",
-                    "placeholder": "/img/portfolio/react-nba.png",
-                    "Slider": [],
-                    "tags": [
-                        "React",
-                        "TypeScript",
-                        "API Security",
-                        "User Authentication",
-                        "Sports Betting Application"
-                    ],
-                    "otherTags": [
-                        "Scrum",
-                        "Agile"
-                    ],
-                    "url": "/portfolio/react-nba",
-                    "redirectToProd": "https://react-nba-delta.vercel.app/app",
-                    "lastModified": "20-05-2024",
-                    "buttonLabel": "Visit the Website"
-                },
-                {
-                    "id": 8,
-                    "title": "Marshall Motors",
-                    "slug": "/marshall-motors",
-                    "description": "As a front-end developer for the Marshall Motors project, I was responsible for integrating the website for a garage specializing in vintage car restoration, providing an elegant and user-friendly interface reflecting the quality of the garage's services.",
-                    "placeholder": "/img/portfolio/marshall-motors.jpg",
-                    "Slider": [],
-                    "tags": [
-                        "Frontend Development",
-                        "Symphony",
-                        "Twig",
-                        "PHP",
-                        "Vintage Cars"
-                    ],
-                    "otherTags": [
-                        "Scrum",
-                        "Agile"
-                    ],
-                    "url": "/portfolio/marshall-motors",
-                    "redirectToProd": "",
-                    "lastModified": "20-05-2024",
-                    "buttonLabel": "Visit the Website"
-                },
-                {
-                    "id": 9,
-                    "title": "Technical City Shopify",
-                    "slug": "/technical-city-shopify",
-                    "description": "In this role, I conducted technical proofs of concept and mini-projects to explore and demonstrate the latest Shopify updates. Working closely with my mentor during my apprenticeship at W3lead, I developed new features for Shopify Checkout V2 and other functionalities, primarily using Rust and React in addition to Shopify APIs.",
-                    "placeholder": "/img/portfolio/checkoutV2.png",
-                    "Slider": [],
-                    "tags": [
-                        "Shopify",
-                        "Rust",
-                        "React",
-                        "API Development",
-                        "Checkout V2",
-                        "Proof of Concept"
-                    ],
-                    "otherTags": [
-                        "Scrum",
-                        "Agile",
-                        "Project Management"
-                    ],
-                    "url": "/portfolio/technical-city-shopify",
-                    "redirectToProd": "",
-                    "lastModified": "20-05-2024",
-                    "buttonLabel": "Visit the Website"
-                }
-            ]
+            "otherTags": "Other Tags"
         }
     },
     "TemplateServices": {
@@ -811,9 +594,9 @@
             "description": "Contact Patrick Bartosik, an experienced Full Stack Developer specializing in React, Next.js, and Tailwind CSS. Let's discuss your projects and discover how I can help you transform your ideas into high-performing digital solutions."
         },
         "contactMe": {
-            "titleSub": "Contact Me",
-            "titleMain": "Let's Discuss Your Project",
-            "description": "I look forward to discussing your project ideas and seeing how I can help you realize them. Whether you need front-end development, back-end solutions, or SEO advice, I am here to help. Fill out the form below, and I will get back to you as soon as possible."
+            "titleSub": "Propel Your Digital Success",
+            "titleMain": "Transform Your Ideas into Concrete Results",
+            "description": "Are you ready to dominate your online market? As a React and Next.js Full Stack expert, I'm passionate about creating digital solutions that generate measurable results. Whether you need a high-performance web application, an SEO overhaul, or conversion optimization, I'm here to transform your challenges into growth opportunities. Contact me now for a free consultation and let's discover together how to propel your business to new heights. Your digital success starts here!"
         }
     },
     "TemplateNavigations": {
@@ -855,10 +638,10 @@
     },
     "TemplateFooter": {
         "footer": {
-            "readyToAccelerate": "Ready to accelerate your online presence?",
-            "exploreServices": "Explore how our comprehensive SEO, redesign, and website optimization services can elevate your project. Contact us to discuss your needs.",
-            "requestQuote": "Request a Quote",
-            "contactUs": "Contact Us",
+            "readyToAccelerate": "Ready to Dominate Your Online Market?",
+            "exploreServices": "Discover how my Full Stack expertise in React and Next.js can transform your digital presence into a growth machine. From SEO optimization to creating custom web applications, my comprehensive solutions will allow you to outperform your competitors and retain your customers. Don't wait to take the lead!",
+            "requestQuote": "Get Your Personalized Strategy",
+            "contactUs": "Launch Your Digital Transformation",
             "quickLinks": "Quick Links",
             "home": "Home",
             "about": "About",
