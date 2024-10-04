@@ -14,30 +14,35 @@ export async function generateMetadata({ params: { lang } }: { params: { lang: L
     return {
         title: dict.TemplatePortfolio.metadata.title,
         description: dict.TemplatePortfolio.metadata.description,
+        keywords: "Portfolio, Projets web, Développement Full Stack, React, Next.js, Applications web",
         openGraph: {
             title: dict.TemplatePortfolio.metadata.title,
             description: dict.TemplatePortfolio.metadata.description,
             url: `https://patrick.bartosik.fr/${lang}/portfolio`,
-            type: 'website',
+            siteName: 'Patrick Bartosik - Développeur Full Stack',
             images: [
                 {
                     url: 'https://patrick.bartosik.fr/img/portfolio/portfolioHero.png',
-                    width: 800,
-                    height: 600,
-                    alt: 'Portfolio Image of Patrick Bartosik',
+                    width: 1200,
+                    height: 630,
+                    alt: 'Portfolio de Patrick Bartosik',
                 },
             ],
+            locale: lang,
+            type: 'website',
         },
         twitter: {
             card: 'summary_large_image',
             title: dict.TemplatePortfolio.metadata.title,
             description: dict.TemplatePortfolio.metadata.description,
-            images: [
-                {
-                    url: 'https://patrick.bartosik.fr/img/portfolio/portfolioHero.png',
-                    alt: 'Portfolio Image of Patrick Bartosik',
-                },
-            ],
+            images: ['https://patrick.bartosik.fr/img/portfolio/portfolioHero.png'],
+        },
+        alternates: {
+            canonical: `https://patrick.bartosik.fr/${lang}/portfolio`,
+            languages: {
+                'fr': 'https://patrick.bartosik.fr/fr/portfolio',
+                'en': 'https://patrick.bartosik.fr/en/portfolio',
+            },
         },
     };
 }

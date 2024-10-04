@@ -4,37 +4,43 @@ import Image from 'next/image';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Locale } from '@/i18nConfig';
 import { getDictionary } from '@/get-dictionary';
+import { Metadata } from 'next';
 
-export async function generateMetadata({ params: { lang } }: { params: { lang: Locale } }) {
+export async function generateMetadata({ params: { lang } }: { params: { lang: Locale } }): Promise<Metadata> {
     const dict = await getDictionary(lang);
 
     return {
         title: dict.TemplateServices.metadata.title,
         description: dict.TemplateServices.metadata.description,
+        keywords: "Services web, Développement Full Stack, React, Next.js, Tailwind CSS, Applications web, SEO",
         openGraph: {
             title: dict.TemplateServices.metadata.title,
             description: dict.TemplateServices.metadata.description,
             url: `https://patrick.bartosik.fr/${lang}/services`,
-            type: 'website',
+            siteName: 'Patrick Bartosik - Développeur Full Stack',
             images: [
                 {
                     url: 'https://patrick.bartosik.fr/img/services/services.png',
-                    width: 800,
-                    height: 600,
+                    width: 1200,
+                    height: 630,
                     alt: dict.TemplateServices.servicesPage.imageAlt,
                 },
             ],
+            locale: lang,
+            type: 'website',
         },
         twitter: {
             card: 'summary_large_image',
             title: dict.TemplateServices.metadata.title,
             description: dict.TemplateServices.metadata.description,
-            images: [
-                {
-                    url: 'https://patrick.bartosik.fr/img/services/services.png',
-                    alt: dict.TemplateServices.servicesPage.imageAlt,
-                },
-            ],
+            images: ['https://patrick.bartosik.fr/img/services/services.png'],
+        },
+        alternates: {
+            canonical: `https://patrick.bartosik.fr/${lang}/services`,
+            languages: {
+                'fr': 'https://patrick.bartosik.fr/fr/services',
+                'en': 'https://patrick.bartosik.fr/en/services',
+            },
         },
     };
 }

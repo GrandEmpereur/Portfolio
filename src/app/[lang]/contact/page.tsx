@@ -5,36 +5,41 @@ import { Metadata } from 'next';
 import React from 'react'
 import { getDictionary } from '@/get-dictionary';
 
-export async function generateMetadata({ params: { lang } }: { params: { lang: Locale } }) {
+export async function generateMetadata({ params: { lang } }: { params: { lang: Locale } }): Promise<Metadata> {
   const dict = await getDictionary(lang);
 
   return {
     title: dict.TemplateContact.metadata.title,
     description: dict.TemplateContact.metadata.description,
+    keywords: "Contact, Développeur Full Stack, React, Next.js, Projets web, Consultation",
     openGraph: {
       title: dict.TemplateContact.metadata.title,
       description: dict.TemplateContact.metadata.description,
       url: `https://patrick.bartosik.fr/${lang}/contact`,
-      type: 'website',
+      siteName: 'Patrick Bartosik - Développeur Full Stack',
       images: [
         {
           url: 'https://patrick.bartosik.fr/img/contact/contactHero.png',
-          width: 800,
-          height: 600,
-          alt: 'Image de contact de Patrick Bartosik',
+          width: 1200,
+          height: 630,
+          alt: 'Contactez Patrick Bartosik',
         },
       ],
+      locale: lang,
+      type: 'website',
     },
     twitter: {
       card: 'summary_large_image',
       title: dict.TemplateContact.metadata.title,
       description: dict.TemplateContact.metadata.description,
-      images: [
-        {
-          url: 'https://patrick.bartosik.fr/img/contact/contactHero.png',
-          alt: 'Image de contact de Patrick Bartosik',
-        },
-      ],
+      images: ['https://patrick.bartosik.fr/img/contact/contactHero.png'],
+    },
+    alternates: {
+      canonical: `https://patrick.bartosik.fr/${lang}/contact`,
+      languages: {
+        'fr': 'https://patrick.bartosik.fr/fr/contact',
+        'en': 'https://patrick.bartosik.fr/en/contact',
+      },
     },
   };
 }
