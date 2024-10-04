@@ -30,13 +30,11 @@ export const projects = [
         ],
         "url": "/portfolio/m-moustache",
         "redirectToProd": "https://www.m-moustache.com/pages/homme",
-        "lastModified": "20-05-2024",
+        "lastModified": "20/05/2024",
         "buttonLabel": {
             "fr": "Découvrez la Révolution E-commerce",
             "en": "Explore the E-commerce Revolution"
-        }
-        "lastModified": "20/05/2024",
-        "buttonLabel": "Visit the website"
+        },
     },
     {
         "id": 2,
@@ -70,8 +68,6 @@ export const projects = [
         "url": "/portfolio/tartine-chocolat",
         "redirectToProd": "https://www.tartine-et-chocolat.com",
         "lastModified": "20/05/2024",
-        "buttonLabel": "Visit the website"
-        "lastModified": "20-05-2024",
         "buttonLabel": {
             "fr": "Explorez l'Innovation Retail de Luxe",
             "en": "Explore Luxury Retail Innovation"
@@ -107,8 +103,6 @@ export const projects = [
         "url": "/portfolio/qwetch",
         "redirectToProd": "https://www.qwetch.com/",
         "lastModified": "20/05/2024",
-        "buttonLabel": "Visit the website"
-        "lastModified": "20-05-2024",
         "buttonLabel": {
             "fr": "Découvrez l'E-commerce Éco-responsable",
             "en": "Explore Eco-friendly E-commerce"
@@ -140,10 +134,8 @@ export const projects = [
         "url": "/portfolio/easy-clothes",
         "redirectToProd": "https://www.easy-clothes.com/",
         "lastModified": "20/05/2024",
-        "buttonLabel": "Visit the website"
         "url": "/portfolio/balzac",
         "redirectToProd": "",
-        "lastModified": "20-05-2024",
         "buttonLabel": {
             "fr": "Découvrir l'Innovation Marketing",
             "en": "Explore Marketing Innovation"
@@ -176,8 +168,6 @@ export const projects = [
         "url": "/portfolio/le-1store",
         "redirectToProd": "https://www.le-1.store/",
         "lastModified": "20/05/2024",
-        "buttonLabel": "Visit the website"
-        "lastModified": "20-05-2024",
         "buttonLabel": {
             "fr": "Explorer la Mode Durable en Ligne",
             "en": "Explore Sustainable Fashion Online"
@@ -211,7 +201,7 @@ export const projects = [
         ],
         "url": "/portfolio/easy-clothes",
         "redirectToProd": "https://www.easy-clothes.com/",
-        "lastModified": "20-05-2024",
+        "lastModified": "20/05/2024",
         "buttonLabel": {
             "fr": "Découvrir l'E-commerce Optimisé",
             "en": "Explore Optimized E-commerce"
@@ -275,7 +265,7 @@ export const projects = [
         ],
         "url": "/portfolio/isotoner",
         "redirectToProd": "",
-        "lastModified": "20-05-2024",
+        "lastModified": "20/05/2024",
         "buttonLabel": {
             "fr": "Découvrir la Personnalisation E-commerce",
             "en": "Explore E-commerce Personalization"
@@ -307,7 +297,7 @@ export const projects = [
         ],
         "url": "/portfolio/w3lead-api-overhaul",
         "redirectToProd": "",
-        "lastModified": "20-05-2024",
+        "lastModified": "20/05/2024",
         "buttonLabel": {
             "fr": "Explorer la Modernisation API",
             "en": "Explore API Modernization"
@@ -340,7 +330,7 @@ export const projects = [
         ],
         "url": "/portfolio/marshal-mostore",
         "redirectToProd": "",
-        "lastModified": "20-05-2024",
+        "lastModified": "20/05/2024",
         "buttonLabel": {
             "fr": "Découvrir le Site Vitrine",
             "en": "Explore the Showcase Website"
@@ -436,7 +426,7 @@ export const projects = [
         ],
         "url": "/portfolio/bookish",
         "redirectToProd": "",
-        "lastModified": "20-05-2024",
+        "lastModified": "20/05/2024",
         "buttonLabel": {
             "fr": "Explorez le Réseau Social Littéraire",
             "en": "Explore the Literary Social Network"
@@ -498,7 +488,7 @@ export const projects = [
         ],
         "url": "/portfolio/bistro-gourmand",
         "redirectToProd": "",
-        "lastModified": "20-05-2024",
+        "lastModified": "20/05/2024",
         "buttonLabel": "Visit the website"
     }
 ]
