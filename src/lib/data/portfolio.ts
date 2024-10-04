@@ -131,10 +131,8 @@ export const projects = [
             "Customer Engagement",
             "Omnichannel Strategy"
         ],
-        "url": "/portfolio/easy-clothes",
-        "redirectToProd": "https://www.easy-clothes.com/",
-        "lastModified": "20/05/2024",
         "url": "/portfolio/balzac",
+        "lastModified": "20/05/2024",
         "redirectToProd": "",
         "buttonLabel": {
             "fr": "Découvrir l'Innovation Marketing",
