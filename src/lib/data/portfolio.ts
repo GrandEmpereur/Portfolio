@@ -367,8 +367,8 @@ export const projects = [
     {
         "id": 12,
         "title": {
-            "fr": "[Projet] React NBA - Plateforme de Paris Sportifs Innovante",
-            "en": "[Project] React NBA - Innovative Sports Betting Platform"
+            "fr": " React NBA - Plateforme de Paris Sportifs Innovante",
+            "en": " React NBA - Innovative Sports Betting Platform"
         },
         "slug": "/react-nba",
         "description": {
@@ -433,8 +433,8 @@ export const projects = [
     {
         "id": 14,
         "title": {
-            "fr": "[Projet] Karen - Solution Innovante de Protection des Développeurs",
-            "en": "[Project] Karen - Innovative Developer Protection Solution"
+            "fr": " Karen - Solution Innovante de Protection des Développeurs",
+            "en": " Karen - Innovative Developer Protection Solution"
         },
         "slug": "/karen",
         "description": {
@@ -462,8 +462,8 @@ export const projects = [
     {
         "id": 15,
         "title": {
-            "fr": "[Projet] Le Bistro Gourmand - Plateforme de Gestion de Restaurant Innovante",
-            "en": "[Project] Le Bistro Gourmand - Innovative Restaurant Management Platform"
+            "fr": " Le Bistro Gourmand - Plateforme de Gestion de Restaurant Innovante",
+            "en": " Le Bistro Gourmand - Innovative Restaurant Management Platform"
         },
         "slug": "/bistro-gourmand",
         "description": {
