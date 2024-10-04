@@ -3,9 +3,9 @@
         "home": {
             "hero": {
                 "hero_title": "React & Next.js Expert | Full Stack",
-                "hero_title2": "Innovative & SEO Web Solutions",
+                "hero_title2": "Innovative Web Solutions & SEO",
                 "hero_title3": "Exceptional Performance & UX/UI",
-                "hero_description": "Propel your business with custom-built, high-performance, and SEO-optimized web applications. As a React and Next.js expert, I transform your ideas into captivating digital experiences that drive growth and retain customers. Discover how my Full Stack expertise can revolutionize your online presence.",
+                "hero_description": "Propel your project or business with custom-made, ultra-performant, and SEO-optimized web solutions. As a Full Stack expert specialized in React and Next.js, I transform your ideas into complete digital experiences, from front-end to back-end. Whether you're an ambitious individual or a growing business, I create web applications, CRMs, dashboards, and robust APIs that drive your growth and retain your users. Discover how my Full Stack expertise can revolutionize your online presence and optimize your internal processes.",
                 "hero_scroll": "EXPLORE"
             },
             "tech_stack": {
@@ -75,108 +75,100 @@
                 "subtitle": "Your Web Development Partner",
                 "title": "Full Stack Expertise for Your Digital Success",
                 "description_title": "Comprehensive and Tailored Web Solutions",
-                "description": "As a freelance Full Stack developer specializing in React and Next.js, I am your strategic partner for digital dominance. My holistic approach ensures robust, scalable, and SEO-optimized web applications, from back-end architecture to user interface. Together, let's transform your challenges into growth opportunities and create an online presence that captivates your audience, boosts your conversions, and retains your customers. Ready to outperform your competitors?",
+                "description": "As a freelance Full Stack developer specialized in React and Next.js, I am your strategic partner for digital dominance. My holistic approach ensures robust, scalable, and SEO-optimized web applications, from back-end architecture to user interface. Together, let's transform your challenges into growth opportunities and create an online presence that captivates your audience, boosts your conversions, and retains your customers. Ready to outperform your competitors?",
                 "button": "Learn More About Me"
             },
             "services": {
                 "subtitle": "Services",
-                "title": "Explore My Full Stack Development Expertise",
-                "description": "Discover how I can transform your ideas into high-performing web solutions. Whether it's creating websites, SaaS applications, or optimizing your development processes, I offer comprehensive services tailored to your needs.",
+                "title": "Custom Full Stack Web Solutions",
+                "description": "Transform your ideas into digital reality with my comprehensive web development services. From design to production, I guide you in creating innovative, high-performance, and scalable web solutions.",
                 "servicesList": [
                     {
-                        "id": "frontend-backend-development",
-                        "title": "Web Solutions Development",
-                        "generalDescription": "Create dynamic and responsive websites with React and Next.js, and robust back-ends with AdonisJS. Explore the full section to discover how I can bring your project to life.",
+                        "id": "frontend-development",
+                        "title": "Advanced Front-End Development",
+                        "generalDescription": "Create modern, responsive, and SEO-optimized user interfaces with the latest front-end technologies.",
                         "detailedDescription": [
                             {
-                                "title": "Front-End Development",
-                                "description": "Develop dynamic and responsive user interfaces with the latest front-end technologies, including React and Next.js."
+                                "title": "React & Next.js Applications",
+                                "description": "Development of high-performance and SEO-friendly web applications with React and Next.js, using SSR and SSG for an optimal user experience."
                             },
                             {
-                                "title": "Back-End Development",
-                                "description": "Create robust and scalable back-ends with AdonisJS, integrating APIs, content management systems, and more."
+                                "title": "Responsive Interfaces",
+                                "description": "Creation of adaptive interfaces with Tailwind CSS and SASS, ensuring a consistent user experience across all devices."
                             },
                             {
-                                "title": "SaaS Creation",
-                                "description": "Launch high-performing and scalable SaaS applications tailored to your company's specific needs."
+                                "title": "Performance Optimization",
+                                "description": "Improvement of loading times and application interactivity through advanced front-end optimization techniques."
                             },
                             {
-                                "title": "E-commerce Site Creation",
-                                "description": "Develop high-performing and secure e-commerce sites optimized for conversion and user experience."
-                            },
-                            {
-                                "title": "Secure API Creation",
-                                "description": "I help you create and secure your APIs for optimal use, or if you already have solutions, I assist in integrating them directly into your projects."
+                                "title": "API Integration & State Management",
+                                "description": "Efficient integration of RESTful and GraphQL APIs, advanced state management with Redux or Context API for robust and scalable applications."
                             }
                         ],
                         "icon": "/shape/img5.png",
                         "iconWidth": 83,
                         "iconHeight": 83,
-                        "iconAlt": "Web Solutions Development Icon",
-                        "buttonLabel": "See More",
-                        "buttonLink": "/services#frontend-backend-development"
+                        "iconAlt": "Front-End Development Icon",
+                        "buttonLabel": "Learn More",
+                        "buttonLink": "/services#frontend-development"
                     },
                     {
-                        "id": "devops-and-deployment",
-                        "title": "DevOps and Deployment",
-                        "generalDescription": "Ensure continuous and reliable delivery with advanced DevOps practices. Discover how I can optimize your development pipeline.",
+                        "id": "backend-development",
+                        "title": "Robust Back-End Development",
+                        "generalDescription": "Build solid and scalable back-end architectures to support your web and mobile applications.",
                         "detailedDescription": [
                             {
-                                "title": "Dockerize Your Applications",
-                                "description": "Standardize and isolate your development environment with Docker for greater flexibility and security."
+                                "title": "RESTful & GraphQL APIs",
+                                "description": "Design and development of high-performance and secure APIs with Node.js, Express, and Apollo Server for GraphQL."
                             },
                             {
-                                "title": "CI/CD",
-                                "description": "Implement CI/CD pipelines to ensure automated deployments and continuous integration."
+                                "title": "Databases & ORM",
+                                "description": "Efficient data management with MongoDB, PostgreSQL, and use of ORMs like Mongoose or Prisma for optimal abstraction."
                             },
                             {
-                                "title": "Unit and Functional Testing",
-                                "description": "Guarantee the quality of your code with rigorous unit and functional testing."
+                                "title": "Authentication & Security",
+                                "description": "Implementation of robust authentication systems (JWT, OAuth) and securing applications against common vulnerabilities."
                             },
                             {
-                                "title": "Deployment",
-                                "description": "Deploy your applications securely and efficiently with solutions tailored to your specific needs."
-                            },
-                            {
-                                "title": "Monitoring and Maintenance",
-                                "description": "Monitor and maintain your applications to ensure optimal performance and continuous availability."
+                                "title": "Serverless & Cloud Functions",
+                                "description": "Development of serverless functions and deployment on cloud platforms like Vercel, AWS Lambda, or Google Cloud Functions."
                             }
                         ],
                         "icon": "/shape/img6.png",
                         "iconWidth": 83,
                         "iconHeight": 83,
-                        "iconAlt": "DevOps and Deployment Icon",
-                        "buttonLabel": "See More",
-                        "buttonLink": "/services#devops-and-deployment"
+                        "iconAlt": "Back-End Development Icon",
+                        "buttonLabel": "Learn More",
+                        "buttonLink": "/services#backend-development"
                     },
                     {
-                        "id": "ux-ui-design",
-                        "title": "UX/UI Design",
-                        "generalDescription": "Create intuitive and engaging user experiences with high-quality UX/UI designs. Discover how I can enhance user interaction with your product.",
+                        "id": "full-stack-solutions",
+                        "title": "Comprehensive Full Stack Solutions",
+                        "generalDescription": "End-to-end development of complex web applications, from front-end to back-end, including deployment and maintenance.",
                         "detailedDescription": [
                             {
-                                "title": "UX/UI Design",
-                                "description": "Develop intuitive and aesthetically pleasing user interfaces to enhance user experience and customer satisfaction."
+                                "title": "Progressive Web Applications (PWA)",
+                                "description": "Creation of progressive web applications offering a near-native experience on all devices."
                             },
                             {
-                                "title": "Prototyping and Wireframing",
-                                "description": "Create interactive prototypes and wireframes to validate your design concepts before development."
+                                "title": "E-commerce & Payment Systems",
+                                "description": "Development of custom e-commerce platforms with integration of secure payment systems (Stripe, PayPal)."
                             },
                             {
-                                "title": "User Testing",
-                                "description": "Implement user testing to ensure optimal experience and identify friction points."
+                                "title": "Headless CMS",
+                                "description": "Implementation of headless CMS like Strapi or Contentful for flexible and decoupled content management."
                             },
                             {
-                                "title": "Branding and Mockups",
-                                "description": "Develop a strong brand identity and create high-quality mockups with tools like Figma."
+                                "title": "Dashboards & Analytics",
+                                "description": "Creation of interactive dashboards and data analysis systems to visualize important KPIs for your business."
                             }
                         ],
                         "icon": "/shape/img3.png",
                         "iconWidth": 78,
                         "iconHeight": 80,
-                        "iconAlt": "UX/UI Design Icon",
+                        "iconAlt": "Full Stack Solutions Icon",
                         "buttonLabel": "Learn More",
-                        "buttonLink": "/services#ux-ui-design"
+                        "buttonLink": "/services#full-stack-solutions"
                     }
                 ]
             },
@@ -187,31 +179,33 @@
                 "button": "Discover More"
             },
             "newsletter": {
-                "title": "Gain a Competitive Edge in Digital",
-                "description": "Join my exclusive newsletter and receive concrete strategies to optimize your online presence, expert advice on the latest web trends, and special offers to propel your digital growth. Don't let your competitors get ahead!",
-                "button": "Receive Exclusive Insights"
+                "title": "Ready to Bring Your Digital Project to Life?",
+                "description": "Whether you have a precise idea or are seeking advice for your online presence, I'm here to help. Let's discuss your project and see how my Full Stack development services can meet your specific needs.",
+                "button": "Request a Free Quote"
             }
         }
     },
     "TemplateAbout": {
         "metadata": {
             "title": "About Patrick Bartosik - Innovative Full Stack Developer",
-            "description": "Discover the journey and expertise of Patrick Bartosik, a Full Stack Developer passionate about React, Next.js, and Tailwind CSS. Dive into his experiences and skills to see how he transforms ideas into high-performing digital solutions. With a focus on SEO, performance, and user experience, Patrick ensures that every project is not only visually impressive but also technically superior."
+            "description": "Discover the journey and expertise of Patrick Bartosik, a Full Stack developer passionate about React, Next.js, and Tailwind CSS. Dive into his experiences and skills to see how he transforms ideas into high-performing digital solutions. With a focus on SEO, performance, and user experience, Patrick ensures that each project is not only visually impressive but also technically superior."
         },
         "aboutMe": {
-            "titleSub": "About Me",
-            "titleMain": "Everything You Want to Know About Me",
-            "heroImageAlt": "Image of Patrick Bartosik",
+            "titleSub": "Discover My Journey",
+            "titleMain": "A Passionate Developer at Your Service",
+            "heroImageAlt": "Patrick Bartosik in action",
             "name": "Patrick Bartosik",
-            "role": "Full Stack Web Developer",
+            "role": "React & Next.js Full Stack Expert",
             "introduction": [
-                "Hello, I am Patrick Bartosik, an experienced Full Stack Developer with a strong focus on the JavaScript ecosystem, specializing in creating scalable and high-performing web applications using React and Next.js. Over the years, I have honed my skills in JavaScript, mastering the essential frameworks and libraries for modern web development. My expertise in React and Next.js allows me to deliver dynamic websites, optimized for SEO, that provide excellent user experiences and meet the high standards of today's web applications.",
-                "My professional journey has been dedicated to developing robust solutions, optimizing web performance, and integrating advanced functionalities that ensure minimal maintenance and high efficiency. Whether it's improving existing applications or creating new ones from scratch, my goal is always to leverage my technical skills to produce cutting-edge web platforms that are accessible and easy to maintain. My projects often involve a comprehensive approach, from initial concept and design to final deployment and maintenance.",
-                "Beyond my technical skills, I am deeply committed to staying up-to-date with the latest trends and best practices in web development. This continuous learning allows me to offer innovative solutions that are not only effective but also future-proof. I believe in the power of collaboration and strive to build strong relationships with my clients, understanding their needs and delivering results that ensure their success.",
-                "I have worked on various projects, ranging from creating custom e-commerce sites to implementing complex SaaS solutions. My expertise covers not only front-end development with React and Next.js but also back-end architecture using AdonisJS and orchestration with Docker. I am also skilled in integrating systems such as CRMs and ERPs, as well as deploying solutions on cloud platforms like Vercel and Supabase.",
-                "I am passionate about developing innovative web solutions that not only meet user needs but exceed them. My approach is based on a deep understanding of client requirements, designing tailored solutions, and implementing cutting-edge technologies to ensure optimal performance. I strive to create immersive user experiences that engage and retain users."
+                "Welcome to my digital universe! I'm Patrick Bartosik, a Full Stack developer passionate about creating exceptional web experiences. Specialized in React and Next.js, I transform ambitious ideas into high-performing and innovative web applications.",
+                "My journey is marked by overcoming challenges and providing creative solutions to complex problems. From designing intuitive user interfaces to architecting robust back-end systems, each project is an opportunity for me to push the boundaries of web innovation.",
+                "What sets me apart? A holistic approach to web development, combining technical expertise, creativity, and a deep understanding of business needs. I don't just code; I build solutions that propel your business towards digital success.",
+                "My skills cover a wide spectrum: from front-end development with React and Next.js to creating high-performance APIs, including SEO optimization and integration of complex systems. Every line of code I write aims to create tangible value for your project.",
+                "Collaborating with me means opting for a partnership where your vision is at the heart of every technical decision. Together, we'll transform your ideas into digital realities that will captivate your users and stimulate your growth."
             ],
-            "downloadResume": "Download My Resume"
+            "callToAction": "Ready to Revolutionize Your Web Presence?",
+            "downloadResume": "Download My Resume",
+            "contactButton": "Let's Discuss Your Project"
         },
         "experience": {
             "education_title": "Education",
@@ -219,60 +213,66 @@
             "education": [
                 {
                     "period": "2019 - 2020",
-                    "title": "Baccalauréat in Science and Industrial Technology Development (STI2D)",
-                    "location": "Lycée Général et Technologique Jules Richard",
-                    "description": "Completed the French Baccalauréat with a focus on science and technology, preparing for higher education in technology-related fields."
+                    "title": "Baccalaureate in Science and Technology for Industry and Sustainable Development (STI2D)",
+                    "location": "Jules Richard General and Technological High School",
+                    "description": "French Baccalaureate with a specialization in science and technology, preparing for higher education in technological fields."
                 },
                 {
                     "period": "2020 - 2023",
-                    "title": "Bachelor in Coding & Digital Innovation",
-                    "location": "IIM - Digital School Paris",
-                    "description": "Earned a Bachelor’s degree specializing in coding and digital innovation, gaining practical skills and theoretical knowledge in digital technologies and software development."
+                    "title": "Bachelor's in Coding and Digital Innovation",
+                    "location": "IIM - School of Internet and Multimedia, Paris",
+                    "description": "Specialized degree in coding and digital innovation, acquiring practical skills and theoretical knowledge in digital technologies and software development."
                 },
                 {
                     "period": "2023 - 2025",
-                    "title": "Master in Web and Mobile Engineering",
-                    "location": "IIM - Digital School Paris",
-                    "description": "Currently pursuing a Master’s degree in Web and Mobile Engineering, focusing on advanced concepts in mobile solutions, web technologies, and application development."
+                    "title": "Master's in Web and Mobile Engineering",
+                    "location": "IIM - School of Internet and Multimedia, Paris",
+                    "description": "Currently pursuing a Master's in Web and Mobile Engineering, focusing on advanced concepts in mobile solutions, web technologies, and application development."
                 }
             ],
             "professional": [
                 {
-                    "period": "2022 - present",
-                    "title": "Full Stack Developer",
-                    "location": "Personal Project - Portfolio",
-                    "description": "Designed and developed a headless site for a restaurant chain, utilizing React for the front-end and Strapi for the back-end. Managed hosting, domain name creation, and SEO optimization."
-                },
-                {
-                    "period": "2021 - 2022",
-                    "title": "Front-end Developer",
-                    "location": "Marshall Motors - School Project [BAP]",
-                    "description": "Developed the front-end of a showcase website for an automotive garage using SCSS and Twig, integrated with a Symfony back-end. Designed a visual system and structured classes for better visual consistency. Implemented Google Business to optimize online visibility."
+                    "period": "2024 - present",
+                    "title": "Full Stack IT Developer (Apprenticeship)",
+                    "location": "Euroclear",
+                    "description": "As an IT developer, I am dedicated to creating robust web interfaces using Angular for one of the world's largest post-trade service providers. I contribute to improving critical financial systems, focusing on performance, security, and user experience."
                 },
                 {
                     "period": "2022 - 2023",
-                    "title": "Full Stack Developer (apprenticeship)",
-                    "location": "W3lead",
-                    "description": "Designed and deployed e-commerce stores on Shopify using HTML, CSS, JS, and Liquid for the front-end. Developed the back-end using Node.js, TypeScript, REST APIs, GraphQL, and JWT authentication in Rust. Additional contributions include writing documentation, conducting code reviews, and R&D on new Shopify features."
+                    "title": "Full Stack Developer (Apprenticeship)",
+                    "location": "W3lead - Shopify Partner",
+                    "description": "First significant professional experience where I delved into the world of cutting-edge e-commerce. As a key member of a dynamic team, I took on the challenge of quickly mastering the Shopify ecosystem and modern web technologies. I designed and developed high-performance and innovative online stores, using HTML, CSS, JavaScript, and Liquid for the front-end, as well as Node.js and TypeScript for the back-end. This experience allowed me to develop solid expertise in integrating REST and GraphQL APIs, while constantly adapting to the latest e-commerce trends."
                 },
                 {
-                    "period": "2024 - 2025",
-                    "title": "Full Stack Developer",
-                    "location": "Euroclear",
-                    "description": "Currently working as a full stack developer, responsible for developing and maintaining various software solutions that enhance the efficiency and functionality of financial services."
+                    "period": "2021 - 2022 (3 months)",
+                    "title": "Full Stack Developer (Internship)",
+                    "location": "W3lead",
+                    "description": "Intensive internship that consolidated and deepened the skills acquired during my academic journey. I had the opportunity to work on complex e-commerce projects, honing my skills in front-end and back-end development. This experience allowed me to gain autonomy and bring innovative solutions to technical challenges encountered, while closely collaborating with the development team."
+                },
+                {
+                    "period": "2021 - 2022",
+                    "title": "Front-end Developer (Academic Project)",
+                    "location": "Marshall Motors - School Project [BAP]",
+                    "description": "As part of an ambitious academic project, I led the front-end development of a showcase website for an automotive garage. Using SCSS and Twig, I created a modern and responsive user interface, integrated with a Symfony back-end. This project allowed me to put into practice my skills in UX/UI design and SEO optimization, particularly through the implementation of Google Business."
+                },
+                {
+                    "period": "2021 - present",
+                    "title": "Freelance Full Stack Developer",
+                    "location": "Independent Projects",
+                    "description": "Alongside my studies and corporate experiences, I run a freelance activity where I design and develop custom web solutions for various clients. This experience has allowed me to refine my skills in project management, client relations, and full stack development, while staying at the forefront of the latest web technologies."
                 }
             ]
         },
         "skills": {
-            "title": "Everything You Need to Know About My Skills",
-            "coreTechnologies": "My Core Programming Technologies",
-            "coreTechnologiesDescription": "Discover the key technologies I master to create modern and scalable applications. My expertise includes React, Next.js, Node.js, and Tailwind CSS, ensuring that each project is built with the best tools for optimal performance and scalability.",
-            "otherTechnologies": "I Can Work with Other Programming Technologies",
-            "otherTechnologiesDescription": "Explore other programming languages and tools I have learned through side projects and academic courses. This includes Python, Ruby on Rails, and PHP, showcasing my versatility and ability to adapt to different development environments.",
-            "languages": "Language Skills",
-            "languagesDescription": "My language skills cover several languages, allowing for effective communication in diverse environments. This includes fluency in English, French, and Spanish, facilitating collaboration with a global clientele.",
-            "softSkills": "Interpersonal Skills",
-            "softSkillsDescription": "Discover the interpersonal skills I have acquired through my schooling and personal experiences, including teamwork, problem-solving, and effective communication. These skills complement my technical expertise and contribute to my overall effectiveness as a developer.",
+            "title": "Expertise in Modern Technologies for Digital Transformation",
+            "coreTechnologies": "Cutting-Edge Technology Stack",
+            "coreTechnologiesDescription": "Mastery of the most recent and high-performing technologies, ideal for companies aiming for a complete modernization of their digital ecosystem.",
+            "otherTechnologies": "Extended Technological Ecosystem",
+            "otherTechnologiesDescription": "Varied skills in a wide range of modern tools, allowing seamless integration with your existing systems and rapid adaptation to your specific needs.",
+            "languages": "Multilingual Communication",
+            "languagesDescription": "Ability to collaborate effectively in an international environment, facilitating coordination with teams and clients worldwide.",
+            "softSkills": "Transversal Skills for Innovation",
+            "softSkillsDescription": "Essential qualities for successfully carrying out digital transformation projects, ensuring effective collaboration, and stimulating innovation within your company.",
             "mainStack": [
                 {
                     "name": "TypeScript",
@@ -388,74 +388,56 @@
             "languagesItems": [
                 {
                     "name": "French",
-                    "level": "Native",
-                    "description": "Fluent in French as a native speaker, I possess complete command of the language, including idiomatic expressions and specialized vocabulary."
+                    "level": "Native language",
+                    "description": "Perfect mastery in speaking and writing, including technical and professional language."
                 },
                 {
                     "name": "Polish",
-                    "level": "Native",
-                    "description": "As a native speaker of Polish, I have full proficiency in the language, enabling me to engage in all forms of communication effectively."
+                    "level": "Native language",
+                    "description": "Excellent mastery, allowing fluent communication in all contexts."
                 },
                 {
                     "name": "English",
-                    "level": "Professional",
-                    "description": "I am proficient in English with a professional level of fluency that allows me to handle complex technical discussions and documentation."
+                    "level": "Professional (C1)",
+                    "description": "Ability to conduct complex technical discussions and write detailed documentation."
                 }
             ],
             "softSkillsItems": [
                 {
-                    "name": "Problem Solving"
+                    "name": "Agility and Adaptability"
                 },
                 {
-                    "name": "Teamwork"
+                    "name": "Innovation and Creativity"
                 },
                 {
-                    "name": "Communication"
+                    "name": "Change Management"
                 },
                 {
-                    "name": "Time Management"
+                    "name": "Technical Leadership"
                 },
                 {
-                    "name": "Adaptability"
+                    "name": "Complex Problem Solving"
                 },
                 {
-                    "name": "Creativity"
+                    "name": "Inter-departmental Communication"
                 },
                 {
-                    "name": "Leadership"
+                    "name": "Strategic Thinking"
                 },
                 {
-                    "name": "Critical Thinking"
+                    "name": "Continuous Learning"
                 },
                 {
-                    "name": "Attention to Detail"
+                    "name": "Cross-functional Collaboration"
                 },
                 {
-                    "name": "Conflict Resolution"
+                    "name": "Customer Orientation"
                 },
                 {
-                    "name": "Decision Making"
+                    "name": "Agile Project Management"
                 },
                 {
-                    "name": "Empathy"
-                },
-                {
-                    "name": "Flexibility"
-                },
-                {
-                    "name": "Organization"
-                },
-                {
-                    "name": "Perseverance"
-                },
-                {
-                    "name": "Positive Attitude"
-                },
-                {
-                    "name": "Stress Management"
-                },
-                {
-                    "name": "Work Ethic"
+                    "name": "Data Analysis and Decision Making"
                 }
             ]
         }
@@ -477,115 +459,136 @@
     },
     "TemplateServices": {
         "metadata": {
-            "title": "Web Development Services - Patrick Bartosik",
-            "description": "Discover the web development services offered by Patrick Bartosik. Specializing in React, Next.js, and Tailwind CSS, Patrick provides innovative solutions for high-performance and aesthetically pleasing web applications."
+            "title": "Premium Full Stack Web Development Services | Patrick Bartosik",
+            "description": "Transform your online presence with custom web solutions, from design to production. Expert in React, Next.js, and SEO optimization for high-performance and scalable applications."
         },
         "servicesPage": {
-            "titleSub": "Services",
-            "titleMain": "All My Services and Explanations",
-            "imageAlt": "Image of Patrick Bartosik's services",
+            "titleSub": "Innovative and High-Performance Web Solutions",
+            "titleMain": "Propel Your Business into the Digital Era",
+            "introduction": "As a Full Stack expert, I offer comprehensive and tailored web services to address the unique challenges of your business. Whether you're an ambitious startup or an established company, my solutions are designed to give you a competitive edge in today's digital world.",
+            "imageAlt": "Illustration of Patrick Bartosik's full stack web development services",
             "servicesList": [
                 {
-                    "id": "custom-web-development",
-                    "title": "Front-End Development",
-                    "generalDescription": "Creating dynamic and responsive user interfaces with the latest technologies.",
+                    "id": "showcase-websites",
+                    "title": "Impactful and SEO-Optimized Showcase Websites",
+                    "generalDescription": "Captivate your audience and improve your online visibility with an elegant, high-performance website optimized for search engines.",
                     "detailedDescription": [
                         {
-                            "title": "React",
-                            "description": "Developing high-performance and modular web applications with React. Mastery of hooks, state management with Redux or Context API, and API integration for dynamic and interactive interfaces. React allows for the creation of reusable components that enhance development efficiency and maintainability."
+                            "title": "Responsive Design and Optimized UX",
+                            "description": "Creation of intuitive and aesthetic user interfaces, perfectly adapted to all devices for an exceptional user experience and better conversion rate."
                         },
                         {
-                            "title": "Next.js",
-                            "description": "Creating static and dynamic websites optimized for SEO with Next.js. Utilizing server-side rendering (SSR) and static site generation (SSG) for optimal performance and a seamless user experience. Next.js simplifies the development process by offering built-in routing and API handling."
+                            "title": "Advanced SEO Optimization",
+                            "description": "Implementation of SEO best practices to improve your ranking in search results, attract qualified traffic, and increase your online visibility."
                         },
                         {
-                            "title": "Tailwind CSS",
-                            "description": "Using Tailwind CSS to design elegant and consistent user interfaces. Creating reusable and customizable components, ensuring a modern and responsive design. Tailwind CSS enhances the styling process by providing utility-first CSS classes that streamline the design workflow."
+                            "title": "Dynamic Content Integration",
+                            "description": "Implementation of flexible content management systems to allow you to easily update your site and keep your content fresh and relevant."
                         },
                         {
-                            "title": "Front-End Testing",
-                            "description": "Performing unit and functional testing with tools like Jest and React Testing Library to ensure the reliability and maintainability of front-end code. Testing helps identify and fix bugs early, ensuring a robust and stable application."
+                            "title": "Performance Analysis and Reporting",
+                            "description": "Installation of analytics tools to continuously track and optimize your site's performance, allowing you to make informed decisions based on concrete data."
                         }
                     ]
                 },
                 {
-                    "id": "backend-development",
-                    "title": "Back-End Development",
-                    "generalDescription": "Designing and implementing robust and scalable servers.",
+                    "id": "e-commerce",
+                    "title": "High-Performance E-commerce Platforms",
+                    "generalDescription": "Boost your online sales with a robust, secure, and conversion-optimized e-commerce solution tailored to your specific needs.",
                     "detailedDescription": [
                         {
-                            "title": "Node.js",
-                            "description": "Developing fast and efficient servers with Node.js. Using Express.js to create RESTful APIs, session management, and secure authentication with JWT. Node.js provides a non-blocking, event-driven architecture that allows for handling numerous connections simultaneously."
+                            "title": "Smooth and Personalized Shopping Experience",
+                            "description": "Design of an intuitive and fast purchasing journey, with personalization features to maximize conversions and retain your customers."
                         },
                         {
-                            "title": "AdonisJS",
-                            "description": "Using AdonisJS to build structured and maintainable back-end applications. Creating data models, managing migrations, and implementing controllers for CRUD operations. AdonisJS offers a clean and modular structure, making it easier to develop and maintain complex applications."
+                            "title": "Advanced Inventory and Order Management",
+                            "description": "Implementation of real-time inventory management systems and efficient order processing tools to optimize your operations."
                         },
                         {
-                            "title": "REST and GraphQL APIs",
-                            "description": "Creating RESTful and GraphQL APIs for smooth and secure data exchanges. Documenting APIs with Swagger or GraphQL Playground to facilitate integration and use by front-end developers. APIs enable seamless communication between the server and client, enhancing the application's functionality."
+                            "title": "Secure and Multiple Payment Integrations",
+                            "description": "Setup of various secure payment gateways to offer flexibility and confidence to your customers, thus increasing your conversion rates."
                         },
                         {
-                            "title": "Databases",
-                            "description": "Integrating and managing relational and non-relational databases, such as PostgreSQL, MongoDB, and Supabase. Setting up data schemas, optimizing queries, and managing transactions. Efficient database management ensures data integrity and improves application performance."
-                        },
-                        {
-                            "title": "Security and Authentication",
-                            "description": "Implementing security solutions to protect data and users. Managing roles and permissions, encrypting sensitive data, and implementing measures to prevent common attacks (XSS, CSRF, etc.). Security is crucial for maintaining user trust and protecting application data."
+                            "title": "Customization and Scalability",
+                            "description": "Development of custom features to meet your specific needs and allow unlimited growth, adapting your platform to the evolution of your business."
                         }
                     ]
                 },
                 {
-                    "id": "devops-and-deployment",
-                    "title": "DevOps and Deployment",
-                    "generalDescription": "Ensuring continuous and reliable delivery with advanced DevOps practices.",
+                    "id": "saas-applications",
+                    "title": "Innovative and Scalable SaaS Applications",
+                    "generalDescription": "Transform your idea into a scalable and profitable SaaS application, designed to conquer your target market and generate recurring revenue.",
                     "detailedDescription": [
                         {
-                            "title": "Docker",
-                            "description": "Standardizing and isolating your development environment with Docker for greater flexibility and security. Creating Dockerfiles and managing containers to deploy applications consistently across different environments. Docker ensures that applications run the same way in development, testing, and production."
+                            "title": "Scalable Cloud Native Architecture",
+                            "description": "Design of a scalable and resilient architecture, using cloud computing best practices to ensure performance and reliability, even with rapid user growth."
                         },
                         {
-                            "title": "CI/CD",
-                            "description": "Setting up CI/CD pipelines to ensure automated deployments and continuous integration. Using GitHub Actions or GitLab CI to automate testing, builds, and deployments. CI/CD pipelines enhance development productivity by reducing manual intervention and speeding up the deployment process."
+                            "title": "Cutting-Edge Security and Compliance",
+                            "description": "Implementation of robust security measures and compliance with standards (GDPR, etc.) to protect your data and that of your customers, building trust and reducing risks."
                         },
                         {
-                            "title": "Unit and Functional Testing",
-                            "description": "Ensuring code quality with rigorous unit and functional testing. Using testing frameworks like Mocha, Chai, Jest, and Cypress for comprehensive test coverage. Testing is essential for identifying issues early and maintaining a high-quality codebase."
+                            "title": "Flexible API Integrations and Webhooks",
+                            "description": "Development of RESTful and GraphQL APIs to facilitate integrations with other services and systems, creating an interconnected and powerful ecosystem for your SaaS."
                         },
                         {
-                            "title": "Deployment",
-                            "description": "Deploying your applications securely and efficiently, with solutions tailored to your specific needs. Using platforms like Vercel, Heroku, AWS, or DigitalOcean for deploying your applications. Efficient deployment strategies minimize downtime and ensure a seamless user experience."
-                        },
-                        {
-                            "title": "Monitoring and Maintenance",
-                            "description": "Monitoring and maintaining your applications to ensure optimal performance and continuous availability. Using monitoring tools like Prometheus, Grafana, and Sentry to quickly detect and resolve issues. Continuous monitoring helps in maintaining application health and performance."
+                            "title": "Advanced Dashboards and Analytics",
+                            "description": "Creation of intuitive dashboards and analysis systems to track crucial KPIs of your SaaS, offering valuable insights to guide your strategic decisions."
                         }
                     ]
                 },
                 {
-                    "id": "ui-ux-design",
-                    "title": "UX/UI Design",
-                    "generalDescription": "Designing intuitive and aesthetic user experiences.",
+                    "id": "backend-api",
+                    "title": "Robust and High-Performance Back-end and APIs",
+                    "generalDescription": "Build a solid foundation for your applications with powerful back-ends and high-performance APIs, ensuring stability, security, and scalability.",
                     "detailedDescription": [
                         {
-                            "title": "UI/UX Design",
-                            "description": "Developing intuitive and aesthetic user interfaces to enhance user experience and customer satisfaction. Using Figma or Sketch to create coherent and attractive designs. Effective UI/UX design focuses on usability, accessibility, and aesthetics, ensuring a positive user experience."
+                            "title": "Modern Microservices Architectures",
+                            "description": "Design and implementation of microservices architectures for optimal scalability and maintenance, allowing agile evolution of your infrastructure."
                         },
                         {
-                            "title": "Prototyping and Wireframing",
-                            "description": "Creating interactive prototypes and wireframes to validate your design concepts before developing them. Using Marvel or InVision to test and refine user interactions. Prototyping allows for early feedback and iterative improvements, reducing the risk of costly changes later."
+                            "title": "Large-Scale Performance Optimization",
+                            "description": "Implementation of caching strategies, indexing, and query optimization for ultra-fast response times, even under heavy load."
                         },
                         {
-                            "title": "User Testing",
-                            "description": "Implementing user testing to ensure an optimal experience and identify friction points. Collecting qualitative and quantitative feedback to continuously improve the user interface. User testing provides valuable insights into user behavior, helping to refine and enhance the product."
+                            "title": "Advanced Security and Access Management",
+                            "description": "Implementation of cutting-edge security practices, including JWT authentication, fine-grained role management, and protection against common attacks, for uncompromising security."
                         },
                         {
-                            "title": "Branding and Mockups",
-                            "description": "Developing a strong brand identity and creating quality mockups with tools like Figma. Ensuring visual consistency across all user touchpoints. Strong branding helps create a memorable user experience and reinforces the company's identity."
+                            "title": "Comprehensive Documentation and Automated Testing",
+                            "description": "Creation of complete API documentation and implementation of automated tests to ensure reliability, maintainability, and facilitate integration by development teams."
+                        }
+                    ]
+                },
+                {
+                    "id": "autonomous-crm",
+                    "title": "Autonomous and Customized CRMs",
+                    "generalDescription": "Optimize your customer relationship management with a tailor-made CRM, adapted to your unique processes and integrated into your digital ecosystem.",
+                    "detailedDescription": [
+                        {
+                            "title": "Intelligent Process Automation",
+                            "description": "Implementation of automated workflows to improve the efficiency of your sales and marketing teams, freeing up time for high value-added tasks."
+                        },
+                        {
+                            "title": "Seamless Omnichannel Integration",
+                            "description": "Centralization of all your customer interactions (email, phone, social media) for a 360° view of your customer relationship, improving personalization and customer satisfaction."
+                        },
+                        {
+                            "title": "Predictive Reporting and Analytics",
+                            "description": "Creation of custom dashboards and detailed reports with predictive analysis features to drive your sales activity with precision and anticipate trends."
+                        },
+                        {
+                            "title": "Advanced Customization and Scalability",
+                            "description": "Complete adaptation of the CRM to your specific business processes for maximum adoption by your teams, with the flexibility to evolve with your company."
                         }
                     ]
                 }
-            ]
+            ],
+            "callToAction": {
+                "title": "Ready to Propel Your Digital Project?",
+                "description": "Each project is unique and deserves a tailored approach. Contact me today to discuss your specific needs and discover how I can transform your challenges into digital growth opportunities.",
+                "buttonText": "Request a Free Consultation"
+            }
         }
     },
     "TemplateContact": {
@@ -596,7 +599,27 @@
         "contactMe": {
             "titleSub": "Propel Your Digital Success",
             "titleMain": "Transform Your Ideas into Concrete Results",
-            "description": "Are you ready to dominate your online market? As a React and Next.js Full Stack expert, I'm passionate about creating digital solutions that generate measurable results. Whether you need a high-performance web application, an SEO overhaul, or conversion optimization, I'm here to transform your challenges into growth opportunities. Contact me now for a free consultation and let's discover together how to propel your business to new heights. Your digital success starts here!"
+            "description": "Are you ready to dominate your online market? As a React and Next.js Full Stack expert, I'm passionate about creating digital solutions that generate measurable results. Whether you need a high-performance web application, an SEO overhaul, or conversion optimization, I'm here to transform your challenges into growth opportunities. Contact me now for a free consultation and let's discover together how to propel your business to new heights. Your digital success starts here!",
+            "callToAction": "Why contact me now?",
+            "benefits": [
+                {
+                    "title": "Cutting-edge technical expertise",
+                    "description": "Benefit from my expertise in React, Next.js, and modern technologies to create high-performance and scalable web solutions."
+                },
+                {
+                    "title": "Customized solutions",
+                    "description": "Get tailor-made solutions adapted to your industry and specific objectives."
+                },
+                {
+                    "title": "Results-driven approach",
+                    "description": "Benefit from an approach that maximizes your digital ROI and generates concrete results for your business."
+                },
+                {
+                    "title": "Quality commitment",
+                    "description": "Enjoy a firm commitment to quality, deadlines, and transparency throughout the project."
+                }
+            ],
+            "formIntro": "Fill out the form below to start your project or get a free quote. Together, let's bring your digital vision to life!"
         }
     },
     "TemplateNavigations": {
