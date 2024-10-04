@@ -5,7 +5,7 @@
                 "hero_title": "Expert React & Next.js | Full Stack",
                 "hero_title2": "Solutions Web Innovantes & SEO",
                 "hero_title3": "Performance & UX/UI Exceptionnelles",
-                "hero_description": "Propulsez votre entreprise avec des applications web sur mesure, ultra-performantes et optimisées SEO. En tant qu'expert React et Next.js, je transforme vos idées en expériences digitales captivantes qui stimulent votre croissance et fidélisent vos clients. Découvrez comment mon expertise Full Stack peut révolutionner votre présence en ligne.",
+                "hero_description": "Propulsez votre projet ou votre entreprise avec des solutions web sur mesure, ultra-performantes et optimisées SEO. En tant qu'expert Full Stack spécialisé en React et Next.js, je transforme vos idées en expériences digitales complètes, du front-end au back-end. Que vous soyez un particulier ambitieux ou une entreprise en croissance, je crée des applications web, des CRM, des tableaux de bord et des API robustes qui stimulent votre croissance et fidélisent vos utilisateurs. Découvrez comment mon expertise Full Stack peut révolutionner votre présence en ligne et optimiser vos processus internes.",
                 "hero_scroll": "EXPLORER"
             },
             "tech_stack": {
@@ -72,11 +72,11 @@
                 }
             ],
             "about": {
-                "subtitle": "Votre Avantage Concurrentiel",
+                "subtitle": "Votre Partenaire en Développement Web",
                 "title": "Expertise Full Stack pour Votre Réussite Digitale",
                 "description_title": "Solutions Web Complètes et Sur Mesure",
                 "description": "En tant que développeur Full Stack freelance spécialisé en React et Next.js, je suis votre partenaire stratégique pour dominer le digital. Mon approche holistique garantit des applications web robustes, évolutives et optimisées SEO, de l'architecture back-end à l'interface utilisateur. Ensemble, transformons vos défis en opportunités de croissance et créons une présence en ligne qui captive votre audience, booste vos conversions et fidélise vos clients. Prêt à surpasser vos concurrents ?",
-                "button": "Boostez Votre Projet Web Maintenant"
+                "button": "En Savoir Plus Sur Moi"
             },
             "services": {
                 "subtitle": "Services",
