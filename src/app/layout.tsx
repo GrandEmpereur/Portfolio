@@ -5,7 +5,7 @@ import '@/scss/styles.scss';
 import { cn } from '@/lib/utils';
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
-import { i18n, type Locale } from "@/i18nConfig";
+import { type Locale } from "@/i18nConfig";
 
 const inter = Poppins({
   weight: ['400', '700'],
