@@ -2,11 +2,11 @@
     "TemplateHome": {
         "home": {
             "hero": {
-                "hero_title": "Développeur Full Stack Expérimenté",
-                "hero_title2": "Développeur React et Next.js",
-                "hero_title3": "UI/UX Designer Passionné",
-                "hero_description": "Spécialisé dans React et Next.js, je construis des applications web avancées et évolutives adaptées aux besoins des entreprises. Profitez de mon expertise en technologie de pointe pour donner vie à vos projets. En tant que développeur Full Stack chevronné, j'assure que chaque application web est optimisée pour les performances, le SEO et l'expérience utilisateur.",
-                "hero_scroll": "DÉFILER"
+                "hero_title": "Expert React & Next.js | Full Stack",
+                "hero_title2": "Solutions Web Innovantes & SEO",
+                "hero_title3": "Performance & UX/UI Exceptionnelles",
+                "hero_description": "Propulsez votre entreprise avec des applications web sur mesure, ultra-performantes et optimisées SEO. En tant qu'expert React et Next.js, je transforme vos idées en expériences digitales captivantes qui stimulent votre croissance et fidélisent vos clients. Découvrez comment mon expertise Full Stack peut révolutionner votre présence en ligne.",
+                "hero_scroll": "EXPLORER"
             },
             "tech_stack": {
                 "title": "Ma Stack Technique"
@@ -82,11 +82,11 @@
                 }
             ],
             "about": {
-                "subtitle": "À propos de moi",
-                "title": "Je Crée des Sites Web de Classe Mondiale",
-                "description_title": "Découvrez l'Art du Code avec un Développeur Full Stack",
-                "description": "Plongez dans l'univers du développement web avec moi, développeur Full Stack passionné et expérimenté. Fort de plus de quatre ans d'expérience avec JavaScript, je crée des expériences utilisateur captivantes. Mon expertise avec des frameworks modernes comme React.js et Next.js permet aux entreprises et aux individus de briller dans le monde numérique. Que vous ayez besoin d'une application web complexe ou d'une simple page de destination, je m'engage à fournir un code de qualité exceptionnelle, alliant performance et design élégant. Ensemble, donnons vie à vos idées les plus audacieuses.",
-                "button": "Explorez Plus"
+                "subtitle": "Votre Avantage Concurrentiel",
+                "title": "Expertise Full Stack pour Votre Réussite Digitale",
+                "description_title": "Solutions Web Complètes et Sur Mesure",
+                "description": "En tant que développeur Full Stack freelance spécialisé en React et Next.js, je suis votre partenaire stratégique pour dominer le digital. Mon approche holistique garantit des applications web robustes, évolutives et optimisées SEO, de l'architecture back-end à l'interface utilisateur. Ensemble, transformons vos défis en opportunités de croissance et créons une présence en ligne qui captive votre audience, booste vos conversions et fidélise vos clients. Prêt à surpasser vos concurrents ?",
+                "button": "Boostez Votre Projet Web Maintenant"
             },
             "services": {
                 "subtitle": "Services",
@@ -197,9 +197,9 @@
                 "button": "Découvrez Plus"
             },
             "newsletter": {
-                "title": "Rejoignez Notre Aventure Créative — Créez Avec Nous!",
-                "description": "Restez informé des dernières tendances en développement web, recevez des insights d'un développeur Full Stack et rejoignez une communauté passionnée par la technologie. Abonnez-vous à notre newsletter et commencez votre voyage vers l'excellence numérique.",
-                "button": "Connectez-vous Maintenant"
+                "title": "Obtenez un Avantage Concurrentiel dans le Digital",
+                "description": "Rejoignez ma newsletter exclusive et recevez des stratégies concrètes pour optimiser votre présence en ligne, des conseils d'expert sur les dernières tendances web, et des offres spéciales pour propulser votre croissance digitale. Ne laissez pas vos concurrents vous devancer !",
+                "button": "Recevez des Insights Exclusifs"
             }
         }
     },
@@ -482,337 +482,7 @@
             },
             "visitWebsite": "Visitez le site web",
             "techUsed": "Technologies utilisées dans ce projet",
-            "otherTags": "Autres tags",
-            "projects": [
-                {
-                    "id": 1,
-                    "title": "M. Moustache",
-                    "slug": "/m-moustache",
-                    "description": "Lors de mon stage et apprentissage chez W3lead, j'étais responsable du développement front-end sur la plateforme Shopify pour M. Moustache. Mes tâches comprenaient l'intégration du site, le développement d'une API pour les cartes cadeaux et la mise en place d'un système de point de vente (POS). Ces rôles m'ont permis de renforcer mes compétences en intégration front-end et en développement d'API backend, en me concentrant sur la création d'expériences de shopping en ligne efficaces et sécurisées.",
-                    "placeholder": "/img/portfolio/m-moustache.webp",
-                    "Slider": [],
-                    "tags": [
-                        "Shopify",
-                        "Frontend",
-                        "Backend",
-                        "Développement d'API",
-                        "API RESTful",
-                        "GraphQL",
-                        "TypeScript"
-                    ],
-                    "otherTags": [
-                        "Scrum",
-                        "Agile",
-                        "Gestion de projet"
-                    ],
-                    "url": "/portfolio/m-moustache",
-                    "redirectToProd": "https://www.m-moustache.com/pages/homme",
-                    "lastModified": "20-05-2024",
-                    "buttonLabel": "Visitez le site web"
-                },
-                {
-                    "id": 2,
-                    "title": "Tartine & Chocolat",
-                    "slug": "/tartine-chocolat",
-                    "description": "Dans le cadre de mon apprentissage, je me suis concentré sur l'intégration et le développement d'une API pour connecter un système ERP au site de Tartine & Chocolat pour les pré-commandes en magasin et l'affichage des magasins disponibles. Ce projet a amélioré ma capacité à gérer à la fois l'intégration front-end et les systèmes backend dans un contexte de commerce électronique réel.",
-                    "placeholder": "/img/portfolio/tartine-chocolat.png",
-                    "Slider": [],
-                    "tags": [
-                        "Shopify",
-                        "Développement d'API",
-                        "Intégration ERP",
-                        "JavaScript",
-                        "Frontend",
-                        "Backend"
-                    ],
-                    "otherTags": [
-                        "Scrum",
-                        "Agile",
-                        "Gestion de projet"
-                    ],
-                    "url": "/portfolio/tartine-chocolat",
-                    "redirectToProd": "https://www.tartine-et-chocolat.com",
-                    "lastModified": "20-05-2024",
-                    "buttonLabel": "Visitez le site web"
-                },
-                {
-                    "id": 3,
-                    "title": "Qwetch",
-                    "slug": "/qwetch",
-                    "description": "Mes principales responsabilités chez Qwetch comprenaient l'intégration du site web et la mise en œuvre de widgets Trustpilot. J'ai également travaillé sur la refonte du Checkout V2 de Shopify, améliorant l'expérience utilisateur et l'efficacité des transactions pendant mon apprentissage en cours.",
-                    "placeholder": "/img/portfolio/qwetch.png",
-                    "Slider": [],
-                    "tags": [
-                        "Shopify",
-                        "Intégration Trustpilot",
-                        "JavaScript",
-                        "Frontend",
-                        "Refonte du Checkout V2"
-                    ],
-                    "otherTags": [
-                        "Scrum",
-                        "Agile",
-                        "Tests utilisateurs"
-                    ],
-                    "url": "/portfolio/qwetch",
-                    "redirectToProd": "https://www.qwetch.com/",
-                    "lastModified": "20-05-2024",
-                    "buttonLabel": "Visitez le site web"
-                },
-                {
-                    "id": 4,
-                    "title": "Easy Clothes",
-                    "slug": "/easy-clothes",
-                    "description": "Ce projet de test.",
-                    "placeholder": "/img/portfolio/easy-clothes.png",
-                    "Slider": [],
-                    "tags": [
-                        "Shopify",
-                        "JavaScript",
-                        "Frontend",
-                        "Amélioration du processus de paiement"
-                    ],
-                    "otherTags": [
-                        "Scrum",
-                        "Agile"
-                    ],
-                    "url": "/portfolio/easy-clothes",
-                    "redirectToProd": "https://www.easy-clothes.com/",
-                    "lastModified": "20-05-2024",
-                    "buttonLabel": "Visitez le site web"
-                },
-                {
-                    "id": 5,
-                    "title": "Le -1Store",
-                    "slug": "/le-1store",
-                    "description": "Mon rôle chez Le -1Store impliquait le développement front-end similaire aux tâches que j'ai effectuées pour Easy Clothes, en me concentrant sur l'amélioration de l'interface utilisateur du site web et l'intégration de fonctionnalités essentielles pour soutenir efficacement les opérations en ligne.",
-                    "placeholder": "/img/portfolio/le-1store.png",
-                    "Slider": [],
-                    "tags": [
-                        "Shopify",
-                        "JavaScript",
-                        "Frontend",
-                        "Optimisation du commerce électronique"
-                    ],
-                    "otherTags": [
-                        "Scrum",
-                        "Agile"
-                    ],
-                    "url": "/portfolio/le-1store",
-                    "redirectToProd": "https://www.le-1.store/",
-                    "lastModified": "20-05-2024",
-                    "buttonLabel": "Visitez le site web"
-                },
-                {
-                    "id": 6,
-                    "title": "BAP Châtenay-Malabry",
-                    "slug": "/bap-chatenay-malabry",
-                    "description": "Pour ce projet académique, j'ai développé une solution full-stack visant à améliorer les processus RH pour détecter le burnout professionnel. La solution comprenait un tableau de bord interactif qui agrège les données des réponses des utilisateurs, offrant des informations et des étapes concrètes pour les situations de burnout professionnel potentielles.",
-                    "placeholder": "/img/portfolio/bap-chatenay-malabry.png",
-                    "Slider": [],
-                    "tags": [
-                        "Développement Fullstack",
-                        "React",
-                        "Next.js",
-                        "TypeScript",
-                        "Design de tableau de bord",
-                        "Agrégation de données"
-                    ],
-                    "otherTags": [
-                        "Scrum",
-                        "Agile",
-                        "Gestion de projet"
-                    ],
-                    "url": "/portfolio/bap-chatenay-malabry",
-                    "redirectToProd": "",
-                    "lastModified": "20-05-2024",
-                    "buttonLabel": "Visitez le site web"
-                },
-                {
-                    "id": 7,
-                    "title": "React NBA",
-                    "slug": "/react-nba",
-                    "description": "Dans ce projet scolaire visant à créer une application de paris sportifs pour les matchs NBA, j'étais responsable du développement backend, en me concentrant sur la sécurité des données et l'authentification des utilisateurs pour garantir un environnement de pari sûr et fiable.",
-                    "placeholder": "/img/portfolio/react-nba.png",
-                    "Slider": [],
-                    "tags": [
-                        "React",
-                        "TypeScript",
-                        "Sécurité des API",
-                        "Authentification des utilisateurs",
-                        "Application de paris sportifs"
-                    ],
-                    "otherTags": [
-                        "Scrum",
-                        "Agile"
-                    ],
-                    "url": "/portfolio/react-nba",
-                    "redirectToProd": "https://react-nba-delta.vercel.app/app",
-                    "lastModified": "20-05-2024",
-                    "buttonLabel": "Visitez le site web"
-                },
-                {
-                    "id": 8,
-                    "title": "Marshall Motors",
-                    "slug": "/marshall-motors",
-                    "description": "En tant que développeur front-end pour le projet Marshall Motors, j'étais chargé d'intégrer le site web pour un garage spécialisé dans la rénovation de voitures vintage, en fournissant une interface utilisateur élégante et conviviale reflétant la qualité des services du garage.",
-                    "placeholder": "/img/portfolio/marshall-motors.jpg",
-                    "Slider": [],
-                    "tags": [
-                        "Développement Frontend",
-                        "Symphony",
-                        "Twig",
-                        "PHP",
-                        "Voitures vintage"
-                    ],
-                    "otherTags": [
-                        "Scrum",
-                        "Agile"
-                    ],
-                    "url": "/portfolio/marshall-motors",
-                    "redirectToProd": "",
-                    "lastModified": "20-05-2024",
-                    "buttonLabel": "Visitez le site web"
-                },
-                {
-                    "id": 9,
-                    "title": "Technical City Shopify",
-                    "slug": "/technical-city-shopify",
-                    "description": "Dans ce rôle, j'ai réalisé des preuves de concept techniques et des mini-projets pour explorer et démontrer les dernières mises à jour de Shopify. Travaillant en étroite collaboration avec mon mentor lors de mon apprentissage chez W3lead, j'ai développé de nouvelles fonctionnalités pour le checkout V2 de Shopify et d'autres fonctionnalités, principalement en utilisant Rust et React en plus des API Shopify.",
-                    "placeholder": "/img/portfolio/checkoutV2.png",
-                    "Slider": [],
-                    "tags": [
-                        "Shopify",
-                        "Rust",
-                        "React",
-                        "Développement d'API",
-                        "Checkout V2",
-                        "Preuve de concept"
-                    ],
-                    "otherTags": [
-                        "Scrum",
-                        "Agile",
-                        "Gestion de projet"
-                    ],
-                    "url": "/portfolio/technical-city-shopify",
-                    "redirectToProd": "",
-                    "lastModified": "20-05-2024",
-                    "buttonLabel": "Visitez le site web"
-                }
-            ]
-        }
-    },
-    "TemplateServices": {
-        "metadata": {
-            "title": "Services de Développement Web - Patrick Bartosik",
-            "description": "Découvrez les services de développement web proposés par Patrick Bartosik. Spécialisé en React, Next.js et Tailwind CSS, Patrick offre des solutions innovantes pour des applications web performantes et esthétiques."
-        },
-        "servicesPage": {
-            "titleSub": "Services",
-            "titleMain": "Tous mes services et explications",
-            "imageAlt": "Image des services de Patrick Bartosik",
-            "servicesList": [
-                {
-                    "id": "custom-web-development",
-                    "title": "Développement Front-End",
-                    "generalDescription": "Plongez dans l'univers du développement front-end avec une expertise inégalée. En utilisant les technologies les plus récentes, nous créons des interfaces utilisateur dynamiques et réactives qui captivent les utilisateurs et répondent parfaitement aux besoins des entreprises et des startups. Avec une maîtrise approfondie de frameworks modernes comme React et Next.js, nous garantissons des applications web performantes, optimisées pour le SEO et offrant une expérience utilisateur fluide. Grâce à Tailwind CSS, nous concevons des designs élégants et cohérents, tout en assurant la fiabilité de notre code avec des tests rigoureux. Faites confiance à notre savoir-faire pour transformer vos idées en réalités numériques exceptionnelles.",
-                    "detailedDescription": [
-                        {
-                            "title": "React",
-                            "description": "Développement d'applications web performantes et modulaires avec React. Maîtrise des hooks, de la gestion d'état avec Redux ou Context API, et de l'intégration d'API pour des interfaces dynamiques et interactives. React permet de créer des composants réutilisables qui améliorent l'efficacité et la maintenabilité du développement."
-                        },
-                        {
-                            "title": "Next.js",
-                            "description": "Création de sites web statiques et dynamiques optimisés pour le SEO avec Next.js. Utilisation du rendu côté serveur (SSR) et de la génération de sites statiques (SSG) pour des performances optimales et une expérience utilisateur fluide. Next.js simplifie le processus de développement en offrant un routage intégré et une gestion des API."
-                        },
-                        {
-                            "title": "Tailwind CSS",
-                            "description": "Utilisation de Tailwind CSS pour concevoir des interfaces utilisateur élégantes et cohérentes. Création de composants réutilisables et personnalisables, garantissant un design moderne et réactif. Tailwind CSS facilite le processus de style en fournissant des classes CSS utilitaires qui simplifient le flux de travail de conception."
-                        },
-                        {
-                            "title": "Tests Front-End",
-                            "description": "Réalisation de tests unitaires et fonctionnels avec des outils comme Jest et React Testing Library pour garantir la fiabilité et la maintenabilité du code front-end. Les tests permettent d'identifier et de corriger les bugs tôt, assurant ainsi une application robuste et stable."
-                        }
-                    ]
-                },
-                {
-                    "id": "backend-development",
-                    "title": "Développement Back-End",
-                    "generalDescription": "Construisez des fondations solides pour vos applications avec notre expertise en développement back-end. Nous concevons et mettons en œuvre des serveurs robustes et évolutifs qui répondent aux exigences les plus strictes. En utilisant Node.js et AdonisJS, nous développons des API performantes et sécurisées, facilitant des échanges de données fluides entre le serveur et le client. Que ce soit pour la gestion de bases de données relationnelles ou non relationnelles, nous optimisons chaque aspect pour garantir l'intégrité et la performance des données. Notre engagement en matière de sécurité assure une protection maximale des informations sensibles, renforçant ainsi la confiance de vos utilisateurs.",
-                    "detailedDescription": [
-                        {
-                            "title": "Node.js",
-                            "description": "Développement de serveurs rapides et efficaces avec Node.js. Utilisation d'Express.js pour créer des API RESTful, la gestion des sessions et l'authentification sécurisée avec JWT. Node.js offre une architecture non bloquante et basée sur des événements, permettant de gérer de nombreuses connexions simultanément."
-                        },
-                        {
-                            "title": "AdonisJS",
-                            "description": "Utilisation d'AdonisJS pour créer des applications back-end structurées et maintenables. Création de modèles de données, gestion des migrations et implémentation de contrôleurs pour les opérations CRUD. AdonisJS offre une structure propre et modulaire, facilitant le développement et la maintenance des applications complexes."
-                        },
-                        {
-                            "title": "APIs REST et GraphQL",
-                            "description": "Création d'APIs RESTful et GraphQL pour des échanges de données fluides et sécurisés. Documentation des APIs avec Swagger ou GraphQL Playground pour faciliter l'intégration et l'utilisation par les développeurs front-end. Les APIs permettent une communication transparente entre le serveur et le client, améliorant ainsi la fonctionnalité de l'application."
-                        },
-                        {
-                            "title": "Bases de Données",
-                            "description": "Intégration et gestion des bases de données relationnelles et non relationnelles, telles que PostgreSQL, MongoDB et Supabase. Mise en place des schémas de données, optimisation des requêtes et gestion des transactions. Une gestion efficace des bases de données garantit l'intégrité des données et améliore les performances de l'application."
-                        },
-                        {
-                            "title": "Sécurité et Authentification",
-                            "description": "Implémentation de solutions de sécurité pour protéger les données et les utilisateurs. Gestion des rôles et des permissions, chiffrement des données sensibles et mise en œuvre de mesures pour prévenir les attaques courantes (XSS, CSRF, etc.). La sécurité est cruciale pour maintenir la confiance des utilisateurs et protéger les données de l'application."
-                        }
-                    ]
-                },
-                {
-                    "id": "devops-and-deployment",
-                    "title": "DevOps et Déploiement",
-                    "generalDescription": "Garantissez une livraison continue et fiable de vos applications grâce à nos pratiques avancées de DevOps. Nous utilisons Docker pour standardiser et isoler vos environnements de développement, assurant une flexibilité et une sécurité optimales. Avec des pipelines CI/CD bien établis, nous automatisons les déploiements et les intégrations continues, réduisant ainsi les interventions manuelles et accélérant le processus de mise en production. Nos stratégies de déploiement, sur des plateformes comme Vercel, Heroku, AWS, ou DigitalOcean, minimisent les temps d'arrêt et offrent une expérience utilisateur sans faille. En surveillant et en maintenant vos applications en permanence, nous nous assurons qu'elles restent performantes et disponibles.",
-                    "detailedDescription": [
-                        {
-                            "title": "Docker",
-                            "description": "Standardisation et isolation de votre environnement de développement avec Docker pour une plus grande flexibilité et sécurité. Création de Dockerfiles et gestion des conteneurs pour déployer des applications de manière cohérente dans différents environnements. Docker garantit que les applications fonctionnent de la même manière en développement, en test et en production."
-                        },
-                        {
-                            "title": "CI/CD",
-                            "description": "Mise en place de pipelines CI/CD pour assurer des déploiements automatisés et une intégration continue. Utilisation de GitHub Actions ou GitLab CI pour automatiser les tests, les builds et les déploiements. Les pipelines CI/CD augmentent la productivité du développement en réduisant l'intervention manuelle et en accélérant le processus de déploiement."
-                        },
-                        {
-                            "title": "Tests Unitaires et Fonctionnels",
-                            "description": "Garantie de la qualité du code avec des tests unitaires et fonctionnels rigoureux. Utilisation de frameworks de test comme Mocha, Chai, Jest et Cypress pour une couverture de test complète. Les tests sont essentiels pour identifier les problèmes tôt et maintenir un code de haute qualité."
-                        },
-                        {
-                            "title": "Déploiement",
-                            "description": "Déploiement de vos applications de manière sécurisée et efficace, avec des solutions adaptées à vos besoins spécifiques. Utilisation de plateformes telles que Vercel, Heroku, AWS ou DigitalOcean pour déployer vos applications. Des stratégies de déploiement efficaces minimisent les temps d'arrêt et garantissent une expérience utilisateur fluide."
-                        },
-                        {
-                            "title": "Monitoring et Maintenance",
-                            "description": "Surveillance et maintenance de vos applications pour garantir des performances optimales et une disponibilité continue. Utilisation d'outils de monitoring comme Prometheus, Grafana et Sentry pour détecter et résoudre rapidement les problèmes. La surveillance continue aide à maintenir la santé et les performances des applications."
-                        }
-                    ]
-                },
-                {
-                    "id": "ui-ux-design",
-                    "title": "Conception UX/UI",
-                    "generalDescription": "Offrez à vos utilisateurs des expériences intuitives et esthétiques grâce à notre expertise en design UX/UI. Nous développons des interfaces utilisateur cohérentes et attractives, utilisant des outils comme Figma et Sketch pour créer des designs centrés sur l'utilisateur. Nos prototypes interactifs et wireframes permettent de valider les concepts avant leur développement, assurant une expérience utilisateur optimale dès le début. Grâce aux tests utilisateurs, nous identifions et éliminons les points de friction, garantissant une satisfaction maximale. Avec un branding fort et des maquettes de qualité, nous créons une identité visuelle mémorable qui renforce l'image de votre entreprise.",
-                    "detailedDescription": [
-                        {
-                            "title": "Design UI/UX",
-                            "description": "Développement d'interfaces utilisateur intuitives et esthétiques pour améliorer l'expérience utilisateur et la satisfaction client. Utilisation de Figma ou Sketch pour créer des designs cohérents et attractifs. Un design UI/UX efficace se concentre sur l'utilisabilité, l'accessibilité et l'esthétique, assurant une expérience utilisateur positive."
-                        },
-                        {
-                            "title": "Prototypage et Wireframing",
-                            "description": "Création de prototypes interactifs et de wireframes pour valider vos concepts de design avant de les développer. Utilisation de Marvel ou InVision pour tester et affiner les interactions utilisateur. Le prototypage permet d'obtenir des retours précoces et des améliorations itératives, réduisant le risque de modifications coûteuses ultérieures."
-                        },
-                        {
-                            "title": "Tests Utilisateurs",
-                            "description": "Mise en œuvre de tests utilisateurs pour garantir une expérience optimale et identifier les points de friction. Collecte de retours qualitatifs et quantitatifs pour améliorer continuellement l'interface utilisateur. Les tests utilisateurs fournissent des informations précieuses sur le comportement des utilisateurs, aidant à affiner et améliorer le produit."
-                        },
-                        {
-                            "title": "Branding et Maquettes",
-                            "description": "Développement d'une identité de marque forte et création de maquettes de qualité avec des outils comme Figma. Assurance de la cohérence visuelle sur tous les points de contact utilisateur. Un branding solide aide à créer une expérience utilisateur mémorable et renforce l'identité de l'entreprise."
-                        }
-                    ]
-                }
-            ]
+            "otherTags": "Autres tags"
         }
     },
     "TemplateContact": {
@@ -821,9 +491,9 @@
             "description": "Contactez Patrick Bartosik, un développeur Full Stack expérimenté spécialisé dans React, Next.js et Tailwind CSS. Discutons de vos projets et découvrons comment je peux vous aider à transformer vos idées en solutions numériques performantes."
         },
         "contactMe": {
-            "titleSub": "Contactez Moi",
-            "titleMain": "Discutons de Votre Projet",
-            "description": "Je suis impatient de discuter de vos idées de projet et de voir comment je peux vous aider à les réaliser. Que vous ayez besoin de développement front-end, de solutions back-end ou de conseils en SEO, je suis là pour vous aider. Remplissez le formulaire ci-dessous et je vous recontacterai dès que possible."
+            "titleSub": "Propulsez Votre Succès Digital",
+            "titleMain": "Transformons Vos Idées en Résultats Concrets",
+            "description": "Vous êtes prêt à dominer votre marché en ligne ? En tant qu'expert Full Stack React et Next.js, je suis passionné par la création de solutions digitales qui génèrent des résultats mesurables. Que vous ayez besoin d'une application web performante, d'une refonte SEO, ou d'une optimisation de vos conversions, je suis là pour transformer vos défis en opportunités de croissance. Contactez-moi dès maintenant pour une consultation gratuite et découvrons ensemble comment propulser votre entreprise vers de nouveaux sommets. Votre succès digital commence ici !"
         }
     },
     "TemplateNavigations": {
@@ -861,14 +531,14 @@
         ]
     },
     "footer": {
-        "contactUs": "Démarrer un projet ?"
+        "contactUs": "Lancez Votre Transformation Digitale"
     },
     "TemplateFooter": {
         "footer": {
-            "readyToAccelerate": "Prêt à accélérer votre présence en ligne?",
-            "exploreServices": "Découvrez comment nos services complets de SEO, de refonte et d'optimisation de site web peuvent élever votre projet. Contactez-nous pour discuter de vos besoins.",
-            "requestQuote": "Demandez un Devis",
-            "contactUs": "Contactez-Nous",
+            "readyToAccelerate": "Prêt à Dominer Votre Marché en Ligne ?",
+            "exploreServices": "Découvrez comment mon expertise Full Stack en React et Next.js peut transformer votre présence digitale en machine de croissance. De l'optimisation SEO à la création d'applications web sur mesure, mes solutions complètes vous permettront de surpasser vos concurrents et de fidéliser vos clients. N'attendez plus pour prendre l'avantage !",
+            "requestQuote": "Obtenez Votre Stratégie Personnalisée",
+            "contactUs": "Lancez Votre Transformation Digitale",
             "quickLinks": "Liens Rapides",
             "home": "Accueil",
             "about": "À propos",
@@ -1002,7 +672,7 @@
             "Par e-mail : BartosikPatrickPro@gmail.com",
             "Le responsable du traitement des données est chargé de déterminer les finalités et les moyens mis au service du traitement des données à caractère personnel.",
             "B. Obligations du responsable du traitement des données",
-            "Le responsable du traitement des données s'engage à protéger les données à caractère personnel collectées, à ne pas les transmettre à des tiers sans que l'utilisateur n'en ait été informé et à respecter les finalités pour lesquelles ces données ont été collectées.",
+            "Le responsable du traitement des données s'engage à protéger les données à caractère personnel collectées, à ne pas les transmettre à des tiers sans que l'utilisateur n'en ait té informé et à respecter les finalités pour lesquelles ces données ont été collectées.",
             "Le site dispose d'un certificat SSL afin de garantir que les informations et le transfert des données transitant par le site sont sécurisés.",
             "Un certificat SSL (\"Secure Socket Layer\" Certificate) a pour but de sécuriser les données échangées entre l'utilisateur et le site.",
             "De plus, le responsable du traitement des données s'engage à notifier l'utilisateur en cas de rectification ou de suppression des données, sauf si cela entraîne pour lui des formalités, coûts et démarches disproportionnés.",
