@@ -13,13 +13,22 @@ type ProjectClientProps = {
     dictionary: any;
     project: {
         id: number;
-        title: string;
-        description: string;
+        title: {
+            fr: string;
+            en: string;
+        };
+        description: {
+            fr: string;
+            en: string;
+        };
         placeholder: string;
         tags: string[];
         otherTags: string[];
         redirectToProd?: string;
-        buttonLabel?: string;
+        buttonLabel?: {
+            fr: string;
+            en: string;
+        };
     };
 };
 
@@ -36,14 +45,14 @@ const ProjectClient: React.FC<ProjectClientProps> = ({ lang, dictionary, project
             <section className='portfolio flex flex-col w-full gap-y-12'>
                 <div className="portfolio__title">
                     <h4 className='portfolio__title-sub font-mono capitalize keep-color'>Portfolio</h4>
-                    <h3 className='portfolio__title-main'>Project: {project.title}</h3>
+                    <h3 className='portfolio__title-main'>Project: {project.title[lang]}</h3>
                 </div>
                 <div className=" flex flex-col gap-y-10">
                     <div className="slider flex">
                         <div className='w-full lg:h-[350px] overflow-hidden'>
                             <Image
                                 src={project.placeholder}
-                                alt={`Project image of ${project.title}`}
+                                alt={`Project image of ${project.title[lang]}`}
                                 width={1108}
                                 height={537}
                                 layout="responsive"
@@ -55,11 +64,11 @@ const ProjectClient: React.FC<ProjectClientProps> = ({ lang, dictionary, project
 
                     <div className="w-full flex flex-wrap justify-between gap-8">
                         <div>
-                            <h4> {project.title} </h4>
-                            <p className="w-full pt-5 lg:w-[506px]"> {project.description} </p>
+                            <h4> {project.title[lang]} </h4>
+                            <p className="w-full pt-5 lg:w-[506px]"> {project.description[lang]} </p>
                             {project.redirectToProd && (
-                                <a href={project.redirectToProd} target="_blank">
-                                    <Button variant={'other'} size={'lg'} className='mt-5 rounded-full'>{project.buttonLabel}</Button>
+                                <a href={project.redirectToProd} target="_blank" rel="noopener noreferrer">
+                                    <Button variant={'other'} size={'lg'} className='mt-5 rounded-full'>{project.buttonLabel?.[lang] || dictionary.TemplatePortfolio.visitWebsite}</Button>
                                 </a>
                             )}
                         </div>
