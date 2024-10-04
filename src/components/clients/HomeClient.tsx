@@ -193,7 +193,7 @@ const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
                     </MaxWidthWrapper>
                 </section>
 
-                <MaxWidthWrapper className='services-bg mt-20 lg:mt-40'>
+                <MaxWidthWrapper className='services-bg mt-20 lg:mt-40 lg:px-[90px]'>
                     <section ref={setSectionRef(1)} id='services' className='services flex flex-col items-start justify-between w-full h-full'>
                         <div className="services__header title">
                             <h4 className='services__header-subtitle font-mono keep-color keep-size '>{dictionary.TemplateHome.home.services.subtitle}</h4>
@@ -295,8 +295,8 @@ const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
                                 {dictionary.TemplateHome.home.newsletter.title}
                             </h2>
                             <Link href={`/${lang}/contact`}>
-                                <div className='newsletter__contact btn btn-primary'>
-                                    <span>{dictionary.TemplateHome.home.newsletter.button}</span>
+                                <div className='newsletter__contact btn btn-primary items-center justify-center flex'>
+                                    <span className='text-center flex justify-center items-center'>{dictionary.TemplateHome.home.newsletter.button}</span>
                                 </div>
                             </Link>
                         </div>
