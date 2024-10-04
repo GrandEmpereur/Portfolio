@@ -44,7 +44,7 @@ const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
                         start: 'top 80%',
                         end: 'bottom 60%',
                         toggleActions: 'play none none reverse',
-                        markers: false, // mettre à true pour voir les déclencheurs
+                        markers: false,
                     },
                 });
             }
@@ -120,7 +120,7 @@ const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
                     <div className='hero__information w-full flex flex-col items-center relative lg:flex-row lg:justify-between '>
                         <div className='hero__description'>
                             <h1 ref={titleRef} style={{ fontSize: '100px', lineHeight: '135%', width: '470px' }}>
-                                Développeur Full Stack Expérimenté
+                                {dictionary.TemplateHome.home.hero.hero_title}
                             </h1>
                             <p className='hero__description-text py-5' style={{ width: '470px' }}>
                                 {dictionary.TemplateHome.home.hero.hero_description}
@@ -128,7 +128,7 @@ const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
                             <div className='hero__scroll' ref={scrollTextRef}>
                                 <div className='hero__scroll-container flex items-center justify-center gap-x-1'>
                                     <ChevronsDown color={'white'} size={24} className={'rotate-90'} />
-                                    <p style={{ fontSize: "14px", lineHeight: "140%", letterSpacing: "25%" }}>DÉFILER</p>
+                                    <p style={{ fontSize: "14px", lineHeight: "140%", letterSpacing: "25%" }}>{dictionary.TemplateHome.home.hero.hero_scroll}</p>
                                 </div>
                             </div>
                         </div>
@@ -288,14 +288,14 @@ const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
                 <section ref={setSectionRef(3)} id='newsletter' className='newsletter relative flex w-full h-full flex-col gap-y-8 pt-28 mb-5 lg:mb-56'>
                     <MaxWidthWrapper>
                         <div className='newsletter__image-wrapper flex justify-end'>
-                            <Image src={'/img/newsletter/img1.png'} alt={'Engaging Newsletter Visual'} width={1305} height={500} />
+                            <Image src={'/img/newsletter/img1.png'} alt={dictionary.TemplateHome.home.newsletter.title} width={1305} height={500} />
                             <span className='newsletter__sphere-deco'></span>
                         </div>
                         <div className='newsletter__content flex items-center justify-center'>
                             <h2 className='newsletter__title'>
                                 {dictionary.TemplateHome.home.newsletter.title}
                             </h2>
-                            <Link href={'/contact'}>
+                            <Link href={`/${lang}/contact`}>
                                 <div className='newsletter__contact btn btn-primary'>
                                     <span>{dictionary.TemplateHome.home.newsletter.button}</span>
                                 </div>
@@ -309,4 +309,3 @@ const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
 };
 
 export default HomeClient;
-
