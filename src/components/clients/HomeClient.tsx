@@ -119,7 +119,7 @@ const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
 
                     <div className='hero__information w-full flex flex-col items-center relative lg:flex-row lg:justify-between '>
                         <div className='hero__description'>
-                            <h1 ref={titleRef} style={{ fontSize: '100px', lineHeight: '135%', width: '470px' }}>
+                            <h1 ref={titleRef} style={{ fontSize: '80px', lineHeight: '135%', width: '500px' }}>
                                 {dictionary.TemplateHome.home.hero.hero_title}
                             </h1>
                             <p className='hero__description-text py-5' style={{ width: '470px' }}>
@@ -228,7 +228,7 @@ const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
                             </div>
                             <div className="portfolio__description flex justify-between flex-col gap-y-10">
                                 <p className='portfolio__description-text font-mono w-full md:w-[600px] '>{dictionary.TemplateHome.home.portfolio.description}</p>
-                                <Link href="/portfolio" className='portfolio__link-button text-center w-max lg:text-left'>
+                                <Link href={`/${lang}/portfolio`} className='portfolio__link-button text-center w-max lg:text-left'>
                                     <Button className='rounded-full ' variant={'other'} size={'lg'}>{dictionary.TemplateHome.home.portfolio.button}</Button>
                                 </Link>
                             </div>
@@ -236,7 +236,7 @@ const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
                         <div className='portfolio__body w-full pt-6'>
                             {lastFiveProjects.map((item, index) => (
                                 <div key={index}>
-                                    <Link href={`${item.url}`}>
+                                    <Link href={`/${lang}${item.url}`}>
                                         <div
                                             className='portfolio__item flex flex-col justify-between w-full hover:cursor-pointer pt-8 relative gap-y-8'
                                             onMouseEnter={() => setHoverIndex(index)}
@@ -245,12 +245,12 @@ const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
                                             <div className='flex justify-between items-center'>
                                                 <div className='portfolio__item-text flex gap-x-5'>
                                                     <p className='portfolio__item-number'>0{index + 1}.</p>
-                                                    <h2 className='portfolio__item-title'>{item.title}</h2>
+                                                    <h2 className='portfolio__item-title'>{item.title[lang]}</h2>
                                                 </div>
                                                 <div className={`hidden lg:flex portfolio__item-image absolute  justify-center items-center transition-all duration-300 ease-in-out transform ${hoverIndex === index ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
                                                     <Image
                                                         src={item.placeholder}
-                                                        alt={`${item.title} - preview`}
+                                                        alt={`${item.title[lang]} - preview`}
                                                         width={450}
                                                         height={300}
                                                         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 450px"
@@ -267,7 +267,7 @@ const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
                                             <div className={`portfolio__item-image flex lg:hidden w-full`}>
                                                 <Image
                                                     src={item.placeholder}
-                                                    alt={`${item.title} - preview`}
+                                                    alt={`${item.title[lang]} - preview`}
                                                     width={250}
                                                     height={200}
                                                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 250px"
@@ -276,7 +276,6 @@ const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
                                                     }}
                                                 />
                                             </div>
-
                                         </div>
                                     </Link>
                                 </div>

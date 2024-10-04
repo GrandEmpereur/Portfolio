@@ -6,8 +6,9 @@ import Image from 'next/image';
 import { Metadata } from 'next';
 import { Locale } from '@/i18nConfig';
 import { getDictionary } from '@/get-dictionary';
+import { projects } from '@/lib/data/portfolio';
 
-export async function generateMetadata({ params: { lang } }: { params: { lang: Locale } } ) {
+export async function generateMetadata({ params: { lang } }: { params: { lang: Locale } } ): Promise<Metadata> {
     const dict = await getDictionary(lang);
 
     return {
@@ -59,13 +60,13 @@ export default async function GalleryPage({
                 </header>
 
                 <div className='portfolio__gallery grid grid-cols-1 sm:grid-cols-2 gap-8 place-items-center'>
-                    {dict.TemplatePortfolio.portfolioPage.projects.map((project, index) => (
+                    {projects.map((project, index) => (
                         <div key={index} className="portfolio__item rounded overflow-hidden shadow-lg relative">
                             <Link href={`/${lang}${project.url}`} className="group">
                                 <Image
                                     className='portfolio__image w-full h-full object-contain rounded-lg lg:overflow-hidden lg:group-hover:scale-105 lg:transition-transform lg:duration-1000'
                                     src={project.placeholder}
-                                    alt={`Project image of ${project.title}`}
+                                    alt={`Project image of ${project.title[lang]}`}
                                     layout='responsive'
                                     width={900}
                                     height={800}
@@ -74,21 +75,21 @@ export default async function GalleryPage({
                                 />
 
                                 <div className="portfolio__tags absolute bottom-2 left-2 hidden md:flex flex-wrap gap-2 w-[300px]">
-                                    {project.tags.map((tag, idx) => (
+                                    {project.tags.slice(0, 5).map((tag, idx) => (
                                         <Badge key={idx} className="badge__item p-2" variant={"secondary"}>{tag}</Badge>
                                     ))}
-                                    {project.otherTags.map((tag, idx) => (
-                                        <Badge key={idx} className="badge__item p-2" variant={"secondary"}>{tag}</Badge>
-                                    ))}
+                                    {project.tags.length > 5 && (
+                                        <Badge className="badge__item p-2" variant={"secondary"}>+{project.tags.length - 5}</Badge>
+                                    )}
                                 </div>
 
                                 <div className="portfolio__tags flex md:hidden flex-wrap gap-2 w-[300px] mt-5">
-                                    {project.tags.map((tag, idx) => (
+                                    {project.tags.slice(0, 5).map((tag, idx) => (
                                         <Badge key={idx} className="badge__item p-2" variant={"secondary"}>{tag}</Badge>
                                     ))}
-                                    {project.otherTags.map((tag, idx) => (
-                                        <Badge key={idx} className="badge__item p-2" variant={"secondary"}>{tag}</Badge>
-                                    ))}
+                                    {project.tags.length > 5 && (
+                                        <Badge className="badge__item p-2" variant={"secondary"}>+{project.tags.length - 5}</Badge>
+                                    )}
                                 </div>
                             </Link>
                         </div>
