@@ -26,7 +26,8 @@ export function middleware(request: NextRequest) {
         pathname.includes('/svg/') ||
         pathname === '/robots.txt' ||
         pathname === '/sitemap.xml' ||
-        pathname.endsWith('.xml') || // Ajout pour couvrir tous les sitemaps potentiels
+        pathname.endsWith('sitemap.xml') ||
+        pathname === '/favicon.ico' ||
         pathname === '/CV.pdf'
     ) {
         return NextResponse.next();
@@ -53,5 +54,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-    matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
+    matcher: ['/((?!api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml).*)'],
 };
