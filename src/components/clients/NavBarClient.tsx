@@ -59,7 +59,7 @@ const NavBarClient: React.FC<NavBarClientProps> = ({ lang, dictionary }) => {
 
                     <MobileNavClient lang={lang} dictionary={dictionary} />
 
-                    <div className={`hidden items-center space-x-10 sm:flex ${!links.some(link => pathname.startsWith(`/${lang}${link.href}`)) ? 'bg-secondary px-10 py-5 rounded-full' : ''}`}>
+                    <div className={`hidden items-center space-x-10 lg:flex ${!links.some(link => pathname.startsWith(`/${lang}${link.href}`)) ? 'bg-secondary px-10 py-5 rounded-full' : ''}`}>
                         <ul className='flex items-center justify-around gap-x-10'>
                             {links.map(({ href, label }, index) => (
                                 <li key={index}>
@@ -76,7 +76,7 @@ const NavBarClient: React.FC<NavBarClientProps> = ({ lang, dictionary }) => {
                         </ul>
                     </div>
 
-                    <div className='hidden items-center space-x-4 sm:flex'>
+                    <div className='hidden items-center space-x-4 lg:flex'>
                         <ul className='flex items-center justify-around gap-x-8'>
                             <li>
                                 <Link href={`/${lang}/contact`}>
