@@ -58,7 +58,7 @@ export default function RootLayout({
   params: { lang: Locale };
 }>) {
   return (
-    <html lang={'fr' || params.lang} className="dark">
+    <html lang={params.lang} className="dark">
       <head>
         <link rel="icon" href="/favicon.ico" />
       </head>
