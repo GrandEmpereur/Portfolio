@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils';
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { type Locale } from "@/i18nConfig";
+import { GoogleTagManager } from '@next/third-parties/google'
 
 const inter = Poppins({
   weight: ['400', '700'],
@@ -57,10 +58,11 @@ export default function RootLayout({
   params: { lang: Locale };
 }>) {
   return (
-    <html lang={params.lang} className="dark">
+    <html lang={'fr' || params.lang} className="dark">
       <head>
         <link rel="icon" href="/favicon.ico" />
       </head>
+      <GoogleTagManager gtmId="GTM-XYZ" />
       <body className={cn(
         'min-h-screen relative font-sans antialiased grainy ',
         inter.className,
