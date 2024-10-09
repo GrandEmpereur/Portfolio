@@ -30,7 +30,7 @@ const Footer: React.FC<FooterProps> = async ({ params }) => {
                         <div className='footer__contacts flex flex-col gap-5'>
                             <h3 className='footer__heading'>{dict.TemplateFooter.footer.contactUs}</h3>
                             <div className='footer__social-links flex flex-col gap-2'>
-                                <li><a href="mailto:bartosikpatrickpro@gmail.com" className='footer__email'>Email: BartosikPatrickPro@gmail.com</a></li>
+                                <li><a href="mailto:contact@bartosik.fr" className='footer__email'>{dict.TemplateFooter.footer.contactItems.email}</a></li>
                                 <li><a href="https://www.instagram.com/empereur.patrick/" className='footer__link' rel="noopener noreferrer" target="_blank">Instagram</a></li>
                                 <li><a href="https://github.com/GrandEmpereur" className='footer__link' rel="noopener noreferrer" target="_blank">GitHub</a></li>
                                 <li><a href="https://www.linkedin.com/in/patrick-bartosik/" className='footer__link' rel="noopener noreferrer" target="_blank">LinkedIn</a></li>
