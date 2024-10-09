@@ -62,7 +62,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <GoogleTagManager gtmId="GTM-XYZ" />
+      <GoogleTagManager gtmId="GTM-5SZB3CZK" />
       <body className={cn(
         'min-h-screen relative font-sans antialiased grainy ',
         inter.className,
