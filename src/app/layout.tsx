@@ -61,6 +61,7 @@ export default function RootLayout({
     <html lang={params.lang} className="dark">
       <head>
         <link rel="icon" href="/favicon.ico" />
+        <link rel="sitemap" type="application/xml" title="Sitemap" href="https://patrick.bartosik.fr/sitemap.xml" />
       </head>
       <GoogleTagManager gtmId="GTM-5SZB3CZK" />
       <body className={cn(
