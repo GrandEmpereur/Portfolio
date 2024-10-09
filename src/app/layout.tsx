@@ -72,12 +72,7 @@ export default function RootLayout({
         <Analytics />
       </body>
       <noscript>
-        <iframe 
-            src="https://www.googletagmanager.com/ns.html?id=GTM-5SZB3CZK" 
-            height="0" 
-            width="0" 
-            style={{display: 'none', visibility: 'hidden'}}>
-        </iframe>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5SZB3CZK" height="0" width="0" style={{display: 'none', visibility: 'hidden'}}></iframe>
       </noscript>
     </html>
   );
