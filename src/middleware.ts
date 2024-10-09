@@ -68,8 +68,14 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-    // Matcher ignoring `/_next/` and `/api/`
     matcher: [
-        "/((?!api|_next/static|_next/image|sitemap.xml|robots.txt|favicon.ico).*)"
-    ]
-};
+        /*
+         * Exclure les chemins suivants du middleware :
+         * - _next/static (fichiers statiques)
+         * - _next/image (fichiers d'optimisation d'images)
+         * - favicon.ico, sitemap.xml, robots.txt (fichiers de métadonnées)
+         */
+        '/((?!_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)',
+    ],
+}
+
