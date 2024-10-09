@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
             userAgent: '*',
             allow: '/',
         },
-        sitemap: 'https://patrick.bartosik.fr/sitemap.xml',
+        sitemap: 'https://patrick.bartosik.fr/sitemap.xml/',
     }
 }
