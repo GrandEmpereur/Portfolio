@@ -26,6 +26,7 @@ export function middleware(request: NextRequest) {
         pathname.includes('/svg/') ||
         pathname === '/robots.txt' ||
         pathname === '/sitemap.xml' ||
+        pathname.endsWith('.xml') || // Ajout pour couvrir tous les sitemaps potentiels
         pathname === '/CV.pdf'
     ) {
         return NextResponse.next();
@@ -38,7 +39,13 @@ export function middleware(request: NextRequest) {
 
     if (pathnameIsMissingValidLocale) {
         const locale = getLocale(request);
-        // Rediriger vers la version localisée
+        // Vérifier si l'agent utilisateur est un robot de Google
+        const userAgent = request.headers.get('user-agent') || '';
+        if (userAgent.toLowerCase().includes('googlebot')) {
+            // Pour les robots Google, ne pas rediriger, permettre l'accès direct
+            return NextResponse.next();
+        }
+        // Rediriger vers la version localisée pour les autres utilisateurs
         return NextResponse.redirect(new URL(`/${locale}${pathname}`, request.url));
     }
 
