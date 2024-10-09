@@ -1,16 +1,21 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-import { i18n } from "@/i18nConfig";
+import { i18n } from "./i18nConfig";
+
 import { match as matchLocale } from "@formatjs/intl-localematcher";
 import Negotiator from "negotiator";
 
-function getLocale(request: NextRequest): string {
+function getLocale(request: NextRequest): string | undefined {
     const negotiatorHeaders: Record<string, string> = {};
     request.headers.forEach((value, key) => (negotiatorHeaders[key] = value));
-    const locales = [...i18n.locales];
-    const languages = new Negotiator({ headers: negotiatorHeaders }).languages(locales);
-    return matchLocale(languages, locales, i18n.defaultLocale);
+
+    // @ts-ignore locales are readonly
+    const locales: string[] = i18n.locales;
+    const languages = new Negotiator({ headers: negotiatorHeaders }).languages();
+
+    const locale = matchLocale(languages, locales, i18n.defaultLocale);
+    return locale;
 }
 
 export function middleware(request: NextRequest) {
@@ -33,26 +38,38 @@ export function middleware(request: NextRequest) {
         return NextResponse.next();
     }
 
-    // Vérifier si le pathname commence par un locale valide
-    const pathnameIsMissingValidLocale = !i18n.locales.some(
-        locale => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
+    const pathnameIsMissingLocale = i18n.locales.every(
+        (locale: string) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
     );
-
-    if (pathnameIsMissingValidLocale) {
-        const locale = getLocale(request);
-        // Vérifier si l'agent utilisateur est un robot de Google
-        const userAgent = request.headers.get('user-agent') || '';
-        if (userAgent.toLowerCase().includes('googlebot')) {
-            // Pour les robots Google, ne pas rediriger, permettre l'accès direct
-            return NextResponse.next();
-        }
-        // Rediriger vers la version localisée pour les autres utilisateurs
-        return NextResponse.redirect(new URL(`/${locale}${pathname}`, request.url));
+    const isExcludedPath = pathname.startsWith("/img/");
+    if (isExcludedPath) {
+        // Skip i18n modification for images or other excluded paths
+        return;
     }
+    // Redirect if there is no locale
+    if (pathnameIsMissingLocale) {
+        const locale = getLocale(request);
 
-    return NextResponse.next();
+        if (locale === i18n.defaultLocale) {
+            return NextResponse.rewrite(
+                new URL(
+                    `/${locale}${pathname.startsWith("/") ? "" : "/"}${pathname}`,
+                    request.url
+                )
+            );
+        }
+        return NextResponse.redirect(
+            new URL(
+                `/${locale}${pathname.startsWith("/") ? "" : "/"}${pathname}`,
+                request.url
+            )
+        );
+    }
 }
 
 export const config = {
-    matcher: ['/((?!api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml).*)'],
+    // Matcher ignoring `/_next/` and `/api/`
+    matcher: [
+        "/((?!api|_next/static|_next/image|sitemap.xml|robots.txt|favicon.ico).*)"
+    ]
 };
