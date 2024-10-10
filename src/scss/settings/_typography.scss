@@ -45,6 +45,7 @@ h5,
 %title-h1 {
     font-size: 3.3625rem; // 55.4px
     line-height: 2rem;
+    color: #888;
 }
 
 h1,
@@ -63,11 +64,16 @@ h1,
             line-height: 3.3625rem;
         }
     }
+
+    &:not(.keep-color) {
+        color: #fff;
+    }
 }
 
 %title-h2 {
     font-size: 2.625rem; // 42.73px
     line-height: 2.9375rem; // 47px
+    color: #888;
 }
 
 h2,
@@ -80,16 +86,25 @@ h2,
             line-height: 1.1rem;
         }
     }
+
+    &:not(.keep-color) {
+        color: #fff;
+    }
 }
 
 %title-h3 {
     font-size: 1.70rem; // 27.34px
     line-height: 1.9375rem; // 31px
+    color: #888;
 }
 
 h3,
 .h3 {
     @extend %title-h3;
+
+    &:not(.keep-color) {
+        color: #fff;
+    }
 }
 
 %title-h4 {
@@ -118,11 +133,16 @@ h4,
 h5,
 .h5 {
     @extend %title-h5;
+
+    &:not(.keep-color) {
+        color: #fff;
+    }
 }
 
 %title-h5 {
     font-size: 1rem; // 16px
     line-height: 1rem; // 16px
+    color: #888;
 }
 
 
