@@ -9,7 +9,7 @@ export default async function ServerSideProject({
     params: { lang: Locale, slug: string };
 }) {
     const dictionary = await getDictionary(lang);
-    const project = projects.find(project => project.slug === `/${slug}`);
+    const project = projects.find(project => project.links.slug === `/${slug}`);
 
     //@ts-ignore
     return <ProjectClient lang={lang} dictionary={dictionary} project={project} />;

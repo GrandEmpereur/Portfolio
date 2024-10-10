@@ -244,7 +244,7 @@ const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
                         <div className='portfolio__body w-full pt-6'>
                             {lastFiveProjects.map((item, index) => (
                                 <div key={index}>
-                                    <Link href={`/${lang}${item.url}`}>
+                                    <Link href={`/${lang}${item.links.url}`}>
                                         <div
                                             className='portfolio__item flex flex-col justify-between w-full hover:cursor-pointer pt-8 relative gap-y-8'
                                             onMouseEnter={() => setHoverIndex(index)}
@@ -257,7 +257,7 @@ const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
                                                 </div>
                                                 <div className={`hidden lg:flex portfolio__item-image absolute  justify-center items-center transition-all duration-300 ease-in-out transform ${hoverIndex === index ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
                                                     <Image
-                                                        src={item.placeholder}
+                                                        src={item.media.placeholder}
                                                         alt={`${item.title[lang]} - preview`}
                                                         width={450}
                                                         height={300}
@@ -274,7 +274,7 @@ const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
 
                                             <div className={`portfolio__item-image flex lg:hidden w-full`}>
                                                 <Image
-                                                    src={item.placeholder}
+                                                    src={item.media.placeholder}
                                                     alt={`${item.title[lang]} - preview`}
                                                     width={250}
                                                     height={200}

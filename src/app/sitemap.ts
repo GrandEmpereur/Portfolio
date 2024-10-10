@@ -33,7 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Générer les routes pour les projets dans chaque langue
     projects.forEach(project => {
         locales.forEach(locale => {
-            const localizedProjectRoute = `/${locale}/portfolio${project.slug}`;
+            const localizedProjectRoute = `/${locale}/portfolio${project.links.slug}`;
             sitemapEntries.push({
                 url: `${baseUrl}${localizedProjectRoute}`,
                 changeFrequency: 'monthly',

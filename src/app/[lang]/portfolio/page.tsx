@@ -67,35 +67,33 @@ export default async function GalleryPage({
                 <div className='grid grid-cols-1 sm:grid-cols-2 gap-10 place-items-center'>
                     {projects.map((project, index) => (
                         <div key={index} className="rounded overflow-hidden shadow-lg relative w-full">
-                            <Link href={`/${lang}${project.url}`} className="group">
+                            <Link href={`/${lang}${project.links.url}`} className="group">
                                 <Image
                                     className='w-[900px] h-[800px] object-contain rounded-lg lg:overflow-hidden lg:group-hover:scale-105 lg:transition-transform lg:duration-1000'
-                                    src={project.placeholder}
+                                    src={project.media.placeholder}
                                     alt={`Project image of ${project.title[lang]}`}
                                     layout='responsive'
                                     width={1440}
                                     height={800}
                                     loading='lazy'
-                                    placeholder='blur'
-                                    blurDataURL={project.placeholder}
                                     sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
                                 />
 
                                 <div className="portfolio__tags absolute bottom-2 left-2 hidden md:flex flex-wrap gap-2 w-[300px]">
-                                    {project.tags.slice(0, 5).map((tag, idx) => (
-                                        <Badge key={idx} className="badge__item p-2" variant={"secondary"}>{tag}</Badge>
+                                    {project.keySkills.skillsList.slice(0, 5).map((skill, idx) => (
+                                        <Badge key={idx} className="badge__item p-2" variant={"secondary"}>{skill}</Badge>
                                     ))}
-                                    {project.tags.length > 5 && (
-                                        <Badge className="badge__item p-2" variant={"secondary"}>+{project.tags.length - 5}</Badge>
+                                    {project.keySkills.skillsList.length > 5 && (
+                                        <Badge className="badge__item p-2" variant={"secondary"}>+{project.keySkills.skillsList.length - 5}</Badge>
                                     )}
                                 </div>
 
                                 <div className="portfolio__tags flex md:hidden flex-wrap gap-2 w-[300px] mt-5">
-                                    {project.tags.slice(0, 5).map((tag, idx) => (
-                                        <Badge key={idx} className="badge__item p-2" variant={"secondary"}>{tag}</Badge>
+                                    {project.keySkills.skillsList.slice(0, 5).map((skill, idx) => (
+                                        <Badge key={idx} className="badge__item p-2" variant={"secondary"}>{skill}</Badge>
                                     ))}
-                                    {project.tags.length > 5 && (
-                                        <Badge className="badge__item p-2" variant={"secondary"}>+{project.tags.length - 5}</Badge>
+                                    {project.keySkills.skillsList.length > 5 && (
+                                        <Badge className="badge__item p-2" variant={"secondary"}>+{project.keySkills.skillsList.length - 5}</Badge>
                                     )}
                                 </div>
                             </Link>

@@ -59,7 +59,6 @@ const NotFound: React.FC<NotFoundProps> = async ({ params }) => {
                     width={1440}
                     height={1080}
                     loading='lazy'
-                    placeholder='blur'
                     sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
                 />
                 <div className="absolute top-0 left-0 right-0 bottom-0 bg-black opacity-50"></div>

@@ -5,11 +5,12 @@ import { getDictionary } from '@/get-dictionary';
 
 export async function generateMetadata({ params }: { params: { slug: string, lang: Locale } }) {
     const dict = await getDictionary(params.lang);
-    const project = projects.find(project => project.slug === `/${params.slug}`);
+    console.log('params.slug', params.slug);
+    const project = projects.find(project => project.links.slug === `/${params.slug}`);
 
     return {
-        title: project ? `${dict.TemplatePortfolio.metadata.title} - ${project.title}` : dict.TemplatePortfolio.metadata.title,
-        description: project ? project.description : dict.TemplatePortfolio.metadata.description,
+        title: project ? `${dict.TemplatePortfolio.metadata.title} - ${project.title[params.lang]}` : dict.TemplatePortfolio.metadata.title,
+        description: project ? project.overview[params.lang] : dict.TemplatePortfolio.metadata.description,
     };
 }
 
