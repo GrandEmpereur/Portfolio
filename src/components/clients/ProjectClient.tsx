@@ -46,7 +46,7 @@ const ProjectClient: React.FC<ProjectClientProps> = ({ lang, dictionary, project
                     </div>
                     <div className='pt-3'>
                         {project.info && (
-                            <div className='w-full flex justify-between items-center'>
+                            <div className='w-full flex justify-between items-center flex-wrap md:flex-nowrap'>
                                 <div className='flex flex-col gap-y-5'>
                                     <p className='text-white text-xl font-bold' >{project.info.projet}</p>
                                 </div>
@@ -66,13 +66,13 @@ const ProjectClient: React.FC<ProjectClientProps> = ({ lang, dictionary, project
                 </div>
 
                 {/* Détails principaux du projet et compétences */}
-                <div className="w-full flex flex-col justify-between gap-32">
-                    <div className='flex justify-between items-start'>
+                <div className="w-full flex flex-col justify-between gap-12">
+                    <div className='flex justify-between items-start flex-col lg:flex-row '>
                         <div>
                             <h3>{project.title[lang]}</h3>
                         </div>
 
-                        <div className='flex flex-col gap-y-10'>
+                        <div className='flex flex-col gap-y-10 pt-5 lg:pt-0'>
                             <p className="w-full lg:w-[600px] text-2xl text-white">{project.overview[lang]}</p>
                             {/* Bouton vers le projet en production */}
                             {project.links.liveProject && (
@@ -86,7 +86,7 @@ const ProjectClient: React.FC<ProjectClientProps> = ({ lang, dictionary, project
                     </div>
 
                     {/* Compétences clés et supplémentaires */}
-                    <div className="flex justify-between gap-8">
+                    <div className="flex justify-between gap-8 flex-col md:flex-row">
                         <div className="flex flex-col gap-y-5">
                             <h3>{project.keySkills.title[lang]}</h3>
                             <div className="flex flex-wrap gap-5">
@@ -128,6 +128,7 @@ const ProjectClient: React.FC<ProjectClientProps> = ({ lang, dictionary, project
                                         alt={`${section.title} image of ${project.title[lang]}`}
                                         width={630}
                                         height={335}
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 100vw"
                                         className="object-cover"
                                     />
                                 </div>
@@ -142,15 +143,23 @@ const ProjectClient: React.FC<ProjectClientProps> = ({ lang, dictionary, project
 
                 {/* Galerie d'images supplémentaires */}
                 <section className="mt-24">
-                    <h2 className="text-3xl font-bold mb-8">D'autre image du projet</h2>
+                    <h2 className="text-3xl font-bold mb-8">D'autres images du projet</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
                         {project.media.more.slice(3).map((image, index) => (
-                            <div key={index} className="relative overflow-hidden rounded-lg">
+                            <div 
+                                key={index} 
+                                className={cn(
+                                    "relative overflow-hidden rounded-lg",
+                                    index % 2 === 0 ? "lg:translate-y-10" : "lg:-translate-y-10"
+                                )}
+                            >
                                 <Image
                                     src={image}
                                     alt={`Image supplémentaire ${index + 1} du projet ${project.title[lang]}`}
                                     width={630}
-                                        height={335}
+                                    height={335}
+                                    layout='responsive'
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 100vw"
                                     className="object-cover"
                                 />
                             </div>
