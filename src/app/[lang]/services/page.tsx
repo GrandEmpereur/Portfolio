@@ -61,8 +61,19 @@ export default async function page({
                     <h4 className='services__title-main keep-color '>{dict.TemplateServices.servicesPage.titleMain}</h4>
                 </div>
 
-                <div className='w-full lg:h-[350px]'>
-                    <Image src={'/img/services/services.png'} alt={dict.TemplateServices.servicesPage.imageAlt} width={1200} height={537} sizes="100vw" style={{ width: '100%', height: '100%', objectFit: 'cover' }} loading='eager' />
+                <div className='w-full'>
+                    <Image
+                        src={'/img/services/services_banner.png'}
+                        alt={dict.TemplateServices.servicesPage.imageAlt}
+                        width={1440}
+                        height={480}
+                        layout='responsive'
+                        sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 1440px'
+                        loading='lazy'
+                        priority={false}
+                        style={{ objectFit: 'cover' }}
+                        className='w-full'
+                    />
                 </div>
 
                 <div className='flex flex-col gap-y-8'>

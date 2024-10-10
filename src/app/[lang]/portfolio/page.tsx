@@ -8,7 +8,7 @@ import { Locale } from '@/i18nConfig';
 import { getDictionary } from '@/get-dictionary';
 import { projects } from '@/lib/data/portfolio';
 
-export async function generateMetadata({ params: { lang } }: { params: { lang: Locale } } ): Promise<Metadata> {
+export async function generateMetadata({ params: { lang } }: { params: { lang: Locale } }): Promise<Metadata> {
     const dict = await getDictionary(lang);
 
     return {
@@ -64,19 +64,21 @@ export default async function GalleryPage({
                     </p>
                 </header>
 
-                <div className='portfolio__gallery grid grid-cols-1 sm:grid-cols-2 gap-8 place-items-center'>
+                <div className='grid grid-cols-1 sm:grid-cols-2 gap-10 place-items-center'>
                     {projects.map((project, index) => (
-                        <div key={index} className="portfolio__item rounded overflow-hidden shadow-lg relative">
+                        <div key={index} className="rounded overflow-hidden shadow-lg relative w-full">
                             <Link href={`/${lang}${project.url}`} className="group">
                                 <Image
-                                    className='portfolio__image w-full h-full object-contain rounded-lg lg:overflow-hidden lg:group-hover:scale-105 lg:transition-transform lg:duration-1000'
+                                    className='w-[900px] h-[800px] object-contain rounded-lg lg:overflow-hidden lg:group-hover:scale-105 lg:transition-transform lg:duration-1000'
                                     src={project.placeholder}
                                     alt={`Project image of ${project.title[lang]}`}
                                     layout='responsive'
-                                    width={900}
+                                    width={1440}
                                     height={800}
-                                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 100vw"
                                     loading='lazy'
+                                    placeholder='blur'
+                                    blurDataURL={project.placeholder}
+                                    sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
                                 />
 
                                 <div className="portfolio__tags absolute bottom-2 left-2 hidden md:flex flex-wrap gap-2 w-[300px]">

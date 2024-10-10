@@ -49,17 +49,19 @@ const ProjectClient: React.FC<ProjectClientProps> = ({ lang, dictionary, project
                 </div>
                 <div className=" flex flex-col gap-y-10">
                     <div className="slider flex">
-                        <div className='w-full lg:h-[350px] overflow-hidden'>
+                        <div className='w-full lg:h-[480px] overflow-hidden'>
                             <Image
                                 src={project.placeholder}
                                 alt={`Project image of ${project.title[lang]}`}
-                                width={1108}
-                                height={537}
+                                width={1440}
+                                height={480}
                                 layout="responsive"
                                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 100vw"
                                 priority
+                                style={{ objectFit: 'cover' }}
                             />
                         </div>
+
                     </div>
 
                     <div className="w-full flex flex-wrap justify-between gap-8">

@@ -66,8 +66,18 @@ async function Page({
                             <h4 className='about__title-main keep-color '>{dict.TemplateAbout.aboutMe.titleMain}</h4>
                         </div>
 
-                        <div className='w-full lg:h-[350px]'>
-                            <Image src={'/img/about/aboutHero.png'} alt={dict.TemplateAbout.aboutMe.heroImageAlt} width={1108} height={537} sizes="100vw" style={{ width: '100%', height:'100%', objectFit: 'cover' }} loading='eager' />
+                        <div className='w-full'>
+                            <Image
+                                src={'/img/about/about_banner.jpg'}
+                                alt={dict.TemplateAbout.aboutMe.heroImageAlt}
+                                width={1440}
+                                height={480}
+                                layout='responsive'
+                                sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 1440px'
+                                loading='lazy'
+                                className='w-full'
+                                style={{ objectFit: 'cover' }}
+                            />
                         </div>
 
                         <div className='flex flex-col w-full gap-y-5'>
@@ -92,13 +102,29 @@ async function Page({
 
                 <MaxWidthWrapper className='experience-wrapper mt-20'>
                     <section id='experience' className='experience relative flex flex-col w-full gap-y-12'>
-                        <Image src={'/shape/img2.png'} alt={'a geometrical shape'} width={180} height={75} className='experience__shape1 absolute w-max' />
-                        <Image src={'/shape/img6.png'} alt={'a geometrical shape'} width={140} height={65} className='experience__shape2 absolute w-max' />
+                        <Image
+                            src={'/shape/img2.png'}
+                            alt={'a geometrical shape'}
+                            width={180}
+                            height={75}
+                            className='experience__shape1 absolute w-max'
+                            layout='intrinsic'
+                            loading='lazy'
+                        />
+                        <Image
+                            src={'/shape/img6.png'}
+                            alt={'a geometrical shape'}
+                            width={140}
+                            height={65}
+                            className='experience__shape2 absolute w-max'
+                            layout='intrinsic'
+                            loading='lazy'
+                        />
 
                         <div className='flex gap-x-10 flex-col lg:flex-row '>
                             <div className='experience__education w-full flex flex-col gap-10 lg:w-1/2'>
                                 <h3 className='experience__heading'>{dict.TemplateAbout.experience.education_title}</h3>
-                                {dict.TemplateAbout.experience.education.map((item, index ) => (
+                                {dict.TemplateAbout.experience.education.map((item, index) => (
                                     <div key={index} className='experience__item flex w-full justify-between items-center'>
                                         <div className='hidden items-center gap-x-5 gap-y-5 | md:flex '>
                                             <div className='experience__sphere '></div>
@@ -158,7 +184,15 @@ async function Page({
                                 <div className='skills__icons flex flex-wrap w-full items-center justify-evenly gap-5'>
                                     {dict.TemplateAbout.skills.mainStack.map((item, index) => (
                                         <div key={index} className='skill__item flex flex-wrap flex-col items-center gap-4'>
-                                            <Image src={item.icon} alt={`${item.name} icon`} width={40} height={40} style={{ objectFit: 'cover' }} />
+                                            <Image
+                                                src={item.icon}
+                                                alt={`${item.name} icon`}
+                                                width={40}
+                                                height={40}
+                                                layout="intrinsic"
+                                                loading="lazy"
+                                                style={{ objectFit: 'cover' }}
+                                            />
                                             <span className='skill__name'>{item.name}</span>
                                         </div>
                                     ))}
@@ -173,7 +207,15 @@ async function Page({
                                 <div className='skills__icons flex flex-wrap w-full items-center justify-evenly gap-5'>
                                     {dict.TemplateAbout.skills.otherStack.map((item, index) => (
                                         <div key={index} className='skill__item flex flex-wrap flex-col items-center gap-y-4'>
-                                            <Image src={item.icon} alt={`${item.name} icon`} width={40} height={40} style={{ objectFit: 'cover' }} />
+                                            <Image
+                                                src={item.icon}
+                                                alt={`${item.name} icon`}
+                                                width={40}
+                                                height={40}
+                                                layout="intrinsic"
+                                                loading="lazy"
+                                                style={{ objectFit: 'cover' }}
+                                            />
                                             <span className='skill__name'>{item.name}</span>
                                         </div>
                                     ))}

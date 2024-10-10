@@ -51,6 +51,8 @@ const NavBarClient: React.FC<NavBarClientProps> = ({ lang, dictionary }) => {
                             alt="My Logo"
                             width={90}
                             height={90}
+                            layout='intrinsic'
+                            priority={true}
                             style={{ objectFit: 'cover' }}
                             className='lg:w-[90px] w-[60px]'
                             loading='eager'

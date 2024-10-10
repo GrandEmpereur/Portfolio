@@ -51,15 +51,16 @@ const NotFound: React.FC<NotFoundProps> = async ({ params }) => {
         <div className="relative min-h-screen flex items-center justify-center bg-black text-white">
             <div className="absolute top-0 left-0 right-0 bottom-0 z-0">
                 <Image
+                    className='w-full h-full object-contain rounded-lg lg:overflow-hidden lg:group-hover:scale-105 lg:transition-transform lg:duration-1000'
                     src="/img/404/404.png"
                     alt="404 Not Found"
-                    width={0}
-                    height={0}
-                    sizes='100vw 100vh'
+                    layout='responsive'
                     style={{ objectFit: 'cover', width: '100%', height: '100%' }}
-                    className="w-full h-full"
-                    priority
-                    loading='eager'
+                    width={1440}
+                    height={1080}
+                    loading='lazy'
+                    placeholder='blur'
+                    sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
                 />
                 <div className="absolute top-0 left-0 right-0 bottom-0 bg-black opacity-50"></div>
             </div>

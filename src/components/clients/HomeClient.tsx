@@ -111,8 +111,16 @@ const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
             <section ref={heroRef} id='hero' className='hero relative flex flex-col w-full'>
                 <MaxWidthWrapper>
                     <span className='hero__shape--top-left relative block w-max' style={{ left: "-20px" }}>
-                        <Image src={'/shape/img7.png'} alt={'shape'} width={55} height={55} />
+                        <Image
+                            src={'/shape/img7.png'}
+                            alt={'shape decoration'}
+                            width={55}
+                            height={55}
+                            layout="intrinsic"
+                            loading="lazy"
+                        />
                     </span>
+
                     <span className='hero__shape--bottom-right absolute' style={{ left: "350px", bottom: "300px" }}>
                         <Image src={'/shape/img1.png'} alt={'shape'} width={62.31} height={60} />
                     </span>
