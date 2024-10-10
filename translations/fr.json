@@ -453,9 +453,7 @@
                 "title": "Explorez Tous Mes Projets",
                 "description": "Découvrez dans cette galerie tous les projets sur lesquels j'ai travaillé. Des projets e-commerce aux projets scolaires et personnels, vous trouverez une large gamme d'applications web que j'ai développées ou auxquelles j'ai contribué."
             },
-            "visitWebsite": "Visitez le site web",
-            "techUsed": "Technologies utilisées dans ce projet",
-            "otherTags": "Autres tags"
+            "visitWebsite": "Visitez le site web"
         }
     },
     "TemplateServices": {
