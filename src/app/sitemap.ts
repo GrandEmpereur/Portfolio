@@ -4,6 +4,7 @@ import { projects } from '@/lib/data/portfolio';
 export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = 'https://patrick.bartosik.fr';
     const locales = ['fr', 'en'];
+    const defaultLocale = 'fr';
 
     const staticRoutes = [
         { route: '' },
@@ -18,27 +19,37 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     const sitemapEntries: MetadataRoute.Sitemap = [];
 
-    // Générer les routes statiques pour chaque langue
-    locales.forEach(locale => {
-        staticRoutes.forEach(({ route }) => {
-            const localizedRoute = `/${locale}${route}`;
-            sitemapEntries.push({
-                url: `${baseUrl}${localizedRoute}`,
-                changeFrequency: 'weekly',
-                priority: route === '' ? 1 : 0.8,
-            });
+    // Générer d'abord toutes les routes en français (sans préfixe)
+    staticRoutes.forEach(({ route }) => {
+        sitemapEntries.push({
+            url: `${baseUrl}${route}`,
+            changeFrequency: 'weekly',
+            priority: route === '' ? 1 : 0.8,
         });
     });
 
-    // Générer les routes pour les projets dans chaque langue
     projects.forEach(project => {
-        locales.forEach(locale => {
-            const localizedProjectRoute = `/${locale}/portfolio${project.links.slug}`;
-            sitemapEntries.push({
-                url: `${baseUrl}${localizedProjectRoute}`,
-                changeFrequency: 'monthly',
-                priority: 0.7,
-            });
+        sitemapEntries.push({
+            url: `${baseUrl}/portfolio${project.links.slug}`,
+            changeFrequency: 'monthly',
+            priority: 0.7,
+        });
+    });
+
+    // Ensuite, générer toutes les routes en anglais (avec préfixe '/en')
+    staticRoutes.forEach(({ route }) => {
+        sitemapEntries.push({
+            url: `${baseUrl}/en${route}`,
+            changeFrequency: 'weekly',
+            priority: route === '' ? 0.9 : 0.7,
+        });
+    });
+
+    projects.forEach(project => {
+        sitemapEntries.push({
+            url: `${baseUrl}/en/portfolio${project.links.slug}`,
+            changeFrequency: 'monthly',
+            priority: 0.6,
         });
     });
 
