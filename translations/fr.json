@@ -87,94 +87,78 @@
             "services": {
                 "subtitle": "Services",
                 "title": "Solutions Web Full Stack Sur Mesure",
-                "description": "Transformez vos idées en réalité digitale avec mes services de développement web complets. De la conception à la mise en production, je vous accompagne dans la création de solutions web innovantes, performantes et évolutives.",
+                "description": "Transformez vos idées en réalité digitale avec mes services de création et de développement web sur mesure. De la conception au déploiement, je réalise des sites vitrines, des applications SaaS, des e-commerces, des CRM et bien plus, tout en assurant des refontes et des migrations.",
                 "servicesList": [
                     {
-                        "id": "frontend-development",
-                        "title": "Développement Front-End Avancé",
-                        "generalDescription": "Créez des interfaces utilisateur modernes, réactives et optimisées pour le SEO avec les dernières technologies front-end.",
+                        "id": "site-web-creation",
+                        "title": "Sites Web Personnalisés",
+                        "generalDescription": "Conception et développement de tous types de sites web : sites vitrines, e-commerce, sites d'entreprise, plateformes P2P, B2B et B2C.",
                         "detailedDescription": [
                             {
-                                "title": "Applications React & Next.js",
-                                "description": "Développement d'applications web performantes et SEO-friendly avec React et Next.js, utilisant le SSR et le SSG pour une expérience utilisateur optimale."
+                                "title": "Sites Vitrines & Sites Corporate",
+                                "description": "Création de sites vitrines professionnels, optimisés pour le SEO et adaptés à tous les appareils, pour représenter votre marque."
                             },
                             {
-                                "title": "Interfaces Responsives",
-                                "description": "Création d'interfaces adaptatives avec Tailwind CSS et SASS, assurant une expérience utilisateur cohérente sur tous les appareils."
+                                "title": "Web Apps & SaaS",
+                                "description": "Développement d'applications web performantes et évolutives pour les services SaaS, avec une intégration fluide des APIs et des systèmes de paiement."
                             },
                             {
-                                "title": "Optimisation des Performances",
-                                "description": "Amélioration des temps de chargement et de l'interactivité des applications grâce à des techniques avancées d'optimisation front-end."
+                                "title": "E-commerce sur Mesure",
+                                "description": "Conception de boutiques en ligne performantes, avec intégration de solutions de paiement sécurisées (Stripe, PayPal) et gestion des stocks."
                             },
                             {
-                                "title": "Intégration API & State Management",
-                                "description": "Intégration efficace d'APIs RESTful et GraphQL, gestion avancée de l'état avec Redux ou Context API pour des applications robustes et scalables."
+                                "title": "CRM & Outils Métiers",
+                                "description": "Développement de CRM personnalisés pour une gestion optimale de vos clients et de vos processus métier, adaptés à vos besoins spécifiques."
                             }
                         ],
                         "icon": "/shape/img5.png",
                         "iconWidth": 83,
                         "iconHeight": 83,
-                        "iconAlt": "Icône de Développement Front-End",
+                        "iconAlt": "Icône Création de Sites Web",
                         "buttonLabel": "En Savoir Plus",
-                        "buttonLink": "/services#frontend-development"
+                        "buttonLink": "/services#site-web-creation"
                     },
                     {
-                        "id": "backend-development",
-                        "title": "Développement Back-End Robuste",
-                        "generalDescription": "Construisez des architectures back-end solides et évolutives pour supporter vos applications web et mobiles.",
+                        "id": "maintenance-evolutive",
+                        "title": "Refonte TMA - TME",
+                        "generalDescription": "Assurez la maintenance, l'évolution, et la refonte de vos applications web pour rester à jour avec les dernières technologies et offrir une expérience utilisateur optimale.",
                         "detailedDescription": [
                             {
-                                "title": "APIs RESTful & GraphQL",
-                                "description": "Conception et développement d'APIs performantes et sécurisées avec Node.js, Express, et Apollo Server pour GraphQL."
+                                "title": "Maintenance Applicative (TMA)",
+                                "description": "Prise en charge des mises à jour, de la correction des bugs et de l'amélioration des performances de vos sites web et applications."
                             },
                             {
-                                "title": "Bases de Données & ORM",
-                                "description": "Gestion efficace des données avec MongoDB, PostgreSQL, et utilisation d'ORMs comme Mongoose ou Prisma pour une abstraction optimale."
-                            },
-                            {
-                                "title": "Authentification & Sécurité",
-                                "description": "Implémentation de systèmes d'authentification robustes (JWT, OAuth) et sécurisation des applications contre les vulnérabilités courantes."
-                            },
-                            {
-                                "title": "Serverless & Cloud Functions",
-                                "description": "Développement de fonctions serverless et déploiement sur des plateformes cloud comme Vercel, AWS Lambda ou Google Cloud Functions."
+                                "title": "Migration et Refonte",
+                                "description": "Migration de vos sites web vers de nouvelles technologies ou refonte complète pour moderniser l'expérience utilisateur et l'interface."
                             }
                         ],
                         "icon": "/shape/img6.png",
                         "iconWidth": 83,
                         "iconHeight": 83,
-                        "iconAlt": "Icône de Développement Back-End",
+                        "iconAlt": "Icône TMA / TME",
                         "buttonLabel": "En Savoir Plus",
-                        "buttonLink": "/services#backend-development"
+                        "buttonLink": "/services#maintenance-evolutive"
                     },
                     {
-                        "id": "full-stack-solutions",
-                        "title": "Solutions Full Stack Complètes",
-                        "generalDescription": "Développement de bout en bout d'applications web complexes, du front-end au back-end, en passant par le déploiement et la maintenance.",
+                        "id": "immobilier",
+                        "title": "Services Immobilier",
+                        "generalDescription": "Développement d'outils personnalisés pour le secteur immobilier, incluant la gestion de biens, les calculs de rentabilité, et les plateformes de location en ligne.",
                         "detailedDescription": [
                             {
-                                "title": "Applications Web Progressive (PWA)",
-                                "description": "Création d'applications web progressives offrant une expérience proche du natif sur tous les appareils."
+                                "title": "Plateformes de Location",
+                                "description": "Création de plateformes en ligne pour la gestion de locations (Airbnb, Booking) avec calculs de rentabilité en temps réel."
                             },
                             {
-                                "title": "E-commerce & Systèmes de Paiement",
-                                "description": "Développement de plateformes e-commerce sur mesure avec intégration de systèmes de paiement sécurisés (Stripe, PayPal)."
-                            },
-                            {
-                                "title": "CMS Headless",
-                                "description": "Mise en place de CMS headless comme Strapi ou Contentful pour une gestion de contenu flexible et découplée."
-                            },
-                            {
-                                "title": "Dashboards & Analytics",
-                                "description": "Création de tableaux de bord interactifs et de systèmes d'analyse de données pour visualiser les KPIs importants de votre entreprise."
+                                "title": "Outils de Gestion Immobilière",
+                                "description": "Développement de solutions de gestion immobilière pour gérer efficacement vos propriétés et suivre les performances financières."
                             }
                         ],
                         "icon": "/shape/img3.png",
                         "iconWidth": 78,
                         "iconHeight": 80,
-                        "iconAlt": "Icône Solutions Full Stack",
+                        "iconAlt": "Icône Solutions Immobilier",
                         "buttonLabel": "En Savoir Plus",
-                        "buttonLink": "/services#full-stack-solutions"
+                        "buttonLink": "/services#immobilier"
                     }
                 ]
             },
