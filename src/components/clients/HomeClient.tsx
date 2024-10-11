@@ -27,6 +27,8 @@ const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
     const heroRef = useRef<HTMLDivElement | null>(null);
     const titleRef = useRef<HTMLHeadingElement | null>(null);
     const scrollTextRef = useRef<HTMLDivElement | null>(null);
+    const [rotation, setRotation] = useState(0);
+    const stacksListRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         if (heroRef.current) {
@@ -74,6 +76,32 @@ const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
                 duration: 1,
             });
         }
+
+        const rotationInterval = setInterval(() => {
+            setRotation((prevRotation) => (prevRotation + 1) % 360);
+        }, 30);
+
+        if (stacksListRef.current) {
+            const stacksList = stacksListRef.current;
+            const stackItems = stacksList.children;
+            const totalWidth = Array.from(stackItems).reduce((acc, item) => acc + item.clientWidth, 0);
+
+            // Dupliquer les éléments pour créer un effet infini
+            const clonedItems = Array.from(stackItems).map(item => item.cloneNode(true));
+            clonedItems.forEach(item => stacksList.appendChild(item));
+
+            gsap.to(stacksList, {
+                x: -totalWidth,
+                duration: 20,
+                ease: "linear",
+                repeat: -1,
+                onRepeat: () => {
+                    gsap.set(stacksList, { x: 0 });
+                }
+            });
+        }
+
+        return () => clearInterval(rotationInterval);
     }, []);
 
     const splitTitle = (title: string) => {
@@ -144,7 +172,29 @@ const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
                         <div className='hero__block flex flex-col md:flex-row'>
                             <div className='hero__content relative flex flex-col md:flex-row' style={{ backgroundColor: '#222222' }}>
                                 <span className='hero__play-button absolute' style={{ left: "-70px", top: "170px" }}>
-                                    <Image src={'/shape/img8.png'} alt={'shape'} width={138} height={138} />
+                                    <div className="relative w-[150px] h-[150px]">
+                                        <Image src={'/svg/button/bg.svg'} alt="Bouton de fond" layout="fill" className="absolute" />
+                                        <div className="absolute inset-0 flex items-center justify-center">
+                                            <div
+                                                className="relative w-[150px] h-[150px] flex items-center justify-center"
+                                                style={{ transform: `rotate(${rotation}deg)` }}
+                                            >
+                                                <Image
+                                                    src={'/svg/button/text.svg'}
+                                                    alt="Texte du bouton"
+                                                    width={160}
+                                                    height={160}
+                                                    className="absolute left-[-5px]"
+                                                />
+                                            </div>
+                                        </div>
+
+                                        {/* Icône au centre */}
+                                        <div className="absolute inset-0 flex items-center justify-center">
+                                            <Image src={'/svg/button/icon.svg'} alt="Icône du bouton" width={35} height={35} />
+                                        </div>
+                                    </div>
+
                                 </span>
                                 <div className='hero__image-container'>
                                     <Image src={'/img/Hero-img.png'} alt={'My face'} width={500} height={630} loading='eager' />
@@ -161,15 +211,30 @@ const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
                         </div>
                     </div>
 
-                    <div className='hero__stacks flex flex-col gap-y-5 mt-32'>
-                        <h3 className='keep-size text-center lg:text-left'>{dictionary.TemplateHome.home.tech_stack.title}</h3>
-                        <div className='hero__stacks-list flex flex-wrap justify-center lg:justify-start gap-10 pt-9 pb-14 '>
-                            {dictionary.TemplateHome.home.stacks.map((stack: (any), index: (number)) => (
-                                <div key={index} className='hero__stack flex flex-col items-center justify-center gap-y-3'>
-                                    <Image src={stack.src} alt={stack.alt} width={60} height={60} loading='lazy' />
-                                    <span>{stack.name}</span>
-                                </div>
-                            ))}
+                    <div className="hero__stacks flex flex-col gap-y-5 mt-32 overflow-hidden">
+                        <h3 className="keep-size text-center lg:text-left">{dictionary.TemplateHome.home.tech_stack.title}</h3>
+
+                        <div className="hero__stacks-list-container relative overflow-hidden">
+                            {/* Conteneur des stacks avec la ref pour l'animation */}
+                            <div ref={stacksListRef} className="flex gap-10 pt-9 pb-14 whitespace-nowrap">
+                                {dictionary.TemplateHome.home.stacks.map((stack: any, index: number) => (
+                                    <div key={index} className="flex flex-col items-center justify-center gap-y-3">
+                                        <div className="w-[60px] h-[60px] flex items-center justify-center">
+                                            <Image src={stack.src} alt={stack.alt} width={60} height={60} loading="lazy" className="object-contain" />
+                                        </div>
+                                        <span className="text-sm">{stack.name}</span>
+                                    </div>
+                                ))}
+                                {/* Dupliquer le contenu pour l'effet infini */}
+                                {dictionary.TemplateHome.home.stacks.map((stack: any, index: number) => (
+                                    <div key={`duplicate-${index}`} className="flex flex-col items-center justify-center gap-y-3">
+                                        <div className="w-[60px] h-[60px] flex items-center justify-center">
+                                            <Image src={stack.src} alt={stack.alt} width={60} height={60} loading="lazy" className="object-contain" />
+                                        </div>
+                                        <span className="text-sm">{stack.name}</span>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </MaxWidthWrapper>

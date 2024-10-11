@@ -167,9 +167,9 @@ export const projects = [
             ]
         },
         "media": {
-            "gallery": "/img/portfolio/tartine-chocolat.webp",
-            "thumbnail": "/img/portfolio/tartine-chocolat.webp",
-            "placeholder": "/img/portfolio/tartine-chocolat.webp"
+            "gallery": "/img/portfolio/tartine-chocolat.png",
+            "thumbnail": "/img/portfolio/tartine-chocolat.png",
+            "placeholder": "/img/portfolio/tartine-chocolat.png"
         },
         "links": {
             "url": "/portfolio/tartine-chocolat",

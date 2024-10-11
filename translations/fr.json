@@ -10,7 +10,7 @@
                 "hero_scroll": "EXPLORER"
             },
             "tech_stack": {
-                "title": "Ma Stack Technique"
+                "title": "Mon expertise technique"
             },
             "states": [
                 {
@@ -32,44 +32,49 @@
             ],
             "stacks": [
                 {
-                    "src": "/stack/react.png",
+                    "src": "/svg/react.svg",
                     "alt": "React",
                     "name": "React"
                 },
                 {
-                    "src": "/stack/nextjs.png",
+                    "src": "/svg/nextjs.svg",
                     "alt": "Next.js",
                     "name": "Next.js"
                 },
                 {
-                    "src": "/stack/typescript.png",
+                    "src": "/svg/ts.svg",
                     "alt": "TypeScript",
                     "name": "TypeScript"
                 },
                 {
-                    "src": "/stack/sass.png",
+                    "src": "/svg/sass.svg",
                     "alt": "Sass",
                     "name": "Sass"
                 },
                 {
-                    "src": "/stack/adonisjs.png",
+                    "src": "/svg/adonisjs.svg",
                     "alt": "AdonisJS",
                     "name": "AdonisJS"
                 },
                 {
-                    "src": "/stack/vercel.png",
+                    "src": "/svg/vercel.svg",
                     "alt": "Vercel",
                     "name": "Vercel"
                 },
                 {
-                    "src": "/stack/mongodb.png",
+                    "src": "/svg/mongodb.svg",
                     "alt": "MongoDB",
                     "name": "MongoDB"
                 },
                 {
-                    "src": "/stack/supabase.png",
+                    "src": "/svg/supabase.svg",
                     "alt": "Supabase",
                     "name": "Supabase"
+                },
+                {
+                    "src": "/svg/postman.svg",
+                    "alt": "Postman",
+                    "name": "Postman"
                 }
             ],
             "about": {
