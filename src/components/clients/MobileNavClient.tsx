@@ -38,13 +38,13 @@ const MobileNavClient: React.FC<MobileNavClientProps> = ({ lang, dictionary }) =
                         <ul className='flex flex-col gap-8 px-5 pt-32 pb-8 items-center'>
                             {MobilLinks.map(({ href, label }, index) => (
                                 <li key={index} className='animate-fadeInUp opacity-0'>
-                                    <Link href={`/${lang}${href}`} onClick={toggleOpen}>
+                                    <Link href={lang === 'fr' ? `${href}` : `/${lang}${href}`} onClick={toggleOpen}>
                                         <span className='block text-primary text-2xl'>{label}</span>
                                     </Link>
                                 </li>
                             ))}
                             <li>
-                                <Link href={`/${lang}/contact`}>
+                                <Link href={lang === 'fr' ? `/contact` : `/${lang}/contact`}>
                                     <Button className='rounded-full ' variant={'other'} size={'lg'}>{contactText}</Button>
                                 </Link>
                             </li>

@@ -45,7 +45,7 @@ const NavBarClient: React.FC<NavBarClientProps> = ({ lang, dictionary }) => {
         <nav className={`sticky py-10 inset-x-0 top-0 z-30 w-full backdrop-blur ${navHidden ? 'translate-y-[-100%] transition-transform duration-300' : 'translate-y-0 transition-transform duration-300'}`}>
             <MaxWidthWrapper>
                 <div className='flex h-max items-center justify-between'>
-                    <Link href={`/${lang}`} className='flex z-40 font-semibold'>
+                    <Link href={lang === 'fr' ? '/' : `/${lang}`} className='flex z-40 font-semibold'>
                         <Image
                             src="/svg/Logo.svg"
                             alt="My Logo"
@@ -61,12 +61,12 @@ const NavBarClient: React.FC<NavBarClientProps> = ({ lang, dictionary }) => {
 
                     <MobileNavClient lang={lang} dictionary={dictionary} />
 
-                    <div className={`hidden items-center space-x-10 lg:flex ${!links.some(link => pathname.startsWith(`/${lang}${link.href}`)) ? 'bg-secondary px-10 py-5 rounded-full' : ''}`}>
+                    <div className={`hidden items-center space-x-10 lg:flex ${!links.some(link => pathname.startsWith(lang === 'fr' ? `${link.href}` : `/${lang}${link.href}`)) ? 'bg-secondary px-10 py-5 rounded-full' : ''}`}>
                         <ul className='flex items-center justify-around gap-x-10'>
                             {links.map(({ href, label }, index) => (
                                 <li key={index}>
-                                    <Link href={`/${lang}${href}`}>
-                                        <span className={`transition ease-in-out delay-150 hover:text-[#E3B27D] duration-200 ${pathname.startsWith(`/${lang}${href}`)
+                                    <Link href={ lang === 'fr' ? `${href}` : `/${lang}${href}` }>
+                                        <span className={`transition ease-in-out delay-150 hover:text-[#E3B27D] duration-200 ${pathname.startsWith(lang === 'fr'? `${href}` : `/${lang}${href}`)
                                             ? 'bg-secondary px-10 py-5 rounded-full text-[#E3B27D]'
                                             : 'text-white'
                                             }`}>
@@ -81,7 +81,7 @@ const NavBarClient: React.FC<NavBarClientProps> = ({ lang, dictionary }) => {
                     <div className='hidden items-center space-x-4 lg:flex'>
                         <ul className='flex items-center justify-around gap-x-8'>
                             <li>
-                                <Link href={`/${lang}/contact`}>
+                                <Link href={lang === 'fr' ? `/contact` : `/${lang}/contact`}>
                                     <Button className='rounded-full ' variant={'other'} size={'lg'}>{contactText}</Button>
                                 </Link>
                             </li>

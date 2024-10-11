@@ -299,7 +299,7 @@ const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
                             <div className='about__description w-full md:w-full flex flex-col gap-y-8'>
                                 <h2 className='about__description-title'>{dictionary.TemplateHome.home.about.description_title}</h2>
                                 <p className='about__description-text'>{dictionary.TemplateHome.home.about.description}</p>
-                                <Link href={`/${lang}/about`}>
+                                <Link href={lang === 'fr' ? `/about` : `/${lang}/about`}>
                                     <Button className='rounded-full ' variant={'other'} size={'lg'} >{dictionary.TemplateHome.home.about.button}</Button>
                                 </Link>
                             </div>
@@ -324,7 +324,7 @@ const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
                                             <li key={index} className='services__item-list-entry'>{item.title}</li>
                                         ))}
                                     </div>
-                                    <Link href={`${lang}${service.buttonLink}`} className='services__item-button'>
+                                    <Link href={lang === 'fr' ? `${service.buttonLink}` : `${service.buttonLink}`} className='services__item-button'>
                                         <Button className='rounded-full ' variant={'other'} size={'lg'}>{service.buttonLabel}</Button>
                                     </Link>
                                 </div>
@@ -342,7 +342,7 @@ const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
                             </div>
                             <div className="portfolio__description flex justify-between flex-col gap-y-10">
                                 <p className='portfolio__description-text font-mono w-full md:w-[600px] '>{dictionary.TemplateHome.home.portfolio.description}</p>
-                                <Link href={`/${lang}/portfolio`} className='portfolio__link-button text-center w-max lg:text-left'>
+                                <Link href={lang === 'fr' ? `/portfolio` : `/${lang}/portfolio`} className='portfolio__link-button text-center w-max lg:text-left'>
                                     <Button className='rounded-full ' variant={'other'} size={'lg'}>{dictionary.TemplateHome.home.portfolio.button}</Button>
                                 </Link>
                             </div>
@@ -350,7 +350,7 @@ const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
                         <div className='portfolio__body w-full pt-6'>
                             {lastFiveProjects.map((item, index) => (
                                 <div key={index}>
-                                    <Link href={`/${lang}${item.links.url}`}>
+                                    <Link href={lang === 'fr' ? `${item.links.url}` : `/${lang}${item.links.url}`}>
                                         <div
                                             className='portfolio__item flex justify-between items-center w-full hover:cursor-pointer pt-8 relative'
                                             onMouseEnter={() => {
@@ -421,7 +421,7 @@ const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
                             <h2 className='newsletter__title'>
                                 {dictionary.TemplateHome.home.newsletter.title}
                             </h2>
-                            <Link href={`/${lang}/contact`}>
+                            <Link href={lang === 'fr' ? `/contact` : `/${lang}/contact`}>
                                 <div className='newsletter__contact btn btn-primary items-center justify-center flex'>
                                     <span className='text-center flex justify-center items-center'>{dictionary.TemplateHome.home.newsletter.button}</span>
                                 </div>
