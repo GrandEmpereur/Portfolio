@@ -11,6 +11,9 @@ type FooterProps = {
 
 const Footer: React.FC<FooterProps> = async ({ params }) => {
     const dict = await getDictionary(params.lang);
+    const isEnglish = params.lang === 'en';
+
+    const getLocalizedHref = (path: string) => isEnglish ? `/${params.lang}${path}` : path;
 
     return (
         <MaxWidthWrapper className='footer-wrapper my-12'>
@@ -40,11 +43,11 @@ const Footer: React.FC<FooterProps> = async ({ params }) => {
                         <div className='footer__quick-links flex flex-col gap-5'>
                             <h3 className='footer__heading'>{dict.TemplateFooter.footer.quickLinks}</h3>
                             <div className='flex flex-col gap-2'>
-                                <li><Link href={`/${params.lang}`} className='footer__link'>{dict.TemplateFooter.footer.home}</Link></li>
-                                <li><Link href={`/${params.lang}/about`} className='footer__link'>{dict.TemplateFooter.footer.about}</Link></li>
-                                <li><Link href={`/${params.lang}/services`} className='footer__link'>{dict.TemplateFooter.footer.services}</Link></li>
-                                <li><Link href={`/${params.lang}/contact`} className='footer__link'>{dict.TemplateFooter.footer.contact}</Link></li>
-                                <li><Link href={`/sitemap.xml`} className='footer__link'>{dict.TemplateFooter.footer.sitemap}</Link></li>
+                                <li><Link href={getLocalizedHref('/')} className='footer__link'>{dict.TemplateFooter.footer.home}</Link></li>
+                                <li><Link href={getLocalizedHref('/about')} className='footer__link'>{dict.TemplateFooter.footer.about}</Link></li>
+                                <li><Link href={getLocalizedHref('/services')} className='footer__link'>{dict.TemplateFooter.footer.services}</Link></li>
+                                <li><Link href={getLocalizedHref('/contact')} className='footer__link'>{dict.TemplateFooter.footer.contact}</Link></li>
+                                <li><Link href="/sitemap.xml" className='footer__link'>{dict.TemplateFooter.footer.sitemap}</Link></li>
                             </div>
                         </div>
                     </div>
@@ -53,17 +56,17 @@ const Footer: React.FC<FooterProps> = async ({ params }) => {
                 <div className='footer__bottom flex flex-col items-center justify-center mt-5 lg:mt-0 lg:justify-between w-full '>
                     <div className='deco'></div>
                     <div className='footer__legal-links flex gap-x-5 flex-wrap items-center justify-center'>
-                        <Link href={`/${params.lang}/terms`}>
+                        <Link href={getLocalizedHref('/terms')}>
                             <Button variant={'link'} className='footer__legal-button'>
                                 {dict.TemplateFooter.footer.termsOfUse}
                             </Button>
                         </Link>
-                        <Link href={`/${params.lang}/privacy`}>
+                        <Link href={getLocalizedHref('/privacy')}>
                             <Button variant={'link'} className='footer__legal-button'>
                                 {dict.TemplateFooter.footer.privacyPolicy}
                             </Button>
                         </Link>
-                        <Link href={`/${params.lang}/gtu`}>
+                        <Link href={getLocalizedHref('/gtu')}>
                             <Button variant={'link'} className='footer__legal-button'>
                                 {dict.TemplateFooter.footer.gtu}
                             </Button>

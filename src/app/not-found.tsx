@@ -68,12 +68,12 @@ const NotFound: React.FC<NotFoundProps> = async ({ params }) => {
                 <h1 className="text-6xl font-bold mb-4">404</h1>
                 <p className="text-xl mb-6">{dict.notFound.description}</p>
                 <div className="flex gap-4 justify-center">
-                    <Link href={`/${lang}`}>
+                    <Link href={lang === 'fr' ? `/` : `/${lang}`}>
                         <Button className='rounded-full ' variant={'other'} size={'lg'}>
                             {dict.notFound.buttonHome}
                         </Button>
                     </Link>
-                    <Link href={`/${lang}/portfolio`}>
+                    <Link href={lang === 'fr' ? `/portfolio` : `/${lang}/portfolio`}>
                         <Button className='rounded-full ' variant={'other'} size={'lg'}>
                             {dict.notFound.buttonPortfolio}
                         </Button>

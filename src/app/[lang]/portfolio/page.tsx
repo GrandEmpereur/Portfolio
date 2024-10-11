@@ -67,7 +67,7 @@ export default async function GalleryPage({
                 <div className='grid grid-cols-1 sm:grid-cols-2 gap-10 place-items-center'>
                     {projects.map((project, index) => (
                         <div key={index} className="rounded overflow-hidden shadow-lg relative w-full">
-                            <Link href={`/${lang}${project.links.url}`} className="group">
+                            <Link href={lang === 'fr' ? `${project.links.url}` : `/${lang}${project.links.url}`} className="group">
                                 <Image
                                     className='w-[900px] h-[800px] object-contain rounded-lg lg:overflow-hidden lg:group-hover:scale-105 lg:transition-transform lg:duration-1000'
                                     src={project.media.placeholder}

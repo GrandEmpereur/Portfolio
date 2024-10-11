@@ -105,7 +105,7 @@ export default async function page({
                 <div className="services__cta text-center mt-12">
                     <h3 className="text-2xl font-bold mb-4">{dict.TemplateServices.servicesPage.callToAction.title}</h3>
                     <p className="mb-6">{dict.TemplateServices.servicesPage.callToAction.description}</p>
-                    <Link href={`/${lang}/contact`}>
+                    <Link href={lang === 'fr' ? `/contact` : `/${lang}/contact`}>
                         <Button className='rounded-full' variant={'other'} size={'lg'}>
                             {dict.TemplateServices.servicesPage.callToAction.buttonText}
                         </Button>
