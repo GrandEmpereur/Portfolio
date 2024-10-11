@@ -927,8 +927,8 @@ export const projects = [
     {
         "id": 11,
         "title": {
-            "fr": "Châtenay-Malabry - Solution Innovante contre l'Usure Professionnelle",
-            "en": "Châtenay-Malabry - Innovative Solution Against Professional Burnout"
+            "fr": "Châtenay-Malabry",
+            "en": "Châtenay-Malabry"
         },
         "overview": {
             "fr": "Châtenay-Malabry souhaitait développer une plateforme permettant de lutter contre l'usure professionnelle et d'améliorer le bien-être au travail dans les organisations participantes.",
@@ -1111,8 +1111,8 @@ export const projects = [
     {
         "id": 13,
         "title": {
-            "fr": "Bookish - Réseau Social Révolutionnaire pour Lecteurs",
-            "en": "Bookish - Revolutionary Social Network for Readers"
+            "fr": "Bookish",
+            "en": "Bookish"
         },
         "overview": {
             "fr": "Bookish est un réseau social innovant pour les passionnés de lecture, offrant des clubs de lecture virtuels, des recommandations basées sur l'IA, et un partage de citations.",
@@ -1203,8 +1203,8 @@ export const projects = [
     {
         "id": 14,
         "title": {
-            "fr": "Karen - Solution Innovante de Protection des Développeurs",
-            "en": "Karen - Innovative Developer Protection Solution"
+            "fr": "Karen",
+            "en": "Karen"
         },
         "overview": {
             "fr": "Karen est un package npm conçu pour protéger les développeurs indépendants contre les clients mauvais payeurs, en réinstaurant automatiquement le projet en cas de suppression non autorisée et en paralysant le projet si le paiement n'est pas effectué.",
@@ -1294,8 +1294,8 @@ export const projects = [
     {
         "id": 15,
         "title": {
-            "fr": "Le Bistro Gourmand - Plateforme de Gestion de Restaurant Innovante",
-            "en": "Le Bistro Gourmand - Innovative Restaurant Management Platform"
+            "fr": "Le Bistro Gourmand",
+            "en": "Le Bistro Gourmand"
         },
         "overview": {
             "fr": "Le Bistro Gourmand est une plateforme de gestion de restaurant complète, offrant une gestion fluide des réservations, des menus et des opérations quotidiennes grâce à des fonctionnalités avancées.",
