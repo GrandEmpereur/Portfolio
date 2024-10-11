@@ -29,6 +29,37 @@ const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
     const scrollTextRef = useRef<HTMLDivElement | null>(null);
     const [rotation, setRotation] = useState(0);
     const stacksListRef = useRef<HTMLDivElement>(null);
+    const titleRefs = useRef<HTMLSpanElement[][]>([]);
+
+    const animateTitle = (index: number, isHovering: boolean) => {
+        const letters = titleRefs.current[index];
+        
+        gsap.to(letters, {
+            yPercent: isHovering ? -100 : 0,
+            rotation: isHovering ? 0 : () => Math.random() * 2 - 1,
+            duration: 0.3,
+            ease: "power2.out",
+            stagger: {
+                amount: 0.1,
+                from: "start"
+            },
+            onComplete: () => {
+                if (isHovering) {
+                    // Réinitialiser les lettres à leur état initial après l'animation
+                    gsap.to(letters, {
+                        yPercent: 0,
+                        rotation: () => Math.random() * 2 - 1,
+                        duration: 0.3,
+                        ease: "power2.out",
+                        stagger: {
+                            amount: 0.1,
+                            from: "start"
+                        }
+                    });
+                }
+            }
+        });
+    };
 
     useEffect(() => {
         if (heroRef.current) {
@@ -100,6 +131,16 @@ const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
                 }
             });
         }
+
+        // Initialiser la rotation aléatoire pour chaque lettre
+        lastFiveProjects.forEach((_, projectIndex) => {
+            const letters = titleRefs.current[projectIndex];
+            gsap.set(letters, {
+                rotation: () => Math.random() * 2 - 1,
+                display: 'inline-block',
+                position: 'relative'
+            });
+        });
 
         return () => clearInterval(rotationInterval);
     }, []);
@@ -311,43 +352,56 @@ const HomeClient: React.FC<HomeClientProps> = ({ lang, dictionary }) => {
                                 <div key={index}>
                                     <Link href={`/${lang}${item.links.url}`}>
                                         <div
-                                            className='portfolio__item flex flex-col justify-between w-full hover:cursor-pointer pt-8 relative gap-y-8'
-                                            onMouseEnter={() => setHoverIndex(index)}
-                                            onMouseLeave={() => setHoverIndex(-1)}
+                                            className='portfolio__item flex justify-between items-center w-full hover:cursor-pointer pt-8 relative'
+                                            onMouseEnter={() => {
+                                                setHoverIndex(index);
+                                                animateTitle(index, true);
+                                            }}
+                                            onMouseLeave={() => {
+                                                setHoverIndex(-1);
+                                                animateTitle(index, false);
+                                            }}
                                         >
-                                            <div className='flex justify-between items-center'>
-                                                <div className='portfolio__item-text flex gap-x-5'>
-                                                    <p className='portfolio__item-number'>0{index + 1}.</p>
-                                                    <h2 className='portfolio__item-title'>{item.title[lang]}</h2>
-                                                </div>
-                                                <div className={`hidden lg:flex portfolio__item-image absolute  justify-center items-center transition-all duration-300 ease-in-out transform ${hoverIndex === index ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
-                                                    <Image
-                                                        src={item.media.placeholder}
-                                                        alt={`${item.title[lang]} - preview`}
-                                                        width={450}
-                                                        height={300}
-                                                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 450px"
-                                                        style={{
-                                                            objectFit: 'cover'
-                                                        }}
-                                                    />
-                                                </div>
-                                                <div className={`portfolio__item-icon transition-all duration-300 ease-in-out transform ${hoverIndex === index ? '-rotate-45 text-[#E3B27D]' : 'text-white'}`}>
-                                                    <ArrowRight className='cursor-pointer' size={30} />
-                                                </div>
+                                            <div className='portfolio__item-text flex items-center gap-x-5'>
+                                                <p className='portfolio__item-number'>0{index + 1}.</p>
+                                                <h2 className='portfolio__item-title overflow-hidden'>
+                                                    {item.title[lang].split('').map((letter, letterIndex) => (
+                                                        <span
+                                                            key={letterIndex}
+                                                            className="inline-block relative"
+                                                            ref={el => {
+                                                                if (!titleRefs.current[index]) {
+                                                                    titleRefs.current[index] = [];
+                                                                }
+                                                                titleRefs.current[index][letterIndex] = el as HTMLSpanElement;
+                                                            }}
+                                                            style={{
+                                                                display: 'inline-block',
+                                                                position: 'relative'
+                                                            }}
+                                                        >
+                                                            {letter}
+                                                        </span>
+                                                    ))}
+                                                </h2>
                                             </div>
+                                            <p className='portfolio__item-category text-white text-lg'>{item.info?.category}</p>
+                                            <p className='portfolio__item-client text-white text-lg'>{item.info?.client}</p>
 
-                                            <div className={`portfolio__item-image flex lg:hidden w-full`}>
+                                            <div className={`hidden lg:flex portfolio__item-image absolute  justify-center items-center transition-all duration-300 ease-in-out transform ${hoverIndex === index ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
                                                 <Image
                                                     src={item.media.placeholder}
                                                     alt={`${item.title[lang]} - preview`}
-                                                    width={250}
-                                                    height={200}
-                                                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 250px"
+                                                    width={450}
+                                                    height={300}
+                                                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 450px"
                                                     style={{
                                                         objectFit: 'cover'
                                                     }}
                                                 />
+                                            </div>
+                                            <div className={`portfolio__item-icon transition-all duration-300 ease-in-out transform ${hoverIndex === index ? '-rotate-45 text-[#E3B27D]' : 'text-white'}`}>
+                                                <ArrowRight className='cursor-pointer' size={30} />
                                             </div>
                                         </div>
                                     </Link>

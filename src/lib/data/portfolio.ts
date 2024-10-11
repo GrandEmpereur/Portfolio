@@ -103,44 +103,39 @@ export const projects = [
             "fr": "Tartine & Chocolat",
             "en": "Tartine & Chocolat"
         },
+        "info": {
+            "projet": "Tartine & Chocolat",
+            "client": "W3lead",
+            "category": "E-commerce",
+            "role": "Full Stack Developer",
+            "year": "2024",
+        },
         "overview": {
             "fr": "Tartine & Chocolat est une marque spécialisée dans la mode enfantine de luxe. Ce projet visait à optimiser leur écosystème omnicanal pour améliorer l'efficacité opérationnelle et la satisfaction client.",
             "en": "Tartine & Chocolat is a luxury children's fashion brand. The project aimed to optimize their omnichannel ecosystem to improve operational efficiency and customer satisfaction."
-        },
-        "role": {
-            "fr": "Développeur Full Stack",
-            "en": "Full Stack Developer"
         },
         "context": {
             "fr": "Ce projet faisait partie de ma mission chez W3lead où j'ai intégré des solutions omnicanales pour synchroniser leur ERP avec leur plateforme e-commerce.",
             "en": "This project was part of my mission at W3lead where I integrated omnichannel solutions to synchronize their ERP with their e-commerce platform."
         },
         "objectives": {
-            "fr": "Optimiser l'efficacité opérationnelle, améliorer l'expérience d'achat omnicanale et augmenter la satisfaction client.",
-            "en": "Optimize operational efficiency, improve the omnichannel shopping experience, and increase customer satisfaction."
+            "fr": "Mes objectifs incluaient l'optimisation de l'efficacité opérationnelle, l'amélioration de l'expérience d'achat omnicanale et l'augmentation de la satisfaction client.",
+            "en": "My objectives included optimizing operational efficiency, improving the omnichannel shopping experience, and increasing customer satisfaction."
         },
         "solution": {
-            "fr": "J'ai développé une API eResav et intégré des solutions de disponibilité en magasin et de gestion des retours (TC return).",
-            "en": "I developed an eResav API and integrated solutions for store availability and return management (TC return)."
+            "fr": "J'ai développé une API eResav et intégré des solutions de disponibilité en magasin et de gestion des retours (TC return), offrant une solution complète pour la gestion omnicanale.",
+            "en": "I developed an eResav API and integrated solutions for store availability and return management (TC return), providing a comprehensive solution for omnichannel management."
         },
         "results": {
             "fr": [
-                "Augmentation de l'efficacité de 60%.",
-                "Satisfaction client accrue de 70%."
+                "Augmentation de l'efficacité opérationnelle de 60%.",
+                "Amélioration de la satisfaction client de 70%.",
+                "Synchronisation en temps réel entre ERP et e-commerce."
             ],
             "en": [
-                "Increased operational efficiency by 60%.",
-                "Customer satisfaction improved by 70%."
-            ]
-        },
-        "challenges": {
-            "fr": [
-                "Synchronisation des données en temps réel entre ERP et e-commerce.",
-                "Réduction des frictions dans l'expérience d'achat."
-            ],
-            "en": [
-                "Real-time data synchronization between ERP and e-commerce.",
-                "Reduced purchase friction."
+                "60% increase in operational efficiency.",
+                "70% improvement in customer satisfaction.",
+                "Real-time synchronization between ERP and e-commerce."
             ]
         },
         "keySkills": {
@@ -163,13 +158,17 @@ export const projects = [
             },
             "skillsList": [
                 "Sales Conversion Optimization",
-                "Custom API Solutions"
+                "Custom API Solutions",
+                "Omnichannel Retail"
             ]
         },
         "media": {
             "gallery": "/img/portfolio/tartine-chocolat.png",
             "thumbnail": "/img/portfolio/tartine-chocolat.png",
-            "placeholder": "/img/portfolio/tartine-chocolat.png"
+            "placeholder": "/img/portfolio/tartine-chocolat.png",
+            "more": [
+                // Ajoutez ici des images supplémentaires si disponibles
+            ]
         },
         "links": {
             "url": "/portfolio/tartine-chocolat",
@@ -560,118 +559,29 @@ export const projects = [
     },
 
     {
-        "id": 7,
-        "title": {
-            "fr": "Veille Technique Shopify",
-            "en": "Shopify Technical Watch"
-        },
-        "overview": {
-            "fr": "Ce projet consiste en une veille technologique constante pour suivre les dernières innovations sur Shopify, et développer de nouvelles solutions comme des checkouts personnalisés avec Rust et React.",
-            "en": "This project consists of continuous technological monitoring to follow the latest innovations on Shopify, and develop new solutions like custom checkouts with Rust and React."
-        },
-        "role": {
-            "fr": "Développeur Full Stack",
-            "en": "Full Stack Developer"
-        },
-        "context": {
-            "fr": "En collaboration avec mon tuteur chez W3lead, nous avons travaillé sur l'innovation continue des checkouts Shopify et sur l'exploration de nouvelles fonctionnalités.",
-            "en": "In collaboration with my mentor at W3lead, we worked on continuous innovation of Shopify checkouts and exploring new features."
-        },
-        "objectives": {
-            "fr": "Développer de nouveaux checkouts en utilisant Rust et React, et explorer de nouvelles fonctionnalités pour Shopify.",
-            "en": "Develop new checkouts using Rust and React, and explore new features for Shopify."
-        },
-        "solution": {
-            "fr": "J'ai contribué à la conception de nouveaux checkouts personnalisés et à l'exploration des dernières fonctionnalités de Shopify.",
-            "en": "I contributed to the design of new custom checkouts and explored the latest Shopify features."
-        },
-        "results": {
-            "fr": [
-                "Maintien de W3lead à la pointe de l'innovation e-commerce.",
-                "Développement de nouvelles solutions de checkout sur Shopify."
-            ],
-            "en": [
-                "Kept W3lead at the forefront of e-commerce innovation.",
-                "Developed new Shopify checkout solutions."
-            ]
-        },
-        "challenges": {
-            "fr": [
-                "Exploration de nouvelles technologies comme Rust pour les checkouts Shopify.",
-                "Adaptation continue aux tendances e-commerce."
-            ],
-            "en": [
-                "Exploring new technologies like Rust for Shopify checkouts.",
-                "Continuously adapting to e-commerce trends."
-            ]
-        },
-        "keySkills": {
-            "title": {
-                "fr": "Compétences Clés",
-                "en": "Key Skills"
-            },
-            "skillsList": [
-                "Shopify Development",
-                "Rust",
-                "React",
-                "Technical Innovation",
-                "E-commerce Trends"
-            ]
-        },
-        "additionalSkills": {
-            "title": {
-                "fr": "Autres Compétences",
-                "en": "Other Skills"
-            },
-            "skillsList": [
-                "Continuous Learning",
-                "Cutting-edge Technology",
-                "E-commerce Innovation"
-            ]
-        },
-        "media": {
-            "gallery": "/img/portfolio/shopify-innovation.png",
-            "thumbnail": "/img/portfolio/shopify-innovation.png",
-            "placeholder": "/img/portfolio/shopify-innovation.png"
-        },
-        "links": {
-            "url": "/portfolio/shopify-technical-watch",
-            "slug": "/shopify-technical-watch",
-            "liveProject": ""
-        },
-        "cta": {
-            "label": {
-                "fr": "Explorer l'Innovation E-commerce",
-                "en": "Explore E-commerce Innovation"
-            }
-        },
-        "dates": {
-            "createdAt": "20/05/2024",
-            "updatedAt": "20/05/2024"
-        }
-    },
-
-    {
         "id": 8,
         "title": {
             "fr": "Isotoner",
             "en": "Isotoner"
         },
+        "info": {
+            "projet": "Isotoner",
+            "client": "Postion",
+            "category": "E-commerce",
+            "role": "Backend Developer",
+            "year": "2024",
+        },
         "overview": {
             "fr": "Isotoner cherchait à améliorer la personnalisation de l'expérience d'achat en ligne en intégrant une API de recommandation pour augmenter les ventes croisées et la satisfaction client.",
             "en": "Isotoner aimed to improve the personalization of the online shopping experience by integrating a recommendation API to increase cross-sales and customer satisfaction."
-        },
-        "role": {
-            "fr": "Développeur Backend",
-            "en": "Backend Developer"
         },
         "context": {
             "fr": "En collaboration avec Postion, j'ai mis en place une API de recommandation pour améliorer la personnalisation et optimiser les ventes croisées sur la plateforme d'e-commerce d'Isotoner.",
             "en": "In collaboration with Postion, I implemented a recommendation API to enhance personalization and optimize cross-sales on Isotoner's e-commerce platform."
         },
         "objectives": {
-            "fr": "Améliorer la personnalisation de l'expérience d'achat et augmenter les ventes croisées.",
-            "en": "Enhance the personalization of the shopping experience and increase cross-sales."
+            "fr": "Mes objectifs incluaient l'amélioration de la personnalisation de l'expérience d'achat et l'augmentation des ventes croisées.",
+            "en": "My objectives included enhancing the personalization of the shopping experience and increasing cross-sales."
         },
         "solution": {
             "fr": "J'ai intégré une API de recommandation qui personnalise l'expérience d'achat et augmente les opportunités de ventes croisées.",
@@ -685,16 +595,6 @@ export const projects = [
             "en": [
                 "Increased cross-sales.",
                 "Significant improvement in customer satisfaction."
-            ]
-        },
-        "challenges": {
-            "fr": [
-                "Assurer une personnalisation pertinente tout en optimisant les performances du backend.",
-                "Améliorer l'expérience utilisateur sans impacter la vitesse de chargement."
-            ],
-            "en": [
-                "Ensure relevant personalization while optimizing backend performance.",
-                "Enhance user experience without affecting load times."
             ]
         },
         "keySkills": {
@@ -722,7 +622,10 @@ export const projects = [
         "media": {
             "gallery": "/img/portfolio/isotoner.png",
             "thumbnail": "/img/portfolio/isotoner.png",
-            "placeholder": "/img/portfolio/isotoner.png"
+            "placeholder": "/img/portfolio/isotoner.png",
+            "more": [
+                // Ajoutez ici des images supplémentaires si disponibles
+            ]
         },
         "links": {
             "url": "/portfolio/isotoner",
@@ -747,21 +650,24 @@ export const projects = [
             "fr": "Refonte API W3lead",
             "en": "W3lead API Overhaul"
         },
+        "info": {
+            "projet": "Refonte API W3lead",
+            "client": "W3lead",
+            "category": "API Development",
+            "role": "Backend Developer",
+            "year": "2024",
+        },
         "overview": {
             "fr": "Le projet visait à moderniser l'API custom de W3lead, améliorer ses performances et renforcer sa sécurité via l'authentification JWT.",
             "en": "The project aimed to modernize W3lead's custom API, improve its performance, and strengthen its security through JWT authentication."
-        },
-        "role": {
-            "fr": "Développeur Backend",
-            "en": "Backend Developer"
         },
         "context": {
             "fr": "En soutien à mon tuteur, nous avons refondu l'API pour moderniser son architecture, améliorer ses performances et renforcer la sécurité.",
             "en": "Supporting my mentor, we overhauled the API to modernize its architecture, improve its performance, and strengthen security."
         },
         "objectives": {
-            "fr": "Moderniser l'API, améliorer ses performances, et renforcer la sécurité via l'authentification JWT.",
-            "en": "Modernize the API, improve performance, and enhance security through JWT authentication."
+            "fr": "Mes objectifs incluaient la modernisation de l'API, l'amélioration de ses performances, et le renforcement de la sécurité via l'authentification JWT.",
+            "en": "My objectives included modernizing the API, improving performance, and enhancing security through JWT authentication."
         },
         "solution": {
             "fr": "Nous avons implémenté une nouvelle architecture, optimisé les performances, et intégré JWT pour sécuriser l'authentification.",
@@ -775,16 +681,6 @@ export const projects = [
             "en": [
                 "Significant improvement in service reliability.",
                 "Strengthened security and performance."
-            ]
-        },
-        "challenges": {
-            "fr": [
-                "Moderniser l'API sans interruption des services existants.",
-                "Assurer une sécurité renforcée tout en maintenant des performances élevées."
-            ],
-            "en": [
-                "Modernize the API without disrupting existing services.",
-                "Ensure enhanced security while maintaining high performance."
             ]
         },
         "keySkills": {
@@ -813,7 +709,10 @@ export const projects = [
         "media": {
             "gallery": "/img/portfolio/w3lead-api.png",
             "thumbnail": "/img/portfolio/w3lead-api.png",
-            "placeholder": "/img/portfolio/w3lead-api.png"
+            "placeholder": "/img/portfolio/w3lead-api.png",
+            "more": [
+                // Ajoutez ici des images supplémentaires si disponibles
+            ]
         },
         "links": {
             "url": "/portfolio/w3lead-api-overhaul",
@@ -838,21 +737,24 @@ export const projects = [
             "fr": "[BAP] Marshal Mostore",
             "en": "[BAP] Marshal Mostore"
         },
+        "info": {
+            "projet": "[BAP] Marshal Mostore",
+            "client": "Marshal Mostore",
+            "category": "Web Development",
+            "role": "Full Stack Developer",
+            "year": "2024",
+        },
         "overview": {
             "fr": "Dans le cadre d'un projet BAP, j'ai conçu un site vitrine élégant pour un garage automobile de prestige, mettant en valeur leurs services et augmentant leur visibilité en ligne.",
             "en": "As part of a BAP project, I designed an elegant showcase website for a prestigious auto garage, highlighting their services and increasing their online visibility."
-        },
-        "role": {
-            "fr": "Développeur Full Stack",
-            "en": "Full Stack Developer"
         },
         "context": {
             "fr": "Le projet avait pour but de créer un site vitrine interactif et fonctionnel pour Marshal Mostore, avec des fonctionnalités avancées pour améliorer l'engagement des utilisateurs.",
             "en": "The project aimed to create an interactive and functional showcase website for Marshal Mostore, with advanced features to improve user engagement."
         },
         "objectives": {
-            "fr": "Augmenter la visibilité en ligne du garage et améliorer l'expérience utilisateur avec des fonctionnalités interactives.",
-            "en": "Increase the garage's online visibility and enhance the user experience with interactive features."
+            "fr": "Mes objectifs incluaient l'augmentation de la visibilité en ligne du garage et l'amélioration de l'expérience utilisateur avec des fonctionnalités interactives.",
+            "en": "My objectives included increasing the garage's online visibility and enhancing the user experience with interactive features."
         },
         "solution": {
             "fr": "J'ai conçu un site utilisant Symfony, Twig, et Sass avec une galerie de véhicules interactive, un système de prise de rendez-vous en ligne, et une présentation détaillée des services.",
@@ -866,16 +768,6 @@ export const projects = [
             "en": [
                 "150% increase in online visibility.",
                 "40% increase in quote requests."
-            ]
-        },
-        "challenges": {
-            "fr": [
-                "Créer une expérience utilisateur immersive pour un secteur traditionnel.",
-                "Intégrer des fonctionnalités avancées tout en maintenant une simplicité d'utilisation."
-            ],
-            "en": [
-                "Create an immersive user experience for a traditional sector.",
-                "Integrate advanced features while maintaining ease of use."
             ]
         },
         "keySkills": {
@@ -905,7 +797,10 @@ export const projects = [
         "media": {
             "gallery": "/img/portfolio/marshall-motors.jpg",
             "thumbnail": "/img/portfolio/marshall-motors.jpg",
-            "placeholder": "/img/portfolio/marshall-motors.jpg"
+            "placeholder": "/img/portfolio/marshall-motors.jpg",
+            "more": [
+                // Ajoutez ici des images supplémentaires si disponibles
+            ]
         },
         "links": {
             "url": "/portfolio/marshal-mostore",
@@ -930,21 +825,24 @@ export const projects = [
             "fr": "Châtenay-Malabry",
             "en": "Châtenay-Malabry"
         },
+        "info": {
+            "projet": "Châtenay-Malabry",
+            "client": "Châtenay-Malabry",
+            "category": "Web Development",
+            "role": "Full Stack Developer",
+            "year": "2024",
+        },
         "overview": {
             "fr": "Châtenay-Malabry souhaitait développer une plateforme permettant de lutter contre l'usure professionnelle et d'améliorer le bien-être au travail dans les organisations participantes.",
             "en": "Châtenay-Malabry aimed to develop a platform to combat professional burnout and improve workplace well-being in participating organizations."
-        },
-        "role": {
-            "fr": "Développeur Full Stack",
-            "en": "Full Stack Developer"
         },
         "context": {
             "fr": "Dans le cadre du Dev Lab, j'ai conçu une solution complète incluant un tableau de bord, une landing page et un formulaire intelligent pour permettre aux professionnels de suivre leur bien-être au travail.",
             "en": "As part of the Dev Lab, I designed a comprehensive solution including a dashboard, a landing page, and an intelligent form to allow professionals to track their well-being at work."
         },
         "objectives": {
-            "fr": "Réduire les cas de burnout et améliorer la satisfaction au travail grâce à une solution numérique intuitive.",
-            "en": "Reduce burnout cases and improve job satisfaction through an intuitive digital solution."
+            "fr": "Mes objectifs incluaient la réduction des cas de burnout et l'amélioration de la satisfaction au travail grâce à une solution numérique intuitive.",
+            "en": "My objectives included reducing burnout cases and improving job satisfaction through an intuitive digital solution."
         },
         "solution": {
             "fr": "J'ai développé une plateforme utilisant Next.js, React, et Shadcn, intégrée à Vercel pour des performances optimales et une scalabilité fluide.",
@@ -958,16 +856,6 @@ export const projects = [
             "en": [
                 "30% reduction in reported burnout cases.",
                 "45% improvement in job satisfaction."
-            ]
-        },
-        "challenges": {
-            "fr": [
-                "Créer une solution évolutive tout en garantissant une expérience utilisateur fluide.",
-                "Assurer des performances optimales même sous forte charge."
-            ],
-            "en": [
-                "Create a scalable solution while ensuring a smooth user experience.",
-                "Ensure optimal performance even under heavy load."
             ]
         },
         "keySkills": {
@@ -997,7 +885,10 @@ export const projects = [
         "media": {
             "gallery": "/img/portfolio/chatenay-malabry.png",
             "thumbnail": "/img/portfolio/chatenay-malabry.png",
-            "placeholder": "/img/portfolio/chatenay-malabry.png"
+            "placeholder": "/img/portfolio/chatenay-malabry.png",
+            "more": [
+                // Ajoutez ici des images supplémentaires si disponibles
+            ]
         },
         "links": {
             "url": "/portfolio/chatenay-malabry",
@@ -1022,21 +913,24 @@ export const projects = [
             "fr": "React NBA",
             "en": "React NBA"
         },
+        "info": {
+            "projet": "React NBA",
+            "client": "React NBA",
+            "category": "Web Development",
+            "role": "Full Stack Developer",
+            "year": "2024",
+        },
         "overview": {
             "fr": "React NBA est une plateforme de paris sportifs innovante centrée sur la NBA, offrant des fonctionnalités uniques et des analyses en temps réel pour les utilisateurs.",
             "en": "React NBA is an innovative sports betting platform focused on the NBA, offering unique features and real-time analytics for users."
-        },
-        "role": {
-            "fr": "Développeur Full Stack",
-            "en": "Full Stack Developer"
         },
         "context": {
             "fr": "Le projet visait à développer une plateforme performante et sécurisée pour les paris sportifs, avec des analyses en temps réel et des notifications personnalisées pour les matchs NBA.",
             "en": "The project aimed to develop a high-performance and secure platform for sports betting, with real-time analytics and personalized notifications for NBA matches."
         },
         "objectives": {
-            "fr": "Offrir une expérience utilisateur fluide et sécurisée, tout en fournissant des analyses et notifications en temps réel.",
-            "en": "Provide a smooth and secure user experience while delivering real-time analytics and notifications."
+            "fr": "Mes objectifs incluaient l'offre d'une expérience utilisateur fluide et sécurisée, tout en fournissant des analyses et notifications en temps réel.",
+            "en": "My objectives included providing a smooth and secure user experience while delivering real-time analytics and notifications."
         },
         "solution": {
             "fr": "J'ai utilisé Vite et React pour une performance optimale, et intégré un système d'authentification robuste avec JSONbin pour le stockage des données.",
@@ -1050,16 +944,6 @@ export const projects = [
             "en": [
                 "Attracted over 10,000 active users in one month.",
                 "70% retention rate."
-            ]
-        },
-        "challenges": {
-            "fr": [
-                "Optimiser la performance tout en assurant la sécurité des données.",
-                "Fournir des analyses en temps réel sans compromettre l'expérience utilisateur."
-            ],
-            "en": [
-                "Optimize performance while ensuring data security.",
-                "Deliver real-time analytics without compromising user experience."
             ]
         },
         "keySkills": {
@@ -1089,7 +973,10 @@ export const projects = [
         "media": {
             "gallery": "/img/portfolio/react-nba.png",
             "thumbnail": "/img/portfolio/react-nba.png",
-            "placeholder": "/img/portfolio/react-nba.png"
+            "placeholder": "/img/portfolio/react-nba.png",
+            "more": [
+                // Ajoutez ici des images supplémentaires si disponibles
+            ]
         },
         "links": {
             "url": "/portfolio/react-nba",
@@ -1114,21 +1001,24 @@ export const projects = [
             "fr": "Bookish",
             "en": "Bookish"
         },
+        "info": {
+            "projet": "Bookish",
+            "client": "Bookish",
+            "category": "Web Development",
+            "role": "Full Stack Developer",
+            "year": "2024",
+        },
         "overview": {
             "fr": "Bookish est un réseau social innovant pour les passionnés de lecture, offrant des clubs de lecture virtuels, des recommandations basées sur l'IA, et un partage de citations.",
             "en": "Bookish is an innovative social network for reading enthusiasts, offering virtual book clubs, AI-powered recommendations, and quote sharing."
-        },
-        "role": {
-            "fr": "Développeur Full Stack",
-            "en": "Full Stack Developer"
         },
         "context": {
             "fr": "Dans le cadre du projet PIE, j'ai développé Bookish, une plateforme évolutive utilisant Next.js et AdonisJS, avec une intégration mobile native via Capacitor.js et un stockage médias optimisé avec AWS S3.",
             "en": "As part of the PIE project, I developed Bookish, a scalable platform using Next.js and AdonisJS, with native mobile integration via Capacitor.js and optimized media storage using AWS S3."
         },
         "objectives": {
-            "fr": "Créer une plateforme sociale innovante permettant aux lecteurs d'interagir et de partager leurs passions.",
-            "en": "Create an innovative social platform for readers to interact and share their passions."
+            "fr": "Mes objectifs incluaient la création d'une plateforme sociale innovante permettant aux lecteurs d'interagir et de partager leurs passions.",
+            "en": "My objectives included creating an innovative social platform for readers to interact and share their passions."
         },
         "solution": {
             "fr": "J'ai intégré des fonctionnalités comme des clubs de lecture virtuels, des recommandations personnalisées basées sur l'IA, et un système de partage de citations.",
@@ -1142,16 +1032,6 @@ export const projects = [
             "en": [
                 "Over 50,000 users in the first three months.",
                 "65% daily engagement rate."
-            ]
-        },
-        "challenges": {
-            "fr": [
-                "Créer une plateforme évolutive tout en offrant une expérience mobile fluide.",
-                "Optimiser le stockage des médias tout en garantissant des performances élevées."
-            ],
-            "en": [
-                "Create a scalable platform while offering a smooth mobile experience.",
-                "Optimize media storage while ensuring high performance."
             ]
         },
         "keySkills": {
@@ -1181,7 +1061,10 @@ export const projects = [
         "media": {
             "gallery": "/img/portfolio/bookish.png",
             "thumbnail": "/img/portfolio/bookish.png",
-            "placeholder": "/img/portfolio/bookish.png"
+            "placeholder": "/img/portfolio/bookish.png",
+            "more": [
+                // Ajoutez ici des images supplémentaires si disponibles
+            ]
         },
         "links": {
             "url": "/portfolio/bookish",
@@ -1206,21 +1089,24 @@ export const projects = [
             "fr": "Karen",
             "en": "Karen"
         },
+        "info": {
+            "projet": "Karen",
+            "client": "Karen",
+            "category": "npm Package Development",
+            "role": "npm Package Developer",
+            "year": "2024",
+        },
         "overview": {
             "fr": "Karen est un package npm conçu pour protéger les développeurs indépendants contre les clients mauvais payeurs, en réinstaurant automatiquement le projet en cas de suppression non autorisée et en paralysant le projet si le paiement n'est pas effectué.",
             "en": "Karen is an npm package designed to protect freelance developers against non-paying clients, by automatically reinstalling itself upon unauthorized removal and paralyzing the project if payment is not made."
-        },
-        "role": {
-            "fr": "Développeur npm Package",
-            "en": "npm Package Developer"
         },
         "context": {
             "fr": "J'ai créé Karen pour résoudre le problème de non-paiement dans l'industrie du développement freelance, offrant aux développeurs un levier de négociation puissant grâce à une solution automatisée.",
             "en": "I developed Karen to solve the issue of non-payment in the freelance development industry, giving developers a powerful negotiation tool through an automated solution."
         },
         "objectives": {
-            "fr": "Protéger les développeurs contre les clients mauvais payeurs et automatiser la surveillance des projets.",
-            "en": "Protect developers from non-paying clients and automate project monitoring."
+            "fr": "Mes objectifs incluaient la protection des développeurs contre les clients mauvais payeurs et l'automatisation de la surveillance des projets.",
+            "en": "My objectives included protecting developers from non-paying clients and automating project monitoring."
         },
         "solution": {
             "fr": "J'ai développé Karen, un package npm qui s'installe dans les projets, communique avec un serveur central, et réinstalle automatiquement le code en cas de suppression non autorisée. Il paralyse également le projet en cas de non-paiement.",
@@ -1234,16 +1120,6 @@ export const projects = [
             "en": [
                 "Adopted by over 5000 independent developers.",
                 "80% reduction in non-payment cases."
-            ]
-        },
-        "challenges": {
-            "fr": [
-                "Assurer la discrétion de l'installation pour ne pas affecter les clients avant la négociation.",
-                "Offrir une solution flexible tout en garantissant la sécurité des développeurs."
-            ],
-            "en": [
-                "Ensure the installation remains discreet so clients are not alerted before negotiation.",
-                "Provide a flexible solution while guaranteeing developer protection."
             ]
         },
         "keySkills": {
@@ -1272,7 +1148,10 @@ export const projects = [
         "media": {
             "gallery": "/img/portfolio/karen.png",
             "thumbnail": "/img/portfolio/karen.png",
-            "placeholder": "/img/portfolio/karen.png"
+            "placeholder": "/img/portfolio/karen.png",
+            "more": [
+                // Ajoutez ici des images supplémentaires si disponibles
+            ]
         },
         "links": {
             "url": "/portfolio/karen",
@@ -1297,21 +1176,24 @@ export const projects = [
             "fr": "Le Bistro Gourmand",
             "en": "Le Bistro Gourmand"
         },
+        "info": {
+            "projet": "Le Bistro Gourmand",
+            "client": "Le Bistro Gourmand",
+            "category": "Restaurant Management",
+            "role": "Full Stack Developer",
+            "year": "2024",
+        },
         "overview": {
             "fr": "Le Bistro Gourmand est une plateforme de gestion de restaurant complète, offrant une gestion fluide des réservations, des menus et des opérations quotidiennes grâce à des fonctionnalités avancées.",
             "en": "Le Bistro Gourmand is a comprehensive restaurant management platform offering smooth management of reservations, menus, and daily operations through advanced features."
-        },
-        "role": {
-            "fr": "Développeur Full Stack",
-            "en": "Full Stack Developer"
         },
         "context": {
             "fr": "J'ai développé une plateforme de gestion pour Le Bistro Gourmand en utilisant Next.js et Strapi, avec Docker pour l'orchestration, permettant une gestion efficace et fluide des opérations du restaurant.",
             "en": "I developed a management platform for Le Bistro Gourmand using Next.js and Strapi, with Docker orchestration, enabling efficient and smooth restaurant operations management."
         },
         "objectives": {
-            "fr": "Améliorer l'efficacité opérationnelle et offrir une expérience de gestion fluide pour les restaurateurs.",
-            "en": "Improve operational efficiency and provide a smooth management experience for restaurateurs."
+            "fr": "Mes objectifs incluaient l'amélioration de l'efficacité opérationnelle et l'offre d'une expérience de gestion fluide pour les restaurateurs.",
+            "en": "My objectives included improving operational efficiency and providing a smooth management experience for restaurateurs."
         },
         "solution": {
             "fr": "J'ai intégré un tableau de bord en temps réel pour la gestion des tables, un système de réservation intuitif, et une gestion dynamique des menus, offrant une solution complète pour la gestion des restaurants.",
@@ -1325,16 +1207,6 @@ export const projects = [
             "en": [
                 "40% increase in operational efficiency.",
                 "35% improvement in customer satisfaction rate."
-            ]
-        },
-        "challenges": {
-            "fr": [
-                "Créer une solution intuitive pour les restaurateurs non techniques.",
-                "Gérer les fonctionnalités avancées tout en assurant des performances optimales."
-            ],
-            "en": [
-                "Create an intuitive solution for non-technical restaurateurs.",
-                "Manage advanced features while ensuring optimal performance."
             ]
         },
         "keySkills": {
@@ -1364,7 +1236,10 @@ export const projects = [
         "media": {
             "gallery": "/img/portfolio/bistro-gourmand.png",
             "thumbnail": "/img/portfolio/bistro-gourmand.png",
-            "placeholder": "/img/portfolio/bistro-gourmand.png"
+            "placeholder": "/img/portfolio/bistro-gourmand.png",
+            "more": [
+                // Ajoutez ici des images supplémentaires si disponibles
+            ]
         },
         "links": {
             "url": "/portfolio/bistro-gourmand",
