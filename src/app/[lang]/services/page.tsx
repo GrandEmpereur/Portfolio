@@ -38,9 +38,9 @@ export async function generateMetadata({ params: { lang } }: { params: { lang: L
             images: ['https://patrick.bartosik.fr/img/services/services.png'],
         },
         alternates: {
-            canonical: `https://patrick.bartosik.fr/${lang}/services`,
+            canonical: `https://patrick.bartosik.fr/${lang === 'fr' ? 'services' : `${lang}/services`}`,
             languages: {
-                'fr': 'https://patrick.bartosik.fr/fr/services',
+                'fr': 'https://patrick.bartosik.fr/services',
                 'en': 'https://patrick.bartosik.fr/en/services',
             },
         },

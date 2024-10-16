@@ -42,9 +42,9 @@ export async function generateMetadata({ params: { lang } }: { params: { lang: L
       images: ['https://patrick.bartosik.fr/img/contact/contactHero.png'],
     },
     alternates: {
-      canonical: `https://patrick.bartosik.fr/${lang}/contact`,
+      canonical: `https://patrick.bartosik.fr/${lang === 'fr' ? 'contact' : `${lang}/contact`}`,
       languages: {
-        'fr': 'https://patrick.bartosik.fr/fr/contact',
+        'fr': 'https://patrick.bartosik.fr/contact',
         'en': 'https://patrick.bartosik.fr/en/contact',
       },
     },

@@ -38,9 +38,9 @@ export async function generateMetadata({ params: { lang } }: { params: { lang: L
             images: ['https://patrick.bartosik.fr/img/portfolio/portfolioHero.png'],
         },
         alternates: {
-            canonical: `https://patrick.bartosik.fr/${lang}/portfolio`,
+            canonical: `https://patrick.bartosik.fr/${lang === 'fr' ? 'portfolio' : `${lang}/portfolio`}`,
             languages: {
-                'fr': 'https://patrick.bartosik.fr/fr/portfolio',
+                'fr': 'https://patrick.bartosik.fr/portfolio',
                 'en': 'https://patrick.bartosik.fr/en/portfolio',
             },
         },

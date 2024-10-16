@@ -58,10 +58,10 @@ export default function RootLayout({
   params: { lang: Locale };
 }>) {
   return (
-    <html lang={params.lang} className="dark">
+    <html lang='fr' className="dark">
       <head>
         <link rel="icon" href="/favicon.ico" />
-        <link rel="sitemap" type="application/xml" title="Sitemap" href="https://patrick.bartosik.fr/sitemap.xml" />
+        <link rel="sitemap" type="application/xml" title="Sitemap" href="https://patrick.bartosik.fr/sitemap.xml/" />
       </head>
       <GoogleTagManager gtmId="GTM-5SZB3CZK" />
       <body className={cn(
