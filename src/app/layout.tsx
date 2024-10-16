@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://patrick.bartosik.fr'),
   title: {
     default: "Patrick Bartosik - Développeur Full Stack | Expert React & Next.js",
-    template: "%s | Patrick Bartosik"
+    template: "%s"
   },
   description: "Développeur Full Stack spécialisé en React et Next.js. Création d'applications web innovantes, performantes et optimisées SEO pour propulser votre projet ou entreprise.",
   keywords: ["Développeur Full Stack", "React", "Next.js", "Applications Web", "SEO", "Performance Web", "Patrick Bartosik"],
@@ -77,9 +77,6 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "votre_code_de_verification_google",
-    yandex: "votre_code_de_verification_yandex",
-    yahoo: "votre_code_de_verification_yahoo",
     other: {
       me: ['mailto:contact@patrick.bartosik.fr', 'https://twitter.com/patrick_bartosik'],
     },
@@ -102,7 +99,7 @@ export default function RootLayout({
   params: { lang: Locale };
 }>) {
   return (
-    <html lang={params.lang === 'fr'? 'fr': 'en'} className={`${poppins.variable} ${plusJakartaSans.variable} dark`}>
+    <html lang={params.lang === 'fr' ? 'fr': 'en'} className={`${poppins.variable} ${plusJakartaSans.variable} dark`}>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
