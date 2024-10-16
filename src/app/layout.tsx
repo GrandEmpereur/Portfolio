@@ -33,6 +33,14 @@ export const metadata: Metadata = {
     description: "Développeur Full Stack spécialisé en React et Next.js. Création d'applications web innovantes et performantes.",
     type: "website",
     locale: "fr_FR",
+    images: [
+      {
+        url: "https://patrick.bartosik.fr/img/Hero-img.png",
+        width: 1200,
+        height: 630,
+        alt: "Patrick Bartosik - Développeur Full Stack",
+      },
+    ],
     url: "https://patrick.bartosik.fr",
   },
   twitter: {
@@ -45,8 +53,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
+  userScalable: true,
   themeColor: 'black',
 }
 
@@ -58,7 +65,7 @@ export default function RootLayout({
   params: { lang: Locale };
 }>) {
   return (
-    <html lang='fr' className="dark">
+    <html lang='fr_FR' className="dark">
       <head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="sitemap" type="application/xml" title="Sitemap" href="https://patrick.bartosik.fr/sitemap.xml/" />
