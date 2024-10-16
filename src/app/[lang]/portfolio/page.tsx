@@ -16,17 +16,27 @@ export async function generateMetadata({ params: { lang } }: { params: { lang: L
         '@type': 'CollectionPage',
         name: dict.TemplatePortfolio.metadata.title,
         description: dict.TemplatePortfolio.metadata.description,
-        url: `https://patrick.bartosik.fr/${lang === 'fr' ? 'portfolio' : `${lang}/portfolio`}`,
+        url: `https://patrick.bartosik.fr${lang === 'fr' ? '/portfolio' : `/${lang}/portfolio`}`,
+        inLanguage: lang,
+        isPartOf: {
+            '@type': 'WebSite',
+            name: 'Patrick Bartosik - Développeur Full Stack',
+            url: 'https://patrick.bartosik.fr'
+        },
+        about: {
+            '@type': 'Thing',
+            name: 'Projets de développement web'
+        }
     };
 
     return {
         title: dict.TemplatePortfolio.metadata.title,
         description: dict.TemplatePortfolio.metadata.description,
-        keywords: "Portfolio, Projets web, Développement Full Stack, React, Next.js, Applications web",
+        keywords: "Portfolio, Projets web, Développement Full Stack, React, Next.js, Applications web, Patrick Bartosik",
         openGraph: {
             title: dict.TemplatePortfolio.metadata.title,
             description: dict.TemplatePortfolio.metadata.description,
-            url: `https://patrick.bartosik.fr/${lang === 'fr' ? 'portfolio' : `${lang}/portfolio`}`,
+            url: `https://patrick.bartosik.fr${lang === 'fr' ? '/portfolio' : `/${lang}/portfolio`}`,
             siteName: 'Patrick Bartosik - Développeur Full Stack',
             images: [
                 {
@@ -44,9 +54,10 @@ export async function generateMetadata({ params: { lang } }: { params: { lang: L
             title: dict.TemplatePortfolio.metadata.title,
             description: dict.TemplatePortfolio.metadata.description,
             images: ['https://patrick.bartosik.fr/img/portfolio/portfolioHero.png'],
+            creator: '@patrick_bartosik',
         },
         alternates: {
-            canonical: `https://patrick.bartosik.fr/${lang === 'fr' ? 'portfolio' : `${lang}/portfolio`}`,
+            canonical: `https://patrick.bartosik.fr${lang === 'fr' ? '/portfolio' : `/${lang}/portfolio`}`,
             languages: {
                 'fr': 'https://patrick.bartosik.fr/portfolio',
                 'en': 'https://patrick.bartosik.fr/en/portfolio',

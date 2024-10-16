@@ -16,17 +16,28 @@ export async function generateMetadata({ params: { lang } }: { params: { lang: L
         '@type': 'AboutPage',
         name: dict.TemplateAbout.metadata.title,
         description: dict.TemplateAbout.metadata.description,
-        url: `https://patrick.bartosik.fr/${lang}/about`,
+        url: `https://patrick.bartosik.fr${lang === 'fr' ? '/about' : `/${lang}`}/about`,
+        mainEntity: {
+            '@type': 'Person',
+            name: 'Patrick Bartosik',
+            jobTitle: 'Développeur Full Stack',
+            description: dict.TemplateAbout.aboutMe.introduction[0],
+            image: 'https://patrick.bartosik.fr/img/about/about_banner.jpg',
+            sameAs: [
+                'https://www.linkedin.com/in/patrick-bartosik',
+                'https://github.com/patrick-bartosik'
+            ]
+        }
     };
 
     return {
         title: dict.TemplateAbout.metadata.title,
         description: dict.TemplateAbout.metadata.description,
-        keywords: "Développeur Full Stack, React, Next.js, Tailwind CSS, Expérience professionnelle, Compétences techniques",
+        keywords: "Développeur Full Stack, React, Next.js, Tailwind CSS, Expérience professionnelle, Compétences techniques, Patrick Bartosik",
         openGraph: {
             title: dict.TemplateAbout.metadata.title,
             description: dict.TemplateAbout.metadata.description,
-            url: `https://patrick.bartosik.fr/${lang}/about`,
+            url: `https://patrick.bartosik.fr${lang === 'fr' ? '/about' : `/${lang}`}/about`,
             siteName: 'Patrick Bartosik - Développeur Full Stack',
             images: [
                 {
@@ -44,9 +55,10 @@ export async function generateMetadata({ params: { lang } }: { params: { lang: L
             title: dict.TemplateAbout.metadata.title,
             description: dict.TemplateAbout.metadata.description,
             images: ['https://patrick.bartosik.fr/img/about/aboutHero.png'],
+            creator: '@patrick_bartosik',
         },
         alternates: {
-            canonical: `https://patrick.bartosik.fr/${lang === 'fr' ? 'contact' : `${lang}/about`}`,
+            canonical: `https://patrick.bartosik.fr${lang === 'fr' ? '/about' : `/${lang}`}/about`,
             languages: {
                 'fr': 'https://patrick.bartosik.fr/about',
                 'en': 'https://patrick.bartosik.fr/en/about',

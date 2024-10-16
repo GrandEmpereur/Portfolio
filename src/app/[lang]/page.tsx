@@ -8,20 +8,30 @@ export async function generateMetadata({ params: { lang } }: { params: { lang: L
 
     const jsonLd = {
         '@context': 'https://schema.org',
-        '@type': 'WebPage',
+        '@type': 'WebSite',
         name: `${dict.TemplateHome.home.hero.hero_title} | Patrick Bartosik`,
         description: dict.TemplateHome.home.hero.seo_description,
-        url: `https://patrick.bartosik.fr/${lang}`,
+        url: `https://patrick.bartosik.fr${lang === 'fr' ? '' : `/${lang}`}`,
+        author: {
+            '@type': 'Person',
+            name: 'Patrick Bartosik',
+            url: 'https://patrick.bartosik.fr',
+        },
+        potentialAction: {
+            '@type': 'SearchAction',
+            target: '{search_term_string}',
+            'query-input': 'required name=search_term_string'
+        }
     };
 
     return {
         title: `${dict.TemplateHome.home.hero.hero_title} | Patrick Bartosik`,
         description: dict.TemplateHome.home.hero.seo_description,
-        keywords: "Développeur Full Stack, React, Next.js, Applications Web, SEO, Performance Web",
+        keywords: "Développeur Full Stack, React, Next.js, Applications Web, SEO, Performance Web, Patrick Bartosik",
         openGraph: {
             title: `${dict.TemplateHome.home.hero.hero_title} | Patrick Bartosik`,
             description: dict.TemplateHome.home.hero.seo_description,
-            url: `https://patrick.bartosik.fr/${lang}`,
+            url: `https://patrick.bartosik.fr${lang === 'fr' ? '' : `/${lang}`}`,
             siteName: 'Patrick Bartosik - Développeur Full Stack',
             images: [
                 {
@@ -39,9 +49,10 @@ export async function generateMetadata({ params: { lang } }: { params: { lang: L
             title: `${dict.TemplateHome.home.hero.hero_title} | Patrick Bartosik`,
             description: dict.TemplateHome.home.hero.seo_description,
             images: ['https://patrick.bartosik.fr/img/og-image.jpg'],
+            creator: '@patrick_bartosik',
         },
         alternates: {
-            canonical: `https://patrick.bartosik.fr/${lang === 'fr' ? '' : lang}`,
+            canonical: `https://patrick.bartosik.fr${lang === 'fr' ? '' : `/${lang}`}`,
             languages: {
                 'fr': 'https://patrick.bartosik.fr/',
                 'en': 'https://patrick.bartosik.fr/en',

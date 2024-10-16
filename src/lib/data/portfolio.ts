@@ -92,7 +92,7 @@ export const projects = [
             }
         },
         "dates": {
-            "createdAt": "20/05/2024",
+            "©": "20/05/2024",
             "updatedAt": "20/05/2024"
         }
     },

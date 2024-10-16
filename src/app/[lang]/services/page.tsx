@@ -13,25 +13,34 @@ export async function generateMetadata({ params: { lang } }: { params: { lang: L
 
     const jsonLd = {
         '@context': 'https://schema.org',
-        '@type': 'Service',
+        '@type': 'WebPage',
         name: dict.TemplateServices.metadata.title,
         description: dict.TemplateServices.metadata.description,
-        url: `https://patrick.bartosik.fr/${lang}/services`,
-        provider: {
-            '@type': 'Person',
-            name: 'Patrick Bartosik',
+        url: `https://patrick.bartosik.fr${lang === 'fr' ? '/services' : `/${lang}/services`}`,
+        inLanguage: lang,
+        isPartOf: {
+            '@type': 'WebSite',
+            name: 'Patrick Bartosik - Développeur Full Stack',
             url: 'https://patrick.bartosik.fr'
+        },
+        offers: {
+            '@type': 'Offer',
+            itemOffered: {
+                '@type': 'Service',
+                name: 'Services de développement web',
+                description: dict.TemplateServices.metadata.description
+            }
         }
     };
 
     return {
         title: dict.TemplateServices.metadata.title,
         description: dict.TemplateServices.metadata.description,
-        keywords: "Services web, Développement Full Stack, React, Next.js, Tailwind CSS, Applications web, SEO, E-commerce, SaaS, API, CRM",
+        keywords: "Services web, Développement Full Stack, React, Next.js, Tailwind CSS, Applications web, SEO, E-commerce, SaaS, API, CRM, Patrick Bartosik",
         openGraph: {
             title: dict.TemplateServices.metadata.title,
             description: dict.TemplateServices.metadata.description,
-            url: `https://patrick.bartosik.fr/${lang}/services`,
+            url: `https://patrick.bartosik.fr${lang === 'fr' ? '/services' : `/${lang}/services`}`,
             siteName: 'Patrick Bartosik - Développeur Full Stack',
             images: [
                 {
@@ -49,9 +58,10 @@ export async function generateMetadata({ params: { lang } }: { params: { lang: L
             title: dict.TemplateServices.metadata.title,
             description: dict.TemplateServices.metadata.description,
             images: ['https://patrick.bartosik.fr/img/services/services.png'],
+            creator: '@patrick_bartosik',
         },
         alternates: {
-            canonical: `https://patrick.bartosik.fr/${lang === 'fr' ? 'services' : `${lang}/services`}`,
+            canonical: `https://patrick.bartosik.fr${lang === 'fr' ? '/services' : `/${lang}/services`}`,
             languages: {
                 'fr': 'https://patrick.bartosik.fr/services',
                 'en': 'https://patrick.bartosik.fr/en/services',
@@ -74,7 +84,7 @@ export default async function page({
             <section id='Services' className='services flex flex-col w-full gap-y-12'>
                 <div className="services__title">
                     <h1 className='services__title-sub font-semibold text-2xl'>{dict.TemplateServices.servicesPage.titleSub}</h1>
-                    <h4 className='services__title-main keep-color '>{dict.TemplateServices.servicesPage.titleMain}</h4>
+                    <h2 className='services__title-main keep-color '>{dict.TemplateServices.servicesPage.titleMain}</h2>
                 </div>
 
                 <div className='w-full'>
@@ -97,7 +107,7 @@ export default async function page({
                         <div key={index} id={service.id} className="services__item rounded overflow-hidden shadow-lg relative ">
                             <div className="group w-full flex flex-col justify-between lg:flex-row">
                                 <div className="services__content flex flex-col gap-y-8 ">
-                                    <h4 className="services__title underline">{service.title}</h4>
+                                    <h3 className="services__title underline">{service.title}</h3>
                                     <p className="services__description w-full md:w-[613px]">{service.generalDescription}</p>
                                 </div>
 

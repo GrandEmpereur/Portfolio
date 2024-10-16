@@ -13,23 +13,32 @@ export async function generateMetadata({ params: { lang } }: { params: { lang: L
         '@type': 'WebPage',
         name: dict.TemplateGTU.metadata.title,
         description: dict.TemplateGTU.metadata.description,
-        url: `https://patrick.bartosik.fr/${lang}/gtu`,
+        url: `https://patrick.bartosik.fr${lang === 'fr' ? '/gtu' : `/${lang}`}/gtu`,
+        inLanguage: lang,
+        isPartOf: {
+            '@type': 'WebSite',
+            name: 'Patrick Bartosik - Développeur Full Stack',
+            url: 'https://patrick.bartosik.fr'
+        }
     };
 
     return {
         title: dict.TemplateGTU.metadata.title,
         description: dict.TemplateGTU.metadata.description,
+        keywords: "Conditions générales d'utilisation, CGU, Patrick Bartosik, Développeur Full Stack, Services web",
         openGraph: {
             title: dict.TemplateGTU.metadata.title,
             description: dict.TemplateGTU.metadata.description,
-            url: `https://patrick.bartosik.fr/${lang}/gtu`,
+            url: `https://patrick.bartosik.fr${lang === 'fr' ? '/gtu' : `/${lang}`}/gtu`,
+            siteName: 'Patrick Bartosik - Développeur Full Stack',
             type: 'website',
+            locale: lang,
             images: [
                 {
                     url: 'https://patrick.bartosik.fr/img/gtu/gtuHero.png',
-                    width: 800,
-                    height: 600,
-                    alt: 'Image de GTU de Patrick Bartosik',
+                    width: 1200,
+                    height: 630,
+                    alt: "Conditions générales d'utilisation - Patrick Bartosik",
                 },
             ],
         },
@@ -37,12 +46,15 @@ export async function generateMetadata({ params: { lang } }: { params: { lang: L
             card: 'summary_large_image',
             title: dict.TemplateGTU.metadata.title,
             description: dict.TemplateGTU.metadata.description,
-            images: [
-                {
-                    url: 'https://patrick.bartosik.fr/img/gtu/gtuHero.png',
-                    alt: 'Image de GTU de Patrick Bartosik',
-                },
-            ],
+            images: ['https://patrick.bartosik.fr/img/gtu/gtuHero.png'],
+            creator: '@patrick_bartosik',
+        },
+        alternates: {
+            canonical: `https://patrick.bartosik.fr${lang === 'fr' ? '/gtu' : `/${lang}`}/gtu`,
+            languages: {
+                'fr': 'https://patrick.bartosik.fr/gtu',
+                'en': 'https://patrick.bartosik.fr/en/gtu',
+            },
         },
         other: {
             'application/ld+json': JSON.stringify(jsonLd),

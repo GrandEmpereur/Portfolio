@@ -13,53 +13,61 @@ import {
 } from "@/components/ui/accordion"
 
 export async function generateMetadata({ params: { lang } }: { params: { lang: Locale } }): Promise<Metadata> {
-  const dict = await getDictionary(lang);
+    const dict = await getDictionary(lang);
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'ContactPage',
-    name: dict.TemplateContact.metadata.title,
-    description: dict.TemplateContact.metadata.description,
-    url: `https://patrick.bartosik.fr/${lang}/contact`,
-  };
+    const jsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'ContactPage',
+        name: dict.TemplateContact.metadata.title,
+        description: dict.TemplateContact.metadata.description,
+        url: `https://patrick.bartosik.fr${lang === 'fr' ? '/contact' : `/${lang}`}/contact`,
+        mainEntity: {
+            '@type': 'Person',
+            name: 'Patrick Bartosik',
+            jobTitle: 'Développeur Full Stack',
+            email: 'contact@bartosik.fr',
+            url: 'https://patrick.bartosik.fr'
+        }
+    };
 
-  return {
-    title: dict.TemplateContact.metadata.title,
-    description: dict.TemplateContact.metadata.description,
-    keywords: "Contact, Développeur Full Stack, React, Next.js, Projets web, Consultation",
-    openGraph: {
-      title: dict.TemplateContact.metadata.title,
-      description: dict.TemplateContact.metadata.description,
-      url: `https://patrick.bartosik.fr/${lang}/contact`,
-      siteName: 'Patrick Bartosik - Développeur Full Stack',
-      images: [
-        {
-          url: 'https://patrick.bartosik.fr/img/contact/contactHero.png',
-          width: 1200,
-          height: 630,
-          alt: 'Contactez Patrick Bartosik',
+    return {
+        title: dict.TemplateContact.metadata.title,
+        description: dict.TemplateContact.metadata.description,
+        keywords: "Contact, Développeur Full Stack, React, Next.js, Projets web, Consultation, Patrick Bartosik",
+        openGraph: {
+            title: dict.TemplateContact.metadata.title,
+            description: dict.TemplateContact.metadata.description,
+            url: `https://patrick.bartosik.fr${lang === 'fr' ? '/contact' : `/${lang}`}/contact`,
+            siteName: 'Patrick Bartosik - Développeur Full Stack',
+            images: [
+                {
+                    url: 'https://patrick.bartosik.fr/img/contact/contactHero.png',
+                    width: 1200,
+                    height: 630,
+                    alt: 'Contactez Patrick Bartosik - Développeur Full Stack',
+                },
+            ],
+            locale: lang,
+            type: 'website',
         },
-      ],
-      locale: lang,
-      type: 'website',
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: dict.TemplateContact.metadata.title,
-      description: dict.TemplateContact.metadata.description,
-      images: ['https://patrick.bartosik.fr/img/contact/contactHero.png'],
-    },
-    alternates: {
-      canonical: `https://patrick.bartosik.fr/${lang === 'fr' ? 'contact' : `${lang}/contact`}`,
-      languages: {
-        'fr': 'https://patrick.bartosik.fr/contact',
-        'en': 'https://patrick.bartosik.fr/en/contact',
-      },
-    },
-    other: {
-      'application/ld+json': JSON.stringify(jsonLd),
-    },
-  };
+        twitter: {
+            card: 'summary_large_image',
+            title: dict.TemplateContact.metadata.title,
+            description: dict.TemplateContact.metadata.description,
+            images: ['https://patrick.bartosik.fr/img/contact/contactHero.png'],
+            creator: '@patrick_bartosik',
+        },
+        alternates: {
+            canonical: `https://patrick.bartosik.fr${lang === 'fr' ? '/contact' : `/${lang}`}/contact`,
+            languages: {
+                'fr': 'https://patrick.bartosik.fr/contact',
+                'en': 'https://patrick.bartosik.fr/en/contact',
+            },
+        },
+        other: {
+            'application/ld+json': JSON.stringify(jsonLd),
+        },
+    };
 }
 
 export default async function page({
