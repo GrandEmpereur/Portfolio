@@ -102,7 +102,7 @@ export default function RootLayout({
   params: { lang: Locale };
 }>) {
   return (
-    <html lang={params.lang} className={`${poppins.variable} ${plusJakartaSans.variable} dark`}>
+    <html lang={params.lang === 'fr'? 'fr': 'en'} className={`${poppins.variable} ${plusJakartaSans.variable} dark`}>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
