@@ -11,6 +11,19 @@ import Link from 'next/link';
 export async function generateMetadata({ params: { lang } }: { params: { lang: Locale } }): Promise<Metadata> {
     const dict = await getDictionary(lang);
 
+    const jsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        name: dict.TemplateServices.metadata.title,
+        description: dict.TemplateServices.metadata.description,
+        url: `https://patrick.bartosik.fr/${lang}/services`,
+        provider: {
+            '@type': 'Person',
+            name: 'Patrick Bartosik',
+            url: 'https://patrick.bartosik.fr'
+        }
+    };
+
     return {
         title: dict.TemplateServices.metadata.title,
         description: dict.TemplateServices.metadata.description,
@@ -43,6 +56,9 @@ export async function generateMetadata({ params: { lang } }: { params: { lang: L
                 'fr': 'https://patrick.bartosik.fr/services',
                 'en': 'https://patrick.bartosik.fr/en/services',
             },
+        },
+        other: {
+            'application/ld+json': JSON.stringify(jsonLd),
         },
     };
 }

@@ -8,9 +8,34 @@ export async function generateMetadata({ params }: { params: { slug: string, lan
     console.log('params.slug', params.slug);
     const project = projects.find(project => project.links.slug === `/${params.slug}`);
 
+    const jsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        name: `${dict.TemplatePortfolio.metadata.title} - ${project?.title[params.lang]}`,
+        description: project?.overview[params.lang],
+        url: `https://patrick.bartosik.fr/${params.lang}/portfolio/${params.slug}`,
+    };
+
     return {
-        title: project ? `${dict.TemplatePortfolio.metadata.title} - ${project.title[params.lang]}` : dict.TemplatePortfolio.metadata.title,
-        description: project ? project.overview[params.lang] : dict.TemplatePortfolio.metadata.description,
+        title: `${dict.TemplatePortfolio.metadata.title} - ${project?.title[params.lang]}`,
+        description: project?.overview[params.lang],
+        openGraph: {
+            title: `${dict.TemplatePortfolio.metadata.title} - ${project?.title[params.lang]}`,
+            description: project?.overview[params.lang],
+            url: `https://patrick.bartosik.fr/${params.lang}/portfolio/${params.slug}`,
+            type: 'website',
+            images: [
+                {
+                    url: project?.media.placeholder,
+                    width: 1200,
+                    height: 630,
+                    alt: `${project?.title[params.lang]} - Project Image`,
+                },
+            ],
+        },
+        other: {
+            'application/ld+json': JSON.stringify(jsonLd),
+        },
     };
 }
 

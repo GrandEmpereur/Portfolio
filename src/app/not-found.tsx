@@ -8,6 +8,13 @@ import { getDictionary } from '@/get-dictionary';
 export async function generateMetadata({ params: { lang } }: { params: { lang: Locale } }) {
     const dict = await getDictionary(lang);
 
+    const jsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        name: dict.notFound.metadata.title,
+        description: dict.notFound.metadata.description,
+    };
+
     return {
         title: dict.notFound.metadata.title,
         description: dict.notFound.metadata.description,
@@ -35,6 +42,9 @@ export async function generateMetadata({ params: { lang } }: { params: { lang: L
                     alt: dict.notFound.metadata.imageAlt,
                 },
             ],
+        },
+        other: {
+            'application/ld+json': JSON.stringify(jsonLd),
         },
     };
 }

@@ -15,6 +15,14 @@ import {
 export async function generateMetadata({ params: { lang } }: { params: { lang: Locale } }): Promise<Metadata> {
   const dict = await getDictionary(lang);
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    name: dict.TemplateContact.metadata.title,
+    description: dict.TemplateContact.metadata.description,
+    url: `https://patrick.bartosik.fr/${lang}/contact`,
+  };
+
   return {
     title: dict.TemplateContact.metadata.title,
     description: dict.TemplateContact.metadata.description,
@@ -48,6 +56,9 @@ export async function generateMetadata({ params: { lang } }: { params: { lang: L
         'en': 'https://patrick.bartosik.fr/en/contact',
       },
     },
+    other: {
+      'application/ld+json': JSON.stringify(jsonLd),
+    },
   };
 }
 
@@ -65,7 +76,7 @@ export default async function page({
           <h2 className='contact__title-main keep-color text-4xl font-bold mb-4'>{dict.TemplateContact.contactMe.titleMain}</h2>
           <p className='text-lg mb-6'>{dict.TemplateContact.contactMe.description}</p>
         </div>
-        
+
         <TypeFromWidget />
 
         <div className="contact__benefits mb-8">

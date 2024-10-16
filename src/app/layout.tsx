@@ -69,6 +69,36 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="sitemap" type="application/xml" title="Sitemap" href="https://patrick.bartosik.fr/sitemap.xml/" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "WebSite",
+                  "@id": "https://patrick.bartosik.fr/#website",
+                  "url": "https://patrick.bartosik.fr/",
+                  "name": "Patrick Bartosik - Développeur Full Stack",
+                  "description": "Portfolio de Patrick Bartosik, développeur Full Stack spécialisé en React et Next.js",
+                  "inLanguage": "fr-FR"
+                },
+                {
+                  "@type": "Person",
+                  "@id": "https://patrick.bartosik.fr/#person",
+                  "name": "Patrick Bartosik",
+                  "jobTitle": "Développeur Full Stack",
+                  "description": "Développeur Full Stack spécialisé en React et Next.js",
+                  "url": "https://patrick.bartosik.fr/",
+                  "sameAs": [
+                    "https://www.linkedin.com/in/patrick-bartosik/",
+                    "https://github.com/GrandEmpereur"
+                  ]
+                }
+              ]
+            })
+          }}
+        />
       </head>
       <GoogleTagManager gtmId="GTM-5SZB3CZK" />
       <body className={cn(

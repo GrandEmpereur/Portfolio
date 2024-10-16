@@ -11,6 +11,14 @@ import { projects } from '@/lib/data/portfolio';
 export async function generateMetadata({ params: { lang } }: { params: { lang: Locale } }): Promise<Metadata> {
     const dict = await getDictionary(lang);
 
+    const jsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'CollectionPage',
+        name: dict.TemplatePortfolio.metadata.title,
+        description: dict.TemplatePortfolio.metadata.description,
+        url: `https://patrick.bartosik.fr/${lang === 'fr' ? 'portfolio' : `${lang}/portfolio`}`,
+    };
+
     return {
         title: dict.TemplatePortfolio.metadata.title,
         description: dict.TemplatePortfolio.metadata.description,
@@ -18,7 +26,7 @@ export async function generateMetadata({ params: { lang } }: { params: { lang: L
         openGraph: {
             title: dict.TemplatePortfolio.metadata.title,
             description: dict.TemplatePortfolio.metadata.description,
-            url: `https://patrick.bartosik.fr/${lang}/portfolio`,
+            url: `https://patrick.bartosik.fr/${lang === 'fr' ? 'portfolio' : `${lang}/portfolio`}`,
             siteName: 'Patrick Bartosik - Développeur Full Stack',
             images: [
                 {
@@ -43,6 +51,9 @@ export async function generateMetadata({ params: { lang } }: { params: { lang: L
                 'fr': 'https://patrick.bartosik.fr/portfolio',
                 'en': 'https://patrick.bartosik.fr/en/portfolio',
             },
+        },
+        other: {
+            'application/ld+json': JSON.stringify(jsonLd),
         },
     };
 }

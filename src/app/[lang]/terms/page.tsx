@@ -8,6 +8,14 @@ import { getDictionary } from '@/get-dictionary';
 export async function generateMetadata({ params: { lang } }: { params: { lang: Locale } }) {
     const dict = await getDictionary(lang);
 
+    const jsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        name: dict.TemplateLegalNotices.metadata.title,
+        description: dict.TemplateLegalNotices.metadata.description,
+        url: `https://patrick.bartosik.fr/${lang}/terms`,
+    };
+
     return {
         title: dict.TemplateLegalNotices.metadata.title,
         description: dict.TemplateLegalNotices.metadata.description,
@@ -35,6 +43,9 @@ export async function generateMetadata({ params: { lang } }: { params: { lang: L
                     alt: 'Legal Notices Image of Patrick Bartosik',
                 },
             ],
+        },
+        other: {
+            'application/ld+json': JSON.stringify(jsonLd),
         },
     };
 }

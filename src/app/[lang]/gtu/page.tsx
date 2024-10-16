@@ -8,6 +8,14 @@ import { getDictionary } from '@/get-dictionary';
 export async function generateMetadata({ params: { lang } }: { params: { lang: Locale } }) {
     const dict = await getDictionary(lang);
 
+    const jsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        name: dict.TemplateGTU.metadata.title,
+        description: dict.TemplateGTU.metadata.description,
+        url: `https://patrick.bartosik.fr/${lang}/gtu`,
+    };
+
     return {
         title: dict.TemplateGTU.metadata.title,
         description: dict.TemplateGTU.metadata.description,
@@ -35,6 +43,9 @@ export async function generateMetadata({ params: { lang } }: { params: { lang: L
                     alt: 'Image de GTU de Patrick Bartosik',
                 },
             ],
+        },
+        other: {
+            'application/ld+json': JSON.stringify(jsonLd),
         },
     };
 }

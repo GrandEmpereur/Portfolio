@@ -6,6 +6,14 @@ import { getDictionary } from '@/get-dictionary';
 export async function generateMetadata({ params: { lang } }: { params: { lang: Locale } }): Promise<Metadata> {
     const dict = await getDictionary(lang);
 
+    const jsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        name: `${dict.TemplateHome.home.hero.hero_title} | Patrick Bartosik`,
+        description: dict.TemplateHome.home.hero.seo_description,
+        url: `https://patrick.bartosik.fr/${lang}`,
+    };
+
     return {
         title: `${dict.TemplateHome.home.hero.hero_title} | Patrick Bartosik`,
         description: dict.TemplateHome.home.hero.seo_description,
@@ -38,6 +46,9 @@ export async function generateMetadata({ params: { lang } }: { params: { lang: L
                 'fr': 'https://patrick.bartosik.fr/',
                 'en': 'https://patrick.bartosik.fr/en',
             },
+        },
+        other: {
+            'application/ld+json': JSON.stringify(jsonLd),
         },
     };
 }
