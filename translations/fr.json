@@ -96,7 +96,7 @@
                         "detailedDescription": [
                             {
                                 "title": "Développement Full-Stack",
-                                "description": "Création d'applications web performantes et intuitives, basées sur les technologies les plus récentes telles que React.js, Next.js, et AWS. Des interfaces utilisateur modernes combinées à des back-ends évolutifs et sécurisés."
+                                "description": "Création d'applications web performantes et intuitives, basées sur les technologies les plus récentes telles que React.js, Next.js, et AWS."
                             },
                             {
                                 "title": "Création d'API et Microservices",
@@ -104,7 +104,7 @@
                             },
                             {
                                 "title": "Projets Monolithiques Simples",
-                                "description": "Pour les projets nécessitant simplicité et efficacité, je propose des solutions monolithiques rapides à mettre en place et faciles à maintenir."
+                                "description": "Conception de solutions monolithiques rapides à mettre en place et faciles à maintenir."
                             },
                             {
                                 "title": "Gestion de Bases de Données et Sécurité",
@@ -112,55 +112,73 @@
                             },
                             {
                                 "title": "Tests Unitaires et Documentation",
-                                "description": "Implémentation de tests unitaires rigoureux pour garantir la fiabilité des applications, accompagnée d'une documentation complète pour une gestion aisée à long terme."
+                                "description": "Implémentation de tests unitaires rigoureux pour garantir la fiabilité des applications, accompagnée d'une documentation complète."
                             }
-                        ]
+                        ],
+                        "icon": "/shape/img1.png",
+                        "iconWidth": 80,
+                        "iconHeight": 80,
+                        "iconAlt": "Icône Développement Full-Stack",
+                        "buttonLabel": "En Savoir Plus",
+                        "buttonLink": "/services#fullstack-backend"
                     },
                     {
                         "id": "solutions-cloud-maintenance",
                         "title": "Solutions Cloud et Maintenance",
-                        "generalDescription": "Optimisez vos systèmes avec des solutions cloud sécurisées, des migrations vers le cloud, et des services de maintenance proactive incluant CI/CD et Sentry pour garantir la performance continue de vos applications.",
+                        "generalDescription": "Optimisez vos systèmes avec des solutions cloud sécurisées, des migrations vers le cloud, et des services de maintenance proactive incluant CI/CD et Sentry.",
                         "detailedDescription": [
                             {
                                 "title": "Architecture Cloud et Migration",
-                                "description": "Migration de vos applications et bases de données vers des solutions cloud (AWS, Supabase, Planetscale, etc.) pour une gestion optimisée des coûts et une meilleure scalabilité."
+                                "description": "Migration de vos applications et bases de données vers des solutions cloud (AWS, Supabase, Planetscale, etc.) pour une meilleure scalabilité."
                             },
                             {
                                 "title": "Automatisation des Déploiements (CI/CD)",
-                                "description": "Mise en place de pipelines CI/CD pour automatiser les déploiements et assurer une mise à jour continue de vos systèmes sans interruption de service."
+                                "description": "Mise en place de pipelines CI/CD pour automatiser les déploiements et assurer des mises à jour continues."
                             },
                             {
                                 "title": "Surveillance des Performances et des Erreurs",
-                                "description": "Grâce à Sentry, je surveille en temps réel les erreurs et performances de vos applications, permettant de résoudre les problèmes avant qu'ils ne deviennent critiques."
+                                "description": "Surveillance en temps réel des performances via Sentry, avec résolution proactive des problèmes avant qu'ils ne deviennent critiques."
                             },
                             {
                                 "title": "Maintenance Proactive",
-                                "description": "Assurez la longévité de vos applications avec des mises à jour régulières et une gestion proactive des incidents techniques, vous permettant de vous concentrer sur votre activité."
+                                "description": "Mises à jour régulières et gestion proactive des incidents techniques pour assurer la longévité des applications."
                             }
-                        ]
+                        ],
+                        "icon": "/shape/img2.png",
+                        "iconWidth": 80,
+                        "iconHeight": 80,
+                        "iconAlt": "Icône Solutions Cloud",
+                        "buttonLabel": "En Savoir Plus",
+                        "buttonLink": "/services#cloud-maintenance"
                     },
                     {
                         "id": "solutions-ecommerce-crm-immobilier",
                         "title": "E-commerce, CRM et Solutions Immobilières",
-                        "generalDescription": "Je propose des solutions digitales sur mesure pour booster votre activité e-commerce, améliorer la gestion client via des CRM personnalisés, et développer des outils adaptés au secteur immobilier pour maximiser votre rentabilité.",
+                        "generalDescription": "Je propose des solutions digitales sur mesure pour booster votre activité e-commerce, améliorer la gestion client via des CRM personnalisés, et développer des outils adaptés au secteur immobilier.",
                         "detailedDescription": [
                             {
                                 "title": "Solutions E-commerce Personnalisées",
-                                "description": "Développement de boutiques en ligne performantes, que ce soit via Shopify pour une solution rapide ou sur mesure avec Next.js, Stripe, et Lemon pour des fonctionnalités avancées comme le parrainage."
+                                "description": "Développement de boutiques en ligne performantes via Shopify ou sur mesure avec Next.js, Stripe, et Lemon."
                             },
                             {
                                 "title": "Développement de CRM Personnalisés",
-                                "description": "Création de CRM sur mesure, avec des dashboards interactifs, des KPI centralisés et une intégration fluide avec vos systèmes existants pour maximiser l'efficacité de votre gestion client."
+                                "description": "Création de CRM sur mesure avec des dashboards interactifs, KPIs centralisés et intégration fluide."
                             },
                             {
                                 "title": "Solutions Immobilières",
-                                "description": "Développement de plateformes de location en ligne, outils de gestion de biens, et calculs de rentabilité en temps réel pour optimiser la gestion immobilière et maximiser la performance financière."
+                                "description": "Développement de plateformes de location en ligne, outils de gestion de biens, et systèmes de calcul de rentabilité en temps réel."
                             },
                             {
                                 "title": "Graphiques Interactifs et Rapports",
-                                "description": "Création de dashboards interactifs et de rapports personnalisés pour suivre en temps réel la performance de votre e-commerce, CRM ou gestion immobilière."
+                                "description": "Création de dashboards interactifs et rapports personnalisés pour suivre les performances en temps réel."
                             }
-                        ]
+                        ],
+                        "icon": "/shape/img3.png",
+                        "iconWidth": 78,
+                        "iconHeight": 80,
+                        "iconAlt": "Icône Solutions Immobilier",
+                        "buttonLabel": "En Savoir Plus",
+                        "buttonLink": "/services#ecommerce-crm-immobilier"
                     }
                 ]
             },

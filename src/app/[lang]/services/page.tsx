@@ -83,8 +83,8 @@ export default async function page({
         <MaxWidthWrapper className='mt-8'>
             <section id='Services' className='services flex flex-col w-full gap-y-12'>
                 <div className="services__title">
-                    <h1 className='services__title-sub font-semibold text-2xl'>{dict.TemplateServices.servicesPage.titleSub}</h1>
-                    <h2 className='services__title-main keep-color '>{dict.TemplateServices.servicesPage.titleMain}</h2>
+                    <h1 className='services__title-sub font-semibold text-2xl keep-color'>{dict.TemplateServices.servicesPage.titleSub}</h1>
+                    <h2 className='services__title-main '>{dict.TemplateServices.servicesPage.titleMain}</h2>
                 </div>
 
                 <div className='w-full'>

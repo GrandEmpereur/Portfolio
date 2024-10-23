@@ -92,19 +92,19 @@
                     {
                         "id": "developpement-fullstack-backend",
                         "title": "Full-Stack and Back-end Development",
-                        "generalDescription": "I offer comprehensive full-stack and back-end solutions, including the creation of web applications, APIs, and robust architectures to ensure the performance and security of your projects.",
+                        "generalDescription": "I offer comprehensive full-stack and back-end solutions, including the creation of web applications, APIs, and robust architectures to ensure performance and security.",
                         "detailedDescription": [
                             {
                                 "title": "Full-Stack Development",
-                                "description": "Development of high-performance, intuitive web applications using the latest technologies such as React.js, Next.js, and AWS, combining modern user interfaces with scalable, secure back-ends."
+                                "description": "Development of high-performance web applications using the latest technologies like React.js, Next.js, and AWS."
                             },
                             {
                                 "title": "API Creation and Microservices",
-                                "description": "Development of robust, secure APIs and modular microservices systems for smooth management and optimal scalability."
+                                "description": "Development of secure APIs and modular microservices systems for seamless management and optimal scalability."
                             },
                             {
                                 "title": "Simple Monolithic Projects",
-                                "description": "For projects requiring simplicity and efficiency, I offer fast-to-deploy and easy-to-maintain monolithic solutions."
+                                "description": "For simpler projects, I create monolithic solutions that are easy to deploy and maintain."
                             },
                             {
                                 "title": "Database Management and Security",
@@ -112,55 +112,73 @@
                             },
                             {
                                 "title": "Unit Testing and Documentation",
-                                "description": "Implementation of thorough unit tests to ensure application reliability, accompanied by complete documentation for long-term management."
+                                "description": "I implement rigorous unit tests and provide complete documentation for long-term project maintenance."
                             }
-                        ]
+                        ],
+                        "icon": "/shape/img1.png",
+                        "iconWidth": 80,
+                        "iconHeight": 80,
+                        "iconAlt": "Full-Stack Development Icon",
+                        "buttonLabel": "Learn More",
+                        "buttonLink": "/services#fullstack-backend"
                     },
                     {
                         "id": "solutions-cloud-maintenance",
                         "title": "Cloud Solutions and Maintenance",
-                        "generalDescription": "Optimize your systems with secure cloud solutions, cloud migrations, and proactive maintenance services, including CI/CD and Sentry integration to ensure continuous application performance.",
+                        "generalDescription": "Optimize your systems with secure cloud solutions, cloud migrations, and proactive maintenance services, including CI/CD and Sentry.",
                         "detailedDescription": [
                             {
                                 "title": "Cloud Architecture and Migration",
-                                "description": "Migration of your applications and databases to cloud solutions (AWS, Supabase, Planetscale, etc.) for optimized cost management and improved scalability."
+                                "description": "Migration of your applications and databases to cloud solutions (AWS, Supabase, Planetscale, etc.) for better scalability."
                             },
                             {
                                 "title": "Automated Deployment (CI/CD)",
-                                "description": "Setup of CI/CD pipelines to automate deployments and ensure continuous system updates without service interruption."
+                                "description": "Setup of CI/CD pipelines to automate deployments and ensure continuous updates."
                             },
                             {
                                 "title": "Performance and Error Monitoring",
-                                "description": "With Sentry integration, I monitor your applications in real-time for errors and performance issues, solving problems before they become critical."
+                                "description": "Real-time performance monitoring via Sentry, proactively resolving issues before they become critical."
                             },
                             {
                                 "title": "Proactive Maintenance",
-                                "description": "Ensure the longevity of your applications with regular updates and proactive incident management, allowing you to focus on your core business."
+                                "description": "Regular updates and proactive incident management to ensure the longevity of your applications."
                             }
-                        ]
+                        ],
+                        "icon": "/shape/img2.png",
+                        "iconWidth": 80,
+                        "iconHeight": 80,
+                        "iconAlt": "Cloud Solutions Icon",
+                        "buttonLabel": "Learn More",
+                        "buttonLink": "/services#cloud-maintenance"
                     },
                     {
                         "id": "solutions-ecommerce-crm-immobilier",
                         "title": "E-commerce, CRM, and Real Estate Solutions",
-                        "generalDescription": "I provide custom digital solutions to boost your e-commerce business, improve customer management with tailored CRMs, and develop tools for the real estate sector to maximize profitability.",
+                        "generalDescription": "I provide custom digital solutions to boost your e-commerce business, improve customer management with tailored CRMs, and develop tools for the real estate sector.",
                         "detailedDescription": [
                             {
                                 "title": "Custom E-commerce Solutions",
-                                "description": "Development of high-performance e-commerce platforms, either via Shopify for a fast solution or custom-built with Next.js, Stripe, and Lemon for advanced features like referral programs."
+                                "description": "Development of high-performance e-commerce stores via Shopify or custom-built with Next.js, Stripe, and Lemon."
                             },
                             {
                                 "title": "Custom CRM Development",
-                                "description": "Creation of custom CRMs with interactive dashboards, centralized KPIs, and seamless integration with your existing systems to maximize customer management efficiency."
+                                "description": "Creation of custom CRMs with interactive dashboards, centralized KPIs, and seamless integration."
                             },
                             {
                                 "title": "Real Estate Solutions",
-                                "description": "Development of online rental platforms, property management tools, and real-time profitability calculations to optimize real estate management and maximize financial performance."
+                                "description": "Development of online rental platforms, property management tools, and real-time profitability calculation systems."
                             },
                             {
                                 "title": "Interactive Charts and Reports",
-                                "description": "Creation of interactive dashboards and custom reports to monitor the real-time performance of your e-commerce, CRM, or real estate management."
+                                "description": "Creation of interactive dashboards and custom reports to monitor real-time performance."
                             }
-                        ]
+                        ],
+                        "icon": "/shape/img3.png",
+                        "iconWidth": 78,
+                        "iconHeight": 80,
+                        "iconAlt": "Real Estate Solutions Icon",
+                        "buttonLabel": "Learn More",
+                        "buttonLink": "/services#ecommerce-crm-realestate"
                     }
                 ]
             },
