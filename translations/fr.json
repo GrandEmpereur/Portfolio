@@ -85,80 +85,82 @@
                 "button": "En Savoir Plus Sur Moi"
             },
             "services": {
-                "subtitle": "Services",
-                "title": "Solutions Web Full Stack Sur Mesure",
-                "description": "Transformez vos idées en réalité digitale avec mes services de création et de développement web sur mesure. De la conception au déploiement, je réalise des sites vitrines, des applications SaaS, des e-commerces, des CRM et bien plus, tout en assurant des refontes et des migrations.",
+                "subtitle": "Mes Solutions Digitales",
+                "title": "Solutions Web Full Stack Personnalisées",
+                "description": "Transformez vos idées en réalité digitale grâce à des solutions de développement web sur mesure. Du design au déploiement, je propose des sites vitrines, des applications SaaS, des e-commerces, et des CRM. J'accompagne également mes clients dans la maintenance, les migrations, et les refontes, le tout en utilisant les technologies les plus modernes telles que Next.js, React, et Adonis.js pour garantir des performances optimales.",
                 "servicesList": [
                     {
-                        "id": "site-web-creation",
-                        "title": "Sites Web Personnalisés",
-                        "generalDescription": "Conception et développement de tous types de sites web : sites vitrines, e-commerce, sites d'entreprise, plateformes P2P, B2B et B2C.",
+                        "id": "developpement-fullstack-backend",
+                        "title": "Développement Full-Stack et Back-end",
+                        "generalDescription": "Je propose des solutions complètes pour le développement full-stack et back-end, incluant la création d'applications web, des API, et des architectures robustes pour assurer la performance et la sécurité de vos projets.",
                         "detailedDescription": [
                             {
-                                "title": "Sites Vitrines & Sites Corporate",
-                                "description": "Création de sites vitrines professionnels, optimisés pour le SEO et adaptés à tous les appareils, pour représenter votre marque."
+                                "title": "Développement Full-Stack",
+                                "description": "Création d'applications web performantes et intuitives, basées sur les technologies les plus récentes telles que React.js, Next.js, et AWS. Des interfaces utilisateur modernes combinées à des back-ends évolutifs et sécurisés."
                             },
                             {
-                                "title": "Web Apps & SaaS",
-                                "description": "Développement d'applications web performantes et évolutives pour les services SaaS, avec une intégration fluide des APIs et des systèmes de paiement."
+                                "title": "Création d'API et Microservices",
+                                "description": "Développement d'API robustes et sécurisées ainsi que de systèmes microservices modulaires pour une gestion fluide et une scalabilité optimale."
                             },
                             {
-                                "title": "E-commerce sur Mesure",
-                                "description": "Conception de boutiques en ligne performantes, avec intégration de solutions de paiement sécurisées (Stripe, PayPal) et gestion des stocks."
+                                "title": "Projets Monolithiques Simples",
+                                "description": "Pour les projets nécessitant simplicité et efficacité, je propose des solutions monolithiques rapides à mettre en place et faciles à maintenir."
                             },
                             {
-                                "title": "CRM & Outils Métiers",
-                                "description": "Développement de CRM personnalisés pour une gestion optimale de vos clients et de vos processus métier, adaptés à vos besoins spécifiques."
+                                "title": "Gestion de Bases de Données et Sécurité",
+                                "description": "Mise en place et optimisation de bases de données relationnelles ou NoSQL, avec une attention particulière à la sécurité et à la performance."
+                            },
+                            {
+                                "title": "Tests Unitaires et Documentation",
+                                "description": "Implémentation de tests unitaires rigoureux pour garantir la fiabilité des applications, accompagnée d'une documentation complète pour une gestion aisée à long terme."
                             }
-                        ],
-                        "icon": "/shape/img5.png",
-                        "iconWidth": 83,
-                        "iconHeight": 83,
-                        "iconAlt": "Icône Création de Sites Web",
-                        "buttonLabel": "En Savoir Plus",
-                        "buttonLink": "/services#site-web-creation"
+                        ]
                     },
                     {
-                        "id": "maintenance-evolutive",
-                        "title": "Refonte TMA - TME",
-                        "generalDescription": "Assurez la maintenance, l'évolution, et la refonte de vos applications web pour rester à jour avec les dernières technologies et offrir une expérience utilisateur optimale.",
+                        "id": "solutions-cloud-maintenance",
+                        "title": "Solutions Cloud et Maintenance",
+                        "generalDescription": "Optimisez vos systèmes avec des solutions cloud sécurisées, des migrations vers le cloud, et des services de maintenance proactive incluant CI/CD et Sentry pour garantir la performance continue de vos applications.",
                         "detailedDescription": [
                             {
-                                "title": "Maintenance Applicative (TMA)",
-                                "description": "Prise en charge des mises à jour, de la correction des bugs et de l'amélioration des performances de vos sites web et applications."
+                                "title": "Architecture Cloud et Migration",
+                                "description": "Migration de vos applications et bases de données vers des solutions cloud (AWS, Supabase, Planetscale, etc.) pour une gestion optimisée des coûts et une meilleure scalabilité."
                             },
                             {
-                                "title": "Migration et Refonte",
-                                "description": "Migration de vos sites web vers de nouvelles technologies ou refonte complète pour moderniser l'expérience utilisateur et l'interface."
+                                "title": "Automatisation des Déploiements (CI/CD)",
+                                "description": "Mise en place de pipelines CI/CD pour automatiser les déploiements et assurer une mise à jour continue de vos systèmes sans interruption de service."
+                            },
+                            {
+                                "title": "Surveillance des Performances et des Erreurs",
+                                "description": "Grâce à Sentry, je surveille en temps réel les erreurs et performances de vos applications, permettant de résoudre les problèmes avant qu'ils ne deviennent critiques."
+                            },
+                            {
+                                "title": "Maintenance Proactive",
+                                "description": "Assurez la longévité de vos applications avec des mises à jour régulières et une gestion proactive des incidents techniques, vous permettant de vous concentrer sur votre activité."
                             }
-                        ],
-                        "icon": "/shape/img6.png",
-                        "iconWidth": 83,
-                        "iconHeight": 83,
-                        "iconAlt": "Icône TMA / TME",
-                        "buttonLabel": "En Savoir Plus",
-                        "buttonLink": "/services#maintenance-evolutive"
+                        ]
                     },
                     {
-                        "id": "immobilier",
-                        "title": "Services Immobilier",
-                        "generalDescription": "Développement d'outils personnalisés pour le secteur immobilier, incluant la gestion de biens, les calculs de rentabilité, et les plateformes de location en ligne.",
+                        "id": "solutions-ecommerce-crm-immobilier",
+                        "title": "E-commerce, CRM et Solutions Immobilières",
+                        "generalDescription": "Je propose des solutions digitales sur mesure pour booster votre activité e-commerce, améliorer la gestion client via des CRM personnalisés, et développer des outils adaptés au secteur immobilier pour maximiser votre rentabilité.",
                         "detailedDescription": [
                             {
-                                "title": "Plateformes de Location",
-                                "description": "Création de plateformes en ligne pour la gestion de locations (Airbnb, Booking) avec calculs de rentabilité en temps réel."
+                                "title": "Solutions E-commerce Personnalisées",
+                                "description": "Développement de boutiques en ligne performantes, que ce soit via Shopify pour une solution rapide ou sur mesure avec Next.js, Stripe, et Lemon pour des fonctionnalités avancées comme le parrainage."
                             },
                             {
-                                "title": "Outils de Gestion Immobilière",
-                                "description": "Développement de solutions de gestion immobilière pour gérer efficacement vos propriétés et suivre les performances financières."
+                                "title": "Développement de CRM Personnalisés",
+                                "description": "Création de CRM sur mesure, avec des dashboards interactifs, des KPI centralisés et une intégration fluide avec vos systèmes existants pour maximiser l'efficacité de votre gestion client."
+                            },
+                            {
+                                "title": "Solutions Immobilières",
+                                "description": "Développement de plateformes de location en ligne, outils de gestion de biens, et calculs de rentabilité en temps réel pour optimiser la gestion immobilière et maximiser la performance financière."
+                            },
+                            {
+                                "title": "Graphiques Interactifs et Rapports",
+                                "description": "Création de dashboards interactifs et de rapports personnalisés pour suivre en temps réel la performance de votre e-commerce, CRM ou gestion immobilière."
                             }
-                        ],
-                        "icon": "/shape/img3.png",
-                        "iconWidth": 78,
-                        "iconHeight": 80,
-                        "iconAlt": "Icône Solutions Immobilier",
-                        "buttonLabel": "En Savoir Plus",
-                        "buttonLink": "/services#immobilier"
+                        ]
                     }
                 ]
             },
@@ -459,7 +461,7 @@
                 {
                     "id": "developpement-fullstack",
                     "title": "Développement Full-Stack",
-                    "generalDescription": "Je propose un service complet de développement full-stack pour créer des applications web performantes, intuitives et parfaitement adaptées aux besoins spécifiques de votre entreprise. En combinant mes compétences en front-end avec React.js et Next.js, je conçois des interfaces utilisateur modernes et réactives qui offrent une expérience utilisateur exceptionnelle. Du côté back-end, mon expertise en diverses technologies serveur me permet de construire des systèmes robustes, sécurisés et évolutifs, assurant ainsi la fiabilité et la performance de vos applications.\n\nJe gère l'ensemble du processus de développement, de la conception initiale à la mise en production, en passant par les tests unitaires rigoureux pour garantir la qualité du code. Mon approche personnalisée me permet de comprendre en profondeur vos objectifs commerciaux, ce qui me permet de développer des solutions sur mesure qui non seulement répondent à vos attentes, mais les dépassent. De plus, je reste constamment à jour avec les dernières tendances technologiques pour intégrer des fonctionnalités innovantes qui donneront à votre entreprise un avantage concurrentiel significatif.",
+                    "generalDescription": "Je propose un service complet de développement full-stack pour créer des applications web performantes, intuitives et parfaitement adaptées aux besoins spécifiques de votre entreprise. En combinant mes compétences en front-end avec React.js et Next.js, je conçois des interfaces utilisateur modernes et réactives qui offrent une expérience utilisateur exceptionnelle. Du côté back-end, mon expertise en diverses technologies serveur me permet de construire des systèmes robustes, sécurisés et évolutifs, assurant ainsi la fiabilité et la performance de vos applications.",
                     "detailedDescription": [
                         {
                             "title": "Création d'Applications Web Personnalisées",
@@ -467,241 +469,188 @@
                         },
                         {
                             "title": "Maîtrise des Technologies Modernes",
-                            "description": "J'utilise les technologies les plus récentes comme React.js, Next.js et AWS pour construire des solutions robustes et évolutives. Cette expertise me permet de créer des applications performantes qui peuvent évoluer avec votre entreprise, tout en garantissant une maintenance simplifiée et une longue durée de vie du produit. L'utilisation de ces technologies modernes assure également une meilleure sécurité et une expérience utilisateur améliorée."
+                            "description": "J'utilise les technologies les plus récentes comme React.js, Next.js et AWS pour construire des solutions robustes et évolutives. Cette expertise me permet de créer des applications performantes qui peuvent évoluer avec votre entreprise, tout en garantissant une maintenance simplifiée et une longue durée de vie du produit."
                         },
                         {
                             "title": "Tests Unitaires Rigoureux",
-                            "description": "La qualité du code est une priorité absolue. J'implémente des tests unitaires rigoureux pour assurer la fiabilité et la stabilité de vos applications. Cela réduit les risques de bugs et de dysfonctionnements, garantissant une expérience utilisateur fluide et sans interruption. Les tests unitaires facilitent également la maintenance future et l'ajout de nouvelles fonctionnalités."
+                            "description": "La qualité du code est une priorité absolue. J'implémente des tests unitaires rigoureux pour assurer la fiabilité et la stabilité de vos applications, réduisant ainsi les risques de bugs et de dysfonctionnements."
                         },
                         {
                             "title": "Documentation et Formation",
-                            "description": "Je fournis une documentation complète et offre des sessions de formation pour vous et votre équipe. Cela vous permet de comprendre en profondeur les outils développés, facilitant leur adoption et assurant une utilisation efficace à long terme. La documentation inclut des guides d'utilisation, des manuels d'installation et des références techniques détaillées."
+                            "description": "Je fournis une documentation complète et offre des sessions de formation pour vous et votre équipe, incluant des guides d'utilisation, manuels d'installation et références techniques détaillées."
+                        }
+                    ]
+                },
+                {
+                    "id": "developpement-backend",
+                    "title": "Développement Back-end sur Mesure",
+                    "generalDescription": "Je conçois et développe des back-ends robustes, sécurisés et adaptés à vos besoins spécifiques. Que ce soit via une architecture microservices pour une scalabilité optimale ou un projet monolithique pour plus de simplicité, je propose des solutions sur mesure qui répondent aux défis uniques de votre entreprise.",
+                    "detailedDescription": [
+                        {
+                            "title": "Création d'API et Services Microservices",
+                            "description": "Je développe des architectures basées sur des microservices, permettant à chaque service de fonctionner de manière indépendante. Cette approche vous offre une flexibilité maximale et une scalabilité efficace, avec la possibilité de déployer et de mettre à jour chaque service indépendamment. Parfait pour des projets complexes nécessitant une croissance rapide et continue."
+                        },
+                        {
+                            "title": "Projets Monolithiques Simples et Efficaces",
+                            "description": "Pour les projets nécessitant une approche plus simple, je crée des solutions monolithiques intégrées. Cette architecture est idéale pour des projets de taille moyenne à petite, où la rapidité de déploiement et une maintenance centralisée sont des priorités. Je garantis des performances élevées tout en maintenant une structure solide et facile à gérer."
+                        },
+                        {
+                            "title": "Gestion de Bases de Données et Sécurité",
+                            "description": "Je mets en place des bases de données performantes et sécurisées, qu'elles soient relationnelles (PostgreSQL, MySQL) ou NoSQL (MongoDB, DynamoDB). La gestion des données est optimisée pour assurer la sécurité et l'intégrité des informations."
+                        },
+                        {
+                            "title": "Scalabilité et Automatisation",
+                            "description": "Que vous choisissiez une architecture microservices ou monolithique, mes solutions sont conçues pour évoluer avec votre entreprise. J'intègre des pipelines CI/CD automatisés et des outils de surveillance pour assurer une gestion continue et fluide."
+                        },
+                        {
+                            "title": "Intégration de Services Externes",
+                            "description": "J'intègre des services externes (paiement, services cloud, systèmes tiers) de manière transparente, garantissant une interopérabilité complète avec votre infrastructure actuelle."
                         }
                     ]
                 },
                 {
                     "id": "solutions-ecommerce",
                     "title": "Solutions E-commerce Personnalisées",
-                    "generalDescription": "Boostez vos ventes en ligne avec une boutique e-commerce performante, sécurisée et parfaitement adaptée à votre marque. Spécialiste en Shopify, Strapi, Stripe et Lemon, je crée des plateformes de commerce en ligne qui combinent une esthétique attrayante, une expérience utilisateur fluide et des fonctionnalités avancées pour maximiser votre taux de conversion. Je comprends que chaque entreprise est unique, c'est pourquoi je propose des solutions sur mesure qui reflètent votre identité et répondent aux besoins spécifiques de votre clientèle cible.\n\nDe la conception du design à l'intégration de systèmes de paiement sécurisés, en passant par l'optimisation pour les moteurs de recherche, chaque aspect est soigneusement pensé pour propulser votre boutique en ligne au sommet du marché. Mon approche centrée sur le client garantit que votre plateforme e-commerce offre non seulement des fonctionnalités exceptionnelles, mais également une expérience d'achat mémorable qui fidélise vos clients et stimule la croissance de votre entreprise.",
+                    "generalDescription": "Boostez vos ventes en ligne avec une boutique e-commerce performante et sécurisée, adaptée à vos besoins. Que vous souhaitiez utiliser Shopify pour sa simplicité et sa rapidité de déploiement, ou créer une boutique sur mesure avec Next.js, Stripe et Lemon pour un système de parrainage avancé, je conçois des plateformes e-commerce qui maximisent votre taux de conversion.",
                     "detailedDescription": [
                         {
-                            "title": "Design Attrayant et Fonctionnel",
-                            "description": "Je conçois des boutiques en ligne avec une interface utilisateur intuitive et un design qui reflète fidèlement votre marque. L'objectif est d'engager vos visiteurs dès le premier clic, en offrant une navigation fluide qui facilite la découverte et l'achat de vos produits. Chaque élément du design est optimisé pour encourager les conversions et améliorer la satisfaction client."
+                            "title": "Boutiques Shopify Clés en Main",
+                            "description": "Je configure et personnalise des boutiques Shopify en fonction de vos besoins spécifiques. Shopify est idéal pour les entreprises qui souhaitent une solution rapide et efficace, avec une gestion intuitive des produits, des commandes et des paiements, ainsi que des fonctionnalités prêtes à l'emploi pour accélérer votre présence en ligne."
                         },
                         {
-                            "title": "Intégration de Solutions de Paiement Sécurisées",
-                            "description": "Je mets en place des systèmes de paiement fiables et sécurisés, notamment avec Stripe, pour faciliter les transactions et renforcer la confiance de vos clients. Qu'il s'agisse de cartes de crédit, de portefeuilles électroniques ou d'autres méthodes de paiement, je veille à ce que le processus soit simple, rapide et sécurisé, contribuant ainsi à réduire le taux d'abandon de panier."
+                            "title": "Boutiques Custom avec Next.js et Stripe",
+                            "description": "Je développe des boutiques e-commerce sur mesure avec Next.js, combinant une performance front-end exceptionnelle avec des systèmes de paiement sécurisés via Stripe. Cette solution est parfaite pour les entreprises souhaitant une flexibilité totale, un design personnalisé, et des fonctionnalités avancées comme le parrainage avec Lemon."
                         },
                         {
-                            "title": "Gestion Efficace des Stocks et Commandes",
-                            "description": "J'implémente des outils avancés pour gérer efficacement vos stocks, commandes et expéditions. Cela vous permet de suivre en temps réel vos opérations, d'optimiser la gestion des ressources et d'améliorer la satisfaction client grâce à une logistique sans faille. Les systèmes de notification et de reporting vous aident à prendre des décisions éclairées pour votre inventaire."
-                        }
-                    ]
-                },
-                {
-                    "id": "developpement-cms",
-                    "title": "Développement et Intégration de CMS",
-                    "generalDescription": "Gérez efficacement votre contenu en ligne grâce à des systèmes de gestion de contenu (CMS) personnalisés. Spécialisé en WordPress et Strapi, je crée des sites web flexibles, sécurisés et faciles à administrer, qui vous permettent de mettre à jour votre contenu sans nécessiter de compétences techniques approfondies. Que vous ayez besoin d'un site vitrine, d'un blog professionnel ou d'un portail d'information, je développe des solutions qui s'adaptent à vos besoins spécifiques.\n\nL'accent est mis sur la convivialité, la performance et la sécurité, afin que vous puissiez vous concentrer sur la création de contenu de qualité pour votre audience. Je veille également à ce que votre site soit optimisé pour le référencement, améliorant ainsi votre visibilité en ligne et attirant un trafic qualifié vers votre plateforme.",
-                    "detailedDescription": [
-                        {
-                            "title": "Personnalisation de Thèmes",
-                            "description": "Je personnalise les thèmes existants ou en crée de nouveaux pour répondre aux besoins spécifiques de votre entreprise, tout en assurant une interface utilisateur intuitive. Cette personnalisation garantit que votre site est unique et aligné sur votre image de marque, offrant ainsi une expérience mémorable à vos visiteurs."
-                        },
-                        {
-                            "title": "Sécurité et Performance Optimales",
-                            "description": "Je mets en place des mesures de sécurité avancées, telles que des pare-feu, des certificats SSL et des systèmes de sauvegarde automatisés, pour protéger votre site contre les menaces potentielles. De plus, j'optimise les performances en améliorant les temps de chargement et en assurant une navigation fluide, ce qui est essentiel pour retenir les visiteurs et améliorer votre classement SEO."
-                        },
-                        {
-                            "title": "Formation à la Gestion du CMS",
-                            "description": "Je vous offre une formation personnalisée pour que vous puissiez gérer et mettre à jour votre contenu en toute autonomie. Les sessions de formation sont adaptées à votre niveau de compétence et incluent des guides pratiques, vous permettant de tirer le meilleur parti de votre CMS sans dépendre constamment d'un développeur."
-                        },
-                        {
-                            "title": "Intégration de Fonctionnalités Avancées",
-                            "description": "J'ajoute des fonctionnalités sur mesure telles que des blogs, des forums, des galeries photo ou des portails d'information pour enrichir votre site. Ces ajouts augmentent l'engagement des visiteurs et offrent plus de valeur à votre audience, tout en différenciant votre site de la concurrence."
+                            "title": "Systèmes de Parrainage avec Lemon",
+                            "description": "Grâce à l'intégration de Lemon, je mets en place des systèmes de parrainage complets qui permettent à vos clients de bénéficier de réductions ou d'offres exclusives. Ce système incite à la fidélisation et à l'engagement client, tout en augmentant votre visibilité grâce à des recommandations personnelles."
                         }
                     ]
                 },
                 {
                     "id": "architecture-cloud",
                     "title": "Architecture Cloud et Déploiement",
-                    "generalDescription": "Adoptez le cloud pour bénéficier de flexibilité, de scalabilité et de réduction des coûts d'infrastructure. Spécialisé en AWS, je conçois des architectures cloud sécurisées et performantes pour vos applications, vous aidant à migrer vos systèmes existants ou à développer de nouvelles applications cloud-native. Je veille à ce que votre infrastructure cloud soit optimisée pour vos besoins actuels tout en étant prête à évoluer avec votre entreprise.\n\nDe plus, j'assure le déploiement efficace de vos applications avec des processus automatisés, ce qui facilite les mises à jour et la maintenance. Mon expertise garantit que vous tirez le meilleur parti des technologies cloud pour renforcer votre position sur le marché, en améliorant la disponibilité, la performance et la sécurité de vos services en ligne.",
+                    "generalDescription": "Adoptez le cloud pour bénéficier de flexibilité, de scalabilité et de réduction des coûts d'infrastructure. Spécialisé en AWS, et avec une expertise dans la migration de bases de données vers des solutions cloud comme Supabase, Neon, Planetscale, et DynamoDB, je conçois des architectures cloud sécurisées et performantes pour vos applications.",
                     "detailedDescription": [
                         {
                             "title": "Migration vers le Cloud",
-                            "description": "Je vous assiste dans la migration de vos applications existantes vers le cloud, ce qui permet de réduire les coûts d'infrastructure et d'améliorer la scalabilité. Cette transition est effectuée en minimisant les interruptions de service et en assurant la continuité de vos opérations, tout en optimisant les ressources pour une performance maximale."
+                            "description": "Je vous assiste dans la migration de vos applications et bases de données vers le cloud, que ce soit vers des services AWS ou des solutions spécialisées comme Supabase, Neon, Planetscale, ou DynamoDB. Cette migration vous permet de réduire les coûts d'infrastructure, d'améliorer la scalabilité, et de garantir une gestion plus efficace de vos données."
                         },
                         {
                             "title": "Conception d'Architectures Cloud Natives",
-                            "description": "Je développe des applications cloud-native en utilisant les services AWS pour une performance et une fiabilité optimales. Cette approche garantit que vos applications sont conçues pour tirer pleinement parti des avantages du cloud, tels que l'auto-scalabilité, la tolérance aux pannes et la distribution mondiale."
+                            "description": "Je développe des applications cloud-native en utilisant AWS et d'autres services cloud pour garantir des performances et une fiabilité optimales, adaptées aux besoins spécifiques de votre entreprise."
                         },
                         {
                             "title": "Automatisation du Déploiement",
-                            "description": "Je mets en place des processus de déploiement automatisés en utilisant des outils comme AWS CodePipeline et CodeDeploy. Cela facilite les mises à jour, réduit les erreurs humaines et accélère le temps de mise sur le marché, tout en assurant une intégration continue et un déploiement continu (CI/CD) efficaces."
+                            "description": "Je mets en place des processus de déploiement automatisés avec CI/CD, vous permettant de bénéficier de mises à jour rapides, fiables et sans interruption de service."
                         },
                         {
                             "title": "Sécurité et Conformité",
-                            "description": "J'implémente des protocoles de sécurité robustes, incluant le chiffrement des données, la gestion des identités et des accès (IAM) et la surveillance en temps réel. Je veille également à ce que votre infrastructure cloud soit conforme aux réglementations en vigueur, telles que le RGPD, pour protéger vos données sensibles et renforcer la confiance de vos clients."
+                            "description": "J'implémente des protocoles de sécurité robustes et m'assure que votre infrastructure cloud est conforme aux normes telles que le RGPD, garantissant la protection de vos données sensibles et la sécurité de vos applications."
                         }
                     ]
                 },
                 {
                     "id": "design-integration",
                     "title": "Design UI/UX et Intégration",
-                    "generalDescription": "Créez une expérience utilisateur exceptionnelle avec des designs soignés et une intégration précise. De la conception de maquettes à l'intégration finale, je vous accompagne à chaque étape pour assurer que votre application ou site web est non seulement esthétiquement plaisant, mais également intuitif et facile à utiliser. Je collabore étroitement avec vous pour comprendre votre vision et vos objectifs, puis je conçois des interfaces qui reflètent votre marque et séduisent votre public cible.\n\nL'intégration des maquettes est réalisée avec une attention méticuleuse aux détails, garantissant que le produit final correspond exactement au design prévu. Mon approche centrée sur l'utilisateur vise à augmenter l'engagement et la satisfaction de vos clients, ce qui peut conduire à une meilleure rétention et à une augmentation des conversions.",
+                    "generalDescription": "Créez une expérience utilisateur exceptionnelle avec des designs soignés et une intégration précise. De la conception de maquettes à l'intégration finale, je vous accompagne pour assurer que votre application ou site web soit non seulement esthétiquement plaisant, mais également intuitif et facile à utiliser.",
                     "detailedDescription": [
                         {
                             "title": "Conception de Maquettes Personnalisées",
-                            "description": "Je crée des maquettes qui reflètent votre vision et les besoins de vos utilisateurs, en mettant l'accent sur l'ergonomie et l'esthétique. Chaque élément est conçu pour améliorer l'expérience utilisateur et encourager l'engagement, tout en respectant les normes et tendances actuelles du design."
+                            "description": "Je conçois des maquettes ergonomiques qui reflètent votre vision et les besoins de vos utilisateurs, maximisant ainsi l'engagement et la satisfaction client."
                         },
                         {
                             "title": "Intégration Précise des Designs",
-                            "description": "J'assure une intégration fidèle des maquettes en code, garantissant la cohérence entre le design et le produit final. Cette précision évite les surprises lors du déploiement et assure que l'application fonctionne comme prévu, offrant une expérience utilisateur optimale."
+                            "description": "Je réalise une intégration fidèle des maquettes en code, assurant que le produit final reflète le design prévu tout en offrant une expérience utilisateur fluide."
                         },
                         {
                             "title": "Optimisation de l'Expérience Utilisateur",
-                            "description": "Je réalise des analyses approfondies pour améliorer l'expérience utilisateur, augmentant ainsi l'engagement et la satisfaction des visiteurs. Cela inclut des tests d'utilisabilité, l'analyse des parcours utilisateurs et l'ajustement des interfaces en fonction des retours, afin de créer une interaction fluide et intuitive."
+                            "description": "J'analyse et optimise les parcours utilisateurs pour garantir une navigation intuitive, augmentant ainsi la rétention et les conversions."
                         },
                         {
                             "title": "Adaptabilité Multi-Plateformes",
-                            "description": "Je m'assure que votre application ou site web est parfaitement fonctionnel sur tous les types d'appareils et de navigateurs. Cette compatibilité élargit votre portée et offre une expérience cohérente à tous les utilisateurs, qu'ils utilisent un smartphone, une tablette ou un ordinateur de bureau."
+                            "description": "Je m'assure que votre application ou site web fonctionne parfaitement sur tous les appareils et navigateurs, offrant une expérience cohérente à tous vos utilisateurs."
                         }
                     ]
                 },
                 {
                     "id": "maintenance-support",
                     "title": "Maintenance et Support Technique",
-                    "generalDescription": "Assurez la longévité et la performance de vos applications avec des services de maintenance proactive. Je propose des solutions de TMA (Tierce Maintenance Applicative) et TME (Tierce Maintenance Exploitation) pour maintenir vos systèmes en état optimal. Mon approche proactive comprend la surveillance continue des performances, la correction rapide des bugs et l'application régulière de mises à jour de sécurité.\n\nJe travaille en étroite collaboration avec vous pour comprendre les besoins évolutifs de votre entreprise, en adaptant les services de maintenance pour soutenir votre croissance. Avec un support technique réactif, vous pouvez vous concentrer sur votre cœur de métier en toute tranquillité, sachant que vos applications sont entre de bonnes mains et fonctionnent sans interruption.",
+                    "generalDescription": "Assurez la longévité et la performance de vos applications avec des services de maintenance proactive. Je propose des solutions de TMA et TME, incluant l'intégration de CI/CD et Sentry pour une surveillance continue et une gestion efficace des erreurs.",
                     "detailedDescription": [
                         {
-                            "title": "Surveillance des Performances",
-                            "description": "Je surveille en continu les performances de vos applications pour détecter et résoudre les problèmes avant qu'ils n'affectent vos utilisateurs. Cette approche proactive garantit une disponibilité maximale et une expérience utilisateur de haute qualité, en évitant les temps d'arrêt coûteux."
+                            "title": "Surveillance des Performances et des Erreurs",
+                            "description": "Je surveille les performances de vos applications en temps réel et j'intègre Sentry pour détecter les erreurs, permettant de résoudre les problèmes avant qu'ils n'affectent vos utilisateurs et d'améliorer la stabilité globale de vos systèmes."
                         },
                         {
-                            "title": "Mises à Jour Régulières",
-                            "description": "J'applique les mises à jour de sécurité et les améliorations fonctionnelles pour garder vos systèmes à jour. Cela inclut l'installation des derniers correctifs logiciels, la mise à niveau des frameworks et l'ajout de nouvelles fonctionnalités pour répondre aux besoins changeants de votre entreprise."
+                            "title": "Mises à Jour Régulières et Déploiement Automatisé",
+                            "description": "Grâce à l'intégration de CI/CD, j'assure des mises à jour de sécurité, des correctifs de bugs, et des nouvelles fonctionnalités déployées rapidement et efficacement, tout en minimisant les interruptions de service."
                         },
                         {
                             "title": "Support Technique Réactif",
-                            "description": "Je fournis une assistance rapide pour résoudre tout problème technique, minimisant ainsi les interruptions de service. Vous avez l'assurance que toute difficulté sera traitée avec efficacité et professionnalisme, renforçant la confiance de vos clients dans vos services."
+                            "description": "Je fournis une assistance rapide pour résoudre tout problème technique, assurant ainsi un service continu et sans interruption, avec des correctifs mis en place immédiatement via les pipelines CI/CD."
                         },
                         {
-                            "title": "Rapports de Maintenance",
-                            "description": "Je vous fournis des rapports détaillés sur les activités de maintenance et les performances de vos systèmes. Ces rapports vous permettent de suivre l'état de vos applications, d'identifier les tendances et de planifier les améliorations futures en fonction de données concrètes."
+                            "title": "Rapports de Maintenance et Erreurs",
+                            "description": "Je vous fournis des rapports détaillés sur l'état, la performance, et les erreurs détectées par Sentry, vous aidant à anticiper les améliorations nécessaires et à mieux comprendre les problématiques techniques."
                         }
                     ]
                 },
                 {
                     "id": "developpement-crm",
                     "title": "Développement de CRM Personnalisés",
-                    "generalDescription": "Optimisez la gestion de vos relations clients avec des CRM sur mesure. Je développe des solutions adaptées à vos processus pour améliorer la satisfaction client, augmenter vos ventes et rationaliser vos opérations. En comprenant en profondeur vos besoins spécifiques, je crée un CRM qui centralise toutes vos interactions client, offrant une vue à 360 degrés qui facilite la prise de décision.\n\nL'automatisation des tâches répétitives et l'intégration avec vos systèmes existants améliorent l'efficacité de vos équipes. Avec une interface intuitive et des fonctionnalités personnalisées, votre nouveau CRM deviendra un outil indispensable pour propulser votre entreprise vers de nouveaux sommets, en renforçant la fidélité des clients et en stimulant la croissance.",
+                    "generalDescription": "Optimisez la gestion de vos relations clients et améliorez vos processus internes avec des CRM sur mesure. Je développe des solutions complètes qui incluent des dashboards interactifs, des KPI centralisés, et une intégration fluide avec vos outils existants pour maximiser la performance de votre entreprise.",
                     "detailedDescription": [
                         {
-                            "title": "Analyse des Besoins",
-                            "description": "Je réalise une évaluation approfondie de vos processus pour concevoir un CRM qui répond parfaitement à vos exigences. Cette étape garantit que la solution développée sera en adéquation avec vos objectifs commerciaux et opérationnels, en tenant compte des spécificités de votre secteur d'activité."
+                            "title": "Analyse des Besoins et Personnalisation",
+                            "description": "Je réalise une analyse approfondie de vos processus métier afin de concevoir un CRM sur mesure qui centralise toutes vos données et permet un suivi efficace. Le CRM est entièrement personnalisé pour répondre à vos besoins spécifiques et s'adapte à vos flux de travail, garantissant une adoption rapide par vos équipes."
                         },
                         {
-                            "title": "Intégration avec les Systèmes Existants",
-                            "description": "J'assure une compatibilité et une interopérabilité totales avec vos outils actuels, tels que vos systèmes ERP, vos plateformes de marketing ou vos applications de support client, pour une efficacité maximale. Cela permet une transition en douceur et une adoption rapide par vos équipes, sans perturber vos opérations."
+                            "title": "Dashboards Interactifs et KPI Pertinents",
+                            "description": "Je crée des dashboards interactifs qui offrent une vision claire et en temps réel des indicateurs de performance clés (KPI). Ces dashboards permettent à vos équipes de suivre facilement les objectifs commerciaux, la performance client et d’autres métriques importantes, tout en prenant des décisions éclairées grâce à des données consolidées."
+                        },
+                        {
+                            "title": "Intégration avec les Systèmes et Outils Externes",
+                            "description": "Le CRM est conçu pour s'intégrer parfaitement à vos systèmes existants tels que vos ERP, outils de marketing, plateformes de support client, et autres applications externes. Cette intégration assure une synchronisation fluide des données et une gestion centralisée de toutes vos opérations."
+                        },
+                        {
+                            "title": "Graphiques Interactifs et Rapports Personnalisés",
+                            "description": "Je développe des graphiques interactifs qui permettent de visualiser vos données de manière claire et intuitive. En complément, je fournis des rapports complets et personnalisés qui facilitent le suivi des performances et la planification stratégique, vous aidant à prendre des décisions basées sur des données concrètes."
                         },
                         {
                             "title": "Formation et Documentation",
-                            "description": "Je forme vos équipes à l'utilisation du nouveau CRM et fournis des documentations complètes, incluant des guides d'utilisateur et des tutoriels. Cette formation assure une maîtrise rapide de l'outil, maximisant ainsi son impact positif sur votre entreprise et favorisant une adoption généralisée."
+                            "description": "Je propose une formation complète à vos équipes pour garantir une utilisation optimale du CRM. La documentation inclut des guides utilisateurs et des tutoriels détaillés, permettant une adoption rapide et efficace de l'outil."
                         },
                         {
                             "title": "Évolution et Scalabilité",
-                            "description": "Je conçois un CRM évolutif qui peut grandir avec votre entreprise et s'adapter à de nouveaux besoins. Cette flexibilité garantit que votre investissement reste pertinent à long terme, en permettant l'ajout de nouvelles fonctionnalités et l'intégration de technologies émergentes."
+                            "description": "Le CRM est conçu pour évoluer avec votre entreprise, permettant l'ajout de nouvelles fonctionnalités et de modules supplémentaires en fonction de vos besoins futurs."
                         }
                     ]
                 },
                 {
-                    "id": "documentation-formation",
-                    "title": "Documentation et Formation",
-                    "generalDescription": "Maximisez l'efficacité de vos équipes avec des documentations claires et des formations adaptées. Je crée des guides détaillés et offre des sessions de formation pour assurer une adoption réussie de vos outils et applications. Une bonne documentation est essentielle pour la maintenance et l'évolution de vos systèmes, tandis que la formation garantit que vos collaborateurs sont à l'aise avec les nouvelles technologies.\n\nMon approche personnalisée tient compte des différents niveaux de compétence et des modes d'apprentissage, assurant ainsi que chaque membre de votre équipe peut contribuer efficacement au succès de vos projets technologiques. Je m'engage à fournir un support continu pour répondre aux questions et aider à résoudre les problèmes qui pourraient survenir après la formation.",
+                    "id": "solutions-immobilier",
+                    "title": "Solutions Digitales pour le Secteur Immobilier",
+                    "generalDescription": "Je propose des outils digitaux sur mesure pour le secteur immobilier, incluant la gestion de biens, le calcul de rentabilité en temps réel et des plateformes de location en ligne. Ces solutions sont conçues pour simplifier vos processus de gestion et maximiser la rentabilité de vos opérations.",
                     "detailedDescription": [
                         {
-                            "title": "Documentations Techniques",
-                            "description": "Je rédige des documentations détaillées, y compris des guides d'utilisation, des manuels d'installation et des références API. Ces documents servent de référence pour vos équipes, facilitant la compréhension et l'utilisation des systèmes, et réduisant le temps nécessaire pour former de nouveaux employés."
+                            "title": "Plateformes de Location en Ligne",
+                            "description": "Je développe des plateformes de location en ligne (Airbnb, Booking, etc.) qui facilitent la gestion de vos biens, avec des fonctionnalités avancées telles que la réservation en temps réel, le suivi des paiements et le calcul automatique de rentabilité."
                         },
                         {
-                            "title": "Formation Personnalisée",
-                            "description": "Je propose des sessions de formation adaptées à différents niveaux de compétence, qu'il s'agisse de formations de base pour les débutants ou de sessions avancées pour les utilisateurs expérimentés. Cette approche assure que chaque membre de votre équipe peut utiliser efficacement les technologies mises en place, augmentant ainsi la productivité globale."
+                            "title": "Outils de Gestion de Biens Immobiliers",
+                            "description": "Je conçois des outils sur mesure pour la gestion de votre portefeuille immobilier. Cela inclut la gestion des locataires, des contrats, des paiements et des rapports financiers, le tout centralisé dans une interface intuitive."
                         },
                         {
-                            "title": "Supports de Formation",
-                            "description": "Je fournis des supports de formation tels que des présentations, des vidéos explicatives et des tutoriels interactifs. Ces ressources sont utiles pour la formation continue et peuvent être réutilisées pour l'intégration de nouveaux employés, assurant une cohérence dans l'apprentissage."
+                            "title": "Calcul de Rentabilité en Temps Réel",
+                            "description": "Je mets en place des systèmes qui vous permettent de suivre la rentabilité de vos biens immobiliers en temps réel, avec des analyses détaillées et des projections futures basées sur vos données."
                         },
                         {
-                            "title": "Assistance Post-Formation",
-                            "description": "Je reste disponible pour répondre aux questions et aider à résoudre les problèmes après la formation. Ce support continu assure une transition en douceur et une utilisation optimale des outils, renforçant la confiance de vos équipes dans les nouvelles technologies."
-                        }
-                    ]
-                },
-                {
-                    "id": "marketing-email",
-                    "title": "Marketing par E-mail et Automatisation",
-                    "generalDescription": "Atteignez et engagez vos clients avec des campagnes d'e-mail marketing efficaces. J'utilise des outils tels que Klaviyo, Brevo et React Mailer pour concevoir, automatiser et optimiser vos communications, augmentant ainsi l'engagement client et stimulant les ventes. En combinant des designs attrayants avec des stratégies de segmentation avancées, je crée des campagnes personnalisées qui résonnent avec votre audience cible.\n\nL'automatisation des tâches répétitives vous permet de gagner du temps et d'assurer une communication cohérente. De plus, l'analyse des performances vous fournit des insights précieux pour affiner continuellement votre approche marketing, maximiser le retour sur investissement et renforcer la fidélité de votre clientèle.",
-                    "detailedDescription": [
-                        {
-                            "title": "Création de Campagnes Personnalisées",
-                            "description": "Je conçois des e-mails attrayants et pertinents pour votre audience cible, en utilisant des designs professionnels et un contenu engageant. Cela aide à augmenter les taux d'ouverture et de clics, maximisant l'efficacité de vos campagnes et renforçant la notoriété de votre marque."
+                            "title": "Intégration avec des Services Externes",
+                            "description": "J'intègre vos solutions immobilières avec des services externes comme les systèmes bancaires, les plateformes de gestion locative, et les outils de comptabilité pour centraliser et automatiser vos processus de gestion."
                         },
                         {
-                            "title": "Automatisation des Tâches",
-                            "description": "Je configure des tâches automatisées avec des crons pour optimiser vos processus marketing. Cela inclut l'envoi automatique d'e-mails de bienvenue, de rappels, de promotions ou de suivis post-achat, assurant une communication opportune et pertinente avec vos clients à chaque étape du cycle de vente."
-                        },
-                        {
-                            "title": "Analyse des Performances",
-                            "description": "Je surveille et analyse les performances des campagnes à l'aide d'indicateurs clés tels que les taux d'ouverture, de clics et de conversion. Les rapports détaillés vous permettent de comprendre ce qui fonctionne et d'identifier les domaines à améliorer, afin d'optimiser vos stratégies marketing."
-                        },
-                        {
-                            "title": "Segmentation de l'Audience",
-                            "description": "Je gère et segmente vos listes de contacts en fonction de divers critères tels que le comportement d'achat, les intérêts ou la localisation. En ciblant précisément vos messages, vous augmentez leur pertinence, améliorez l'engagement et favorisez une relation plus personnelle avec vos clients."
-                        }
-                    ]
-                },
-                {
-                    "id": "developpement-outils-dashboard",
-                    "title": "Développement d'Outils et de Tableaux de Bord",
-                    "generalDescription": "Prenez des décisions éclairées avec des outils et des tableaux de bord personnalisés. Je développe des solutions sur mesure pour visualiser et analyser vos données en temps réel, vous offrant une vision claire et exploitable de vos opérations commerciales. En intégrant vos différentes sources de données, je crée des tableaux de bord interactifs qui vous permettent de suivre les indicateurs clés de performance (KPI) importants pour votre entreprise.\n\nCes outils sont conçus pour être intuitifs et faciles à utiliser, aidant vos équipes à prendre des décisions rapides et informées. Que ce soit pour le suivi des ventes, la gestion des stocks ou l'analyse marketing, mes solutions vous donnent un avantage concurrentiel significatif en transformant les données brutes en insights actionnables.",
-                    "detailedDescription": [
-                        {
-                            "title": "Visualisation de Données",
-                            "description": "Je crée des graphiques et des tableaux de bord interactifs pour interpréter facilement vos données. Ces visualisations facilitent la compréhension des tendances et des performances de votre entreprise, permettant une analyse approfondie sans nécessiter de compétences techniques avancées."
-                        },
-                        {
-                            "title": "Intégration de Sources de Données",
-                            "description": "Je connecte diverses sources de données, telles que des bases de données internes, des APIs externes ou des feuilles de calcul, pour une vue unifiée et cohérente. Cette intégration élimine les silos d'information et assure que tous les départements travaillent avec les mêmes données à jour."
-                        },
-                        {
-                            "title": "Personnalisation Avancée",
-                            "description": "Je développe des fonctionnalités spécifiques pour répondre à vos besoins analytiques uniques. Cela peut inclure des alertes personnalisées, des simulations ou des projections, vous aidant à anticiper les défis et à saisir les opportunités avec précision."
-                        },
-                        {
-                            "title": "Mises à Jour en Temps Réel",
-                            "description": "J'implémente des systèmes qui reflètent les données en temps réel, vous permettant de réagir immédiatement aux changements du marché ou aux performances de l'entreprise. Cette réactivité est cruciale pour prendre des décisions stratégiques efficaces et maintenir votre avantage concurrentiel."
-                        }
-                    ]
-                },
-                {
-                    "id": "refonte-audit",
-                    "title": "Refonte de Sites Web et Audits",
-                    "generalDescription": "Modernisez votre présence en ligne avec une refonte de site web ou identifiez les points d'amélioration grâce à un audit complet. Je vous aide à améliorer l'esthétique, la fonctionnalité et la performance de votre site pour mieux répondre aux attentes de vos utilisateurs et aux exigences du marché actuel. Une refonte peut revitaliser votre image de marque, améliorer l'expérience utilisateur et augmenter votre visibilité en ligne.\n\nL'audit, quant à lui, fournit une analyse détaillée de l'état actuel de votre site, identifiant les forces, les faiblesses et les opportunités. Ensemble, nous élaborons une stratégie pour optimiser votre site web, renforçant ainsi votre position concurrentielle et stimulant la croissance de votre entreprise.",
-                    "detailedDescription": [
-                        {
-                            "title": "Analyse Complète du Site",
-                            "description": "Je réalise une évaluation des performances actuelles de votre site, incluant l'analyse de la vitesse, de la sécurité, du SEO et de l'expérience utilisateur. Cette analyse approfondie identifie les obstacles qui pourraient empêcher votre site d'atteindre son plein potentiel et propose des solutions ciblées."
-                        },
-                        {
-                            "title": "Design Modernisé",
-                            "description": "Je mets à jour l'esthétique de votre site pour refléter les tendances actuelles et votre image de marque. Un design moderne et attrayant attire plus de visiteurs, améliore la perception de votre entreprise et peut conduire à une augmentation des conversions et de la fidélisation client."
-                        },
-                        {
-                            "title": "Optimisation Technique",
-                            "description": "J'améliore la vitesse de chargement, la sécurité et la compatibilité mobile de votre site. Ces optimisations sont essentielles pour offrir une meilleure expérience aux utilisateurs, réduire le taux de rebond et améliorer votre classement dans les moteurs de recherche."
-                        },
-                        {
-                            "title": "Amélioration de l'Expérience Utilisateur",
-                            "description": "Je reconfigure la navigation et la structure du site pour une meilleure expérience utilisateur. Une navigation intuitive et une architecture de l'information claire retiennent les visiteurs plus longtemps et les encouragent à explorer davantage votre contenu, ce qui peut augmenter les opportunités de conversion."
+                            "title": "Dashboards et Rapports Financiers",
+                            "description": "Je crée des dashboards personnalisés pour suivre les performances de vos biens immobiliers. Vous recevrez des rapports détaillés sur les revenus locatifs, les dépenses, et les indicateurs clés de performance pour une gestion optimisée."
                         }
                     ]
                 }
