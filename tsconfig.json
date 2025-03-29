@@ -27,8 +27,9 @@
       ],
       "@translations/*": [
         "./translations/*"
-      ],
-    }
+      ]
+    },
+    "target": "ESNext"
   },
   "include": [
     "next-env.d.ts",
