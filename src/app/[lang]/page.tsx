@@ -33,7 +33,7 @@ export async function generateMetadata({ params: { lang } }: { params: { lang: L
             images: ['https://patrick.bartosik.fr/img/og-image.jpg'],
         },
         alternates: {
-            canonical: `https://patrick.bartosik.fr/${lang}`,
+            canonical: `https://patrick.bartosik.fr/`,
             languages: {
                 'fr': 'https://patrick.bartosik.fr/fr',
                 'en': 'https://patrick.bartosik.fr/en',

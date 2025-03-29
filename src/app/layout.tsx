@@ -49,7 +49,7 @@ export default function RootLayout({
   params: { lang: Locale };
 }>) {
   return (
-    <html lang={params.lang} className="dark">
+    <html lang='fr-FR' className="dark">
       <head>
         <link rel="canonical" href="https://patrick.bartosik.fr" />
       </head>
