@@ -1,81 +1,176 @@
-import React from 'react';
-import MaxWidthWrapper from './MaxWidthWrapper';
-import { Button } from '@/components/ui/button';
-import Link from 'next/link';
-import { Locale } from '@/i18nConfig';
-import { getDictionary } from '@/get-dictionary';
+"use client";
 
-type FooterProps = {
-    params: { lang: Locale };
-};
+import Link from "next/link";
+import { Github, Linkedin, Mail, Twitter } from "lucide-react";
 
-const Footer: React.FC<FooterProps> = async ({ params }) => {
-    const dict = await getDictionary(params.lang);
-    const isEnglish = params.lang === 'en';
+interface FooterProps {
+    translations: {
+        description: string;
+        navigation: string;
+        navHome: string;
+        navProjects: string;
+        navServices: string;
+        navContact: string;
+        social: string;
+        legal: string;
+        legalTerms: string;
+        legalPrivacy: string;
+        copyright: string;
+    };
+    socialLinks: {
+        linkedin?: string;
+        github?: string;
+        twitter?: string;
+        email?: string;
+    };
+}
 
-    const getLocalizedHref = (path: string) => isEnglish ? `/${params.lang}${path}` : path;
-
+export const Footer = ({ translations, socialLinks }: FooterProps) => {
     return (
-        <MaxWidthWrapper className='footer-wrapper my-12'>
-            <footer id='footer' className='footer flex flex-col justify-between'>
-                <div className='footer__top flex flex-col lg:flex-row items-start justify-center  w-full gap-y-8 '>
-                    <div className='footer__column footer__column--left flex flex-col gap-y-5 w-full'>
-                        <h4 className='footer__intro'>{dict.TemplateFooter.footer.readyToAccelerate}</h4>
-                        <p className='footer__call-to-action' style={{ maxWidth: 'fit-content' }}>
-                            {dict.TemplateFooter.footer.exploreServices}
+        <footer className="relative w-full bg-black border-t border-white/10">
+            <div className="w-full px-20 py-16">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                    {/* Brand */}
+                    <div className="space-y-6">
+                        <Link
+                            href="/"
+                            className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 text-white font-bold text-lg hover:scale-105 transition-transform duration-300"
+                        >
+                            PB
+                        </Link>
+                        <p className="text-white/60 text-sm leading-relaxed max-w-[280px]">
+                            {translations.description}
                         </p>
-                        <Link href={`/${params.lang}/contact`}>
-                            <Button className='rounded-full ' variant={'other'} size={'lg'}>{dict.TemplateFooter.footer.requestQuote}</Button>
-                        </Link>
                     </div>
 
-                    <div className='footer__column footer__column--right flex flex-col md:flex-row items-start justify-between w-full gap-y-8'>
-                        <div className='footer__contacts flex flex-col gap-5'>
-                            <h3 className='footer__heading'>{dict.TemplateFooter.footer.contactUs}</h3>
-                            <div className='footer__social-links flex flex-col gap-2'>
-                                <li><a href="mailto:contact@bartosik.fr" className='footer__email'>{dict.TemplateFooter.footer.contactItems.email}</a></li>
-                                <li><a href="https://www.instagram.com/empereur.patrick/" className='footer__link' rel="noopener noreferrer" target="_blank">Instagram</a></li>
-                                <li><a href="https://github.com/GrandEmpereur" className='footer__link' rel="noopener noreferrer" target="_blank">GitHub</a></li>
-                                <li><a href="https://www.linkedin.com/in/patrick-bartosik/" className='footer__link' rel="noopener noreferrer" target="_blank">LinkedIn</a></li>
-                            </div>
-                        </div>
+                    {/* Navigation */}
+                    <div>
+                        <h4 className="text-white text-sm font-semibold mb-6 tracking-wide uppercase">
+                            {translations.navigation}
+                        </h4>
+                        <ul className="space-y-3">
+                            <li>
+                                <Link
+                                    href="/"
+                                    className="text-white/60 hover:text-white text-sm transition-colors duration-300"
+                                >
+                                    {translations.navHome}
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    href="/projects"
+                                    className="text-white/60 hover:text-white text-sm transition-colors duration-300"
+                                >
+                                    {translations.navProjects}
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    href="/services"
+                                    className="text-white/60 hover:text-white text-sm transition-colors duration-300"
+                                >
+                                    {translations.navServices}
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    href="/contact"
+                                    className="text-white/60 hover:text-white text-sm transition-colors duration-300"
+                                >
+                                    {translations.navContact}
+                                </Link>
+                            </li>
+                        </ul>
+                    </div>
 
-                        <div className='footer__quick-links flex flex-col gap-5'>
-                            <h3 className='footer__heading'>{dict.TemplateFooter.footer.quickLinks}</h3>
-                            <div className='flex flex-col gap-2'>
-                                <li><Link href={getLocalizedHref('/')} className='footer__link'>{dict.TemplateFooter.footer.home}</Link></li>
-                                <li><Link href={getLocalizedHref('/about')} className='footer__link'>{dict.TemplateFooter.footer.about}</Link></li>
-                                <li><Link href={getLocalizedHref('/services')} className='footer__link'>{dict.TemplateFooter.footer.services}</Link></li>
-                                <li><Link href={getLocalizedHref('/contact')} className='footer__link'>{dict.TemplateFooter.footer.contact}</Link></li>
-                                <li><Link href="/sitemap.xml" className='footer__link'>{dict.TemplateFooter.footer.sitemap}</Link></li>
-                            </div>
+                    {/* Social */}
+                    <div>
+                        <h4 className="text-white text-sm font-semibold mb-6 tracking-wide uppercase">
+                            {translations.social}
+                        </h4>
+                        <div className="flex flex-wrap gap-3">
+                            {socialLinks.linkedin && (
+                                <a
+                                    href={socialLinks.linkedin}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-all duration-300"
+                                >
+                                    <Linkedin className="w-4 h-4 text-white" />
+                                </a>
+                            )}
+                            {socialLinks.github && (
+                                <a
+                                    href={socialLinks.github}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-all duration-300"
+                                >
+                                    <Github className="w-4 h-4 text-white" />
+                                </a>
+                            )}
+                            {socialLinks.twitter && (
+                                <a
+                                    href={socialLinks.twitter}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-all duration-300"
+                                >
+                                    <Twitter className="w-4 h-4 text-white" />
+                                </a>
+                            )}
+                            {socialLinks.email && (
+                                <a
+                                    href={`mailto:${socialLinks.email}`}
+                                    className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-all duration-300"
+                                >
+                                    <Mail className="w-4 h-4 text-white" />
+                                </a>
+                            )}
                         </div>
+                    </div>
+
+                    {/* Legal */}
+                    <div>
+                        <h4 className="text-white text-sm font-semibold mb-6 tracking-wide uppercase">
+                            {translations.legal}
+                        </h4>
+                        <ul className="space-y-3">
+                            <li>
+                                <Link
+                                    href="/terms"
+                                    className="text-white/60 hover:text-white text-sm transition-colors duration-300"
+                                >
+                                    {translations.legalTerms}
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    href="/privacy"
+                                    className="text-white/60 hover:text-white text-sm transition-colors duration-300"
+                                >
+                                    {translations.legalPrivacy}
+                                </Link>
+                            </li>
+                        </ul>
                     </div>
                 </div>
 
-                <div className='footer__bottom flex flex-col items-center justify-center mt-5 lg:mt-0 lg:justify-between w-full '>
-                    <div className='deco'></div>
-                    <div className='footer__legal-links flex gap-x-5 flex-wrap items-center justify-center'>
-                        <Link href={getLocalizedHref('/terms')}>
-                            <Button variant={'link'} className='footer__legal-button'>
-                                {dict.TemplateFooter.footer.termsOfUse}
-                            </Button>
-                        </Link>
-                        <Link href={getLocalizedHref('/privacy')}>
-                            <Button variant={'link'} className='footer__legal-button'>
-                                {dict.TemplateFooter.footer.privacyPolicy}
-                            </Button>
-                        </Link>
-                        <Link href={getLocalizedHref('/gtu')}>
-                            <Button variant={'link'} className='footer__legal-button'>
-                                {dict.TemplateFooter.footer.gtu}
-                            </Button>
-                        </Link>
+                {/* Bottom Bar */}
+                <div className="pt-8 border-t border-white/10">
+                    <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+                        <p className="text-white/40 text-sm">
+                            {translations.copyright}
+                        </p>
+                        <div className="flex items-center gap-2">
+                            <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                            <span className="text-white/40 text-sm">Available for projects</span>
+                        </div>
                     </div>
                 </div>
-            </footer>
-        </MaxWidthWrapper>
+            </div>
+        </footer>
     );
 };
 
-export default Footer;

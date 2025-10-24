@@ -1,57 +1,46 @@
-import { MetadataRoute } from 'next';
-import { projects } from '@/lib/data/portfolio';
+import type { MetadataRoute } from 'next';
+import { seoConfig } from '@/lib/seo-config';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://patrick.bartosik.fr';
-    const locales = ['fr', 'en'];
-    const defaultLocale = 'fr';
+    const { baseUrl, locales, defaultLocale } = seoConfig;
 
-    const staticRoutes = [
-        { route: '' },
-        { route: '/about' },
-        { route: '/contact' },
-        { route: '/portfolio' },
-        { route: '/services' },
-        { route: '/terms' },
-        { route: '/privacy' },
-        { route: '/gtu' },
-    ];
+    // Pages statiques
+    const staticPages = ['', '/projects'];
 
-    const sitemapEntries: MetadataRoute.Sitemap = [];
+    // Générer les URLs pour toutes les locales
+    const urls: MetadataRoute.Sitemap = [];
 
-    // Générer d'abord toutes les routes en français (sans préfixe)
-    staticRoutes.forEach(({ route }) => {
-        sitemapEntries.push({
-            url: `${baseUrl}${route}`,
-            changeFrequency: 'weekly',
-            priority: route === '' ? 1 : 0.8,
+    staticPages.forEach((page) => {
+        locales.forEach((locale) => {
+            const url = locale === defaultLocale
+                ? `${baseUrl}${page}`
+                : `${baseUrl}/${locale}${page}`;
+
+            // Créer les alternates pour les autres langues
+            const languages: Record<string, string> = {};
+            locales.forEach((lang) => {
+                const altUrl = lang === defaultLocale
+                    ? `${baseUrl}${page}`
+                    : `${baseUrl}/${lang}${page}`;
+                languages[lang] = altUrl;
+            });
+
+            urls.push({
+                url,
+                lastModified: new Date(),
+                changeFrequency: page === '' ? 'weekly' : 'monthly',
+                priority: page === '' ? 1.0 : 0.8,
+                alternates: {
+                    languages,
+                },
+            });
         });
     });
 
-    projects.forEach(project => {
-        sitemapEntries.push({
-            url: `${baseUrl}/portfolio${project.links.slug}`,
-            changeFrequency: 'monthly',
-            priority: 0.7,
-        });
-    });
+    // Dédupliquer les URLs (éviter les doublons pour la locale par défaut)
+    const uniqueUrls = urls.filter((url, index, self) =>
+        index === self.findIndex((u) => u.url === url.url)
+    );
 
-    // Ensuite, générer toutes les routes en anglais (avec préfixe '/en')
-    staticRoutes.forEach(({ route }) => {
-        sitemapEntries.push({
-            url: `${baseUrl}/en${route}`,
-            changeFrequency: 'weekly',
-            priority: route === '' ? 0.9 : 0.7,
-        });
-    });
-
-    projects.forEach(project => {
-        sitemapEntries.push({
-            url: `${baseUrl}/en/portfolio${project.links.slug}`,
-            changeFrequency: 'monthly',
-            priority: 0.6,
-        });
-    });
-
-    return sitemapEntries;
+    return uniqueUrls;
 }
