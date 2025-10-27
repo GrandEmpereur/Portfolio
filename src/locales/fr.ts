@@ -15,6 +15,7 @@ export default {
         'subtitle': 'Je transforme vos idées en applications web performantes et évolutives',
         'cta_primary': 'Voir mes réalisations',
         'cta_secondary': 'Discuter de votre projet',
+        'download_cv': 'Télécharger mon CV',
         'experience': 'ans d\'expérience',
         'projects': 'projets réalisés',
         'satisfaction': 'de satisfaction client',

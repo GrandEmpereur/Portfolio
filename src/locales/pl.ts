@@ -15,6 +15,7 @@ export default {
         'subtitle': 'Przekształcam Twoje pomysły w wydajne i skalowalne aplikacje webowe',
         'cta_primary': 'Zobacz moje prace',
         'cta_secondary': 'Omów swój projekt',
+        'download_cv': 'Pobierz CV',
         'experience': 'lat doświadczenia',
         'projects': 'zrealizowanych projektów',
         'satisfaction': 'zadowolenia klientów',

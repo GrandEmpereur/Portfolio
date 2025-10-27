@@ -104,6 +104,7 @@ export default async function Home({
           name={t('hero.name')}
           ctaPrimary={t('hero.cta_primary')}
           ctaSecondary={t('hero.cta_secondary')}
+          ctaTertiary={t('hero.download_cv')}
           altText={t('alt.hero')}
         />
 

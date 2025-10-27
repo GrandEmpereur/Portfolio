@@ -5,6 +5,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Image from "next/image";
 import SplitType from "split-type";
+import Link from "next/link";
 
 if (typeof window !== "undefined") {
     gsap.registerPlugin(ScrollTrigger);
@@ -15,6 +16,7 @@ interface HeroSectionProps {
     name: string;
     ctaPrimary: string;
     ctaSecondary: string;
+    ctaTertiary: string;
     altText: string;
 }
 
@@ -23,6 +25,7 @@ export const HeroSection = ({
     name,
     ctaPrimary,
     ctaSecondary,
+    ctaTertiary,
     altText,
 }: HeroSectionProps) => {
     const sectionRef = useRef<HTMLElement>(null);
@@ -172,7 +175,7 @@ export const HeroSection = ({
                             {/* CTAs - Alignés à droite (4 colonnes) */}
                             <div ref={ctasRef} className="lg:col-span-4 flex justify-start lg:justify-end">
                                 <div className="flex flex-col gap-5 lg:gap-6">
-                                    <a
+                                    <Link
                                         href="/projects"
                                         data-magnetic="true"
                                         className="group relative inline-flex items-center gap-3 text-white hover:text-white/90 transition-all duration-300"
@@ -193,11 +196,11 @@ export const HeroSection = ({
                                                 d="M17 8l4 4m0 0l-4 4m4-4H3"
                                             />
                                         </svg>
-                                    </a>
+                                    </Link>
 
                                     <div className="w-full h-px bg-white/10"></div>
 
-                                    <a
+                                    <Link
                                         href="/contact"
                                         data-magnetic="true"
                                         className="group relative inline-flex items-center gap-3 text-white/70 hover:text-white transition-all duration-300"
@@ -218,7 +221,33 @@ export const HeroSection = ({
                                                 d="M17 8l4 4m0 0l-4 4m4-4H3"
                                             />
                                         </svg>
-                                    </a>
+                                    </Link>
+
+                                    <div className="w-full h-px bg-white/10"></div>
+
+                                    <Link
+                                        href="/cv.pdf"
+                                        download
+                                        className="group relative inline-flex items-center gap-3 text-white/70 hover:text-white transition-all duration-300"
+                                    >
+                                        <span className="text-sm lg:text-base tracking-wide uppercase font-light">
+                                            {ctaTertiary}
+                                        </span>
+
+                                        <svg
+                                            className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth={2}
+                                                d="M17 8l4 4m0 0l-4 4m4-4H3"
+                                            />
+                                        </svg>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

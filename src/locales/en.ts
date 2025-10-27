@@ -15,6 +15,7 @@ export default {
         'subtitle': 'I transform your ideas into high-performance and scalable web applications',
         'cta_primary': 'View my work',
         'cta_secondary': 'Discuss your project',
+        'download_cv': 'Download CV',
         'experience': 'years of experience',
         'projects': 'completed projects',
         'satisfaction': 'client satisfaction',
