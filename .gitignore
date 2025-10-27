@@ -29,9 +29,17 @@ yarn-error.log*
 
 # local env files
 .env*.local
+.env
 
 # vercel
 .vercel
+
+# Curosor rules 
+.cursor
+
+# Claude 
+CLAUDE.md
+.claude
 
 # typescript
 *.tsbuildinfo

@@ -227,7 +227,8 @@ export const HeroSection = ({
 
                                     <Link
                                         href="/cv.pdf"
-                                        download
+                                        download="Patrick_Bartosik_CV.pdf"
+                                        target="_blank"
                                         className="group relative inline-flex items-center gap-3 text-white/70 hover:text-white transition-all duration-300"
                                     >
                                         <span className="text-sm lg:text-base tracking-wide uppercase font-light">
