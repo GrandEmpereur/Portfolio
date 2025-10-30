@@ -91,7 +91,7 @@ export const ContactSection = ({ translations }: ContactSectionProps) => {
         setIsSubmitting(true);
 
         try {
-            const response = await fetch('/api/send', {
+            const response = await fetch('/api/contact-simple', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -102,14 +102,14 @@ export const ContactSection = ({ translations }: ContactSectionProps) => {
             const data = await response.json();
 
             if (!response.ok) {
-                throw new Error(data.error || 'Failed to send message');
+                throw new Error(data.error || 'Erreur lors de l\'envoi du message');
             }
 
-            toast.success("Message sent successfully! I'll get back to you soon.");
+            toast.success(data.message || "Merci ! Votre message a été envoyé avec succès. Je vous répondrai sous 24-48h.");
             form.reset();
         } catch (error) {
             console.error('Form submission error:', error);
-            toast.error(error instanceof Error ? error.message : 'Failed to send message. Please try again.');
+            toast.error(error instanceof Error ? error.message : 'Erreur lors de l\'envoi. Veuillez réessayer.');
         } finally {
             setIsSubmitting(false);
         }

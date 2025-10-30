@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
-import { contactFormSchema, calculateLeadScore, categorizeLead, type ContactFormData } from '@/lib/contact-schema';
-import { ContactFormEmail } from '@/emails/ContactFormEmail';
-import { ContactFormConfirmation } from '@/emails/ContactFormConfirmation';
+import { simpleContactSchema, type SimpleContactData } from '@/lib/simple-contact-schema';
+import { SimpleContactConfirmation } from '@/emails/SimpleContactConfirmation';
+import { SimpleContactNotification } from '@/emails/SimpleContactNotification';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
         const ip = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'unknown';
         if (!checkRateLimit(ip)) {
             return NextResponse.json(
-                { error: 'Too many requests. Please try again later.' },
+                { error: 'Trop de requêtes. Veuillez réessayer plus tard.' },
                 { status: 429 }
             );
         }
@@ -46,58 +46,54 @@ export async function POST(request: NextRequest) {
         if (body.honeypot && body.honeypot !== '') {
             console.warn('Honeypot triggered:', ip);
             return NextResponse.json(
-                { success: true, message: 'Email sent successfully' },
+                { success: true, message: 'Message envoyé avec succès' },
                 { status: 200 }
             );
         }
 
         // Validation Zod
-        const validationResult = contactFormSchema.safeParse(body);
+        const validationResult = simpleContactSchema.safeParse(body);
 
         if (!validationResult.success) {
             return NextResponse.json(
                 {
-                    error: 'Validation failed',
+                    error: 'Validation échouée',
                     details: validationResult.error.format()
                 },
                 { status: 400 }
             );
         }
 
-        const data: ContactFormData = validationResult.data;
+        const data: SimpleContactData = validationResult.data;
 
-        // Lead scoring
-        const leadScore = calculateLeadScore(data);
-        const leadCategory = categorizeLead(leadScore);
-
-        console.log(`New contact from ${data.firstName} ${data.lastName}:`, {
+        console.log(`Nouveau message de contact simple de ${data.name}:`, {
             email: data.email,
-            company: data.companyName,
-            service: data.serviceType,
-            leadScore,
-            leadCategory,
+            messageLength: data.message.length,
         });
 
-        // Sujet de l'email
-        const subject = `🚀 [${leadCategory.toUpperCase()}] New ${data.serviceType} project from ${data.firstName} (${data.companyName})`;
+        const timestamp = new Date().toLocaleString('fr-FR', {
+            dateStyle: 'full',
+            timeStyle: 'short',
+        });
 
-        // 1. Email de notification à l'admin (avec lead score)
-        const { data: emailResult, error } = await resend.emails.send({
+        // 1. Email de notification à l'admin
+        const { error: adminError } = await resend.emails.send({
             from: process.env.RESEND_FROM_EMAIL || 'Patrick Bartosik <contact@bartosik.fr>',
             to: [process.env.RESEND_ADMIN_EMAIL || 'contact@bartosik.fr'],
-            subject,
-            react: ContactFormEmail({
-                ...data,
-                leadScore,
-                leadCategory,
+            subject: `📬 Nouveau message de ${data.name}`,
+            react: SimpleContactNotification({
+                name: data.name,
+                email: data.email,
+                message: data.message,
+                timestamp,
             }),
             replyTo: data.email,
         });
 
-        if (error) {
-            console.error('Resend error (admin):', error);
+        if (adminError) {
+            console.error('Erreur envoi email admin:', adminError);
             return NextResponse.json(
-                { error: 'Failed to send email' },
+                { error: 'Erreur lors de l\'envoi de l\'email' },
                 { status: 500 }
             );
         }
@@ -106,38 +102,31 @@ export async function POST(request: NextRequest) {
         const { error: clientError } = await resend.emails.send({
             from: process.env.RESEND_FROM_EMAIL || 'Patrick Bartosik <contact@bartosik.fr>',
             to: [data.email],
-            subject: '✅ Demande de projet bien reçue - Patrick Bartosik',
-            react: ContactFormConfirmation({
-                firstName: data.firstName,
-                lastName: data.lastName,
-                companyName: data.companyName,
-                serviceType: data.serviceType,
-                budgetMin: data.budgetMin,
-                budgetMax: data.budgetMax,
+            subject: '✅ Message bien reçu - Patrick Bartosik',
+            react: SimpleContactConfirmation({
+                name: data.name,
             }),
         });
 
         if (clientError) {
-            console.error('Resend error (client):', clientError);
+            console.error('Erreur envoi email client:', clientError);
             // On continue quand même car l'email admin est envoyé
         }
 
         return NextResponse.json(
             {
                 success: true,
-                message: 'Merci ! Votre message a été envoyé avec succès.',
-                emailId: emailResult?.id,
-                leadScore,
-                leadCategory,
+                message: 'Merci ! Votre message a été envoyé avec succès. Je vous répondrai sous 24-48h.',
             },
             { status: 200 }
         );
 
     } catch (error) {
-        console.error('API error:', error);
+        console.error('Erreur API contact-simple:', error);
         return NextResponse.json(
-            { error: 'Internal server error' },
+            { error: 'Erreur interne du serveur' },
             { status: 500 }
         );
     }
 }
+

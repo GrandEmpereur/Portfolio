@@ -15,7 +15,7 @@ export const seoConfig = {
     defaultLocale: 'fr',
     locales: ['en', 'fr', 'pl'],
     openGraph: {
-        image: '/images/og-image.jpg',
+        image: '/images/og-image.svg',
         imageWidth: 1200,
         imageHeight: 630,
     },
