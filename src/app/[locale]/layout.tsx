@@ -10,6 +10,10 @@ import { SmoothScroll } from "@/components/SmoothScroll";
 import { CustomCursor } from "@/components/CustomCursor";
 import { PageLoader } from "@/components/PageLoader";
 import { PageTransition } from "@/components/PageTransition";
+import { Analytics as VercelAnalytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Analytics as GoogleAnalytics } from '@/components/Analytics';
+import { GoogleTagManager } from '@next/third-parties/google'
 
 const anton = Anton({
   variable: "--font-anton",
@@ -109,6 +113,7 @@ export default async function RootLayout({
   const { locale } = await paramsPromise;
   return (
     <html lang={locale} className="dark">
+      <GoogleTagManager gtmId="GTM-5SZB3CZK" />
       <body
         className={`${anton.variable} ${inter.variable} antialiased dark:bg-black bg-black`}
       >
@@ -116,12 +121,18 @@ export default async function RootLayout({
           <PageLoader />
           <PageTransition />
           <CustomCursor />
+          <GoogleAnalytics />
           <SmoothScroll>
             <NavBar />
             {children}
             <Toaster />
+            <VercelAnalytics />
+            <SpeedInsights />
           </SmoothScroll>
         </Providers>
+        <noscript>
+          <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5SZB3CZK" height="0" width="0" style={{ display: 'none', visibility: 'hidden' }}></iframe>
+        </noscript>
       </body>
     </html>
   );

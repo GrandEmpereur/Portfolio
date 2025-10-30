@@ -113,3 +113,65 @@ export function getOrganizationSchema() {
     };
 }
 
+// ProfessionalService Schema for Freelance Services
+export function getProfessionalServiceSchema(locale: string) {
+    const descriptions = {
+        en: 'Professional freelance full stack development services specializing in React, Next.js, TypeScript, Node.js, and Shopify Plus. SaaS development, e-commerce solutions, and custom web applications.',
+        fr: 'Services professionnels de développement full stack freelance spécialisés en React, Next.js, TypeScript, Node.js et Shopify Plus. Développement SaaS, solutions e-commerce et applications web sur mesure.',
+        pl: 'Profesjonalne usługi freelance full stack developer specjalizujące się w React, Next.js, TypeScript, Node.js i Shopify Plus. Rozwój SaaS, rozwiązania e-commerce i niestandardowe aplikacje webowe.',
+    } as const;
+
+    return {
+        '@context': 'https://schema.org',
+        '@type': 'ProfessionalService',
+        name: 'Patrick Bartosik - Full Stack Development Services',
+        url: seoConfig.baseUrl,
+        description: descriptions[locale as keyof typeof descriptions] || descriptions.en,
+        provider: {
+            '@type': 'Person',
+            name: seoConfig.author.name,
+            jobTitle: seoConfig.author.jobTitle,
+            email: seoConfig.author.email,
+        },
+        areaServed: [
+            {
+                '@type': 'Country',
+                name: 'France',
+            },
+            {
+                '@type': 'Country',
+                name: 'Europe',
+            },
+        ],
+        serviceType: [
+            'Web Development',
+            'Full Stack Development',
+            'React Development',
+            'Next.js Development',
+            'Backend Development',
+            'Shopify Plus Development',
+            'E-commerce Development',
+            'SaaS Development',
+            'TypeScript Development',
+            'Node.js Development',
+        ],
+        priceRange: '$$-$$$',
+    };
+}
+
+// FAQ Schema
+export function getFAQSchema(faqs: Array<{ question: string; answer: string }>) {
+    return {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: faqs.map((faq) => ({
+            '@type': 'Question',
+            name: faq.question,
+            acceptedAnswer: {
+                '@type': 'Answer',
+                text: faq.answer,
+            },
+        })),
+    };
+}
+

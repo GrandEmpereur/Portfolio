@@ -379,4 +379,80 @@ export default {
         },
         'project': 'Zrzut ekranu projektu - {title}',
     },
+    'notFound': {
+        'title': 'Strona nie znaleziona',
+        'heading': '404',
+        'description': 'Przepraszamy, strona której szukasz nie istnieje lub została przeniesiona.',
+        'homeButton': 'Wróć do strony głównej',
+        'projectsButton': 'Zobacz moje projekty',
+        'contactButton': 'Skontaktuj się',
+    },
+    'legal': {
+        'title': 'Informacje prawne',
+        'lastUpdated': 'Ostatnia aktualizacja',
+        'sections': {
+            'editor': {
+                'title': '1. Wydawca strony',
+                'content': 'Strona patrick.bartosik.fr jest publikowana przez Patrick Bartosik, niezależnego programistę full stack.'
+            },
+            'host': {
+                'title': '2. Hosting',
+                'content': 'Strona jest hostowana przez Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, Stany Zjednoczone.'
+            },
+            'property': {
+                'title': '3. Własność intelektualna',
+                'content': 'Cała zawartość tej strony (teksty, obrazy, filmy, kod źródłowy) jest wyłączną własnością Patrick Bartosik, chyba że określono inaczej. Jakakolwiek reprodukcja, nawet częściowa, jest zabroniona bez uprzedniej autoryzacji.'
+            },
+            'data': {
+                'title': '4. Dane osobowe',
+                'content': 'Dane osobowe zebrane za pośrednictwem formularza kontaktowego są wykorzystywane wyłącznie w celach zawodowych. Nigdy nie są sprzedawane ani udostępniane stronom trzecim. Zgodnie z RODO masz prawo dostępu, poprawiania i usuwania swoich danych.'
+            },
+            'cookies': {
+                'title': '5. Pliki cookie',
+                'content': 'Ta strona używa analitycznych plików cookie (Google Analytics) w celu poprawy doświadczenia użytkownika. Możesz wyłączyć pliki cookie w ustawieniach przeglądarki.'
+            },
+            'liability': {
+                'title': '6. Odpowiedzialność',
+                'content': 'Wydawca stara się zapewnić dokładność informacji publikowanych na tej stronie, ale nie może ponosić odpowiedzialności za błędy, pominięcia lub wyniki uzyskane z wykorzystania tych informacji.'
+            }
+        }
+    },
+    'privacy': {
+        'title': 'Polityka prywatności',
+        'lastUpdated': 'Ostatnia aktualizacja',
+        'sections': {
+            'intro': {
+                'title': '1. Wprowadzenie',
+                'content': 'Ta polityka prywatności wyjaśnia, jak Twoje dane osobowe są zbierane, wykorzystywane i chronione podczas korzystania z patrick.bartosik.fr.'
+            },
+            'collected': {
+                'title': '2. Zbierane dane',
+                'content': 'Zbieramy następujące dane: imię i nazwisko, e-mail, firmę, telefon (opcjonalnie) i wiadomość poprzez formularz kontaktowy. Zbieramy również anonimowe dane analityczne za pośrednictwem Google Analytics (odwiedzone strony, czas trwania, urządzenie).'
+            },
+            'usage': {
+                'title': '3. Wykorzystanie danych',
+                'content': 'Twoje dane są wykorzystywane do: odpowiadania na Twoje zapytania kontaktowe, poprawy naszych usług, wysyłania komunikacji profesjonalnej (za Twoją zgodą). Nigdy nie sprzedajemy Twoich danych stronom trzecim.'
+            },
+            'security': {
+                'title': '4. Bezpieczeństwo',
+                'content': 'Twoje dane są przechowywane bezpiecznie i przesyłane za pośrednictwem szyfrowanych połączeń (HTTPS). Korzystamy z usług stron trzecich zgodnych z RODO (Vercel, Resend, Google Analytics).'
+            },
+            'rights': {
+                'title': '5. Twoje prawa (RODO)',
+                'content': 'Masz następujące prawa: prawo dostępu do swoich danych, prawo do poprawiania, prawo do usunięcia ("prawo do bycia zapomnianym"), prawo do przenoszenia danych, prawo do sprzeciwu wobec przetwarzania. Aby skorzystać z tych praw, skontaktuj się z nami pod adresem contact@bartosik.fr.'
+            },
+            'analytics': {
+                'title': '6. Pliki cookie i analityka',
+                'content': 'Używamy Google Analytics 4 do analizy użytkowania strony. Te pliki cookie są anonimowe i mogą być wyłączone w ustawieniach przeglądarki. Okres przechowywania: maksymalnie 26 miesięcy.'
+            },
+            'retention': {
+                'title': '7. Przechowywanie danych',
+                'content': 'Dane z formularza kontaktowego są przechowywane maksymalnie przez 3 lata po ostatnim kontakcie. Dane analityczne są przechowywane przez 26 miesięcy.'
+            },
+            'changes': {
+                'title': '8. Zmiany',
+                'content': 'Ta polityka może zostać zmieniona w dowolnym momencie. Data ostatniej aktualizacji jest wskazana na górze tej strony.'
+            }
+        }
+    },
 } as const

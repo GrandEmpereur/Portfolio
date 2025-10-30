@@ -4,12 +4,16 @@ import { seoConfig } from '@/lib/seo-config';
 export default function sitemap(): MetadataRoute.Sitemap {
     const { baseUrl, locales, defaultLocale } = seoConfig;
 
-    // Pages statiques
-    const staticPages = ['', '/projects'];
+    // Pages statiques principales
+    const staticPages = ['', '/projects', '/contact'];
+
+    // Pages légales (FR uniquement pour l'instant)
+    const legalPagesFr = ['/mentions-legales', '/politique-confidentialite'];
 
     // Générer les URLs pour toutes les locales
     const urls: MetadataRoute.Sitemap = [];
 
+    // Pages principales multilingues
     staticPages.forEach((page) => {
         locales.forEach((locale) => {
             const url = locale === defaultLocale
@@ -29,11 +33,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
                 url,
                 lastModified: new Date(),
                 changeFrequency: page === '' ? 'weekly' : 'monthly',
-                priority: page === '' ? 1.0 : 0.8,
+                priority: page === '' ? 1.0 : page === '/contact' ? 0.9 : 0.8,
                 alternates: {
                     languages,
                 },
             });
+        });
+    });
+
+    // Pages légales (FR uniquement)
+    legalPagesFr.forEach((page) => {
+        urls.push({
+            url: `${baseUrl}${page}`,
+            lastModified: new Date(),
+            changeFrequency: 'yearly',
+            priority: 0.3,
         });
     });
 

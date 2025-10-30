@@ -2,7 +2,7 @@ import { getI18n } from "@/locales/serveur";
 import Image from "next/image";
 import { knowledge } from "@/lib/data/knowlege.data";
 import { lastwork } from "@/lib/data/lastwork.data";
-import { getPersonSchema, getWebsiteSchema, getProjectsListSchema } from "@/lib/structured-data";
+import { getPersonSchema, getWebsiteSchema, getProjectsListSchema, getProfessionalServiceSchema, getFAQSchema } from "@/lib/structured-data";
 import { Metadata } from "next";
 import { seoConfig } from "@/lib/seo-config";
 import { HeroSection } from "@/components/HeroSection";
@@ -61,6 +61,19 @@ export default async function Home({
   const personSchema = getPersonSchema(locale);
   const websiteSchema = getWebsiteSchema(locale);
   const projectsSchema = getProjectsListSchema(lastwork.slice(0, 5), locale);
+  const professionalServiceSchema = getProfessionalServiceSchema(locale);
+
+  // FAQ Schema
+  const faqs = [
+    { question: t('faq.question1'), answer: t('faq.answer1') },
+    { question: t('faq.question2'), answer: t('faq.answer2') },
+    { question: t('faq.question3'), answer: t('faq.answer3') },
+    { question: t('faq.question4'), answer: t('faq.answer4') },
+    { question: t('faq.question5'), answer: t('faq.answer5') },
+    { question: t('faq.question6'), answer: t('faq.answer6') },
+    { question: t('faq.question7'), answer: t('faq.answer7') },
+  ];
+  const faqSchema = getFAQSchema(faqs);
 
   // Get alt texts for knowledge items
   const knowledgeAlts = {
@@ -95,6 +108,14 @@ export default async function Home({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(projectsSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(professionalServiceSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
       <main className="relative w-full">
@@ -273,10 +294,10 @@ export default async function Home({
             { question: t('faq.question7'), answer: t('faq.answer7') },
           ]}
           socialLinks={{
-            linkedin: 'https://www.linkedin.com/in/patrick-bartosik',
-            github: 'https://github.com/patrickbartosik',
+            linkedin: seoConfig.social.linkedin,
+            github: seoConfig.social.github,
             twitter: 'https://twitter.com/patrickbartosik',
-            email: 'contact@patrickbartosik.com',
+            email: seoConfig.author.email,
           }}
         />
 
@@ -298,10 +319,10 @@ export default async function Home({
           copyright: t('footer.copyright'),
         }}
         socialLinks={{
-          linkedin: 'https://www.linkedin.com/in/patrick-bartosik',
-          github: 'https://github.com/patrickbartosik',
+          linkedin: seoConfig.social.linkedin,
+          github: seoConfig.social.github,
           twitter: 'https://twitter.com/patrickbartosik',
-          email: 'contact@patrickbartosik.com',
+          email: seoConfig.author.email,
         }}
       />
     </>

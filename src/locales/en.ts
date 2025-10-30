@@ -344,18 +344,18 @@ export default {
     },
     'meta': {
         'home': {
-            'title': 'Bartosik Patrick - Full Stack Developer',
-            'description': 'Full Stack Developer specialized in web and mobile application development. Expert in Next.js, React, TypeScript, and Shopify Plus.',
-            'keywords': 'Full Stack Developer, Web Developer, React, Next.js, TypeScript, Shopify Plus, E-commerce, UX/UI Design',
+            'title': 'Patrick Bartosik - Freelance Full Stack Developer | React & Next.js Expert',
+            'description': 'Freelance Full Stack Developer specializing in React, Next.js, and Shopify Plus. Expert in Node.js backend, TypeScript, SaaS development, and high-performance e-commerce sites. 4+ years experience, 10+ successful projects.',
+            'keywords': 'full stack developer, freelance developer, react next.js expert, backend developer, freelance web developer, react freelance developer, next.js developer, shopify plus developer, typescript expert, nodejs developer, freelance full stack, saas developer, ecommerce developer, react typescript developer, backend nodejs developer, shopify plus expert, web developer freelance, freelance react developer, fullstack freelance developer',
         },
         'projects': {
-            'title': 'Projects - Bartosik Patrick',
-            'description': 'Discover my latest web development projects. Shopify Plus migrations, UX/UI design, and custom e-commerce solutions.',
-            'keywords': 'Web Projects, Shopify Plus, E-commerce, Migration, UX/UI Design',
+            'title': 'Projects & Portfolio - Full Stack Developer | Patrick Bartosik',
+            'description': 'Portfolio of my projects: Shopify Plus migrations, SaaS development, React/Next.js applications, complex e-commerce integrations. Euroclear, Odaje, Tartine & Chocolat, Qwetch, Balzac Paris.',
+            'keywords': 'developer portfolio, react next.js projects, shopify plus migration, saas development, ecommerce project, full stack portfolio, web projects, developer case studies, prestashop to shopify migration, shopify erp integration, react typescript project',
         },
         'contact': {
-            'title': 'Contact - Patrick Bartosik',
-            'description': 'Get in touch for your next project',
+            'title': 'Contact - Freelance Developer | Patrick Bartosik',
+            'description': 'Need a freelance full stack developer for your project? Contact me to discuss your React, Next.js, Shopify Plus, or backend development needs.',
         },
     },
     'alt': {
@@ -378,5 +378,81 @@ export default {
             'scss': 'SCSS logo - CSS preprocessor',
         },
         'project': 'Project screenshot - {title}',
+    },
+    'notFound': {
+        'title': 'Page Not Found',
+        'heading': '404',
+        'description': 'Sorry, the page you are looking for does not exist or has been moved.',
+        'homeButton': 'Back to Home',
+        'projectsButton': 'View My Projects',
+        'contactButton': 'Contact Me',
+    },
+    'legal': {
+        'title': 'Legal Notice',
+        'lastUpdated': 'Last updated',
+        'sections': {
+            'editor': {
+                'title': '1. Site Publisher',
+                'content': 'The website patrick.bartosik.fr is published by Patrick Bartosik, freelance full stack developer.'
+            },
+            'host': {
+                'title': '2. Hosting',
+                'content': 'The site is hosted by Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, United States.'
+            },
+            'property': {
+                'title': '3. Intellectual Property',
+                'content': 'All content on this site (text, images, videos, source code) is the exclusive property of Patrick Bartosik, unless otherwise stated. Any reproduction, even partial, is prohibited without prior authorization.'
+            },
+            'data': {
+                'title': '4. Personal Data',
+                'content': 'Personal data collected via the contact form is used only for professional purposes. It is never sold or shared with third parties. In accordance with GDPR, you have the right to access, rectify and delete your data.'
+            },
+            'cookies': {
+                'title': '5. Cookies',
+                'content': 'This site uses analytical cookies (Google Analytics) to improve user experience. You can disable cookies in your browser settings.'
+            },
+            'liability': {
+                'title': '6. Liability',
+                'content': 'The publisher strives to ensure the accuracy of information published on this site, but cannot be held responsible for errors, omissions or results obtained from the use of this information.'
+            }
+        }
+    },
+    'privacy': {
+        'title': 'Privacy Policy',
+        'lastUpdated': 'Last updated',
+        'sections': {
+            'intro': {
+                'title': '1. Introduction',
+                'content': 'This privacy policy explains how your personal data is collected, used and protected when you use patrick.bartosik.fr.'
+            },
+            'collected': {
+                'title': '2. Data Collected',
+                'content': 'We collect the following data: name, email, company, phone (optional), and message via the contact form. We also collect anonymous analytical data via Google Analytics (pages visited, duration, device).'
+            },
+            'usage': {
+                'title': '3. Use of Data',
+                'content': 'Your data is used to: respond to your contact requests, improve our services, send professional communications (with your consent). We never sell your data to third parties.'
+            },
+            'security': {
+                'title': '4. Security',
+                'content': 'Your data is stored securely and transmitted via encrypted connections (HTTPS). We use GDPR-compliant third-party services (Vercel, Resend, Google Analytics).'
+            },
+            'rights': {
+                'title': '5. Your Rights (GDPR)',
+                'content': 'You have the following rights: right of access to your data, right of rectification, right to erasure ("right to be forgotten"), right to data portability, right to object to processing. To exercise these rights, contact us at contact@bartosik.fr.'
+            },
+            'analytics': {
+                'title': '6. Cookies and Analytics',
+                'content': 'We use Google Analytics 4 to analyze site usage. These cookies are anonymous and can be disabled in your browser settings. Retention period: 26 months maximum.'
+            },
+            'retention': {
+                'title': '7. Data Retention',
+                'content': 'Contact form data is kept for a maximum of 3 years after the last contact. Analytical data is kept for 26 months.'
+            },
+            'changes': {
+                'title': '8. Changes',
+                'content': 'This policy may be modified at any time. The date of last update is indicated at the top of this page.'
+            }
+        }
     },
 } as const
