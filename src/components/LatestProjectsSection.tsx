@@ -72,6 +72,8 @@ const ProjectCardWithHover = ({
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 50vw"
+                    loading="lazy"
+                    quality={75}
                     style={{
                         transform: isHovered ? 'scale(1.1)' : 'scale(1)',
                         transition: 'transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)',

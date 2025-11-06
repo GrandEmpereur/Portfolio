@@ -261,9 +261,9 @@ export const ContactSection = ({ translations }: ContactSectionProps) => {
                     alt="Contact background"
                     fill
                     className="object-cover"
-                    quality={90}
+                    quality={75}
                     sizes="100vw"
-                    priority
+                    loading="lazy"
                 />
                 <div className="absolute inset-0 bg-black/80"></div>
             </div>

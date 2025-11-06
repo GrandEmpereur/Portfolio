@@ -391,6 +391,8 @@ export const StatsSection = ({
                                                     fill
                                                     className="object-cover"
                                                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 35vw"
+                                                    loading="lazy"
+                                                    quality={75}
                                                 />
                                             ) : (
                                                 <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
