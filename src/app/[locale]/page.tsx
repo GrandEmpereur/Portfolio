@@ -16,7 +16,6 @@ import { StatsSection } from "@/components/StatsSection";
 import { ContactSection } from "@/components/ContactSection";
 import { FAQSection } from "@/components/FAQSection";
 import { Footer } from "@/components/Footer";
-import { PageTransitions } from "@/components/PageTransitions";
 
 export async function generateMetadata({
   params,
@@ -147,117 +146,115 @@ export default async function Home({
         suppressHydrationWarning
       />
 
-      <PageTransitions>
-        <main className="relative w-full">
-          {/* Hero Section - Split Text Animation */}
-          <HeroSection
-            title={t('hero.title')}
-            name={t('hero.name')}
-            ctaPrimary={t('hero.cta_primary')}
-            ctaSecondary={t('hero.cta_secondary')}
-            ctaTertiary={t('hero.download_cv')}
-            altText={t('alt.hero')}
-          />
+      <main className="relative w-full">
+        {/* Hero Section - Split Text Animation */}
+        <HeroSection
+          title={t('hero.title')}
+          name={t('hero.name')}
+          ctaPrimary={t('hero.cta_primary')}
+          ctaSecondary={t('hero.cta_secondary')}
+          ctaTertiary={t('hero.download_cv')}
+          altText={t('alt.hero')}
+        />
 
-          {/* About Section - Animation GSAP au scroll */}
-          <AboutSection
-            label={t('about.label')}
-            text={t('about.heading')}
-          />
+        {/* About Section - Animation GSAP au scroll */}
+        <AboutSection
+          label={t('about.label')}
+          text={t('about.heading')}
+        />
 
-          {/* Latest Work - Animation GSAP */}
-          <LatestProjectsSection
-            title={t('work.title')}
-            viewAllText={t('work.view_all')}
-            projects={lastwork}
-          />
+        {/* Latest Work - Animation GSAP */}
+        <LatestProjectsSection
+          title={t('work.title')}
+          viewAllText={t('work.view_all')}
+          projects={lastwork}
+        />
 
-          {/* Knowledge/Skills Section - Animation GSAP */}
-          <KnowledgeSection
-            title={t('knowledge.title')}
-            description={t('knowledge.description')}
-            knowledge={knowledge}
-            knowledgeAlts={knowledgeAlts}
-          />
+        {/* Knowledge/Skills Section - Animation GSAP */}
+        <KnowledgeSection
+          title={t('knowledge.title')}
+          description={t('knowledge.description')}
+          knowledge={knowledge}
+          knowledgeAlts={knowledgeAlts}
+        />
 
-          {/* Services Section - Animation GSAP */}
-          <ServicesSection
-            title={t('services.title')}
-            services={services.filter(s => s.id !== 'mobile-development')}
-            locale={locale as 'fr' | 'en' | 'pl'}
-            ctaText={t('services.cta')}
-          />
+        {/* Services Section - Animation GSAP */}
+        <ServicesSection
+          title={t('services.title')}
+          services={services.filter(s => s.id !== 'mobile-development')}
+          locale={locale as 'fr' | 'en' | 'pl'}
+          ctaText={t('services.cta')}
+        />
 
-          {/* Statistics Section - Animation GSAP + Testimonials Carousel */}
-          <StatsSection
-            label={t('stats.label')}
-            title={{
-              line1: t('stats.heading.line1'),
-              line2: t('stats.heading.line2'),
-            }}
-            description={{
-              line1: t('stats.description.line1'),
-              line2: t('stats.description.line2'),
-            }}
-            stats={{
-              projectsCompleted: { number: '10+', label: t('stats.projects_completed') },
-              yearsExperience: { number: '4+', label: t('stats.years_experience') },
-              satisfactionRate: { number: '99%', label: t('stats.satisfaction_rate') },
-              revenueGrowth: { number: '25M', label: t('stats.revenue_growth') },
-            }}
-            testimonials={projectTestimonials.map(testimonial => ({
-              name: testimonial.author.name,
-              role: testimonial.author.role,
-              company: testimonial.author.company,
-              quote: testimonial.quote[locale as 'fr' | 'en' | 'pl'] || testimonial.quote.fr,
-            }))}
-          />
+        {/* Statistics Section - Animation GSAP + Testimonials Carousel */}
+        <StatsSection
+          label={t('stats.label')}
+          title={{
+            line1: t('stats.heading.line1'),
+            line2: t('stats.heading.line2'),
+          }}
+          description={{
+            line1: t('stats.description.line1'),
+            line2: t('stats.description.line2'),
+          }}
+          stats={{
+            projectsCompleted: { number: '10+', label: t('stats.projects_completed') },
+            yearsExperience: { number: '4+', label: t('stats.years_experience') },
+            satisfactionRate: { number: '99%', label: t('stats.satisfaction_rate') },
+            revenueGrowth: { number: '25M', label: t('stats.revenue_growth') },
+          }}
+          testimonials={projectTestimonials.map(testimonial => ({
+            name: testimonial.author.name,
+            role: testimonial.author.role,
+            company: testimonial.author.company,
+            quote: testimonial.quote[locale as 'fr' | 'en' | 'pl'] || testimonial.quote.fr,
+          }))}
+        />
 
-          {/* Contact Section */}
-          <ContactSection
-            translations={{
-              formBrand: t('contact.formBrand'),
-              formTitle: t('contact.formTitle'),
-              nameLabel: t('contact.nameLabel'),
-              namePlaceholder: t('contact.namePlaceholder'),
-              emailLabel: t('contact.emailLabel'),
-              emailPlaceholder: t('contact.emailPlaceholder'),
-              messageLabel: t('contact.messageLabel'),
-              messagePlaceholder: t('contact.messagePlaceholder'),
-              submitButton: t('contact.submitButton'),
-              termsText: t('contact.termsText'),
-              termsLink: t('contact.termsLink'),
-              andText: t('contact.andText'),
-              privacyLink: t('contact.privacyLink'),
-              heading: t('contact.heading'),
-              description: t('contact.description'),
-              quickResponseTitle: t('contact.quickResponseTitle'),
-              quickResponseDesc: t('contact.quickResponseDesc'),
-              clearStepsTitle: t('contact.clearStepsTitle'),
-              clearStepsDesc: t('contact.clearStepsDesc'),
-              contactRole: t('contact.contactRole'),
-              contactCompany: t('contact.contactCompany'),
-              contactName: t('contact.contactName'),
-              contactCta: t('contact.contactCta'),
-              copyright: t('contact.copyright'),
-            }}
-          />
+        {/* Contact Section */}
+        <ContactSection
+          translations={{
+            formBrand: t('contact.formBrand'),
+            formTitle: t('contact.formTitle'),
+            nameLabel: t('contact.nameLabel'),
+            namePlaceholder: t('contact.namePlaceholder'),
+            emailLabel: t('contact.emailLabel'),
+            emailPlaceholder: t('contact.emailPlaceholder'),
+            messageLabel: t('contact.messageLabel'),
+            messagePlaceholder: t('contact.messagePlaceholder'),
+            submitButton: t('contact.submitButton'),
+            termsText: t('contact.termsText'),
+            termsLink: t('contact.termsLink'),
+            andText: t('contact.andText'),
+            privacyLink: t('contact.privacyLink'),
+            heading: t('contact.heading'),
+            description: t('contact.description'),
+            quickResponseTitle: t('contact.quickResponseTitle'),
+            quickResponseDesc: t('contact.quickResponseDesc'),
+            clearStepsTitle: t('contact.clearStepsTitle'),
+            clearStepsDesc: t('contact.clearStepsDesc'),
+            contactRole: t('contact.contactRole'),
+            contactCompany: t('contact.contactCompany'),
+            contactName: t('contact.contactName'),
+            contactCta: t('contact.contactCta'),
+            copyright: t('contact.copyright'),
+          }}
+        />
 
-          {/* FAQ Section */}
-          <FAQSection
-            title={t('faq.title')}
-            socialTitle={t('faq.socialTitle')}
-            faqs={faqs}
-            socialLinks={{
-              linkedin: seoConfig.social.linkedin,
-              github: seoConfig.social.github,
-              instagram: 'https://www.instagram.com/empereur.patrick/',
-              email: seoConfig.author.email,
-            }}
-          />
+        {/* FAQ Section */}
+        <FAQSection
+          title={t('faq.title')}
+          socialTitle={t('faq.socialTitle')}
+          faqs={faqs}
+          socialLinks={{
+            linkedin: seoConfig.social.linkedin,
+            github: seoConfig.social.github,
+            instagram: 'https://www.instagram.com/empereur.patrick/',
+            email: seoConfig.author.email,
+          }}
+        />
 
-        </main>
-      </PageTransitions>
+      </main>
 
       {/* Footer */}
       <Footer
