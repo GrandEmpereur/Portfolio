@@ -64,14 +64,16 @@ export default async function ProjectsPage({
 
     return (
         <>
-            {/* JSON-LD Structured Data */}
+            {/* JSON-LD Structured Data for SEO */}
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(projectsSchema) }}
+                suppressHydrationWarning
             />
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+                suppressHydrationWarning
             />
 
             <main className="relative min-h-screen w-full pt-20 pb-16">

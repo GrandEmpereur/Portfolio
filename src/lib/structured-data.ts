@@ -1,7 +1,12 @@
 import { seoConfig } from './seo-config';
 import { Project } from './data/lastwork.data';
 
-// Person Schema for Profile
+/**
+ * Person Schema for Profile
+ * Génère le schéma JSON-LD pour le profil personnel
+ * @param locale - Locale actuelle (en, fr, pl)
+ * @returns Schema.org Person object
+ */
 export function getPersonSchema(locale: string) {
     return {
         '@context': 'https://schema.org',
@@ -10,23 +15,38 @@ export function getPersonSchema(locale: string) {
         url: seoConfig.author.url,
         jobTitle: seoConfig.author.jobTitle,
         email: seoConfig.author.email,
+        image: `${seoConfig.baseUrl}/images/hero.jpg`,
         sameAs: [
             seoConfig.social.github,
             seoConfig.social.linkedin,
+            seoConfig.social.instagram,
         ],
         knowsAbout: [
             'Web Development',
             'Full Stack Development',
             'Next.js',
             'React',
+            'Angular',
             'TypeScript',
+            'Node.js',
+            'AdonisJS',
+            'NestJS',
             'Shopify Plus',
             'E-commerce',
-            'UX/UI Design',
+            'SaaS Development',
+            'API Development',
+            'MongoDB',
+            'Supabase',
+            'Tailwind CSS',
+            'GSAP',
         ],
         worksFor: {
             '@type': 'Organization',
-            name: seoConfig.siteName,
+            name: 'Freelance',
+        },
+        address: {
+            '@type': 'PostalAddress',
+            addressCountry: 'FR',
         },
     };
 }

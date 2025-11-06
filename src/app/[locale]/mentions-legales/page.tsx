@@ -4,6 +4,10 @@ import { seoConfig } from '@/lib/seo-config';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 
+/**
+ * Generate metadata for legal notice page
+ * @see .cursor/rules/seo.md for SEO best practices
+ */
 export async function generateMetadata({
   params,
 }: {
@@ -12,15 +16,36 @@ export async function generateMetadata({
   await params;
   const t = await getI18n();
 
+  const title = t('meta.legal.title');
+  const description = t('meta.legal.description');
+
   return {
-    title: t('legal.title'),
-    description: t('legal.sections.editor.content'),
+    title,
+    description,
+    keywords: t('meta.legal.keywords'),
     robots: {
       index: true,
       follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+      },
     },
     alternates: {
       canonical: `${seoConfig.baseUrl}/mentions-legales`,
+    },
+    openGraph: {
+      title,
+      description,
+      url: `${seoConfig.baseUrl}/mentions-legales`,
+      images: [
+        {
+          url: `${seoConfig.baseUrl}${seoConfig.openGraph.image}`,
+          width: seoConfig.openGraph.imageWidth,
+          height: seoConfig.openGraph.imageHeight,
+          alt: title,
+        },
+      ],
     },
   };
 }

@@ -4,6 +4,10 @@ import { seoConfig } from '@/lib/seo-config';
 import Link from 'next/link';
 import { ArrowLeft, Shield, Lock, Eye, Database, UserCheck, Clock, FileText, Mail } from 'lucide-react';
 
+/**
+ * Generate metadata for privacy policy page
+ * @see .cursor/rules/seo.md for SEO best practices
+ */
 export async function generateMetadata({
   params,
 }: {
@@ -12,15 +16,36 @@ export async function generateMetadata({
   await params;
   const t = await getI18n();
 
+  const title = t('meta.privacy.title');
+  const description = t('meta.privacy.description');
+
   return {
-    title: t('privacy.title'),
-    description: t('privacy.sections.intro.content'),
+    title,
+    description,
+    keywords: t('meta.privacy.keywords'),
     robots: {
       index: true,
       follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+      },
     },
     alternates: {
       canonical: `${seoConfig.baseUrl}/politique-confidentialite`,
+    },
+    openGraph: {
+      title,
+      description,
+      url: `${seoConfig.baseUrl}/politique-confidentialite`,
+      images: [
+        {
+          url: `${seoConfig.baseUrl}${seoConfig.openGraph.image}`,
+          width: seoConfig.openGraph.imageWidth,
+          height: seoConfig.openGraph.imageHeight,
+          alt: title,
+        },
+      ],
     },
   };
 }

@@ -346,18 +346,29 @@ export default {
     },
     'meta': {
         'home': {
-            'title': 'Patrick Bartosik - Freelance Full Stack Developer | React & Next.js Expert',
-            'description': 'Freelance Full Stack Developer specializing in React, Next.js, and Shopify Plus. Expert in Node.js backend, TypeScript, SaaS development, and high-performance e-commerce sites. 4+ years experience, 10+ successful projects.',
-            'keywords': 'full stack developer, freelance developer, react next.js expert, backend developer, freelance web developer, react freelance developer, next.js developer, shopify plus developer, typescript expert, nodejs developer, freelance full stack, saas developer, ecommerce developer, react typescript developer, backend nodejs developer, shopify plus expert, web developer freelance, freelance react developer, fullstack freelance developer',
+            'title': 'Patrick Bartosik - Freelance Full Stack Developer | React, Next.js & Node.js Expert',
+            'description': 'Freelance Full Stack Developer specializing in React, Next.js, Angular, and Node.js. Expert in SaaS development, Shopify Plus e-commerce, and high-performance web applications. 4+ years experience, 10+ successful projects. Available for projects in France and Europe.',
+            'keywords': 'full stack developer, freelance developer, react next.js expert, backend nodejs developer, freelance web developer france, react freelance developer, next.js developer, shopify plus developer, typescript expert, nodejs developer, freelance full stack, saas developer, ecommerce developer, react typescript developer, backend nodejs developer, shopify plus expert france, web developer freelance, freelance react developer, fullstack freelance developer, angular developer, adonisjs developer, nestjs developer, mongodb developer, supabase developer, tailwind css developer, gsap developer, rest api developer, graphql developer',
         },
         'projects': {
-            'title': 'Projects & Portfolio - Full Stack Developer | Patrick Bartosik',
-            'description': 'Portfolio of my projects: Shopify Plus migrations, SaaS development, React/Next.js applications, complex e-commerce integrations. Euroclear, Odaje, Tartine & Chocolat, Qwetch, Balzac Paris.',
-            'keywords': 'developer portfolio, react next.js projects, shopify plus migration, saas development, ecommerce project, full stack portfolio, web projects, developer case studies, prestashop to shopify migration, shopify erp integration, react typescript project',
+            'title': 'Projects & Portfolio - Full Stack Developer Portfolio | Patrick Bartosik',
+            'description': 'Discover my projects: Shopify Plus migrations, SaaS development, React/Next.js/Angular applications, complex e-commerce integrations. Clients: Euroclear France, Odaje, Tartine & Chocolat, Qwetch, Balzac Paris, Isotoner. Expertise in custom web development.',
+            'keywords': 'developer portfolio, react next.js projects, shopify plus migration, saas development, ecommerce project, full stack portfolio, web projects, developer case studies, prestashop to shopify migration, shopify erp integration, react typescript project, angular project, next.js project, custom web development, freelance portfolio, developer projects, web projects',
         },
         'contact': {
-            'title': 'Contact - Freelance Developer | Patrick Bartosik',
-            'description': 'Need a freelance full stack developer for your project? Contact me to discuss your React, Next.js, Shopify Plus, or backend development needs.',
+            'title': 'Contact - Let\'s Discuss Your Web Project | Patrick Bartosik',
+            'description': 'Have a web, SaaS, or e-commerce project? Contact me for a free consultation. Freelance Full Stack Developer available for your React, Next.js, Angular, Node.js projects. Response within 24h.',
+            'keywords': 'contact freelance developer, web developer quote, developer consultation, hire full stack developer, freelance developer available, contact react developer, contact next.js developer, website quote, web application quote, contact freelance',
+        },
+        'legal': {
+            'title': 'Legal Notice - Patrick Bartosik Full Stack Developer',
+            'description': 'Legal notice for patrick.bartosik.fr. Legal information about Patrick Bartosik, freelance Full Stack developer based in France.',
+            'keywords': 'legal notice, legal information, patrick bartosik, freelance developer france',
+        },
+        'privacy': {
+            'title': 'Privacy Policy - Data Protection | Patrick Bartosik',
+            'description': 'Privacy policy and personal data protection on patrick.bartosik.fr. GDPR compliant. Discover how your data is processed and protected.',
+            'keywords': 'privacy policy, data protection, gdpr, personal data, website privacy',
         },
     },
     'alt': {
