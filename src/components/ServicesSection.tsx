@@ -3,55 +3,24 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { Code, Sparkles, ShoppingCart } from "lucide-react";
+import Link from "next/link";
+import type { Service } from "@/lib/data/services.data";
 
 if (typeof window !== "undefined") {
     gsap.registerPlugin(ScrollTrigger);
 }
 
-interface Service {
-    title: string;
-    description: string;
-    icon: "code" | "sparkles" | "shopping";
-}
-
 interface ServicesSectionProps {
     title: string;
-    services: {
-        webDev: { title: string; description: string };
-        saasDev: { title: string; description: string };
-        ecommerce: { title: string; description: string };
-    };
+    services: Service[];
+    locale: 'fr' | 'en' | 'pl';
+    ctaText: string;
 }
 
-const iconMap = {
-    code: Code,
-    sparkles: Sparkles,
-    shopping: ShoppingCart,
-};
-
-export const ServicesSection = ({ title, services }: ServicesSectionProps) => {
+export const ServicesSection = ({ title, services, locale, ctaText }: ServicesSectionProps) => {
     const sectionRef = useRef<HTMLElement>(null);
     const titleRef = useRef<HTMLHeadingElement>(null);
     const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
-
-    const servicesList: Service[] = [
-        {
-            title: services.webDev.title,
-            description: services.webDev.description,
-            icon: "code",
-        },
-        {
-            title: services.saasDev.title,
-            description: services.saasDev.description,
-            icon: "sparkles",
-        },
-        {
-            title: services.ecommerce.title,
-            description: services.ecommerce.description,
-            icon: "shopping",
-        },
-    ];
 
     useEffect(() => {
         if (!sectionRef.current) return;
@@ -90,8 +59,6 @@ export const ServicesSection = ({ title, services }: ServicesSectionProps) => {
                 if (!card) return;
 
                 const icon = card.querySelector(".service-icon");
-                const title = card.querySelector(".service-title");
-                const description = card.querySelector(".service-description");
 
                 // Perspective 3D sur la carte
                 gsap.set(card, {
@@ -113,17 +80,15 @@ export const ServicesSection = ({ title, services }: ServicesSectionProps) => {
                         end: "top 55%",
                         scrub: 1.5,
                     },
-                    delay: index * 0.2,
+                    delay: index * 0.1,
                 });
 
                 // Hover effects 3D
                 card.addEventListener("mouseenter", () => {
                     gsap.to(card, {
-                        rotationY: 5,
-                        rotationX: -5,
-                        z: 30,
-                        scale: 1.05,
-                        duration: 0.6,
+                        y: -10,
+                        scale: 1.02,
+                        duration: 0.5,
                         ease: "power3.out",
                     });
 
@@ -135,32 +100,13 @@ export const ServicesSection = ({ title, services }: ServicesSectionProps) => {
                             ease: "back.out(1.7)",
                         });
                     }
-
-                    if (title) {
-                        gsap.to(title, {
-                            x: 10,
-                            duration: 0.4,
-                            ease: "power2.out",
-                        });
-                    }
-
-                    if (description) {
-                        gsap.to(description, {
-                            opacity: 1,
-                            y: 0,
-                            duration: 0.4,
-                            ease: "power2.out",
-                        });
-                    }
                 });
 
                 card.addEventListener("mouseleave", () => {
                     gsap.to(card, {
-                        rotationY: 0,
-                        rotationX: 0,
-                        z: 0,
+                        y: 0,
                         scale: 1,
-                        duration: 0.6,
+                        duration: 0.5,
                         ease: "power3.out",
                     });
 
@@ -170,23 +116,6 @@ export const ServicesSection = ({ title, services }: ServicesSectionProps) => {
                             rotation: 0,
                             duration: 0.5,
                             ease: "back.out(1.7)",
-                        });
-                    }
-
-                    if (title) {
-                        gsap.to(title, {
-                            x: 0,
-                            duration: 0.4,
-                            ease: "power2.out",
-                        });
-                    }
-
-                    if (description) {
-                        gsap.to(description, {
-                            opacity: 0.7,
-                            y: 0,
-                            duration: 0.4,
-                            ease: "power2.out",
                         });
                     }
                 });
@@ -199,48 +128,93 @@ export const ServicesSection = ({ title, services }: ServicesSectionProps) => {
     return (
         <section
             ref={sectionRef}
-            className="w-full py-20 md:py-32 px-20"
+            className="w-full py-20 md:py-32 px-8 md:px-16 lg:px-20"
         >
-            {/* Title */}
-            <h2
-                ref={titleRef}
-                className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-300 mb-16"
-            >
-                {title}
-            </h2>
+            {/* Header */}
+            <div className="mb-16">
+                <h2
+                    ref={titleRef}
+                    className="text-6xl md:text-7xl lg:text-8xl font-black text-white/90 leading-none tracking-tight"
+                >
+                    {title}
+                </h2>
+            </div>
 
-            {/* Services Grid - 3 colonnes */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-                {servicesList.map((service, index) => {
-                    const Icon = iconMap[service.icon];
-                    return (
-                        <div
-                            key={index}
-                            ref={(el) => {
-                                cardsRef.current[index] = el;
-                            }}
-                            className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-white/[0.08] to-white/[0.03] backdrop-blur-sm border border-white/10 p-8 md:p-10 transition-colors duration-500 hover:border-white/20 cursor-pointer"
-                        >
-                            {/* Icon */}
-                            <div className="service-icon mb-6 w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-500/20 to-orange-600/10 flex items-center justify-center">
-                                <Icon className="w-7 h-7 text-orange-500" strokeWidth={1.5} />
+            {/* Services Grid - Bento Box Layout */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {services.map((service, index) => (
+                    <div
+                        key={service.id}
+                        ref={(el) => {
+                            cardsRef.current[index] = el;
+                        }}
+                        className="group relative overflow-hidden rounded-3xl backdrop-blur-2xl bg-white/5 border border-white/10 p-8 transform-gpu transition-all duration-500 hover:border-white/20 hover:shadow-2xl hover:shadow-orange-500/10 flex flex-col"
+                    >
+                        {/* Gradient background on hover */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 via-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                        {/* Content */}
+                        <div className="relative z-10 flex flex-col h-full">
+                            {/* Icon Emoji */}
+                            <div className="service-icon mb-6 text-6xl">
+                                {service.icon}
                             </div>
 
                             {/* Title */}
-                            <h3 className="service-title text-2xl md:text-3xl font-bold text-white mb-4 leading-tight">
-                                {service.title}
+                            <h3 className="text-3xl font-bold text-white/90 mb-4 leading-tight">
+                                {service.title[locale]}
                             </h3>
 
                             {/* Description */}
-                            <p className="service-description text-gray-400 text-base md:text-lg leading-relaxed opacity-70">
-                                {service.description}
+                            <p className="text-white/60 text-base leading-relaxed mb-6">
+                                {service.description[locale]}
                             </p>
 
-                            {/* Hover effect - subtle glow */}
-                            <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none bg-gradient-to-br from-orange-500/5 to-transparent"></div>
+                            {/* Features */}
+                            <ul className="space-y-3 mb-6 flex-grow">
+                                {service.features[locale].slice(0, 3).map((feature, idx) => (
+                                    <li key={idx} className="flex items-start gap-3 text-sm text-white/50">
+                                        <span className="text-orange-500 mt-0.5 text-base">✓</span>
+                                        <span>{feature}</span>
+                                    </li>
+                                ))}
+                            </ul>
+
+                            {/* Technologies */}
+                            <div className="flex flex-wrap gap-2 mb-8">
+                                {service.technologies.slice(0, 3).map((tech, idx) => (
+                                    <span
+                                        key={idx}
+                                        className="px-3 py-1.5 text-xs rounded-full glass-light text-white/70 border border-white/10"
+                                    >
+                                        {tech}
+                                    </span>
+                                ))}
+                            </div>
+
+                            {/* CTA Button - Always at bottom */}
+                            <Link
+                                href="/contact"
+                                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 text-white text-sm font-semibold hover:from-orange-600 hover:to-orange-700 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-orange-500/50 mt-auto"
+                            >
+                                <span>{ctaText}</span>
+                                <svg
+                                    className="w-4 h-4 transform group-hover:translate-x-1 transition-transform"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                                    />
+                                </svg>
+                            </Link>
                         </div>
-                    );
-                })}
+                    </div>
+                ))}
             </div>
         </section>
     );

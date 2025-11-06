@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { Github, Instagram, Linkedin, Mail } from "lucide-react";
 
 interface FooterProps {
     translations: {
@@ -20,7 +20,7 @@ interface FooterProps {
     socialLinks: {
         linkedin?: string;
         github?: string;
-        twitter?: string;
+        instagram?: string;
         email?: string;
     };
 }
@@ -110,14 +110,14 @@ export const Footer = ({ translations, socialLinks }: FooterProps) => {
                                     <Github className="w-4 h-4 text-white" />
                                 </a>
                             )}
-                            {socialLinks.twitter && (
+                            {socialLinks.instagram && (
                                 <a
-                                    href={socialLinks.twitter}
+                                    href={socialLinks.instagram}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-all duration-300"
                                 >
-                                    <Twitter className="w-4 h-4 text-white" />
+                                    <Instagram className="w-4 h-4 text-white" />
                                 </a>
                             )}
                             {socialLinks.email && (
@@ -139,7 +139,7 @@ export const Footer = ({ translations, socialLinks }: FooterProps) => {
                         <ul className="space-y-3">
                             <li>
                                 <Link
-                                    href="/terms"
+                                    href="/mentions-legales"
                                     className="text-white/60 hover:text-white text-sm transition-colors duration-300"
                                 >
                                     {translations.legalTerms}
@@ -147,7 +147,7 @@ export const Footer = ({ translations, socialLinks }: FooterProps) => {
                             </li>
                             <li>
                                 <Link
-                                    href="/privacy"
+                                    href="/politique-confidentialite"
                                     className="text-white/60 hover:text-white text-sm transition-colors duration-300"
                                 >
                                     {translations.legalPrivacy}

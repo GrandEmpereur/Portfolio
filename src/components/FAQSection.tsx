@@ -9,7 +9,7 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { Github, Instagram, Linkedin, Mail } from "lucide-react";
 
 if (typeof window !== "undefined") {
     gsap.registerPlugin(ScrollTrigger);
@@ -27,7 +27,7 @@ interface FAQSectionProps {
     socialLinks: {
         linkedin?: string;
         github?: string;
-        twitter?: string;
+        instagram?: string;
         email?: string;
     };
 }
@@ -135,14 +135,14 @@ export const FAQSection = ({ title, faqs, socialTitle, socialLinks }: FAQSection
                                         <Github className="w-5 h-5 text-white" />
                                     </a>
                                 )}
-                                {socialLinks.twitter && (
+                                {socialLinks.instagram && (
                                     <a
-                                        href={socialLinks.twitter}
+                                        href={socialLinks.instagram}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="w-12 h-12 flex items-center justify-center rounded-[20px] bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-300"
                                     >
-                                        <Twitter className="w-5 h-5 text-white" />
+                                        <Instagram className="w-5 h-5 text-white" />
                                     </a>
                                 )}
                                 {socialLinks.email && (

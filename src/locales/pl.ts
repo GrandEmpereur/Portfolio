@@ -34,6 +34,8 @@ export default {
     },
     'services': {
         'title': 'Moje usługi',
+        'cta': 'Omów projekt',
+        'learnMore': 'Dowiedz się więcej',
         'webDev': {
             'title': 'Tworzenie stron internetowych',
             'description': 'Tworzenie nowoczesnych i wydajnych stron internetowych z najnowszymi technologiami.',

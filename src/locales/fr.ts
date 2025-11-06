@@ -34,6 +34,8 @@ export default {
     },
     'services': {
         'title': 'Mes services',
+        'cta': 'Discuter du projet',
+        'learnMore': 'En savoir plus',
         'webDev': {
             'title': 'Développement Web',
             'description': 'Création de sites web modernes et performants avec les dernières technologies.',
