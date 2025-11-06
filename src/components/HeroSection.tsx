@@ -242,7 +242,7 @@ export const HeroSection = ({
                                     <div className="w-full h-px bg-white/10"></div>
 
                                     <Link
-                                        href="/cv.pdf"
+                                        href="/CV.pdf"
                                         download="Patrick_Bartosik_CV.pdf"
                                         target="_blank"
                                         className="group relative inline-flex items-center gap-3 text-white/70 hover:text-white transition-all duration-300 active:scale-95"
