@@ -4,7 +4,7 @@ import { knowledge } from "@/lib/data/knowlege.data";
 import { lastwork } from "@/lib/data/lastwork.data";
 import { projectTestimonials } from "@/lib/data/testimonials.data";
 import { services } from "@/lib/data/services.data";
-import { getPersonSchema, getWebsiteSchema, getProjectsListSchema, getProfessionalServiceSchema, getFAQSchema } from "@/lib/structured-data";
+import { getPersonSchema, getWebsiteSchema, getProjectsListSchema, getProfessionalServiceSchema, getFAQSchema, getBreadcrumbSchema } from "@/lib/structured-data";
 import { Metadata } from "next";
 import { seoConfig } from "@/lib/seo-config";
 import { HeroSection } from "@/components/HeroSection";
@@ -78,6 +78,11 @@ export default async function Home({
   ];
   const faqSchema = getFAQSchema(faqs);
 
+  // Breadcrumb Schema
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: t('footer.navHome'), url: locale === seoConfig.defaultLocale ? '/' : `/${locale}` },
+  ], locale);
+
   // Get alt texts for knowledge items
   const knowledgeAlts = {
     'Next.js': t('alt.knowledge.nextjs'),
@@ -123,6 +128,11 @@ export default async function Home({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        suppressHydrationWarning
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
         suppressHydrationWarning
       />
 
@@ -226,15 +236,7 @@ export default async function Home({
           <FAQSection
             title={t('faq.title')}
             socialTitle={t('faq.socialTitle')}
-            faqs={[
-              { question: t('faq.question1'), answer: t('faq.answer1') },
-              { question: t('faq.question2'), answer: t('faq.answer2') },
-              { question: t('faq.question3'), answer: t('faq.answer3') },
-              { question: t('faq.question4'), answer: t('faq.answer4') },
-              { question: t('faq.question5'), answer: t('faq.answer5') },
-              { question: t('faq.question6'), answer: t('faq.answer6') },
-              { question: t('faq.question7'), answer: t('faq.answer7') },
-            ]}
+            faqs={faqs}
             socialLinks={{
               linkedin: seoConfig.social.linkedin,
               github: seoConfig.social.github,

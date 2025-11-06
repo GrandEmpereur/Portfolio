@@ -67,14 +67,6 @@ export const Footer = ({ translations, socialLinks }: FooterProps) => {
                             </li>
                             <li>
                                 <Link
-                                    href="/services"
-                                    className="text-white/60 hover:text-white text-sm transition-colors duration-300"
-                                >
-                                    {translations.navServices}
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
                                     href="/contact"
                                     className="text-white/60 hover:text-white text-sm transition-colors duration-300"
                                 >

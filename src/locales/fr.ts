@@ -347,27 +347,27 @@ export default {
     'meta': {
         'home': {
             'title': 'Patrick Bartosik - Développeur Full Stack Freelance | Expert React, Next.js & Node.js',
-            'description': 'Développeur Full Stack freelance spécialisé en React, Next.js, Angular et Node.js. Expert en développement SaaS, e-commerce Shopify Plus et applications web performantes. 4+ ans d\'expérience, 10+ projets réussis. Disponible pour vos projets en France et Europe.',
+            'description': 'Développeur Full Stack freelance expert React, Next.js, Angular & Node.js. Spécialiste SaaS, e-commerce Shopify Plus. 4+ ans d\'expérience, 10+ projets réussis.',
             'keywords': 'développeur full stack, développeur freelance, expert react next.js, développeur backend nodejs, freelance web france, développeur react freelance, développeur next.js, développeur shopify plus, expert typescript, développeur nodejs, freelance full stack, développeur saas, développeur e-commerce, développeur react typescript, développeur backend nodejs, expert shopify plus france, développeur web freelance, freelance react, développeur fullstack freelance, développeur angular, développeur adonisjs, développeur nestjs, développeur mongodb, développeur supabase, développeur tailwind css, développeur gsap, développeur api rest, développeur graphql',
         },
         'projects': {
             'title': 'Projets & Réalisations - Portfolio Développeur Full Stack | Patrick Bartosik',
-            'description': 'Découvrez mes projets : migrations Shopify Plus, développement SaaS, applications React/Next.js/Angular, intégrations e-commerce complexes. Clients : Euroclear France, Odaje, Tartine & Chocolat, Qwetch, Balzac Paris, Isotoner. Expertise en développement web sur mesure.',
+            'description': 'Portfolio développeur : migrations Shopify Plus, SaaS, React/Next.js/Angular. Clients : Euroclear, Odaje, Tartine & Chocolat, Qwetch. Développement web sur mesure.',
             'keywords': 'portfolio développeur, projets react next.js, migration shopify plus, développement saas, projet e-commerce, portfolio full stack, réalisations web, cas clients développeur, migration prestashop shopify, intégration erp shopify, projet react typescript, projet angular, projet next.js, développement web sur mesure, portfolio freelance, réalisations développeur, projets web',
         },
         'contact': {
             'title': 'Contact - Discutons de votre projet web | Patrick Bartosik',
-            'description': 'Vous avez un projet web, SaaS ou e-commerce ? Contactez-moi pour une consultation gratuite. Développeur Full Stack freelance disponible pour vos projets React, Next.js, Angular, Node.js. Réponse sous 24h.',
+            'description': 'Projet web, SaaS ou e-commerce ? Consultation gratuite. Développeur Full Stack freelance React, Next.js, Angular, Node.js. Réponse sous 24h.',
             'keywords': 'contact développeur freelance, devis développeur web, consultation développeur, embaucher développeur full stack, développeur freelance disponible, contact développeur react, contact développeur next.js, devis site web, devis application web, contact freelance',
         },
         'legal': {
             'title': 'Mentions Légales - Patrick Bartosik Développeur Full Stack',
-            'description': 'Mentions légales du site patrick.bartosik.fr. Informations légales sur Patrick Bartosik, développeur Full Stack freelance basé en France.',
+            'description': 'Mentions légales patrick.bartosik.fr. Informations légales Patrick Bartosik, développeur Full Stack freelance France.',
             'keywords': 'mentions légales, informations légales, patrick bartosik, développeur freelance france',
         },
         'privacy': {
             'title': 'Politique de Confidentialité - Protection des données | Patrick Bartosik',
-            'description': 'Politique de confidentialité et protection des données personnelles sur patrick.bartosik.fr. RGPD conforme. Découvrez comment vos données sont traitées et protégées.',
+            'description': 'Politique de confidentialité patrick.bartosik.fr. Protection données personnelles, RGPD conforme. Traitement et sécurité de vos données.',
             'keywords': 'politique confidentialité, protection données, rgpd, données personnelles, confidentialité site web',
         },
     },

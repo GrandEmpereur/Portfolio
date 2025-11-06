@@ -347,27 +347,27 @@ export default {
     'meta': {
         'home': {
             'title': 'Patrick Bartosik - Freelance Full Stack Developer | Ekspert React, Next.js i Node.js',
-            'description': 'Freelance Full Stack Developer specjalizujący się w React, Next.js, Angular i Node.js. Ekspert w rozwoju SaaS, e-commerce Shopify Plus i wydajnych aplikacji webowych. 4+ lata doświadczenia, 10+ udanych projektów. Dostępny dla projektów we Francji i Europie.',
+            'description': 'Freelance Full Stack Developer ekspert React, Next.js, Angular & Node.js. Specjalista SaaS, Shopify Plus. 4+ lata doświadczenia, 10+ projektów.',
             'keywords': 'programista full stack, freelance developer, ekspert react next.js, programista backend nodejs, freelance web developer francja, programista react freelance, programista next.js, programista shopify plus, ekspert typescript, programista nodejs, freelance full stack, programista saas, programista ecommerce, programista react typescript, programista backend nodejs, ekspert shopify plus francja, programista web freelance, freelance react, fullstack freelance developer, programista angular, programista adonisjs, programista nestjs, programista mongodb, programista supabase, programista tailwind css, programista gsap, programista rest api, programista graphql',
         },
         'projects': {
             'title': 'Projekty i Portfolio - Portfolio Full Stack Developer | Patrick Bartosik',
-            'description': 'Odkryj moje projekty: migracje Shopify Plus, rozwój SaaS, aplikacje React/Next.js/Angular, złożone integracje e-commerce. Klienci: Euroclear France, Odaje, Tartine & Chocolat, Qwetch, Balzac Paris, Isotoner. Ekspertyza w niestandardowym rozwoju webowym.',
+            'description': 'Portfolio programisty: migracje Shopify Plus, SaaS, React/Next.js/Angular. Klienci: Euroclear, Odaje, Tartine & Chocolat, Qwetch. Rozwój web.',
             'keywords': 'portfolio programisty, projekty react next.js, migracja shopify plus, rozwój saas, projekt ecommerce, portfolio full stack, projekty web, studia przypadków programisty, migracja prestashop do shopify, integracja erp shopify, projekt react typescript, projekt angular, projekt next.js, niestandardowy rozwój web, portfolio freelance, projekty programisty, projekty web',
         },
         'contact': {
             'title': 'Kontakt - Porozmawiajmy o Twoim Projekcie Web | Patrick Bartosik',
-            'description': 'Masz projekt web, SaaS lub e-commerce? Skontaktuj się ze mną w celu bezpłatnej konsultacji. Freelance Full Stack Developer dostępny dla Twoich projektów React, Next.js, Angular, Node.js. Odpowiedź w ciągu 24h.',
+            'description': 'Projekt web, SaaS lub e-commerce? Bezpłatna konsultacja. Freelance Full Stack Developer React, Next.js, Angular, Node.js. Odpowiedź w 24h.',
             'keywords': 'kontakt freelance developer, wycena programista web, konsultacja programista, zatrudnij full stack developer, freelance developer dostępny, kontakt programista react, kontakt programista next.js, wycena strona internetowa, wycena aplikacja webowa, kontakt freelance',
         },
         'legal': {
             'title': 'Informacje Prawne - Patrick Bartosik Full Stack Developer',
-            'description': 'Informacje prawne dla patrick.bartosik.fr. Informacje prawne o Patrick Bartosik, freelance Full Stack developer z siedzibą we Francji.',
+            'description': 'Informacje prawne patrick.bartosik.fr. Informacje prawne Patrick Bartosik, freelance Full Stack developer Francja.',
             'keywords': 'informacje prawne, informacje legalne, patrick bartosik, freelance developer francja',
         },
         'privacy': {
             'title': 'Polityka Prywatności - Ochrona Danych | Patrick Bartosik',
-            'description': 'Polityka prywatności i ochrona danych osobowych na patrick.bartosik.fr. Zgodność z RODO. Dowiedz się, jak Twoje dane są przetwarzane i chronione.',
+            'description': 'Polityka prywatności patrick.bartosik.fr. Ochrona danych osobowych, zgodność RODO. Przetwarzanie i bezpieczeństwo danych.',
             'keywords': 'polityka prywatności, ochrona danych, rodo, dane osobowe, prywatność strony internetowej',
         },
     },

@@ -262,6 +262,8 @@ export const ContactSection = ({ translations }: ContactSectionProps) => {
                     fill
                     className="object-cover"
                     quality={90}
+                    sizes="100vw"
+                    priority
                 />
                 <div className="absolute inset-0 bg-black/80"></div>
             </div>
@@ -383,11 +385,11 @@ export const ContactSection = ({ translations }: ContactSectionProps) => {
                                             {/* Terms */}
                                             <p className="text-xs text-[#090909]/60 leading-relaxed">
                                                 {translations.termsText}{" "}
-                                                <a href="/terms" className="text-[#0A0A0A] underline hover:no-underline">
+                                                <a href="/mentions-legales" className="text-[#0A0A0A] underline hover:no-underline">
                                                     {translations.termsLink}
                                                 </a>{" "}
                                                 {translations.andText}{" "}
-                                                <a href="/privacy" className="text-[#0A0A0A] underline hover:no-underline">
+                                                <a href="/politique-confidentialite" className="text-[#0A0A0A] underline hover:no-underline">
                                                     {translations.privacyLink}
                                                 </a>.
                                             </p>

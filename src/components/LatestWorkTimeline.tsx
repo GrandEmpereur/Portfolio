@@ -144,7 +144,8 @@ export function LatestWorkTimeline() {
                                 alt={`${currentProject.title} - ${currentProject.description || 'E-commerce project showcase'}`}
                                 fill
                                 className="object-cover"
-                                sizes="50vw"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 50vw"
+                                quality={85}
                                 priority={activeIndex === 0}
                                 style={{
                                     animation: 'fadeScaleIn 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards'
