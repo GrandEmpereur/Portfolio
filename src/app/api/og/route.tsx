@@ -69,89 +69,102 @@ export async function GET() {
                         }}
                     />
 
-                    {/* Name */}
+                    {/* Logo Badge */}
                     <div
                         style={{
-                            fontSize: '72px',
-                            fontWeight: 'bold',
-                            background: 'linear-gradient(to right, #FFFFFF, rgba(255, 107, 53, 0.8))',
-                            backgroundClip: 'text',
-                            color: 'transparent',
-                            marginBottom: '16px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '16px',
+                            marginBottom: '48px',
                         }}
                     >
-                        Patrick Bartosik
+                        <div
+                            style={{
+                                width: '56px',
+                                height: '56px',
+                                background: 'linear-gradient(135deg, #DAB967 0%, #BC874D 62%, #AE6E41 100%)',
+                                borderRadius: '16px',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                fontSize: '28px',
+                                fontWeight: 'bold',
+                                color: '#000000',
+                            }}
+                        >
+                            PB
+                        </div>
+                        <div
+                            style={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                fontSize: '20px',
+                                fontWeight: '500',
+                                color: '#FFFFFF',
+                                opacity: 0.9,
+                            }}
+                        >
+                            <span>Bartosik</span>
+                            <span>Patrick</span>
+                        </div>
                     </div>
 
-                    {/* Title */}
+                    {/* Main Title */}
                     <div
                         style={{
-                            fontSize: '42px',
-                            fontWeight: '600',
+                            fontSize: '82px',
+                            fontWeight: 'bold',
                             color: '#FFFFFF',
-                            opacity: 0.9,
-                            marginBottom: '40px',
+                            marginBottom: '24px',
+                            lineHeight: 1.1,
+                            textAlign: 'center',
                         }}
                     >
-                        Développeur Full-Stack
+                        Développeur
+                    </div>
+                    <div
+                        style={{
+                            fontSize: '82px',
+                            fontWeight: 'bold',
+                            color: '#FFFFFF',
+                            marginBottom: '48px',
+                            lineHeight: 1.1,
+                            textAlign: 'center',
+                        }}
+                    >
+                        Full Stack
                     </div>
 
                     {/* Technologies badges */}
                     <div
                         style={{
                             display: 'flex',
-                            gap: '20px',
-                            marginTop: '20px',
+                            gap: '16px',
                         }}
                     >
                         <div
                             style={{
-                                padding: '12px 28px',
-                                background: 'rgba(255, 255, 255, 0.1)',
-                                border: '1.5px solid rgba(255, 255, 255, 0.2)',
-                                borderRadius: '12px',
-                                fontSize: '20px',
+                                padding: '10px 24px',
+                                background: 'rgba(255, 255, 255, 0.08)',
+                                border: '1.5px solid rgba(255, 255, 255, 0.15)',
+                                borderRadius: '10px',
+                                fontSize: '18px',
                                 fontWeight: '500',
                                 color: '#FFFFFF',
+                                opacity: 0.9,
                             }}
                         >
-                            React
+                            React • Next.js
                         </div>
                         <div
                             style={{
-                                padding: '12px 28px',
-                                background: 'rgba(255, 255, 255, 0.1)',
-                                border: '1.5px solid rgba(255, 255, 255, 0.2)',
-                                borderRadius: '12px',
-                                fontSize: '20px',
+                                padding: '10px 24px',
+                                background: 'rgba(218, 185, 103, 0.15)',
+                                border: '1.5px solid rgba(218, 185, 103, 0.3)',
+                                borderRadius: '10px',
+                                fontSize: '18px',
                                 fontWeight: '500',
-                                color: '#FFFFFF',
-                            }}
-                        >
-                            Next.js
-                        </div>
-                        <div
-                            style={{
-                                padding: '12px 28px',
-                                background: 'rgba(255, 255, 255, 0.1)',
-                                border: '1.5px solid rgba(255, 255, 255, 0.2)',
-                                borderRadius: '12px',
-                                fontSize: '20px',
-                                fontWeight: '500',
-                                color: '#FFFFFF',
-                            }}
-                        >
-                            TypeScript
-                        </div>
-                        <div
-                            style={{
-                                padding: '12px 28px',
-                                background: 'rgba(255, 107, 53, 0.2)',
-                                border: '1.5px solid rgba(255, 107, 53, 0.4)',
-                                borderRadius: '12px',
-                                fontSize: '20px',
-                                fontWeight: '500',
-                                color: '#FF6B35',
+                                color: '#DAB967',
                             }}
                         >
                             Shopify Plus

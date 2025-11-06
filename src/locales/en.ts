@@ -22,7 +22,7 @@ export default {
     },
     'about': {
         'label': 'ABOUT',
-        'heading': 'I combine years of web development expertise to craft meaningful, results-driven digital experiences.',
+        'heading': 'Years of web dev expertise serving engaging digital experiences',
     },
     'knowledge': {
         'title': 'My skills',

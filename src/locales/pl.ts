@@ -22,7 +22,7 @@ export default {
     },
     'about': {
         'label': 'O MNIE',
-        'heading': 'Łączę lata doświadczenia w tworzeniu stron internetowych, aby tworzyć znaczące, zorientowane na wyniki doświadczenia cyfrowe.',
+        'heading': 'Lata doświadczenia w web dev w służbie angażujących doświadczeń cyfrowych',
     },
     'knowledge': {
         'title': 'Moje umiejętności',

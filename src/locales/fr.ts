@@ -22,7 +22,7 @@ export default {
     },
     'about': {
         'label': 'À PROPOS',
-        'heading': 'Je combine des années d\'expertise en développement web pour créer des expériences numériques significatives et axées sur les résultats.',
+        'heading': 'Des années d\'expertise en dev web au service d\'expériences numériques engageantes',
     },
     'knowledge': {
         'title': 'Mes compétences',
