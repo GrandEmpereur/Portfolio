@@ -35,15 +35,31 @@ const ProjectCardWithHover = ({
         : `/projects/${project.slug}`;
     const isExternal = project.link && project.link.startsWith('http');
 
+    // Détection mobile pour désactiver hover
+    const [isTouchDevice, setIsTouchDevice] = useState(false);
+
+    useEffect(() => {
+        const checkTouch = () => {
+            setIsTouchDevice(
+                'ontouchstart' in window ||
+                navigator.maxTouchPoints > 0 ||
+                window.matchMedia('(max-width: 1023px)').matches
+            );
+        };
+        checkTouch();
+        window.addEventListener('resize', checkTouch);
+        return () => window.removeEventListener('resize', checkTouch);
+    }, []);
+
     return (
         <a
             ref={cardRef}
             href={linkHref}
             target={isExternal ? "_blank" : undefined}
             rel={isExternal ? "noopener noreferrer" : undefined}
-            className="relative w-full aspect-square overflow-hidden cursor-pointer"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
+            className="relative w-full aspect-square overflow-hidden cursor-pointer active:scale-95 transition-transform"
+            onMouseEnter={() => !isTouchDevice && setIsHovered(true)}
+            onMouseLeave={() => !isTouchDevice && setIsHovered(false)}
             style={{
                 transition: 'transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)',
             }}
@@ -274,12 +290,12 @@ export const LatestProjectsSection = ({
     }, [projects.length]);
 
     return (
-        <section ref={sectionRef} className="w-full py-20 md:py-32 px-20">
+        <section ref={sectionRef} className="w-full py-12 sm:py-16 md:py-20 lg:py-32 px-4 sm:px-8 md:px-12 lg:px-20">
             {/* Header */}
-            <div className="flex items-end justify-between mb-12 md:mb-16">
+            <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 sm:gap-0 mb-8 sm:mb-12 md:mb-16">
                 <h2
                     ref={titleRef}
-                    className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-300"
+                    className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-300"
                 >
                     {title}
                 </h2>
@@ -288,12 +304,11 @@ export const LatestProjectsSection = ({
                 <a
                     ref={buttonRef}
                     href="/projects"
-                    data-magnetic="true"
-                    className="group flex items-center gap-3 px-6 py-3 bg-white/10 hover:bg-white/15 backdrop-blur-md rounded-full transition-all duration-300 border border-white/10 shadow-lg"
+                    className="group flex items-center gap-3 px-4 sm:px-6 py-2.5 sm:py-3 bg-white/10 hover:bg-white/15 active:scale-95 backdrop-blur-md rounded-full transition-all duration-300 border border-white/10 shadow-lg"
                 >
-                    <span className="w-7 h-7 rounded-full bg-gradient-to-br from-white/20 to-white/10 backdrop-blur-sm flex items-center justify-center border border-white/20">
+                    <span className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-gradient-to-br from-white/20 to-white/10 backdrop-blur-sm flex items-center justify-center border border-white/20">
                         <svg
-                            className="w-4 h-4 text-white group-hover:translate-x-0.5 transition-transform duration-300"
+                            className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white group-hover:translate-x-0.5 transition-transform duration-300"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -306,14 +321,14 @@ export const LatestProjectsSection = ({
                             />
                         </svg>
                     </span>
-                    <span className="text-white font-medium hidden sm:inline">
+                    <span className="text-white font-medium text-sm sm:text-base">
                         {viewAllText}
                     </span>
                 </a>
             </div>
 
-            {/* Project Grid - 2x2 */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Project Grid - Responsive */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
                 {projects.slice(0, 4).map((project, index) => (
                     <ProjectCardWithHover
                         key={project.slug}

@@ -98,20 +98,20 @@ export const FAQSection = ({ title, faqs, socialTitle, socialLinks }: FAQSection
     }, []);
 
     return (
-        <section ref={sectionRef} className="w-full py-32 bg-black">
-            <div className="w-full px-20">
-                <div className="flex flex-col lg:flex-row items-start justify-between gap-20 lg:gap-32">
+        <section ref={sectionRef} className="w-full py-16 sm:py-20 md:py-24 lg:py-32 bg-black">
+            <div className="w-full px-4 sm:px-8 md:px-12 lg:px-20">
+                <div className="flex flex-col lg:flex-row items-start justify-between gap-12 sm:gap-16 md:gap-20 lg:gap-32">
                     {/* Titre - Gauche */}
-                    <div className="flex flex-col justify-between min-w-[400px]">
+                    <div className="flex flex-col justify-between w-full lg:min-w-[400px]">
                         <h2
                             ref={titleRef}
-                            className="text-white text-6xl md:text-7xl lg:text-8xl xl:text-[100px] font-bold leading-[0.95] mb-16"
+                            className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-[100px] font-bold leading-[0.95] mb-10 sm:mb-12 md:mb-16"
                             dangerouslySetInnerHTML={{ __html: title }}
                         />
 
                         {/* Social Links */}
-                        <div ref={socialRef} className="mt-12 lg:mt-auto">
-                            <p className="text-white/60 text-base font-medium mb-8">
+                        <div ref={socialRef} className="mt-8 sm:mt-10 md:mt-12 lg:mt-auto">
+                            <p className="text-white/60 text-sm sm:text-base font-medium mb-6 sm:mb-8">
                                 {socialTitle}
                             </p>
                             <div className="flex items-center gap-4">
@@ -120,9 +120,9 @@ export const FAQSection = ({ title, faqs, socialTitle, socialLinks }: FAQSection
                                         href={socialLinks.linkedin}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="w-12 h-12 flex items-center justify-center rounded-[20px] bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-300"
+                                        className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-2xl sm:rounded-[20px] bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 active:scale-95 transition-all duration-300"
                                     >
-                                        <Linkedin className="w-5 h-5 text-white" />
+                                        <Linkedin className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                                     </a>
                                 )}
                                 {socialLinks.github && (
@@ -130,9 +130,9 @@ export const FAQSection = ({ title, faqs, socialTitle, socialLinks }: FAQSection
                                         href={socialLinks.github}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="w-12 h-12 flex items-center justify-center rounded-[20px] bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-300"
+                                        className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-2xl sm:rounded-[20px] bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 active:scale-95 transition-all duration-300"
                                     >
-                                        <Github className="w-5 h-5 text-white" />
+                                        <Github className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                                     </a>
                                 )}
                                 {socialLinks.instagram && (
@@ -140,17 +140,17 @@ export const FAQSection = ({ title, faqs, socialTitle, socialLinks }: FAQSection
                                         href={socialLinks.instagram}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="w-12 h-12 flex items-center justify-center rounded-[20px] bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-300"
+                                        className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-2xl sm:rounded-[20px] bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 active:scale-95 transition-all duration-300"
                                     >
-                                        <Instagram className="w-5 h-5 text-white" />
+                                        <Instagram className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                                     </a>
                                 )}
                                 {socialLinks.email && (
                                     <a
                                         href={`mailto:${socialLinks.email}`}
-                                        className="w-12 h-12 flex items-center justify-center rounded-[20px] bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-300"
+                                        className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-2xl sm:rounded-[20px] bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 active:scale-95 transition-all duration-300"
                                     >
-                                        <Mail className="w-5 h-5 text-white" />
+                                        <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                                     </a>
                                 )}
                             </div>
@@ -164,21 +164,21 @@ export const FAQSection = ({ title, faqs, socialTitle, socialLinks }: FAQSection
                                 type="single"
                                 collapsible
                                 defaultValue="item-0"
-                                className="space-y-6 w-full"
+                                className="space-y-4 sm:space-y-5 md:space-y-6 w-full"
                             >
                                 {faqs.map((faq, index) => (
                                     <AccordionItem
                                         key={index}
                                         value={`item-${index}`}
-                                        className="bg-white/10 backdrop-blur-md border border-white/20 rounded-[30px] overflow-hidden shadow-lg hover:bg-white/15 transition-all duration-300"
+                                        className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl sm:rounded-3xl md:rounded-[30px] overflow-hidden shadow-lg hover:bg-white/15 active:bg-white/20 transition-all duration-300"
                                     >
-                                        <AccordionTrigger className="px-10 py-8 text-left hover:no-underline [&[data-state=open]>svg]:rotate-45">
-                                            <span className="text-white text-lg md:text-xl font-semibold pr-6">
+                                        <AccordionTrigger className="px-5 sm:px-7 md:px-10 py-5 sm:py-6 md:py-8 text-left hover:no-underline [&[data-state=open]>svg]:rotate-45">
+                                            <span className="text-white text-base sm:text-lg md:text-xl font-semibold pr-4 sm:pr-6">
                                                 {faq.question}
                                             </span>
                                         </AccordionTrigger>
-                                        <AccordionContent className="px-10 pb-8 pt-2">
-                                            <p className="text-white/70 text-base leading-relaxed">
+                                        <AccordionContent className="px-5 sm:px-7 md:px-10 pb-5 sm:pb-6 md:pb-8 pt-1 sm:pt-2">
+                                            <p className="text-white/70 text-sm sm:text-base leading-relaxed">
                                                 {faq.answer}
                                             </p>
                                         </AccordionContent>

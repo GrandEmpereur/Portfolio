@@ -104,60 +104,66 @@ export const KnowledgeSection = ({
                     delay: (index % 3) * 0.08, // Stagger par ligne
                 });
 
-                // Hover effects avancés
-                card.addEventListener("mouseenter", () => {
-                    gsap.to(card, {
-                        y: -15,
-                        scale: 1.05,
-                        duration: 0.5,
-                        ease: "power3.out",
+                // Hover effects avancés - DÉSACTIVÉS sur mobile/tablette
+                const isTouchDevice =
+                    window.matchMedia('(max-width: 1023px)').matches ||
+                    'ontouchstart' in window;
+
+                if (!isTouchDevice) {
+                    card.addEventListener("mouseenter", () => {
+                        gsap.to(card, {
+                            y: -15,
+                            scale: 1.05,
+                            duration: 0.5,
+                            ease: "power3.out",
+                        });
+
+                        if (logo) {
+                            gsap.to(logo, {
+                                rotation: 5,
+                                scale: 1.2,
+                                duration: 0.5,
+                                ease: "back.out(1.7)",
+                            });
+                        }
+
+                        if (number) {
+                            gsap.to(number, {
+                                scale: 1.2,
+                                opacity: 1,
+                                duration: 0.3,
+                                ease: "power2.out",
+                            });
+                        }
                     });
 
-                    if (logo) {
-                        gsap.to(logo, {
-                            rotation: 5,
-                            scale: 1.2,
+                    card.addEventListener("mouseleave", () => {
+                        gsap.to(card, {
+                            y: 0,
+                            scale: 1,
                             duration: 0.5,
-                            ease: "back.out(1.7)",
+                            ease: "power3.out",
                         });
-                    }
 
-                    if (number) {
-                        gsap.to(number, {
-                            scale: 1.2,
-                            opacity: 1,
-                            duration: 0.3,
-                            ease: "power2.out",
-                        });
-                    }
-                });
+                        if (logo) {
+                            gsap.to(logo, {
+                                rotation: 0,
+                                scale: 1,
+                                duration: 0.5,
+                                ease: "back.out(1.7)",
+                            });
+                        }
 
-                card.addEventListener("mouseleave", () => {
-                    gsap.to(card, {
-                        y: 0,
-                        scale: 1,
-                        duration: 0.5,
-                        ease: "power3.out",
+                        if (number) {
+                            gsap.to(number, {
+                                scale: 1,
+                                opacity: 0.5,
+                                duration: 0.3,
+                                ease: "power2.out",
+                            });
+                        }
                     });
-
-                    if (logo) {
-                        gsap.to(logo, {
-                            rotation: 0,
-                            scale: 1,
-                            duration: 0.5,
-                            ease: "back.out(1.7)",
-                        });
-                    }
-
-                    if (number) {
-                        gsap.to(number, {
-                            scale: 1,
-                            opacity: 0.5,
-                            duration: 0.3,
-                            ease: "power2.out",
-                        });
-                    }
-                });
+                }
             });
         }, sectionRef);
 
@@ -167,27 +173,27 @@ export const KnowledgeSection = ({
     return (
         <section
             ref={sectionRef}
-            className="flex flex-col gap-y-24 items-center justify-center py-32 px-20"
+            className="flex flex-col gap-y-12 sm:gap-y-16 md:gap-y-20 lg:gap-y-24 items-center justify-center py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-8 md:px-12 lg:px-20"
         >
             {/* Header */}
-            <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-32 w-full">
+            <div className="flex flex-col lg:flex-row items-center justify-center gap-6 sm:gap-8 md:gap-12 lg:gap-32 w-full">
                 <h2
                     ref={titleRef}
-                    className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight"
+                    className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold leading-tight text-center lg:text-left"
                 >
                     {title}
                 </h2>
 
                 <p
                     ref={descriptionRef}
-                    className="text-base md:text-lg font-medium leading-relaxed text-gray-400"
+                    className="text-sm sm:text-base md:text-lg font-medium leading-relaxed text-gray-400 text-center lg:text-left max-w-md lg:max-w-none"
                 >
                     {description}
                 </p>
             </div>
 
-            {/* Grille 3 colonnes x 4 rangées */}
-            <div className="relative grid grid-cols-3 w-full">
+            {/* Grille responsive */}
+            <div className="relative grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 w-full">
                 {knowledge.map((item, index) => {
                     const altText = knowledgeAlts[item.title] || item.title;
                     return (
@@ -196,20 +202,20 @@ export const KnowledgeSection = ({
                             ref={(el) => {
                                 cardsRef.current[index] = el;
                             }}
-                            className="relative flex min-h-[200px] p-[29.66px_24px_29.65px_24px] flex-col justify-center items-center border border-white/08 group hover:bg-white/5 transition-colors duration-300 cursor-pointer"
+                            className="relative flex min-h-[140px] sm:min-h-[160px] md:min-h-[180px] lg:min-h-[200px] p-4 sm:p-5 md:p-6 lg:p-[29.66px_24px_29.65px_24px] flex-col justify-center items-center border border-white/08 group hover:bg-white/5 active:bg-white/10 transition-colors duration-300 cursor-pointer"
                         >
-                            <div className="logo mb-4 text-white">
+                            <div className="logo mb-2 sm:mb-3 md:mb-4 text-white">
                                 <Image
                                     src={item.icon}
                                     alt={altText}
                                     width={64}
                                     height={64}
-                                    className="w-16 h-16 object-contain"
+                                    className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain"
                                     style={{ filter: "brightness(0) invert(1)" }}
                                 />
                             </div>
-                            <h3 className="text-white text-xl">{item.title}</h3>
-                            <span className="number absolute bottom-6 right-6 text-gray-400 text-sm font-medium tracking-wider uppercase opacity-50">
+                            <h3 className="text-white text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-center">{item.title}</h3>
+                            <span className="number absolute bottom-3 sm:bottom-4 md:bottom-5 lg:bottom-6 right-3 sm:right-4 md:right-5 lg:right-6 text-gray-400 text-[10px] sm:text-xs md:text-sm font-medium tracking-wider uppercase opacity-50">
                                 /{(index + 1).toString().padStart(2, "0")}
                             </span>
                         </div>

@@ -75,11 +75,11 @@ export const AboutSection = ({ label, text }: AboutSectionProps) => {
     return (
         <section
             ref={sectionRef}
-            className="relative min-h-screen w-full flex items-center justify-center px-20 py-32"
+            className="relative min-h-screen w-full flex items-center justify-center px-4 sm:px-8 md:px-12 lg:px-20 py-16 sm:py-24 md:py-32"
         >
-            <div className="flex flex-col lg:flex-row gap-x-24 xl:gap-x-32 w-full items-start lg:items-center">
+            <div className="flex flex-col lg:flex-row gap-x-12 md:gap-x-24 xl:gap-x-32 w-full items-start lg:items-center">
                 {/* Label */}
-                <div ref={labelRef} className="mb-8 lg:mb-0 flex-shrink-0">
+                <div ref={labelRef} className="mb-6 sm:mb-8 lg:mb-0 flex-shrink-0">
                     <span className="text-gray-400 text-xs font-light tracking-[0.3em] uppercase">
                         ({label})
                     </span>
@@ -87,14 +87,14 @@ export const AboutSection = ({ label, text }: AboutSectionProps) => {
 
                 {/* Texte animé avec effet de blur */}
                 <div className="flex-1">
-                    <h2 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-[100px] leading-[1.2] font-light text-gray-300">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl leading-[1.2] font-light text-gray-300">
                         {words.map((word, index) => (
                             <span
                                 key={index}
                                 ref={(el) => {
                                     wordsRef.current[index] = el;
                                 }}
-                                className="inline-block mr-3 md:mr-4 lg:mr-5"
+                                className="inline-block mr-2 sm:mr-3 md:mr-4 lg:mr-5"
                                 style={{
                                     opacity: 0,
                                     filter: "blur(10px)",

@@ -10,12 +10,23 @@ export const CustomCursor = () => {
     const cursorPos = useRef({ x: 0, y: 0 });
 
     useEffect(() => {
+        // Détection mobile/tablette - Ne pas activer le cursor custom sur touch devices
+        const isTouchDevice =
+            window.matchMedia('(max-width: 1023px)').matches ||
+            'ontouchstart' in window ||
+            navigator.maxTouchPoints > 0;
+
+        if (isTouchDevice) {
+            // Garder le curseur natif sur mobile/tablette
+            return;
+        }
+
         if (!cursorRef.current || !cursorDotRef.current) return;
 
         const cursor = cursorRef.current;
         const cursorDot = cursorDotRef.current;
 
-        // Cacher le cursor par défaut
+        // Cacher le cursor par défaut (uniquement desktop)
         document.body.style.cursor = "none";
 
         // Suivi de la souris

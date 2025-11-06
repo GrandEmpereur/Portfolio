@@ -38,13 +38,10 @@ export const HeroSection = ({
     useEffect(() => {
         if (!sectionRef.current || !nameRef.current) return;
 
-        const ctx = gsap.context(() => {
-            // Split text animation sur le nom
-            const split = new SplitType(nameRef.current!, {
-                types: "chars",
-                tagName: "span",
-            });
+        // Détection mobile pour optimiser les animations
+        const isMobile = window.matchMedia('(max-width: 767px)').matches;
 
+        const ctx = gsap.context(() => {
             // Timeline d'entrée
             const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
 
@@ -52,25 +49,45 @@ export const HeroSection = ({
             if (titleRef.current) {
                 tl.from(titleRef.current, {
                     opacity: 0,
-                    y: 30,
-                    duration: 1,
+                    y: isMobile ? 20 : 30,
+                    duration: isMobile ? 0.6 : 1,
                 }, 0.2);
             }
 
-            // 2. Animation lettre par lettre du nom
-            if (split.chars) {
+            // 2. Animation du nom - Simplifiée sur mobile
+            if (isMobile) {
+                // Animation simple fade-in sur mobile (pas de split text)
                 tl.from(
-                    split.chars,
+                    nameRef.current,
                     {
                         opacity: 0,
-                        y: 100,
-                        rotationX: -90,
-                        stagger: 0.05,
-                        duration: 1,
-                        ease: "back.out(1.7)",
+                        y: 40,
+                        duration: 0.8,
+                        ease: "power3.out",
                     },
                     0.4
                 );
+            } else {
+                // Animation complexe lettre par lettre sur desktop
+                const split = new SplitType(nameRef.current!, {
+                    types: "chars",
+                    tagName: "span",
+                });
+
+                if (split.chars) {
+                    tl.from(
+                        split.chars,
+                        {
+                            opacity: 0,
+                            y: 100,
+                            rotationX: -90,
+                            stagger: 0.05,
+                            duration: 1,
+                            ease: "back.out(1.7)",
+                        },
+                        0.4
+                    );
+                }
             }
 
             // 3. CTAs
@@ -79,10 +96,10 @@ export const HeroSection = ({
                     ctasRef.current,
                     {
                         opacity: 0,
-                        y: 40,
-                        duration: 1,
+                        y: isMobile ? 20 : 40,
+                        duration: isMobile ? 0.6 : 1,
                     },
-                    0.8
+                    isMobile ? 0.6 : 0.8
                 );
             }
 
@@ -95,12 +112,12 @@ export const HeroSection = ({
                         y: 20,
                         duration: 0.8,
                     },
-                    1
+                    isMobile ? 0.8 : 1
                 );
             }
 
-            // Parallax sur le background
-            if (backgroundRef.current) {
+            // Parallax sur le background - DÉSACTIVÉ sur mobile pour les performances
+            if (!isMobile && backgroundRef.current) {
                 gsap.to(backgroundRef.current, {
                     yPercent: 30,
                     ease: "none",
@@ -147,10 +164,10 @@ export const HeroSection = ({
                 <div className="flex-1"></div>
 
                 {/* Contenu principal - Centré */}
-                <div className="w-full px-8 pb-32">
+                <div className="w-full px-4 sm:px-6 md:px-8 pb-16 sm:pb-24 md:pb-32">
                     <div className="max-w-full mx-auto">
                         {/* Titre professionnel - En haut à gauche */}
-                        <div ref={titleRef} className="mb-8 lg:mb-12">
+                        <div ref={titleRef} className="mb-6 sm:mb-8 lg:mb-12">
                             <p className="text-xs md:text-sm text-white/50 font-light tracking-[0.3em] uppercase">
                                 {title}
                             </p>
@@ -162,7 +179,7 @@ export const HeroSection = ({
                             <div className="lg:col-span-8">
                                 <h1
                                     ref={nameRef}
-                                    className="text-[70px] sm:text-[90px] md:text-[110px] lg:text-[140px] xl:text-[180px] font-bold leading-[0.92] tracking-tight text-white"
+                                    className="text-[50px] sm:text-[70px] md:text-[110px] lg:text-[140px] xl:text-[180px] font-bold leading-[0.92] tracking-tight text-white"
                                 >
                                     {nameParts.map((part, index) => (
                                         <span key={index} className="block">
@@ -177,8 +194,7 @@ export const HeroSection = ({
                                 <div className="flex flex-col gap-5 lg:gap-6">
                                     <Link
                                         href="/projects"
-                                        data-magnetic="true"
-                                        className="group relative inline-flex items-center gap-3 text-white hover:text-white/90 transition-all duration-300"
+                                        className="group relative inline-flex items-center gap-3 text-white hover:text-white/90 transition-all duration-300 active:scale-95"
                                     >
                                         <span className="text-sm lg:text-base tracking-wide uppercase font-medium">
                                             {ctaPrimary}
@@ -202,8 +218,7 @@ export const HeroSection = ({
 
                                     <Link
                                         href="/contact"
-                                        data-magnetic="true"
-                                        className="group relative inline-flex items-center gap-3 text-white/70 hover:text-white transition-all duration-300"
+                                        className="group relative inline-flex items-center gap-3 text-white/70 hover:text-white transition-all duration-300 active:scale-95"
                                     >
                                         <span className="text-sm lg:text-base tracking-wide uppercase font-light">
                                             {ctaSecondary}
@@ -229,7 +244,7 @@ export const HeroSection = ({
                                         href="/cv.pdf"
                                         download="Patrick_Bartosik_CV.pdf"
                                         target="_blank"
-                                        className="group relative inline-flex items-center gap-3 text-white/70 hover:text-white transition-all duration-300"
+                                        className="group relative inline-flex items-center gap-3 text-white/70 hover:text-white transition-all duration-300 active:scale-95"
                                     >
                                         <span className="text-sm lg:text-base tracking-wide uppercase font-light">
                                             {ctaTertiary}
@@ -256,10 +271,10 @@ export const HeroSection = ({
                 </div>
             </div>
 
-            {/* Scroll Indicator - Bas centre */}
+            {/* Scroll Indicator - Bas centre (masqué sur petit mobile) */}
             <div
                 ref={scrollIndicatorRef}
-                className="absolute bottom-8 md:bottom-12 left-1/2 -translate-x-1/2 z-20"
+                className="hidden sm:flex absolute bottom-8 md:bottom-12 left-1/2 -translate-x-1/2 z-20"
             >
                 <div className="flex flex-col items-center gap-3 opacity-60 hover:opacity-100 transition-opacity cursor-pointer">
                     <span className="text-white/50 text-xs tracking-widest uppercase">

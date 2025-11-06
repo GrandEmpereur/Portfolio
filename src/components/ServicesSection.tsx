@@ -83,42 +83,48 @@ export const ServicesSection = ({ title, services, locale, ctaText }: ServicesSe
                     delay: index * 0.1,
                 });
 
-                // Hover effects 3D
-                card.addEventListener("mouseenter", () => {
-                    gsap.to(card, {
-                        y: -10,
-                        scale: 1.02,
-                        duration: 0.5,
-                        ease: "power3.out",
-                    });
+                // Hover effects 3D - DÉSACTIVÉS sur mobile/tablette
+                const isTouchDevice =
+                    window.matchMedia('(max-width: 1023px)').matches ||
+                    'ontouchstart' in window;
 
-                    if (icon) {
-                        gsap.to(icon, {
-                            scale: 1.2,
-                            rotation: 10,
+                if (!isTouchDevice) {
+                    card.addEventListener("mouseenter", () => {
+                        gsap.to(card, {
+                            y: -10,
+                            scale: 1.02,
                             duration: 0.5,
-                            ease: "back.out(1.7)",
+                            ease: "power3.out",
                         });
-                    }
-                });
 
-                card.addEventListener("mouseleave", () => {
-                    gsap.to(card, {
-                        y: 0,
-                        scale: 1,
-                        duration: 0.5,
-                        ease: "power3.out",
+                        if (icon) {
+                            gsap.to(icon, {
+                                scale: 1.2,
+                                rotation: 10,
+                                duration: 0.5,
+                                ease: "back.out(1.7)",
+                            });
+                        }
                     });
 
-                    if (icon) {
-                        gsap.to(icon, {
+                    card.addEventListener("mouseleave", () => {
+                        gsap.to(card, {
+                            y: 0,
                             scale: 1,
-                            rotation: 0,
                             duration: 0.5,
-                            ease: "back.out(1.7)",
+                            ease: "power3.out",
                         });
-                    }
-                });
+
+                        if (icon) {
+                            gsap.to(icon, {
+                                scale: 1,
+                                rotation: 0,
+                                duration: 0.5,
+                                ease: "back.out(1.7)",
+                            });
+                        }
+                    });
+                }
             });
         }, sectionRef);
 
@@ -128,27 +134,27 @@ export const ServicesSection = ({ title, services, locale, ctaText }: ServicesSe
     return (
         <section
             ref={sectionRef}
-            className="w-full py-20 md:py-32 px-8 md:px-16 lg:px-20"
+            className="w-full py-12 sm:py-16 md:py-20 lg:py-32 px-4 sm:px-6 md:px-12 lg:px-16 xl:px-20"
         >
             {/* Header */}
-            <div className="mb-16">
+            <div className="mb-8 sm:mb-12 md:mb-16">
                 <h2
                     ref={titleRef}
-                    className="text-6xl md:text-7xl lg:text-8xl font-black text-white/90 leading-none tracking-tight"
+                    className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white/90 leading-none tracking-tight"
                 >
                     {title}
                 </h2>
             </div>
 
-            {/* Services Grid - Bento Box Layout */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Services Grid - Bento Box Layout Responsive */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
                 {services.map((service, index) => (
                     <div
                         key={service.id}
                         ref={(el) => {
                             cardsRef.current[index] = el;
                         }}
-                        className="group relative overflow-hidden rounded-3xl backdrop-blur-2xl bg-white/5 border border-white/10 p-8 transform-gpu transition-all duration-500 hover:border-white/20 hover:shadow-2xl hover:shadow-orange-500/10 flex flex-col"
+                        className="group relative overflow-hidden rounded-2xl sm:rounded-3xl backdrop-blur-2xl bg-white/5 border border-white/10 p-5 sm:p-6 md:p-7 lg:p-8 transform-gpu transition-all duration-500 hover:border-white/20 hover:shadow-2xl hover:shadow-orange-500/10 active:scale-95 flex flex-col"
                     >
                         {/* Gradient background on hover */}
                         <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 via-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
@@ -156,36 +162,36 @@ export const ServicesSection = ({ title, services, locale, ctaText }: ServicesSe
                         {/* Content */}
                         <div className="relative z-10 flex flex-col h-full">
                             {/* Icon Emoji */}
-                            <div className="service-icon mb-6 text-6xl">
+                            <div className="service-icon mb-4 sm:mb-5 md:mb-6 text-4xl sm:text-5xl md:text-6xl">
                                 {service.icon}
                             </div>
 
                             {/* Title */}
-                            <h3 className="text-3xl font-bold text-white/90 mb-4 leading-tight">
+                            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white/90 mb-3 sm:mb-4 leading-tight">
                                 {service.title[locale]}
                             </h3>
 
                             {/* Description */}
-                            <p className="text-white/60 text-base leading-relaxed mb-6">
+                            <p className="text-white/60 text-sm sm:text-base leading-relaxed mb-4 sm:mb-5 md:mb-6">
                                 {service.description[locale]}
                             </p>
 
                             {/* Features */}
-                            <ul className="space-y-3 mb-6 flex-grow">
+                            <ul className="space-y-2 sm:space-y-3 mb-4 sm:mb-5 md:mb-6 flex-grow">
                                 {service.features[locale].slice(0, 3).map((feature, idx) => (
-                                    <li key={idx} className="flex items-start gap-3 text-sm text-white/50">
-                                        <span className="text-orange-500 mt-0.5 text-base">✓</span>
+                                    <li key={idx} className="flex items-start gap-2 sm:gap-3 text-xs sm:text-sm text-white/50">
+                                        <span className="text-orange-500 mt-0.5 text-sm sm:text-base flex-shrink-0">✓</span>
                                         <span>{feature}</span>
                                     </li>
                                 ))}
                             </ul>
 
                             {/* Technologies */}
-                            <div className="flex flex-wrap gap-2 mb-8">
+                            <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-6 sm:mb-7 md:mb-8">
                                 {service.technologies.slice(0, 3).map((tech, idx) => (
                                     <span
                                         key={idx}
-                                        className="px-3 py-1.5 text-xs rounded-full glass-light text-white/70 border border-white/10"
+                                        className="px-2 sm:px-3 py-1 sm:py-1.5 text-[10px] sm:text-xs rounded-full glass-light text-white/70 border border-white/10"
                                     >
                                         {tech}
                                     </span>
@@ -195,11 +201,11 @@ export const ServicesSection = ({ title, services, locale, ctaText }: ServicesSe
                             {/* CTA Button - Always at bottom */}
                             <Link
                                 href="/contact"
-                                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 text-white text-sm font-semibold hover:from-orange-600 hover:to-orange-700 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-orange-500/50 mt-auto"
+                                className="inline-flex items-center justify-center gap-2 px-4 sm:px-5 md:px-6 py-2.5 sm:py-3 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 text-white text-xs sm:text-sm font-semibold hover:from-orange-600 hover:to-orange-700 hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg hover:shadow-orange-500/50 mt-auto"
                             >
                                 <span>{ctaText}</span>
                                 <svg
-                                    className="w-4 h-4 transform group-hover:translate-x-1 transition-transform"
+                                    className="w-3 h-3 sm:w-4 sm:h-4 transform group-hover:translate-x-1 transition-transform"
                                     fill="none"
                                     stroke="currentColor"
                                     viewBox="0 0 24 24"

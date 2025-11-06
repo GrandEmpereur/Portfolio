@@ -227,6 +227,71 @@
 /* 3D & Immersive Design Utilities */
 @layer utilities {
 
+  /* Désactiver hover sur touch devices */
+  @media (hover: none) and (pointer: coarse) {
+    .hover\:scale-105 {
+      transform: scale(1) !important;
+    }
+
+    .hover\:scale-110 {
+      transform: scale(1) !important;
+    }
+
+    .hover\:scale-102 {
+      transform: scale(1) !important;
+    }
+
+    .hover\:bg-white\/20 {
+      background: inherit !important;
+    }
+
+    .hover\:bg-white\/15 {
+      background: inherit !important;
+    }
+
+    .hover\:border-white\/20 {
+      border-color: inherit !important;
+    }
+
+    .hover\:shadow-2xl {
+      box-shadow: inherit !important;
+    }
+
+    .hover\:shadow-orange-500\/50 {
+      box-shadow: inherit !important;
+    }
+
+    .hover\:from-orange-600 {
+      --tw-gradient-from: inherit !important;
+    }
+
+    .hover\:to-orange-700 {
+      --tw-gradient-to: inherit !important;
+    }
+
+    .hover\:text-white {
+      color: inherit !important;
+    }
+
+    .hover\:text-white\/90 {
+      color: inherit !important;
+    }
+
+    .hover\:opacity-100 {
+      opacity: inherit !important;
+    }
+
+    .group:hover .group-hover\:translate-x-1 {
+      transform: translateX(0) !important;
+    }
+
+    .group:hover .group-hover\:translate-x-0\.5 {
+      transform: translateX(0) !important;
+    }
+  }
+
+
+
   /* Perspective utilities */
   .perspective-1000 {
     perspective: 1000px;

@@ -17,15 +17,18 @@ export const SmoothScroll = ({ children }: SmoothScrollProps) => {
     const lenisRef = useRef<Lenis | null>(null);
 
     useEffect(() => {
-        // Initialiser Lenis
+        // Détection mobile pour ajuster les paramètres
+        const isMobile = window.matchMedia('(max-width: 767px)').matches;
+
+        // Initialiser Lenis avec paramètres optimisés pour mobile
         lenisRef.current = new Lenis({
-            duration: 1.2,
+            duration: isMobile ? 0.8 : 1.2,
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
             orientation: "vertical",
             gestureOrientation: "vertical",
             smoothWheel: true,
-            wheelMultiplier: 1,
-            touchMultiplier: 2,
+            wheelMultiplier: isMobile ? 0.8 : 1,
+            touchMultiplier: isMobile ? 1.5 : 2,
             infinite: false,
         });
 
