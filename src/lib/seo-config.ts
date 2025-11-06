@@ -20,9 +20,10 @@ export const seoConfig = {
     defaultLocale: 'fr' as const,
     locales: ['en', 'fr', 'pl'] as const,
     openGraph: {
-        image: '/images/og-image.svg',
+        image: '/api/og',
         imageWidth: 1200,
         imageHeight: 630,
+        imageType: 'image/png',
     },
     verification: {
         google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || '',

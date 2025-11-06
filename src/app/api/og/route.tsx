@@ -169,7 +169,7 @@ export async function GET() {
                             opacity: 0.5,
                         }}
                     >
-                        patrickbartosik.com
+                        patrick.bartosik.fr
                     </div>
                 </div>
             </div>

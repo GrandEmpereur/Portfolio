@@ -40,14 +40,25 @@ export async function generateMetadata({
       title,
       description,
       url: locale === seoConfig.defaultLocale ? seoConfig.baseUrl : `${seoConfig.baseUrl}/${locale}`,
+      siteName: seoConfig.siteName,
+      locale: locale,
+      type: 'website',
       images: [
         {
           url: `${seoConfig.baseUrl}${seoConfig.openGraph.image}`,
           width: seoConfig.openGraph.imageWidth,
           height: seoConfig.openGraph.imageHeight,
           alt: title,
+          type: 'image/png',
         },
       ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [`${seoConfig.baseUrl}${seoConfig.openGraph.image}`],
+      creator: '@patrickbartosik',
     },
   };
 }
