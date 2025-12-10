@@ -9,7 +9,6 @@ import { Toaster } from "@/components/ui/sonner";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { CustomCursor } from "@/components/CustomCursor";
 import { PageLoader } from "@/components/PageLoader";
-import { PageTransition } from "@/components/PageTransition";
 import { Analytics as VercelAnalytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics as GoogleAnalytics } from '@/components/Analytics';
@@ -119,7 +118,6 @@ export default async function RootLayout({
       >
         <Providers locale={locale}>
           <PageLoader />
-          <PageTransition />
           <CustomCursor />
           <GoogleAnalytics />
           <SmoothScroll>

@@ -6,25 +6,25 @@ import { CustomBounce } from "gsap/CustomBounce";
 import { CustomWiggle } from "gsap/CustomWiggle";
 import { RoughEase, ExpoScaleEase, SlowMo } from "gsap/EasePack";
 
-import { Draggable } from "gsap/Draggable";
-import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
-import { EaselPlugin } from "gsap/EaselPlugin";
-import { Flip } from "gsap/Flip";
-import { GSDevTools } from "gsap/GSDevTools";
-import { InertiaPlugin } from "gsap/InertiaPlugin";
-import { MotionPathHelper } from "gsap/MotionPathHelper";
-import { MotionPathPlugin } from "gsap/MotionPathPlugin";
-import { MorphSVGPlugin } from "gsap/MorphSVGPlugin";
-import { Observer } from "gsap/Observer";
-import { Physics2DPlugin } from "gsap/Physics2DPlugin";
-import { PhysicsPropsPlugin } from "gsap/PhysicsPropsPlugin";
-import { PixiPlugin } from "gsap/PixiPlugin";
-import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ScrollSmoother } from "gsap/ScrollSmoother";
-import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-import { SplitText } from "gsap/SplitText";
-import { TextPlugin } from "gsap/TextPlugin";
+import { Draggable } from "gsap/all";
+import { DrawSVGPlugin } from "gsap/all";
+import { EaselPlugin } from "gsap/all";
+import { Flip } from "gsap/all";
+import { GSDevTools } from "gsap/all";
+import { InertiaPlugin } from "gsap/all";
+import { MotionPathHelper } from "gsap/all";
+import { MotionPathPlugin } from "gsap/all";
+import { MorphSVGPlugin } from "gsap/all";
+import { Observer } from "gsap/all";
+import { Physics2DPlugin } from "gsap/all";
+import { PhysicsPropsPlugin } from "gsap/all";
+import { PixiPlugin } from "gsap/all";
+import { ScrambleTextPlugin } from "gsap/all";
+import { ScrollTrigger } from "gsap/all";
+import { ScrollSmoother } from "gsap/all";
+import { ScrollToPlugin } from "gsap/all";
+import { SplitText } from "gsap/all";
+import { TextPlugin } from "gsap/all";
 
 // Enregistrer tous les plugins GSAP premium
 gsap.registerPlugin(

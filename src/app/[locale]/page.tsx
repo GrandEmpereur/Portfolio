@@ -187,7 +187,8 @@ export default async function Home({
         />
 
         {/* Statistics Section - Animation GSAP + Testimonials Carousel */}
-        <StatsSection
+        {/* Temporairement désactivé */}
+        {/* <StatsSection
           label={t('stats.label')}
           title={{
             line1: t('stats.heading.line1'),
@@ -209,7 +210,7 @@ export default async function Home({
             company: testimonial.author.company,
             quote: testimonial.quote[locale as 'fr' | 'en' | 'pl'] || testimonial.quote.fr,
           }))}
-        />
+        /> */}
 
         {/* Contact Section */}
         <ContactSection

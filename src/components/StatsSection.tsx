@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useMemo } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Image from "next/image";
@@ -58,10 +58,23 @@ export const StatsSection = ({
     const statsRefs = useRef<(HTMLDivElement | null)[]>([]);
     const testimonialRef = useRef<HTMLDivElement>(null);
 
-    const plugin = useRef(
-        Autoplay({ delay: 3000, stopOnInteraction: true })
+    // Créer l'instance Autoplay avec useMemo pour éviter les re-créations
+    const autoplayPlugin = useMemo(
+        () => Autoplay({
+            delay: 10000,
+            stopOnInteraction: false,
+            stopOnMouseEnter: false,
+            playOnInit: true
+        }),
+        []
     );
+
     const statsGridRef = useRef<HTMLDivElement>(null);
+
+    // Debug: Vérifier le délai configuré
+    useEffect(() => {
+        console.log('🎯 Autoplay delay configuré:', 10000, 'ms (10 secondes)');
+    }, []);
 
     useEffect(() => {
         if (!sectionRef.current) return;
@@ -335,12 +348,14 @@ export const StatsSection = ({
             {/* Testimonials Carousel - Featured Style Responsive */}
             <div ref={testimonialRef} className="w-full relative">
                 <Carousel
-                    plugins={[plugin.current]}
+                    plugins={[autoplayPlugin]}
                     className="w-full"
                     opts={{
                         align: "start",
                         loop: true,
                     }}
+                    onMouseEnter={() => autoplayPlugin.stop()}
+                    onMouseLeave={() => autoplayPlugin.play()}
                 >
                     <CarouselContent>
                         {testimonials.map((testimonial, index) => (
@@ -354,8 +369,8 @@ export const StatsSection = ({
                                         </div>
 
                                         {/* Quote Text - Hypertext Style */}
-                                        <blockquote className="mb-8 sm:mb-10 md:mb-12">
-                                            <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-[#CACACA] mb-4 sm:mb-5 md:mb-6">
+                                        <blockquote className="w-[400px] mb-8 sm:mb-10 md:mb-12">
+                                            <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold leading-tight text-[#CACACA] mb-4 sm:mb-5 md:mb-6">
                                                 {testimonial.quote}
                                             </p>
                                         </blockquote>

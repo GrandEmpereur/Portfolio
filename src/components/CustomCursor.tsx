@@ -152,7 +152,7 @@ export const CustomCursor = () => {
             {/* Cercle principal - Suit avec lerp */}
             <div
                 ref={cursorRef}
-                className="fixed top-0 left-0 w-12 h-12 pointer-events-none z-[9999] mix-blend-difference"
+                className="fixed top-0 left-0 w-12 h-12 pointer-events-none z-[9999] mix-blend-difference hidden lg:block"
                 style={{
                     transform: "translate(-50%, -50%)",
                 }}
@@ -163,7 +163,7 @@ export const CustomCursor = () => {
             {/* Point central - Suit instantanément */}
             <div
                 ref={cursorDotRef}
-                className="fixed top-0 left-0 w-2 h-2 bg-white pointer-events-none z-[9999] rounded-full mix-blend-difference"
+                className="fixed top-0 left-0 w-2 h-2 bg-white pointer-events-none z-[9999] rounded-full mix-blend-difference hidden lg:block"
                 style={{
                     transform: "translate(-50%, -50%)",
                 }}
