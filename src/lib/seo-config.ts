@@ -1,16 +1,27 @@
 /**
  * SEO Configuration centralisée
  * Configuration globale pour le SEO du site portfolio
- * @see .cursor/rules/seo.md pour les best practices
+ * @see https://nextjs.org/docs/app/api-reference/functions/generate-metadata
+ * @see https://nextjs.org/learn/seo
  */
 export const seoConfig = {
     baseUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://patrick.bartosik.fr',
     siteName: 'Patrick Bartosik - Full Stack Developer',
+
+    // Application metadata
+    applicationName: 'Patrick Bartosik Portfolio',
+    category: 'technology',
+
+    // Theme configuration
+    themeColor: '#000000',
+    backgroundColor: '#000000',
+
     author: {
         name: 'Patrick Bartosik',
         email: 'contact@bartosik.fr',
         jobTitle: 'Full Stack Developer',
         url: 'https://patrick.bartosik.fr',
+        twitter: '@patrickbartosik',
     },
     social: {
         github: 'https://github.com/GrandEmpereur',
@@ -25,6 +36,22 @@ export const seoConfig = {
         imageHeight: 630,
         imageType: 'image/png',
     },
+
+    // Apple Web App configuration
+    appleWebApp: {
+        capable: true,
+        statusBarStyle: 'black-translucent' as const,
+        title: 'Patrick Bartosik',
+    },
+
+    // Icons configuration (static files in public/)
+    icons: {
+        icon: '/favicon.ico',
+        apple: '/images/Logo.png',
+        shortcut: '/favicon.ico',
+    },
+
+    // Verification tokens
     verification: {
         google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || '',
     },

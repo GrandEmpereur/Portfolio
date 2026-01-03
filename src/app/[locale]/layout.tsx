@@ -47,9 +47,24 @@ export async function generateMetadata({
     },
     description,
     keywords: t('meta.home.keywords'),
+
+    // Application metadata
+    applicationName: seoConfig.applicationName,
+    category: seoConfig.category,
+
+    // Authors & Creator
     authors: [{ name: seoConfig.author.name, url: seoConfig.author.url }],
     creator: seoConfig.author.name,
     publisher: seoConfig.siteName,
+
+    // Format detection - disable auto-detection of phone numbers
+    formatDetection: {
+      email: false,
+      address: false,
+      telephone: false,
+    },
+
+    // Robots configuration
     robots: {
       index: true,
       follow: true,
@@ -61,14 +76,41 @@ export async function generateMetadata({
         'max-snippet': -1,
       },
     },
+
+    // Alternates for i18n
     alternates: {
       canonical: locale === seoConfig.defaultLocale ? seoConfig.baseUrl : `${seoConfig.baseUrl}/${locale}`,
       languages: {
         'en': `${seoConfig.baseUrl}/en`,
         'fr': `${seoConfig.baseUrl}`,
         'pl': `${seoConfig.baseUrl}/pl`,
+        'x-default': `${seoConfig.baseUrl}`,
       },
     },
+
+    // Manifest for PWA
+    manifest: '/manifest.webmanifest',
+
+    // Icons configuration
+    icons: {
+      icon: seoConfig.icons.icon,
+      shortcut: seoConfig.icons.shortcut,
+      apple: seoConfig.icons.apple,
+    },
+
+    // Apple Web App configuration
+    appleWebApp: {
+      capable: seoConfig.appleWebApp.capable,
+      statusBarStyle: seoConfig.appleWebApp.statusBarStyle,
+      title: seoConfig.appleWebApp.title,
+    },
+
+    // Verification tokens
+    verification: {
+      google: seoConfig.verification.google || undefined,
+    },
+
+    // Open Graph
     openGraph: {
       type: 'website',
       locale: locale,
@@ -82,13 +124,17 @@ export async function generateMetadata({
           width: seoConfig.openGraph.imageWidth,
           height: seoConfig.openGraph.imageHeight,
           alt: title,
+          type: seoConfig.openGraph.imageType,
         },
       ],
     },
+
+    // Twitter Card
     twitter: {
       card: 'summary_large_image',
       title,
       description,
+      creator: seoConfig.author.twitter,
       images: [`${seoConfig.baseUrl}${seoConfig.openGraph.image}`],
     },
   };
@@ -99,6 +145,10 @@ export function generateViewport() {
     width: 'device-width',
     initialScale: 1,
     maximumScale: 5,
+    themeColor: [
+      { media: '(prefers-color-scheme: light)', color: seoConfig.themeColor },
+      { media: '(prefers-color-scheme: dark)', color: seoConfig.themeColor },
+    ],
   };
 }
 

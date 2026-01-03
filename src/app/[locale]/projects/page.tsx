@@ -91,7 +91,7 @@ export default async function ProjectsPage({
                 {/* Header Section */}
                 <section className="px-8 md:px-16 lg:px-24 py-16">
                     <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-[140px] leading-tight uppercase font-bold">
-                        Latest work.
+                        {t('work.title')}.
                     </h1>
                 </section>
 
