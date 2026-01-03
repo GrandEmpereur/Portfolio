@@ -162,10 +162,12 @@ export default async function RootLayout({
   const { locale } = await paramsPromise;
   return (
     <html lang={locale} className="dark">
-      <GoogleTagManager gtmId="GTM-5SZB3CZK" />
       <body
         className={`${anton.variable} ${inter.variable} antialiased dark:bg-black bg-black`}
       >
+        {process.env.NEXT_PUBLIC_GTM_ID && (
+          <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
+        )}
         <Providers locale={locale}>
           <PageLoader />
           <CustomCursor />
@@ -178,9 +180,11 @@ export default async function RootLayout({
             <SpeedInsights />
           </SmoothScroll>
         </Providers>
-        <noscript>
-          <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5SZB3CZK" height="0" width="0" style={{ display: 'none', visibility: 'hidden' }}></iframe>
-        </noscript>
+        {process.env.NEXT_PUBLIC_GTM_ID && (
+          <noscript>
+            <iframe src={`https://www.googletagmanager.com/ns.html?id=${process.env.NEXT_PUBLIC_GTM_ID}`} height="0" width="0" style={{ display: 'none', visibility: 'hidden' }}></iframe>
+          </noscript>
+        )}
       </body>
     </html>
   );
