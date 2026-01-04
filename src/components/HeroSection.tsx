@@ -189,9 +189,6 @@ export const HeroSection = ({
                                             {part}
                                         </span>
                                     ))}
-                                    <span className="block text-[30px] sm:text-[40px] md:text-[60px] lg:text-[70px] xl:text-[90px] text-white/80 font-normal mt-2 sm:mt-4">
-                                        Expert Next.js
-                                    </span>
                                 </h1>
                             </div>
 
