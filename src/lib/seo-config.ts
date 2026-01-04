@@ -50,11 +50,6 @@ export const seoConfig = {
         apple: '/images/Logo.png',
         shortcut: '/favicon.ico',
     },
-
-    // Verification tokens
-    verification: {
-        google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || '',
-    },
 } as const;
 
 export type Locale = typeof seoConfig.locales[number];

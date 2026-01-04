@@ -105,11 +105,6 @@ export async function generateMetadata({
       title: seoConfig.appleWebApp.title,
     },
 
-    // Verification tokens
-    verification: {
-      google: seoConfig.verification.google || undefined,
-    },
-
     // Open Graph
     openGraph: {
       type: 'website',
