@@ -9,7 +9,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { Analytics as VercelAnalytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import { Analytics as GoogleAnalytics } from '@/components/Analytics';
+import { GoogleAnalytics } from '@next/third-parties/google'
 import { GoogleTagManager } from '@next/third-parties/google'
 
 const anton = Anton({
@@ -156,15 +156,13 @@ export default async function RootLayout({
   const { locale } = await paramsPromise;
   return (
     <html lang={locale} className="dark">
+      <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID || ''} />
       <body
         className={`${anton.variable} ${inter.variable} antialiased dark:bg-black bg-black`}
         suppressHydrationWarning
       >
-        {process.env.NEXT_PUBLIC_GTM_ID && (
-          <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
-        )}
         <Providers locale={locale}>
-          <GoogleAnalytics />
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || ''} />
           <SmoothScroll>
             <NavBar />
             {children}
@@ -173,11 +171,6 @@ export default async function RootLayout({
             <SpeedInsights />
           </SmoothScroll>
         </Providers>
-        {process.env.NEXT_PUBLIC_GTM_ID && (
-          <noscript>
-            <iframe src={`https://www.googletagmanager.com/ns.html?id=${process.env.NEXT_PUBLIC_GTM_ID}`} height="0" width="0" style={{ display: 'none', visibility: 'hidden' }}></iframe>
-          </noscript>
-        )}
       </body>
     </html>
   );
