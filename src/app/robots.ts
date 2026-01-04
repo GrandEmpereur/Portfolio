@@ -19,11 +19,15 @@ export default function robots(): MetadataRoute.Robots {
                     '/contact',
                     '/mentions-legales',
                     '/politique-confidentialite',
-                    '/api/og', // OG image generation
+                    '/api/og',
+                    '/_next/static/',
+                    '/images/',
+                    '/svg/',
+                    '/og/',
                 ],
                 disallow: [
-                    '/api/*',
-                    '/_next/',
+                    '/api/contact',
+                    '/api/contact-simple',
                     '/admin/',
                     '/*.json$',
                     '/*_buildManifest.js$',
@@ -32,9 +36,9 @@ export default function robots(): MetadataRoute.Robots {
                     '/*.js.map$',
                 ],
             },
-            // Règles spécifiques pour les bots agressifs
+            // Règles spécifiques pour les bots AI agressifs
             {
-                userAgent: ['GPTBot', 'ChatGPT-User', 'CCBot', 'anthropic-ai'],
+                userAgent: ['GPTBot', 'ChatGPT-User', 'CCBot', 'anthropic-ai', 'Google-Extended'],
                 disallow: ['/'],
             },
         ],

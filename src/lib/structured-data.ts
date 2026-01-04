@@ -15,7 +15,7 @@ export function getPersonSchema(locale: string) {
         url: seoConfig.author.url,
         jobTitle: seoConfig.author.jobTitle,
         email: seoConfig.author.email,
-        image: `${seoConfig.baseUrl}/images/hero.jpg`,
+        image: `${seoConfig.baseUrl}/images/hero.webp`,
         sameAs: [
             seoConfig.social.github,
             seoConfig.social.linkedin,
@@ -53,10 +53,10 @@ export function getPersonSchema(locale: string) {
 
 // Website Schema
 export function getWebsiteSchema(locale: string) {
-    const translations = {
-        en: 'Search',
-        fr: 'Rechercher',
-        pl: 'Szukaj',
+    const descriptions = {
+        en: 'Full Stack Developer specializing in React, Next.js, TypeScript and Node.js applications',
+        fr: 'Développeur Full Stack spécialisé en React, Next.js, TypeScript et Node.js',
+        pl: 'Full Stack Developer specjalizujący się w React, Next.js, TypeScript i Node.js',
     } as const;
 
     return {
@@ -64,15 +64,12 @@ export function getWebsiteSchema(locale: string) {
         '@type': 'WebSite',
         name: seoConfig.siteName,
         url: seoConfig.baseUrl,
-        description: 'Full Stack Developer specializing in web and mobile applications',
+        description: descriptions[locale as keyof typeof descriptions] || descriptions.en,
         inLanguage: locale,
-        potentialAction: {
-            '@type': 'SearchAction',
-            target: {
-                '@type': 'EntryPoint',
-                urlTemplate: `${seoConfig.baseUrl}/${locale}/search?q={search_term_string}`,
-            },
-            'query-input': 'required name=search_term_string',
+        author: {
+            '@type': 'Person',
+            name: seoConfig.author.name,
+            url: seoConfig.author.url,
         },
     };
 }

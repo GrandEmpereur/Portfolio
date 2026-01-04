@@ -22,11 +22,11 @@ export default {
     },
     'about': {
         'label': 'À PROPOS',
-        'heading': 'Des années d\'expertise en dev web au service d\'expériences numériques engageantes',
+        'heading': 'Des années d\'expertise en développement web avec Next.js, framework React open source pour créer des applications web performantes avec rendu côté serveur et server side rendering. Next.js supports les frameworks React modernes pour développer des solutions scalables.',
     },
     'knowledge': {
         'title': 'Mes compétences',
-        'description': 'Découvrez comment mes solutions techniques façonnent des marques fortes, créent des expériences engageantes et génèrent un impact durable.',
+        'description': 'Découvrez comment mes solutions techniques avec Next.js et les frameworks React façonnent des marques fortes, créent des expériences engageantes et génèrent un impact durable. Spécialisé dans le développement d\'applications web modernes avec Next.js, framework open source qui permet de créer des applications performantes avec rendu côté serveur.',
     },
     'work': {
         'title': 'Derniers projets',
@@ -38,15 +38,15 @@ export default {
         'learnMore': 'En savoir plus',
         'webDev': {
             'title': 'Développement Web',
-            'description': 'Création de sites web modernes et performants avec les dernières technologies.',
+            'description': 'Création de sites web modernes et performants avec Next.js, framework React open source. Développement d\'applications web avec rendu côté serveur et server side rendering pour des performances optimales.',
         },
         'saasDev': {
             'title': 'Développement SaaS',
-            'description': 'Applications web complètes et évolutives pour votre entreprise.',
+            'description': 'Applications web complètes et évolutives avec Next.js pour votre entreprise. Next.js supports les frameworks React modernes pour créer des solutions SaaS scalables.',
         },
         'ecommerce': {
             'title': 'E-commerce',
-            'description': 'Solutions e-commerce sur mesure pour développer votre activité en ligne.',
+            'description': 'Solutions e-commerce sur mesure développées avec Next.js pour développer votre activité en ligne. Applications web performantes avec rendu côté serveur.',
         },
     },
     'stats': {
@@ -139,7 +139,7 @@ export default {
         'andText': 'et notre',
         'privacyLink': 'Politique de confidentialité',
         'heading': 'Discutons.',
-        'description': 'Parlez-moi de votre projet—qu\'il s\'agisse d\'un site web, de SEO ou de marketing.',
+        'description': 'Parlez-moi de votre projet Next.js—qu\'il s\'agisse d\'un site web, d\'une application avec rendu côté serveur, ou d\'une solution SaaS développée avec les frameworks React.',
         'quickResponseTitle': 'Réponse rapide.',
         'quickResponseDesc': 'Si vous êtes prêt à créer et à collaborer, j\'aimerais avoir de vos nouvelles.',
         'clearStepsTitle': 'Étapes claires.',
@@ -156,9 +156,9 @@ export default {
         'question1': 'Avec quel type de clients travaillez-vous ?',
         'answer1': 'Je collabore avec des entrepreneurs, des startups, des professionnels créatifs et des entreprises en croissance à la recherche de solutions de conception et de développement web de haute qualité adaptées à leur marque.',
         'question2': 'Comment pouvez-vous améliorer ma présence en ligne ?',
-        'answer2': 'Je crée des expériences web sur mesure qui allient design moderne et performances optimales pour renforcer votre marque et atteindre vos objectifs business.',
+        'answer2': 'Je crée des expériences web sur mesure avec Next.js, framework React open source, qui allient design moderne et performances optimales grâce au rendu côté serveur. Next.js supports les frameworks React modernes pour renforcer votre marque et atteindre vos objectifs business.',
         'question3': 'Proposez-vous des services de design et de développement ?',
-        'answer3': 'Oui, je propose une approche complète : du design UX/UI au développement front-end et back-end, en passant par l\'optimisation SEO et les performances.',
+        'answer3': 'Oui, je propose une approche complète avec Next.js : du design UX/UI au développement front-end et back-end avec server side rendering, en passant par l\'optimisation SEO et les performances. Spécialisé dans la création d\'applications web avec Next.js, framework open source pour développer des solutions performantes.',
         'question4': 'Quel est votre processus pour travailler sur un projet ?',
         'answer4': 'Mon processus commence par une phase de découverte pour comprendre vos besoins, suivie de la conception, du développement, des tests et du déploiement. Je reste en communication constante tout au long du projet.',
         'question5': 'Combien de temps dure généralement un projet ?',
@@ -346,27 +346,27 @@ export default {
     },
     'meta': {
         'home': {
-            'title': 'Patrick Bartosik - Développeur Full Stack Freelance Paris | Expert React & Next.js',
+            'title': 'Patrick Bartosik | Expert Next.js & Développeur Full Stack Freelance Paris',
             'description': 'Développeur Full Stack freelance à Paris. Expert React, Next.js, TypeScript & Node.js. J\'aide startups et entreprises à créer des applications web performantes. SaaS, e-commerce Shopify Plus. +4 ans d\'expérience.',
             'keywords': 'développeur full stack paris, développeur freelance france, freelance react paris, développeur next.js freelance, expert react next.js, développeur backend nodejs, développeur shopify plus, expert typescript, freelance full stack, développeur saas, développeur e-commerce, développeur react typescript, développeur web freelance paris, freelance react developer france, développeur angular, développeur nestjs, développeur api rest, développeur graphql, hire react developer france',
         },
         'projects': {
-            'title': 'Portfolio Développeur Full Stack | Projets React, Next.js & Shopify Plus',
+            'title': 'Portfolio | Projets React, Next.js & Shopify Plus',
             'description': 'Découvrez mes réalisations : migrations Shopify Plus, applications SaaS, projets React/Next.js. Clients : Euroclear, Odaje, Qwetch. Portfolio développeur web sur mesure.',
             'keywords': 'portfolio développeur full stack, projets react next.js, migration shopify plus, développement saas, portfolio e-commerce, réalisations web, cas clients développeur, migration prestashop shopify, intégration erp shopify, projet react typescript, projet angular, projet next.js, portfolio freelance france',
         },
         'contact': {
-            'title': 'Contactez-moi - Devis Gratuit Développeur Full Stack | Patrick Bartosik',
+            'title': 'Contact | Devis Gratuit - Patrick Bartosik',
             'description': 'Projet web, SaaS ou e-commerce ? Consultation et devis gratuit. Développeur Full Stack freelance expert React, Next.js, Node.js. Réponse garantie sous 24h.',
             'keywords': 'contact développeur freelance paris, devis développeur web, consultation gratuite développeur, embaucher développeur full stack france, développeur freelance disponible, contact développeur react, devis site web, devis application web',
         },
         'legal': {
-            'title': 'Mentions Légales - Patrick Bartosik Développeur Full Stack',
+            'title': 'Mentions Légales | Patrick Bartosik',
             'description': 'Mentions légales du site patrick.bartosik.fr. Informations légales Patrick Bartosik, développeur Full Stack freelance basé en France.',
             'keywords': 'mentions légales, informations légales, patrick bartosik, développeur freelance france',
         },
         'privacy': {
-            'title': 'Politique de Confidentialité - Protection des Données | Patrick Bartosik',
+            'title': 'Politique de Confidentialité | Patrick Bartosik',
             'description': 'Politique de confidentialité patrick.bartosik.fr. Protection des données personnelles conforme RGPD. Traitement transparent et sécurité de vos données.',
             'keywords': 'politique confidentialité, protection données, rgpd, données personnelles, confidentialité site web',
         },

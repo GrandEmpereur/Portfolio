@@ -1,0 +1,35 @@
+# Patrick Bartosik - Full Stack Developer Portfolio
+
+## About
+Patrick Bartosik is a Full Stack Developer based in Paris, France, specializing in React, Next.js, TypeScript, Node.js, and Shopify Plus development.
+
+## Services
+- Web Development (React, Next.js, Angular)
+- SaaS Development
+- E-commerce (Shopify Plus, Prestashop migrations)
+- Backend Development (Node.js, NestJS, AdonisJS)
+- API Development (REST, GraphQL)
+
+## Technologies
+- Frontend: React, Next.js, Angular, TypeScript, Tailwind CSS
+- Backend: Node.js, NestJS, AdonisJS, Express
+- Database: MongoDB, Supabase, PostgreSQL
+- E-commerce: Shopify Plus, Shopify Liquid
+- Payment: Stripe, LemonSqueezy, Polar
+
+## Contact
+- Website: https://patrick.bartosik.fr
+- Email: contact@bartosik.fr
+- LinkedIn: https://www.linkedin.com/in/patrick-bartosik
+- GitHub: https://github.com/GrandEmpereur
+
+## Location
+Paris, France (Remote work available worldwide)
+
+## Experience
+4+ years of professional development experience
+
+## Languages
+- French (Native)
+- English (Professional)
+- Polish (Native)

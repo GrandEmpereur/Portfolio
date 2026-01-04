@@ -178,9 +178,9 @@ export const SimpleContactForm = () => {
                     {currentStep === 1 && (
                         <div className="space-y-8">
                             <div className="space-y-4">
-                                <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
+                                <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight">
                                     Bonjour ! 👋
-                                </h2>
+                                </h1>
                                 <p className="text-xl text-white/60">
                                     Commençons par faire connaissance
                                 </p>
