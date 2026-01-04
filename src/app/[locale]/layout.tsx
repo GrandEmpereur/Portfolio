@@ -7,8 +7,6 @@ import { seoConfig } from "@/lib/seo-config";
 import { getI18n } from "@/locales/serveur";
 import { Toaster } from "@/components/ui/sonner";
 import { SmoothScroll } from "@/components/SmoothScroll";
-import { CustomCursor } from "@/components/CustomCursor";
-import { PageLoader } from "@/components/PageLoader";
 import { Analytics as VercelAnalytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics as GoogleAnalytics } from '@/components/Analytics';
@@ -19,13 +17,14 @@ const anton = Anton({
   subsets: ["latin"],
   weight: "400",
   display: "swap",
+  adjustFontFallback: true,
 });
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
-  weight: "400",
   display: "swap",
+  adjustFontFallback: true,
 });
 
 export async function generateMetadata({
@@ -159,13 +158,12 @@ export default async function RootLayout({
     <html lang={locale} className="dark">
       <body
         className={`${anton.variable} ${inter.variable} antialiased dark:bg-black bg-black`}
+        suppressHydrationWarning
       >
         {process.env.NEXT_PUBLIC_GTM_ID && (
           <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
         )}
         <Providers locale={locale}>
-          <PageLoader />
-          <CustomCursor />
           <GoogleAnalytics />
           <SmoothScroll>
             <NavBar />

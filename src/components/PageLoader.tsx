@@ -118,7 +118,7 @@ export const PageLoader = () => {
     return (
         <div
             ref={loaderRef}
-            className="fixed inset-0 z-[10000] bg-black overflow-hidden"
+            className="fixed inset-0 z-10000 bg-black overflow-hidden"
             style={{ willChange: "transform" }}
         >
             {/* Counter - Haut à gauche */}
@@ -160,7 +160,7 @@ export const PageLoader = () => {
                 >
                     Patrick Bartosik
                 </div>
-                <p className="text-white/40 text-xs md:text-sm tracking-[0.3em] uppercase mt-3">
+                <p className="text-white/60 text-xs md:text-sm tracking-[0.3em] uppercase mt-3">
                     Portfolio Developer
                 </p>
             </div>

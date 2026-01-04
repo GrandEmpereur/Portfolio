@@ -34,7 +34,7 @@ export const Footer = ({ translations, socialLinks }: FooterProps) => {
                     <div className="space-y-6">
                         <Link
                             href="/"
-                            className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 text-white font-bold text-lg hover:scale-105 transition-transform duration-300"
+                            className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-linear-to-br from-orange-400 to-orange-600 text-white font-bold text-lg hover:scale-105 transition-transform duration-300"
                         >
                             PB
                         </Link>
@@ -87,9 +87,10 @@ export const Footer = ({ translations, socialLinks }: FooterProps) => {
                                     href={socialLinks.linkedin}
                                     target="_blank"
                                     rel="noopener noreferrer"
+                                    aria-label="LinkedIn - Patrick Bartosik"
                                     className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-all duration-300"
                                 >
-                                    <Linkedin className="w-4 h-4 text-white" />
+                                    <Linkedin className="w-4 h-4 text-white" aria-hidden="true" />
                                 </a>
                             )}
                             {socialLinks.github && (
@@ -97,9 +98,10 @@ export const Footer = ({ translations, socialLinks }: FooterProps) => {
                                     href={socialLinks.github}
                                     target="_blank"
                                     rel="noopener noreferrer"
+                                    aria-label="GitHub - GrandEmpereur"
                                     className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-all duration-300"
                                 >
-                                    <Github className="w-4 h-4 text-white" />
+                                    <Github className="w-4 h-4 text-white" aria-hidden="true" />
                                 </a>
                             )}
                             {socialLinks.instagram && (
@@ -107,17 +109,19 @@ export const Footer = ({ translations, socialLinks }: FooterProps) => {
                                     href={socialLinks.instagram}
                                     target="_blank"
                                     rel="noopener noreferrer"
+                                    aria-label="Instagram - @patrickbartosik"
                                     className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-all duration-300"
                                 >
-                                    <Instagram className="w-4 h-4 text-white" />
+                                    <Instagram className="w-4 h-4 text-white" aria-hidden="true" />
                                 </a>
                             )}
                             {socialLinks.email && (
                                 <a
                                     href={`mailto:${socialLinks.email}`}
+                                    aria-label="Envoyer un email à contact@bartosik.fr"
                                     className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-all duration-300"
                                 >
-                                    <Mail className="w-4 h-4 text-white" />
+                                    <Mail className="w-4 h-4 text-white" aria-hidden="true" />
                                 </a>
                             )}
                         </div>
@@ -152,12 +156,12 @@ export const Footer = ({ translations, socialLinks }: FooterProps) => {
                 {/* Bottom Bar */}
                 <div className="pt-8 border-t border-white/10">
                     <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-                        <p className="text-white/40 text-sm">
+                        <p className="text-white/60 text-sm">
                             {translations.copyright}
                         </p>
                         <div className="flex items-center gap-2">
                             <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-                            <span className="text-white/40 text-sm">Available for projects</span>
+                            <span className="text-white/60 text-sm">Available for projects</span>
                         </div>
                     </div>
                 </div>
