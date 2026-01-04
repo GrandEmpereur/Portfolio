@@ -11,8 +11,8 @@ export default {
     'hero': {
         'greeting': 'Cześć, jestem',
         'name': 'Patrick Bartosik',
-        'title': 'Full Stack Developer',
-        'subtitle': 'Przekształcam Twoje pomysły w wydajne i skalowalne aplikacje webowe',
+        'title': 'Ekspert Next.js & Full Stack Developer',
+        'subtitle': 'Przekształcam Twoje pomysły w wydajne i skalowalne aplikacje webowe z Next.js',
         'cta_primary': 'Zobacz moje prace',
         'cta_secondary': 'Omów swój projekt',
         'download_cv': 'Pobierz CV',
@@ -22,11 +22,20 @@ export default {
     },
     'about': {
         'label': 'O MNIE',
-        'heading': 'Lata doświadczenia w rozwoju webowym z Next.js, framework React open source do tworzenia wydajnych aplikacji webowych z renderowaniem po stronie serwera. Next.js supports nowoczesne frameworki React do budowy skalowalnych rozwiązań.',
+        'heading': 'Lata doświadczenia w web dev w służbie angażujących doświadczeń cyfrowych',
+        'content': 'Jako ekspert Next.js i Full Stack developer, specjalizuję się w tworzeniu nowoczesnych i wydajnych aplikacji webowych. Next.js, otwartoźródłowy framework React opracowany przez Vercel, jest w centrum mojej ekspertyzy. Opanowałem renderowanie po stronie serwera i zaawansowane wykorzystanie Next.js do tworzenia szybkich i skalowalnych aplikacji webowych. Moje podejście łączy najlepsze praktyki frameworków React z potężnymi funkcjami Next.js, umożliwiając tworzenie aplikacji webowych, które oferują wyjątkowe doświadczenie użytkownika przy jednoczesnej optymalizacji wydajności i SEO.',
     },
     'knowledge': {
         'title': 'Moje umiejętności',
-        'description': 'Odkryj, jak moje rozwiązania techniczne z Next.js i frameworkami React kształtują silne marki, tworzą angażujące doświadczenia i zapewniają trwały wpływ. Specjalizuję się w tworzeniu nowoczesnych aplikacji webowych z Next.js, frameworkiem open source, który umożliwia budowę wydajnych aplikacji z renderowaniem po stronie serwera.',
+        'description': 'Odkryj, jak moje rozwiązania techniczne kształtują silne marki, tworzą angażujące doświadczenia i zapewniają trwały wpływ.',
+        'nextjsDescription': 'Next.js to otwartoźródłowy framework React, który umożliwia tworzenie aplikacji webowych z zoptymalizowanym renderowaniem po stronie serwera. Dzięki Next.js tworzę wydajne aplikacje, które wspierają server-side rendering, automatyczną optymalizację obrazów i routing oparty na plikach. Next.js wspiera wiele zaawansowanych funkcji, które ułatwiają tworzenie nowoczesnych i skalowalnych aplikacji webowych.',
+        'nextjsSection': {
+            'title': 'Ekspertyza Next.js: Tworzenie wydajnych aplikacji webowych',
+            'intro': 'Next.js jest w centrum mojej ekspertyzy w zakresie tworzenia aplikacji webowych. Ten otwartoźródłowy framework React rewolucjonizuje sposób, w jaki tworzymy nowoczesne aplikacje webowe.',
+            'paragraph1': 'Jako ekspert Next.js, opanowałem wszystkie zaawansowane funkcje tego frameworka React. Next.js umożliwia tworzenie aplikacji webowych z optymalnym renderowaniem po stronie serwera, co znacznie poprawia wydajność i SEO. Framework wspiera również renderowanie statyczne i hybrydowe, oferując maksymalną elastyczność dla każdego projektu.',
+            'paragraph2': 'Frameworki React takie jak Next.js są niezbędne do tworzenia nowoczesnych aplikacji webowych. Next.js wspiera wiele wbudowanych funkcji: automatyczną optymalizację obrazów, inteligentny code splitting, API routes i wiele więcej. Dzięki podejściu open source, Next.js korzysta z aktywnej społeczności i ciągłej ewolucji.',
+            'paragraph3': 'Moja ekspertyza z Next.js pozwala mi tworzyć aplikacje webowe, które łączą wydajność, skalowalność i wyjątkowe doświadczenie użytkownika. Niezależnie od tego, czy tworzę proste czy złożone aplikacje webowe, Next.js zapewnia niezbędne narzędzia do tworzenia solidnych i skalowalnych rozwiązań.',
+        },
     },
     'work': {
         'title': 'Ostatnie projekty',
@@ -38,15 +47,15 @@ export default {
         'learnMore': 'Dowiedz się więcej',
         'webDev': {
             'title': 'Tworzenie stron internetowych',
-            'description': 'Tworzenie nowoczesnych i wydajnych stron internetowych z Next.js, frameworkiem React open source. Rozwój aplikacji webowych z renderowaniem po stronie serwera dla optymalnej wydajności.',
+            'description': 'Tworzenie nowoczesnych i wydajnych stron internetowych z Next.js i frameworkami React. Tworzę aplikacje webowe z renderowaniem po stronie serwera dla optymalnej wydajności.',
         },
         'saasDev': {
             'title': 'Rozwój SaaS',
-            'description': 'Kompletne i skalowalne aplikacje internetowe z Next.js dla Twojej firmy. Next.js supports nowoczesne frameworki React do tworzenia skalowalnych rozwiązań SaaS.',
+            'description': 'Kompletne i skalowalne aplikacje internetowe z Next.js dla Twojej firmy. Otwartoźródłowy framework React do tworzenia skalowalnych aplikacji webowych.',
         },
         'ecommerce': {
             'title': 'E-commerce',
-            'description': 'Niestandardowe rozwiązania e-commerce zbudowane z Next.js, aby rozwijać Twoją działalność online. Wydajne aplikacje webowe z renderowaniem po stronie serwera.',
+            'description': 'Niestandardowe rozwiązania e-commerce opracowane z Next.js, aby rozwijać Twoją działalność online z wyjątkową wydajnością.',
         },
     },
     'stats': {
@@ -139,7 +148,7 @@ export default {
         'andText': 'i',
         'privacyLink': 'Politykę prywatności',
         'heading': 'Porozmawiajmy.',
-        'description': 'Opowiedz nam o swoim projekcie Next.js—czy to strona internetowa, aplikacja z renderowaniem po stronie serwera, czy rozwiązanie SaaS zbudowane z frameworków React.',
+        'description': 'Opowiedz nam o swoim projekcie—czy to strona internetowa, SEO czy marketing.',
         'quickResponseTitle': 'Szybka odpowiedź.',
         'quickResponseDesc': 'Jeśli jesteś gotowy do tworzenia i współpracy, chętnie cię wysłuchamy.',
         'clearStepsTitle': 'Jasne następne kroki.',
@@ -156,9 +165,9 @@ export default {
         'question1': 'Z jakimi klientami pracujesz?',
         'answer1': 'Współpracuję z przedsiębiorcami, startupami, kreatywnymi profesjonalistami i rozwijającymi się firmami, które szukają wysokiej jakości rozwiązań projektowych i deweloperskich dostosowanych do ich marki.',
         'question2': 'Jak możesz pomóc poprawić moją obecność w sieci?',
-        'answer2': 'Tworzę dostosowane doświadczenia webowe z Next.js, frameworkiem React open source, które łączą nowoczesny design z optymalną wydajnością dzięki renderowaniu po stronie serwera. Next.js supports nowoczesne frameworki React, aby wzmocnić twoją markę i osiągnąć cele biznesowe.',
+        'answer2': 'Tworzę dostosowane doświadczenia webowe, które łączą nowoczesny design z optymalną wydajnością, aby wzmocnić twoją markę i osiągnąć cele biznesowe.',
         'question3': 'Czy oferujesz zarówno usługi projektowe, jak i deweloperskie?',
-        'answer3': 'Tak, oferuję kompleksowe podejście z Next.js: od projektowania UX/UI po rozwój front-end i back-end z renderowaniem po stronie serwera, w tym optymalizację SEO i wydajności. Specjalizuję się w tworzeniu aplikacji webowych z Next.js, frameworkiem open source do budowy wydajnych rozwiązań.',
+        'answer3': 'Tak, oferuję kompleksowe podejście: od projektowania UX/UI po rozwój front-end i back-end, w tym optymalizację SEO i wydajności.',
         'question4': 'Jaki jest twój proces pracy nad projektem?',
         'answer4': 'Mój proces zaczyna się od fazy odkrywania, aby zrozumieć twoje potrzeby, a następnie projektowanie, rozwój, testowanie i wdrożenie. Utrzymuję stałą komunikację przez cały projekt.',
         'question5': 'Jak długo zazwyczaj trwa projekt?',
@@ -347,7 +356,7 @@ export default {
     'meta': {
         'home': {
             'title': 'Patrick Bartosik | Ekspert Next.js & Full Stack Developer Freelance',
-            'description': 'Szukasz Full Stack Developera? Ekspert React, Next.js, TypeScript & Node.js. Pomagam startupom i firmom tworzyć wydajne aplikacje webowe. Specjalista SaaS i Shopify Plus. +4 lata doświadczenia.',
+            'description': 'Szukasz Eksperta Next.js? Full Stack Developer ekspert React, Next.js, TypeScript & Node.js. Pomagam startupom i firmom tworzyć wydajne aplikacje webowe z Next.js. Otwartoźródłowy framework React do renderowania po stronie serwera. Specjalista SaaS i Shopify Plus. +4 lata doświadczenia.',
             'keywords': 'zatrudnij full stack developer, programista react freelance, programista next.js, full stack developer europa, freelance developer, ekspert react next.js, programista typescript, programista saas, programista ecommerce, programista shopify plus, programista web, programista react typescript, programista nodejs freelance',
         },
         'projects': {

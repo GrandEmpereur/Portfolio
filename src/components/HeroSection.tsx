@@ -169,17 +169,16 @@ export const HeroSection = ({
                 {/* Contenu principal - Centré */}
                 <div className="w-full px-4 sm:px-6 md:px-8 pb-16 sm:pb-24 md:pb-32">
                     <div className="max-w-full mx-auto">
-                        {/* Titre professionnel - En haut à gauche */}
-                        <div ref={titleRef} className="mb-6 sm:mb-8 lg:mb-12">
-                            <p className="text-xs md:text-sm text-white/50 font-light tracking-[0.3em] uppercase">
-                                {title}
-                            </p>
-                        </div>
-
                         {/* Grid Layout - 2 colonnes sur desktop */}
                         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-end">
                             {/* Nom - Prend plus d'espace (8 colonnes) */}
                             <div className="lg:col-span-8">
+                                {/* Title professionnel - En haut */}
+                                <div ref={titleRef} className="mb-6 sm:mb-8 lg:mb-12">
+                                    <p className="text-xs md:text-sm text-white/50 font-light tracking-[0.3em] uppercase">
+                                        {title}
+                                    </p>
+                                </div>
                                 <h1
                                     ref={nameRef}
                                     className="text-[50px] sm:text-[70px] md:text-[110px] lg:text-[140px] xl:text-[180px] font-bold leading-[0.92] tracking-tight text-white"

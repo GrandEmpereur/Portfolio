@@ -11,8 +11,8 @@ export default {
     'hero': {
         'greeting': 'Hi, I\'m',
         'name': 'Patrick Bartosik',
-        'title': 'Full Stack Developer',
-        'subtitle': 'I transform your ideas into high-performance and scalable web applications',
+        'title': 'Next.js Expert & Full Stack Developer',
+        'subtitle': 'I transform your ideas into high-performance and scalable web applications with Next.js',
         'cta_primary': 'View my work',
         'cta_secondary': 'Discuss your project',
         'download_cv': 'Download CV',
@@ -22,11 +22,20 @@ export default {
     },
     'about': {
         'label': 'ABOUT',
-        'heading': 'Years of web development expertise with Next.js, an open source React framework for creating high-performance web applications with server side rendering. Next.js supports modern React frameworks to build scalable solutions.',
+        'heading': 'Years of web dev expertise serving engaging digital experiences',
+        'content': 'As a Next.js expert and Full Stack developer, I specialize in creating modern and performant web applications. Next.js, an open source React framework developed by Vercel, is at the heart of my expertise. I master server-side rendering and advanced use of Next.js to create fast and scalable web applications. My approach combines React framework best practices with Next.js powerful features, enabling the creation of web applications that deliver exceptional user experience while optimizing performance and SEO.',
     },
     'knowledge': {
         'title': 'My skills',
-        'description': 'Explore how my technical solutions with Next.js and React frameworks shape strong brands, create engaging experiences, and deliver lasting impact. Specialized in developing modern web applications with Next.js, an open source framework that enables building high-performance applications with server side rendering.',
+        'description': 'Explore how my technical solutions shape strong brands, create engaging experiences, and deliver lasting impact.',
+        'nextjsDescription': 'Next.js is an open source React framework that enables creating web applications with optimized server-side rendering. With Next.js, I develop performant applications that support server-side rendering, automatic image optimization, and file-based routing. Next.js supports many advanced features that facilitate the development of modern and scalable web applications.',
+        'nextjsSection': {
+            'title': 'Next.js Expertise: Building High-Performance Web Applications',
+            'intro': 'Next.js is at the heart of my web development expertise. This open source React framework revolutionizes how we create modern web applications.',
+            'paragraph1': 'As a Next.js expert, I master all the advanced features of this React framework. Next.js enables creating web applications with optimal server-side rendering, which significantly improves performance and SEO. The framework also supports static rendering and hybrid rendering, offering maximum flexibility for each project.',
+            'paragraph2': 'React frameworks like Next.js are essential for developing modern web applications. Next.js supports many built-in features: automatic image optimization, intelligent code splitting, API routes, and much more. Thanks to its open source approach, Next.js benefits from an active community and constant evolution.',
+            'paragraph3': 'My expertise with Next.js allows me to create web applications that combine performance, scalability, and exceptional user experience. Whether creating simple or complex web applications, Next.js provides the necessary tools to develop robust and scalable solutions.',
+        },
     },
     'work': {
         'title': 'Latest work',
@@ -38,15 +47,15 @@ export default {
         'learnMore': 'Learn more',
         'webDev': {
             'title': 'Web Development',
-            'description': 'Creating modern and performant websites with Next.js, an open source React framework. Building web applications with server side rendering for optimal performance.',
+            'description': 'Creating modern and performant websites with Next.js and React frameworks. I develop web applications with server-side rendering for optimal performance.',
         },
         'saasDev': {
             'title': 'SaaS Development',
-            'description': 'Complete and scalable web applications with Next.js for your business. Next.js supports modern React frameworks to create scalable SaaS solutions.',
+            'description': 'Complete and scalable web applications with Next.js for your business. Open source React framework to create scalable web applications.',
         },
         'ecommerce': {
             'title': 'E-commerce',
-            'description': 'Custom e-commerce solutions built with Next.js to grow your online business. High-performance web applications with server side rendering.',
+            'description': 'Custom e-commerce solutions developed with Next.js to grow your online business with exceptional performance.',
         },
     },
     'stats': {
@@ -139,7 +148,7 @@ export default {
         'andText': 'and',
         'privacyLink': 'Privacy Policy',
         'heading': 'Let\'s talk.',
-        'description': 'Tell us about your Next.js project—whether it\'s a website, a server side rendered application, or a SaaS solution built with React frameworks.',
+        'description': 'Tell us about your project—whether it\'s a website, SEO, or marketing.',
         'quickResponseTitle': 'Quick response.',
         'quickResponseDesc': 'If you\'re ready to create and collaborate, we\'d love to hear from you.',
         'clearStepsTitle': 'Clear next steps.',
@@ -156,9 +165,9 @@ export default {
         'question1': 'What type of clients do you work with?',
         'answer1': 'I collaborate with entrepreneurs, startups, creative professionals, and growing businesses looking for high-quality web design and development solutions tailored to their brand.',
         'question2': 'How can you help improve my online presence?',
-        'answer2': 'I create tailored web experiences with Next.js, an open source React framework, that combine modern design with optimal performance through server side rendering. Next.js supports modern React frameworks to strengthen your brand and achieve your business goals.',
+        'answer2': 'I create tailored web experiences that combine modern design with optimal performance to strengthen your brand and achieve your business goals.',
         'question3': 'Do you offer both design and development services?',
-        'answer3': 'Yes, I offer a comprehensive approach with Next.js: from UX/UI design to front-end and back-end development with server side rendering, including SEO optimization and performance. Specialized in creating web applications with Next.js, an open source framework for building high-performance solutions.',
+        'answer3': 'Yes, I offer a comprehensive approach: from UX/UI design to front-end and back-end development, including SEO optimization and performance.',
         'question4': 'What\'s your process for working on a project?',
         'answer4': 'My process starts with a discovery phase to understand your needs, followed by design, development, testing, and deployment. I maintain constant communication throughout the project.',
         'question5': 'How long does a project typically take?',
@@ -347,7 +356,7 @@ export default {
     'meta': {
         'home': {
             'title': 'Patrick Bartosik | Next.js Expert & Freelance Full Stack Developer',
-            'description': 'Looking to hire a Full Stack Developer? Expert in React, Next.js, TypeScript & Node.js. I help startups and businesses build high-performance web apps. SaaS & Shopify Plus specialist. Based in France, working worldwide.',
+            'description': 'Looking to hire a Next.js Expert? Freelance Full Stack Developer expert in React, Next.js, TypeScript & Node.js. I help startups and businesses build high-performance web apps with Next.js. Open source React framework for server-side rendering. SaaS & Shopify Plus specialist. Based in France, working worldwide.',
             'keywords': 'hire full stack developer, freelance react developer, next.js developer for hire, full stack developer europe, react developer freelance, hire next.js developer, typescript expert, freelance full stack developer, saas developer, ecommerce developer, shopify plus developer, web developer for hire, react typescript developer, nodejs developer freelance, hire web developer france',
         },
         'projects': {
