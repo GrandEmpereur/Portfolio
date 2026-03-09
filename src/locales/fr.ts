@@ -143,6 +143,17 @@ export default {
         'viewProject': 'Voir le projet',
         'viewAll': 'Voir tous les projets',
     },
+    'projectDetail': {
+        'role': 'Rôle',
+        'technologies': 'Technologies',
+        'features': 'Fonctionnalités',
+        'year': 'Année',
+        'viewSite': 'Voir le site',
+        'viewGithub': 'Voir sur GitHub',
+        'backToProjects': 'Retour aux projets',
+        'nextProject': 'Projet suivant',
+        'prevProject': 'Projet précédent',
+    },
     'approach': {
         'label': 'Services & Approche',
         'title': 'Mon approche',
