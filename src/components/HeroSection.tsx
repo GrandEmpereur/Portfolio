@@ -1,9 +1,8 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { gsap, ScrollTrigger } from "@/lib/gsap-config";
+import { gsap, ScrollTrigger, SplitText } from "@/lib/gsap-config";
 import Image from "next/image";
-import SplitType from "split-type";
 import Link from "next/link";
 import heroImage from "../../public/images/hero.webp";
 
@@ -68,9 +67,8 @@ export const HeroSection = ({
                 );
             } else {
                 // Animation complexe lettre par lettre sur desktop
-                const split = new SplitType(nameRef.current!, {
-                    types: "chars",
-                    tagName: "span",
+                const split = new SplitText(nameRef.current!, {
+                    type: "chars",
                 });
 
                 if (split.chars) {
