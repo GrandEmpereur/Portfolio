@@ -59,7 +59,7 @@ export const NavBar = () => {
                                         {/* Avatar */}
                                         <Avatar className="relative w-10 h-10 sm:w-12 sm:h-12 ring-2 ring-white/20 transform-gpu transition-all duration-300 group-hover:scale-110 group-hover:ring-white/40">
                                             <AvatarImage
-                                                src="/images/hero.jpg"
+                                                src="/images/hero.webp"
                                                 alt="Patrick Bartosik"
                                                 className="object-cover"
                                             />

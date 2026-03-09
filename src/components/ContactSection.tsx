@@ -254,7 +254,7 @@ export const ContactSection = ({ translations }: ContactSectionProps) => {
             {/* Background Image avec overlay */}
             <div className="absolute inset-0 z-0">
                 <Image
-                    src="/images/hero.jpg"
+                    src="/images/hero.webp"
                     alt="Contact background"
                     fill
                     className="object-cover"
