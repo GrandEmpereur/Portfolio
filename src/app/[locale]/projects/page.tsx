@@ -101,7 +101,7 @@ export default async function ProjectsPage({
                 suppressHydrationWarning
             />
 
-            <main className="relative min-h-screen w-full pt-20 pb-16">
+            <main id="main-content" className="relative min-h-screen w-full pt-20 pb-16">
                 {/* Header Section */}
                 <section className="px-8 md:px-16 lg:px-24 py-16">
                     <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-[140px] leading-tight uppercase font-bold">

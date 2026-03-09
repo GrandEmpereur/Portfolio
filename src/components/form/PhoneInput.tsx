@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { parsePhoneNumber, isValidPhoneNumber, CountryCode } from "libphonenumber-js";
 
 interface PhoneInputProps {
+    id?: string;
     value?: string;
     onChange: (value: string) => void;
     placeholder?: string;
@@ -25,7 +26,7 @@ const POPULAR_COUNTRIES: { code: CountryCode; name: string; dial: string; flag: 
     { code: "CA", name: "Canada", dial: "+1", flag: "🇨🇦" },
 ];
 
-export function PhoneInput({ value, onChange, placeholder, error, disabled }: PhoneInputProps) {
+export function PhoneInput({ id, value, onChange, placeholder, error, disabled }: PhoneInputProps) {
     const [selectedCountry, setSelectedCountry] = useState<CountryCode>("FR");
     const [showDropdown, setShowDropdown] = useState(false);
 
@@ -156,6 +157,7 @@ export function PhoneInput({ value, onChange, placeholder, error, disabled }: Ph
                 {/* Phone Input */}
                 <div className="flex-1 relative">
                     <Input
+                        id={id}
                         type="tel"
                         value={displayValue}
                         onChange={(e) => handlePhoneChange(e.target.value)}
