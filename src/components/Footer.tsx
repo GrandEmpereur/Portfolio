@@ -16,6 +16,7 @@ interface FooterProps {
         legalTerms: string;
         legalPrivacy: string;
         copyright: string;
+        availableForProjects: string;
     };
     socialLinks: {
         linkedin?: string;
@@ -161,7 +162,7 @@ export const Footer = ({ translations, socialLinks }: FooterProps) => {
                         </p>
                         <div className="flex items-center gap-2">
                             <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-                            <span className="text-white/60 text-sm">Available for projects</span>
+                            <span className="text-white/60 text-sm">{translations.availableForProjects}</span>
                         </div>
                     </div>
                 </div>
