@@ -1,8 +1,15 @@
 import { SimpleContactForm } from "@/components/SimpleContactForm";
 import { getI18n } from "@/locales/serveur";
+import { setStaticParamsLocale } from "next-international/server";
 import { Metadata } from "next";
 import { seoConfig } from "@/lib/seo-config";
 import { getBreadcrumbSchema } from "@/lib/structured-data";
+
+const ogLocaleMap: Record<string, string> = {
+    fr: 'fr_FR',
+    en: 'en_US',
+    pl: 'pl_PL',
+};
 
 /**
  * Generate metadata for contact page
@@ -14,6 +21,7 @@ export async function generateMetadata({
     params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
     const { locale } = await params;
+    setStaticParamsLocale(locale);
     const t = await getI18n();
 
     const title = t('meta.contact.title');
@@ -27,6 +35,12 @@ export async function generateMetadata({
             canonical: locale === seoConfig.defaultLocale
                 ? `${seoConfig.baseUrl}/contact`
                 : `${seoConfig.baseUrl}/${locale}/contact`,
+            languages: {
+                'fr': `${seoConfig.baseUrl}/contact`,
+                'en': `${seoConfig.baseUrl}/en/contact`,
+                'pl': `${seoConfig.baseUrl}/pl/contact`,
+                'x-default': `${seoConfig.baseUrl}/contact`,
+            },
         },
         openGraph: {
             title,
@@ -35,7 +49,7 @@ export async function generateMetadata({
                 ? `${seoConfig.baseUrl}/contact`
                 : `${seoConfig.baseUrl}/${locale}/contact`,
             siteName: seoConfig.siteName,
-            locale: locale,
+            locale: ogLocaleMap[locale] ?? locale,
             type: 'website',
             images: [
                 {
