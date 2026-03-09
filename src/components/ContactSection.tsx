@@ -1,9 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { gsap, ScrollTrigger } from "@/lib/gsap-config";
+import { gsap, ScrollTrigger, SplitText } from "@/lib/gsap-config";
 import Image from "next/image";
-import SplitType from "split-type";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -119,7 +118,7 @@ export const ContactSection = ({ translations }: ContactSectionProps) => {
         const ctx = gsap.context(() => {
             // Animation du heading avec split text
             if (headingRef.current) {
-                const split = new SplitType(headingRef.current, { types: "chars,words" });
+                const split = new SplitText(headingRef.current, { type: "chars,words" });
 
                 // Perspective 3D
                 gsap.set(headingRef.current, {
