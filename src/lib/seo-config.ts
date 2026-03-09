@@ -37,13 +37,6 @@ export const seoConfig = {
         imageType: 'image/png',
     },
 
-    // Apple Web App configuration
-    appleWebApp: {
-        capable: true,
-        statusBarStyle: 'black-translucent' as const,
-        title: 'Patrick Bartosik',
-    },
-
     // Icons configuration (static files in public/)
     icons: {
         icon: '/favicon.ico',

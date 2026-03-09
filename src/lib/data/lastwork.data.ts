@@ -11,6 +11,12 @@ export interface Project {
     type: ProjectType;
     typeLabel: string; // Label personnalisé pour chaque projet
     company?: string; // Nom de l'entreprise si applicable
+    // New optional fields for detail page
+    longDescription?: string;
+    role?: string;
+    githubUrl?: string;
+    features?: string[];
+    year?: string;
 }
 
 export const lastwork: Project[] = [
@@ -120,6 +126,16 @@ export const lastwork: Project[] = [
         description: "Réseau social dédié aux lecteurs - Application mobile iOS et web app fullstack",
         type: "school",
         typeLabel: "Projet Scolaire",
-        company: undefined
+        company: undefined,
+        longDescription: "Bookish est un réseau social conçu pour les passionnés de lecture. L'application permet de partager ses lectures, découvrir de nouveaux livres et échanger avec une communauté de lecteurs. Développé en tant que projet de fin d'études, il combine une web app Next.js et une application mobile iOS via Capacitor.",
+        role: "Développeur Full Stack",
+        features: [
+            "Fil d'actualité social avec partage de lectures",
+            "Système de recommandations de livres",
+            "Profil lecteur avec bibliothèque personnelle",
+            "Application mobile iOS (Capacitor)",
+            "API REST avec AdonisJS"
+        ],
+        year: "2024",
     }
 ]

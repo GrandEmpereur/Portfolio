@@ -1,43 +1,21 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { gsap, ScrollTrigger, SplitText } from "@/lib/gsap-config";
-import Image from "next/image";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import * as z from "zod";
-import { Button } from "@/components/ui/button";
+import { zodResolver } from "@hookform/resolvers/zod";
 import {
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+    simpleContactSchema,
+    type SimpleContactData,
+} from "@/lib/simple-contact-schema";
 import { toast } from "sonner";
+import { Github, Instagram, Linkedin, Mail } from "lucide-react";
+import Link from "next/link";
 
-// Schéma de validation Zod
-const contactFormSchema = z.object({
-    name: z.string().min(2, {
-        message: "Le nom doit contenir au moins 2 caractères.",
-    }),
-    email: z.string().email({
-        message: "Adresse email invalide.",
-    }),
-    message: z.string().min(10, {
-        message: "Le message doit contenir au moins 10 caractères.",
-    }),
-});
-
-type ContactFormValues = z.infer<typeof contactFormSchema>;
-
-interface ContactSectionProps {
+interface ContactCtaSectionProps {
     translations: {
-        formBrand: string;
-        formTitle: string;
+        title: string;
+        subtitle: string;
         nameLabel: string;
         namePlaceholder: string;
         emailLabel: string;
@@ -49,196 +27,168 @@ interface ContactSectionProps {
         termsLink: string;
         andText: string;
         privacyLink: string;
-        heading: string;
-        description: string;
-        quickResponseTitle: string;
-        quickResponseDesc: string;
-        clearStepsTitle: string;
-        clearStepsDesc: string;
-        contactRole: string;
-        contactCompany: string;
-        contactName: string;
-        contactCta: string;
-        copyright: string;
+    };
+    socialLinks: {
+        linkedin?: string;
+        github?: string;
+        instagram?: string;
+        email?: string;
     };
 }
 
-export const ContactSection = ({ translations }: ContactSectionProps) => {
+export const ContactSection = ({
+    translations,
+    socialLinks,
+}: ContactCtaSectionProps) => {
     const sectionRef = useRef<HTMLElement>(null);
-    const headingRef = useRef<HTMLHeadingElement>(null);
-    const formRef = useRef<HTMLDivElement>(null);
-    const contentRef = useRef<HTMLDivElement>(null);
-    const [isSubmitting, setIsSubmitting] = useState(false);
+    const titleRef = useRef<HTMLHeadingElement>(null);
+    const subtitleRef = useRef<HTMLParagraphElement>(null);
+    const formRef = useRef<HTMLFormElement>(null);
+    const termsRef = useRef<HTMLParagraphElement>(null);
+    const socialsRef = useRef<HTMLDivElement>(null);
 
-    // Form avec react-hook-form et zod
-    const form = useForm<ContactFormValues>({
-        resolver: zodResolver(contactFormSchema),
-        defaultValues: {
-            name: "",
-            email: "",
-            message: "",
-        },
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors, isSubmitting },
+    } = useForm<SimpleContactData>({
+        resolver: zodResolver(simpleContactSchema),
     });
 
-    // Submit handler
-    async function onSubmit(values: ContactFormValues) {
-        setIsSubmitting(true);
-
+    const onSubmit = async (data: SimpleContactData) => {
         try {
-            const response = await fetch('/api/contact-simple', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(values),
+            const response = await fetch("/api/contact-simple", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
             });
 
-            const data = await response.json();
+            if (!response.ok) throw new Error("Failed to send message");
 
-            if (!response.ok) {
-                throw new Error(data.error || 'Erreur lors de l\'envoi du message');
-            }
-
-            toast.success(data.message || "Merci ! Votre message a été envoyé avec succès. Je vous répondrai sous 24-48h.");
-            form.reset();
-        } catch (error) {
-            console.error('Form submission error:', error);
-            toast.error(error instanceof Error ? error.message : 'Erreur lors de l\'envoi. Veuillez réessayer.');
-        } finally {
-            setIsSubmitting(false);
+            toast.success("Message sent!");
+            reset();
+        } catch {
+            toast.error("Something went wrong. Please try again.");
         }
-    }
+    };
 
     useEffect(() => {
         if (!sectionRef.current) return;
 
-        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const prefersReducedMotion = window.matchMedia(
+            "(prefers-reduced-motion: reduce)",
+        ).matches;
         if (prefersReducedMotion) return;
 
+        const isMobile = window.innerWidth < 768;
+
         const ctx = gsap.context(() => {
-            // Animation du heading avec split text
-            if (headingRef.current) {
-                const split = new SplitText(headingRef.current, { type: "chars,words" });
+            // Title animation
+            if (titleRef.current) {
+                if (!isMobile) {
+                    gsap.set(titleRef.current, {
+                        perspective: 1000,
+                        transformStyle: "preserve-3d",
+                    });
 
-                // Perspective 3D
-                gsap.set(headingRef.current, {
-                    perspective: 1000,
-                    transformStyle: "preserve-3d",
-                });
+                    const split = new SplitText(titleRef.current, {
+                        type: "chars",
+                    });
 
-                // Animation lettre par lettre avec effet 3D
-                if (split.chars) {
                     gsap.from(split.chars, {
                         opacity: 0,
-                        y: 80,
+                        y: 50,
                         rotationX: -90,
-                        stagger: 0.03,
-                        duration: 1.5,
+                        stagger: 0.02,
+                        duration: 0.8,
                         ease: "back.out(1.7)",
                         scrollTrigger: {
-                            trigger: headingRef.current,
-                            start: "top 90%",
-                            end: "top 55%",
-                            scrub: 1.5,
+                            trigger: titleRef.current,
+                            start: "top 80%",
+                            once: true,
+                        },
+                    });
+                } else {
+                    // Mobile: simple fade-in
+                    gsap.from(titleRef.current, {
+                        opacity: 0,
+                        y: 30,
+                        duration: 0.8,
+                        ease: "power2.out",
+                        scrollTrigger: {
+                            trigger: titleRef.current,
+                            start: "top 85%",
+                            once: true,
                         },
                     });
                 }
+            }
 
-                // Parallax sur le heading
-                gsap.to(headingRef.current, {
-                    yPercent: -12,
-                    ease: "none",
+            // Subtitle animation
+            if (subtitleRef.current) {
+                gsap.from(subtitleRef.current, {
+                    opacity: 0,
+                    y: 20,
+                    duration: 0.6,
+                    delay: 0.3,
+                    ease: "power2.out",
                     scrollTrigger: {
-                        trigger: sectionRef.current,
-                        start: "top bottom",
-                        end: "bottom top",
-                        scrub: 2,
+                        trigger: subtitleRef.current,
+                        start: "top 85%",
+                        once: true,
                     },
                 });
             }
 
-            // Animation du formulaire - Slide élégant depuis la gauche avec scale
+            // Form fields stagger animation
             if (formRef.current) {
-                gsap.from(formRef.current, {
+                gsap.from(formRef.current.children, {
                     opacity: 0,
-                    x: -150,
-                    scale: 0.95,
-                    duration: 1.5,
-                    ease: "power4.out",
+                    y: 30,
+                    duration: 0.6,
+                    stagger: 0.1,
+                    delay: 0.4,
+                    ease: "power2.out",
                     scrollTrigger: {
                         trigger: formRef.current,
                         start: "top 85%",
-                        end: "top 50%",
-                        scrub: 1.5,
+                        once: true,
                     },
                 });
             }
 
-            // Animation des éléments du contenu - Stagger fluide
-            if (contentRef.current) {
-                const children = contentRef.current.children;
+            // Terms text animation
+            if (termsRef.current) {
+                gsap.from(termsRef.current, {
+                    opacity: 0,
+                    y: 15,
+                    duration: 0.5,
+                    delay: 0.8,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: termsRef.current,
+                        start: "top 90%",
+                        once: true,
+                    },
+                });
+            }
 
-                // Animation séparée pour chaque élément avec des effets différents
-                Array.from(children).forEach((child, index) => {
-                    if (index === 0) {
-                        // Description paragraph
-                        gsap.from(child, {
-                            opacity: 0,
-                            y: 30,
-                            duration: 1,
-                            ease: "power2.out",
-                            scrollTrigger: {
-                                trigger: child,
-                                start: "top 85%",
-                                end: "top 60%",
-                                scrub: 1.2,
-                            },
-                        });
-                    } else if (index === 1) {
-                        // Divider
-                        gsap.from(child, {
-                            scaleX: 0,
-                            transformOrigin: "left center",
-                            duration: 1,
-                            ease: "power2.inOut",
-                            scrollTrigger: {
-                                trigger: child,
-                                start: "top 85%",
-                                end: "top 60%",
-                                scrub: 1.2,
-                            },
-                        });
-                    } else if (index >= 2 && index <= 3) {
-                        // Info cards
-                        gsap.from(child, {
-                            opacity: 0,
-                            y: 40,
-                            stagger: 0.2,
-                            duration: 1,
-                            ease: "power3.out",
-                            scrollTrigger: {
-                                trigger: child,
-                                start: "top 85%",
-                                end: "top 60%",
-                                scrub: 1.2,
-                            },
-                        });
-                    } else if (index === 4) {
-                        // Contact card - Slide from right avec rotation
-                        gsap.from(child, {
-                            opacity: 0,
-                            x: 60,
-                            rotateY: -15,
-                            duration: 1.2,
-                            ease: "power3.out",
-                            scrollTrigger: {
-                                trigger: child,
-                                start: "top 85%",
-                                end: "top 55%",
-                                scrub: 1.2,
-                            },
-                        });
-                    }
+            // Social links animation
+            if (socialsRef.current) {
+                gsap.from(socialsRef.current.children, {
+                    opacity: 0,
+                    y: 20,
+                    scale: 0.8,
+                    duration: 0.5,
+                    stagger: 0.08,
+                    delay: 1,
+                    ease: "back.out(1.7)",
+                    scrollTrigger: {
+                        trigger: socialsRef.current,
+                        start: "top 90%",
+                        once: true,
+                    },
                 });
             }
         }, sectionRef);
@@ -249,230 +199,200 @@ export const ContactSection = ({ translations }: ContactSectionProps) => {
     return (
         <section
             ref={sectionRef}
-            className="w-full min-h-screen overflow-hidden bg-[#0A0A0A] relative"
+            className="min-h-screen flex flex-col items-center justify-center bg-black py-24 md:py-32 lg:py-0"
         >
-            {/* Background Image avec overlay */}
-            <div className="absolute inset-0 z-0">
-                <Image
-                    src="/images/hero.webp"
-                    alt="Contact background"
-                    fill
-                    className="object-cover"
-                    quality={75}
-                    sizes="100vw"
-                    loading="lazy"
-                />
-                <div className="absolute inset-0 bg-black/80"></div>
-            </div>
+            <div className="max-w-4xl mx-auto px-6 sm:px-8 md:px-12 w-full">
+                {/* Title */}
+                <h2
+                    ref={titleRef}
+                    className="text-[clamp(2rem,7vw,7rem)] font-bold leading-[0.95] tracking-tight text-white text-center uppercase font-[family-name:var(--font-anton)]"
+                >
+                    {translations.title}
+                </h2>
 
-            {/* Content */}
-            <div className="relative z-10 w-full min-h-screen flex items-center justify-center px-4 sm:px-8 md:px-12 lg:px-20 py-12 sm:py-16 md:py-20">
-                <div className="w-full">
-                    {/* Heading - Centré */}
-                    <h2
-                        ref={headingRef}
-                        className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold leading-tight text-center mb-8 sm:mb-12 md:mb-16"
-                    >
-                        {translations.heading}
-                    </h2>
+                {/* Subtitle */}
+                <p
+                    ref={subtitleRef}
+                    className="text-base md:text-lg text-white/50 text-center mt-6 md:mt-8 font-light"
+                >
+                    {translations.subtitle}
+                </p>
 
-                    {/* Grid 2 colonnes */}
-                    <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center lg:items-center">
-                        {/* Colonne gauche - Formulaire */}
-                        <div ref={formRef} className="w-full lg:w-1/2 flex justify-center lg:justify-end">
-                            <div className="w-full max-w-[550px]">
-                                <div className="bg-white rounded-[25px] p-8 shadow-xl">
-                                    {/* Header formulaire */}
-                                    <div className="mb-8">
-                                        <p className="text-[#0A0A0A] text-xs font-medium tracking-[0.2em] uppercase mb-4">
-                                            {translations.formBrand}
-                                        </p>
-                                        <h3 className="text-[#0A0A0A] text-3xl md:text-4xl font-bold leading-tight">
-                                            {translations.formTitle}
-                                        </h3>
-                                    </div>
-
-                                    {/* Formulaire shadcn/ui avec react-hook-form */}
-                                    <Form {...form}>
-                                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-                                            {/* Name Field */}
-                                            <FormField
-                                                control={form.control}
-                                                name="name"
-                                                render={({ field }) => (
-                                                    <FormItem>
-                                                        <FormLabel className="text-[#090909] text-sm font-medium">
-                                                            {translations.nameLabel}
-                                                        </FormLabel>
-                                                        <FormControl>
-                                                            <Input
-                                                                placeholder={translations.namePlaceholder}
-                                                                {...field}
-                                                                className="h-[58px] bg-[#F5F5F5] border-none rounded-[10px] text-[#090909] placeholder:text-[#999999] focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:border-orange-500"
-                                                            />
-                                                        </FormControl>
-                                                        <FormMessage />
-                                                    </FormItem>
-                                                )}
-                                            />
-
-                                            {/* Email Field */}
-                                            <FormField
-                                                control={form.control}
-                                                name="email"
-                                                render={({ field }) => (
-                                                    <FormItem>
-                                                        <FormLabel className="text-[#090909] text-sm font-medium">
-                                                            {translations.emailLabel}
-                                                        </FormLabel>
-                                                        <FormControl>
-                                                            <Input
-                                                                type="email"
-                                                                placeholder={translations.emailPlaceholder}
-                                                                {...field}
-                                                                className="h-[58px] bg-[#F5F5F5] border-none rounded-[10px] text-[#090909] placeholder:text-[#999999] focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:border-orange-500"
-                                                            />
-                                                        </FormControl>
-                                                        <FormMessage />
-                                                    </FormItem>
-                                                )}
-                                            />
-
-                                            {/* Message Field */}
-                                            <FormField
-                                                control={form.control}
-                                                name="message"
-                                                render={({ field }) => (
-                                                    <FormItem>
-                                                        <FormLabel className="text-[#090909] text-sm font-medium">
-                                                            {translations.messageLabel}
-                                                        </FormLabel>
-                                                        <FormControl>
-                                                            <Textarea
-                                                                placeholder={translations.messagePlaceholder}
-                                                                {...field}
-                                                                rows={1}
-                                                                className="min-h-[58px] bg-[#F5F5F5] border-none rounded-[10px] text-[#090909] placeholder:text-[#999999] resize-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:border-orange-500"
-                                                            />
-                                                        </FormControl>
-                                                        <FormMessage />
-                                                    </FormItem>
-                                                )}
-                                            />
-
-                                            {/* Submit Button */}
-                                            <Button
-                                                type="submit"
-                                                disabled={isSubmitting}
-                                                className="w-full h-[58px] bg-[#0A0A0A] hover:bg-[#0A0A0A]/90 text-white rounded-full text-base font-medium transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-                                            >
-                                                {isSubmitting ? (
-                                                    <span className="flex items-center gap-2">
-                                                        <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                                                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                                                        </svg>
-                                                        Sending...
-                                                    </span>
-                                                ) : (
-                                                    translations.submitButton
-                                                )}
-                                            </Button>
-
-                                            {/* Terms */}
-                                            <p className="text-xs text-[#090909]/60 leading-relaxed">
-                                                {translations.termsText}{" "}
-                                                <a href="/mentions-legales" className="text-[#0A0A0A] underline hover:no-underline">
-                                                    {translations.termsLink}
-                                                </a>{" "}
-                                                {translations.andText}{" "}
-                                                <a href="/politique-confidentialite" className="text-[#0A0A0A] underline hover:no-underline">
-                                                    {translations.privacyLink}
-                                                </a>.
-                                            </p>
-                                        </form>
-                                    </Form>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Colonne droite - Contenu */}
-                        <div ref={contentRef} className="w-full lg:w-1/2 flex justify-center lg:justify-start">
-                            <div className="w-full max-w-[650px] space-y-12">
-                                {/* Description */}
-                                <p className="text-white/80 text-lg md:text-xl leading-relaxed">
-                                    {translations.description}
-                                </p>
-
-                                {/* Divider */}
-                                <div className="w-full h-px bg-white/10"></div>
-
-                                {/* Info Cards */}
-                                <div className="flex flex-col gap-8">
-                                    <div className="flex items-start gap-6">
-                                        <div className="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-sm flex items-center justify-center flex-shrink-0">
-                                            <span className="text-white text-xl">⚡</span>
-                                        </div>
-                                        <div>
-                                            <h3 className="text-white text-xl font-semibold mb-2">
-                                                {translations.quickResponseTitle}
-                                            </h3>
-                                            <p className="text-white/60 text-base leading-relaxed">
-                                                {translations.quickResponseDesc}
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div className="flex items-start gap-6">
-                                        <div className="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-sm flex items-center justify-center flex-shrink-0">
-                                            <span className="text-white text-xl">✓</span>
-                                        </div>
-                                        <div>
-                                            <h3 className="text-white text-xl font-semibold mb-2">
-                                                {translations.clearStepsTitle}
-                                            </h3>
-                                            <p className="text-white/60 text-base leading-relaxed">
-                                                {translations.clearStepsDesc}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Contact Card */}
-                                <div className="flex items-center gap-4">
-                                    {/* Image avec initiales */}
-                                    <div className="w-[100px] sm:w-[125px] h-[130px] sm:h-[160px] bg-white rounded-2xl p-1.5 flex-shrink-0">
-                                        <div className="w-full h-full bg-gradient-to-br from-orange-400 to-orange-600 rounded-xl flex items-center justify-center">
-                                            <span className="text-white font-bold text-4xl">PB</span>
-                                        </div>
-                                    </div>
-
-                                    {/* Card content */}
-                                    <div className="w-full sm:w-[285px] min-h-[130px] sm:h-[160px] bg-white rounded-2xl p-6 flex flex-col justify-between">
-                                        <div>
-                                            <p className="text-[#090909] text-[11px] font-medium h-[14px] mb-[3px]">
-                                                {translations.contactRole}
-                                            </p>
-                                            <p className="text-[#090909]/60 text-[12px] font-normal h-[15px]">
-                                                {translations.contactCompany}
-                                            </p>
-                                            <h4 className="text-[#090909] text-[20px] font-bold leading-[1.265] mt-[5px]">
-                                                {translations.contactName}
-                                            </h4>
-                                        </div>
-
-                                        {/* CTA Button */}
-                                        <button className="w-[128px] h-[30px] px-3 bg-[#0A0A0A] hover:bg-[#0A0A0A]/90 text-white rounded-full text-[10px] font-medium transition-all duration-300 flex items-center justify-between">
-                                            <span>{translations.contactCta}</span>
-                                            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                {/* Form */}
+                <form
+                    ref={formRef}
+                    onSubmit={handleSubmit(onSubmit)}
+                    className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mt-12 md:mt-16"
+                >
+                    {/* Name field */}
+                    <div>
+                        <label className="text-xs text-white/40 uppercase tracking-wider mb-2 block">
+                            {translations.nameLabel}
+                        </label>
+                        <input
+                            {...register("name")}
+                            placeholder={translations.namePlaceholder}
+                            className="w-full bg-transparent border-0 border-b border-white/20 py-3 text-white placeholder:text-white/20 focus:border-white/60 focus:outline-none transition-colors text-sm"
+                        />
+                        {errors.name && (
+                            <p className="text-red-400 text-xs mt-1">
+                                {errors.name.message}
+                            </p>
+                        )}
                     </div>
+
+                    {/* Email field */}
+                    <div>
+                        <label className="text-xs text-white/40 uppercase tracking-wider mb-2 block">
+                            {translations.emailLabel}
+                        </label>
+                        <input
+                            type="email"
+                            {...register("email")}
+                            placeholder={translations.emailPlaceholder}
+                            className="w-full bg-transparent border-0 border-b border-white/20 py-3 text-white placeholder:text-white/20 focus:border-white/60 focus:outline-none transition-colors text-sm"
+                        />
+                        {errors.email && (
+                            <p className="text-red-400 text-xs mt-1">
+                                {errors.email.message}
+                            </p>
+                        )}
+                    </div>
+
+                    {/* Message field */}
+                    <div className="md:col-span-2">
+                        <label className="text-xs text-white/40 uppercase tracking-wider mb-2 block">
+                            {translations.messageLabel}
+                        </label>
+                        <textarea
+                            {...register("message")}
+                            placeholder={translations.messagePlaceholder}
+                            className="w-full bg-transparent border-0 border-b border-white/20 py-3 text-white placeholder:text-white/20 focus:border-white/60 focus:outline-none transition-colors text-sm min-h-[100px] resize-none"
+                        />
+                        {errors.message && (
+                            <p className="text-red-400 text-xs mt-1">
+                                {errors.message.message}
+                            </p>
+                        )}
+                    </div>
+
+                    {/* Honeypot (hidden) */}
+                    <input
+                        type="text"
+                        {...register("honeypot")}
+                        className="hidden"
+                        tabIndex={-1}
+                        autoComplete="off"
+                    />
+
+                    {/* Submit button */}
+                    <div className="md:col-span-2 flex justify-center mt-4">
+                        <button
+                            type="submit"
+                            disabled={isSubmitting}
+                            data-magnetic="true"
+                            className="px-10 py-3.5 rounded-full bg-white text-black font-medium text-sm hover:bg-white/90 transition-all duration-300 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                            {isSubmitting ? (
+                                <span className="flex items-center gap-2">
+                                    <svg
+                                        className="animate-spin h-4 w-4"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <circle
+                                            className="opacity-25"
+                                            cx="12"
+                                            cy="12"
+                                            r="10"
+                                            stroke="currentColor"
+                                            strokeWidth="4"
+                                        />
+                                        <path
+                                            className="opacity-75"
+                                            fill="currentColor"
+                                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                                        />
+                                    </svg>
+                                    Sending...
+                                </span>
+                            ) : (
+                                translations.submitButton
+                            )}
+                        </button>
+                    </div>
+                </form>
+
+                {/* Terms text */}
+                <p
+                    ref={termsRef}
+                    className="text-xs text-white/30 text-center mt-6"
+                >
+                    {translations.termsText}{" "}
+                    <Link
+                        href="/mentions-legales"
+                        className="text-white/50 underline hover:text-white/70 transition-colors"
+                    >
+                        {translations.termsLink}
+                    </Link>{" "}
+                    {translations.andText}{" "}
+                    <Link
+                        href="/politique-confidentialite"
+                        className="text-white/50 underline hover:text-white/70 transition-colors"
+                    >
+                        {translations.privacyLink}
+                    </Link>
+                    .
+                </p>
+
+                {/* Social links */}
+                <div
+                    ref={socialsRef}
+                    className="flex items-center justify-center gap-4 mt-12 md:mt-16"
+                >
+                    {socialLinks.linkedin && (
+                        <a
+                            href={socialLinks.linkedin}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="LinkedIn"
+                            className="w-10 h-10 flex items-center justify-center rounded-full bg-white/[0.05] hover:bg-white/10 transition-colors"
+                        >
+                            <Linkedin className="w-4 h-4 text-white" />
+                        </a>
+                    )}
+                    {socialLinks.github && (
+                        <a
+                            href={socialLinks.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="GitHub"
+                            className="w-10 h-10 flex items-center justify-center rounded-full bg-white/[0.05] hover:bg-white/10 transition-colors"
+                        >
+                            <Github className="w-4 h-4 text-white" />
+                        </a>
+                    )}
+                    {socialLinks.instagram && (
+                        <a
+                            href={socialLinks.instagram}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Instagram"
+                            className="w-10 h-10 flex items-center justify-center rounded-full bg-white/[0.05] hover:bg-white/10 transition-colors"
+                        >
+                            <Instagram className="w-4 h-4 text-white" />
+                        </a>
+                    )}
+                    {socialLinks.email && (
+                        <a
+                            href={`mailto:${socialLinks.email}`}
+                            aria-label="Email"
+                            className="w-10 h-10 flex items-center justify-center rounded-full bg-white/[0.05] hover:bg-white/10 transition-colors"
+                        >
+                            <Mail className="w-4 h-4 text-white" />
+                        </a>
+                    )}
                 </div>
             </div>
         </section>

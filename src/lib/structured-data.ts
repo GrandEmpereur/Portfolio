@@ -107,6 +107,27 @@ export function getProjectsListSchema(projects: Project[], locale: string) {
     };
 }
 
+// CreativeWork Schema for individual Project detail pages
+export function getProjectDetailSchema(project: Project, locale: string) {
+    return {
+        '@context': 'https://schema.org',
+        '@type': 'CreativeWork',
+        name: project.title,
+        description: project.longDescription || project.description,
+        url: project.link || `${seoConfig.baseUrl}/${locale}/projects/${project.slug}`,
+        keywords: project.technologies.join(', '),
+        author: {
+            '@type': 'Person',
+            name: seoConfig.author.name,
+            url: seoConfig.author.url,
+        },
+        ...(project.year && { dateCreated: project.year }),
+        ...(project.image && {
+            image: `${seoConfig.baseUrl}${project.image}`,
+        }),
+    };
+}
+
 // BreadcrumbList Schema
 export function getBreadcrumbSchema(
     items: Array<{ name: string; url: string }>,

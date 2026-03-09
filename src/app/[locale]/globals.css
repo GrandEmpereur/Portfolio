@@ -189,15 +189,28 @@
 
 @keyframes scroll {
   0% {
-    transform: translateY(0);
+    transform: translateY(-100%);
+    opacity: 0;
   }
 
-  30% {
-    transform: translateY(100%);
+  10% {
+    opacity: 1;
   }
 
+  70% {
+    transform: translateY(400%);
+    opacity: 1;
+  }
+
+  80% {
+    transform: translateY(400%);
+    opacity: 0;
+  }
+
+  80.01%,
   100% {
-    transform: translateY(100%);
+    transform: translateY(-100%);
+    opacity: 0;
   }
 }
 
@@ -216,7 +229,7 @@
 }
 
 .animate-scroll {
-  animation: scroll 2s ease-in-out infinite;
+  animation: scroll 2.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 .animation-delay-200 {
@@ -448,6 +461,21 @@
   .transform-gpu {
     transform: translateZ(0);
     will-change: transform;
+  }
+
+  /* Marquee animation for infinite scroll */
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
   }
 }
 

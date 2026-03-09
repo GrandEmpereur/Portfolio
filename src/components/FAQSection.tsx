@@ -107,6 +107,7 @@ export const FAQSection = ({ title, faqs, socialTitle, socialLinks }: FAQSection
                                 ref={titleRef}
                                 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] mb-8 sm:mb-10 lg:mb-0"
                                 dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(title, { ALLOWED_TAGS: ['br'] }) }}
+                                suppressHydrationWarning
                             />
                         </div>
 
