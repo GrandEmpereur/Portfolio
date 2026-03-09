@@ -1,16 +1,11 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { gsap, ScrollTrigger } from "@/lib/gsap-config";
 import Image from "next/image";
 import SplitType from "split-type";
 import Link from "next/link";
 import heroImage from "../../public/images/hero.webp";
-
-if (typeof window !== "undefined") {
-    gsap.registerPlugin(ScrollTrigger);
-}
 
 interface HeroSectionProps {
     title: string;
