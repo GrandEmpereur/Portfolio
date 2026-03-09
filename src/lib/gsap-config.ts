@@ -3,9 +3,10 @@ import { useGSAP } from "@gsap/react";
 import { CustomEase } from "gsap/CustomEase";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
+import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
 
 // Register only the plugins that are actually used in the codebase
-gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText, CustomEase);
+gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText, CustomEase, ScrambleTextPlugin);
 
 if (typeof window !== "undefined") {
     // Configuration globale optimisée pour ScrollTrigger
@@ -30,7 +31,7 @@ if (typeof window !== "undefined") {
     });
 }
 
-export { gsap, useGSAP, ScrollTrigger, SplitText, CustomEase };
+export { gsap, useGSAP, ScrollTrigger, SplitText, CustomEase, ScrambleTextPlugin };
 
 export default gsap;
 

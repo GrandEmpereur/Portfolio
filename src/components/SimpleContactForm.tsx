@@ -28,7 +28,7 @@ type Step = 1 | 2 | 3 | 4 | 5 | 6;
 export const SimpleContactForm = () => {
     const [currentStep, setCurrentStep] = useState<Step>(1);
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [startedAt] = useState(() => Date.now());
+    const startedAt = useRef(0);
     const stepRef = useRef<HTMLDivElement>(null);
 
     const form = useForm<ContactFormData>({
@@ -50,6 +50,10 @@ export const SimpleContactForm = () => {
     const { watch, setValue, register } = form;
     const serviceType = watch("serviceType");
     const discoverySource = watch("discoverySource");
+
+    useEffect(() => {
+        startedAt.current = Date.now();
+    }, []);
 
     // Animation entre les steps
     useEffect(() => {
@@ -104,7 +108,7 @@ export const SimpleContactForm = () => {
 
     const onSubmit = async (data: ContactFormData) => {
         // Anti-bot check
-        const elapsed = Date.now() - startedAt;
+        const elapsed = Date.now() - startedAt.current;
         if (elapsed < 5000) {
             toast.error("Merci de prendre le temps de remplir le formulaire");
             return;

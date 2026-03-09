@@ -6,7 +6,6 @@ import { useScopedI18n } from "@/locales/client"
 import { LanguageSwitcher } from "./LanguageSwitcher"
 import { usePathname } from "next/navigation"
 import { Menu, X } from "lucide-react"
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 
 export const NavBar = () => {
     const navT = useScopedI18n('nav')
@@ -43,36 +42,20 @@ export const NavBar = () => {
                     <div className="max-w-7xl mx-auto">
                         {/* Container avec glassmorphism moderne */}
                         <div className={`
-                            relative backdrop-blur-2xl bg-white/5 rounded-full 
-                            border border-white/10 shadow-2xl
+                            relative backdrop-blur-2xl rounded-full
+                            border border-white/5
                             transform-gpu transition-all duration-500
-                            ${isScrolled ? 'shadow-orange-500/10 bg-white/10' : ''}
+                            ${isScrolled ? 'bg-white/[0.06] border-white/10' : 'bg-white/[0.03]'}
                         `}>
                             <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4">
 
                                 {/* Logo */}
                                 <Link
                                     href="/"
-                                    className="group flex items-center gap-3 z-10"
+                                    className="text-white font-bold text-xl tracking-tight hover:text-white/80 transition-colors duration-300 z-10"
+                                    style={{ fontFamily: 'var(--font-anton), sans-serif' }}
                                 >
-                                    <div className="relative">
-                                        {/* Avatar */}
-                                        <Avatar className="relative w-10 h-10 sm:w-12 sm:h-12 ring-2 ring-white/20 transform-gpu transition-all duration-300 group-hover:scale-110 group-hover:ring-white/40">
-                                            <AvatarImage
-                                                src="/images/hero.webp"
-                                                alt="Patrick Bartosik"
-                                                className="object-cover"
-                                            />
-                                            <AvatarFallback className="bg-gradient-to-br from-orange-500 to-orange-600 text-white font-black text-base sm:text-lg">
-                                                PB
-                                            </AvatarFallback>
-                                        </Avatar>
-                                    </div>
-
-                                    {/* Logo text - caché sur mobile */}
-                                    <span className="hidden sm:block text-white/90 font-bold text-lg tracking-tight group-hover:text-white transition-colors duration-300">
-                                        Patrick Bartosik
-                                    </span>
+                                    PB
                                 </Link>
 
                                 {/* Navigation Links - Desktop */}
@@ -88,14 +71,6 @@ export const NavBar = () => {
                                     <div className="hidden sm:block">
                                         <LanguageSwitcher />
                                     </div>
-
-                                    {/* CTA Button - Desktop */}
-                                    <Link
-                                        href="/contact"
-                                        className="hidden sm:inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 text-white text-sm font-semibold hover:from-orange-600 hover:to-orange-700 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-orange-500/50"
-                                    >
-                                        <span>{navT('get in touch')}</span>
-                                    </Link>
 
                                     {/* Menu Hamburger - Mobile */}
                                     <button
@@ -163,7 +138,7 @@ export const NavBar = () => {
                     {/* CTA Button Mobile */}
                     <Link
                         href="/contact"
-                        className="mt-4 inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 text-white text-lg font-semibold hover:from-orange-600 hover:to-orange-700 hover:scale-105 transition-all duration-300 shadow-2xl shadow-orange-500/50"
+                        className="mt-4 inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-black text-lg font-medium hover:bg-white/90 transition-all duration-300"
                     >
                         <span>{navT('get in touch')}</span>
                     </Link>

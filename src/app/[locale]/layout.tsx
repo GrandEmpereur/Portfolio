@@ -12,6 +12,7 @@ import { Analytics as VercelAnalytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { GoogleTagManager } from '@next/third-parties/google'
+import { CustomCursor } from "@/components/CustomCursor"
 
 const anton = Anton({
   variable: "--font-anton",
@@ -89,21 +90,11 @@ export async function generateMetadata({
       },
     },
 
-    // Manifest for PWA
-    manifest: '/manifest.webmanifest',
-
     // Icons configuration
     icons: {
       icon: seoConfig.icons.icon,
       shortcut: seoConfig.icons.shortcut,
       apple: seoConfig.icons.apple,
-    },
-
-    // Apple Web App configuration
-    appleWebApp: {
-      capable: seoConfig.appleWebApp.capable,
-      statusBarStyle: seoConfig.appleWebApp.statusBarStyle,
-      title: seoConfig.appleWebApp.title,
     },
 
     // Open Graph
@@ -165,10 +156,11 @@ export default async function RootLayout({
   };
 
   return (
-    <html lang={locale} className="dark">
+    <html lang={locale} className="dark" suppressHydrationWarning>
       <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID || ''} />
       <body
         className={`${anton.variable} ${inter.variable} antialiased dark:bg-black bg-black`}
+        suppressHydrationWarning
       >
         <a
           href="#main-content"
@@ -180,6 +172,7 @@ export default async function RootLayout({
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || ''} />
           <SmoothScroll>
             <NavBar />
+            <CustomCursor />
             {children}
             <Toaster />
             <VercelAnalytics />
