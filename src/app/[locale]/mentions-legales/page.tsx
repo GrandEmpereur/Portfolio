@@ -64,7 +64,7 @@ export default async function LegalNoticePage({
   });
 
   return (
-    <main className="relative min-h-screen w-full px-8 md:px-16 lg:px-24 py-32">
+    <main id="main-content" className="relative min-h-screen w-full px-8 md:px-16 lg:px-24 py-32">
       {/* Back button */}
       <Link
         href="/"

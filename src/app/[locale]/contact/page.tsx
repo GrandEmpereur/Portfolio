@@ -83,7 +83,8 @@ export default async function ContactPage({
                 suppressHydrationWarning
             />
 
-            <main className="min-h-screen bg-black">
+            <main id="main-content" className="min-h-screen bg-black">
+                <h1 className="sr-only">Contact Patrick Bartosik</h1>
                 <SimpleContactForm />
             </main>
         </>

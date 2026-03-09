@@ -146,7 +146,7 @@ export default async function Home({
         suppressHydrationWarning
       />
 
-      <main className="relative w-full">
+      <main id="main-content" className="relative w-full">
         {/* Hero Section - Split Text Animation */}
         <HeroSection
           title={t('hero.title')}
