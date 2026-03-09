@@ -36,10 +36,11 @@ export default function robots(): MetadataRoute.Robots {
                     '/*.js.map$',
                 ],
             },
-            // Règles spécifiques pour les bots AI agressifs
+            // Règles spécifiques pour les bots AI — autoriser les pages publiques
             {
-                userAgent: ['GPTBot', 'ChatGPT-User', 'CCBot', 'anthropic-ai', 'Google-Extended'],
-                disallow: ['/'],
+                userAgent: ['GPTBot', 'ChatGPT-User', 'anthropic-ai', 'ClaudeBot', 'PerplexityBot', 'Google-Extended', 'CCBot'],
+                allow: ['/', '/en/', '/pl/', '/projects', '/contact'],
+                disallow: ['/api/'],
             },
         ],
         sitemap: `${seoConfig.baseUrl}/sitemap.xml`,

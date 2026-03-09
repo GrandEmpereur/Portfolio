@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { gsap, ScrollTrigger } from "@/lib/gsap-config";
 import Image from "next/image";
 import SplitType from "split-type";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -20,10 +19,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
-
-if (typeof window !== "undefined") {
-    gsap.registerPlugin(ScrollTrigger);
-}
 
 // Schéma de validation Zod
 const contactFormSchema = z.object({
@@ -117,6 +112,9 @@ export const ContactSection = ({ translations }: ContactSectionProps) => {
 
     useEffect(() => {
         if (!sectionRef.current) return;
+
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) return;
 
         const ctx = gsap.context(() => {
             // Animation du heading avec split text
@@ -269,12 +267,12 @@ export const ContactSection = ({ translations }: ContactSectionProps) => {
             </div>
 
             {/* Content */}
-            <div className="relative z-10 w-full min-h-screen flex items-center justify-center px-20 py-20">
+            <div className="relative z-10 w-full min-h-screen flex items-center justify-center px-4 sm:px-8 md:px-12 lg:px-20 py-12 sm:py-16 md:py-20">
                 <div className="w-full">
                     {/* Heading - Centré */}
                     <h2
                         ref={headingRef}
-                        className="text-white text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight text-center mb-16"
+                        className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold leading-tight text-center mb-8 sm:mb-12 md:mb-16"
                     >
                         {translations.heading}
                     </h2>
@@ -311,7 +309,7 @@ export const ContactSection = ({ translations }: ContactSectionProps) => {
                                                             <Input
                                                                 placeholder={translations.namePlaceholder}
                                                                 {...field}
-                                                                className="h-[58px] bg-[#F5F5F5] border-none rounded-[10px] text-[#090909] placeholder:text-[#999999] focus-visible:ring-0 focus-visible:ring-offset-0"
+                                                                className="h-[58px] bg-[#F5F5F5] border-none rounded-[10px] text-[#090909] placeholder:text-[#999999] focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:border-orange-500"
                                                             />
                                                         </FormControl>
                                                         <FormMessage />
@@ -333,7 +331,7 @@ export const ContactSection = ({ translations }: ContactSectionProps) => {
                                                                 type="email"
                                                                 placeholder={translations.emailPlaceholder}
                                                                 {...field}
-                                                                className="h-[58px] bg-[#F5F5F5] border-none rounded-[10px] text-[#090909] placeholder:text-[#999999] focus-visible:ring-0 focus-visible:ring-offset-0"
+                                                                className="h-[58px] bg-[#F5F5F5] border-none rounded-[10px] text-[#090909] placeholder:text-[#999999] focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:border-orange-500"
                                                             />
                                                         </FormControl>
                                                         <FormMessage />
@@ -355,7 +353,7 @@ export const ContactSection = ({ translations }: ContactSectionProps) => {
                                                                 placeholder={translations.messagePlaceholder}
                                                                 {...field}
                                                                 rows={1}
-                                                                className="min-h-[58px] bg-[#F5F5F5] border-none rounded-[10px] text-[#090909] placeholder:text-[#999999] resize-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                                                                className="min-h-[58px] bg-[#F5F5F5] border-none rounded-[10px] text-[#090909] placeholder:text-[#999999] resize-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:border-orange-500"
                                                             />
                                                         </FormControl>
                                                         <FormMessage />
@@ -444,14 +442,14 @@ export const ContactSection = ({ translations }: ContactSectionProps) => {
                                 {/* Contact Card */}
                                 <div className="flex items-center gap-4">
                                     {/* Image avec initiales */}
-                                    <div className="w-[125px] h-[160px] bg-white rounded-2xl p-1.5 flex-shrink-0">
-                                        <div className="w-[113px] h-full bg-gradient-to-br from-orange-400 to-orange-600 rounded-xl flex items-center justify-center">
+                                    <div className="w-[100px] sm:w-[125px] h-[130px] sm:h-[160px] bg-white rounded-2xl p-1.5 flex-shrink-0">
+                                        <div className="w-full h-full bg-gradient-to-br from-orange-400 to-orange-600 rounded-xl flex items-center justify-center">
                                             <span className="text-white font-bold text-4xl">PB</span>
                                         </div>
                                     </div>
 
                                     {/* Card content */}
-                                    <div className="w-[285px] h-[160px] bg-white rounded-2xl p-6 flex flex-col justify-between">
+                                    <div className="w-full sm:w-[285px] min-h-[130px] sm:h-[160px] bg-white rounded-2xl p-6 flex flex-col justify-between">
                                         <div>
                                             <p className="text-[#090909] text-[11px] font-medium h-[14px] mb-[3px]">
                                                 {translations.contactRole}

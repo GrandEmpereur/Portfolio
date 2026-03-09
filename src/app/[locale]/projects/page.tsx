@@ -2,8 +2,9 @@ import React from 'react'
 import { lastwork } from '@/lib/data/lastwork.data'
 import { ProjectCard } from '@/components/ProjectCard'
 import { getI18n } from '@/locales/serveur'
+import { setStaticParamsLocale } from 'next-international/server'
 import { Metadata } from 'next'
-import { seoConfig } from '@/lib/seo-config'
+import { seoConfig, ogLocaleMap } from '@/lib/seo-config'
 import { getProjectsListSchema, getBreadcrumbSchema } from '@/lib/structured-data'
 
 export async function generateMetadata({
@@ -12,6 +13,7 @@ export async function generateMetadata({
     params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
     const { locale } = await params;
+    setStaticParamsLocale(locale);
     const t = await getI18n();
 
     const title = t('meta.projects.title');
@@ -25,6 +27,12 @@ export async function generateMetadata({
             canonical: locale === seoConfig.defaultLocale
                 ? `${seoConfig.baseUrl}/projects`
                 : `${seoConfig.baseUrl}/${locale}/projects`,
+            languages: {
+                'fr': `${seoConfig.baseUrl}/projects`,
+                'en': `${seoConfig.baseUrl}/en/projects`,
+                'pl': `${seoConfig.baseUrl}/pl/projects`,
+                'x-default': `${seoConfig.baseUrl}/projects`,
+            },
         },
         openGraph: {
             title,
@@ -33,7 +41,7 @@ export async function generateMetadata({
                 ? `${seoConfig.baseUrl}/projects`
                 : `${seoConfig.baseUrl}/${locale}/projects`,
             siteName: seoConfig.siteName,
-            locale: locale,
+            locale: ogLocaleMap[locale] ?? locale,
             type: 'website',
             images: [
                 {
@@ -87,7 +95,7 @@ export default async function ProjectsPage({
                 suppressHydrationWarning
             />
 
-            <main className="relative min-h-screen w-full pt-20 pb-16">
+            <main id="main-content" className="relative min-h-screen w-full pt-20 pb-16">
                 {/* Header Section */}
                 <section className="px-8 md:px-16 lg:px-24 py-16">
                     <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-[140px] leading-tight uppercase font-bold">

@@ -3,12 +3,8 @@
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { lastwork } from '@/lib/data/lastwork.data'
 import { ArrowUpRight } from 'lucide-react'
-
-gsap.registerPlugin(ScrollTrigger)
 
 export function LatestWorkTimeline() {
     const [activeIndex, setActiveIndex] = useState(0)
@@ -22,6 +18,9 @@ export function LatestWorkTimeline() {
 
     useEffect(() => {
         if (!containerRef.current) return
+
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) return;
 
         const handleScroll = () => {
             if (!containerRef.current) return

@@ -28,7 +28,7 @@ interface FooterProps {
 export const Footer = ({ translations, socialLinks }: FooterProps) => {
     return (
         <footer className="relative w-full bg-black border-t border-white/10">
-            <div className="w-full px-20 py-16">
+            <div className="w-full px-4 sm:px-8 md:px-12 lg:px-20 py-8 sm:py-12 md:py-16">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
                     {/* Brand */}
                     <div className="space-y-6">
