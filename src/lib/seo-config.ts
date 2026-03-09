@@ -52,5 +52,11 @@ export const seoConfig = {
     },
 } as const;
 
+export const ogLocaleMap: Record<string, string> = {
+    fr: 'fr_FR',
+    en: 'en_US',
+    pl: 'pl_PL',
+};
+
 export type Locale = typeof seoConfig.locales[number];
 

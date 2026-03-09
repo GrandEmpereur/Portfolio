@@ -1,6 +1,7 @@
 import { getI18n } from '@/locales/serveur';
+import { setStaticParamsLocale } from 'next-international/server';
 import { Metadata } from 'next';
-import { seoConfig } from '@/lib/seo-config';
+import { seoConfig, ogLocaleMap } from '@/lib/seo-config';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 
@@ -13,7 +14,8 @@ export async function generateMetadata({
 }: {
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  await params;
+  const { locale } = await params;
+  setStaticParamsLocale(locale);
   const t = await getI18n();
 
   const title = t('meta.legal.title');
@@ -32,12 +34,21 @@ export async function generateMetadata({
       },
     },
     alternates: {
-      canonical: `${seoConfig.baseUrl}/mentions-legales`,
+      canonical: locale === seoConfig.defaultLocale
+        ? `${seoConfig.baseUrl}/mentions-legales`
+        : `${seoConfig.baseUrl}/${locale}/mentions-legales`,
+      languages: {
+        'fr': `${seoConfig.baseUrl}/mentions-legales`,
+        'x-default': `${seoConfig.baseUrl}/mentions-legales`,
+      },
     },
     openGraph: {
       title,
       description,
-      url: `${seoConfig.baseUrl}/mentions-legales`,
+      url: locale === seoConfig.defaultLocale
+        ? `${seoConfig.baseUrl}/mentions-legales`
+        : `${seoConfig.baseUrl}/${locale}/mentions-legales`,
+      locale: ogLocaleMap[locale] ?? locale,
       images: [
         {
           url: `${seoConfig.baseUrl}${seoConfig.openGraph.image}`,
@@ -64,7 +75,7 @@ export default async function LegalNoticePage({
   });
 
   return (
-    <main className="relative min-h-screen w-full px-8 md:px-16 lg:px-24 py-32">
+    <main id="main-content" className="relative min-h-screen w-full px-8 md:px-16 lg:px-24 py-32">
       {/* Back button */}
       <Link
         href="/"

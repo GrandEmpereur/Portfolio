@@ -3,8 +3,9 @@ import { Anton, Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
 import { NavBar } from "@/components/navBar";
-import { seoConfig } from "@/lib/seo-config";
+import { seoConfig, ogLocaleMap } from "@/lib/seo-config";
 import { getI18n } from "@/locales/serveur";
+import { setStaticParamsLocale } from "next-international/server";
 import { Toaster } from "@/components/ui/sonner";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { Analytics as VercelAnalytics } from '@vercel/analytics/next';
@@ -33,6 +34,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  setStaticParamsLocale(locale);
   const t = await getI18n();
 
   const title = t('meta.home.title');
@@ -78,12 +80,12 @@ export async function generateMetadata({
 
     // Alternates for i18n
     alternates: {
-      canonical: locale === seoConfig.defaultLocale ? seoConfig.baseUrl : `${seoConfig.baseUrl}/${locale}`,
+      canonical: locale === seoConfig.defaultLocale ? `${seoConfig.baseUrl}/` : `${seoConfig.baseUrl}/${locale}`,
       languages: {
+        'fr': `${seoConfig.baseUrl}/`,
         'en': `${seoConfig.baseUrl}/en`,
-        'fr': `${seoConfig.baseUrl}`,
         'pl': `${seoConfig.baseUrl}/pl`,
-        'x-default': `${seoConfig.baseUrl}`,
+        'x-default': `${seoConfig.baseUrl}/`,
       },
     },
 
@@ -107,8 +109,8 @@ export async function generateMetadata({
     // Open Graph
     openGraph: {
       type: 'website',
-      locale: locale,
-      url: locale === seoConfig.defaultLocale ? seoConfig.baseUrl : `${seoConfig.baseUrl}/${locale}`,
+      locale: ogLocaleMap[locale] ?? locale,
+      url: locale === seoConfig.defaultLocale ? `${seoConfig.baseUrl}/` : `${seoConfig.baseUrl}/${locale}`,
       title,
       description,
       siteName: seoConfig.siteName,
@@ -154,6 +156,14 @@ export default async function RootLayout({
   params: Promise<{ locale: string }>;
 }>) {
   const { locale } = await paramsPromise;
+  setStaticParamsLocale(locale);
+
+  const skipLinkText: Record<string, string> = {
+    fr: 'Aller au contenu principal',
+    en: 'Skip to main content',
+    pl: 'Przejdź do głównej treści',
+  };
+
   return (
     <html lang={locale} className="dark">
       <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID || ''} />
@@ -161,6 +171,12 @@ export default async function RootLayout({
         className={`${anton.variable} ${inter.variable} antialiased dark:bg-black bg-black`}
         suppressHydrationWarning
       >
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:rounded-lg focus:text-sm focus:font-medium"
+        >
+          {skipLinkText[locale] ?? skipLinkText.en}
+        </a>
         <Providers locale={locale}>
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || ''} />
           <SmoothScroll>
