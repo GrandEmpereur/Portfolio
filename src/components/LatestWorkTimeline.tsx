@@ -3,12 +3,9 @@
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { gsap, ScrollTrigger } from '@/lib/gsap-config'
 import { lastwork } from '@/lib/data/lastwork.data'
 import { ArrowUpRight } from 'lucide-react'
-
-gsap.registerPlugin(ScrollTrigger)
 
 export function LatestWorkTimeline() {
     const [activeIndex, setActiveIndex] = useState(0)
