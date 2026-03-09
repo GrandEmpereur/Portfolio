@@ -1,18 +1,17 @@
 import { getI18n } from "@/locales/serveur";
-import Image from "next/image";
-import { knowledge } from "@/lib/data/knowlege.data";
+import { setStaticParamsLocale } from "next-international/server";
 import { lastwork } from "@/lib/data/lastwork.data";
 import { projectTestimonials } from "@/lib/data/testimonials.data";
 import { services } from "@/lib/data/services.data";
 import { getPersonSchema, getWebsiteSchema, getProjectsListSchema, getProfessionalServiceSchema, getFAQSchema, getBreadcrumbSchema } from "@/lib/structured-data";
 import { Metadata } from "next";
-import { seoConfig } from "@/lib/seo-config";
+import { seoConfig, ogLocaleMap } from "@/lib/seo-config";
 import { HeroSection } from "@/components/HeroSection";
+import { ClientMarquee } from "@/components/ClientMarquee";
 import { AboutSection } from "@/components/AboutSection";
-import { LatestProjectsSection } from "@/components/LatestProjectsSection";
-import { KnowledgeSection } from "@/components/KnowledgeSection";
+import { SelectedWorkSection } from "@/components/SelectedWorkSection";
 import { ServicesSection } from "@/components/ServicesSection";
-import { StatsSection } from "@/components/StatsSection";
+import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { ContactSection } from "@/components/ContactSection";
 import { FAQSection } from "@/components/FAQSection";
 import { Footer } from "@/components/Footer";
@@ -23,6 +22,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  setStaticParamsLocale(locale);
   const t = await getI18n();
 
   const title = t('meta.home.title');
@@ -33,14 +33,20 @@ export async function generateMetadata({
     description,
     keywords: t('meta.home.keywords'),
     alternates: {
-      canonical: locale === seoConfig.defaultLocale ? seoConfig.baseUrl : `${seoConfig.baseUrl}/${locale}`,
+      canonical: locale === seoConfig.defaultLocale ? `${seoConfig.baseUrl}/` : `${seoConfig.baseUrl}/${locale}`,
+      languages: {
+        'fr': `${seoConfig.baseUrl}/`,
+        'en': `${seoConfig.baseUrl}/en`,
+        'pl': `${seoConfig.baseUrl}/pl`,
+        'x-default': `${seoConfig.baseUrl}/`,
+      },
     },
     openGraph: {
       title,
       description,
-      url: locale === seoConfig.defaultLocale ? seoConfig.baseUrl : `${seoConfig.baseUrl}/${locale}`,
+      url: locale === seoConfig.defaultLocale ? `${seoConfig.baseUrl}/` : `${seoConfig.baseUrl}/${locale}`,
       siteName: seoConfig.siteName,
-      locale: locale,
+      locale: ogLocaleMap[locale] ?? locale,
       type: 'website',
       images: [
         {
@@ -93,25 +99,6 @@ export default async function Home({
     { name: t('footer.navHome'), url: locale === seoConfig.defaultLocale ? '/' : `/${locale}` },
   ], locale);
 
-  // Get alt texts for knowledge items
-  const knowledgeAlts = {
-    'Next.js': t('alt.knowledge.nextjs'),
-    'React': t('alt.knowledge.react'),
-    'Angular': t('alt.knowledge.angular'),
-    'Shopify': t('alt.knowledge.shopify'),
-    'Tailwind': t('alt.knowledge.tailwind'),
-    'Shadcn': t('alt.knowledge.shadcn'),
-    'MongoDB': t('alt.knowledge.mongodb'),
-    'Supabase': t('alt.knowledge.supabase'),
-    'NestJS': t('alt.knowledge.nestjs'),
-    'Adonis JS': t('alt.knowledge.adonisjs'),
-    'KOA': t('alt.knowledge.koa'),
-    'Stripe': t('alt.knowledge.stripe'),
-    'LemonSqueezy': t('alt.knowledge.lemonsqueezy'),
-    'Polar': t('alt.knowledge.polar'),
-    'SCSS': t('alt.knowledge.scss'),
-  };
-
   return (
     <>
       {/* JSON-LD Structured Data for SEO */}
@@ -146,99 +133,107 @@ export default async function Home({
         suppressHydrationWarning
       />
 
-      <main className="relative w-full">
+      <main id="main-content" className="relative w-full">
         {/* Hero Section - Split Text Animation */}
         <HeroSection
-          title={t('hero.title')}
           name={t('hero.name')}
-          ctaPrimary={t('hero.cta_primary')}
-          ctaSecondary={t('hero.cta_secondary')}
-          ctaTertiary={t('hero.download_cv')}
-          altText={t('alt.hero')}
+          label={t('hero.label')}
+          tagline={t('hero.tagline')}
+          description={t('hero.description')}
+          ctaProjects={t('hero.cta.projects')}
+          ctaContact={t('hero.cta.contact')}
+          availableText={t('hero.available')}
+          scrollText={t('hero.scroll')}
         />
 
-        {/* About Section - Animation GSAP au scroll */}
+        {/* Client Marquee */}
+        <ClientMarquee
+          label={t('marquee.label')}
+          clients={[
+            "Euroclear France",
+            "Tartine & Chocolat",
+            "Balzac Paris",
+            "Qwetch",
+            "Odaje",
+            "Isotoner",
+            "Easy Clothes",
+            "Le-1.store",
+          ]}
+        />
+
+        {/* About Section */}
         <AboutSection
           label={t('about.label')}
-          text={t('about.heading')}
+          text={t('about.text')}
+          text2={t('about.text2')}
+          facts={[t('about.fact1'), t('about.fact2'), t('about.fact3')]}
         />
 
-        {/* Latest Work - Animation GSAP */}
-        <LatestProjectsSection
-          title={t('work.title')}
-          viewAllText={t('work.view_all')}
-          projects={lastwork}
+        {/* Selected Work */}
+        <SelectedWorkSection
+          label={t('selectedWork.label')}
+          viewProjectText={t('selectedWork.viewProject')}
+          viewAllText={t('selectedWork.viewAll')}
+          projects={lastwork.slice(0, 5)}
         />
 
-        {/* Knowledge/Skills Section - Animation GSAP */}
-        <KnowledgeSection
-          title={t('knowledge.title')}
-          description={t('knowledge.description')}
-          knowledge={knowledge}
-          knowledgeAlts={knowledgeAlts}
-        />
-
-        {/* Services Section - Animation GSAP */}
+        {/* Services & Approach Section */}
         <ServicesSection
-          title={t('services.title')}
-          services={services.filter(s => s.id !== 'mobile-development')}
-          locale={locale as 'fr' | 'en' | 'pl'}
+          label={t('approach.label')}
+          approachTitle={t('approach.title')}
+          approachSteps={[
+            { title: t('approach.step1.title'), desc: t('approach.step1.desc') },
+            { title: t('approach.step2.title'), desc: t('approach.step2.desc') },
+            { title: t('approach.step3.title'), desc: t('approach.step3.desc') },
+            { title: t('approach.step4.title'), desc: t('approach.step4.desc') },
+          ]}
+          services={services
+            .filter(s => ['web-development', 'ecommerce', 'saas-development', 'api-integration'].includes(s.id))
+            .map(s => ({
+              id: s.id,
+              icon: s.icon,
+              title: s.title[locale as 'fr' | 'en' | 'pl'] || s.title.fr,
+              description: s.description[locale as 'fr' | 'en' | 'pl'] || s.description.fr,
+              features: s.features[locale as 'fr' | 'en' | 'pl'] || s.features.fr,
+              technologies: s.technologies,
+            }))}
           ctaText={t('services.cta')}
+          locale={locale as 'fr' | 'en' | 'pl'}
         />
 
-        {/* Statistics Section - Animation GSAP + Testimonials Carousel */}
-        {/* Temporairement désactivé */}
-        {/* <StatsSection
-          label={t('stats.label')}
-          title={{
-            line1: t('stats.heading.line1'),
-            line2: t('stats.heading.line2'),
-          }}
-          description={{
-            line1: t('stats.description.line1'),
-            line2: t('stats.description.line2'),
-          }}
-          stats={{
-            projectsCompleted: { number: '10+', label: t('stats.projects_completed') },
-            yearsExperience: { number: '4+', label: t('stats.years_experience') },
-            satisfactionRate: { number: '99%', label: t('stats.satisfaction_rate') },
-            revenueGrowth: { number: '25M', label: t('stats.revenue_growth') },
-          }}
+        {/* Testimonials Section */}
+        <TestimonialsSection
+          label={t('testimonials.label')}
           testimonials={projectTestimonials.map(testimonial => ({
+            quote: testimonial.quote[locale as 'fr' | 'en' | 'pl'] || testimonial.quote.fr,
             name: testimonial.author.name,
             role: testimonial.author.role,
             company: testimonial.author.company,
-            quote: testimonial.quote[locale as 'fr' | 'en' | 'pl'] || testimonial.quote.fr,
           }))}
-        /> */}
+        />
 
         {/* Contact Section */}
         <ContactSection
           translations={{
-            formBrand: t('contact.formBrand'),
-            formTitle: t('contact.formTitle'),
-            nameLabel: t('contact.nameLabel'),
-            namePlaceholder: t('contact.namePlaceholder'),
-            emailLabel: t('contact.emailLabel'),
-            emailPlaceholder: t('contact.emailPlaceholder'),
-            messageLabel: t('contact.messageLabel'),
-            messagePlaceholder: t('contact.messagePlaceholder'),
-            submitButton: t('contact.submitButton'),
-            termsText: t('contact.termsText'),
-            termsLink: t('contact.termsLink'),
-            andText: t('contact.andText'),
-            privacyLink: t('contact.privacyLink'),
-            heading: t('contact.heading'),
-            description: t('contact.description'),
-            quickResponseTitle: t('contact.quickResponseTitle'),
-            quickResponseDesc: t('contact.quickResponseDesc'),
-            clearStepsTitle: t('contact.clearStepsTitle'),
-            clearStepsDesc: t('contact.clearStepsDesc'),
-            contactRole: t('contact.contactRole'),
-            contactCompany: t('contact.contactCompany'),
-            contactName: t('contact.contactName'),
-            contactCta: t('contact.contactCta'),
-            copyright: t('contact.copyright'),
+            title: t('contactCta.title'),
+            subtitle: t('contactCta.subtitle'),
+            nameLabel: t('contactCta.nameLabel'),
+            namePlaceholder: t('contactCta.namePlaceholder'),
+            emailLabel: t('contactCta.emailLabel'),
+            emailPlaceholder: t('contactCta.emailPlaceholder'),
+            messageLabel: t('contactCta.messageLabel'),
+            messagePlaceholder: t('contactCta.messagePlaceholder'),
+            submitButton: t('contactCta.submitButton'),
+            termsText: t('contactCta.termsText'),
+            termsLink: t('contactCta.termsLink'),
+            andText: t('contactCta.andText'),
+            privacyLink: t('contactCta.privacyLink'),
+          }}
+          socialLinks={{
+            linkedin: seoConfig.social.linkedin,
+            github: seoConfig.social.github,
+            instagram: seoConfig.social.instagram,
+            email: seoConfig.author.email,
           }}
         />
 
@@ -250,7 +245,7 @@ export default async function Home({
           socialLinks={{
             linkedin: seoConfig.social.linkedin,
             github: seoConfig.social.github,
-            instagram: 'https://www.instagram.com/empereur.patrick/',
+            instagram: seoConfig.social.instagram,
             email: seoConfig.author.email,
           }}
         />
@@ -260,22 +255,15 @@ export default async function Home({
       {/* Footer */}
       <Footer
         translations={{
-          description: t('footer.description'),
-          navigation: t('footer.navigation'),
-          navHome: t('footer.navHome'),
-          navProjects: t('footer.navProjects'),
-          navServices: t('footer.navServices'),
-          navContact: t('footer.navContact'),
-          social: t('footer.social'),
-          legal: t('footer.legal'),
+          copyright: t('footer.copyright', { year: new Date().getFullYear().toString() }),
+          backToTop: t('footer.backToTop'),
           legalTerms: t('footer.legalTerms'),
           legalPrivacy: t('footer.legalPrivacy'),
-          copyright: t('footer.copyright'),
         }}
         socialLinks={{
           linkedin: seoConfig.social.linkedin,
           github: seoConfig.social.github,
-          instagram: 'https://instagram.com/patrickbartosik',
+          instagram: seoConfig.social.instagram,
           email: seoConfig.author.email,
         }}
       />

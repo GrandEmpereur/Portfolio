@@ -37,9 +37,7 @@ yarn-error.log*
 # Curosor rules 
 .cursor
 
-# Claude 
-CLAUDE.md
-.claude
+# docs
 docs/*
 
 # typescript

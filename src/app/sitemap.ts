@@ -10,58 +10,47 @@ import { seoConfig } from '@/lib/seo-config';
 export default function sitemap(): MetadataRoute.Sitemap {
     const { baseUrl, locales, defaultLocale } = seoConfig;
 
-    // Date de dernière modification (à ajuster selon vos besoins)
-    const currentDate = new Date();
-    const lastModifiedHome = new Date('2025-11-06'); // Date de dernière mise à jour majeure
-    const lastModifiedProjects = new Date('2025-11-06');
-    const lastModifiedContact = new Date('2025-11-01');
-    const lastModifiedLegal = new Date('2025-01-01');
+    // Date de dernière modification dynamique (reflète la date du dernier déploiement)
+    const lastModified = new Date();
 
     // Pages statiques principales avec leurs configurations SEO
     const staticPages: Array<{
         path: string;
         priority: number;
         changeFrequency: 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never';
-        lastModified: Date;
     }> = [
             {
                 path: '',
                 priority: 1.0,
                 changeFrequency: 'weekly',
-                lastModified: lastModifiedHome,
             },
             {
                 path: '/projects',
                 priority: 0.9,
                 changeFrequency: 'weekly',
-                lastModified: lastModifiedProjects,
             },
             {
                 path: '/contact',
                 priority: 0.8,
                 changeFrequency: 'monthly',
-                lastModified: lastModifiedContact,
             },
         ];
 
-    // Pages légales (FR uniquement)
+    // Pages légales (FR uniquement — pas d'alternates en/pl)
     const legalPagesFr: Array<{
         path: string;
         priority: number;
         changeFrequency: 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never';
-        lastModified: Date;
     }> = [
             {
                 path: '/mentions-legales',
                 priority: 0.3,
                 changeFrequency: 'yearly',
-                lastModified: lastModifiedLegal,
             },
             {
                 path: '/politique-confidentialite',
                 priority: 0.3,
                 changeFrequency: 'yearly',
-                lastModified: lastModifiedLegal,
             },
         ];
 
@@ -86,7 +75,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
             urls.push({
                 url,
-                lastModified: page.lastModified,
+                lastModified,
                 changeFrequency: page.changeFrequency,
                 priority: page.priority,
                 alternates: {
@@ -96,13 +85,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
         });
     });
 
-    // Pages légales (FR uniquement)
+    // Pages légales (FR uniquement avec hreflang fr + x-default)
     legalPagesFr.forEach((page) => {
+        const frUrl = `${baseUrl}${page.path}`;
         urls.push({
-            url: `${baseUrl}${page.path}`,
-            lastModified: page.lastModified,
+            url: frUrl,
+            lastModified,
             changeFrequency: page.changeFrequency,
             priority: page.priority,
+            alternates: {
+                languages: {
+                    fr: frUrl,
+                    'x-default': frUrl,
+                },
+            },
         });
     });
 

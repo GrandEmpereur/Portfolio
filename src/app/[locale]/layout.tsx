@@ -2,15 +2,17 @@ import type { Metadata } from "next";
 import { Anton, Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
-import { NavBar } from "@/components/navBar";
-import { seoConfig } from "@/lib/seo-config";
+import { NavBar } from "@/components/NavBar";
+import { seoConfig, ogLocaleMap } from "@/lib/seo-config";
 import { getI18n } from "@/locales/serveur";
+import { setStaticParamsLocale } from "next-international/server";
 import { Toaster } from "@/components/ui/sonner";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { Analytics as VercelAnalytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { GoogleTagManager } from '@next/third-parties/google'
+import { CustomCursor } from "@/components/CustomCursor"
 
 const anton = Anton({
   variable: "--font-anton",
@@ -33,6 +35,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  setStaticParamsLocale(locale);
   const t = await getI18n();
 
   const title = t('meta.home.title');
@@ -78,17 +81,14 @@ export async function generateMetadata({
 
     // Alternates for i18n
     alternates: {
-      canonical: locale === seoConfig.defaultLocale ? seoConfig.baseUrl : `${seoConfig.baseUrl}/${locale}`,
+      canonical: locale === seoConfig.defaultLocale ? `${seoConfig.baseUrl}/` : `${seoConfig.baseUrl}/${locale}`,
       languages: {
+        'fr': `${seoConfig.baseUrl}/`,
         'en': `${seoConfig.baseUrl}/en`,
-        'fr': `${seoConfig.baseUrl}`,
         'pl': `${seoConfig.baseUrl}/pl`,
-        'x-default': `${seoConfig.baseUrl}`,
+        'x-default': `${seoConfig.baseUrl}/`,
       },
     },
-
-    // Manifest for PWA
-    manifest: '/manifest.webmanifest',
 
     // Icons configuration
     icons: {
@@ -97,18 +97,11 @@ export async function generateMetadata({
       apple: seoConfig.icons.apple,
     },
 
-    // Apple Web App configuration
-    appleWebApp: {
-      capable: seoConfig.appleWebApp.capable,
-      statusBarStyle: seoConfig.appleWebApp.statusBarStyle,
-      title: seoConfig.appleWebApp.title,
-    },
-
     // Open Graph
     openGraph: {
       type: 'website',
-      locale: locale,
-      url: locale === seoConfig.defaultLocale ? seoConfig.baseUrl : `${seoConfig.baseUrl}/${locale}`,
+      locale: ogLocaleMap[locale] ?? locale,
+      url: locale === seoConfig.defaultLocale ? `${seoConfig.baseUrl}/` : `${seoConfig.baseUrl}/${locale}`,
       title,
       description,
       siteName: seoConfig.siteName,
@@ -154,17 +147,32 @@ export default async function RootLayout({
   params: Promise<{ locale: string }>;
 }>) {
   const { locale } = await paramsPromise;
+  setStaticParamsLocale(locale);
+
+  const skipLinkText: Record<string, string> = {
+    fr: 'Aller au contenu principal',
+    en: 'Skip to main content',
+    pl: 'Przejdź do głównej treści',
+  };
+
   return (
-    <html lang={locale} className="dark">
+    <html lang={locale} className="dark" suppressHydrationWarning>
       <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID || ''} />
       <body
         className={`${anton.variable} ${inter.variable} antialiased dark:bg-black bg-black`}
         suppressHydrationWarning
       >
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:rounded-lg focus:text-sm focus:font-medium"
+        >
+          {skipLinkText[locale] ?? skipLinkText.en}
+        </a>
         <Providers locale={locale}>
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || ''} />
           <SmoothScroll>
             <NavBar />
+            <CustomCursor />
             {children}
             <Toaster />
             <VercelAnalytics />

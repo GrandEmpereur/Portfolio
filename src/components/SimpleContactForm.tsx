@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { gsap } from "gsap";
+import { gsap } from "@/lib/gsap-config";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -28,7 +28,7 @@ type Step = 1 | 2 | 3 | 4 | 5 | 6;
 export const SimpleContactForm = () => {
     const [currentStep, setCurrentStep] = useState<Step>(1);
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [startedAt] = useState(() => Date.now());
+    const startedAt = useRef(0);
     const stepRef = useRef<HTMLDivElement>(null);
 
     const form = useForm<ContactFormData>({
@@ -50,6 +50,10 @@ export const SimpleContactForm = () => {
     const { watch, setValue, register } = form;
     const serviceType = watch("serviceType");
     const discoverySource = watch("discoverySource");
+
+    useEffect(() => {
+        startedAt.current = Date.now();
+    }, []);
 
     // Animation entre les steps
     useEffect(() => {
@@ -103,10 +107,8 @@ export const SimpleContactForm = () => {
     };
 
     const onSubmit = async (data: ContactFormData) => {
-        console.log("🚀 Soumission du formulaire", data);
-
         // Anti-bot check
-        const elapsed = Date.now() - startedAt;
+        const elapsed = Date.now() - startedAt.current;
         if (elapsed < 5000) {
             toast.error("Merci de prendre le temps de remplir le formulaire");
             return;
@@ -129,8 +131,6 @@ export const SimpleContactForm = () => {
 
             const score = calculateLeadScore(data);
             const category = categorizeLead(score);
-
-            console.log("📊 Lead score:", score, category);
 
             toast.success("Message envoyé avec succès ! Je vous réponds sous 24-48h.");
             form.reset();
@@ -178,9 +178,9 @@ export const SimpleContactForm = () => {
                     {currentStep === 1 && (
                         <div className="space-y-8">
                             <div className="space-y-4">
-                                <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight">
+                                <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
                                     Bonjour ! 👋
-                                </h1>
+                                </h2>
                                 <p className="text-xl text-white/60">
                                     Commençons par faire connaissance
                                 </p>
@@ -189,10 +189,11 @@ export const SimpleContactForm = () => {
                             <div className="space-y-6">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
-                                        <label className="block text-white/80 text-sm font-medium mb-3">
+                                        <label htmlFor="firstName" className="block text-white/80 text-sm font-medium mb-3">
                                             Prénom *
                                         </label>
                                         <Input
+                                            id="firstName"
                                             {...register("firstName")}
                                             placeholder="John"
                                             className="h-14 bg-white/5 border-white/10 text-white text-lg placeholder:text-white/30 focus:border-orange-500"
@@ -206,10 +207,11 @@ export const SimpleContactForm = () => {
                                     </div>
 
                                     <div>
-                                        <label className="block text-white/80 text-sm font-medium mb-3">
+                                        <label htmlFor="lastName" className="block text-white/80 text-sm font-medium mb-3">
                                             Nom *
                                         </label>
                                         <Input
+                                            id="lastName"
                                             {...register("lastName")}
                                             placeholder="Doe"
                                             className="h-14 bg-white/5 border-white/10 text-white text-lg placeholder:text-white/30 focus:border-orange-500"
@@ -223,10 +225,11 @@ export const SimpleContactForm = () => {
                                 </div>
 
                                 <div>
-                                    <label className="block text-white/80 text-sm font-medium mb-3">
+                                    <label htmlFor="email" className="block text-white/80 text-sm font-medium mb-3">
                                         Email *
                                     </label>
                                     <Input
+                                        id="email"
                                         {...register("email")}
                                         type="email"
                                         placeholder="john@example.com"
@@ -240,10 +243,11 @@ export const SimpleContactForm = () => {
                                 </div>
 
                                 <div>
-                                    <label className="block text-white/80 text-sm font-medium mb-3">
+                                    <label htmlFor="phone" className="block text-white/80 text-sm font-medium mb-3">
                                         Téléphone (optionnel)
                                     </label>
                                     <PhoneInput
+                                        id="phone"
                                         value={watch("phone")}
                                         onChange={(value) => setValue("phone", value)}
                                         placeholder="+33 6 12 34 56 78"
@@ -268,10 +272,11 @@ export const SimpleContactForm = () => {
 
                             <div className="space-y-6">
                                 <div>
-                                    <label className="block text-white/80 text-sm font-medium mb-3">
+                                    <label htmlFor="companyName" className="block text-white/80 text-sm font-medium mb-3">
                                         Nom de la marque *
                                     </label>
                                     <Input
+                                        id="companyName"
                                         {...register("companyName")}
                                         placeholder="Acme Inc."
                                         className="h-14 bg-white/5 border-white/10 text-white text-lg placeholder:text-white/30 focus:border-orange-500"
@@ -285,10 +290,11 @@ export const SimpleContactForm = () => {
                                 </div>
 
                                 <div>
-                                    <label className="block text-white/80 text-sm font-medium mb-3">
+                                    <label htmlFor="companyWebsite" className="block text-white/80 text-sm font-medium mb-3">
                                         Site web (optionnel)
                                     </label>
                                     <Input
+                                        id="companyWebsite"
                                         {...register("companyWebsite")}
                                         type="url"
                                         placeholder="https://acme.com"
@@ -342,10 +348,11 @@ export const SimpleContactForm = () => {
                                 {/* CMS e-commerce si sélectionné */}
                                 {serviceType === "ecommerce" && (
                                     <div>
-                                        <label className="block text-white/80 text-sm font-medium mb-3">
+                                        <label htmlFor="ecommerceCms" className="block text-white/80 text-sm font-medium mb-3">
                                             CMS utilisé *
                                         </label>
                                         <select
+                                            id="ecommerceCms"
                                             {...register("ecommerceCms")}
                                             className="w-full h-14 bg-white/5 border border-white/10 rounded-xl text-white text-lg px-4 focus:border-orange-500"
                                         >
@@ -480,10 +487,11 @@ export const SimpleContactForm = () => {
                                 )}
 
                                 <div>
-                                    <label className="block text-white/80 text-sm font-medium mb-3">
+                                    <label htmlFor="message" className="block text-white/80 text-sm font-medium mb-3">
                                         Message (optionnel)
                                     </label>
                                     <Textarea
+                                        id="message"
                                         {...register("message")}
                                         placeholder="Parlez-moi de votre projet, vos objectifs, vos contraintes..."
                                         rows={4}

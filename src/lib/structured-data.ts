@@ -8,14 +8,28 @@ import { Project } from './data/lastwork.data';
  * @returns Schema.org Person object
  */
 export function getPersonSchema(locale: string) {
+    const jobTitles: Record<string, string> = {
+        en: 'Full Stack Developer',
+        fr: 'Développeur Full Stack',
+        pl: 'Full Stack Developer',
+    };
+
+    const descriptions: Record<string, string> = {
+        en: 'Freelance Full Stack Developer specializing in React, Next.js, TypeScript and Node.js applications',
+        fr: 'Développeur Full Stack freelance spécialisé en React, Next.js, TypeScript et Node.js',
+        pl: 'Freelance Full Stack Developer specjalizujacy sie w React, Next.js, TypeScript i Node.js',
+    };
+
     return {
         '@context': 'https://schema.org',
         '@type': 'Person',
         name: seoConfig.author.name,
         url: seoConfig.author.url,
-        jobTitle: seoConfig.author.jobTitle,
+        jobTitle: jobTitles[locale] || jobTitles.en,
+        description: descriptions[locale] || descriptions.en,
         email: seoConfig.author.email,
         image: `${seoConfig.baseUrl}/images/hero.webp`,
+        knowsLanguage: ['fr', 'en', 'pl'],
         sameAs: [
             seoConfig.social.github,
             seoConfig.social.linkedin,
@@ -93,6 +107,27 @@ export function getProjectsListSchema(projects: Project[], locale: string) {
     };
 }
 
+// CreativeWork Schema for individual Project detail pages
+export function getProjectDetailSchema(project: Project, locale: string) {
+    return {
+        '@context': 'https://schema.org',
+        '@type': 'CreativeWork',
+        name: project.title,
+        description: project.longDescription || project.description,
+        url: project.link || `${seoConfig.baseUrl}/${locale}/projects/${project.slug}`,
+        keywords: project.technologies.join(', '),
+        author: {
+            '@type': 'Person',
+            name: seoConfig.author.name,
+            url: seoConfig.author.url,
+        },
+        ...(project.year && { dateCreated: project.year }),
+        ...(project.image && {
+            image: `${seoConfig.baseUrl}${project.image}`,
+        }),
+    };
+}
+
 // BreadcrumbList Schema
 export function getBreadcrumbSchema(
     items: Array<{ name: string; url: string }>,
@@ -110,22 +145,20 @@ export function getBreadcrumbSchema(
     };
 }
 
-// Organization Schema
-export function getOrganizationSchema() {
+// Person Schema (replaces Organization — this is a freelancer portfolio, not a company)
+export function getFreelancerPersonSchema() {
     return {
         '@context': 'https://schema.org',
-        '@type': 'Organization',
-        name: seoConfig.siteName,
+        '@type': 'Person',
+        name: seoConfig.author.name,
         url: seoConfig.baseUrl,
-        logo: `${seoConfig.baseUrl}/images/logo.png`,
-        contactPoint: {
-            '@type': 'ContactPoint',
-            email: seoConfig.author.email,
-            contactType: 'Customer Service',
-        },
+        image: `${seoConfig.baseUrl}/images/hero.webp`,
+        email: seoConfig.author.email,
+        jobTitle: seoConfig.author.jobTitle,
         sameAs: [
             seoConfig.social.github,
             seoConfig.social.linkedin,
+            seoConfig.social.instagram,
         ],
     };
 }
@@ -156,7 +189,7 @@ export function getProfessionalServiceSchema(locale: string) {
                 name: 'France',
             },
             {
-                '@type': 'Country',
+                '@type': 'Continent',
                 name: 'Europe',
             },
         ],

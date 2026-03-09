@@ -37,13 +37,6 @@ export const seoConfig = {
         imageType: 'image/png',
     },
 
-    // Apple Web App configuration
-    appleWebApp: {
-        capable: true,
-        statusBarStyle: 'black-translucent' as const,
-        title: 'Patrick Bartosik',
-    },
-
     // Icons configuration (static files in public/)
     icons: {
         icon: '/favicon.ico',
@@ -51,6 +44,12 @@ export const seoConfig = {
         shortcut: '/favicon.ico',
     },
 } as const;
+
+export const ogLocaleMap: Record<string, string> = {
+    fr: 'fr_FR',
+    en: 'en_US',
+    pl: 'pl_PL',
+};
 
 export type Locale = typeof seoConfig.locales[number];
 

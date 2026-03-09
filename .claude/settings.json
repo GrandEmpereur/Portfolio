@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
+  "worktree": {
+    "symlinkDirectories": ["node_modules", ".turbo"]
+  },
+  "permissions": {
+    "allow": [
+      "Bash(git status)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(git branch *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git checkout *)",
+      "Bash(git stash *)",
+      "Bash(git push *)",
+      "Bash(git worktree *)",
+      "Bash(git mv *)",
+      "Bash(gh *)",
+      "Bash(bun run *)",
+      "Bash(bun install *)",
+      "Bash(bun add *)",
+      "Bash(bunx *)",
+      "Bash(pnpm *)",
+      "Bash(npx prisma *)",
+      "Bash(npm run *)",
+      "Bash(turbo *)",
+      "Bash(ls *)",
+      "Bash(mkdir *)",
+      "Bash(cp *)",
+      "Bash(cat *)",
+      "Bash(echo *)",
+      "Bash(node *)",
+      "Bash(tsc *)",
+      "Bash(eslint *)",
+      "Bash(prettier *)",
+      "Bash(jest *)",
+      "Bash(docker compose *)",
+      "Bash(* --version)",
+      "Bash(* --help)",
+      "Bash(which *)",
+      "Bash(wc *)",
+      "Bash(head *)",
+      "Bash(tail *)",
+      "Bash(sort *)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./apps/api/.env)",
+      "Read(./apps/api/.env.*)",
+      "Read(./apps/web/.env)",
+      "Read(./apps/web/.env.*)",
+      "Bash(curl *)",
+      "Bash(wget *)",
+      "Bash(rm -rf *)",
+      "Bash(git push --force *)",
+      "Bash(git reset --hard *)"
+    ]
+  },
+  "hooks": {
+    "PreCompact": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo \"CONTEXT REMINDER: Read CLAUDE.md for project stack and conventions. Agents: scrum-po, architect, business-analyst, frontend-dev, backend-dev, database-analyst, devops, qa-tester, ciso, ui-ux-designer, github-reviewer, seo-expert. Commands: /review-branch, /pr-create, /pr-merge, /security-audit, /sprint-dispatch, /e2e-test. Plugins: code-review, pr-review-toolkit, superpowers, playwright, security-guidance, frontend-design, ui-ux-pro-max, figma, vercel, stripe, code-simplifier. ClickUp workflow: BACKLOG->EN COURS->TESTING->EN REVUE (if fail)->TESTING->TERMINE. Assignee: Patrick Bartosik. Sprints: 1 mois.\""
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "file=\"$(echo $CLAUDE_TOOL_INPUT | jq -r '.file_path // .path // empty')\"; if [ -n \"$file\" ] && echo \"$file\" | grep -qE '\\.(ts|tsx|js|jsx|json|css|md)$'; then npx prettier --write \"$file\" 2>/dev/null || true; fi"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "osascript -e 'display notification \"Claude Code needs attention\" with title \"Claude Code\"' 2>/dev/null || true"
+          }
+        ]
+      }
+    ]
+  }
+}

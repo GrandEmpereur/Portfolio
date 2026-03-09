@@ -1,15 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { gsap, ScrollTrigger } from "@/lib/gsap-config";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { Project } from "@/lib/data/lastwork.data";
-
-if (typeof window !== "undefined") {
-    gsap.registerPlugin(ScrollTrigger);
-}
 
 interface LatestProjectsSectionProps {
     title: string;
@@ -176,15 +171,6 @@ const ProjectCardWithHover = ({
                 </div>
             </div>
 
-            {/* Keyframes for animations */}
-            <style jsx>{`
-        @keyframes slideUp {
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
         </a>
     );
 };
@@ -201,6 +187,9 @@ export const LatestProjectsSection = ({
 
     useEffect(() => {
         if (!sectionRef.current) return;
+
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) return;
 
         const ctx = gsap.context(() => {
             // Parallax sur le titre

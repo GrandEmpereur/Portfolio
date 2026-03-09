@@ -1,293 +1,193 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Image from "next/image";
-import SplitType from "split-type";
 import Link from "next/link";
-import heroImage from "../../public/images/hero.webp";
-
-if (typeof window !== "undefined") {
-    gsap.registerPlugin(ScrollTrigger);
-}
+import { gsap } from "@/lib/gsap-config";
+import { ArrowRight } from "lucide-react";
 
 interface HeroSectionProps {
-    title: string;
     name: string;
-    ctaPrimary: string;
-    ctaSecondary: string;
-    ctaTertiary: string;
-    altText: string;
+    label: string;
+    tagline: string;
+    description: string;
+    ctaProjects: string;
+    ctaContact: string;
+    availableText: string;
+    scrollText: string;
 }
 
 export const HeroSection = ({
-    title,
     name,
-    ctaPrimary,
-    ctaSecondary,
-    ctaTertiary,
-    altText,
+    label,
+    tagline,
+    description,
+    ctaProjects,
+    ctaContact,
+    availableText,
+    scrollText,
 }: HeroSectionProps) => {
     const sectionRef = useRef<HTMLElement>(null);
-    const titleRef = useRef<HTMLParagraphElement>(null);
+    const labelRef = useRef<HTMLParagraphElement>(null);
     const nameRef = useRef<HTMLHeadingElement>(null);
-    const ctasRef = useRef<HTMLDivElement>(null);
-    const scrollIndicatorRef = useRef<HTMLDivElement>(null);
-    const backgroundRef = useRef<HTMLDivElement>(null);
+    const taglineRef = useRef<HTMLDivElement>(null);
+    const ctaRef = useRef<HTMLDivElement>(null);
+    const scrollRef = useRef<HTMLDivElement>(null);
+    const availableRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        if (!sectionRef.current || !nameRef.current) return;
+        if (!sectionRef.current) return;
 
-        // Détection mobile pour optimiser les animations
-        const isMobile = window.matchMedia('(max-width: 767px)').matches;
+        const prefersReducedMotion = window.matchMedia(
+            "(prefers-reduced-motion: reduce)",
+        ).matches;
+        if (prefersReducedMotion) return;
+
+        const isMobile = window.matchMedia("(max-width: 767px)").matches;
 
         const ctx = gsap.context(() => {
-            // Timeline d'entrée
             const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
 
-            // 1. Titre professionnel
-            if (titleRef.current) {
-                tl.from(titleRef.current, {
-                    opacity: 0,
-                    y: isMobile ? 20 : 30,
-                    duration: isMobile ? 0.6 : 1,
-                }, 0.2);
+            if (availableRef.current) {
+                tl.from(availableRef.current, { opacity: 0, y: -10, duration: 0.6 }, 0.1);
             }
 
-            // 2. Animation du nom - Simplifiée sur mobile
-            if (isMobile) {
-                // Animation simple fade-in sur mobile (pas de split text)
-                tl.from(
-                    nameRef.current,
-                    {
-                        opacity: 0,
-                        y: 40,
-                        duration: 0.8,
-                        ease: "power3.out",
-                    },
-                    0.4
-                );
-            } else {
-                // Animation complexe lettre par lettre sur desktop
-                const split = new SplitType(nameRef.current!, {
-                    types: "chars",
-                    tagName: "span",
-                });
+            if (labelRef.current) {
+                tl.from(labelRef.current, { opacity: 0, y: -20, duration: 0.8 }, 0.2);
+            }
 
-                if (split.chars) {
-                    tl.from(
-                        split.chars,
+            if (nameRef.current) {
+                if (isMobile) {
+                    tl.from(nameRef.current, { opacity: 0, y: 40, duration: 0.8 }, 0.4);
+                } else {
+                    tl.to(
+                        nameRef.current,
                         {
-                            opacity: 0,
-                            y: 100,
-                            rotationX: -90,
-                            stagger: 0.05,
-                            duration: 1,
-                            ease: "back.out(1.7)",
+                            duration: 1.5,
+                            scrambleText: {
+                                text: name,
+                                chars: "!<>-_\\/[]{}—=+*^?#",
+                                speed: 0.4,
+                            },
+                            ease: "none",
                         },
-                        0.4
+                        0.3,
                     );
                 }
             }
 
-            // 3. CTAs
-            if (ctasRef.current) {
+            if (taglineRef.current) {
                 tl.from(
-                    ctasRef.current,
-                    {
-                        opacity: 0,
-                        y: isMobile ? 20 : 40,
-                        duration: isMobile ? 0.6 : 1,
-                    },
-                    isMobile ? 0.6 : 0.8
+                    taglineRef.current,
+                    { opacity: 0, y: 20, duration: 0.8 },
+                    isMobile ? 0.8 : 1.5,
                 );
             }
 
-            // 4. Scroll indicator
-            if (scrollIndicatorRef.current) {
+            if (ctaRef.current) {
                 tl.from(
-                    scrollIndicatorRef.current,
-                    {
-                        opacity: 0,
-                        y: 20,
-                        duration: 0.8,
-                    },
-                    isMobile ? 0.8 : 1
+                    ctaRef.current,
+                    { opacity: 0, y: 20, duration: 0.8 },
+                    isMobile ? 1 : 1.8,
                 );
             }
 
-            // Parallax sur le background - DÉSACTIVÉ sur mobile pour les performances
-            if (!isMobile && backgroundRef.current) {
-                gsap.to(backgroundRef.current, {
-                    yPercent: 30,
-                    ease: "none",
-                    scrollTrigger: {
-                        trigger: sectionRef.current,
-                        start: "top top",
-                        end: "bottom top",
-                        scrub: 1.5,
-                    },
-                });
+            if (scrollRef.current) {
+                tl.from(
+                    scrollRef.current,
+                    { opacity: 0, y: 20, duration: 0.8 },
+                    isMobile ? 1.2 : 2.2,
+                );
             }
         }, sectionRef);
 
         return () => ctx.revert();
-    }, []);
+    }, [name]);
 
     const nameParts = name.split(" ");
 
     return (
         <section
             ref={sectionRef}
-            className="relative min-h-screen w-full flex items-center overflow-hidden"
+            className="relative min-h-screen w-full flex items-end overflow-hidden bg-black"
         >
-            {/* Background avec overlay optimisé */}
-            <div className="absolute inset-0 z-0">
-                <div ref={backgroundRef} className="absolute inset-0 will-change-transform">
-                    <Image
-                        src={heroImage}
-                        alt={altText}
-                        fill
-                        className="object-cover scale-110"
-                        priority
-                        placeholder="blur"
-                        sizes="100vw"
-                        quality={75}
-                    />
-                </div>
-                <div className="absolute inset-0 bg-linear-to-b from-black/80 via-black/70 to-black/90"></div>
-                {/* Grain texture pour profondeur */}
-                <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxwYXRoIGQ9Ik0wIDBoMzAwdjMwMEgweiIgZmlsdGVyPSJ1cmwoI2EpIiBvcGFjaXR5PSIuMDUiLz48L3N2Zz4=')] opacity-30"></div>
-            </div>
 
-            {/* Conteneur principal - Layout organisé */}
-            <div className="relative z-10 w-full min-h-screen flex flex-col">
-                {/* Espace du haut pour navbar */}
-                <div className="flex-1"></div>
-
-                {/* Contenu principal - Centré */}
-                <div className="w-full px-4 sm:px-6 md:px-8 pb-16 sm:pb-24 md:pb-32">
-                    <div className="max-w-full mx-auto">
-                        {/* Grid Layout - 2 colonnes sur desktop */}
-                        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-end">
-                            {/* Nom - Prend plus d'espace (8 colonnes) */}
-                            <div className="lg:col-span-8">
-                                {/* Title professionnel - En haut */}
-                                <div ref={titleRef} className="mb-6 sm:mb-8 lg:mb-12">
-                                    <p className="text-xs md:text-sm text-white/50 font-light tracking-[0.3em] uppercase">
-                                        {title}
-                                    </p>
-                                </div>
-                                <h1
-                                    ref={nameRef}
-                                    className="text-[50px] sm:text-[70px] md:text-[110px] lg:text-[140px] xl:text-[180px] font-bold leading-[0.92] tracking-tight text-white"
-                                >
-                                    {nameParts.map((part, index) => (
-                                        <span key={index} className="block">
-                                            {part}
-                                        </span>
-                                    ))}
-                                </h1>
-                            </div>
-
-                            {/* CTAs - Alignés à droite (4 colonnes) */}
-                            <div ref={ctasRef} className="lg:col-span-4 flex justify-start lg:justify-end">
-                                <div className="flex flex-col gap-5 lg:gap-6">
-                                    <Link
-                                        href="/projects"
-                                        className="group relative inline-flex items-center gap-3 text-white hover:text-white/90 transition-all duration-300 active:scale-95"
-                                    >
-                                        <span className="text-sm lg:text-base tracking-wide uppercase font-medium">
-                                            {ctaPrimary}
-                                        </span>
-                                        <svg
-                                            className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            viewBox="0 0 24 24"
-                                        >
-                                            <path
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                strokeWidth={2}
-                                                d="M17 8l4 4m0 0l-4 4m4-4H3"
-                                            />
-                                        </svg>
-                                    </Link>
-
-                                    <div className="w-full h-px bg-white/10"></div>
-
-                                    <Link
-                                        href="/contact"
-                                        className="group relative inline-flex items-center gap-3 text-white/70 hover:text-white transition-all duration-300 active:scale-95"
-                                    >
-                                        <span className="text-sm lg:text-base tracking-wide uppercase font-light">
-                                            {ctaSecondary}
-                                        </span>
-                                        <svg
-                                            className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            viewBox="0 0 24 24"
-                                        >
-                                            <path
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                strokeWidth={2}
-                                                d="M17 8l4 4m0 0l-4 4m4-4H3"
-                                            />
-                                        </svg>
-                                    </Link>
-
-                                    <div className="w-full h-px bg-white/10"></div>
-
-                                    <Link
-                                        href="/CV.pdf"
-                                        download="Patrick_Bartosik_CV.pdf"
-                                        target="_blank"
-                                        className="group relative inline-flex items-center gap-3 text-white/70 hover:text-white transition-all duration-300 active:scale-95"
-                                    >
-                                        <span className="text-sm lg:text-base tracking-wide uppercase font-light">
-                                            {ctaTertiary}
-                                        </span>
-
-                                        <svg
-                                            className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            viewBox="0 0 24 24"
-                                        >
-                                            <path
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                strokeWidth={2}
-                                                d="M17 8l4 4m0 0l-4 4m4-4H3"
-                                            />
-                                        </svg>
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {/* Scroll Indicator - Bas centre (masqué sur petit mobile) */}
+            {/* Availability badge - top right */}
             <div
-                ref={scrollIndicatorRef}
-                className="hidden sm:flex absolute bottom-8 md:bottom-12 left-1/2 -translate-x-1/2 z-20"
+                ref={availableRef}
+                className="absolute top-24 sm:top-28 right-6 sm:right-8 md:right-12 lg:right-20 z-20"
             >
-                <div className="flex flex-col items-center gap-3 opacity-60 hover:opacity-100 transition-opacity cursor-pointer">
-                    <span className="text-white/50 text-xs tracking-widest uppercase">
-                        Scroll
+                <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm">
+                    <span className="relative flex h-2.5 w-2.5">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500" />
                     </span>
-                    <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center p-2 relative overflow-hidden">
-                        <div className="w-1 h-3 bg-white/60 rounded-full animate-scroll"></div>
+                    <span className="text-xs text-white/70 font-light tracking-wider uppercase">
+                        {availableText}
+                    </span>
+                </div>
+            </div>
+
+            <div className="relative z-10 w-full px-6 sm:px-8 md:px-12 lg:px-20 pb-24 sm:pb-32 md:pb-40">
+                <p
+                    ref={labelRef}
+                    className="text-xs md:text-sm text-white/50 font-light tracking-[0.3em] uppercase mb-6 sm:mb-8 lg:mb-10"
+                >
+                    {label}
+                </p>
+
+                <h1
+                    ref={nameRef}
+                    className="text-[clamp(3rem,10vw,12rem)] font-bold leading-[0.9] tracking-tight text-white uppercase"
+                >
+                    {nameParts.map((part, index) => (
+                        <span key={index} className="block">
+                            {part}
+                        </span>
+                    ))}
+                </h1>
+
+                <div ref={taglineRef} className="max-w-xl">
+                    <div className="w-16 h-px bg-white/30 mt-6 md:mt-8 mb-4" />
+                    <p className="text-sm md:text-base text-white/60 font-light tracking-wide mb-2">
+                        {tagline}
+                    </p>
+                    <p className="text-sm md:text-base text-white/40 font-light leading-relaxed">
+                        {description}
+                    </p>
+                </div>
+
+                {/* CTA Buttons */}
+                <div ref={ctaRef} className="flex flex-wrap items-center gap-4 mt-8 md:mt-10">
+                    <Link
+                        href="/projects"
+                        className="group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black text-sm font-medium hover:bg-white/90 transition-all duration-300"
+                    >
+                        {ctaProjects}
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                    </Link>
+                    <Link
+                        href="/contact"
+                        className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/20 text-white text-sm font-light hover:bg-white/10 hover:border-white/30 transition-all duration-300"
+                    >
+                        {ctaContact}
+                    </Link>
+                </div>
+            </div>
+
+            <div
+                ref={scrollRef}
+                className="hidden sm:flex absolute bottom-8 md:bottom-12 right-8 md:right-12 z-20"
+            >
+                <div className="flex flex-col items-center gap-3">
+                    <span className="text-white/40 text-xs tracking-widest uppercase">
+                        {scrollText}
+                    </span>
+                    <div className="w-px h-12 bg-white/30 relative overflow-hidden">
+                        <div className="w-full h-3 bg-white/70 animate-scroll" />
                     </div>
                 </div>
             </div>
         </section>
     );
 };
-

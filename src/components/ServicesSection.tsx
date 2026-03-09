@@ -1,130 +1,65 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import Link from "next/link";
-import type { Service } from "@/lib/data/services.data";
+import { gsap, ScrollTrigger } from "@/lib/gsap-config";
 
-if (typeof window !== "undefined") {
-    gsap.registerPlugin(ScrollTrigger);
-}
-
-interface ServicesSectionProps {
+interface ApproachStep {
     title: string;
-    services: Service[];
-    locale: 'fr' | 'en' | 'pl';
-    ctaText: string;
+    desc: string;
 }
 
-export const ServicesSection = ({ title, services, locale, ctaText }: ServicesSectionProps) => {
+interface ServiceItem {
+    id: string;
+    icon: string;
+    title: string;
+    description: string;
+    features: string[];
+    technologies: string[];
+}
+
+interface ServicesApproachSectionProps {
+    label: string;
+    approachTitle: string;
+    approachSteps: ApproachStep[];
+    services: ServiceItem[];
+    ctaText: string;
+    locale: "fr" | "en" | "pl";
+}
+
+export const ServicesSection = ({
+    label,
+    approachTitle,
+    approachSteps,
+    services,
+    ctaText,
+    locale,
+}: ServicesApproachSectionProps) => {
     const sectionRef = useRef<HTMLElement>(null);
-    const titleRef = useRef<HTMLHeadingElement>(null);
-    const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+    const gridRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         if (!sectionRef.current) return;
 
+        const prefersReducedMotion = window.matchMedia(
+            "(prefers-reduced-motion: reduce)",
+        ).matches;
+        if (prefersReducedMotion) return;
+
         const ctx = gsap.context(() => {
-            // Animation du titre avec parallax
-            if (titleRef.current) {
-                gsap.from(titleRef.current, {
-                    opacity: 0,
-                    y: 80,
-                    duration: 1.5,
-                    ease: "power4.out",
-                    scrollTrigger: {
-                        trigger: titleRef.current,
-                        start: "top 85%",
-                        end: "top 55%",
-                        scrub: 1.5,
-                    },
-                });
+            const cards =
+                sectionRef.current!.querySelectorAll(".card-animate");
 
-                // Parallax sur le titre
-                gsap.to(titleRef.current, {
-                    yPercent: -20,
-                    ease: "none",
-                    scrollTrigger: {
-                        trigger: sectionRef.current,
-                        start: "top bottom",
-                        end: "bottom top",
-                        scrub: 2,
-                    },
-                });
-            }
-
-            // Animation 3D des cartes
-            cardsRef.current.forEach((card, index) => {
-                if (!card) return;
-
-                const icon = card.querySelector(".service-icon");
-
-                // Perspective 3D sur la carte
-                gsap.set(card, {
-                    perspective: 1000,
-                    transformStyle: "preserve-3d",
-                });
-
-                // Animation d'entrée 3D
-                gsap.from(card, {
-                    opacity: 0,
-                    y: 100,
-                    rotationX: -15,
-                    scale: 0.9,
-                    duration: 1.8,
-                    ease: "power4.out",
-                    scrollTrigger: {
-                        trigger: card,
-                        start: "top 90%",
-                        end: "top 55%",
-                        scrub: 1.5,
-                    },
-                    delay: index * 0.1,
-                });
-
-                // Hover effects 3D - DÉSACTIVÉS sur mobile/tablette
-                const isTouchDevice =
-                    window.matchMedia('(max-width: 1023px)').matches ||
-                    'ontouchstart' in window;
-
-                if (!isTouchDevice) {
-                    card.addEventListener("mouseenter", () => {
-                        gsap.to(card, {
-                            y: -10,
-                            scale: 1.02,
-                            duration: 0.5,
-                            ease: "power3.out",
-                        });
-
-                        if (icon) {
-                            gsap.to(icon, {
-                                scale: 1.2,
-                                rotation: 10,
-                                duration: 0.5,
-                                ease: "back.out(1.7)",
-                            });
-                        }
-                    });
-
-                    card.addEventListener("mouseleave", () => {
-                        gsap.to(card, {
-                            y: 0,
-                            scale: 1,
-                            duration: 0.5,
-                            ease: "power3.out",
-                        });
-
-                        if (icon) {
-                            gsap.to(icon, {
-                                scale: 1,
-                                rotation: 0,
-                                duration: 0.5,
-                                ease: "back.out(1.7)",
-                            });
-                        }
-                    });
-                }
+            gsap.from(cards, {
+                y: 40,
+                opacity: 0,
+                duration: 0.8,
+                stagger: 0.1,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: gridRef.current,
+                    start: "top 75%",
+                    once: true,
+                },
             });
         }, sectionRef);
 
@@ -132,97 +67,79 @@ export const ServicesSection = ({ title, services, locale, ctaText }: ServicesSe
     }, []);
 
     return (
-        <section
-            ref={sectionRef}
-            className="w-full py-12 sm:py-16 md:py-20 lg:py-32 px-4 sm:px-6 md:px-12 lg:px-16 xl:px-20"
-        >
-            {/* Header */}
-            <div className="mb-8 sm:mb-12 md:mb-16">
-                <h2
-                    ref={titleRef}
-                    className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white/90 leading-none tracking-tight"
+        <section ref={sectionRef} className="relative py-24 md:py-32 lg:py-40">
+            <div className="mx-auto max-w-7xl px-6 sm:px-8 md:px-12 lg:px-20">
+                <p className="mb-16 text-xs font-light uppercase tracking-[0.3em] text-white/40 md:mb-24 md:text-sm">
+                    {label}
+                </p>
+
+                <div
+                    ref={gridRef}
+                    className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-3"
                 >
-                    {title}
-                </h2>
-            </div>
-
-            {/* Services Grid - Bento Box Layout Responsive */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
-                {services.map((service, index) => (
-                    <div
-                        key={service.id}
-                        ref={(el) => {
-                            cardsRef.current[index] = el;
-                        }}
-                        className="group relative overflow-hidden rounded-2xl sm:rounded-3xl backdrop-blur-2xl bg-white/5 border border-white/10 p-5 sm:p-6 md:p-7 lg:p-8 transform-gpu transition-all duration-500 hover:border-white/20 hover:shadow-2xl hover:shadow-orange-500/10 active:scale-95 flex flex-col"
-                    >
-                        {/* Gradient background on hover */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 via-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-
-                        {/* Content */}
-                        <div className="relative z-10 flex flex-col h-full">
-                            {/* Icon Emoji */}
-                            <div className="service-icon mb-4 sm:mb-5 md:mb-6 text-4xl sm:text-5xl md:text-6xl">
-                                {service.icon}
-                            </div>
-
-                            {/* Title */}
-                            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white/90 mb-3 sm:mb-4 leading-tight">
-                                {service.title[locale]}
-                            </h3>
-
-                            {/* Description */}
-                            <p className="text-white/60 text-sm sm:text-base leading-relaxed mb-4 sm:mb-5 md:mb-6">
-                                {service.description[locale]}
-                            </p>
-
-                            {/* Features */}
-                            <ul className="space-y-2 sm:space-y-3 mb-4 sm:mb-5 md:mb-6 flex-grow">
-                                {service.features[locale].slice(0, 3).map((feature, idx) => (
-                                    <li key={idx} className="flex items-start gap-2 sm:gap-3 text-xs sm:text-sm text-white/50">
-                                        <span className="text-orange-500 mt-0.5 text-sm sm:text-base flex-shrink-0">✓</span>
-                                        <span>{feature}</span>
-                                    </li>
-                                ))}
-                            </ul>
-
-                            {/* Technologies */}
-                            <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-6 sm:mb-7 md:mb-8">
-                                {service.technologies.slice(0, 3).map((tech, idx) => (
-                                    <span
-                                        key={idx}
-                                        className="px-2 sm:px-3 py-1 sm:py-1.5 text-[10px] sm:text-xs rounded-full glass-light text-white/70 border border-white/10"
-                                    >
-                                        {tech}
+                    {/* Approach Card */}
+                    <div className="card-animate rounded-2xl border border-white/5 bg-white/[0.03] p-8 md:p-10 lg:col-span-2 lg:row-span-2">
+                        <h3 className="mb-8 text-2xl font-bold text-white md:mb-12 md:text-3xl">
+                            {approachTitle}
+                        </h3>
+                        <div className="space-y-8 md:space-y-10">
+                            {approachSteps.map((step, i) => (
+                                <div key={i} className="flex items-start">
+                                    <span className="mr-6 text-5xl font-bold leading-none text-white/[0.06] md:text-6xl">
+                                        {String(i + 1).padStart(2, "0")}
                                     </span>
-                                ))}
-                            </div>
-
-                            {/* CTA Button - Always at bottom */}
-                            <Link
-                                href="/contact"
-                                className="inline-flex items-center justify-center gap-2 px-4 sm:px-5 md:px-6 py-2.5 sm:py-3 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 text-white text-xs sm:text-sm font-semibold hover:from-orange-600 hover:to-orange-700 hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg hover:shadow-orange-500/50 mt-auto"
-                            >
-                                <span>{ctaText}</span>
-                                <svg
-                                    className="w-3 h-3 sm:w-4 sm:h-4 transform group-hover:translate-x-1 transition-transform"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth={2}
-                                        d="M17 8l4 4m0 0l-4 4m4-4H3"
-                                    />
-                                </svg>
-                            </Link>
+                                    <div className="pt-2">
+                                        <h4 className="text-lg font-semibold text-white">
+                                            {step.title}
+                                        </h4>
+                                        <p className="mt-1 text-sm text-white/50">
+                                            {step.desc}
+                                        </p>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
                     </div>
-                ))}
+
+                    {/* Service Cards */}
+                    {services.map((service) => (
+                        <div
+                            key={service.id}
+                            className="card-animate flex flex-col rounded-2xl border border-white/5 bg-white/[0.03] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-white/10 hover:bg-white/[0.05] md:p-8"
+                        >
+                            <span className="mb-4 text-2xl">
+                                {service.icon}
+                            </span>
+                            <h3 className="mb-3 text-lg font-semibold text-white">
+                                {service.title}
+                            </h3>
+                            <div className="mb-4 space-y-2">
+                                {service.features.slice(0, 3).map((f, i) => (
+                                    <p
+                                        key={i}
+                                        className="flex items-start gap-2 text-sm text-white/50"
+                                    >
+                                        <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-white/30" />
+                                        {f}
+                                    </p>
+                                ))}
+                            </div>
+                            <div className="mt-auto flex flex-wrap gap-2 pt-4">
+                                {service.technologies
+                                    .slice(0, 4)
+                                    .map((tech, i) => (
+                                        <span
+                                            key={i}
+                                            className="rounded-full bg-white/[0.05] px-2.5 py-1 text-xs text-white/30"
+                                        >
+                                            {tech}
+                                        </span>
+                                    ))}
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
         </section>
     );
 };
-

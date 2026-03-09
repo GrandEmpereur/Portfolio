@@ -1,112 +1,140 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-
-if (typeof window !== "undefined") {
-    gsap.registerPlugin(ScrollTrigger);
-}
+import { gsap, ScrollTrigger } from "@/lib/gsap-config";
+import Image from "next/image";
 
 interface AboutSectionProps {
     label: string;
     text: string;
+    text2: string;
+    facts: string[];
 }
 
-export const AboutSection = ({ label, text }: AboutSectionProps) => {
-    const sectionRef = useRef<HTMLElement>(null);
-    const labelRef = useRef<HTMLDivElement>(null);
-    const wordsRef = useRef<(HTMLSpanElement | null)[]>([]);
+const renderWords = (text: string) => {
+    return text.split(" ").map((word, i) => (
+        <span key={i} className="word-reveal inline-block mr-[0.3em]">
+            {word}
+        </span>
+    ));
+};
 
-    // Diviser le texte en mots
-    const words = text.split(' ');
+export const AboutSection = ({
+    label,
+    text,
+    text2,
+    facts,
+}: AboutSectionProps) => {
+    const sectionRef = useRef<HTMLElement>(null);
+    const textRef = useRef<HTMLDivElement>(null);
+    const factsRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         if (!sectionRef.current) return;
 
-        const ctx = gsap.context(() => {
-            // Parallax subtil sur le label
-            if (labelRef.current) {
-                gsap.to(labelRef.current, {
-                    yPercent: -10,
-                    ease: "none",
-                    scrollTrigger: {
-                        trigger: sectionRef.current,
-                        start: "top bottom",
-                        end: "bottom top",
-                        scrub: 1.5,
-                    },
-                });
-            }
+        const prefersReducedMotion = window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches;
 
-            // Animation pour chaque mot avec timings améliorés
-            wordsRef.current.forEach((word, index) => {
-                if (!word) return;
-
-                gsap.fromTo(
-                    word,
-                    {
-                        opacity: 0,
-                        filter: "blur(10px)",
-                        y: 30,
-                    },
-                    {
-                        opacity: 1,
-                        filter: "blur(0px)",
-                        y: 0,
-                        duration: 1,
-                        ease: "power4.out",
-                        scrollTrigger: {
-                            trigger: word,
-                            start: "top 85%",
-                            end: "top 60%",
-                            scrub: 1.5,
-                            toggleActions: "play none none reverse",
-                        },
-                        delay: index * 0.015, // Timing plus serré pour effet cascade
-                    }
-                );
+        if (prefersReducedMotion) {
+            const words =
+                sectionRef.current.querySelectorAll<HTMLElement>(".word-reveal");
+            words.forEach((word) => {
+                word.style.opacity = "1";
+                word.style.filter = "none";
             });
+            return;
+        }
+
+        const ctx = gsap.context(() => {
+            // Word reveal on text
+            const words =
+                sectionRef.current!.querySelectorAll(".word-reveal");
+            gsap.from(words, {
+                opacity: 0,
+                filter: "blur(8px)",
+                duration: 0.6,
+                stagger: 0.03,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: textRef.current,
+                    start: "top 80%",
+                    once: true,
+                },
+            });
+
+            // Facts stagger
+            const factItems =
+                sectionRef.current!.querySelectorAll(".fact-item");
+            gsap.from(factItems, {
+                opacity: 0,
+                y: 20,
+                duration: 0.6,
+                stagger: 0.1,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: factsRef.current,
+                    start: "top 85%",
+                    once: true,
+                },
+            });
+
         }, sectionRef);
 
         return () => ctx.revert();
-    }, [words.length]);
+    }, []);
 
     return (
         <section
             ref={sectionRef}
-            className="relative min-h-screen w-full flex items-center justify-center px-4 sm:px-8 md:px-12 lg:px-20 py-16 sm:py-24 md:py-32"
+            className="relative py-24 md:py-32 lg:py-40 bg-black"
         >
-            <div className="flex flex-col lg:flex-row gap-x-12 md:gap-x-24 xl:gap-x-32 w-full items-start lg:items-center">
-                {/* Label */}
-                <div ref={labelRef} className="mb-6 sm:mb-8 lg:mb-0 flex-shrink-0">
-                    <span className="text-gray-400 text-xs font-light tracking-[0.3em] uppercase">
-                        ({label})
-                    </span>
-                </div>
+            <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 lg:px-20">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+                    {/* Text Column */}
+                    <div className="lg:col-span-7" ref={textRef}>
+                        <p className="text-xs md:text-sm tracking-[0.3em] text-white/40 uppercase font-light mb-8 md:mb-12">
+                            {label}
+                        </p>
+                        <p className="text-lg md:text-xl lg:text-2xl leading-relaxed text-white/80 mb-6">
+                            {renderWords(text)}
+                        </p>
+                        <p className="text-lg md:text-xl lg:text-2xl leading-relaxed text-white/80">
+                            {renderWords(text2)}
+                        </p>
 
-                {/* Texte animé avec effet de blur */}
-                <div className="flex-1">
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl leading-[1.2] font-light text-gray-300">
-                        {words.map((word, index) => (
-                            <span
-                                key={index}
-                                ref={(el) => {
-                                    wordsRef.current[index] = el;
-                                }}
-                                className="inline-block mr-2 sm:mr-3 md:mr-4 lg:mr-5"
-                                style={{
-                                    opacity: 0,
-                                    filter: "blur(10px)",
-                                }}
-                            >
-                                {word}
-                            </span>
-                        ))}
-                    </h2>
+                        {/* Facts */}
+                        <div
+                            ref={factsRef}
+                            className="flex flex-wrap gap-x-8 gap-y-3 mt-8 md:mt-12"
+                        >
+                            {facts.map((fact, i) => (
+                                <div
+                                    key={i}
+                                    className="fact-item flex items-center gap-2 text-sm text-white/50"
+                                >
+                                    <span className="w-4 h-px bg-white/30" />
+                                    {fact}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Photo Column */}
+                    <div className="lg:col-span-5 mt-12 lg:mt-0">
+                        <div className="relative aspect-[4/3] lg:aspect-[3/4] overflow-hidden rounded-lg border border-white/5">
+                            <Image
+                                src="/images/hero.webp"
+                                alt="Patrick Bartosik"
+                                fill
+                                className="object-cover"
+                                sizes="(max-width: 1024px) 100vw, 40vw"
+                                quality={80}
+                            />
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
     );
 };
-

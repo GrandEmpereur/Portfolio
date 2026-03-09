@@ -2,12 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Lenis from "lenis";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-
-if (typeof window !== "undefined") {
-    gsap.registerPlugin(ScrollTrigger);
-}
+import { gsap, ScrollTrigger } from "@/lib/gsap-config";
 
 interface SmoothScrollProps {
     children: React.ReactNode;
@@ -17,6 +12,9 @@ export const SmoothScroll = ({ children }: SmoothScrollProps) => {
     const lenisRef = useRef<Lenis | null>(null);
 
     useEffect(() => {
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) return;
+
         // Détection mobile pour ajuster les paramètres
         const isMobile = window.matchMedia('(max-width: 767px)').matches;
 

@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useMemo } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { gsap, ScrollTrigger } from "@/lib/gsap-config";
 import Image from "next/image";
 import Autoplay from "embla-carousel-autoplay";
 import {
@@ -12,10 +11,6 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/components/ui/carousel";
-
-if (typeof window !== "undefined") {
-    gsap.registerPlugin(ScrollTrigger);
-}
 
 interface Testimonial {
     name: string;
@@ -71,13 +66,11 @@ export const StatsSection = ({
 
     const statsGridRef = useRef<HTMLDivElement>(null);
 
-    // Debug: Vérifier le délai configuré
-    useEffect(() => {
-        console.log('🎯 Autoplay delay configuré:', 10000, 'ms (10 secondes)');
-    }, []);
-
     useEffect(() => {
         if (!sectionRef.current) return;
+
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) return;
 
         const ctx = gsap.context(() => {
             // Animation du label avec parallax

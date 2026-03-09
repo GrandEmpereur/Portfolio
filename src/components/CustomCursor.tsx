@@ -1,95 +1,76 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
+import { gsap } from "@/lib/gsap-config";
 
 export const CustomCursor = () => {
     const cursorRef = useRef<HTMLDivElement>(null);
     const cursorDotRef = useRef<HTMLDivElement>(null);
+    const cursorLabelRef = useRef<HTMLSpanElement>(null);
     const mousePos = useRef({ x: 0, y: 0 });
     const cursorPos = useRef({ x: 0, y: 0 });
 
     useEffect(() => {
-        // Détection mobile/tablette - Ne pas activer le cursor custom sur touch devices
         const isTouchDevice =
-            window.matchMedia('(max-width: 1023px)').matches ||
-            'ontouchstart' in window ||
+            window.matchMedia("(max-width: 1023px)").matches ||
+            "ontouchstart" in window ||
             navigator.maxTouchPoints > 0;
 
-        if (isTouchDevice) {
-            // Garder le curseur natif sur mobile/tablette
-            return;
-        }
+        if (isTouchDevice) return;
 
-        if (!cursorRef.current || !cursorDotRef.current) return;
+        if (!cursorRef.current || !cursorDotRef.current || !cursorLabelRef.current)
+            return;
 
         const cursor = cursorRef.current;
         const cursorDot = cursorDotRef.current;
+        const cursorLabel = cursorLabelRef.current;
 
-        // Cacher le cursor par défaut (uniquement desktop)
         document.body.style.cursor = "none";
 
-        // Suivi de la souris
+        let hasRevealed = false;
         const handleMouseMove = (e: MouseEvent) => {
             mousePos.current = { x: e.clientX, y: e.clientY };
+            gsap.to(cursorDot, { x: e.clientX, y: e.clientY, duration: 0 });
 
-            // Déplacement instantané du point central
-            gsap.to(cursorDot, {
-                x: e.clientX,
-                y: e.clientY,
-                duration: 0,
-            });
+            if (!hasRevealed) {
+                hasRevealed = true;
+                gsap.set(cursor, { x: e.clientX, y: e.clientY });
+                cursorPos.current = { x: e.clientX, y: e.clientY };
+                gsap.to(cursor, { opacity: 1, duration: 0.3 });
+                gsap.to(cursorDot, { opacity: 1, duration: 0.3 });
+            }
         };
 
-        // Animation lerp pour le cercle principal (smooth following)
         const animateCursor = () => {
             const dx = mousePos.current.x - cursorPos.current.x;
             const dy = mousePos.current.y - cursorPos.current.y;
-
             cursorPos.current.x += dx * 0.15;
             cursorPos.current.y += dy * 0.15;
-
             gsap.set(cursor, {
                 x: cursorPos.current.x,
                 y: cursorPos.current.y,
             });
-
             requestAnimationFrame(animateCursor);
         };
 
         animateCursor();
         window.addEventListener("mousemove", handleMouseMove);
 
-        // Effet au hover sur les éléments interactifs
+        // Default interactive hover
         const handleMouseEnter = () => {
-            gsap.to(cursor, {
-                scale: 1.8,
-                duration: 0.3,
-                ease: "power2.out",
-            });
-            gsap.to(cursorDot, {
-                scale: 0,
-                duration: 0.3,
-                ease: "power2.out",
-            });
+            gsap.to(cursor, { scale: 1.8, duration: 0.3, ease: "power2.out" });
+            gsap.to(cursorDot, { scale: 0, duration: 0.3, ease: "power2.out" });
         };
 
         const handleMouseLeave = () => {
-            gsap.to(cursor, {
-                scale: 1,
-                duration: 0.3,
-                ease: "power2.out",
-            });
-            gsap.to(cursorDot, {
-                scale: 1,
-                duration: 0.3,
-                ease: "power2.out",
-            });
+            gsap.to(cursor, { scale: 1, duration: 0.3, ease: "power2.out" });
+            gsap.to(cursorDot, { scale: 1, duration: 0.3, ease: "power2.out" });
+            gsap.to(cursorLabel, { opacity: 0, duration: 0.2 });
+            cursorLabel.textContent = "";
         };
 
-        // Sélecteurs d'éléments interactifs
         const interactiveElements = document.querySelectorAll(
-            'a, button, [role="button"], input, textarea, select'
+            'a, button, [role="button"], input, textarea, select',
         );
 
         interactiveElements.forEach((el) => {
@@ -97,8 +78,42 @@ export const CustomCursor = () => {
             el.addEventListener("mouseleave", handleMouseLeave);
         });
 
-        // Effet magnetic sur les CTAs
-        const magneticElements = document.querySelectorAll('[data-magnetic="true"]');
+        // Labeled cursor elements
+        const labeledElements = document.querySelectorAll("[data-cursor-label]");
+
+        labeledElements.forEach((el) => {
+            const htmlEl = el as HTMLElement;
+
+            htmlEl.addEventListener("mouseenter", () => {
+                const labelText = htmlEl.dataset.cursorLabel || "";
+                cursorLabel.textContent = labelText;
+                gsap.to(cursor, {
+                    width: 80,
+                    height: 80,
+                    duration: 0.3,
+                    ease: "power2.out",
+                });
+                gsap.to(cursorLabel, { opacity: 1, duration: 0.2, delay: 0.1 });
+                gsap.to(cursorDot, { scale: 0, duration: 0.3, ease: "power2.out" });
+            });
+
+            htmlEl.addEventListener("mouseleave", () => {
+                gsap.to(cursor, {
+                    width: 48,
+                    height: 48,
+                    duration: 0.3,
+                    ease: "power2.out",
+                });
+                gsap.to(cursorLabel, { opacity: 0, duration: 0.2 });
+                gsap.to(cursorDot, { scale: 1, duration: 0.3, ease: "power2.out" });
+                cursorLabel.textContent = "";
+            });
+        });
+
+        // Magnetic effect
+        const magneticElements = document.querySelectorAll(
+            '[data-magnetic="true"]',
+        );
 
         magneticElements.forEach((el) => {
             const htmlEl = el as HTMLElement;
@@ -114,11 +129,7 @@ export const CustomCursor = () => {
                     duration: 0.3,
                     ease: "power2.out",
                 });
-
-                gsap.to(cursor, {
-                    scale: 2,
-                    duration: 0.3,
-                });
+                gsap.to(cursor, { scale: 2, duration: 0.3 });
             });
 
             htmlEl.addEventListener("mouseleave", () => {
@@ -128,15 +139,10 @@ export const CustomCursor = () => {
                     duration: 0.5,
                     ease: "elastic.out(1, 0.3)",
                 });
-
-                gsap.to(cursor, {
-                    scale: 1,
-                    duration: 0.3,
-                });
+                gsap.to(cursor, { scale: 1, duration: 0.3 });
             });
         });
 
-        // Cleanup
         return () => {
             document.body.style.cursor = "auto";
             window.removeEventListener("mousemove", handleMouseMove);
@@ -149,26 +155,25 @@ export const CustomCursor = () => {
 
     return (
         <>
-            {/* Cercle principal - Suit avec lerp */}
+            {/* Main cursor circle — hidden until first mousemove */}
             <div
                 ref={cursorRef}
-                className="fixed top-0 left-0 w-12 h-12 pointer-events-none z-[9999] mix-blend-difference hidden lg:block"
-                style={{
-                    transform: "translate(-50%, -50%)",
-                }}
+                className="fixed top-0 left-0 w-12 h-12 pointer-events-none z-[9999] mix-blend-difference hidden lg:flex items-center justify-center"
+                style={{ transform: "translate(-50%, -50%)", opacity: 0 }}
             >
-                <div className="w-full h-full border-2 border-white rounded-full"></div>
+                <div className="w-full h-full border-2 border-white rounded-full absolute inset-0" />
+                <span
+                    ref={cursorLabelRef}
+                    className="relative text-white text-xs font-medium uppercase tracking-wider opacity-0"
+                />
             </div>
 
-            {/* Point central - Suit instantanément */}
+            {/* Center dot — hidden until first mousemove */}
             <div
                 ref={cursorDotRef}
                 className="fixed top-0 left-0 w-2 h-2 bg-white pointer-events-none z-[9999] rounded-full mix-blend-difference hidden lg:block"
-                style={{
-                    transform: "translate(-50%, -50%)",
-                }}
-            ></div>
+                style={{ transform: "translate(-50%, -50%)", opacity: 0 }}
+            />
         </>
     );
 };
-

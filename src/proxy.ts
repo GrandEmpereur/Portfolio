@@ -12,5 +12,5 @@ export default function proxy(request: NextRequest) {
 }
 
 export const config = {
-    matcher: ["/((?!api|_next/static|_next/image|favicon.ico|images|icons|svg|og|sitemap.xml|robots.txt|cv.pdf|CV.pdf|not-found).*)"],
+    matcher: ["/((?!api|_next/static|_next/image|favicon.ico|images|icons|svg|og|sitemap.xml|robots.txt|llms.txt|llms-full.txt|cv.pdf|CV.pdf|not-found).*)"],
 };
