@@ -1,15 +1,9 @@
 import { getI18n } from '@/locales/serveur';
 import { setStaticParamsLocale } from 'next-international/server';
 import { Metadata } from 'next';
-import { seoConfig } from '@/lib/seo-config';
+import { seoConfig, ogLocaleMap } from '@/lib/seo-config';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
-
-const ogLocaleMap: Record<string, string> = {
-  fr: 'fr_FR',
-  en: 'en_US',
-  pl: 'pl_PL',
-};
 
 /**
  * Generate metadata for legal notice page
@@ -45,8 +39,6 @@ export async function generateMetadata({
         : `${seoConfig.baseUrl}/${locale}/mentions-legales`,
       languages: {
         'fr': `${seoConfig.baseUrl}/mentions-legales`,
-        'en': `${seoConfig.baseUrl}/en/mentions-legales`,
-        'pl': `${seoConfig.baseUrl}/pl/mentions-legales`,
         'x-default': `${seoConfig.baseUrl}/mentions-legales`,
       },
     },

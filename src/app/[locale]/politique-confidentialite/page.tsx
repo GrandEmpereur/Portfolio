@@ -1,15 +1,9 @@
 import { getI18n, getScopedI18n } from '@/locales/serveur';
 import { setStaticParamsLocale } from 'next-international/server';
 import { Metadata } from 'next';
-import { seoConfig } from '@/lib/seo-config';
+import { seoConfig, ogLocaleMap } from '@/lib/seo-config';
 import Link from 'next/link';
 import { ArrowLeft, Shield, Lock, Eye, Database, UserCheck, Clock, FileText, Mail } from 'lucide-react';
-
-const ogLocaleMap: Record<string, string> = {
-  fr: 'fr_FR',
-  en: 'en_US',
-  pl: 'pl_PL',
-};
 
 /**
  * Generate metadata for privacy policy page
@@ -45,8 +39,6 @@ export async function generateMetadata({
         : `${seoConfig.baseUrl}/${locale}/politique-confidentialite`,
       languages: {
         'fr': `${seoConfig.baseUrl}/politique-confidentialite`,
-        'en': `${seoConfig.baseUrl}/en/politique-confidentialite`,
-        'pl': `${seoConfig.baseUrl}/pl/politique-confidentialite`,
         'x-default': `${seoConfig.baseUrl}/politique-confidentialite`,
       },
     },

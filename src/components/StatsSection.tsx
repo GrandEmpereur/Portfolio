@@ -74,6 +74,9 @@ export const StatsSection = ({
     useEffect(() => {
         if (!sectionRef.current) return;
 
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) return;
+
         const ctx = gsap.context(() => {
             // Animation du label avec parallax
             if (labelRef.current) {

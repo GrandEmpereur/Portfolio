@@ -3,7 +3,7 @@ import { Anton, Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
 import { NavBar } from "@/components/navBar";
-import { seoConfig } from "@/lib/seo-config";
+import { seoConfig, ogLocaleMap } from "@/lib/seo-config";
 import { getI18n } from "@/locales/serveur";
 import { setStaticParamsLocale } from "next-international/server";
 import { Toaster } from "@/components/ui/sonner";
@@ -27,12 +27,6 @@ const inter = Inter({
   display: "swap",
   adjustFontFallback: true,
 });
-
-const ogLocaleMap: Record<string, string> = {
-  fr: 'fr_FR',
-  en: 'en_US',
-  pl: 'pl_PL',
-};
 
 export async function generateMetadata({
   params,
@@ -162,6 +156,14 @@ export default async function RootLayout({
   params: Promise<{ locale: string }>;
 }>) {
   const { locale } = await paramsPromise;
+  setStaticParamsLocale(locale);
+
+  const skipLinkText: Record<string, string> = {
+    fr: 'Aller au contenu principal',
+    en: 'Skip to main content',
+    pl: 'Przejdź do głównej treści',
+  };
+
   return (
     <html lang={locale} className="dark">
       <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID || ''} />
@@ -173,7 +175,7 @@ export default async function RootLayout({
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:rounded-lg focus:text-sm focus:font-medium"
         >
-          Skip to main content
+          {skipLinkText[locale] ?? skipLinkText.en}
         </a>
         <Providers locale={locale}>
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || ''} />

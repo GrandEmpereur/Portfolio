@@ -7,7 +7,7 @@ import { projectTestimonials } from "@/lib/data/testimonials.data";
 import { services } from "@/lib/data/services.data";
 import { getPersonSchema, getWebsiteSchema, getProjectsListSchema, getProfessionalServiceSchema, getFAQSchema, getBreadcrumbSchema } from "@/lib/structured-data";
 import { Metadata } from "next";
-import { seoConfig } from "@/lib/seo-config";
+import { seoConfig, ogLocaleMap } from "@/lib/seo-config";
 import { HeroSection } from "@/components/HeroSection";
 import { AboutSection } from "@/components/AboutSection";
 import { LatestProjectsSection } from "@/components/LatestProjectsSection";
@@ -17,12 +17,6 @@ import { StatsSection } from "@/components/StatsSection";
 import { ContactSection } from "@/components/ContactSection";
 import { FAQSection } from "@/components/FAQSection";
 import { Footer } from "@/components/Footer";
-
-const ogLocaleMap: Record<string, string> = {
-  fr: 'fr_FR',
-  en: 'en_US',
-  pl: 'pl_PL',
-};
 
 export async function generateMetadata({
   params,

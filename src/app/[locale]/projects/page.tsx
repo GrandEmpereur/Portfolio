@@ -4,14 +4,8 @@ import { ProjectCard } from '@/components/ProjectCard'
 import { getI18n } from '@/locales/serveur'
 import { setStaticParamsLocale } from 'next-international/server'
 import { Metadata } from 'next'
-import { seoConfig } from '@/lib/seo-config'
+import { seoConfig, ogLocaleMap } from '@/lib/seo-config'
 import { getProjectsListSchema, getBreadcrumbSchema } from '@/lib/structured-data'
-
-const ogLocaleMap: Record<string, string> = {
-    fr: 'fr_FR',
-    en: 'en_US',
-    pl: 'pl_PL',
-};
 
 export async function generateMetadata({
     params,

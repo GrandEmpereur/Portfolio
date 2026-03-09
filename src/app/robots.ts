@@ -38,7 +38,7 @@ export default function robots(): MetadataRoute.Robots {
             },
             // Règles spécifiques pour les bots AI — autoriser les pages publiques
             {
-                userAgent: ['GPTBot', 'ChatGPT-User', 'anthropic-ai', 'PerplexityBot', 'Google-Extended', 'CCBot'],
+                userAgent: ['GPTBot', 'ChatGPT-User', 'anthropic-ai', 'ClaudeBot', 'PerplexityBot', 'Google-Extended', 'CCBot'],
                 allow: ['/', '/en/', '/pl/', '/projects', '/contact'],
                 disallow: ['/api/'],
             },

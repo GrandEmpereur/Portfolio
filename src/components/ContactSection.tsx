@@ -449,7 +449,7 @@ export const ContactSection = ({ translations }: ContactSectionProps) => {
                                     </div>
 
                                     {/* Card content */}
-                                    <div className="w-full sm:w-[285px] h-auto sm:h-[160px] bg-white rounded-2xl p-6 flex flex-col justify-between">
+                                    <div className="w-full sm:w-[285px] min-h-[130px] sm:h-[160px] bg-white rounded-2xl p-6 flex flex-col justify-between">
                                         <div>
                                             <p className="text-[#090909] text-[11px] font-medium h-[14px] mb-[3px]">
                                                 {translations.contactRole}

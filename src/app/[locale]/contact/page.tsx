@@ -2,14 +2,8 @@ import { SimpleContactForm } from "@/components/SimpleContactForm";
 import { getI18n } from "@/locales/serveur";
 import { setStaticParamsLocale } from "next-international/server";
 import { Metadata } from "next";
-import { seoConfig } from "@/lib/seo-config";
+import { seoConfig, ogLocaleMap } from "@/lib/seo-config";
 import { getBreadcrumbSchema } from "@/lib/structured-data";
-
-const ogLocaleMap: Record<string, string> = {
-    fr: 'fr_FR',
-    en: 'en_US',
-    pl: 'pl_PL',
-};
 
 /**
  * Generate metadata for contact page
