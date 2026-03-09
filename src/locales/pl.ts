@@ -356,7 +356,7 @@ export default {
     'meta': {
         'home': {
             'title': 'Patrick Bartosik | Ekspert Next.js & Full Stack Developer Freelance',
-            'description': 'Szukasz Eksperta Next.js? Full Stack Developer ekspert React, Next.js, TypeScript & Node.js. Pomagam startupom i firmom tworzyć wydajne aplikacje webowe z Next.js. Otwartoźródłowy framework React do renderowania po stronie serwera. Specjalista SaaS i Shopify Plus. +4 lata doświadczenia.',
+            'description': 'Freelance Full Stack Developer i ekspert Next.js, React, TypeScript & Node.js. Wydajne aplikacje webowe, SaaS i rozwiązania Shopify Plus.',
             'keywords': 'zatrudnij full stack developer, programista react freelance, programista next.js, full stack developer europa, freelance developer, ekspert react next.js, programista typescript, programista saas, programista ecommerce, programista shopify plus, programista web, programista react typescript, programista nodejs freelance',
         },
         'projects': {
