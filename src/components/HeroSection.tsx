@@ -34,6 +34,9 @@ export const HeroSection = ({
     useEffect(() => {
         if (!sectionRef.current || !nameRef.current) return;
 
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) return;
+
         // Détection mobile pour optimiser les animations
         const isMobile = window.matchMedia('(max-width: 767px)').matches;
 

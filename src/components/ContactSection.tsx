@@ -113,6 +113,9 @@ export const ContactSection = ({ translations }: ContactSectionProps) => {
     useEffect(() => {
         if (!sectionRef.current) return;
 
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) return;
+
         const ctx = gsap.context(() => {
             // Animation du heading avec split text
             if (headingRef.current) {

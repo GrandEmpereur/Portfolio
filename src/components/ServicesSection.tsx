@@ -20,6 +20,9 @@ export const ServicesSection = ({ title, services, locale, ctaText }: ServicesSe
     useEffect(() => {
         if (!sectionRef.current) return;
 
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) return;
+
         const ctx = gsap.context(() => {
             // Animation du titre avec parallax
             if (titleRef.current) {

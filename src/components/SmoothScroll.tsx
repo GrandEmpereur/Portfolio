@@ -12,6 +12,9 @@ export const SmoothScroll = ({ children }: SmoothScrollProps) => {
     const lenisRef = useRef<Lenis | null>(null);
 
     useEffect(() => {
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) return;
+
         // Détection mobile pour ajuster les paramètres
         const isMobile = window.matchMedia('(max-width: 767px)').matches;
 

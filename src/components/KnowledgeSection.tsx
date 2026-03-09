@@ -30,6 +30,9 @@ export const KnowledgeSection = ({
     useEffect(() => {
         if (!sectionRef.current) return;
 
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) return;
+
         const ctx = gsap.context(() => {
             // Animation du titre avec parallax
             if (titleRef.current) {

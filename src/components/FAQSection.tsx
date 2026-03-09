@@ -36,6 +36,9 @@ export const FAQSection = ({ title, faqs, socialTitle, socialLinks }: FAQSection
     useEffect(() => {
         if (!sectionRef.current) return;
 
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) return;
+
         const ctx = gsap.context(() => {
             // Animation du titre avec scale effect
             if (titleRef.current) {
