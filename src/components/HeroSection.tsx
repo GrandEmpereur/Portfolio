@@ -14,6 +14,7 @@ interface HeroSectionProps {
     ctaSecondary: string;
     ctaTertiary: string;
     altText: string;
+    scrollText: string;
 }
 
 export const HeroSection = ({
@@ -23,6 +24,7 @@ export const HeroSection = ({
     ctaSecondary,
     ctaTertiary,
     altText,
+    scrollText,
 }: HeroSectionProps) => {
     const sectionRef = useRef<HTMLElement>(null);
     const titleRef = useRef<HTMLParagraphElement>(null);
@@ -278,7 +280,7 @@ export const HeroSection = ({
             >
                 <div className="flex flex-col items-center gap-3 opacity-60 hover:opacity-100 transition-opacity cursor-pointer">
                     <span className="text-white/50 text-xs tracking-widest uppercase">
-                        Scroll
+                        {scrollText}
                     </span>
                     <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center p-2 relative overflow-hidden">
                         <div className="w-1 h-3 bg-white/60 rounded-full animate-scroll"></div>

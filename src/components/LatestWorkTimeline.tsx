@@ -5,8 +5,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { lastwork } from '@/lib/data/lastwork.data'
 import { ArrowUpRight } from 'lucide-react'
+import { useI18n } from '@/locales/client'
 
 export function LatestWorkTimeline() {
+    const t = useI18n()
     const [activeIndex, setActiveIndex] = useState(0)
     const containerRef = useRef<HTMLDivElement>(null)
     const projectRefs = useRef<HTMLDivElement[]>([])
@@ -125,11 +127,16 @@ export function LatestWorkTimeline() {
 
                         {/* Bottom Section */}
                         <div className="space-y-4">
-                            {/* Category Labels */}
+                            {/* Technology Tags */}
                             <div className="flex gap-4 text-sm text-gray-500 uppercase tracking-wider">
-                                <span>Arjuna</span>
-                                <span>Bima</span>
-                                <span className="font-bold text-white">Mandala</span>
+                                {currentProject?.technologies.slice(0, 3).map((tech, index) => (
+                                    <span
+                                        key={tech}
+                                        className={index === 0 ? "font-bold text-white" : ""}
+                                    >
+                                        {tech}
+                                    </span>
+                                ))}
                             </div>
                         </div>
                     </div>
@@ -173,7 +180,7 @@ export function LatestWorkTimeline() {
                     href="/projects"
                     className="group inline-flex items-center gap-3 px-8 py-4 bg-white text-black rounded-full text-lg font-semibold hover:bg-gray-200 transition-all duration-300 hover:scale-105"
                 >
-                    <span>More Projects</span>
+                    <span>{t('work.moreProjects')}</span>
                     <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                 </Link>
             </div>

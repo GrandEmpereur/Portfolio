@@ -19,6 +19,7 @@ export default {
         'experience': 'ans d\'expérience',
         'projects': 'projets réalisés',
         'satisfaction': 'de satisfaction client',
+        'scroll': 'Défiler',
     },
     'about': {
         'label': 'À PROPOS',
@@ -40,6 +41,7 @@ export default {
     'work': {
         'title': 'Derniers projets',
         'view_all': 'Voir tout',
+        'moreProjects': 'Plus de projets',
     },
     'services': {
         'title': 'Mes services',
@@ -157,7 +159,7 @@ export default {
         'contactCompany': 'chez Patrick Bartosik®',
         'contactName': 'Patrick Bartosik',
         'contactCta': 'Demander directement',
-        'copyright': '© 2025 Patrick Bartosik® Studio',
+        'copyright': '© {year} Patrick Bartosik® Studio',
     },
     'faq': {
         'title': 'Questions<br/>fréquemment<br/>posées',
@@ -188,7 +190,8 @@ export default {
         'legal': 'Légal',
         'legalTerms': 'Conditions d\'utilisation',
         'legalPrivacy': 'Politique de confidentialité',
-        'copyright': '© 2025 Patrick Bartosik. Tous droits réservés.',
+        'copyright': '© {year} Patrick Bartosik. Tous droits réservés.',
+        'availableForProjects': 'Disponible pour des projets',
     },
     'intelligentForm': {
         'step': 'Étape',
