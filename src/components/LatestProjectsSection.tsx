@@ -202,6 +202,9 @@ export const LatestProjectsSection = ({
     useEffect(() => {
         if (!sectionRef.current) return;
 
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) return;
+
         const ctx = gsap.context(() => {
             // Parallax sur le titre
             if (titleRef.current) {
