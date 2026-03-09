@@ -103,8 +103,6 @@ export const SimpleContactForm = () => {
     };
 
     const onSubmit = async (data: ContactFormData) => {
-        console.log("🚀 Soumission du formulaire", data);
-
         // Anti-bot check
         const elapsed = Date.now() - startedAt;
         if (elapsed < 5000) {
@@ -129,8 +127,6 @@ export const SimpleContactForm = () => {
 
             const score = calculateLeadScore(data);
             const category = categorizeLead(score);
-
-            console.log("📊 Lead score:", score, category);
 
             toast.success("Message envoyé avec succès ! Je vous réponds sous 24-48h.");
             form.reset();

@@ -1,7 +1,7 @@
 import { getI18n } from "@/locales/serveur";
 import { setStaticParamsLocale } from "next-international/server";
 import Image from "next/image";
-import { knowledge } from "@/lib/data/knowlege.data";
+import { knowledge } from "@/lib/data/knowledge.data";
 import { lastwork } from "@/lib/data/lastwork.data";
 import { projectTestimonials } from "@/lib/data/testimonials.data";
 import { services } from "@/lib/data/services.data";
