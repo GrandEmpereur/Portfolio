@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Anton, Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
-import { NavBar } from "@/components/navBar";
+import { NavBar } from "@/components/NavBar";
 import { seoConfig, ogLocaleMap } from "@/lib/seo-config";
 import { getI18n } from "@/locales/serveur";
 import { setStaticParamsLocale } from "next-international/server";
@@ -169,7 +169,6 @@ export default async function RootLayout({
       <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID || ''} />
       <body
         className={`${anton.variable} ${inter.variable} antialiased dark:bg-black bg-black`}
-        suppressHydrationWarning
       >
         <a
           href="#main-content"

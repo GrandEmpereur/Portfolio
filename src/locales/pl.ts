@@ -19,6 +19,7 @@ export default {
         'experience': 'lat doświadczenia',
         'projects': 'zrealizowanych projektów',
         'satisfaction': 'zadowolenia klientów',
+        'scroll': 'Przewiń',
     },
     'about': {
         'label': 'O MNIE',
@@ -40,6 +41,7 @@ export default {
     'work': {
         'title': 'Ostatnie projekty',
         'view_all': 'Zobacz wszystko',
+        'moreProjects': 'Więcej projektów',
     },
     'services': {
         'title': 'Moje usługi',
@@ -157,7 +159,7 @@ export default {
         'contactCompany': 'w Patrick Bartosik®',
         'contactName': 'Patrick Bartosik',
         'contactCta': 'Zapytaj bezpośrednio',
-        'copyright': '© 2025 Patrick Bartosik® Studio',
+        'copyright': '© {year} Patrick Bartosik® Studio',
     },
     'faq': {
         'title': 'Często<br/>zadawane<br/>pytania',
@@ -188,7 +190,8 @@ export default {
         'legal': 'Prawne',
         'legalTerms': 'Warunki świadczenia usług',
         'legalPrivacy': 'Polityka prywatności',
-        'copyright': '© 2025 Patrick Bartosik. Wszelkie prawa zastrzeżone.',
+        'copyright': '© {year} Patrick Bartosik. Wszelkie prawa zastrzeżone.',
+        'availableForProjects': 'Dostępny na projekty',
     },
     'intelligentForm': {
         'step': 'Krok',
@@ -356,7 +359,7 @@ export default {
     'meta': {
         'home': {
             'title': 'Patrick Bartosik | Ekspert Next.js & Full Stack Developer Freelance',
-            'description': 'Szukasz Eksperta Next.js? Full Stack Developer ekspert React, Next.js, TypeScript & Node.js. Pomagam startupom i firmom tworzyć wydajne aplikacje webowe z Next.js. Otwartoźródłowy framework React do renderowania po stronie serwera. Specjalista SaaS i Shopify Plus. +4 lata doświadczenia.',
+            'description': 'Freelance Full Stack Developer i ekspert Next.js, React, TypeScript & Node.js. Wydajne aplikacje webowe, SaaS i rozwiązania Shopify Plus.',
             'keywords': 'zatrudnij full stack developer, programista react freelance, programista next.js, full stack developer europa, freelance developer, ekspert react next.js, programista typescript, programista saas, programista ecommerce, programista shopify plus, programista web, programista react typescript, programista nodejs freelance',
         },
         'projects': {

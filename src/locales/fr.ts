@@ -19,6 +19,7 @@ export default {
         'experience': 'ans d\'expérience',
         'projects': 'projets réalisés',
         'satisfaction': 'de satisfaction client',
+        'scroll': 'Défiler',
     },
     'about': {
         'label': 'À PROPOS',
@@ -40,6 +41,7 @@ export default {
     'work': {
         'title': 'Derniers projets',
         'view_all': 'Voir tout',
+        'moreProjects': 'Plus de projets',
     },
     'services': {
         'title': 'Mes services',
@@ -157,7 +159,7 @@ export default {
         'contactCompany': 'chez Patrick Bartosik®',
         'contactName': 'Patrick Bartosik',
         'contactCta': 'Demander directement',
-        'copyright': '© 2025 Patrick Bartosik® Studio',
+        'copyright': '© {year} Patrick Bartosik® Studio',
     },
     'faq': {
         'title': 'Questions<br/>fréquemment<br/>posées',
@@ -188,7 +190,8 @@ export default {
         'legal': 'Légal',
         'legalTerms': 'Conditions d\'utilisation',
         'legalPrivacy': 'Politique de confidentialité',
-        'copyright': '© 2025 Patrick Bartosik. Tous droits réservés.',
+        'copyright': '© {year} Patrick Bartosik. Tous droits réservés.',
+        'availableForProjects': 'Disponible pour des projets',
     },
     'intelligentForm': {
         'step': 'Étape',
@@ -356,7 +359,7 @@ export default {
     'meta': {
         'home': {
             'title': 'Patrick Bartosik | Expert Next.js & Développeur Full Stack Freelance Paris',
-            'description': 'Développeur Full Stack freelance expert Next.js à Paris. Spécialiste React, Next.js, TypeScript & Node.js. J\'aide startups et entreprises à créer des applications web performantes avec Next.js. Framework React open source pour le rendu côté serveur. SaaS, e-commerce Shopify Plus. +4 ans d\'expérience.',
+            'description': 'Développeur Full Stack freelance expert Next.js à Paris. Spécialiste React, TypeScript & Node.js. Applications web, SaaS et e-commerce Shopify Plus.',
             'keywords': 'développeur next.js paris, expert next.js freelance, développeur full stack paris, développeur freelance france, freelance react paris, développeur next.js freelance, expert react next.js, frameworks react, next.js supports, server side, rendu côté serveur, créer des applications web, open source, développeur backend nodejs, développeur shopify plus, expert typescript, freelance full stack, développeur saas, développeur e-commerce, développeur react typescript, développeur web freelance paris, freelance react developer france, développeur angular, développeur nestjs, développeur api rest, développeur graphql, hire react developer france',
         },
         'projects': {

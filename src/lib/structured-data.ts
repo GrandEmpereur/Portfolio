@@ -8,14 +8,29 @@ import { Project } from './data/lastwork.data';
  * @returns Schema.org Person object
  */
 export function getPersonSchema(locale: string) {
+    const jobTitles: Record<string, string> = {
+        en: 'Full Stack Developer',
+        fr: 'Developpeur Full Stack',
+        pl: 'Full Stack Developer',
+    };
+
+    const descriptions: Record<string, string> = {
+        en: 'Freelance Full Stack Developer specializing in React, Next.js, TypeScript and Node.js applications',
+        fr: 'Developpeur Full Stack freelance specialise en React, Next.js, TypeScript et Node.js',
+        pl: 'Freelance Full Stack Developer specjalizujacy sie w React, Next.js, TypeScript i Node.js',
+    };
+
     return {
         '@context': 'https://schema.org',
         '@type': 'Person',
         name: seoConfig.author.name,
         url: seoConfig.author.url,
-        jobTitle: seoConfig.author.jobTitle,
+        jobTitle: jobTitles[locale] || jobTitles.en,
+        description: descriptions[locale] || descriptions.en,
         email: seoConfig.author.email,
         image: `${seoConfig.baseUrl}/images/hero.webp`,
+        inLanguage: locale,
+        knowsLanguage: ['fr', 'en', 'pl'],
         sameAs: [
             seoConfig.social.github,
             seoConfig.social.linkedin,
@@ -110,22 +125,20 @@ export function getBreadcrumbSchema(
     };
 }
 
-// Organization Schema
+// Person Schema (replaces Organization — this is a freelancer portfolio, not a company)
 export function getOrganizationSchema() {
     return {
         '@context': 'https://schema.org',
-        '@type': 'Organization',
-        name: seoConfig.siteName,
+        '@type': 'Person',
+        name: seoConfig.author.name,
         url: seoConfig.baseUrl,
-        logo: `${seoConfig.baseUrl}/images/logo.png`,
-        contactPoint: {
-            '@type': 'ContactPoint',
-            email: seoConfig.author.email,
-            contactType: 'Customer Service',
-        },
+        image: `${seoConfig.baseUrl}/images/hero.webp`,
+        email: seoConfig.author.email,
+        jobTitle: seoConfig.author.jobTitle,
         sameAs: [
             seoConfig.social.github,
             seoConfig.social.linkedin,
+            seoConfig.social.instagram,
         ],
     };
 }
@@ -156,7 +169,7 @@ export function getProfessionalServiceSchema(locale: string) {
                 name: 'France',
             },
             {
-                '@type': 'Country',
+                '@type': 'Continent',
                 name: 'Europe',
             },
         ],

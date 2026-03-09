@@ -66,11 +66,6 @@ export const StatsSection = ({
 
     const statsGridRef = useRef<HTMLDivElement>(null);
 
-    // Debug: Vérifier le délai configuré
-    useEffect(() => {
-        console.log('🎯 Autoplay delay configuré:', 10000, 'ms (10 secondes)');
-    }, []);
-
     useEffect(() => {
         if (!sectionRef.current) return;
 

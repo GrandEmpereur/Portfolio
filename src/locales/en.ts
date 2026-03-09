@@ -19,6 +19,7 @@ export default {
         'experience': 'years of experience',
         'projects': 'completed projects',
         'satisfaction': 'client satisfaction',
+        'scroll': 'Scroll',
     },
     'about': {
         'label': 'ABOUT',
@@ -40,6 +41,7 @@ export default {
     'work': {
         'title': 'Latest work',
         'view_all': 'View all',
+        'moreProjects': 'More Projects',
     },
     'services': {
         'title': 'My services',
@@ -157,7 +159,7 @@ export default {
         'contactCompany': 'at Patrick Bartosik®',
         'contactName': 'Patrick Bartosik',
         'contactCta': 'Ask directly',
-        'copyright': '© 2025 Patrick Bartosik® Studio',
+        'copyright': '© {year} Patrick Bartosik® Studio',
     },
     'faq': {
         'title': 'Frequently<br/>asked<br/>questions',
@@ -188,7 +190,8 @@ export default {
         'legal': 'Legal',
         'legalTerms': 'Terms of Service',
         'legalPrivacy': 'Privacy Policy',
-        'copyright': '© 2025 Patrick Bartosik. All rights reserved.',
+        'copyright': '© {year} Patrick Bartosik. All rights reserved.',
+        'availableForProjects': 'Available for projects',
     },
     'intelligentForm': {
         'step': 'Step',
@@ -356,7 +359,7 @@ export default {
     'meta': {
         'home': {
             'title': 'Patrick Bartosik | Next.js Expert & Freelance Full Stack Developer',
-            'description': 'Looking to hire a Next.js Expert? Freelance Full Stack Developer expert in React, Next.js, TypeScript & Node.js. I help startups and businesses build high-performance web apps with Next.js. Open source React framework for server-side rendering. SaaS & Shopify Plus specialist. Based in France, working worldwide.',
+            'description': 'Freelance Full Stack Developer expert in Next.js, React, TypeScript & Node.js. I build high-performance web apps, SaaS & Shopify Plus solutions.',
             'keywords': 'hire full stack developer, freelance react developer, next.js developer for hire, full stack developer europe, react developer freelance, hire next.js developer, typescript expert, freelance full stack developer, saas developer, ecommerce developer, shopify plus developer, web developer for hire, react typescript developer, nodejs developer freelance, hire web developer france',
         },
         'projects': {

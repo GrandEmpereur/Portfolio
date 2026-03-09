@@ -140,15 +140,6 @@ export function ProjectCard({ project }: ProjectCardProps) {
                 </div>
             </div>
 
-            {/* Keyframes for animations */}
-            <style jsx>{`
-        @keyframes slideUp {
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
         </a>
     );
 }

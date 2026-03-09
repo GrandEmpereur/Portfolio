@@ -1,7 +1,7 @@
 import { getI18n } from "@/locales/serveur";
 import { setStaticParamsLocale } from "next-international/server";
 import Image from "next/image";
-import { knowledge } from "@/lib/data/knowlege.data";
+import { knowledge } from "@/lib/data/knowledge.data";
 import { lastwork } from "@/lib/data/lastwork.data";
 import { projectTestimonials } from "@/lib/data/testimonials.data";
 import { services } from "@/lib/data/services.data";
@@ -163,6 +163,7 @@ export default async function Home({
           ctaSecondary={t('hero.cta_secondary')}
           ctaTertiary={t('hero.download_cv')}
           altText={t('alt.hero')}
+          scrollText={t('hero.scroll')}
         />
 
         {/* About Section - Animation GSAP au scroll */}
@@ -246,7 +247,7 @@ export default async function Home({
             contactCompany: t('contact.contactCompany'),
             contactName: t('contact.contactName'),
             contactCta: t('contact.contactCta'),
-            copyright: t('contact.copyright'),
+            copyright: t('contact.copyright', { year: new Date().getFullYear().toString() }),
           }}
         />
 
@@ -258,7 +259,7 @@ export default async function Home({
           socialLinks={{
             linkedin: seoConfig.social.linkedin,
             github: seoConfig.social.github,
-            instagram: 'https://www.instagram.com/empereur.patrick/',
+            instagram: seoConfig.social.instagram,
             email: seoConfig.author.email,
           }}
         />
@@ -278,12 +279,13 @@ export default async function Home({
           legal: t('footer.legal'),
           legalTerms: t('footer.legalTerms'),
           legalPrivacy: t('footer.legalPrivacy'),
-          copyright: t('footer.copyright'),
+          copyright: t('footer.copyright', { year: new Date().getFullYear().toString() }),
+          availableForProjects: t('footer.availableForProjects'),
         }}
         socialLinks={{
           linkedin: seoConfig.social.linkedin,
           github: seoConfig.social.github,
-          instagram: 'https://instagram.com/patrickbartosik',
+          instagram: seoConfig.social.instagram,
           email: seoConfig.author.email,
         }}
       />

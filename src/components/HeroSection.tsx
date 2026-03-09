@@ -1,9 +1,8 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { gsap, ScrollTrigger } from "@/lib/gsap-config";
+import { gsap, ScrollTrigger, SplitText } from "@/lib/gsap-config";
 import Image from "next/image";
-import SplitType from "split-type";
 import Link from "next/link";
 import heroImage from "../../public/images/hero.webp";
 
@@ -14,6 +13,7 @@ interface HeroSectionProps {
     ctaSecondary: string;
     ctaTertiary: string;
     altText: string;
+    scrollText: string;
 }
 
 export const HeroSection = ({
@@ -23,6 +23,7 @@ export const HeroSection = ({
     ctaSecondary,
     ctaTertiary,
     altText,
+    scrollText,
 }: HeroSectionProps) => {
     const sectionRef = useRef<HTMLElement>(null);
     const titleRef = useRef<HTMLParagraphElement>(null);
@@ -68,9 +69,8 @@ export const HeroSection = ({
                 );
             } else {
                 // Animation complexe lettre par lettre sur desktop
-                const split = new SplitType(nameRef.current!, {
-                    types: "chars",
-                    tagName: "span",
+                const split = new SplitText(nameRef.current!, {
+                    type: "chars",
                 });
 
                 if (split.chars) {
@@ -278,7 +278,7 @@ export const HeroSection = ({
             >
                 <div className="flex flex-col items-center gap-3 opacity-60 hover:opacity-100 transition-opacity cursor-pointer">
                     <span className="text-white/50 text-xs tracking-widest uppercase">
-                        Scroll
+                        {scrollText}
                     </span>
                     <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center p-2 relative overflow-hidden">
                         <div className="w-1 h-3 bg-white/60 rounded-full animate-scroll"></div>
