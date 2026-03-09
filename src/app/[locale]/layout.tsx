@@ -5,6 +5,7 @@ import { Providers } from "./providers";
 import { NavBar } from "@/components/navBar";
 import { seoConfig } from "@/lib/seo-config";
 import { getI18n } from "@/locales/serveur";
+import { setStaticParamsLocale } from "next-international/server";
 import { Toaster } from "@/components/ui/sonner";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { Analytics as VercelAnalytics } from '@vercel/analytics/next';
@@ -27,12 +28,19 @@ const inter = Inter({
   adjustFontFallback: true,
 });
 
+const ogLocaleMap: Record<string, string> = {
+  fr: 'fr_FR',
+  en: 'en_US',
+  pl: 'pl_PL',
+};
+
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  setStaticParamsLocale(locale);
   const t = await getI18n();
 
   const title = t('meta.home.title');
@@ -78,12 +86,12 @@ export async function generateMetadata({
 
     // Alternates for i18n
     alternates: {
-      canonical: locale === seoConfig.defaultLocale ? seoConfig.baseUrl : `${seoConfig.baseUrl}/${locale}`,
+      canonical: locale === seoConfig.defaultLocale ? `${seoConfig.baseUrl}/` : `${seoConfig.baseUrl}/${locale}`,
       languages: {
+        'fr': `${seoConfig.baseUrl}/`,
         'en': `${seoConfig.baseUrl}/en`,
-        'fr': `${seoConfig.baseUrl}`,
         'pl': `${seoConfig.baseUrl}/pl`,
-        'x-default': `${seoConfig.baseUrl}`,
+        'x-default': `${seoConfig.baseUrl}/`,
       },
     },
 
@@ -107,8 +115,8 @@ export async function generateMetadata({
     // Open Graph
     openGraph: {
       type: 'website',
-      locale: locale,
-      url: locale === seoConfig.defaultLocale ? seoConfig.baseUrl : `${seoConfig.baseUrl}/${locale}`,
+      locale: ogLocaleMap[locale] ?? locale,
+      url: locale === seoConfig.defaultLocale ? `${seoConfig.baseUrl}/` : `${seoConfig.baseUrl}/${locale}`,
       title,
       description,
       siteName: seoConfig.siteName,

@@ -1,4 +1,5 @@
 import { getI18n } from "@/locales/serveur";
+import { setStaticParamsLocale } from "next-international/server";
 import Image from "next/image";
 import { knowledge } from "@/lib/data/knowlege.data";
 import { lastwork } from "@/lib/data/lastwork.data";
@@ -17,12 +18,19 @@ import { ContactSection } from "@/components/ContactSection";
 import { FAQSection } from "@/components/FAQSection";
 import { Footer } from "@/components/Footer";
 
+const ogLocaleMap: Record<string, string> = {
+  fr: 'fr_FR',
+  en: 'en_US',
+  pl: 'pl_PL',
+};
+
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  setStaticParamsLocale(locale);
   const t = await getI18n();
 
   const title = t('meta.home.title');
@@ -33,14 +41,20 @@ export async function generateMetadata({
     description,
     keywords: t('meta.home.keywords'),
     alternates: {
-      canonical: locale === seoConfig.defaultLocale ? seoConfig.baseUrl : `${seoConfig.baseUrl}/${locale}`,
+      canonical: locale === seoConfig.defaultLocale ? `${seoConfig.baseUrl}/` : `${seoConfig.baseUrl}/${locale}`,
+      languages: {
+        'fr': `${seoConfig.baseUrl}/`,
+        'en': `${seoConfig.baseUrl}/en`,
+        'pl': `${seoConfig.baseUrl}/pl`,
+        'x-default': `${seoConfig.baseUrl}/`,
+      },
     },
     openGraph: {
       title,
       description,
-      url: locale === seoConfig.defaultLocale ? seoConfig.baseUrl : `${seoConfig.baseUrl}/${locale}`,
+      url: locale === seoConfig.defaultLocale ? `${seoConfig.baseUrl}/` : `${seoConfig.baseUrl}/${locale}`,
       siteName: seoConfig.siteName,
-      locale: locale,
+      locale: ogLocaleMap[locale] ?? locale,
       type: 'website',
       images: [
         {
