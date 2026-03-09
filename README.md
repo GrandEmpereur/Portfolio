@@ -1,371 +1,222 @@
-# 🎨 Patrick Bartosik - Portfolio v2
+# Patrick Bartosik - Portfolio v2
 
-[![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38bdf8?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
-[![GSAP](https://img.shields.io/badge/GSAP-3.0-88CE02?style=for-the-badge&logo=greensock)](https://greensock.com/gsap/)
+[![Next.js](https://img.shields.io/badge/Next.js-16-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-38bdf8?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
+[![GSAP](https://img.shields.io/badge/GSAP-3.14-88CE02?style=for-the-badge&logo=greensock)](https://greensock.com/gsap/)
 
-> Portfolio moderne de développeur Full-Stack spécialisé en e-commerce et solutions Shopify Plus. Conçu avec une architecture Next.js 15, des animations GSAP fluides et un design glassmorphism élégant.
+> Portfolio moderne de Patrick Bartosik, developpeur Full-Stack. Construit avec Next.js 16, React 19, Tailwind CSS v4, des animations GSAP premium et un design dark mode elegant.
 
-[🌐 Voir le Portfolio](https://patrickbartosik.com) • [📧 Contact](mailto:contact@patrickbartosik.com) • [💼 LinkedIn](https://linkedin.com/in/patrickbartosik)
-
----
-
-## ✨ Caractéristiques
-
-### 🎯 Design & UX
-- **Glassmorphism** - Effets de verre modernes avec backdrop-blur
-- **Typographie Hyper-Text** - Titres extra-larges pour un impact visuel fort
-- **Animations GSAP** - Animations fluides et professionnelles (scroll triggers, stagger, parallax)
-- **Responsive Design** - Interface optimisée mobile-first
-- **Dark Mode** - Mode sombre élégant par défaut
-
-### 🚀 Fonctionnalités Techniques
-- **Next.js 15** avec App Router
-- **TypeScript** pour la sécurité des types
-- **Internationalisation** (FR, EN, PL) avec `next-international`
-- **SEO Optimisé** - Metadata dynamique, sitemap, structured data (JSON-LD)
-- **Performance** - Images optimisées avec `next/image`, lazy loading
-- **Analytics** - Intégration Google Analytics 4
-
-### 📦 Sections
-- **Hero** - Présentation dynamique avec animations
-- **About** - Animation mot par mot avec blur reveal
-- **Services** - Cartes glassmorphism avec hover effects
-- **Latest Projects** - Grid de projets avec badges de catégorie
-- **Stats** - Compteurs animés avec GSAP
-- **Testimonials** - Carousel automatique Embla
-- **FAQ** - Accordion glassmorphism
-- **Contact** - Formulaire avec validation et notifications
+[Voir le Portfolio](https://patrick.bartosik.fr) | [GitHub](https://github.com/GrandEmpereur) | [LinkedIn](https://linkedin.com/in/patrick-bartosik)
 
 ---
 
-## 🛠️ Stack Technique
+## Stack Technique
 
 ### Frontend
-```json
-{
-  "framework": "Next.js 15",
-  "language": "TypeScript 5.0",
-  "styling": "Tailwind CSS 3.4",
-  "animations": "GSAP 3.12 + ScrollTrigger",
-  "ui-components": "Radix UI + Shadcn",
-  "icons": "Lucide React",
-  "fonts": "Inter + Anton (Google Fonts)"
-}
-```
 
-### Tooling & Build
-```json
-{
-  "package-manager": "Bun",
-  "linting": "ESLint + Prettier",
-  "deployment": "Vercel",
-  "i18n": "next-international"
-}
-```
+| Technologie | Version | Usage |
+|-------------|---------|-------|
+| Next.js | 16 | App Router, Turbopack, Server Components |
+| React | 19 | UI framework |
+| TypeScript | 5.9 | Typage strict |
+| Tailwind CSS | 4 | Styling utility-first |
+| GSAP | 3.14 | Animations premium (ScrollTrigger, SplitText, Flip, ScrambleText...) |
+| Lenis | 1.3 | Smooth scrolling |
+| shadcn/ui | - | Composants UI (New York style) |
+| Lucide React | - | Icones |
+| Embla Carousel | 8 | Carousel testimonials |
 
-### Intégrations
-- **Email** - Resend (contact form)
-- **Notifications** - Sonner (toast notifications)
-- **Carousel** - Embla Carousel + Autoplay
-- **Analytics** - Google Analytics 4
+### Formulaires & Email
+
+| Technologie | Usage |
+|-------------|-------|
+| react-hook-form + Zod v4 | Validation formulaires |
+| react-email + Resend | Templates email & envoi |
+| libphonenumber-js | Validation telephone |
+| isomorphic-dompurify | Sanitization XSS |
+
+### Tooling & Deploy
+
+| Outil | Usage |
+|-------|-------|
+| Bun | Package manager |
+| Vercel | Deployment + Analytics + Speed Insights |
+| Google Analytics 4 | Analytics |
+| Google Tag Manager | Tag management |
 
 ---
 
-## 🚀 Installation & Démarrage
+## Fonctionnalites
 
-### Prérequis
-- Node.js 18+ ou Bun
-- Git
+### Design & UX
+- **Dark mode** elegant (classe hardcoded)
+- **Animations GSAP** premium (scroll triggers, stagger, parallax, text scramble)
+- **Smooth scrolling** avec Lenis
+- **Responsive** mobile-first
 
-### Installation
+### SEO
+- **Internationalisation** (FR, EN, PL) avec `next-international`
+- **Metadata dynamique** par page et par locale
+- **Structured data** JSON-LD (Person schema)
+- **Sitemap**, **robots.txt**, **manifest**
+- **llms.txt** pour l'optimisation AI search
+- **OG images** et Twitter Cards
+- **Vercel Analytics** + **Speed Insights**
+
+### Sections (Homepage)
+- **Hero** - Presentation dynamique avec animations GSAP
+- **About** - Animation mot par mot avec blur reveal
+- **Services** - Cartes avec hover effects
+- **Latest Projects** - Grid avec badges de categorie (freelance, alternance, scolaire)
+- **Stats** - Compteurs animes GSAP
+- **Knowledge** - Competences techniques
+- **Testimonials** - Carousel automatique Embla
+- **FAQ** - Accordion avec sanitization XSS
+- **Contact** - Formulaire avec lead scoring et validation Zod
+
+### Pages
+- Homepage avec 9 sections
+- Projects
+- Contact (formulaire complet + formulaire simple)
+- Mentions legales
+- Politique de confidentialite
+
+---
+
+## Installation
+
+### Prerequis
+- Bun (recommande) ou Node.js 18+
+
+### Setup
 
 ```bash
 # Cloner le repository
-git clone https://github.com/patrickbartosik/portfolio-v2.git
+git clone https://github.com/GrandEmpereur/portfolio-v2.git
 cd portfolio-v2
 
-# Installer les dépendances avec Bun (recommandé)
+# Installer les dependances
 bun install
-
-# Ou avec npm
-npm install
 ```
 
 ### Variables d'environnement
 
-Créer un fichier `.env.local` à la racine du projet :
+Creer `.env.local` :
 
 ```env
-# Google Analytics
 NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
+NEXT_PUBLIC_GTM_ID=GTM-XXXXXXX
+NEXT_PUBLIC_SITE_URL=https://patrick.bartosik.fr
 
-# Resend API (pour le formulaire de contact)
 RESEND_API_KEY=re_xxxxxxxxxxxxx
-RESEND_FROM_EMAIL=contact@patrickbartosik.com
-RESEND_TO_EMAIL=patrick@example.com
+RESEND_FROM_EMAIL=contact@patrick.bartosik.fr
+RESEND_ADMIN_EMAIL=admin@patrick.bartosik.fr
 ```
 
-### Développement
+### Commandes
 
 ```bash
-# Démarrer le serveur de développement
-bun dev
-
-# Ou avec npm
-npm run dev
-```
-
-Ouvrir [http://localhost:3000](http://localhost:3000) dans votre navigateur.
-
-### Build & Production
-
-```bash
-# Créer un build de production
-bun run build
-
-# Démarrer le serveur de production
-bun start
-
-# Ou avec npm
-npm run build && npm start
+bun dev          # Serveur de developpement (Turbopack)
+bun run build    # Build production
+bun start        # Serveur production
+bun email        # Dev templates email
 ```
 
 ---
 
-## 📁 Structure du Projet
+## Structure du Projet
 
 ```
 portfolio-v2/
+├── .claude/                      # Systeme multi-agents Claude Code
+│   ├── agents/                   # 12 agents specialises
+│   ├── commands/                 # 6 workflows automatises
+│   ├── rules/                    # 8 conventions enforced
+│   ├── agent-memory/             # Memoire persistante agents
+│   ├── settings.json             # Config principale
+│   └── settings.local.json       # Overrides locaux
 ├── public/
-│   ├── images/
-│   │   ├── projects/       # Images des projets
-│   │   └── og-image.svg    # Open Graph image
-│   └── fonts/              # Fonts locales (si nécessaire)
+│   ├── images/                   # Assets images
+│   ├── og/                       # OG images
+│   └── llms.txt                  # AI search optimization
 ├── src/
 │   ├── app/
-│   │   ├── [locale]/       # Routes internationalisées
-│   │   │   ├── layout.tsx  # Layout principal
-│   │   │   ├── page.tsx    # Homepage
-│   │   │   ├── projects/   # Page des projets
-│   │   │   ├── contact/    # Page de contact
-│   │   │   └── ...
-│   │   ├── not-found.tsx   # 404 global
-│   │   ├── sitemap.ts      # Sitemap dynamique
-│   │   └── globals.css     # Styles globaux
+│   │   ├── [locale]/             # Routes internationalisees
+│   │   │   ├── page.tsx          # Homepage
+│   │   │   ├── contact/          # Page contact
+│   │   │   ├── projects/         # Page projets
+│   │   │   ├── mentions-legales/
+│   │   │   └── politique-confidentialite/
+│   │   ├── api/                  # API routes (contact forms)
+│   │   ├── robots.ts             # Robots config
+│   │   ├── sitemap.ts            # Sitemap dynamique
+│   │   └── manifest.ts           # Web manifest
 │   ├── components/
-│   │   ├── ProjectCard.tsx
+│   │   ├── HeroSection.tsx
+│   │   ├── AboutSection.tsx
+│   │   ├── ServicesSection.tsx
 │   │   ├── LatestProjectsSection.tsx
-│   │   ├── ContactForm.tsx
-│   │   ├── Analytics.tsx
-│   │   └── ...
+│   │   ├── StatsSection.tsx
+│   │   ├── KnowledgeSection.tsx
+│   │   ├── ContactSection.tsx
+│   │   ├── FAQSection.tsx
+│   │   └── ui/                   # shadcn/ui components
+│   ├── emails/                   # Templates react-email
 │   ├── lib/
-│   │   ├── data/
-│   │   │   └── lastwork.data.ts    # Données des projets
-│   │   └── structured-data.ts      # JSON-LD schemas
+│   │   ├── data/                 # Donnees statiques (*.data.ts)
+│   │   ├── gsap-config.ts        # Config GSAP (importer depuis ici)
+│   │   ├── seo-config.ts         # Config SEO centralisee
+│   │   ├── structured-data.ts    # JSON-LD schemas
+│   │   ├── contact-schema.ts     # Schema Zod formulaire complet
+│   │   ├── simple-contact-schema.ts
+│   │   └── utils.ts              # cn() utility
 │   ├── locales/
-│   │   ├── en.ts           # Traductions anglaises
-│   │   ├── fr.ts           # Traductions françaises
-│   │   └── pl.ts           # Traductions polonaises
-│   └── types/              # Types TypeScript
-├── DESIGN-SYSTEM.md        # Guide de design
-├── vercel.json             # Configuration Vercel
-└── package.json
+│   │   ├── en.ts / fr.ts / pl.ts # Traductions
+│   │   ├── serveur.ts            # i18n server-side
+│   │   └── client.ts             # i18n client-side
+│   └── types/                    # Types TypeScript
+└── CLAUDE.md                     # Instructions Claude Code
 ```
 
 ---
 
-## 🎨 Design System
+## Systeme Multi-Agents Claude Code
 
-Le portfolio suit un design system cohérent basé sur le **Glassmorphism** et la **typographie Hyper-Text**.
+Ce projet integre un systeme d'orchestration multi-agents via `.claude/` :
 
-### Principes clés
+**12 agents** specialises : scrum-po, architect, business-analyst, frontend-dev, backend-dev, database-analyst, devops, qa-tester, ciso, github-reviewer, ui-ux-designer, seo-expert.
 
-#### 1. Glassmorphism
-```tsx
-// Exemple de carte glassmorphism
-<div className="bg-white/10 backdrop-blur-md rounded-[30px] border border-white/20 shadow-lg">
-  {/* Contenu */}
-</div>
-```
+**6 commandes** : `/review-branch`, `/pr-create`, `/pr-merge`, `/security-audit`, `/sprint-dispatch`, `/e2e-test`.
 
-#### 2. Animations GSAP
-```typescript
-// Animation au scroll
-gsap.from(".element", {
-  opacity: 0,
-  y: 50,
-  duration: 0.8,
-  scrollTrigger: {
-    trigger: ".element",
-    start: "top 80%"
-  }
-});
-```
+**8 regles** enforcees : conventions API, architecture, ClickUp workflow, Prisma, securite, testing, validation multi-agents, conventions web.
 
-#### 3. Typographie
-- **Headings** : Anton (Google Fonts) - Bold, uppercase
-- **Body** : Inter (Google Fonts) - Regular, light
-- **Tailles** : De 140px à 300px pour les titres principaux
-
-Pour plus de détails, consultez [DESIGN-SYSTEM.md](./DESIGN-SYSTEM.md)
+**Chaine de validation** : qa-tester → ciso → business-analyst → scrum-po.
 
 ---
 
-## 📊 Données des Projets
+## Internationalisation
 
-Les projets sont définis dans `src/lib/data/lastwork.data.ts` :
+3 langues supportees :
+- Francais (defaut)
+- Anglais
+- Polonais
 
-```typescript
-export interface Project {
-  title: string;
-  image?: string;
-  bgColor: string;
-  technologies: string[];
-  link?: string;
-  slug: string;
-  description?: string;
-  type: ProjectType; // 'freelance' | 'internship' | 'school'
-  typeLabel: string;
-  company?: string;
-}
-```
-
-### Badges de catégories
-- **Freelance** - Projets clients indépendants
-- **Alternance/CDI** - Projets réalisés en entreprise
-- **Projet Scolaire** - Projets académiques
+Gere par `next-international` avec segment dynamique `[locale]`.
 
 ---
 
-## 🌍 Internationalisation
+## Auteur
 
-Le site supporte 3 langues :
-- 🇫🇷 Français (par défaut)
-- 🇬🇧 Anglais
-- 🇵🇱 Polonais
+**Patrick Bartosik** — Developpeur Full-Stack
 
-### Ajouter une traduction
-
-1. Créer un fichier dans `src/locales/` (ex: `de.ts` pour l'allemand)
-2. Copier la structure de `en.ts`
-3. Traduire tous les textes
-4. Mettre à jour la configuration i18n
-
-```typescript
-// src/locales/de.ts
-export default {
-  hero: {
-    greeting: "Hallo, ich bin",
-    name: "Patrick Bartosik",
-    // ...
-  }
-}
-```
+- Web : [patrick.bartosik.fr](https://patrick.bartosik.fr)
+- GitHub : [@GrandEmpereur](https://github.com/GrandEmpereur)
+- LinkedIn : [patrick-bartosik](https://linkedin.com/in/patrick-bartosik)
 
 ---
 
-## 🚀 Déploiement
+## Licence
 
-### Vercel (Recommandé)
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/patrickbartosik/portfolio-v2)
-
-1. Connecter votre repository GitHub
-2. Configurer les variables d'environnement
-3. Déployer automatiquement à chaque push
-
-### Autres plateformes
-
-Le portfolio est compatible avec :
-- **Netlify**
-- **AWS Amplify**
-- **Cloudflare Pages**
-- **Self-hosted** (Docker)
-
----
-
-## 🎯 Performances
-
-### Lighthouse Score
-- **Performance** : 95+
-- **Accessibility** : 100
-- **Best Practices** : 100
-- **SEO** : 100
-
-### Optimisations
-✅ Images optimisées avec `next/image`  
-✅ Lazy loading des composants  
-✅ Code splitting automatique  
-✅ Minification CSS/JS  
-✅ Compression Gzip/Brotli  
-✅ Cache headers optimisés  
-
----
-
-## 📝 Scripts Disponibles
-
-```bash
-# Développement
-bun dev              # Démarrer le serveur de développement
-bun build            # Build de production
-bun start            # Serveur de production
-bun lint             # Linter ESLint
-bun format           # Formatter avec Prettier
-
-# Tests
-bun test             # Lancer les tests (si configurés)
-bun type-check       # Vérification TypeScript
-```
-
----
-
-## 🤝 Contribution
-
-Les contributions sont les bienvenues ! Voici comment contribuer :
-
-1. Fork le projet
-2. Créer une branche (`git checkout -b feature/AmazingFeature`)
-3. Commit les changements (`git commit -m 'Add some AmazingFeature'`)
-4. Push vers la branche (`git push origin feature/AmazingFeature`)
-5. Ouvrir une Pull Request
-
----
-
-## 📄 License
-
-Ce projet est sous licence **MIT** - voir le fichier [LICENSE](LICENSE) pour plus de détails.
-
----
-
-## 👨‍💻 Auteur
-
-**Patrick Bartosik**  
-Développeur Full-Stack E-commerce & Shopify Plus
-
-- 🌐 Website: [patrickbartosik.com](https://patrickbartosik.com)
-- 💼 LinkedIn: [linkedin.com/in/patrickbartosik](https://linkedin.com/in/patrickbartosik)
-- 📧 Email: contact@patrickbartosik.com
-- 🐙 GitHub: [@patrickbartosik](https://github.com/patrickbartosik)
-
----
-
-## 🙏 Remerciements
-
-- [Next.js](https://nextjs.org/) - Le framework React pour la production
-- [Vercel](https://vercel.com/) - Hébergement et déploiement
-- [GSAP](https://greensock.com/gsap/) - Animations professionnelles
-- [Tailwind CSS](https://tailwindcss.com/) - Framework CSS utility-first
-- [Radix UI](https://www.radix-ui.com/) - Composants UI accessibles
-- [Lucide](https://lucide.dev/) - Icônes SVG magnifiques
-
----
-
-<div align="center">
-
-### ⭐ Si ce projet vous plaît, n'hésitez pas à lui donner une étoile !
-
-Made with ❤️ by [Patrick Bartosik](https://patrickbartosik.com)
-
-</div>
+MIT
