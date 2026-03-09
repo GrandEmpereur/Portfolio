@@ -10,13 +10,13 @@ import { Project } from './data/lastwork.data';
 export function getPersonSchema(locale: string) {
     const jobTitles: Record<string, string> = {
         en: 'Full Stack Developer',
-        fr: 'Developpeur Full Stack',
+        fr: 'Développeur Full Stack',
         pl: 'Full Stack Developer',
     };
 
     const descriptions: Record<string, string> = {
         en: 'Freelance Full Stack Developer specializing in React, Next.js, TypeScript and Node.js applications',
-        fr: 'Developpeur Full Stack freelance specialise en React, Next.js, TypeScript et Node.js',
+        fr: 'Développeur Full Stack freelance spécialisé en React, Next.js, TypeScript et Node.js',
         pl: 'Freelance Full Stack Developer specjalizujacy sie w React, Next.js, TypeScript i Node.js',
     };
 
@@ -29,7 +29,6 @@ export function getPersonSchema(locale: string) {
         description: descriptions[locale] || descriptions.en,
         email: seoConfig.author.email,
         image: `${seoConfig.baseUrl}/images/hero.webp`,
-        inLanguage: locale,
         knowsLanguage: ['fr', 'en', 'pl'],
         sameAs: [
             seoConfig.social.github,
@@ -126,7 +125,7 @@ export function getBreadcrumbSchema(
 }
 
 // Person Schema (replaces Organization — this is a freelancer portfolio, not a company)
-export function getOrganizationSchema() {
+export function getFreelancerPersonSchema() {
     return {
         '@context': 'https://schema.org',
         '@type': 'Person',
