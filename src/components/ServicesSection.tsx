@@ -1,14 +1,9 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { gsap, ScrollTrigger } from "@/lib/gsap-config";
 import Link from "next/link";
 import type { Service } from "@/lib/data/services.data";
-
-if (typeof window !== "undefined") {
-    gsap.registerPlugin(ScrollTrigger);
-}
 
 interface ServicesSectionProps {
     title: string;
@@ -24,6 +19,9 @@ export const ServicesSection = ({ title, services, locale, ctaText }: ServicesSe
 
     useEffect(() => {
         if (!sectionRef.current) return;
+
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) return;
 
         const ctx = gsap.context(() => {
             // Animation du titre avec parallax

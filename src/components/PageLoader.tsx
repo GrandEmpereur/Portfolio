@@ -1,13 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { gsap } from "gsap";
-import { SplitText } from "gsap/SplitText";
-import { CustomEase } from "gsap/CustomEase";
-
-if (typeof window !== "undefined") {
-    gsap.registerPlugin(SplitText, CustomEase);
-}
+import { gsap, SplitText, CustomEase } from "@/lib/gsap-config";
 
 export const PageLoader = () => {
     const loaderRef = useRef<HTMLDivElement>(null);

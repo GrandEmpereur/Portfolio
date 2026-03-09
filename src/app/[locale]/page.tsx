@@ -1,4 +1,5 @@
 import { getI18n } from "@/locales/serveur";
+import { setStaticParamsLocale } from "next-international/server";
 import Image from "next/image";
 import { knowledge } from "@/lib/data/knowlege.data";
 import { lastwork } from "@/lib/data/lastwork.data";
@@ -6,7 +7,7 @@ import { projectTestimonials } from "@/lib/data/testimonials.data";
 import { services } from "@/lib/data/services.data";
 import { getPersonSchema, getWebsiteSchema, getProjectsListSchema, getProfessionalServiceSchema, getFAQSchema, getBreadcrumbSchema } from "@/lib/structured-data";
 import { Metadata } from "next";
-import { seoConfig } from "@/lib/seo-config";
+import { seoConfig, ogLocaleMap } from "@/lib/seo-config";
 import { HeroSection } from "@/components/HeroSection";
 import { AboutSection } from "@/components/AboutSection";
 import { LatestProjectsSection } from "@/components/LatestProjectsSection";
@@ -23,6 +24,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  setStaticParamsLocale(locale);
   const t = await getI18n();
 
   const title = t('meta.home.title');
@@ -33,14 +35,20 @@ export async function generateMetadata({
     description,
     keywords: t('meta.home.keywords'),
     alternates: {
-      canonical: locale === seoConfig.defaultLocale ? seoConfig.baseUrl : `${seoConfig.baseUrl}/${locale}`,
+      canonical: locale === seoConfig.defaultLocale ? `${seoConfig.baseUrl}/` : `${seoConfig.baseUrl}/${locale}`,
+      languages: {
+        'fr': `${seoConfig.baseUrl}/`,
+        'en': `${seoConfig.baseUrl}/en`,
+        'pl': `${seoConfig.baseUrl}/pl`,
+        'x-default': `${seoConfig.baseUrl}/`,
+      },
     },
     openGraph: {
       title,
       description,
-      url: locale === seoConfig.defaultLocale ? seoConfig.baseUrl : `${seoConfig.baseUrl}/${locale}`,
+      url: locale === seoConfig.defaultLocale ? `${seoConfig.baseUrl}/` : `${seoConfig.baseUrl}/${locale}`,
       siteName: seoConfig.siteName,
-      locale: locale,
+      locale: ogLocaleMap[locale] ?? locale,
       type: 'website',
       images: [
         {
@@ -146,7 +154,7 @@ export default async function Home({
         suppressHydrationWarning
       />
 
-      <main className="relative w-full">
+      <main id="main-content" className="relative w-full">
         {/* Hero Section - Split Text Animation */}
         <HeroSection
           title={t('hero.title')}

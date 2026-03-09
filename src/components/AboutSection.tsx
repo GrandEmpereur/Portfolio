@@ -1,12 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-
-if (typeof window !== "undefined") {
-    gsap.registerPlugin(ScrollTrigger);
-}
+import { gsap, ScrollTrigger } from "@/lib/gsap-config";
 
 interface AboutSectionProps {
     label: string;
@@ -23,6 +18,18 @@ export const AboutSection = ({ label, text }: AboutSectionProps) => {
 
     useEffect(() => {
         if (!sectionRef.current) return;
+
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) {
+            // Make words visible immediately when animations are disabled
+            wordsRef.current.forEach((word) => {
+                if (word) {
+                    word.style.opacity = '1';
+                    word.style.filter = 'none';
+                }
+            });
+            return;
+        }
 
         const ctx = gsap.context(() => {
             // Parallax subtil sur le label

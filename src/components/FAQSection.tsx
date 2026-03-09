@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { gsap, ScrollTrigger } from "@/lib/gsap-config";
 import {
     Accordion,
     AccordionContent,
@@ -10,10 +9,6 @@ import {
     AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Github, Instagram, Linkedin, Mail } from "lucide-react";
-
-if (typeof window !== "undefined") {
-    gsap.registerPlugin(ScrollTrigger);
-}
 
 interface FAQ {
     question: string;
@@ -40,6 +35,9 @@ export const FAQSection = ({ title, faqs, socialTitle, socialLinks }: FAQSection
 
     useEffect(() => {
         if (!sectionRef.current) return;
+
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) return;
 
         const ctx = gsap.context(() => {
             // Animation du titre avec scale effect
