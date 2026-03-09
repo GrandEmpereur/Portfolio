@@ -263,21 +263,21 @@ export async function GET(request: NextRequest) {
                 <div class="tool-card">
                     <h4>Facebook Debugger</h4>
                     <p>Vérifiez comment votre image apparaît sur Facebook</p>
-                    <a href="https://developers.facebook.com/tools/debug/" target="_blank">
+                    <a href="https://developers.facebook.com/tools/debug/" target="_blank" rel="noopener noreferrer">
                         Ouvrir l'outil →
                     </a>
                 </div>
                 <div class="tool-card">
                     <h4>Twitter Card Validator</h4>
                     <p>Prévisualisez votre carte Twitter</p>
-                    <a href="https://cards-dev.twitter.com/validator" target="_blank">
+                    <a href="https://cards-dev.twitter.com/validator" target="_blank" rel="noopener noreferrer">
                         Ouvrir l'outil →
                     </a>
                 </div>
                 <div class="tool-card">
                     <h4>LinkedIn Inspector</h4>
                     <p>Testez votre image sur LinkedIn</p>
-                    <a href="https://www.linkedin.com/post-inspector/" target="_blank">
+                    <a href="https://www.linkedin.com/post-inspector/" target="_blank" rel="noopener noreferrer">
                         Ouvrir l'outil →
                     </a>
                 </div>

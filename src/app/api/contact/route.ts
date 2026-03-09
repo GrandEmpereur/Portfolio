@@ -126,9 +126,6 @@ export async function POST(request: NextRequest) {
             {
                 success: true,
                 message: 'Merci ! Votre message a été envoyé avec succès.',
-                emailId: emailResult?.id,
-                leadScore,
-                leadCategory,
             },
             { status: 200 }
         );
