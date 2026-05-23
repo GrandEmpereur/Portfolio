@@ -32,15 +32,6 @@ export async function generateMetadata({
     title,
     description,
     keywords: t('meta.home.keywords'),
-    alternates: {
-      canonical: locale === seoConfig.defaultLocale ? `${seoConfig.baseUrl}/` : `${seoConfig.baseUrl}/${locale}`,
-      languages: {
-        'fr': `${seoConfig.baseUrl}/`,
-        'en': `${seoConfig.baseUrl}/en`,
-        'pl': `${seoConfig.baseUrl}/pl`,
-        'x-default': `${seoConfig.baseUrl}/`,
-      },
-    },
     openGraph: {
       title,
       description,

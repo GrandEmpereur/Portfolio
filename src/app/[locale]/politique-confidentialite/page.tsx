@@ -38,7 +38,7 @@ export async function generateMetadata({
         ? `${seoConfig.baseUrl}/politique-confidentialite`
         : `${seoConfig.baseUrl}/${locale}/politique-confidentialite`,
       languages: {
-        'fr': `${seoConfig.baseUrl}/politique-confidentialite`,
+        'fr-FR': `${seoConfig.baseUrl}/politique-confidentialite`,
         'x-default': `${seoConfig.baseUrl}/politique-confidentialite`,
       },
     },

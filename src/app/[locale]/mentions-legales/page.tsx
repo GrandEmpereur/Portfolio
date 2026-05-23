@@ -38,7 +38,7 @@ export async function generateMetadata({
         ? `${seoConfig.baseUrl}/mentions-legales`
         : `${seoConfig.baseUrl}/${locale}/mentions-legales`,
       languages: {
-        'fr': `${seoConfig.baseUrl}/mentions-legales`,
+        'fr-FR': `${seoConfig.baseUrl}/mentions-legales`,
         'x-default': `${seoConfig.baseUrl}/mentions-legales`,
       },
     },

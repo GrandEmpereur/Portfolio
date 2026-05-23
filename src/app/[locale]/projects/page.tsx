@@ -28,9 +28,9 @@ export async function generateMetadata({
                 ? `${seoConfig.baseUrl}/projects`
                 : `${seoConfig.baseUrl}/${locale}/projects`,
             languages: {
-                'fr': `${seoConfig.baseUrl}/projects`,
-                'en': `${seoConfig.baseUrl}/en/projects`,
-                'pl': `${seoConfig.baseUrl}/pl/projects`,
+                'fr-FR': `${seoConfig.baseUrl}/projects`,
+                'en-US': `${seoConfig.baseUrl}/en/projects`,
+                'pl-PL': `${seoConfig.baseUrl}/pl/projects`,
                 'x-default': `${seoConfig.baseUrl}/projects`,
             },
         },

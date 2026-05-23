@@ -79,13 +79,13 @@ export async function generateMetadata({
       },
     },
 
-    // Alternates for i18n
+    // Alternates for i18n (hreflang codes en BCP 47 — fr-FR, en-US, pl-PL)
     alternates: {
       canonical: locale === seoConfig.defaultLocale ? `${seoConfig.baseUrl}/` : `${seoConfig.baseUrl}/${locale}`,
       languages: {
-        'fr': `${seoConfig.baseUrl}/`,
-        'en': `${seoConfig.baseUrl}/en`,
-        'pl': `${seoConfig.baseUrl}/pl`,
+        'fr-FR': `${seoConfig.baseUrl}/`,
+        'en-US': `${seoConfig.baseUrl}/en`,
+        'pl-PL': `${seoConfig.baseUrl}/pl`,
         'x-default': `${seoConfig.baseUrl}/`,
       },
     },

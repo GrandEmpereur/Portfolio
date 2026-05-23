@@ -30,9 +30,9 @@ export async function generateMetadata({
                 ? `${seoConfig.baseUrl}/contact`
                 : `${seoConfig.baseUrl}/${locale}/contact`,
             languages: {
-                'fr': `${seoConfig.baseUrl}/contact`,
-                'en': `${seoConfig.baseUrl}/en/contact`,
-                'pl': `${seoConfig.baseUrl}/pl/contact`,
+                'fr-FR': `${seoConfig.baseUrl}/contact`,
+                'en-US': `${seoConfig.baseUrl}/en/contact`,
+                'pl-PL': `${seoConfig.baseUrl}/pl/contact`,
                 'x-default': `${seoConfig.baseUrl}/contact`,
             },
         },
