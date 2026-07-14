@@ -170,7 +170,38 @@ export default async function Home({
 
         {/* Services & Approach Section */}
         <ServicesSection
-          label={t('approach.label')}
+          label={t('services.label')}
+          heading={t('services.heading')}
+          categories={[
+            {
+              id: 'ai',
+              code: t('services.categoryAi.code'),
+              name: t('services.categoryAi.name'),
+              tagline: t('services.categoryAi.tagline'),
+              serviceIds: ['ai-integration', 'ai-agents', 'rag-knowledge'],
+            },
+            {
+              id: 'software',
+              code: t('services.categorySoftware.code'),
+              name: t('services.categorySoftware.name'),
+              tagline: t('services.categorySoftware.tagline'),
+              serviceIds: ['web-development', 'saas-development', 'ecommerce', 'api-integration'],
+            },
+          ].map(category => ({
+            id: category.id,
+            code: category.code,
+            name: category.name,
+            tagline: category.tagline,
+            services: services
+              .filter(s => category.serviceIds.includes(s.id))
+              .map(s => ({
+                id: s.id,
+                title: s.title[locale as 'fr' | 'en' | 'pl'] || s.title.fr,
+                description: s.description[locale as 'fr' | 'en' | 'pl'] || s.description.fr,
+                features: s.features[locale as 'fr' | 'en' | 'pl'] || s.features.fr,
+                technologies: s.technologies,
+              })),
+          }))}
           approachTitle={t('approach.title')}
           approachSteps={[
             { title: t('approach.step1.title'), desc: t('approach.step1.desc') },
@@ -178,18 +209,7 @@ export default async function Home({
             { title: t('approach.step3.title'), desc: t('approach.step3.desc') },
             { title: t('approach.step4.title'), desc: t('approach.step4.desc') },
           ]}
-          services={services
-            .filter(s => ['web-development', 'ecommerce', 'saas-development', 'api-integration'].includes(s.id))
-            .map(s => ({
-              id: s.id,
-              icon: s.icon,
-              title: s.title[locale as 'fr' | 'en' | 'pl'] || s.title.fr,
-              description: s.description[locale as 'fr' | 'en' | 'pl'] || s.description.fr,
-              features: s.features[locale as 'fr' | 'en' | 'pl'] || s.features.fr,
-              technologies: s.technologies,
-            }))}
           ctaText={t('services.cta')}
-          locale={locale as 'fr' | 'en' | 'pl'}
         />
 
         {/* Testimonials Section */}

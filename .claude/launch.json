@@ -1,0 +1,26 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "api",
+      "runtimeExecutable": "bun",
+      "runtimeArgs": ["run", "start:dev"],
+      "port": 3000,
+      "cwd": "apps/api"
+    },
+    {
+      "name": "web",
+      "runtimeExecutable": "bun",
+      "runtimeArgs": ["run", "dev"],
+      "port": 3001,
+      "cwd": "apps/web"
+    },
+    {
+      "name": "web-landing",
+      "runtimeExecutable": "bun",
+      "runtimeArgs": ["run", "dev"],
+      "port": 3000,
+      "cwd": "apps/web"
+    }
+  ]
+}

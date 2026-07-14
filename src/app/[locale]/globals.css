@@ -118,6 +118,13 @@
     @apply border-border outline-ring/50;
   }
 
+  /* Prevent horizontal panning on mobile (e.g. off-screen marquee tracks).
+     Only constrain the X axis — Lenis smooth scroll owns the Y axis. */
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-inter), sans-serif;

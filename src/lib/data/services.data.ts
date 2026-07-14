@@ -1,6 +1,9 @@
+export type ServiceCategory = 'ai' | 'software'
+
 export interface Service {
     id: string
     icon: string
+    category: ServiceCategory
     title: {
         fr: string
         en: string
@@ -32,6 +35,7 @@ export interface Service {
 export const services: Service[] = [
     {
         id: 'web-development',
+        category: 'software',
         icon: '🌐',
         title: {
             fr: 'Développement Web Sur Mesure',
@@ -80,6 +84,7 @@ export const services: Service[] = [
     },
     {
         id: 'ecommerce',
+        category: 'software',
         icon: '🛍️',
         title: {
             fr: 'E-commerce & Boutiques en Ligne',
@@ -118,6 +123,7 @@ export const services: Service[] = [
     },
     {
         id: 'saas-development',
+        category: 'software',
         icon: '⚡',
         title: {
             fr: 'Développement SaaS',
@@ -166,6 +172,7 @@ export const services: Service[] = [
     },
     {
         id: 'api-integration',
+        category: 'software',
         icon: '🔌',
         title: {
             fr: 'API & Intégrations',
@@ -204,6 +211,7 @@ export const services: Service[] = [
     },
     {
         id: 'cms-development',
+        category: 'software',
         icon: '📝',
         title: {
             fr: 'CMS Headless & Gestion de Contenu',
@@ -242,6 +250,7 @@ export const services: Service[] = [
     },
     {
         id: 'maintenance',
+        category: 'software',
         icon: '🔧',
         title: {
             fr: 'Maintenance & Support',
@@ -288,9 +297,159 @@ export const services: Service[] = [
             pl: 'Umowa miesięczna',
         },
     },
+    {
+        id: 'ai-integration',
+        category: 'ai',
+        icon: '🤖',
+        title: {
+            fr: 'Intégration IA & LLM',
+            en: 'AI & LLM Integration',
+            pl: 'Integracja AI i LLM',
+        },
+        description: {
+            fr: 'Intégration de modèles de langage (Claude, GPT) dans vos produits : interfaces conversationnelles, génération de contenu, extraction de données et fonctionnalités intelligentes en production.',
+            en: 'Integrating language models (Claude, GPT) into your products: conversational interfaces, content generation, data extraction, and intelligent features shipped to production.',
+            pl: 'Integracja modeli językowych (Claude, GPT) z Twoimi produktami: interfejsy konwersacyjne, generowanie treści, ekstrakcja danych i inteligentne funkcje w produkcji.',
+        },
+        features: {
+            fr: [
+                'Interfaces conversationnelles avec streaming',
+                'Génération et transformation de contenu',
+                'Extraction de données structurées (Zod)',
+                'Choix du modèle et maîtrise des coûts',
+                'Évaluation et fiabilisation des sorties',
+            ],
+            en: [
+                'Conversational interfaces with streaming',
+                'Content generation and transformation',
+                'Structured data extraction (Zod)',
+                'Model selection and cost control',
+                'Output evaluation and reliability',
+            ],
+            pl: [
+                'Interfejsy konwersacyjne ze streamingiem',
+                'Generowanie i transformacja treści',
+                'Ekstrakcja danych strukturalnych (Zod)',
+                'Dobór modelu i kontrola kosztów',
+                'Ewaluacja i niezawodność wyników',
+            ],
+        },
+        technologies: ['Vercel AI SDK', 'Claude API', 'OpenAI API', 'Azure AI Foundry', 'Next.js'],
+        pricing: {
+            fr: 'À partir de 4 000€',
+            en: 'Starting from €4,000',
+            pl: 'Od 4 000€',
+        },
+        deliveryTime: {
+            fr: '2-6 semaines',
+            en: '2-6 weeks',
+            pl: '2-6 tygodni',
+        },
+    },
+    {
+        id: 'ai-agents',
+        category: 'ai',
+        icon: '🦾',
+        title: {
+            fr: 'Agents IA & Automatisation',
+            en: 'AI Agents & Automation',
+            pl: 'Agenci AI i Automatyzacja',
+        },
+        description: {
+            fr: 'Conception d\'agents autonomes et de workflows automatisés qui exécutent vos processus métier : support client, qualification de leads, traitement de documents.',
+            en: 'Building autonomous agents and automated workflows that run your business processes: customer support, lead qualification, document processing.',
+            pl: 'Tworzenie autonomicznych agentów i zautomatyzowanych workflow, które obsługują Twoje procesy biznesowe: wsparcie klienta, kwalifikacja leadów, przetwarzanie dokumentów.',
+        },
+        features: {
+            fr: [
+                'Agents autonomes avec outils (tool use, MCP)',
+                'Workflows d\'automatisation (n8n, cron)',
+                'Chatbots support et qualification de leads',
+                'Traitement automatisé de documents',
+                'Garde-fous, monitoring et coûts maîtrisés',
+            ],
+            en: [
+                'Autonomous agents with tools (tool use, MCP)',
+                'Automation workflows (n8n, cron)',
+                'Support chatbots and lead qualification',
+                'Automated document processing',
+                'Guardrails, monitoring, and cost control',
+            ],
+            pl: [
+                'Autonomiczni agenci z narzędziami (tool use, MCP)',
+                'Workflow automatyzacji (n8n, cron)',
+                'Chatboty wsparcia i kwalifikacja leadów',
+                'Automatyczne przetwarzanie dokumentów',
+                'Zabezpieczenia, monitoring i kontrola kosztów',
+            ],
+        },
+        technologies: ['Claude Agent SDK', 'MCP', 'Azure AI Foundry', 'n8n', 'Node.js'],
+        pricing: {
+            fr: 'À partir de 6 000€',
+            en: 'Starting from €6,000',
+            pl: 'Od 6 000€',
+        },
+        deliveryTime: {
+            fr: '4-10 semaines',
+            en: '4-10 weeks',
+            pl: '4-10 tygodni',
+        },
+    },
+    {
+        id: 'rag-knowledge',
+        category: 'ai',
+        icon: '📚',
+        title: {
+            fr: 'RAG & Bases de Connaissances',
+            en: 'RAG & Knowledge Bases',
+            pl: 'RAG i Bazy Wiedzy',
+        },
+        description: {
+            fr: 'Vos documents deviennent une base de connaissances interrogeable en langage naturel : recherche sémantique, réponses sourcées et à jour, sans hallucinations.',
+            en: 'Turn your documents into a knowledge base you can query in plain language: semantic search, sourced and up-to-date answers, without hallucinations.',
+            pl: 'Twoje dokumenty stają się bazą wiedzy dostępną w języku naturalnym: wyszukiwanie semantyczne, odpowiedzi ze źródłami, bez halucynacji.',
+        },
+        features: {
+            fr: [
+                'Recherche sémantique (embeddings, pgvector)',
+                'Pipeline d\'ingestion de documents',
+                'Réponses citées et vérifiables',
+                'Chat interne sur vos données privées',
+                'Mise à jour continue des connaissances',
+            ],
+            en: [
+                'Semantic search (embeddings, pgvector)',
+                'Document ingestion pipeline',
+                'Cited, verifiable answers',
+                'Internal chat over your private data',
+                'Continuously updated knowledge',
+            ],
+            pl: [
+                'Wyszukiwanie semantyczne (embeddings, pgvector)',
+                'Pipeline pozyskiwania dokumentów',
+                'Cytowane, weryfikowalne odpowiedzi',
+                'Wewnętrzny czat na prywatnych danych',
+                'Stale aktualizowana wiedza',
+            ],
+        },
+        technologies: ['pgvector', 'Supabase', 'Vercel AI SDK', 'PostgreSQL', 'Next.js'],
+        pricing: {
+            fr: 'À partir de 5 000€',
+            en: 'Starting from €5,000',
+            pl: 'Od 5 000€',
+        },
+        deliveryTime: {
+            fr: '3-8 semaines',
+            en: '3-8 weeks',
+            pl: '3-8 tygodni',
+        },
+    },
 ]
 
 // Helper functions
+export function getServicesByCategory(category: ServiceCategory): Service[] {
+    return services.filter(service => service.category === category)
+}
 export function getServiceById(id: string): Service | undefined {
     return services.find(service => service.id === id)
 }

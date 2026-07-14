@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { gsap, ScrollTrigger } from "@/lib/gsap-config";
+import { useRef } from "react";
 import Image from "next/image";
+import { gsap, useGSAP } from "@/lib/gsap-config";
 
 interface AboutSectionProps {
     label: string;
@@ -11,13 +11,12 @@ interface AboutSectionProps {
     facts: string[];
 }
 
-const renderWords = (text: string) => {
-    return text.split(" ").map((word, i) => (
-        <span key={i} className="word-reveal inline-block mr-[0.3em]">
+const renderWords = (text: string) =>
+    text.split(" ").map((word, i) => (
+        <span key={i} className="word-reveal mr-[0.3em] inline-block">
             {word}
         </span>
     ));
-};
 
 export const AboutSection = ({
     label,
@@ -26,111 +25,131 @@ export const AboutSection = ({
     facts,
 }: AboutSectionProps) => {
     const sectionRef = useRef<HTMLElement>(null);
-    const textRef = useRef<HTMLDivElement>(null);
-    const factsRef = useRef<HTMLDivElement>(null);
+    const leadRef = useRef<HTMLParagraphElement>(null);
+    const imageWrapRef = useRef<HTMLDivElement>(null);
+    const imageRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
-        if (!sectionRef.current) return;
+    useGSAP(
+        () => {
+            if (!sectionRef.current) return;
 
-        const prefersReducedMotion = window.matchMedia(
-            "(prefers-reduced-motion: reduce)"
-        ).matches;
+            const prefersReducedMotion = window.matchMedia(
+                "(prefers-reduced-motion: reduce)",
+            ).matches;
+            if (prefersReducedMotion) return;
 
-        if (prefersReducedMotion) {
-            const words =
-                sectionRef.current.querySelectorAll<HTMLElement>(".word-reveal");
-            words.forEach((word) => {
-                word.style.opacity = "1";
-                word.style.filter = "none";
-            });
-            return;
-        }
-
-        const ctx = gsap.context(() => {
-            // Word reveal on text
-            const words =
-                sectionRef.current!.querySelectorAll(".word-reveal");
-            gsap.from(words, {
-                opacity: 0,
-                filter: "blur(8px)",
-                duration: 0.6,
-                stagger: 0.03,
+            // Lead paragraph — word-by-word reveal
+            gsap.from(sectionRef.current.querySelectorAll(".word-reveal"), {
+                opacity: 0.15,
+                filter: "blur(6px)",
+                duration: 0.5,
+                stagger: 0.02,
                 ease: "power2.out",
                 scrollTrigger: {
-                    trigger: textRef.current,
+                    trigger: leadRef.current,
                     start: "top 80%",
                     once: true,
                 },
             });
 
-            // Facts stagger
-            const factItems =
-                sectionRef.current!.querySelectorAll(".fact-item");
-            gsap.from(factItems, {
-                opacity: 0,
-                y: 20,
-                duration: 0.6,
-                stagger: 0.1,
-                ease: "power2.out",
-                scrollTrigger: {
-                    trigger: factsRef.current,
-                    start: "top 85%",
-                    once: true,
-                },
-            });
+            // Body copy + facts
+            sectionRef.current
+                .querySelectorAll<HTMLElement>("[data-animate-item]")
+                .forEach((item) => {
+                    gsap.from(item, {
+                        y: 40,
+                        opacity: 0,
+                        duration: 0.9,
+                        ease: "power3.out",
+                        scrollTrigger: {
+                            trigger: item,
+                            start: "top 85%",
+                            once: true,
+                        },
+                    });
+                });
 
-        }, sectionRef);
-
-        return () => ctx.revert();
-    }, []);
+            // Subtle photo parallax
+            if (imageWrapRef.current && imageRef.current) {
+                gsap.fromTo(
+                    imageRef.current,
+                    { yPercent: -6 },
+                    {
+                        yPercent: 6,
+                        ease: "none",
+                        scrollTrigger: {
+                            trigger: imageWrapRef.current,
+                            start: "top bottom",
+                            end: "bottom top",
+                            scrub: true,
+                        },
+                    },
+                );
+            }
+        },
+        { scope: sectionRef },
+    );
 
     return (
         <section
             ref={sectionRef}
-            className="relative py-24 md:py-32 lg:py-40 bg-black"
+            className="relative bg-black py-24 md:py-32 lg:py-40"
         >
-            <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 lg:px-20">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-                    {/* Text Column */}
-                    <div className="lg:col-span-7" ref={textRef}>
-                        <p className="text-xs md:text-sm tracking-[0.3em] text-white/40 uppercase font-light mb-8 md:mb-12">
-                            {label}
+            <div className="mx-auto max-w-7xl px-6 sm:px-8 md:px-12 lg:px-20">
+                <p className="mb-10 text-xs font-light uppercase tracking-[0.3em] text-white/40 md:mb-14 md:text-sm">
+                    {label}
+                </p>
+
+                {/* Lead — the thesis, in large type */}
+                <p
+                    ref={leadRef}
+                    className="max-w-4xl text-xl font-light leading-relaxed text-white/90 md:text-2xl lg:text-[1.75rem] lg:leading-[1.5]"
+                >
+                    {renderWords(text)}
+                </p>
+
+                <div className="mt-16 grid grid-cols-1 gap-12 md:mt-24 lg:grid-cols-12 lg:gap-16">
+                    {/* Photo — treated like a film still */}
+                    <div className="lg:col-span-5" data-animate-item>
+                        <div
+                            ref={imageWrapRef}
+                            className="relative aspect-[4/3] overflow-hidden rounded-lg lg:aspect-[3/4]"
+                        >
+                            <div ref={imageRef} className="absolute -inset-y-[8%] inset-x-0">
+                                <Image
+                                    src="/images/hero.webp"
+                                    alt="Patrick Bartosik"
+                                    fill
+                                    className="object-cover"
+                                    sizes="(max-width: 1024px) 100vw, 40vw"
+                                    quality={80}
+                                />
+                            </div>
+                        </div>
+                        <p className="mt-3 font-mono text-xs tracking-widest text-white/30">
+                            PATRICK BARTOSIK · PARIS, FR
                         </p>
-                        <p className="text-lg md:text-xl lg:text-2xl leading-relaxed text-white/80 mb-6">
-                            {renderWords(text)}
-                        </p>
-                        <p className="text-lg md:text-xl lg:text-2xl leading-relaxed text-white/80">
-                            {renderWords(text2)}
+                    </div>
+
+                    {/* Body copy + facts */}
+                    <div className="flex flex-col lg:col-span-7">
+                        <p
+                            data-animate-item
+                            className="text-base font-light leading-relaxed text-white/60 md:text-lg"
+                        >
+                            {text2}
                         </p>
 
-                        {/* Facts */}
-                        <div
-                            ref={factsRef}
-                            className="flex flex-wrap gap-x-8 gap-y-3 mt-8 md:mt-12"
-                        >
-                            {facts.map((fact, i) => (
+                        <div className="mt-12 lg:mt-auto" data-animate-item>
+                            {facts.map((fact) => (
                                 <div
-                                    key={i}
-                                    className="fact-item flex items-center gap-2 text-sm text-white/50"
+                                    key={fact}
+                                    className="flex items-center gap-4 border-t border-white/10 py-4 text-sm text-white/60 last:border-b"
                                 >
-                                    <span className="w-4 h-px bg-white/30" />
+                                    <span className="h-px w-4 bg-white/30" />
                                     {fact}
                                 </div>
                             ))}
-                        </div>
-                    </div>
-
-                    {/* Photo Column */}
-                    <div className="lg:col-span-5 mt-12 lg:mt-0">
-                        <div className="relative aspect-[4/3] lg:aspect-[3/4] overflow-hidden rounded-lg border border-white/5">
-                            <Image
-                                src="/images/hero.webp"
-                                alt="Patrick Bartosik"
-                                fill
-                                className="object-cover"
-                                sizes="(max-width: 1024px) 100vw, 40vw"
-                                quality={80}
-                            />
                         </div>
                     </div>
                 </div>

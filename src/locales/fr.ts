@@ -23,8 +23,8 @@ export default {
     },
     'about': {
         'label': 'À propos',
-        'text': 'Développeur Full Stack freelance basé à Paris, je transforme des idées ambitieuses en applications web performantes et élégantes. Spécialiste Next.js, React et TypeScript, j\'accompagne startups, scale-ups et grandes entreprises dans la création d\'expériences numériques qui marquent les esprits. Mon expertise couvre l\'ensemble de la chaîne technique : du design d\'interfaces utilisateur modernes au développement backend avec Node.js, NestJS et bases de données PostgreSQL ou MongoDB, jusqu\'au déploiement sur Vercel, AWS ou des infrastructures dédiées.',
-        'text2': 'Mon approche : un code propre, des performances optimales et un design qui sert l\'expérience utilisateur. Du server-side rendering au static site generation, de l\'intégration d\'APIs REST et GraphQL aux architectures microservices, je maîtrise toute la chaîne. Je travaille avec des outils modernes — Next.js App Router, React 19, Tailwind CSS, Prisma, Drizzle, GSAP pour les animations premium — et j\'applique les meilleures pratiques d\'accessibilité (WCAG), de SEO technique et de Core Web Vitals pour garantir des sites qui convertissent et qui se positionnent durablement sur Google.',
+        'text': 'Développeur Full Stack freelance basé à Paris, je construis des produits web et des fonctionnalités IA qui arrivent réellement en production. Spécialiste Next.js, React et TypeScript, j\'accompagne startups, scale-ups et grandes entreprises pour transformer des idées ambitieuses en applications robustes, du design d\'interfaces modernes au développement backend avec Node.js, NestJS et PostgreSQL, jusqu\'au déploiement sur Vercel ou infrastructure dédiée.',
+        'text2': 'Mon travail couvre aujourd\'hui deux pratiques. L\'ingénierie logicielle : rendu côté serveur, APIs REST et GraphQL, architectures microservices. Et l\'intelligence artificielle : intégration de LLM (Claude, OpenAI, Azure AI Foundry), agents autonomes et bases de connaissances RAG sur vos données privées. Avec les mêmes exigences partout : code propre, accessibilité (WCAG), SEO technique et Core Web Vitals, pour des produits performants qui convertissent et se positionnent durablement sur Google.',
         'fact1': '5+ ans d\'expérience',
         'fact2': '20+ projets livrés',
         'fact3': 'Basé à Paris, France',
@@ -48,8 +48,20 @@ export default {
     },
     'services': {
         'title': 'Mes services',
+        'label': 'Services',
+        'heading': 'Ce que je construis',
         'cta': 'Discuter du projet',
         'learnMore': 'En savoir plus',
+        'categoryAi': {
+            'code': 'IA',
+            'name': 'Intelligence Artificielle',
+            'tagline': 'Des fonctionnalités IA qui arrivent réellement en production, pas des démos.',
+        },
+        'categorySoftware': {
+            'code': 'SE',
+            'name': 'Software Engineering',
+            'tagline': 'Des produits web solides, du front-end à l\'infrastructure.',
+        },
         'webDev': {
             'title': 'Développement Web',
             'description': 'Création de sites web modernes et performants avec Next.js et les frameworks React. Je développe des applications web avec rendu côté serveur pour des performances optimales.',

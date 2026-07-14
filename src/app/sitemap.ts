@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { seoConfig, ogLocaleMap } from '@/lib/seo-config';
+import { lastwork } from '@/lib/data/lastwork.data';
 
 type ChangeFreq = 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never';
 
@@ -27,10 +28,22 @@ const buildLanguagesMap = (path: string): Record<string, string> => {
 export default function sitemap(): MetadataRoute.Sitemap {
     const lastModified = new Date();
 
+    // Project detail pages — only slugs with a real on-site page. Projects
+    // with an external `link` soft-redirect off-site (meta refresh), so they
+    // must stay out of the sitemap until they get real case-study pages.
+    const projectPages: PageEntry[] = lastwork
+        .filter((project) => !project.link)
+        .map((project) => ({
+            path: `/projects/${project.slug}`,
+            priority: 0.7,
+            changeFrequency: 'monthly' as ChangeFreq,
+        }));
+
     const multilingualPages: PageEntry[] = [
         { path: '', priority: 1.0, changeFrequency: 'weekly' },
         { path: '/projects', priority: 0.9, changeFrequency: 'weekly' },
         { path: '/contact', priority: 0.8, changeFrequency: 'monthly' },
+        ...projectPages,
     ];
 
     const frenchOnlyPages: PageEntry[] = [

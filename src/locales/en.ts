@@ -23,8 +23,8 @@ export default {
     },
     'about': {
         'label': 'About',
-        'text': 'Freelance Full Stack Developer based in Paris, I turn ambitious ideas into high-performance, elegant web applications. Specializing in Next.js, React and TypeScript, I help startups, scale-ups and large companies build memorable digital experiences. My expertise covers the entire technical chain: from modern UI design to backend development with Node.js, NestJS, and PostgreSQL or MongoDB databases, all the way to deployment on Vercel, AWS, or dedicated infrastructure.',
-        'text2': 'My approach: clean code, optimal performance, and design that serves the user experience. From server-side rendering to static site generation, from REST and GraphQL API integration to microservices architectures, I master the entire stack. I work with modern tools — Next.js App Router, React 19, Tailwind CSS, Prisma, Drizzle, GSAP for premium animations — and I apply best practices in accessibility (WCAG), technical SEO, and Core Web Vitals to ensure sites that convert and rank durably on Google.',
+        'text': 'Freelance Full Stack Developer based in Paris, I build web products and AI features that actually ship to production. Specializing in Next.js, React and TypeScript, I help startups, scale-ups and large companies turn ambitious ideas into robust applications, from modern UI design to backend development with Node.js, NestJS and PostgreSQL, all the way to deployment on Vercel or dedicated infrastructure.',
+        'text2': 'My work now spans two practices. Software engineering: server-side rendering, REST and GraphQL APIs, microservices architectures. And artificial intelligence: LLM integration (Claude, OpenAI, Azure AI Foundry), autonomous agents, and RAG knowledge bases over your private data. The same standards apply everywhere: clean code, accessibility (WCAG), technical SEO and Core Web Vitals, for high-performing products that convert and rank durably on Google.',
         'fact1': '5+ years of experience',
         'fact2': '20+ projects delivered',
         'fact3': 'Based in Paris, France',
@@ -48,8 +48,20 @@ export default {
     },
     'services': {
         'title': 'My services',
+        'label': 'Services',
+        'heading': 'What I build',
         'cta': 'Discuss the project',
         'learnMore': 'Learn more',
+        'categoryAi': {
+            'code': 'AI',
+            'name': 'Artificial Intelligence',
+            'tagline': 'AI features that actually ship to production, not demos.',
+        },
+        'categorySoftware': {
+            'code': 'SE',
+            'name': 'Software Engineering',
+            'tagline': 'Robust web products, from front-end to infrastructure.',
+        },
         'webDev': {
             'title': 'Web Development',
             'description': 'Creating modern and performant websites with Next.js and React frameworks. I develop web applications with server-side rendering for optimal performance.',

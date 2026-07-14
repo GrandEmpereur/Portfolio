@@ -3,9 +3,6 @@
   "env": {
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
   },
-  "worktree": {
-    "symlinkDirectories": ["node_modules", ".turbo"]
-  },
   "permissions": {
     "allow": [
       "Bash(git status)",
@@ -16,10 +13,8 @@
       "Bash(git commit *)",
       "Bash(git checkout *)",
       "Bash(git stash *)",
-      "Bash(git push *)",
-      "Bash(git worktree *)",
-      "Bash(git mv *)",
-      "Bash(gh *)",
+      "Bash(git merge *)",
+      "Bash(gh pr merge *)",
       "Bash(bun run *)",
       "Bash(bun install *)",
       "Bash(bun add *)",
@@ -45,15 +40,10 @@
       "Bash(wc *)",
       "Bash(head *)",
       "Bash(tail *)",
-      "Bash(sort *)"
+      "Bash(sort *)",
+      "Bash(.claude/hooks/*)"
     ],
     "deny": [
-      "Read(./.env)",
-      "Read(./.env.*)",
-      "Read(./apps/api/.env)",
-      "Read(./apps/api/.env.*)",
-      "Read(./apps/web/.env)",
-      "Read(./apps/web/.env.*)",
       "Bash(curl *)",
       "Bash(wget *)",
       "Bash(rm -rf *)",
@@ -68,7 +58,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "echo \"CONTEXT REMINDER: Read CLAUDE.md for project stack and conventions. Agents: scrum-po, architect, business-analyst, frontend-dev, backend-dev, database-analyst, devops, qa-tester, ciso, ui-ux-designer, github-reviewer, seo-expert. Commands: /review-branch, /pr-create, /pr-merge, /security-audit, /sprint-dispatch, /e2e-test. Plugins: code-review, pr-review-toolkit, superpowers, playwright, security-guidance, frontend-design, ui-ux-pro-max, figma, vercel, stripe, code-simplifier. ClickUp workflow: BACKLOG->EN COURS->TESTING->EN REVUE (if fail)->TESTING->TERMINE. Assignee: Patrick Bartosik. Sprints: 1 mois.\""
+            "command": "echo \"CONTEXT REMINDER: Monorepo Turborepo+Bun. API=NestJS 11 (apps/api port 3000). Web=Next.js 15 (apps/web port 3001). UI=packages/ui (shadcn). DB=Prisma+PostgreSQL. Validation=Zod only. Auth=sessions Redis. Agents: scrum-po, business-analyst, frontend-dev, backend-dev, database-analyst, devops, qa-tester, ciso. OBSIDIAN VAULT: ~/Documents/Obsidian/Nutricert — auto-doc FD+TD after each merged feature per .claude/rules/obsidian-documentation.md\""
           }
         ]
       }
@@ -82,6 +72,26 @@
             "command": "file=\"$(echo $CLAUDE_TOOL_INPUT | jq -r '.file_path // .path // empty')\"; if [ -n \"$file\" ] && echo \"$file\" | grep -qE '\\.(ts|tsx|js|jsx|json|css|md)$'; then npx prettier --write \"$file\" 2>/dev/null || true; fi"
           }
         ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/obsidian-doc-trigger.sh"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo \"📚 Obsidian vault active: ~/Documents/Obsidian/Nutricert — auto-doc FD+TD after each merged feature (rule: .claude/rules/obsidian-documentation.md)\""
+          }
+        ]
       }
     ],
     "Notification": [
@@ -90,10 +100,16 @@
         "hooks": [
           {
             "type": "command",
-            "command": "osascript -e 'display notification \"Claude Code needs attention\" with title \"Claude Code\"' 2>/dev/null || true"
+            "command": "osascript -e 'display notification \"Claude Code needs attention\" with title \"NutriCert\"' 2>/dev/null || true"
           }
         ]
       }
+    ]
+  },
+  "worktree": {
+    "symlinkDirectories": [
+      "node_modules",
+      ".turbo"
     ]
   }
 }

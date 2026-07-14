@@ -43,3 +43,9 @@ docs/*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# other 
+.playwright-mcp
+.impeccable
+.remember
+screenshots

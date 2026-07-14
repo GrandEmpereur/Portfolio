@@ -23,8 +23,8 @@ export default {
     },
     'about': {
         'label': 'O mnie',
-        'text': 'Freelance Full Stack Developer z siedzibą w Paryżu, zamieniam ambitne pomysły w wydajne i eleganckie aplikacje webowe. Specjalizuję się w Next.js, React i TypeScript, pomagając startupom, scale-upom i dużym firmom tworzyć niezapomniane doświadczenia cyfrowe. Moja ekspertyza obejmuje cały łańcuch techniczny: od nowoczesnego projektowania UI po backend z Node.js, NestJS, bazami danych PostgreSQL i MongoDB, aż po wdrożenie na Vercel, AWS lub dedykowanej infrastrukturze.',
-        'text2': 'Moje podejście: czysty kod, optymalna wydajność i design służący doświadczeniu użytkownika. Od server-side rendering po static site generation, od integracji API REST i GraphQL po architekturę mikroserwisów — opanowałem cały stos. Pracuję z nowoczesnymi narzędziami — Next.js App Router, React 19, Tailwind CSS, Prisma, Drizzle, GSAP do animacji premium — i stosuję najlepsze praktyki dostępności (WCAG), technicznego SEO oraz Core Web Vitals, aby zapewnić strony, które konwertują i utrzymują trwałe pozycje w Google.',
+        'text': 'Freelance Full Stack Developer z siedzibą w Paryżu, buduję produkty webowe i funkcje AI, które naprawdę trafiają do produkcji. Specjalizuję się w Next.js, React i TypeScript, pomagam startupom, scale-upom i dużym firmom zamieniać ambitne pomysły w solidne aplikacje, od nowoczesnego projektowania UI po backend z Node.js, NestJS i PostgreSQL, aż po wdrożenie na Vercel lub dedykowanej infrastrukturze.',
+        'text2': 'Moja praca obejmuje dziś dwie dziedziny. Inżynieria oprogramowania: renderowanie po stronie serwera, API REST i GraphQL, architektury mikroserwisów. Oraz sztuczna inteligencja: integracja LLM (Claude, OpenAI, Azure AI Foundry), autonomiczni agenci i bazy wiedzy RAG na Twoich prywatnych danych. Wszędzie te same standardy: czysty kod, dostępność (WCAG), techniczne SEO i Core Web Vitals, czyli produkty, które konwertują i trwale pozycjonują się w Google.',
         'fact1': '5+ lat doświadczenia',
         'fact2': '20+ zrealizowanych projektów',
         'fact3': 'Paryż, Francja',
@@ -48,8 +48,20 @@ export default {
     },
     'services': {
         'title': 'Moje usługi',
+        'label': 'Usługi',
+        'heading': 'Co buduję',
         'cta': 'Omów projekt',
         'learnMore': 'Dowiedz się więcej',
+        'categoryAi': {
+            'code': 'AI',
+            'name': 'Sztuczna Inteligencja',
+            'tagline': 'Funkcje AI, które naprawdę trafiają do produkcji, nie dema.',
+        },
+        'categorySoftware': {
+            'code': 'SE',
+            'name': 'Inżynieria Oprogramowania',
+            'tagline': 'Solidne produkty webowe, od front-endu po infrastrukturę.',
+        },
         'webDev': {
             'title': 'Tworzenie stron internetowych',
             'description': 'Tworzenie nowoczesnych i wydajnych stron internetowych z Next.js i frameworkami React. Tworzę aplikacje webowe z renderowaniem po stronie serwera dla optymalnej wydajności.',

@@ -111,6 +111,19 @@ export const HeroSection = ({
             ref={sectionRef}
             className="relative min-h-screen w-full flex items-end overflow-hidden bg-black"
         >
+            {/* Background image */}
+            <div className="absolute inset-0 z-0">
+                <Image
+                    src="/images/hero.PNG"
+                    alt=""
+                    fill
+                    priority
+                    sizes="100vw"
+                    className="object-cover object-[35%_center] md:object-center"
+                />
+                <div className="absolute inset-0 bg-black/50" />
+                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/70 to-transparent" />
+            </div>
 
             {/* Availability badge - top right */}
             <div
@@ -128,7 +141,7 @@ export const HeroSection = ({
                 </div>
             </div>
 
-            <div className="relative z-10 w-full px-6 sm:px-8 md:px-12 lg:px-20 pb-24 sm:pb-32 md:pb-40">
+            <div className="relative z-10 w-full px-6 sm:px-8 md:px-12 lg:px-20 pb-24 sm:pb-32 md:pb-40 flex flex-col items-end text-right">
                 <p
                     ref={labelRef}
                     className="text-xs md:text-sm text-white/50 font-light tracking-[0.3em] uppercase mb-6 sm:mb-8 lg:mb-10"
@@ -138,7 +151,7 @@ export const HeroSection = ({
 
                 <h1
                     ref={nameRef}
-                    className="text-[clamp(3rem,10vw,12rem)] font-bold leading-[0.9] tracking-tight text-white uppercase"
+                    className="text-[clamp(2.5rem,5.5vw,6.5rem)] font-bold leading-[0.9] tracking-tight text-white uppercase"
                 >
                     {nameParts.map((part, index) => (
                         <span key={index} className="block">
@@ -148,7 +161,7 @@ export const HeroSection = ({
                 </h1>
 
                 <div ref={taglineRef} className="max-w-xl">
-                    <div className="w-16 h-px bg-white/30 mt-6 md:mt-8 mb-4" />
+                    <div className="w-16 h-px bg-white/30 mt-6 md:mt-8 mb-4 ml-auto" />
                     <p className="text-sm md:text-base text-white/60 font-light tracking-wide mb-2">
                         {tagline}
                     </p>
@@ -158,7 +171,7 @@ export const HeroSection = ({
                 </div>
 
                 {/* CTA Buttons */}
-                <div ref={ctaRef} className="flex flex-wrap items-center gap-4 mt-8 md:mt-10">
+                <div ref={ctaRef} className="flex flex-wrap items-center justify-end gap-4 mt-8 md:mt-10">
                     <Link
                         href="/projects"
                         className="group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black text-sm font-medium hover:bg-white/90 transition-all duration-300"
@@ -177,7 +190,7 @@ export const HeroSection = ({
 
             <div
                 ref={scrollRef}
-                className="hidden sm:flex absolute bottom-8 md:bottom-12 right-8 md:right-12 z-20"
+                className="hidden sm:flex absolute bottom-8 md:bottom-12 left-1/2 -translate-x-1/2 z-20"
             >
                 <div className="flex flex-col items-center gap-3">
                     <span className="text-white/40 text-xs tracking-widest uppercase">
