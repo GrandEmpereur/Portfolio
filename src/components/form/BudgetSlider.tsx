@@ -1,50 +1,49 @@
 "use client";
 
 import { useState } from "react";
-import { Input } from "@/components/ui/input";
+
+interface BudgetSliderLabels {
+    estimated: string;
+    min: string;
+    max: string;
+    presets: string;
+}
 
 interface BudgetSliderProps {
     minValue?: number;
     maxValue?: number;
     onMinChange: (value: number | undefined) => void;
     onMaxChange: (value: number | undefined) => void;
+    labels: BudgetSliderLabels;
     currency?: string;
-    minLimit?: number;
     maxLimit?: number;
-    step?: number;
 }
+
+const inputClassName =
+    "w-full border-0 border-b border-white/20 bg-transparent py-3 pr-8 text-sm text-white transition-colors placeholder:text-white/20 focus:border-white/60 focus:outline-none";
+
+const PRESETS = [
+    { label: "5k – 15k", min: 5000, max: 15000 },
+    { label: "15k – 30k", min: 15000, max: 30000 },
+    { label: "30k – 50k", min: 30000, max: 50000 },
+    { label: "50k+", min: 50000, max: 100000 },
+];
 
 export function BudgetSlider({
     minValue,
     maxValue,
     onMinChange,
     onMaxChange,
+    labels,
     currency = "€",
-    minLimit = 0,
     maxLimit = 100000,
-    step = 1000,
 }: BudgetSliderProps) {
     const [localMin, setLocalMin] = useState(minValue?.toString() || "");
     const [localMax, setLocalMax] = useState(maxValue?.toString() || "");
 
-    const handleMinChange = (value: string) => {
-        setLocalMin(value);
+    const parseAmount = (value: string) => {
         const num = parseFloat(value.replace(/[^\d]/g, ""));
-        if (!isNaN(num)) {
-            onMinChange(num);
-        } else {
-            onMinChange(undefined);
-        }
-    };
-
-    const handleMaxChange = (value: string) => {
-        setLocalMax(value);
-        const num = parseFloat(value.replace(/[^\d]/g, ""));
-        if (!isNaN(num)) {
-            onMaxChange(num);
-        } else {
-            onMaxChange(undefined);
-        }
+        return isNaN(num) ? undefined : num;
     };
 
     const formatCurrency = (value: number | undefined) => {
@@ -56,108 +55,129 @@ export function BudgetSlider({
         }).format(value);
     };
 
-    const hasError = minValue && maxValue && minValue > maxValue;
-
     return (
-        <div className="space-y-6">
-            {/* Visual Range Display */}
-            <div className="bg-white/5 rounded-xl p-6 border border-white/10">
-                <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm text-white/60">Budget estimé</span>
-                    {minValue && maxValue && (
-                        <span className="text-lg font-semibold text-white">
-                            {formatCurrency(minValue)} - {formatCurrency(maxValue)}
+        <div className="space-y-8">
+            {/* Range summary + bar */}
+            <div>
+                <div className="flex items-baseline justify-between gap-4">
+                    <span className="text-xs font-light uppercase tracking-[0.2em] text-white/40">
+                        {labels.estimated}
+                    </span>
+                    {minValue && maxValue ? (
+                        <span className="font-mono text-sm text-white">
+                            {formatCurrency(minValue)} – {formatCurrency(maxValue)}
                         </span>
-                    )}
+                    ) : null}
                 </div>
-
-                {/* Visual bar */}
-                {minValue && maxValue && (
-                    <div className="relative h-2 bg-white/10 rounded-full overflow-hidden">
+                <div
+                    aria-hidden
+                    className="relative mt-4 h-px w-full bg-white/10"
+                >
+                    {minValue && maxValue && maxValue >= minValue ? (
                         <div
-                            className="absolute h-full bg-gradient-to-r from-orange-500 to-orange-600 rounded-full transition-all duration-300"
+                            className="absolute -top-px h-[3px] bg-white transition-all duration-300"
                             style={{
-                                left: `${(minValue / maxLimit) * 100}%`,
-                                width: `${((maxValue - minValue) / maxLimit) * 100}%`,
+                                left: `${Math.min((minValue / maxLimit) * 100, 100)}%`,
+                                width: `${Math.min(((maxValue - minValue) / maxLimit) * 100, 100)}%`,
                             }}
                         />
-                    </div>
-                )}
+                    ) : null}
+                </div>
             </div>
 
-            {/* Input Fields */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {/* Min Budget */}
+            {/* Min / Max inputs */}
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
                 <div>
-                    <label className="block text-white/80 text-sm font-medium mb-3">
-                        Budget minimum
+                    <label
+                        htmlFor="budget-min"
+                        className="mb-2 block text-xs uppercase tracking-wider text-white/40"
+                    >
+                        {labels.min}
                     </label>
                     <div className="relative">
-                        <Input
+                        <input
+                            id="budget-min"
                             type="text"
+                            inputMode="numeric"
                             value={localMin}
-                            onChange={(e) => handleMinChange(e.target.value)}
+                            onChange={(e) => {
+                                setLocalMin(e.target.value);
+                                onMinChange(parseAmount(e.target.value));
+                            }}
                             placeholder="5 000"
-                            className="h-14 bg-white/5 border-white/10 text-white text-lg placeholder:text-white/30 focus:border-orange-500 focus:ring-orange-500/20 pr-12"
+                            className={inputClassName}
                         />
-                        <span className="absolute right-4 top-1/2 -translate-y-1/2 text-white/40">
+                        <span
+                            aria-hidden
+                            className="absolute right-0 top-1/2 -translate-y-1/2 text-sm text-white/30"
+                        >
                             {currency}
                         </span>
                     </div>
                 </div>
 
-                {/* Max Budget */}
                 <div>
-                    <label className="block text-white/80 text-sm font-medium mb-3">
-                        Budget maximum
+                    <label
+                        htmlFor="budget-max"
+                        className="mb-2 block text-xs uppercase tracking-wider text-white/40"
+                    >
+                        {labels.max}
                     </label>
                     <div className="relative">
-                        <Input
+                        <input
+                            id="budget-max"
                             type="text"
+                            inputMode="numeric"
                             value={localMax}
-                            onChange={(e) => handleMaxChange(e.target.value)}
+                            onChange={(e) => {
+                                setLocalMax(e.target.value);
+                                onMaxChange(parseAmount(e.target.value));
+                            }}
                             placeholder="15 000"
-                            className="h-14 bg-white/5 border-white/10 text-white text-lg placeholder:text-white/30 focus:border-orange-500 focus:ring-orange-500/20 pr-12"
+                            className={inputClassName}
                         />
-                        <span className="absolute right-4 top-1/2 -translate-y-1/2 text-white/40">
+                        <span
+                            aria-hidden
+                            className="absolute right-0 top-1/2 -translate-y-1/2 text-sm text-white/30"
+                        >
                             {currency}
                         </span>
                     </div>
                 </div>
             </div>
-
-            {/* Error */}
-            {hasError && (
-                <p className="text-sm text-red-400">
-                    Le budget maximum doit être supérieur au budget minimum
-                </p>
-            )}
 
             {/* Quick presets */}
-            <div className="flex flex-wrap gap-2">
-                <span className="text-sm text-white/60">Presets rapides :</span>
-                {[
-                    { label: "5k-15k", min: 5000, max: 15000 },
-                    { label: "15k-30k", min: 15000, max: 30000 },
-                    { label: "30k-50k", min: 30000, max: 50000 },
-                    { label: "50k+", min: 50000, max: 100000 },
-                ].map((preset) => (
-                    <button
-                        key={preset.label}
-                        type="button"
-                        onClick={() => {
-                            onMinChange(preset.min);
-                            onMaxChange(preset.max);
-                            setLocalMin(preset.min.toString());
-                            setLocalMax(preset.max.toString());
-                        }}
-                        className="px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-orange-500/50 rounded-lg text-sm text-white transition-all duration-200"
-                    >
-                        {preset.label}
-                    </button>
-                ))}
+            <div>
+                <span className="mb-3 block text-xs font-light uppercase tracking-[0.2em] text-white/40">
+                    {labels.presets}
+                </span>
+                <div className="flex flex-wrap gap-2">
+                    {PRESETS.map((preset) => {
+                        const isActive =
+                            minValue === preset.min && maxValue === preset.max;
+                        return (
+                            <button
+                                key={preset.label}
+                                type="button"
+                                aria-pressed={isActive}
+                                onClick={() => {
+                                    onMinChange(preset.min);
+                                    onMaxChange(preset.max);
+                                    setLocalMin(preset.min.toString());
+                                    setLocalMax(preset.max.toString());
+                                }}
+                                className={`rounded-full border px-4 py-2 font-mono text-xs transition-colors duration-300 ${
+                                    isActive
+                                        ? "border-white bg-white text-black"
+                                        : "border-white/10 text-white/50 hover:border-white/30 hover:text-white"
+                                }`}
+                            >
+                                {preset.label}
+                            </button>
+                        );
+                    })}
+                </div>
             </div>
         </div>
     );
 }
-

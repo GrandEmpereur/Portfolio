@@ -43,9 +43,9 @@ export const services: Service[] = [
             pl: 'Niestandardowe Tworzenie Stron',
         },
         description: {
-            fr: 'Création de sites web et applications web modernes, performantes et évolutives avec React, Next.js et les dernières technologies.',
-            en: 'Building modern, high-performance, and scalable websites and web applications with React, Next.js, and the latest technologies.',
-            pl: 'Tworzenie nowoczesnych, wydajnych i skalowalnych stron internetowych i aplikacji webowych z React, Next.js i najnowszymi technologiami.',
+            fr: 'Un site qui charge en moins d\'une seconde, se positionne sur Google et transforme vos visiteurs en clients. Développé sur mesure avec Next.js et React, sans template.',
+            en: 'A site that loads in under a second, ranks on Google, and turns visitors into customers. Custom-built with Next.js and React — no templates.',
+            pl: 'Strona, która ładuje się w mniej niż sekundę, pozycjonuje się w Google i zamienia odwiedzających w klientów. Budowana na miarę z Next.js i React, bez szablonów.',
         },
         features: {
             fr: [
@@ -92,9 +92,9 @@ export const services: Service[] = [
             pl: 'E-commerce i Sklepy Internetowe',
         },
         description: {
-            fr: 'Solutions e-commerce sur mesure avec Next.js ou intégration Shopify. Paiements sécurisés, gestion de stock et expérience utilisateur optimale.',
-            en: 'Custom e-commerce solutions with Next.js or Shopify integration. Secure payments, inventory management, and optimal user experience.',
-            pl: 'Niestandardowe rozwiązania e-commerce z Next.js lub integracją Shopify. Bezpieczne płatności, zarządzanie zapasami i optymalne doświadczenie użytkownika.',
+            fr: 'Boutiques Shopify Plus et e-commerce sur mesure. J\'ai participé aux migrations d\'Isotoner, Balzac Paris, Tartine & Chocolat et Qwetch : replatforming sans perte de trafic, intégrations ERP et parcours d\'achat qui convertissent.',
+            en: 'Shopify Plus stores and custom e-commerce. I worked on migrations for Isotoner, Balzac Paris, Tartine & Chocolat, and Qwetch: replatforming without traffic loss, ERP integrations, and purchase flows that convert.',
+            pl: 'Sklepy Shopify Plus i e-commerce na miarę. Pracowałem przy migracjach Isotoner, Balzac Paris, Tartine & Chocolat i Qwetch: replatforming bez utraty ruchu, integracje ERP i ścieżki zakupowe, które konwertują.',
         },
         features: {
             fr: [
@@ -131,9 +131,9 @@ export const services: Service[] = [
             pl: 'Rozwój SaaS',
         },
         description: {
-            fr: 'Conception et développement de plateformes SaaS complètes avec authentification, paiements récurrents et tableaux de bord.',
-            en: 'Design and development of complete SaaS platforms with authentication, recurring payments, and dashboards.',
-            pl: 'Projektowanie i rozwój kompletnych platform SaaS z uwierzytelnianiem, płatnościami cyklicznymi i dashboardami.',
+            fr: 'Votre SaaS de l\'idée au lancement : authentification, abonnements Stripe, tableaux de bord. Une architecture pensée dès le départ pour encaisser la croissance de votre base d\'utilisateurs.',
+            en: 'Your SaaS from idea to launch: authentication, Stripe subscriptions, dashboards. An architecture designed from day one to handle your user base growing.',
+            pl: 'Twój SaaS od pomysłu do startu: uwierzytelnianie, subskrypcje Stripe, dashboardy. Architektura zaprojektowana od pierwszego dnia z myślą o rosnącej bazie użytkowników.',
         },
         features: {
             fr: [
@@ -180,9 +180,9 @@ export const services: Service[] = [
             pl: 'API i Integracje',
         },
         description: {
-            fr: 'Développement d\'API REST/GraphQL robustes avec AdonisJS, Koa ou NestJS. Intégrations tierces et architecture microservices.',
-            en: 'Robust REST/GraphQL API development with AdonisJS, Koa or NestJS. Third-party integrations and microservices architecture.',
-            pl: 'Solidny rozwój API REST/GraphQL z AdonisJS, Koa lub NestJS. Integracje zewnętrzne i architektura mikroserwisów.',
+            fr: 'Le backend qui relie vos outils entre eux : API REST/GraphQL documentées, webhooks, synchronisation ERP/CRM. Robuste, sécurisé et pensé pour que vos équipes puissent construire dessus.',
+            en: 'The backend that connects your tools together: documented REST/GraphQL APIs, webhooks, ERP/CRM synchronization. Robust, secure, and built for your teams to build on.',
+            pl: 'Backend, który łączy Twoje narzędzia: udokumentowane API REST/GraphQL, webhooki, synchronizacja ERP/CRM. Solidny, bezpieczny i gotowy, by Twoje zespoły mogły na nim budować.',
         },
         features: {
             fr: [
@@ -219,9 +219,9 @@ export const services: Service[] = [
             pl: 'Headless CMS i Zarządzanie Treścią',
         },
         description: {
-            fr: 'Intégration de CMS headless avec Strapi ou solutions custom. Gestion de contenu flexible, multi-langue et optimisée pour le SEO.',
-            en: 'Headless CMS integration with Strapi or custom solutions. Flexible, multi-language content management optimized for SEO.',
-            pl: 'Integracja headless CMS ze Strapi lub niestandardowymi rozwiązaniami. Elastyczne, wielojęzyczne zarządzanie treścią zoptymalizowane pod SEO.',
+            fr: 'Reprenez la main sur votre contenu : un CMS headless (Strapi ou sur mesure) pour publier sans développeur, en plusieurs langues, sans sacrifier la vitesse ni le SEO.',
+            en: 'Take back control of your content: a headless CMS (Strapi or custom) to publish without a developer, in multiple languages, without sacrificing speed or SEO.',
+            pl: 'Odzyskaj kontrolę nad treścią: headless CMS (Strapi lub dedykowany), by publikować bez developera, w wielu językach, bez utraty szybkości i SEO.',
         },
         features: {
             fr: [
@@ -258,9 +258,9 @@ export const services: Service[] = [
             pl: 'Konserwacja i Wsparcie',
         },
         description: {
-            fr: 'Support technique continu, mises à jour, corrections de bugs et optimisations pour garantir la performance de vos applications.',
-            en: 'Ongoing technical support, updates, bug fixes, and optimizations to ensure the performance of your applications.',
-            pl: 'Ciągłe wsparcie techniczne, aktualizacje, poprawki błędów i optymalizacje w celu zapewnienia wydajności aplikacji.',
+            fr: 'Dormez tranquille : monitoring, mises à jour de sécurité et corrections prioritaires pour que votre site reste rapide, sûr et disponible — sans que vous ayez à y penser.',
+            en: 'Sleep easy: monitoring, security updates, and priority fixes so your site stays fast, secure, and available — without you having to think about it.',
+            pl: 'Śpij spokojnie: monitoring, aktualizacje bezpieczeństwa i priorytetowe poprawki, dzięki którym Twoja strona pozostaje szybka, bezpieczna i dostępna — bez Twojego zaangażowania.',
         },
         features: {
             fr: [
@@ -442,6 +442,104 @@ export const services: Service[] = [
             fr: '3-8 semaines',
             en: '3-8 weeks',
             pl: '3-8 tygodni',
+        },
+    },
+    {
+        id: 'voice-assistants',
+        category: 'ai',
+        icon: '🎙️',
+        title: {
+            fr: 'Assistants Vocaux IA',
+            en: 'AI Voice Assistants',
+            pl: 'Asystenci Głosowi AI',
+        },
+        description: {
+            fr: 'Agents vocaux intelligents avec Vapi qui répondent au téléphone, qualifient vos appels, prennent des rendez-vous et assurent votre standard 24/7.',
+            en: 'Intelligent voice agents built with Vapi that answer the phone, qualify calls, book appointments, and run your reception desk 24/7.',
+            pl: 'Inteligentni agenci głosowi zbudowani z Vapi, którzy odbierają telefony, kwalifikują połączenia, umawiają spotkania i obsługują recepcję 24/7.',
+        },
+        features: {
+            fr: [
+                'Réception et qualification d\'appels 24/7',
+                'Prise de rendez-vous automatisée (agenda synchronisé)',
+                'Voix naturelle multilingue (FR, EN, PL)',
+                'Transfert intelligent vers un humain',
+                'Transcription, résumé et suivi CRM des appels',
+            ],
+            en: [
+                '24/7 call answering and qualification',
+                'Automated appointment booking (synced calendar)',
+                'Natural multilingual voice (FR, EN, PL)',
+                'Smart handoff to a human',
+                'Call transcription, summaries, and CRM follow-up',
+            ],
+            pl: [
+                'Odbieranie i kwalifikacja połączeń 24/7',
+                'Automatyczne umawianie spotkań (synchronizacja kalendarza)',
+                'Naturalny wielojęzyczny głos (FR, EN, PL)',
+                'Inteligentne przekazanie do człowieka',
+                'Transkrypcja, podsumowania i integracja z CRM',
+            ],
+        },
+        technologies: ['Vapi', 'Twilio', 'Claude API', 'OpenAI API', 'n8n'],
+        pricing: {
+            fr: 'À partir de 3 000€',
+            en: 'Starting from €3,000',
+            pl: 'Od 3 000€',
+        },
+        deliveryTime: {
+            fr: '2-5 semaines',
+            en: '2-5 weeks',
+            pl: '2-5 tygodni',
+        },
+    },
+    {
+        id: 'nfc-qrcode-automation',
+        category: 'ai',
+        icon: '📲',
+        title: {
+            fr: 'Automatisation NFC & QR Code',
+            en: 'NFC & QR Code Automation',
+            pl: 'Automatyzacja NFC i Kody QR',
+        },
+        description: {
+            fr: 'Expériences phygitales connectées : cartes NFC et QR codes intelligents qui déclenchent des automatisations — avis Google, menus, cartes de visite, campagnes trackées.',
+            en: 'Connected phygital experiences: NFC cards and smart QR codes that trigger automations — Google reviews, menus, business cards, tracked campaigns.',
+            pl: 'Połączone doświadczenia phygital: karty NFC i inteligentne kody QR uruchamiające automatyzacje — opinie Google, menu, wizytówki, śledzone kampanie.',
+        },
+        features: {
+            fr: [
+                'Cartes de visite NFC connectées',
+                'QR codes dynamiques avec tracking analytics',
+                'Collecte d\'avis Google en un geste',
+                'Workflows automatisés au scan (n8n, webhooks)',
+                'Landing pages dédiées et personnalisables',
+            ],
+            en: [
+                'Connected NFC business cards',
+                'Dynamic QR codes with analytics tracking',
+                'One-tap Google review collection',
+                'Automated workflows on scan (n8n, webhooks)',
+                'Dedicated customizable landing pages',
+            ],
+            pl: [
+                'Połączone wizytówki NFC',
+                'Dynamiczne kody QR ze śledzeniem analytics',
+                'Zbieranie opinii Google jednym gestem',
+                'Automatyczne workflow po zeskanowaniu (n8n, webhooks)',
+                'Dedykowane, konfigurowalne strony docelowe',
+            ],
+        },
+        technologies: ['NFC', 'QR Code', 'n8n', 'Next.js', 'Webhooks'],
+        pricing: {
+            fr: 'À partir de 800€',
+            en: 'Starting from €800',
+            pl: 'Od 800€',
+        },
+        deliveryTime: {
+            fr: '1-3 semaines',
+            en: '1-3 weeks',
+            pl: '1-3 tygodni',
         },
     },
 ]

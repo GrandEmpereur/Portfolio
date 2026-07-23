@@ -1,23 +1,20 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { gsap } from "@/lib/gsap-config";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
-import { ArrowRight, ArrowLeft, Check } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Check, Loader2 } from "lucide-react";
+import { gsap, useGSAP } from "@/lib/gsap-config";
+import { useScopedI18n } from "@/locales/client";
 import {
     contactFormSchema,
     type ContactFormData,
     SERVICE_TYPES,
     ECOMMERCE_CMS,
-    HELP_TYPES,
     DISCOVERY_SOURCES,
-    calculateLeadScore,
-    categorizeLead
+    getHelpTypesForService,
 } from "@/lib/contact-schema";
 import { PhoneInput } from "@/components/form/PhoneInput";
 import { BudgetSlider } from "@/components/form/BudgetSlider";
@@ -25,11 +22,34 @@ import { Honeypot } from "@/components/form/Honeypot";
 
 type Step = 1 | 2 | 3 | 4 | 5 | 6;
 
+const TOTAL_STEPS = 6;
+
+// Brouillon conservé pour la session : un refresh ne fait pas perdre la saisie
+const STORAGE_KEY = "contact-wizard-draft-v1";
+
+const inputClassName =
+    "w-full border-0 border-b border-white/20 bg-transparent py-3 text-sm text-white transition-colors placeholder:text-white/20 focus:border-white/60 focus:outline-none";
+
+const labelClassName =
+    "mb-2 block text-xs uppercase tracking-wider text-white/40";
+
+const FieldError = ({ message }: { message?: string }) =>
+    message ? (
+        <p role="alert" className="mt-1 text-xs text-red-400">
+            {message}
+        </p>
+    ) : null;
+
 export const SimpleContactForm = () => {
+    const t = useScopedI18n("contactWizard");
     const [currentStep, setCurrentStep] = useState<Step>(1);
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isSent, setIsSent] = useState(false);
     const startedAt = useRef(0);
+    const directionRef = useRef(1);
+    const sectionRef = useRef<HTMLDivElement>(null);
     const stepRef = useRef<HTMLDivElement>(null);
+    const titleRef = useRef<HTMLHeadingElement>(null);
 
     const form = useForm<ContactFormData>({
         resolver: zodResolver(contactFormSchema),
@@ -47,54 +67,134 @@ export const SimpleContactForm = () => {
         mode: "onBlur",
     });
 
-    const { watch, setValue, register } = form;
+    const { watch, setValue, register, formState } = form;
     const serviceType = watch("serviceType");
     const discoverySource = watch("discoverySource");
+    const helpTypes = getHelpTypesForService(serviceType);
 
     useEffect(() => {
-        startedAt.current = Date.now();
+        try {
+            const raw = sessionStorage.getItem(STORAGE_KEY);
+            if (!raw) return;
+            const saved = JSON.parse(raw) as {
+                step?: number;
+                values?: Partial<ContactFormData>;
+            };
+            if (saved.values) {
+                form.reset({ ...form.getValues(), ...saved.values, honeypot: "" });
+            }
+            if (saved.step && saved.step >= 1 && saved.step <= TOTAL_STEPS) {
+                setCurrentStep(saved.step as Step);
+            }
+        } catch {
+            sessionStorage.removeItem(STORAGE_KEY);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    // Animation entre les steps
     useEffect(() => {
-        if (stepRef.current) {
-            gsap.fromTo(
-                stepRef.current,
-                { opacity: 0, y: 20 },
-                { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }
+        if (isSent) {
+            sessionStorage.removeItem(STORAGE_KEY);
+            return;
+        }
+        const persist = (values: Partial<ContactFormData>) => {
+            const { honeypot: _honeypot, ...rest } = values;
+            try {
+                sessionStorage.setItem(
+                    STORAGE_KEY,
+                    JSON.stringify({ step: currentStep, values: rest }),
+                );
+            } catch {
+                // stockage plein ou indisponible : le brouillon est best-effort
+            }
+        };
+        persist(watch());
+        const subscription = watch((values) => persist(values as Partial<ContactFormData>));
+        return () => subscription.unsubscribe();
+    }, [watch, currentStep, isSent]);
+
+    const selectService = (type: (typeof SERVICE_TYPES)[number]) => {
+        if (type !== serviceType) {
+            // Les besoins proposés dépendent du service : on repart de zéro
+            setValue(
+                "helpType",
+                undefined as unknown as ContactFormData["helpType"],
             );
         }
-    }, [currentStep]);
+        setValue("serviceType", type);
+    };
 
-    const totalSteps = 6;
-    const progress = (currentStep / totalSteps) * 100;
+    const stepTitles: Record<Step, string> = {
+        1: t("step1.title"),
+        2: t("step2.title"),
+        3: t("step3.title"),
+        4: t("step4.title"),
+        5: t("step5.title"),
+        6: t("step6.title"),
+    };
 
-    // Navigation
+    const stepSubtitles: Record<Step, string> = {
+        1: t("step1.subtitle"),
+        2: t("step2.subtitle"),
+        3: t("step3.subtitle"),
+        4: t("step4.subtitle"),
+        5: t("step5.subtitle"),
+        6: t("step6.subtitle"),
+    };
+
+    useGSAP(
+        () => {
+            if (startedAt.current === 0) startedAt.current = Date.now();
+
+            const prefersReducedMotion = window.matchMedia(
+                "(prefers-reduced-motion: reduce)",
+            ).matches;
+            if (prefersReducedMotion || !stepRef.current) return;
+
+            gsap.from(stepRef.current, {
+                x: directionRef.current * 48,
+                opacity: 0,
+                duration: 0.6,
+                ease: "power3.out",
+                clearProps: "transform,opacity",
+            });
+        },
+        { scope: sectionRef, dependencies: [currentStep, isSent] },
+    );
+
+    const goToStep = (step: Step, direction: 1 | -1) => {
+        directionRef.current = direction;
+        setCurrentStep(step);
+        requestAnimationFrame(() => titleRef.current?.focus());
+    };
+
     const nextStep = () => {
-        if (currentStep < totalSteps) {
-            setCurrentStep((prev) => (prev + 1) as Step);
-        }
+        if (currentStep < TOTAL_STEPS) goToStep((currentStep + 1) as Step, 1);
     };
 
     const prevStep = () => {
-        if (currentStep > 1) {
-            setCurrentStep((prev) => (prev - 1) as Step);
-        }
+        if (currentStep > 1) goToStep((currentStep - 1) as Step, -1);
     };
 
-    // Validation du step actuel
     const canProceed = () => {
         const values = watch();
-
         switch (currentStep) {
             case 1:
-                return values.firstName && values.firstName.length >= 2 &&
-                    values.lastName && values.lastName.length >= 2 &&
-                    values.email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email);
+                return Boolean(
+                    values.firstName &&
+                        values.firstName.length >= 2 &&
+                        values.lastName &&
+                        values.lastName.length >= 2 &&
+                        values.email &&
+                        /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email),
+                );
             case 2:
-                return values.companyName && values.companyName.length >= 2;
+                return Boolean(values.companyName && values.companyName.length >= 2);
             case 3:
-                return values.serviceType !== undefined;
+                return (
+                    values.serviceType !== undefined &&
+                    (values.serviceType !== "ecommerce" || Boolean(values.ecommerceCms))
+                );
             case 4:
                 return values.helpType !== undefined;
             case 5:
@@ -107,454 +207,488 @@ export const SimpleContactForm = () => {
     };
 
     const onSubmit = async (data: ContactFormData) => {
-        // Anti-bot check
         const elapsed = Date.now() - startedAt.current;
         if (elapsed < 5000) {
-            toast.error("Merci de prendre le temps de remplir le formulaire");
+            toast.error(t("toast.tooFast"));
             return;
         }
 
         setIsSubmitting(true);
-
         try {
-            const response = await fetch('/api/contact', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+            const response = await fetch("/api/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(data),
             });
 
-            const result = await response.json();
-
             if (!response.ok) {
-                throw new Error(result.error || 'Erreur lors de l\'envoi');
+                const result = await response.json();
+                throw new Error(result.error || t("toast.error"));
             }
 
-            const score = calculateLeadScore(data);
-            const category = categorizeLead(score);
-
-            toast.success("Message envoyé avec succès ! Je vous réponds sous 24-48h.");
-            form.reset();
-
-        } catch (error) {
-            console.error('❌ Erreur:', error);
-            toast.error(error instanceof Error ? error.message : 'Erreur lors de l\'envoi');
+            directionRef.current = 1;
+            setIsSent(true);
+        } catch {
+            toast.error(t("toast.error"));
         } finally {
             setIsSubmitting(false);
         }
     };
 
-    return (
-        <div className="min-h-screen w-full flex items-center justify-center px-6 py-20 relative overflow-hidden">
-            {/* Background */}
-            <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black"></div>
-            <div className="absolute top-20 right-20 w-72 h-72 bg-orange-500/10 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-20 left-20 w-96 h-96 bg-orange-500/5 rounded-full blur-3xl"></div>
+    // Enter avance d'étape au lieu de soumettre prématurément
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLFormElement>) => {
+        if (
+            event.key === "Enter" &&
+            currentStep < TOTAL_STEPS &&
+            !(event.target instanceof HTMLTextAreaElement)
+        ) {
+            event.preventDefault();
+            if (canProceed()) nextStep();
+        }
+    };
 
-            {/* Progress bar */}
-            <div className="fixed top-0 left-0 w-full h-1 bg-white/10 z-50">
-                <div
-                    className="h-full bg-gradient-to-r from-orange-500 to-orange-600 transition-all duration-500"
-                    style={{ width: `${progress}%` }}
-                ></div>
-            </div>
-
-            {/* Form */}
-            <form
-                onSubmit={form.handleSubmit(onSubmit)}
-                className="relative z-10 w-full max-w-2xl"
+    if (isSent) {
+        return (
+            <div
+                ref={sectionRef}
+                className="flex min-h-screen items-center bg-black px-6 pt-24 pb-24 sm:px-8 md:px-12 lg:px-20"
             >
-                <Honeypot register={register} />
-
-                {/* Step counter */}
-                <div className="mb-8 text-center">
-                    <p className="text-white/60 text-sm font-medium">
-                        Étape {currentStep} sur {totalSteps}
+                <div ref={stepRef} className="mx-auto w-full max-w-7xl">
+                    <p className="font-mono text-xs tracking-widest text-white/30">
+                        {t("stepOf", { current: TOTAL_STEPS, total: TOTAL_STEPS })}
                     </p>
-                </div>
-
-                {/* Step content */}
-                <div ref={stepRef} className="min-h-[500px] bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-12">
-                    {/* Step 1: Informations personnelles */}
-                    {currentStep === 1 && (
-                        <div className="space-y-8">
-                            <div className="space-y-4">
-                                <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
-                                    Bonjour ! 👋
-                                </h2>
-                                <p className="text-xl text-white/60">
-                                    Commençons par faire connaissance
-                                </p>
-                            </div>
-
-                            <div className="space-y-6">
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <div>
-                                        <label htmlFor="firstName" className="block text-white/80 text-sm font-medium mb-3">
-                                            Prénom *
-                                        </label>
-                                        <Input
-                                            id="firstName"
-                                            {...register("firstName")}
-                                            placeholder="John"
-                                            className="h-14 bg-white/5 border-white/10 text-white text-lg placeholder:text-white/30 focus:border-orange-500"
-                                            autoFocus
-                                        />
-                                        {form.formState.errors.firstName && (
-                                            <p className="text-red-400 text-sm mt-1">
-                                                {form.formState.errors.firstName.message}
-                                            </p>
-                                        )}
-                                    </div>
-
-                                    <div>
-                                        <label htmlFor="lastName" className="block text-white/80 text-sm font-medium mb-3">
-                                            Nom *
-                                        </label>
-                                        <Input
-                                            id="lastName"
-                                            {...register("lastName")}
-                                            placeholder="Doe"
-                                            className="h-14 bg-white/5 border-white/10 text-white text-lg placeholder:text-white/30 focus:border-orange-500"
-                                        />
-                                        {form.formState.errors.lastName && (
-                                            <p className="text-red-400 text-sm mt-1">
-                                                {form.formState.errors.lastName.message}
-                                            </p>
-                                        )}
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <label htmlFor="email" className="block text-white/80 text-sm font-medium mb-3">
-                                        Email *
-                                    </label>
-                                    <Input
-                                        id="email"
-                                        {...register("email")}
-                                        type="email"
-                                        placeholder="john@example.com"
-                                        className="h-14 bg-white/5 border-white/10 text-white text-lg placeholder:text-white/30 focus:border-orange-500"
-                                    />
-                                    {form.formState.errors.email && (
-                                        <p className="text-red-400 text-sm mt-1">
-                                            {form.formState.errors.email.message}
-                                        </p>
-                                    )}
-                                </div>
-
-                                <div>
-                                    <label htmlFor="phone" className="block text-white/80 text-sm font-medium mb-3">
-                                        Téléphone (optionnel)
-                                    </label>
-                                    <PhoneInput
-                                        id="phone"
-                                        value={watch("phone")}
-                                        onChange={(value) => setValue("phone", value)}
-                                        placeholder="+33 6 12 34 56 78"
-                                        error={form.formState.errors.phone?.message}
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                    )}
-
-                    {/* Step 2: Entreprise */}
-                    {currentStep === 2 && (
-                        <div className="space-y-8">
-                            <div className="space-y-4">
-                                <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
-                                    Votre entreprise 🏢
-                                </h2>
-                                <p className="text-xl text-white/60">
-                                    Parlez-moi de votre marque
-                                </p>
-                            </div>
-
-                            <div className="space-y-6">
-                                <div>
-                                    <label htmlFor="companyName" className="block text-white/80 text-sm font-medium mb-3">
-                                        Nom de la marque *
-                                    </label>
-                                    <Input
-                                        id="companyName"
-                                        {...register("companyName")}
-                                        placeholder="Acme Inc."
-                                        className="h-14 bg-white/5 border-white/10 text-white text-lg placeholder:text-white/30 focus:border-orange-500"
-                                        autoFocus
-                                    />
-                                    {form.formState.errors.companyName && (
-                                        <p className="text-red-400 text-sm mt-1">
-                                            {form.formState.errors.companyName.message}
-                                        </p>
-                                    )}
-                                </div>
-
-                                <div>
-                                    <label htmlFor="companyWebsite" className="block text-white/80 text-sm font-medium mb-3">
-                                        Site web (optionnel)
-                                    </label>
-                                    <Input
-                                        id="companyWebsite"
-                                        {...register("companyWebsite")}
-                                        type="url"
-                                        placeholder="https://acme.com"
-                                        className="h-14 bg-white/5 border-white/10 text-white text-lg placeholder:text-white/30 focus:border-orange-500"
-                                    />
-                                    {form.formState.errors.companyWebsite && (
-                                        <p className="text-red-400 text-sm mt-1">
-                                            {form.formState.errors.companyWebsite.message}
-                                        </p>
-                                    )}
-                                </div>
-                            </div>
-                        </div>
-                    )}
-
-                    {/* Step 3: Type de service */}
-                    {currentStep === 3 && (
-                        <div className="space-y-8">
-                            <div className="space-y-4">
-                                <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
-                                    Votre projet 💼
-                                </h2>
-                                <p className="text-xl text-white/60">
-                                    Quel type de service recherchez-vous ?
-                                </p>
-                            </div>
-
-                            <div className="space-y-6">
-                                <div className="grid grid-cols-1 gap-4">
-                                    {SERVICE_TYPES.map((type) => (
-                                        <button
-                                            key={type}
-                                            type="button"
-                                            onClick={() => setValue("serviceType", type)}
-                                            className={`p-6 rounded-2xl border transition-all text-left ${watch("serviceType") === type
-                                                ? "bg-orange-500/20 border-orange-500 text-white"
-                                                : "bg-white/5 border-white/10 text-white/60 hover:bg-white/10"
-                                                }`}
-                                        >
-                                            <div className="text-xl font-semibold">
-                                                {type === "web" && "🌐 Site Web"}
-                                                {type === "saas" && "⚡ SaaS"}
-                                                {type === "ecommerce" && "🛍️ E-commerce"}
-                                                {type === "mobile" && "📱 Application Mobile"}
-                                                {type === "autre" && "✨ Autre"}
-                                            </div>
-                                        </button>
-                                    ))}
-                                </div>
-
-                                {/* CMS e-commerce si sélectionné */}
-                                {serviceType === "ecommerce" && (
-                                    <div>
-                                        <label htmlFor="ecommerceCms" className="block text-white/80 text-sm font-medium mb-3">
-                                            CMS utilisé *
-                                        </label>
-                                        <select
-                                            id="ecommerceCms"
-                                            {...register("ecommerceCms")}
-                                            className="w-full h-14 bg-white/5 border border-white/10 rounded-xl text-white text-lg px-4 focus:border-orange-500"
-                                        >
-                                            <option value="">- Sélectionnez -</option>
-                                            {ECOMMERCE_CMS.map((cms) => (
-                                                <option key={cms} value={cms} className="bg-gray-900">
-                                                    {cms.charAt(0).toUpperCase() + cms.slice(1)}
-                                                </option>
-                                            ))}
-                                        </select>
-                                        {form.formState.errors.ecommerceCms && (
-                                            <p className="text-red-400 text-sm mt-2">
-                                                {form.formState.errors.ecommerceCms.message}
-                                            </p>
-                                        )}
-                                    </div>
-                                )}
-                            </div>
-                        </div>
-                    )}
-
-                    {/* Step 4: Comment aider */}
-                    {currentStep === 4 && (
-                        <div className="space-y-8">
-                            <div className="space-y-4">
-                                <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
-                                    Comment vous aider ? ✨
-                                </h2>
-                                <p className="text-xl text-white/60">
-                                    Quel est votre besoin principal ?
-                                </p>
-                            </div>
-
-                            <div className="space-y-4">
-                                {HELP_TYPES.map((type) => (
-                                    <button
-                                        key={type}
-                                        type="button"
-                                        onClick={() => setValue("helpType", type)}
-                                        className={`w-full p-6 rounded-2xl border transition-all text-left ${watch("helpType") === type
-                                            ? "bg-orange-500/20 border-orange-500 text-white"
-                                            : "bg-white/5 border-white/10 text-white/60 hover:bg-white/10"
-                                            }`}
-                                    >
-                                        <div className="text-xl font-semibold">
-                                            {type === "refonte" && "🔄 Refonte de site existant"}
-                                            {type === "creation" && "✨ Création complète"}
-                                            {type === "ui-ux" && "🎨 UI/UX Design uniquement"}
-                                            {type === "dev-integration" && "⚙️ Développement & Intégration"}
-                                            {type === "autre" && "💡 Autre besoin"}
-                                        </div>
-                                    </button>
-                                ))}
-                            </div>
-                        </div>
-                    )}
-
-                    {/* Step 5: Budget */}
-                    {currentStep === 5 && (
-                        <div className="space-y-8">
-                            <div className="space-y-4">
-                                <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
-                                    Budget 💰
-                                </h2>
-                                <p className="text-xl text-white/60">
-                                    Quel est votre budget pour ce projet ?
-                                </p>
-                            </div>
-
-                            <div className="space-y-6">
-                                <BudgetSlider
-                                    minValue={(watch("budgetMin") ?? 5000) as number}
-                                    maxValue={(watch("budgetMax") ?? 15000) as number}
-                                    onMinChange={(val) => setValue("budgetMin", val as number)}
-                                    onMaxChange={(val) => setValue("budgetMax", val as number)}
-                                />
-                                {form.formState.errors.budgetMax && (
-                                    <p className="text-red-400 text-sm mt-2">
-                                        {form.formState.errors.budgetMax.message}
-                                    </p>
-                                )}
-                            </div>
-                        </div>
-                    )}
-
-                    {/* Step 6: Découverte + Message */}
-                    {currentStep === 6 && (
-                        <div className="space-y-8">
-                            <div className="space-y-4">
-                                <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
-                                    Dernière étape ! 🎯
-                                </h2>
-                                <p className="text-xl text-white/60">
-                                    Comment m'avez-vous connu ?
-                                </p>
-                            </div>
-
-                            <div className="space-y-6">
-                                <div className="grid grid-cols-2 gap-3">
-                                    {DISCOVERY_SOURCES.map((source) => (
-                                        <button
-                                            key={source}
-                                            type="button"
-                                            onClick={() => setValue("discoverySource", source)}
-                                            className={`p-4 rounded-xl border transition-all ${watch("discoverySource") === source
-                                                ? "bg-orange-500/20 border-orange-500 text-white"
-                                                : "bg-white/5 border-white/10 text-white/60 hover:bg-white/10"
-                                                }`}
-                                        >
-                                            {source === "google" && "🔍 Google"}
-                                            {source === "social" && "📱 Réseaux sociaux"}
-                                            {source === "recommendation" && "👥 Recommandation"}
-                                            {source === "event" && "🎪 Événement"}
-                                            {source === "autre" && "✨ Autre"}
-                                        </button>
-                                    ))}
-                                </div>
-
-                                {discoverySource === "autre" && (
-                                    <div>
-                                        <Input
-                                            {...register("discoverySourceOther")}
-                                            placeholder="Précisez..."
-                                            className="h-14 bg-white/5 border-white/10 text-white text-lg placeholder:text-white/30 focus:border-orange-500"
-                                        />
-                                        {form.formState.errors.discoverySourceOther && (
-                                            <p className="text-red-400 text-sm mt-2">
-                                                {form.formState.errors.discoverySourceOther.message}
-                                            </p>
-                                        )}
-                                    </div>
-                                )}
-
-                                <div>
-                                    <label htmlFor="message" className="block text-white/80 text-sm font-medium mb-3">
-                                        Message (optionnel)
-                                    </label>
-                                    <Textarea
-                                        id="message"
-                                        {...register("message")}
-                                        placeholder="Parlez-moi de votre projet, vos objectifs, vos contraintes..."
-                                        rows={4}
-                                        className="w-full bg-white/5 border-white/10 text-white text-lg placeholder:text-white/30 focus:border-orange-500 resize-none"
-                                    />
-                                    {form.formState.errors.message && (
-                                        <p className="text-red-400 text-sm mt-2">
-                                            {form.formState.errors.message.message}
-                                        </p>
-                                    )}
-                                </div>
-                            </div>
-                        </div>
-                    )}
-                </div>
-
-                {/* Navigation */}
-                <div className="flex justify-between items-center mt-8">
-                    <Button
-                        type="button"
-                        onClick={prevStep}
-                        disabled={currentStep === 1}
-                        variant="ghost"
-                        className="text-white/60 hover:text-white disabled:opacity-30"
+                    <h2 className="mt-6 max-w-3xl text-[clamp(2.5rem,6vw,5.5rem)] font-bold uppercase leading-[0.95] tracking-tight text-white">
+                        {t("success.title")}
+                    </h2>
+                    <p className="mt-8 max-w-md text-base font-light leading-relaxed text-white/60 md:text-lg">
+                        {t("success.body")}
+                    </p>
+                    <Link
+                        href="/"
+                        className="group mt-12 inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-sm font-medium text-black transition-all duration-300 hover:bg-white/90"
                     >
-                        <ArrowLeft className="w-5 h-5 mr-2" />
-                        Retour
-                    </Button>
-
-                    {currentStep < totalSteps ? (
-                        <Button
-                            type="button"
-                            onClick={nextStep}
-                            disabled={!canProceed()}
-                            className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-xl disabled:opacity-50"
-                        >
-                            Continuer
-                            <ArrowRight className="w-5 h-5 ml-2" />
-                        </Button>
-                    ) : (
-                        <Button
-                            type="submit"
-                            disabled={isSubmitting || !canProceed()}
-                            className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-xl disabled:opacity-50"
-                        >
-                            {isSubmitting ? (
-                                <span className="flex items-center gap-2">
-                                    <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                                    </svg>
-                                    Envoi...
-                                </span>
-                            ) : (
-                                <span className="flex items-center gap-2">
-                                    <Check className="w-5 h-5" />
-                                    Envoyer
-                                </span>
-                            )}
-                        </Button>
-                    )}
+                        {t("success.cta")}
+                        <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    </Link>
                 </div>
-            </form>
+            </div>
+        );
+    }
+
+    return (
+        <div
+            ref={sectionRef}
+            className="min-h-screen bg-black px-6 pt-32 pb-24 sm:px-8 md:px-12 md:pt-36 lg:px-20"
+        >
+            <div className="mx-auto w-full max-w-7xl">
+                <form
+                    onSubmit={form.handleSubmit(onSubmit)}
+                    onKeyDown={handleKeyDown}
+                    noValidate
+                    className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16"
+                >
+                    <Honeypot register={register} />
+
+                    {/* Rail des étapes */}
+                    <div className="lg:col-span-4">
+                        <div className="lg:sticky lg:top-28">
+                            <p className="text-xs font-light uppercase tracking-[0.3em] text-white/40">
+                                {t("stepOf", { current: currentStep, total: TOTAL_STEPS })}
+                            </p>
+                            <ol className="mt-8 hidden lg:block">
+                                {([1, 2, 3, 4, 5, 6] as Step[]).map((step) => {
+                                    const isCurrent = step === currentStep;
+                                    const isDone = step < currentStep;
+                                    return (
+                                        <li
+                                            key={step}
+                                            aria-current={isCurrent ? "step" : undefined}
+                                            className={`flex items-baseline gap-4 border-t border-white/10 py-4 transition-colors duration-300 last:border-b ${
+                                                isCurrent ? "border-white/25" : ""
+                                            }`}
+                                        >
+                                            <span
+                                                className={`font-mono text-xs ${
+                                                    isCurrent ? "text-white" : "text-white/30"
+                                                }`}
+                                            >
+                                                {String(step).padStart(2, "0")}
+                                            </span>
+                                            <span
+                                                className={`flex-1 text-sm transition-colors duration-300 ${
+                                                    isCurrent
+                                                        ? "font-medium text-white"
+                                                        : isDone
+                                                          ? "text-white/50"
+                                                          : "text-white/25"
+                                                }`}
+                                            >
+                                                {stepTitles[step]}
+                                            </span>
+                                            {isDone && (
+                                                <Check aria-hidden className="h-3.5 w-3.5 text-white/40" />
+                                            )}
+                                        </li>
+                                    );
+                                })}
+                            </ol>
+                        </div>
+                    </div>
+
+                    {/* Contenu de l'étape */}
+                    <div className="lg:col-span-8">
+                        <div ref={stepRef} className="min-h-[420px]">
+                            <h2
+                                ref={titleRef}
+                                tabIndex={-1}
+                                className="text-[clamp(2rem,4vw,3.5rem)] font-bold uppercase leading-[0.95] tracking-tight text-white outline-none"
+                            >
+                                {stepTitles[currentStep]}
+                            </h2>
+                            <p className="mt-4 max-w-md text-sm font-light leading-relaxed text-white/50 md:text-base">
+                                {stepSubtitles[currentStep]}
+                            </p>
+
+                            <div className="mt-10 md:mt-12">
+                                {/* Étape 1 : identité */}
+                                {currentStep === 1 && (
+                                    <div className="space-y-8">
+                                        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+                                            <div>
+                                                <label htmlFor="firstName" className={labelClassName}>
+                                                    {t("step1.firstName")}
+                                                </label>
+                                                <input
+                                                    id="firstName"
+                                                    autoComplete="given-name"
+                                                    {...register("firstName")}
+                                                    aria-invalid={Boolean(formState.errors.firstName)}
+                                                    placeholder={t("step1.firstNamePlaceholder")}
+                                                    className={inputClassName}
+                                                    autoFocus
+                                                />
+                                                <FieldError message={formState.errors.firstName?.message} />
+                                            </div>
+                                            <div>
+                                                <label htmlFor="lastName" className={labelClassName}>
+                                                    {t("step1.lastName")}
+                                                </label>
+                                                <input
+                                                    id="lastName"
+                                                    autoComplete="family-name"
+                                                    {...register("lastName")}
+                                                    aria-invalid={Boolean(formState.errors.lastName)}
+                                                    placeholder={t("step1.lastNamePlaceholder")}
+                                                    className={inputClassName}
+                                                />
+                                                <FieldError message={formState.errors.lastName?.message} />
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label htmlFor="email" className={labelClassName}>
+                                                {t("step1.email")}
+                                            </label>
+                                            <input
+                                                id="email"
+                                                type="email"
+                                                autoComplete="email"
+                                                {...register("email")}
+                                                aria-invalid={Boolean(formState.errors.email)}
+                                                placeholder={t("step1.emailPlaceholder")}
+                                                className={inputClassName}
+                                            />
+                                            <FieldError message={formState.errors.email?.message} />
+                                        </div>
+                                        <div>
+                                            <label htmlFor="phone" className={labelClassName}>
+                                                {t("step1.phone")}{" "}
+                                                <span className="normal-case text-white/25">
+                                                    ({t("optional")})
+                                                </span>
+                                            </label>
+                                            <PhoneInput
+                                                id="phone"
+                                                value={watch("phone")}
+                                                onChange={(value) => setValue("phone", value)}
+                                                placeholder={t("step1.phonePlaceholder")}
+                                                error={formState.errors.phone?.message}
+                                            />
+                                        </div>
+                                    </div>
+                                )}
+
+                                {/* Étape 2 : entreprise */}
+                                {currentStep === 2 && (
+                                    <div className="space-y-8">
+                                        <div>
+                                            <label htmlFor="companyName" className={labelClassName}>
+                                                {t("step2.companyName")}
+                                            </label>
+                                            <input
+                                                id="companyName"
+                                                autoComplete="organization"
+                                                {...register("companyName")}
+                                                aria-invalid={Boolean(formState.errors.companyName)}
+                                                placeholder={t("step2.companyNamePlaceholder")}
+                                                className={inputClassName}
+                                                autoFocus
+                                            />
+                                            <FieldError message={formState.errors.companyName?.message} />
+                                        </div>
+                                        <div>
+                                            <label htmlFor="companyWebsite" className={labelClassName}>
+                                                {t("step2.companyWebsite")}{" "}
+                                                <span className="normal-case text-white/25">
+                                                    ({t("optional")})
+                                                </span>
+                                            </label>
+                                            <input
+                                                id="companyWebsite"
+                                                type="url"
+                                                autoComplete="url"
+                                                {...register("companyWebsite")}
+                                                aria-invalid={Boolean(formState.errors.companyWebsite)}
+                                                placeholder={t("step2.companyWebsitePlaceholder")}
+                                                className={inputClassName}
+                                            />
+                                            <FieldError message={formState.errors.companyWebsite?.message} />
+                                        </div>
+                                    </div>
+                                )}
+
+                                {/* Étape 3 : type de service */}
+                                {currentStep === 3 && (
+                                    <div className="space-y-8">
+                                        <div role="radiogroup" aria-label={t("step3.subtitle")}>
+                                            {SERVICE_TYPES.map((type) => {
+                                                const isSelected = serviceType === type;
+                                                return (
+                                                    <button
+                                                        key={type}
+                                                        type="button"
+                                                        role="radio"
+                                                        aria-checked={isSelected}
+                                                        onClick={() => selectService(type)}
+                                                        className={`group flex w-full items-baseline gap-5 border-t border-white/10 py-5 text-left transition-colors duration-300 last:border-b hover:border-white/25 ${
+                                                            isSelected ? "border-white/30" : ""
+                                                        }`}
+                                                    >
+                                                        <span
+                                                            className={`text-base font-semibold uppercase tracking-tight transition-colors duration-300 md:text-lg ${
+                                                                isSelected
+                                                                    ? "text-white"
+                                                                    : "text-white/50 group-hover:text-white/80"
+                                                            }`}
+                                                        >
+                                                            {t(`step3.${type}`)}
+                                                        </span>
+                                                        <span className="hidden flex-1 text-sm font-light text-white/40 sm:block">
+                                                            {t(`step3.${type}Desc`)}
+                                                        </span>
+                                                        <Check
+                                                            aria-hidden
+                                                            className={`h-4 w-4 shrink-0 self-center transition-opacity duration-300 ${
+                                                                isSelected ? "text-white opacity-100" : "opacity-0"
+                                                            }`}
+                                                        />
+                                                    </button>
+                                                );
+                                            })}
+                                        </div>
+
+                                        {serviceType === "ecommerce" && (
+                                            <div className="max-w-xs">
+                                                <label htmlFor="ecommerceCms" className={labelClassName}>
+                                                    {t("step3.cmsLabel")}
+                                                </label>
+                                                <select
+                                                    id="ecommerceCms"
+                                                    {...register("ecommerceCms")}
+                                                    aria-invalid={Boolean(formState.errors.ecommerceCms)}
+                                                    className={`${inputClassName} appearance-none [&>option]:bg-black`}
+                                                >
+                                                    <option value="">{t("step3.cmsPlaceholder")}</option>
+                                                    {ECOMMERCE_CMS.map((cms) => (
+                                                        <option key={cms} value={cms}>
+                                                            {cms.charAt(0).toUpperCase() + cms.slice(1)}
+                                                        </option>
+                                                    ))}
+                                                </select>
+                                                <FieldError message={formState.errors.ecommerceCms?.message} />
+                                            </div>
+                                        )}
+                                    </div>
+                                )}
+
+                                {/* Étape 4 : besoin */}
+                                {currentStep === 4 && (
+                                    <div role="radiogroup" aria-label={t("step4.subtitle")}>
+                                        {helpTypes.map((type) => {
+                                            const isSelected = watch("helpType") === type;
+                                            return (
+                                                <button
+                                                    key={type}
+                                                    type="button"
+                                                    role="radio"
+                                                    aria-checked={isSelected}
+                                                    onClick={() => setValue("helpType", type)}
+                                                    className={`group flex w-full items-baseline gap-5 border-t border-white/10 py-5 text-left transition-colors duration-300 last:border-b hover:border-white/25 ${
+                                                        isSelected ? "border-white/30" : ""
+                                                    }`}
+                                                >
+                                                    <span
+                                                        className={`text-base font-semibold uppercase tracking-tight transition-colors duration-300 md:text-lg ${
+                                                            isSelected
+                                                                ? "text-white"
+                                                                : "text-white/50 group-hover:text-white/80"
+                                                        }`}
+                                                    >
+                                                        {t(`step4.${type}`)}
+                                                    </span>
+                                                    <span className="hidden flex-1 text-sm font-light text-white/40 sm:block">
+                                                        {t(`step4.${type}Desc`)}
+                                                    </span>
+                                                    <Check
+                                                        aria-hidden
+                                                        className={`h-4 w-4 shrink-0 self-center transition-opacity duration-300 ${
+                                                            isSelected ? "text-white opacity-100" : "opacity-0"
+                                                        }`}
+                                                    />
+                                                </button>
+                                            );
+                                        })}
+                                    </div>
+                                )}
+
+                                {/* Étape 5 : budget */}
+                                {currentStep === 5 && (
+                                    <div>
+                                        <BudgetSlider
+                                            minValue={(watch("budgetMin") ?? 5000) as number}
+                                            maxValue={(watch("budgetMax") ?? 15000) as number}
+                                            onMinChange={(val) => setValue("budgetMin", val as number)}
+                                            onMaxChange={(val) => setValue("budgetMax", val as number)}
+                                            labels={{
+                                                estimated: t("step5.estimated"),
+                                                min: t("step5.min"),
+                                                max: t("step5.max"),
+                                                presets: t("step5.presets"),
+                                            }}
+                                        />
+                                        <FieldError message={formState.errors.budgetMax?.message} />
+                                    </div>
+                                )}
+
+                                {/* Étape 6 : découverte + message */}
+                                {currentStep === 6 && (
+                                    <div className="space-y-10">
+                                        <div
+                                            role="radiogroup"
+                                            aria-label={t("step6.subtitle")}
+                                            className="flex flex-wrap gap-2"
+                                        >
+                                            {DISCOVERY_SOURCES.map((source) => {
+                                                const isSelected = discoverySource === source;
+                                                return (
+                                                    <button
+                                                        key={source}
+                                                        type="button"
+                                                        role="radio"
+                                                        aria-checked={isSelected}
+                                                        onClick={() => setValue("discoverySource", source)}
+                                                        className={`rounded-full border px-5 py-2.5 text-sm transition-colors duration-300 ${
+                                                            isSelected
+                                                                ? "border-white bg-white font-medium text-black"
+                                                                : "border-white/10 font-light text-white/50 hover:border-white/30 hover:text-white"
+                                                        }`}
+                                                    >
+                                                        {t(`step6.${source}`)}
+                                                    </button>
+                                                );
+                                            })}
+                                        </div>
+
+                                        {discoverySource === "autre" && (
+                                            <div>
+                                                <input
+                                                    aria-label={t("step6.otherPlaceholder")}
+                                                    {...register("discoverySourceOther")}
+                                                    placeholder={t("step6.otherPlaceholder")}
+                                                    className={inputClassName}
+                                                />
+                                                <FieldError
+                                                    message={formState.errors.discoverySourceOther?.message}
+                                                />
+                                            </div>
+                                        )}
+
+                                        <div>
+                                            <label htmlFor="message" className={labelClassName}>
+                                                {t("step6.message")}{" "}
+                                                <span className="normal-case text-white/25">
+                                                    ({t("optional")})
+                                                </span>
+                                            </label>
+                                            <textarea
+                                                id="message"
+                                                rows={4}
+                                                {...register("message")}
+                                                aria-invalid={Boolean(formState.errors.message)}
+                                                placeholder={t("step6.messagePlaceholder")}
+                                                className={`${inputClassName} min-h-[120px] resize-none`}
+                                            />
+                                            <FieldError message={formState.errors.message?.message} />
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+
+                        {/* Navigation */}
+                        <div className="mt-12 flex items-center justify-between gap-4 md:mt-16">
+                            <button
+                                type="button"
+                                onClick={prevStep}
+                                disabled={currentStep === 1}
+                                className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-sm font-light text-white transition-all duration-300 hover:border-white/40 hover:bg-white/10 disabled:pointer-events-none disabled:opacity-0"
+                            >
+                                <ArrowLeft className="h-4 w-4" />
+                                {t("back")}
+                            </button>
+
+                            {currentStep < TOTAL_STEPS ? (
+                                <button
+                                    type="button"
+                                    onClick={nextStep}
+                                    disabled={!canProceed()}
+                                    className="group inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-sm font-medium text-black transition-all duration-300 hover:bg-white/90 active:scale-95 disabled:cursor-not-allowed disabled:opacity-40"
+                                >
+                                    {t("next")}
+                                    <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                                </button>
+                            ) : (
+                                <button
+                                    type="submit"
+                                    disabled={isSubmitting || !canProceed()}
+                                    className="group inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-sm font-medium text-black transition-all duration-300 hover:bg-white/90 active:scale-95 disabled:cursor-not-allowed disabled:opacity-40"
+                                >
+                                    {isSubmitting ? (
+                                        <>
+                                            <Loader2 className="h-4 w-4 animate-spin" />
+                                            {t("submitting")}
+                                        </>
+                                    ) : (
+                                        <>
+                                            {t("submit")}
+                                            <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                                        </>
+                                    )}
+                                </button>
+                            )}
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     );
 };

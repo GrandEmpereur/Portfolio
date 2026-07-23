@@ -178,7 +178,7 @@ export default async function Home({
               code: t('services.categoryAi.code'),
               name: t('services.categoryAi.name'),
               tagline: t('services.categoryAi.tagline'),
-              serviceIds: ['ai-integration', 'ai-agents', 'rag-knowledge'],
+              serviceIds: ['ai-integration', 'ai-agents', 'rag-knowledge', 'voice-assistants', 'nfc-qrcode-automation'],
             },
             {
               id: 'software',

@@ -2,9 +2,30 @@ import { z } from "zod";
 
 // ===== ENUMS & CONSTANTS =====
 
-export const SERVICE_TYPES = ["web", "saas", "ecommerce", "mobile", "autre"] as const;
+export const SERVICE_TYPES = ["web", "saas", "ecommerce", "mobile", "ai", "autre"] as const;
 export const ECOMMERCE_CMS = ["shopify", "woocommerce", "prestashop", "magento", "autre"] as const;
-export const HELP_TYPES = ["refonte", "creation", "ui-ux", "dev-integration", "autre"] as const;
+export const HELP_TYPES = [
+    "refonte",
+    "creation",
+    "ui-ux",
+    "dev-integration",
+    "ai-feature",
+    "ai-agent",
+    "ai-rag",
+    "ai-audit",
+    "autre",
+] as const;
+
+export type ServiceType = (typeof SERVICE_TYPES)[number];
+export type HelpType = (typeof HELP_TYPES)[number];
+
+// Besoins proposés selon le type de service choisi
+export function getHelpTypesForService(serviceType: ServiceType | undefined): readonly HelpType[] {
+    if (serviceType === "ai") {
+        return ["ai-feature", "ai-agent", "ai-rag", "ai-audit", "autre"];
+    }
+    return ["refonte", "creation", "ui-ux", "dev-integration", "autre"];
+}
 export const DISCOVERY_SOURCES = ["google", "social", "recommendation", "event", "autre"] as const;
 
 // ===== HELPER SCHEMAS =====
@@ -110,10 +131,10 @@ export function calculateLeadScore(data: ContactFormData): number {
     if (data.budgetMin >= 15000) score += 20;
 
     // Type de service (certains types sont plus qualifiés)
-    if (["saas", "ecommerce"].includes(data.serviceType)) score += 15;
+    if (["saas", "ecommerce", "ai"].includes(data.serviceType)) score += 15;
 
-    // Type d'aide (création complète = plus qualifié)
-    if (["creation", "refonte"].includes(data.helpType)) score += 15;
+    // Type d'aide (création complète ou projet IA construit = plus qualifié)
+    if (["creation", "refonte", "ai-feature", "ai-agent", "ai-rag"].includes(data.helpType)) score += 15;
 
     // Source de découverte (recommandation = meilleur lead)
     if (data.discoverySource === "recommendation") score += 10;

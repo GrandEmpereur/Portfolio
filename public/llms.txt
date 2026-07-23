@@ -1,35 +1,61 @@
-# Patrick Bartosik - Full Stack Developer Portfolio
+# Patrick Bartosik — Freelance Full Stack & AI Developer (Paris, France)
 
-## About
-Patrick Bartosik is a Full Stack Developer based in Paris, France, specializing in React, Next.js, TypeScript, Node.js, and Shopify Plus development.
+> Patrick Bartosik is a freelance Full Stack Developer based in Paris, France, with 5+ years of experience. He designs, builds, and ships production web applications (Next.js, React, TypeScript, Node.js), Shopify Plus e-commerce, and AI features (LLM integration, autonomous agents, RAG, voice assistants). He works remotely worldwide, replies to inquiries within 24 hours, and offers a free 30-minute consultation.
 
-## Services
-- Web Development (React, Next.js, Angular)
-- SaaS Development
-- E-commerce (Shopify Plus, Prestashop migrations)
-- Backend Development (Node.js, NestJS, AdonisJS)
-- API Development (REST, GraphQL)
+## Key Facts
+- Name: Patrick Bartosik
+- Role: Freelance Full Stack & AI Developer
+- Location: Paris, France (remote work available worldwide)
+- Experience: 5+ years, 20+ projects shipped to production
+- Languages: French (native), Polish (native), English (professional)
+- Response time: within 24 hours; detailed proposal within 48 hours
+- First consultation: free, 30 minutes, no commitment
+
+## Notable Clients & References
+- Euroclear France — IT System Operator on critical financial market infrastructure (Angular, Azure CI/CD)
+- Isotoner — Shopify Plus migration from Magento, art direction, UX/UI
+- Balzac Paris — Shopify Plus, Cegid ERP integration, omnichannel retail (POS, Click & Collect)
+- Tartine & Chocolat — Shopify Plus migration from PrestaShop, Cegid Y2 ERP integration
+- Qwetch — Shopify Plus migration from WooCommerce, art direction
+- Odaje, Easy Clothes, Le-1.store — Shopify Plus / Shopify builds and migrations (with W3lead agency)
+
+## AI Services (with starting prices)
+- AI & LLM Integration — chat interfaces, content generation, structured data extraction (Claude, GPT, Vercel AI SDK). From €4,000, 2–6 weeks.
+- AI Agents & Automation — autonomous agents with tool use (Claude Agent SDK, MCP), n8n workflows, support chatbots, lead qualification. From €6,000, 4–10 weeks.
+- RAG & Knowledge Bases — semantic search over private documents, cited answers, pgvector. From €5,000, 3–8 weeks.
+- AI Voice Assistants — Vapi-powered phone agents: 24/7 call answering, qualification, appointment booking, CRM follow-up. From €3,000, 2–5 weeks.
+- NFC & QR Code Automation — connected business cards, one-tap Google review collection, automated workflows. From €800, 1–3 weeks.
+
+## Software Services (with starting prices)
+- Custom Web Development — Next.js/React sites and web apps, sub-second load times, technical SEO. From €3,000, 2–8 weeks.
+- E-commerce — Shopify Plus builds and migrations (PrestaShop, Magento, WooCommerce → Shopify) without traffic loss; ERP integrations. Pricing on request.
+- SaaS Development — auth, Stripe subscriptions, dashboards, multi-tenant architecture. From €15,000, 8–16 weeks.
+- API & Integrations — REST/GraphQL APIs (NestJS, AdonisJS), webhooks, ERP/CRM sync. Pricing on request.
+- Headless CMS — Strapi or custom, multilingual content management. Pricing on request.
+- Maintenance & Support — monitoring, security updates, priority fixes. From €500/month.
+
+## Process
+1. Discovery — business goals, audience, constraints scoped before any code.
+2. Design — UX/UI mockups and technical architecture validated together.
+3. Develop — iterative sprints, regular demos, continuous Git access.
+4. Deploy — testing, production rollout, monitoring, knowledge transfer.
 
 ## Technologies
-- Frontend: React, Next.js, Angular, TypeScript, Tailwind CSS
-- Backend: Node.js, NestJS, AdonisJS, Express
-- Database: MongoDB, Supabase, PostgreSQL
-- E-commerce: Shopify Plus, Shopify Liquid
-- Payment: Stripe, LemonSqueezy, Polar
+- Frontend: React, Next.js (App Router), Angular, TypeScript, Tailwind CSS, GSAP
+- Backend: Node.js, NestJS, AdonisJS, Express, PostgreSQL, MongoDB, Supabase, Redis
+- AI: Claude API, OpenAI API, Azure AI Foundry, Vercel AI SDK, MCP, n8n, Vapi, pgvector
+- E-commerce: Shopify Plus, Shopify Liquid, ERP integrations (Cegid, Odoo)
+- Payments: Stripe, Lemon Squeezy, Polar
+- Quality: technical SEO, Core Web Vitals, WCAG accessibility, Sentry monitoring
+
+## Pages
+- Homepage: https://patrick.bartosik.fr/ (services, projects, FAQ)
+- Projects: https://patrick.bartosik.fr/projects
+- Contact: https://patrick.bartosik.fr/contact (2-minute project brief form)
+- English version: https://patrick.bartosik.fr/en — Polish version: https://patrick.bartosik.fr/pl
 
 ## Contact
 - Website: https://patrick.bartosik.fr
 - Email: contact@bartosik.fr
 - LinkedIn: https://www.linkedin.com/in/patrick-bartosik
 - GitHub: https://github.com/GrandEmpereur
-
-## Location
-Paris, France (Remote work available worldwide)
-
-## Experience
-4+ years of professional development experience
-
-## Languages
-- French (Native)
-- English (Professional)
-- Polish (Native)

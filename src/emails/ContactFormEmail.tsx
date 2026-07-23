@@ -143,6 +143,7 @@ export const ContactFormEmail = ({
                                     {serviceType === "saas" && "⚡ SaaS"}
                                     {serviceType === "ecommerce" && "🛍️ E-commerce"}
                                     {serviceType === "mobile" && "📱 Mobile"}
+                                    {serviceType === "ai" && "🤖 IA / Agents"}
                                     {serviceType === "autre" && "✨ Autre"}
                                 </Text>
                             </Row>
@@ -159,6 +160,10 @@ export const ContactFormEmail = ({
                                     {helpType === "creation" && "✨ Création"}
                                     {helpType === "ui-ux" && "🎨 UI/UX Design"}
                                     {helpType === "dev-integration" && "⚙️ Développement"}
+                                    {helpType === "ai-feature" && "🤖 Intégration IA produit"}
+                                    {helpType === "ai-agent" && "🦾 Agent / Chatbot"}
+                                    {helpType === "ai-rag" && "📚 RAG / Base de connaissances"}
+                                    {helpType === "ai-audit" && "🧭 Conseil & cadrage IA"}
                                     {helpType === "autre" && "💡 Autre"}
                                 </Text>
                             </Row>
