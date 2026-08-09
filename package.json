@@ -2,6 +2,9 @@
   "name": "portfolio-v2",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "24.x"
+  },
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
@@ -47,7 +50,7 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.17",
     "@types/dompurify": "^3.2.0",
-    "@types/node": "^25.0.0",
+    "@types/node": "^24.0.0",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "tailwindcss": "^4.1.17",
