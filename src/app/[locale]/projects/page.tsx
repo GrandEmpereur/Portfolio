@@ -1,5 +1,5 @@
 import React from 'react'
-import { lastwork } from '@/lib/data/lastwork.data'
+import { getPublishedProjects, hasDetailPage } from '@/lib/data/lastwork.data'
 import { ProjectCard } from '@/components/ProjectCard'
 import { getI18n } from '@/locales/serveur'
 import { setStaticParamsLocale } from 'next-international/server'
@@ -71,8 +71,12 @@ export default async function ProjectsPage({
     const { locale } = await params;
     const t = await getI18n();
 
-    // Generate structured data for projects
-    const projectsSchema = getProjectsListSchema(lastwork, locale);
+    const projects = getPublishedProjects();
+    // The structured data only lists projects that have a real URL (external link or detail page)
+    const projectsSchema = getProjectsListSchema(
+        projects.filter((project) => project.link || hasDetailPage(project)),
+        locale
+    );
     const breadcrumbSchema = getBreadcrumbSchema(
         [
             { name: t('nav.home'), url: locale === seoConfig.defaultLocale ? '/' : `/${locale}` },
@@ -106,7 +110,7 @@ export default async function ProjectsPage({
                 {/* Projects Grid */}
                 <section className="px-8 md:px-16 lg:px-24 pb-16">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-10 max-w-[2200px] mx-auto">
-                        {lastwork.map((project) => (
+                        {projects.map((project) => (
                             <ProjectCard key={project.slug} project={project} />
                         ))}
                     </div>
