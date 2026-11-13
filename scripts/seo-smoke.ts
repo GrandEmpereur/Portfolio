@@ -111,7 +111,6 @@ const checkHomepage = async (locale: Locale): Promise<void> => {
   for (const title of unpublishedTitles) {
     check(`${label}: unpublished "${title}" absent`, !body.toLowerCase().includes(title.toLowerCase()));
   }
-  check(`${label}: "Ariane" absent`, !/ariane/i.test(body));
   check(`${label}: no "€"`, !body.includes('€'));
 
   const alternates = [...body.matchAll(/<link\b[^>]*>/gi)]
@@ -163,7 +162,9 @@ const checkSitemap = async (): Promise<void> => {
       check(`/sitemap.xml: ${suffix} present`, locs.some((loc) => loc.endsWith(suffix)));
     }
   }
-  check('/sitemap.xml: "ariane" absent', !/ariane/i.test(page.body));
+  for (const project of lastwork.filter((item) => item.published === false)) {
+    check(`/sitemap.xml: unpublished "${project.slug}" absent`, !page.body.includes(`/projects/${project.slug}`));
+  }
 };
 
 const main = async (): Promise<void> => {
