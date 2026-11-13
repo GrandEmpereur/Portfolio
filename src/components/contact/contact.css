@@ -1,0 +1,819 @@
+/* Contact screen. Classes are prefixed "cx-".
+   Without JavaScript the page is a normal document: every question is shown, one under the other.
+   The "js" class (set on <html> before first paint) switches to one question at a time.
+   Only from 900px wide, and only with "js", the page becomes a fixed screen that never scrolls. */
+
+.cx-page {
+  display: grid;
+  min-height: 100svh;
+  padding-top: 84px; /* the fixed header bar */
+}
+
+.cx-page [hidden] {
+  display: none !important;
+}
+
+.cx-page fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+
+.cx-page ul,
+.cx-page ol {
+  list-style: none;
+  padding: 0;
+}
+
+.cx-page a:not(.btn) {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ---- the dossier (left) ---- */
+.cx-dossier {
+  padding: 0 var(--pad) 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  min-height: 0;
+}
+
+.cx-label {
+  color: var(--mut);
+}
+
+.cx-page .cx-h1 {
+  font-size: clamp(38px, min(5.4vw, 10vh), 88px);
+  line-height: 0.9;
+}
+
+.cx-lede {
+  color: var(--mut);
+  max-width: 34ch;
+}
+
+.cx-recap > div {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 16px;
+  padding: 11px 0;
+  border-top: 1px solid var(--ln);
+  align-items: baseline;
+}
+
+.cx-recap > div:last-child {
+  border-bottom: 1px solid var(--ln);
+}
+
+.cx-recap dt {
+  color: var(--mut);
+}
+
+.cx-recap dd {
+  text-align: right;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  color: var(--fnt);
+  transition: color 0.3s;
+}
+
+.cx-recap dd.is-set {
+  color: var(--fg);
+}
+
+.cx-assure {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  color: var(--mut);
+}
+
+.cx-assure li::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-ok);
+  margin-right: 8px;
+}
+
+.cx-page[data-mode="direct"] .cx-recap {
+  visibility: hidden;
+}
+
+/* ---- the stage (right) ---- */
+.cx-stage {
+  padding: 0 var(--pad) 26px;
+  min-width: 0;
+}
+
+.cx-noscript {
+  margin-bottom: 20px;
+  color: var(--mut);
+}
+
+/* choice of mode */
+.cx-modes {
+  display: inline-flex;
+  align-self: flex-start;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1px var(--ln);
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.cx-modes button {
+  padding: 9px 16px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mut);
+  cursor: pointer;
+}
+
+.cx-modes button[aria-pressed="true"] {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+/* progress */
+.cx-progress {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  color: var(--mut);
+}
+
+.cx-progress b {
+  color: var(--acc);
+  font-weight: 400;
+  display: inline-block;
+}
+
+.cx-bar {
+  flex: 1;
+  height: 1px;
+  background: var(--ln);
+  position: relative;
+}
+
+.cx-bar i {
+  position: absolute;
+  inset: 0;
+  background: var(--acc);
+  transform-origin: left;
+  transition: transform 0.6s cubic-bezier(0.7, 0, 0.2, 1);
+}
+
+/* ---- questions ---- */
+.cx-step {
+  margin-bottom: 56px;
+}
+
+.js .cx-step {
+  display: none;
+  margin: 0;
+}
+
+.js .cx-step.is-active {
+  display: block;
+}
+
+.cx-q {
+  display: block;
+  font-size: clamp(30px, min(4.2vw, 7.2vh), 64px);
+  line-height: 0.9;
+  padding: 0;
+  margin-bottom: 8px;
+  clip-path: inset(-12% -2% -10% -2%);
+}
+
+.cx-q:focus-visible {
+  outline-offset: 6px;
+}
+
+.cx-hint {
+  color: var(--mut);
+  margin-bottom: 16px;
+}
+
+.cx-sub {
+  font-size: clamp(18px, 1.6vw, 24px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  margin: 22px 0 10px;
+  padding: 0;
+}
+
+/* a short question and its chips on one line */
+.cx-pref {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 20px;
+  margin-top: 20px;
+}
+
+.cx-pref .cx-sub {
+  margin: 0;
+}
+
+/* options as index rows, not cards */
+.cx-opts {
+  border-bottom: 1px solid var(--ln);
+}
+
+.cx-opt {
+  position: relative;
+  display: grid;
+  grid-template-columns: 56px 1fr 22px;
+  gap: 2px 14px;
+  align-items: baseline;
+  padding: 13px 0;
+  border-top: 1px solid var(--ln);
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+.cx-opt input,
+.cx-chip input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cx-code {
+  color: var(--fnt);
+  transition: color 0.25s;
+}
+
+.cx-t {
+  font-size: clamp(16px, 1.4vw, 21px);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--mut);
+  transition: color 0.25s, transform 0.3s;
+}
+
+.cx-d {
+  grid-column: 2;
+  color: var(--fnt);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.cx-tick {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px var(--ln);
+  align-self: center;
+  transition: background-color 0.25s, box-shadow 0.25s, transform 0.3s;
+}
+
+.cx-opt:hover .cx-t {
+  transform: translateX(6px);
+  color: var(--fg);
+}
+
+.cx-opt:has(input:checked) {
+  border-top-color: var(--acc);
+}
+
+.cx-opt:has(input:checked) .cx-t {
+  color: var(--fg);
+}
+
+.cx-opt:has(input:checked) .cx-code {
+  color: var(--acc);
+}
+
+.cx-opt:has(input:checked) .cx-tick {
+  background: var(--acc);
+  box-shadow: none;
+  transform: scale(1.15);
+}
+
+.cx-opt:has(input:focus-visible) {
+  outline: 2px solid var(--acc);
+  outline-offset: 4px;
+}
+
+/* short choices as chips */
+.cx-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.cx-chip {
+  position: relative;
+  cursor: pointer;
+}
+
+.cx-chip span {
+  display: inline-block;
+  padding: 10px 17px;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1px var(--ln);
+  font-size: 14px;
+  color: var(--mut);
+  transition: background-color 0.25s, color 0.25s;
+}
+
+.cx-chip:hover span {
+  color: var(--fg);
+}
+
+.cx-chip:has(input:checked) span {
+  background: var(--fg);
+  color: var(--bg);
+  box-shadow: none;
+}
+
+.cx-chip:has(input:focus-visible) span {
+  outline: 2px solid var(--acc);
+  outline-offset: 3px;
+}
+
+.cx-chip:has(input:disabled) {
+  cursor: default;
+}
+
+/* underlined fields */
+.cx-fields {
+  display: grid;
+  gap: 16px 28px;
+  margin-top: 4px;
+}
+
+.cx-after {
+  margin-top: 22px;
+}
+
+.cx-field label {
+  display: block;
+  color: var(--mut);
+}
+
+.cx-field input,
+.cx-field textarea {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid var(--ln);
+  border-radius: 0;
+  background: transparent;
+  color: var(--fg);
+  font: inherit;
+  font-size: 17px;
+  padding: 9px 0;
+  outline: 0;
+  transition: border-color 0.25s;
+}
+
+.cx-field textarea {
+  min-height: 110px;
+  resize: none;
+  line-height: 1.5;
+}
+
+.cx-field input:focus,
+.cx-field textarea:focus {
+  border-bottom-color: var(--fg);
+}
+
+.cx-field input::placeholder,
+.cx-field textarea::placeholder {
+  color: var(--fnt);
+}
+
+.cx-opt-tag {
+  color: var(--fnt);
+}
+
+.cx-legal {
+  color: var(--fnt);
+  font-size: 13px;
+  margin-top: 16px;
+  max-width: 60ch;
+}
+
+/* ---- error and actions ---- */
+.cx-error {
+  min-height: 22px;
+  margin-top: 12px;
+  color: var(--fg);
+  font-size: 14px;
+}
+
+.cx-error:not(:empty) {
+  animation: cx-shake 0.5s cubic-bezier(0.2, 0.75, 0.2, 1);
+}
+
+.cx-error:not(:empty)::before {
+  content: "!";
+  display: inline-grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background: var(--acc);
+  color: var(--color-accent-foreground);
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+@keyframes cx-shake {
+  0% {
+    transform: translateX(-8px);
+  }
+  40% {
+    transform: translateX(4px);
+  }
+  70% {
+    transform: translateX(-2px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.cx-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.cx-actions .cx-keyhint {
+  color: var(--fnt);
+  margin-left: auto;
+}
+
+.cx-direct .cx-keyhint {
+  display: none;
+}
+
+.cx-page .btn[disabled] {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Without JavaScript the guided flow is a plain document: nothing to step through or send. */
+html:not(.js) .cx-modes,
+html:not(.js) .cx-progress,
+html:not(.js) .cx-actions {
+  display: none;
+}
+
+/* ---- after sending ---- */
+.cx-done-label {
+  color: var(--mut);
+  margin-bottom: 10px;
+}
+
+.cx-done-title {
+  font-size: clamp(44px, min(7vw, 13vh), 118px);
+  line-height: 0.9;
+  margin-bottom: 14px;
+}
+
+.cx-thanks {
+  font-size: clamp(18px, 1.7vw, 26px);
+  letter-spacing: -0.02em;
+  max-width: 34ch;
+  margin-bottom: 22px;
+}
+
+.cx-next li {
+  display: grid;
+  grid-template-columns: 56px minmax(140px, 1fr) 2fr;
+  gap: 4px 16px;
+  padding: 15px 0;
+  border-top: 1px solid var(--ln);
+  align-items: baseline;
+}
+
+.cx-next li:last-child {
+  border-bottom: 1px solid var(--ln);
+}
+
+.cx-next .mono-label {
+  color: var(--acc);
+}
+
+.cx-next b {
+  font-weight: 500;
+  font-size: clamp(16px, 1.4vw, 21px);
+}
+
+.cx-next span:last-child {
+  color: var(--mut);
+  font-size: 15px;
+}
+
+.cx-done .cx-actions {
+  margin-top: 22px;
+  flex-wrap: wrap;
+}
+
+.cx-source-ok {
+  color: var(--mut);
+  margin-top: 10px;
+  min-height: 18px;
+}
+
+@media (min-width: 560px) {
+  .cx-opts.cx-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 32px;
+  }
+}
+
+/* ---- wide screens: the dossier beside the stage ---- */
+@media (min-width: 900px) {
+  .cx-page {
+    grid-template-columns: minmax(340px, 0.82fr) 1.5fr;
+  }
+
+  .cx-stage {
+    border-left: 1px solid var(--ln);
+    padding-left: clamp(28px, 4vw, 72px);
+  }
+
+  .cx-dossier .cx-assure {
+    margin-top: auto;
+  }
+
+  .cx-opts.cx-cols {
+    column-gap: 40px;
+  }
+
+  .cx-fields.cx-two {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cx-wide {
+    grid-column: 1 / -1;
+  }
+
+  /* Fixed screen: the page never scrolls. If the window is too short, the question scrolls inside,
+     and "Continuer" stays visible. Scoped to this page so other pages keep their scroll. */
+  html.js:has(.cx-page),
+  html.js:has(.cx-page) body {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .js .cx-page {
+    height: 100vh;
+    height: 100dvh;
+    min-height: 0;
+    overflow: hidden;
+    grid-template-rows: minmax(0, 1fr);
+  }
+
+  .js .cx-dossier {
+    overflow: hidden;
+  }
+
+  .js .cx-stage {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .js .cx-form {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+  }
+
+  .js .cx-flow .cx-step.is-active {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
+
+  .js .cx-done {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
+
+  .js .cx-fields.cx-grow {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .js .cx-direct .cx-fields.cx-grow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto minmax(0, 1fr);
+  }
+
+  .js .cx-field.cx-fill {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .js .cx-field.cx-fill textarea {
+    flex: 1;
+    min-height: 80px;
+  }
+}
+
+/* short window: compact the question so it fits without scrolling */
+@media (min-width: 900px) and (max-height: 780px) {
+  .cx-d,
+  .cx-lede,
+  .cx-hint {
+    display: none;
+  }
+
+  .cx-opt {
+    padding: 10px 0;
+  }
+
+  .cx-sub {
+    margin: 14px 0 8px;
+  }
+
+  .cx-pref {
+    margin-top: 14px;
+  }
+
+  .cx-fields {
+    gap: 10px 28px;
+  }
+
+  .cx-q {
+    font-size: clamp(28px, min(3.6vw, 6.2vh), 52px);
+  }
+
+  .cx-field input {
+    padding: 6px 0;
+    font-size: 16px;
+  }
+
+  .cx-legal {
+    margin-top: 10px;
+  }
+
+  .cx-done-title {
+    font-size: clamp(40px, min(6vw, 10vh), 96px);
+    margin-bottom: 8px;
+  }
+
+  .cx-thanks {
+    margin-bottom: 14px;
+  }
+
+  .cx-next li {
+    padding: 10px 0;
+  }
+
+  .cx-done .cx-actions {
+    margin-top: 14px;
+  }
+}
+
+/* ---- below 900px: at least one screen tall, the page scrolls normally (phone keyboard, zoom) ---- */
+@media (max-width: 899px) {
+  .cx-dossier {
+    gap: 12px;
+    padding-bottom: 14px;
+  }
+
+  .cx-page .cx-h1 {
+    font-size: 30px;
+  }
+
+  .cx-recap,
+  .cx-lede,
+  .cx-assure,
+  .cx-label {
+    display: none;
+  }
+
+  .cx-modes {
+    margin-bottom: 14px;
+  }
+
+  .cx-modes button {
+    padding: 14px 14px;
+  }
+
+  .cx-progress {
+    margin-bottom: 14px;
+  }
+
+  .cx-opt {
+    grid-template-columns: 48px 1fr 22px;
+    padding: 12px 0;
+  }
+
+  .cx-d {
+    display: none;
+  }
+
+  .cx-next li {
+    grid-template-columns: 48px 1fr;
+  }
+
+  .cx-next span:last-child {
+    grid-column: 2;
+  }
+
+  .cx-actions .cx-keyhint {
+    display: none;
+  }
+
+  .cx-actions .cx-continue,
+  .cx-actions .cx-send {
+    margin-left: auto;
+  }
+
+  /* contact details: two fields per row so the question fits a phone screen */
+  .cx-fields.cx-two {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 18px;
+    align-items: end;
+  }
+
+  .cx-wide {
+    grid-column: 1 / -1;
+  }
+
+  .cx-pref {
+    margin-top: 14px;
+  }
+
+  .cx-legal {
+    margin-top: 10px;
+  }
+}
+
+/* small and short (phone held sideways): keep the title, drop the rest of the dossier */
+@media (max-width: 899px) and (max-height: 620px) {
+  .cx-page .cx-h1 {
+    font-size: 20px;
+  }
+
+  .cx-hint {
+    display: none;
+  }
+
+  .cx-q {
+    font-size: 26px;
+  }
+
+  .cx-opt {
+    padding: 9px 0;
+  }
+
+  .cx-error {
+    min-height: 0;
+    margin-top: 4px;
+  }
+
+  .cx-modes,
+  .cx-progress {
+    margin-bottom: 10px;
+  }
+
+  .cx-modes button {
+    padding: 10px 14px;
+  }
+
+  .cx-stage {
+    padding-bottom: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cx-page *,
+  .cx-page *::before,
+  .cx-page *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
