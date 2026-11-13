@@ -18,7 +18,8 @@ export const AnalyticsGate = () => {
   useEffect(() => {
     const sync = (choice: ReturnType<typeof readConsent>) => {
       const next = choice === 'granted';
-      if (wasGranted.current && !next) {
+      // Only an explicit refusal after an agreement reloads the page. Reopening the banner does not.
+      if (wasGranted.current && choice === 'denied') {
         window.location.reload();
         return;
       }

@@ -31,7 +31,7 @@ const geistMono = Geist_Mono({
 // Runs before first paint. "js" unlocks the JavaScript-only states in the CSS.
 // "enter" (page hidden while the hero entrance prepares) only on 900px+ without reduced motion,
 // and is always removed after 2.5 s even if the main script never starts.
-const BOOT_SCRIPT = `(function(){var h=document.documentElement;h.classList.add('js');if(!matchMedia('(min-width: 900px)').matches||matchMedia('(prefers-reduced-motion: reduce)').matches)return;h.classList.add('enter');setTimeout(function(){h.classList.remove('enter')},2500)})();`;
+const BOOT_SCRIPT = `(function(){var h=document.documentElement;h.classList.add('js');try{var n=performance.getEntriesByType('navigation')[0];if(n&&n.type!=='navigate'&&new RegExp('^/(en|pl)?/?$').test(location.pathname))history.scrollRestoration='manual'}catch(e){}if(!matchMedia('(min-width: 900px)').matches||matchMedia('(prefers-reduced-motion: reduce)').matches)return;h.classList.add('enter');setTimeout(function(){h.classList.remove('enter')},2500)})();`;
 
 export async function generateMetadata({
   params,

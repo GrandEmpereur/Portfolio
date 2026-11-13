@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { clearConsent, onConsentChange, readConsent, writeConsent } from '@/lib/consent';
+import { onConsentChange, readConsent, writeConsent } from '@/lib/consent';
 import { localePath } from '@/lib/locale-path';
 import { useCurrentLocale, useScopedI18n } from '@/locales/client';
 import './consent.css';
@@ -22,8 +22,9 @@ export const ConsentBanner = () => {
     const off = onConsentChange((choice) => setOpen(choice === null));
     const onClick = (event: MouseEvent) => {
       if (!(event.target instanceof Element) || !event.target.closest('[data-consent-open]')) return;
+      // Reopen only: the stored choice stays until the visitor picks again.
       focusOnOpen.current = true;
-      clearConsent();
+      setOpen(true);
     };
     document.addEventListener('click', onClick);
     return () => {
