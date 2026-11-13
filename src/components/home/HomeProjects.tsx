@@ -136,10 +136,10 @@ export const HomeProjects = async () => {
                 <h4 className="hp-row-name">
                   {project.link ? (
                     <a href={project.link} target="_blank" rel="noopener noreferrer" className="hp-row-link">
-                      {name}
+                      <span className="hp-row-text">{name}</span>
                     </a>
                   ) : (
-                    name
+                    <span className="hp-row-text">{name}</span>
                   )}
                 </h4>
                 {project.link ? (

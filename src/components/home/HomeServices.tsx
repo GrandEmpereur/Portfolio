@@ -66,7 +66,7 @@ export const HomeServices = async () => {
                           className="hs-link"
                           href={localePath(locale, `/contact?need=${NEED_BY_SERVICE[service.id] ?? 'avis'}`)}
                         >
-                          {service.title[locale]}
+                          <span className="hs-link-text">{service.title[locale]}</span>
                         </TransitionLink>
                       </h4>
                       <span className="hs-arrow" aria-hidden="true">

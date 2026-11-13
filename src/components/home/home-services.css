@@ -71,6 +71,12 @@
   font-size: 18px;
   font-weight: 600;
   letter-spacing: -0.01em;
+}
+
+/* The hover shift sits on the text, never on the h4 or the link: a transformed ancestor would
+   become the containing block of .hs-link::after and shrink the click area to the title. */
+.hs-link-text {
+  display: inline-block;
   transition: transform 0.3s;
 }
 
@@ -97,7 +103,7 @@
     border-top-color: var(--fg);
   }
 
-  .hs-rows li:hover h4 {
+  .hs-rows li:hover .hs-link-text {
     transform: translateX(8px);
   }
 
