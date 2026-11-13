@@ -49,15 +49,15 @@ export const lastwork: Project[] = [
         category: "ai"
     },
     {
-        // Not published until the go-ahead: no employer name in this entry, no image yet (the visual is saved at publication).
+        // No employer or client name anywhere in this entry. No link and no longDescription: no detail page.
         title: "Ariane",
+        image: "/images/projects/ariane.jpg",
         bgColor: "#131311",
         technologies: ["Python", "Agents", "Graphe de code", "Évaluation des réponses"],
         slug: "ariane",
         description: "Un assistant IA qui aide une équipe à s'y retrouver dans plusieurs milliers de programmes hérités",
         type: "personal",
         typeLabel: "Assistant interne",
-        published: false,
         featured: true,
         featuredOrder: 2,
         category: "ai"

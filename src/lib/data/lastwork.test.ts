@@ -7,21 +7,29 @@ import {
   lastwork,
 } from '@/lib/data/lastwork.data';
 
-test('ariane exists but is never published', () => {
-  expect(lastwork.some((p) => p.slug === 'ariane')).toBe(true);
-  expect(getPublishedProjects().some((p) => p.slug === 'ariane')).toBe(false);
-  expect(getFeaturedProjects().some((p) => p.slug === 'ariane')).toBe(false);
+test('the published filter never lets an unpublished project through', () => {
+  for (const list of [getPublishedProjects(), getFeaturedProjects(), getAgencyProjects()]) {
+    expect(list.some((p) => p.published === false)).toBe(false);
+  }
 });
 
 test('featured order', () => {
-  expect(getFeaturedProjects().map((p) => p.slug)).toEqual(['traceguard', 'nutricert', 'bookish']);
+  expect(getFeaturedProjects().map((p) => p.slug)).toEqual(['traceguard', 'ariane', 'nutricert', 'bookish']);
 });
 
 test('seven agency projects', () => {
   expect(getAgencyProjects()).toHaveLength(7);
 });
 
-test('ariane carries no employer name anywhere in its data', () => {
+test('ariane is published, has no link and no detail page', () => {
+  const ariane = lastwork.find((p) => p.slug === 'ariane');
+  expect(ariane?.published).not.toBe(false);
+  expect(ariane?.link).toBeUndefined();
+  expect(ariane ? hasDetailPage(ariane) : true).toBe(false);
+  expect(getPublishedProjects().some((p) => p.slug === 'ariane')).toBe(true);
+});
+
+test('ariane carries no employer name in any text field', () => {
   const ariane = lastwork.find((p) => p.slug === 'ariane');
   expect(ariane?.company).toBeUndefined();
   expect(JSON.stringify(ariane)).not.toMatch(/euroclear|w3lead/i);

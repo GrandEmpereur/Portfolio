@@ -1,4 +1,4 @@
-// Text of the homepage projects chapter. No entry for unpublished projects: their copy must not ship.
+// Text of the homepage projects chapter. Do not add copy for unpublished projects: it would ship in the client bundle.
 export const homeProjects = {
     eyebrow: '[03] Selected projects',
     title: 'Projects',
@@ -14,6 +14,13 @@ export const homeProjects = {
             pills: 'AI agents|Server-side rules|Human approval|Audit trail|3D view',
             cta: 'View the project',
             alt: 'TraceGuard home page: a 3D city represents the agents, the tools and the rules',
+        },
+        ariane: {
+            kind: 'AI Engineering · Internal assistant',
+            description: 'An AI assistant that helps a team find its way through several thousand legacy programs. It queries a graph of the code and checks every answer before publishing it.',
+            pills: 'Python|Agents|Code graph|Answer evaluation',
+            cta: '',
+            alt: 'Visual of the Ariane project: a glowing thread runs through a graph of programs',
         },
         nutricert: {
             kind: 'SaaS creation · Live',

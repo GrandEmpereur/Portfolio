@@ -1,16 +1,16 @@
 import type { CSSProperties, ReactNode } from 'react';
 import Image from 'next/image';
 import { TransitionLink } from '@/components/site/TransitionLink';
-import { getAgencyProjects, getFeaturedProjects, type Project } from '@/lib/data/lastwork.data';
+import { getAgencyProjects, getFeaturedProjects, hasDetailPage, type Project } from '@/lib/data/lastwork.data';
 import { localePath } from '@/lib/locale-path';
 import { getCurrentLocale, getScopedI18n } from '@/locales/serveur';
 import { HomeProjectsMotion } from './HomeProjectsMotion';
 import './home-projects.css';
 
-type FeaturedSlug = 'traceguard' | 'nutricert' | 'bookish';
+type FeaturedSlug = 'traceguard' | 'ariane' | 'nutricert' | 'bookish';
 type AgencySlug = 'odaje' | 'tartine-chocolat' | 'qwetch' | 'easy-clothes' | 'balzac-paris' | 'isotoner' | 'le-1-store';
 
-const FEATURED_SLUGS: readonly string[] = ['traceguard', 'nutricert', 'bookish'];
+const FEATURED_SLUGS: readonly string[] = ['traceguard', 'ariane', 'nutricert', 'bookish'];
 const AGENCY_SLUGS: readonly string[] = ['odaje', 'tartine-chocolat', 'qwetch', 'easy-clothes', 'balzac-paris', 'isotoner', 'le-1-store'];
 // Screenshots are wide; the other visuals are square.
 const SQUARE_IMAGE_SLUGS: readonly string[] = ['bookish'];
@@ -89,9 +89,11 @@ export const HomeProjects = async () => {
                       <li key={pill}>{pill}</li>
                     ))}
                 </ul>
-                <ProjectLink project={project} href={href} className="mono-label hp-link">
-                  {t(`projects.${slug}.cta`)} <span aria-hidden="true">{project.link ? '↗' : '→'}</span>
-                </ProjectLink>
+                {project.link || hasDetailPage(project) ? (
+                  <ProjectLink project={project} href={href} className="mono-label hp-link">
+                    {t(`projects.${slug}.cta`)} <span aria-hidden="true">{project.link ? '↗' : '→'}</span>
+                  </ProjectLink>
+                ) : null}
               </div>
               <figure className={square ? 'hp-fig' : 'hp-fig hp-fig-shot'} data-hp-fig>
                 {project.image ? (
