@@ -9,10 +9,6 @@ import { ProjectDetailContent } from '@/components/ProjectDetailContent';
 import { SiteFooter } from '@/components/site/SiteFooter';
 import { LOCALES, type Locale } from '@/lib/locale-path';
 
-// The language layout turns unknown params into a 404. Slugs stay open: a project with an external
-// link has no page here, and its old URL must keep redirecting to that link (see below).
-export const dynamicParams = true;
-
 // Detail pages exist only for published projects without external link that carry a long description
 export function generateStaticParams() {
     return getPublishedProjects()

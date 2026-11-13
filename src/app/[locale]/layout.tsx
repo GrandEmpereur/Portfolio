@@ -6,6 +6,8 @@ import { SiteHeader } from "@/components/site/SiteHeader";
 import { seoConfig, ogLocaleMap } from "@/lib/seo-config";
 import { getI18n, getStaticParams } from "@/locales/serveur";
 import { setStaticParamsLocale } from "next-international/server";
+import { notFound } from "next/navigation";
+import { LOCALES } from "@/lib/locale-path";
 import { Toaster } from "@/components/ui/sonner";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { Analytics as VercelAnalytics } from '@vercel/analytics/next';
@@ -28,8 +30,10 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
-// Every page is prerendered once per language (fr, en, pl). An unknown first segment is a 404.
-export const dynamicParams = false;
+// Every page is prerendered once per language (fr, en, pl). Other params are rendered on demand
+// (unknown project slugs keep their localized 404 and their redirects), so the language is checked
+// by hand below: an unknown first segment is a 404, never a crash in the dictionary lookup.
+const isKnownLocale = (value: string): boolean => LOCALES.some((locale) => locale === value);
 
 export function generateStaticParams() {
   return getStaticParams();
@@ -46,6 +50,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  if (!isKnownLocale(locale)) notFound();
   setStaticParamsLocale(locale);
   const t = await getI18n();
 
@@ -157,6 +162,7 @@ export default async function RootLayout({
   params: Promise<{ locale: string }>;
 }>) {
   const { locale } = await paramsPromise;
+  if (!isKnownLocale(locale)) notFound();
   setStaticParamsLocale(locale);
 
   const skipLinkText: Record<string, string> = {
