@@ -2,6 +2,12 @@
   "version": "0.0.1",
   "configurations": [
     {
+      "name": "portfolio-dev",
+      "runtimeExecutable": "bun",
+      "runtimeArgs": ["run", "dev", "--port", "3100"],
+      "port": 3100
+    },
+    {
       "name": "api",
       "runtimeExecutable": "bun",
       "runtimeArgs": ["run", "start:dev"],

@@ -50,5 +50,6 @@ next-env.d.ts
 .playwright-mcp
 .impeccable
 .remember
+.superpowers
 screenshots
 .env*
