@@ -10,8 +10,8 @@ import { Toaster } from "@/components/ui/sonner";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { Analytics as VercelAnalytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import { GoogleAnalytics } from '@next/third-parties/google'
-import { GoogleTagManager } from '@next/third-parties/google'
+import { AnalyticsGate } from "@/components/consent/AnalyticsGate";
+import { ConsentBanner } from "@/components/consent/ConsentBanner";
 import { SiteCursor } from "@/components/site/SiteCursor";
 import { RouteTransition } from "@/components/site/RouteTransition";
 
@@ -168,22 +168,10 @@ export default async function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: BOOT_SCRIPT }} />
       </head>
-      <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID || ''} />
       <body
         className="theme-dark antialiased"
         suppressHydrationWarning
       >
-        {process.env.NEXT_PUBLIC_GTM_ID && (
-          <noscript>
-            <iframe
-              src={`https://www.googletagmanager.com/ns.html?id=${process.env.NEXT_PUBLIC_GTM_ID}`}
-              height="0"
-              width="0"
-              style={{ display: 'none', visibility: 'hidden' }}
-              title="Google Tag Manager"
-            />
-          </noscript>
-        )}
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-bone focus:text-ink focus:rounded-lg focus:text-sm focus:font-medium"
@@ -191,7 +179,8 @@ export default async function RootLayout({
           {skipLinkText[locale] ?? skipLinkText.en}
         </a>
         <Providers locale={locale}>
-          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || ''} />
+          <AnalyticsGate />
+          <ConsentBanner />
           <SmoothScroll>
             <SiteHeader />
             <SiteCursor />
