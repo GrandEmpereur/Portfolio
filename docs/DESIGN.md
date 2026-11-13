@@ -9,12 +9,12 @@ colors:
   vert-disponibilite: "#22C55E"
   ink-clair: "#12120F"
   bone-mut: "#ECE7DEA8"
-  bone-fnt: "#ECE7DE6B"
+  bone-fnt: "#ECE7DE85"
   bone-ln: "#ECE7DE29"
   bone-nav: "#ECE7DE8C"
   bone-anneau: "#ECE7DE99"
   ink-mut: "#12120FB3"
-  ink-fnt: "#12120F75"
+  ink-fnt: "#12120F99"
   ink-ln: "#12120F29"
 typography:
   display:
@@ -117,7 +117,7 @@ Deux thèmes posés par classe : `.theme-dark` (fond `ink`, texte `bone`) et `.t
 ### Neutral (dérivés du texte)
 Trois paliers d'opacité du texte courant, dans les deux thèmes (`--mut`, `--fnt`, `--ln`).
 - **Secondaire** `--mut` : sombre `rgba(236,231,222,.66)`, clair `rgba(18,18,15,.7)`. Descriptions et corps secondaire.
-- **Discret** `--fnt` : sombre `rgba(236,231,222,.42)`, clair `rgba(18,18,15,.46)`. Codes mono, légendes, placeholders. Textes courts uniquement, jamais un paragraphe.
+- **Discret** `--fnt` : sombre `rgba(236,231,222,.52)`, clair `rgba(18,18,15,.6)`. Codes mono, légendes, placeholders. Textes courts uniquement, jamais un paragraphe.
 - **Filet** `--ln` : sombre `rgba(236,231,222,.16)`, clair `rgba(18,18,15,.16)`. Filets d'index, bordures de pills, séparateurs. Passe à pleine intensité au hover d'une ligne.
 - Dans la barre de navigation sombre : liens et langues `rgba(236,231,222,.55)`, fond `rgba(18,18,16,.84)`. Anneau du curseur : `rgba(236,231,222,.6)`.
 

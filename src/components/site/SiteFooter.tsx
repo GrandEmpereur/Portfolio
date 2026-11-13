@@ -1,6 +1,7 @@
 import { getCurrentLocale, getScopedI18n } from "@/locales/serveur";
 import { localePath } from "@/lib/locale-path";
 import { seoConfig } from "@/lib/seo-config";
+import { FooterLanguages } from "./FooterLanguages";
 import { FooterMarquee } from "./FooterMarquee";
 import { TransitionLink } from "./TransitionLink";
 import "./site.css";
@@ -53,6 +54,7 @@ export const SiteFooter = async () => {
             <a href={`mailto:${seoConfig.author.email}`}>{t("footer.social.email")}</a>
           </li>
         </ul>
+        <FooterLanguages />
       </div>
     </footer>
   );

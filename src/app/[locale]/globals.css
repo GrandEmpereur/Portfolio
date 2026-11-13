@@ -78,7 +78,6 @@
 .theme-dark,
 .theme-light {
   --mut: color-mix(in oklab, var(--fg) 66%, transparent);
-  --fnt: color-mix(in oklab, var(--fg) 42%, transparent);
   --ln: color-mix(in oklab, var(--fg) 16%, transparent);
   --surface: color-mix(in oklab, var(--fg) 6%, var(--bg));
 
@@ -99,6 +98,16 @@
   --ring: var(--acc);
 }
 
+/* Faint text: raised for contrast (4.5:1 on each background). */
+:root,
+.theme-dark {
+  --fnt: color-mix(in oklab, var(--fg) 52%, transparent);
+}
+
+.theme-light {
+  --fnt: color-mix(in oklab, var(--fg) 60%, transparent);
+}
+
 .theme-dark,
 .theme-light {
   background-color: var(--bg);
@@ -111,13 +120,19 @@
   }
 
   /* Prevent horizontal panning on mobile (e.g. off-screen marquee tracks).
-     Only constrain the X axis, Lenis smooth scroll owns the Y axis. */
-  html,
-  body {
+     Only constrain the X axis, Lenis smooth scroll owns the Y axis.
+     `clip` on body, not `hidden`: `hidden` would make body a scroll container that never scrolls,
+     and `position: sticky` would stop working on every page. */
+  html {
     overflow-x: hidden;
   }
 
+  body {
+    overflow-x: clip;
+  }
+
   html {
+    scroll-padding-top: 96px;
     background-color: var(--color-ink);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;

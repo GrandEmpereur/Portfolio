@@ -301,6 +301,12 @@
   margin: 0;
 }
 
+.sf-foot a,
+.sf-foot button {
+  display: inline-block;
+  padding-block: 8px;
+}
+
 .sf-foot a:hover,
 .sf-foot button:hover {
   color: var(--fg);
@@ -313,8 +319,19 @@
   cursor: pointer;
   background: none;
   border: 0;
-  padding: 0;
+  padding-block: 8px;
+  padding-inline: 0;
   color: inherit;
+}
+
+.sf-langs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+}
+
+.sf-langs a.is-on {
+  color: var(--fg);
 }
 
 @media (max-width: 899px) {

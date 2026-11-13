@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useCurrentLocale, useScopedI18n } from "@/locales/client";
-import { LOCALES, localePath, type Locale } from "@/lib/locale-path";
+import { LOCALES, localePath, stripLocale, type Locale } from "@/lib/locale-path";
 import { isBlogVisible } from "@/lib/data/blog.data";
 import { canPin, isDesktop, scrollState } from "@/lib/motion";
 import { scrollToY } from "@/lib/scroll";
@@ -12,8 +12,6 @@ import "./site.css";
 
 type ChapterId = "accueil" | "profil" | "projets" | "methode" | "blog" | "contact";
 type Variant = "home" | "contact" | "default";
-
-const stripLocale = (pathname: string): string => pathname.replace(/^\/(?:fr|en|pl)(?=\/|$)/, "") || "/";
 
 const variantFor = (path: string): Variant => {
   if (path === "/") return "home";

@@ -13,3 +13,6 @@ export const localePath = (locale: Locale, path: string): string => {
   const rest = /^\/(?:$|[#?])/.test(normalized) ? normalized.slice(1) : normalized;
   return `/${locale}${rest}`;
 };
+
+/** The path without its language prefix: "/en/contact" -> "/contact", "/fr" -> "/". */
+export const stripLocale = (pathname: string): string => pathname.replace(/^\/(?:fr|en|pl)(?=\/|$)/, '') || '/';
