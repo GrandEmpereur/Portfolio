@@ -331,6 +331,9 @@
   padding: 0;
   justify-content: center;
   background: none;
+  /* The profile sits over the poster's buttons while it is still invisible: it must not catch
+     their clicks. HomeHeroMotion turns pointer events back on once the profile is on screen. */
+  pointer-events: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

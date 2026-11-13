@@ -122,6 +122,7 @@ export const HomeHeroMotion = ({ locale, children }: HomeHeroMotionProps) => {
           const cue = one('.hh-cue');
           const intro = one('.hh-intro');
           const aboutLabel = one('.hh-about-label');
+          const about = one('.hh-about');
           if (!stage || !band || !photo || !rule || !role || !headline || !meta || !cue || !intro || !aboutLabel) {
             releaseEnter();
             return;
@@ -206,6 +207,8 @@ export const HomeHeroMotion = ({ locale, children }: HomeHeroMotionProps) => {
               refreshPriority: 2,
               onUpdate: (self) => {
                 scrollState.heroProgress = self.progress;
+                // The profile only takes clicks and text selection once it has replaced the poster.
+                if (about) about.style.pointerEvents = self.progress >= 0.44 ? 'auto' : 'none';
               },
               onRefresh: (self) => {
                 scrollState.heroStart = self.start;
