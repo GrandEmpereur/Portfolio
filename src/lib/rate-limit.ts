@@ -34,8 +34,48 @@ export const contactRateLimit: Limiter = (globalForLimiter.__contactLimiter ??= 
   windowMs: 60 * 60 * 1000,
 }));
 
-/** Client IP as seen behind the proxy (first hop of x-forwarded-for), bounded in length. */
+/**
+ * Client IP for rate limiting. Only headers the platform sets itself are trusted:
+ * `x-vercel-forwarded-for`, then `x-real-ip`. The client can forge `x-forwarded-for`
+ * freely, so it is read only as a last resort (local dev) and then by its LAST value,
+ * the one appended by the nearest proxy.
+ */
 export const getClientIp = (headers: Headers): string => {
-  const forwarded = headers.get('x-forwarded-for')?.split(',')[0]?.trim();
-  return (forwarded || headers.get('x-real-ip') || 'unknown').slice(0, 64);
+  const first = (value: string | null): string | undefined => value?.split(',')[0]?.trim() || undefined;
+  const last = (value: string | null): string | undefined => value?.split(',').at(-1)?.trim() || undefined;
+  const ip =
+    first(headers.get('x-vercel-forwarded-for')) ??
+    first(headers.get('x-real-ip')) ??
+    last(headers.get('x-forwarded-for')) ??
+    'unknown';
+  return ip.slice(0, 64);
 };
+
+/**
+ * Gate for confirmation emails sent to a visitor-supplied (unverified) address:
+ * at most `perRecipient` per address and `global` overall, per window.
+ * Returns true when a confirmation may be sent. Pure apart from its own state.
+ */
+export const createConfirmationGate = ({
+  perRecipient,
+  global,
+  windowMs,
+}: {
+  perRecipient: number;
+  global: number;
+  windowMs: number;
+}) => {
+  const byRecipient = createRateLimiter({ limit: perRecipient, windowMs });
+  const overall = createRateLimiter({ limit: global, windowMs });
+  return (email: string, now: number = Date.now()): boolean =>
+    byRecipient(email.trim().toLowerCase(), now) && overall('*', now);
+};
+
+const globalForGate = globalThis as typeof globalThis & { __confirmationGate?: ReturnType<typeof createConfirmationGate> };
+
+/** Shared by the contact routes: 2 confirmations per address and 30 overall, per hour. */
+export const confirmationGate = (globalForGate.__confirmationGate ??= createConfirmationGate({
+  perRecipient: 2,
+  global: 30,
+  windowMs: 60 * 60 * 1000,
+}));

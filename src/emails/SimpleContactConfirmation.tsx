@@ -10,7 +10,8 @@ const LINE = '#2A2927';
 type Locale = 'fr' | 'en' | 'pl';
 
 export interface SimpleContactConfirmationProps {
-    name: string;
+    /** Only pass a name that went through safeDisplayName. */
+    name?: string;
     locale?: Locale;
 }
 
@@ -20,24 +21,24 @@ export const simpleConfirmationSubject: Record<Locale, string> = {
     pl: 'Wiadomość otrzymana',
 };
 
-const COPY: Record<Locale, { preview: string; greeting: (n: string) => string; body: string; reply: string; signoff: string }> = {
+const COPY: Record<Locale, { preview: string; greeting: (n?: string) => string; body: string; reply: string; signoff: string }> = {
     fr: {
         preview: 'Votre message est bien reçu.',
-        greeting: (n) => `Bonjour ${n},`,
+        greeting: (n) => (n ? `Bonjour ${n},` : 'Bonjour,'),
         body: 'Merci pour votre message : je l\'ai bien reçu.',
         reply: 'Je vous réponds sous 48 heures ouvrées.',
         signoff: 'À très vite,',
     },
     en: {
         preview: 'Your message has arrived.',
-        greeting: (n) => `Hi ${n},`,
+        greeting: (n) => (n ? `Hi ${n},` : 'Hi,'),
         body: 'Thanks for your message: it reached me.',
         reply: 'I will reply within 48 working hours.',
         signoff: 'Speak soon,',
     },
     pl: {
         preview: 'Twoja wiadomość dotarła.',
-        greeting: (n) => `Cześć ${n},`,
+        greeting: (n) => (n ? `Cześć ${n},` : 'Cześć,'),
         body: 'Dziękuję za wiadomość: dotarła do mnie.',
         reply: 'Odpowiem w ciągu 48 godzin roboczych.',
         signoff: 'Do usłyszenia,',

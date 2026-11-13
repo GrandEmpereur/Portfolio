@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
-import { singleLine } from '@/lib/contact-request';
-import { contactRateLimit, getClientIp } from '@/lib/rate-limit';
+import { safeDisplayName, singleLine } from '@/lib/contact-request';
+import { confirmationGate, contactRateLimit, getClientIp } from '@/lib/rate-limit';
 import { simpleContactSchema } from '@/lib/simple-contact-schema';
 import { SimpleContactConfirmation, simpleConfirmationSubject } from '@/emails/SimpleContactConfirmation';
 import { SimpleContactNotification } from '@/emails/SimpleContactNotification';
@@ -56,13 +56,18 @@ export async function POST(request: NextRequest) {
             return NextResponse.json({ error: 'send_failed' }, { status: 500 });
         }
 
-        // 5. Confirmation to the visitor (own language). A failure is only logged.
+        // 5. Confirmation to the visitor (own language), capped per address and overall.
+        //    A failure is only logged. Over the cap: Patrick still has the message.
         try {
+            if (!confirmationGate(data.email)) {
+                console.warn('contact-simple: visitor email skipped (cap)');
+                return NextResponse.json({ success: true }, { status: 200 });
+            }
             const { error: clientError } = await resend.emails.send({
                 from: FROM,
                 to: [data.email],
                 subject: simpleConfirmationSubject[data.locale],
-                react: SimpleContactConfirmation({ name: data.name, locale: data.locale }),
+                react: SimpleContactConfirmation({ name: safeDisplayName(data.name), locale: data.locale }),
             });
             if (clientError) console.error('contact-simple: visitor email failed', { type: clientError.name });
         } catch (clientError) {

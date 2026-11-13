@@ -12,14 +12,15 @@ type Locale = 'fr' | 'en' | 'pl';
 type Need = 'llm' | 'agent' | 'rag' | 'saas' | 'site' | 'refonte' | 'avis';
 
 export interface ContactFormConfirmationProps {
-    firstName: string;
+    /** Only pass a name that went through safeDisplayName. */
+    firstName?: string;
     needs: readonly Need[];
     locale: Locale;
 }
 
 interface Copy {
     preview: string;
-    greeting: (name: string) => string;
+    greeting: (name?: string) => string;
     intro: string;
     recap: string;
     stepsTitle: string;
@@ -37,7 +38,7 @@ export const confirmationSubject: Record<Locale, string> = {
 const COPY: Record<Locale, Copy> = {
     fr: {
         preview: 'Votre demande est bien reçue.',
-        greeting: (n) => `Bonjour ${n},`,
+        greeting: (n) => (n ? `Bonjour ${n},` : 'Bonjour,'),
         intro: 'Merci pour votre message : je l\'ai bien reçu et je le lis personnellement.',
         recap: 'Votre besoin',
         stepsTitle: 'Les trois prochaines étapes',
@@ -51,7 +52,7 @@ const COPY: Record<Locale, Copy> = {
     },
     en: {
         preview: 'Your request has arrived.',
-        greeting: (n) => `Hi ${n},`,
+        greeting: (n) => (n ? `Hi ${n},` : 'Hi,'),
         intro: 'Thanks for your message: it reached me and I read it personally.',
         recap: 'Your need',
         stepsTitle: 'The next three steps',
@@ -65,7 +66,7 @@ const COPY: Record<Locale, Copy> = {
     },
     pl: {
         preview: 'Twoje zapytanie dotarło.',
-        greeting: (n) => `Cześć ${n},`,
+        greeting: (n) => (n ? `Cześć ${n},` : 'Cześć,'),
         intro: 'Dziękuję za wiadomość: dotarła do mnie i czytam ją osobiście.',
         recap: 'Twoja potrzeba',
         stepsTitle: 'Trzy kolejne kroki',

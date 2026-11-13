@@ -111,3 +111,15 @@ export const singleLine = (value: string, max = 80): string =>
     .replace(/\s+/g, ' ')
     .trim()
     .slice(0, max);
+
+const NAME_PATTERN = /^\p{L}[\p{L}\p{M} '\u2019-]{0,39}$/u;
+
+/**
+ * Returns the name only if it looks like a person's name (letters of any script, spaces,
+ * hyphens, apostrophes, 40 characters max). Used before echoing visitor text into an email
+ * sent to an unverified address; otherwise the email greets without a name.
+ */
+export const safeDisplayName = (value: string | undefined): string | undefined => {
+  const name = value?.trim();
+  return name && NAME_PATTERN.test(name) ? name : undefined;
+};

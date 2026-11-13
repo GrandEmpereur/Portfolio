@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
-import { categorizeLead, contactRequestSchema, scoreLead, singleLine } from '@/lib/contact-request';
-import { contactRateLimit, getClientIp } from '@/lib/rate-limit';
+import { categorizeLead, contactRequestSchema, safeDisplayName, scoreLead, singleLine } from '@/lib/contact-request';
+import { confirmationGate, contactRateLimit, getClientIp } from '@/lib/rate-limit';
 import { ContactFormEmail } from '@/emails/ContactFormEmail';
 import { ContactFormConfirmation, confirmationSubject } from '@/emails/ContactFormConfirmation';
 
@@ -59,20 +59,24 @@ export async function POST(request: NextRequest) {
             return NextResponse.json({ error: 'send_failed' }, { status: 500 });
         }
 
-        // 6. Confirmation to the visitor (own language). A failure is only logged.
+        // 6. Confirmation to the visitor (own language), capped per address and overall.
+        //    A failure is only logged. Over the cap: Patrick still has the request.
         try {
+            if (!confirmationGate(data.email)) {
+                console.warn('contact: visitor email skipped (cap)', { leadCategory });
+                return NextResponse.json({ success: true }, { status: 200 });
+            }
             const { error: clientError } = await resend.emails.send({
                 from: FROM,
                 to: [data.email],
                 subject: confirmationSubject[data.locale],
-                react: ContactFormConfirmation({ firstName: data.firstName, needs: data.needs, locale: data.locale }),
+                react: ContactFormConfirmation({ firstName: safeDisplayName(data.firstName), needs: data.needs, locale: data.locale }),
             });
             if (clientError) console.error('contact: visitor email failed', { type: clientError.name });
         } catch (clientError) {
             console.error('contact: visitor email failed', { type: clientError instanceof Error ? clientError.name : 'unknown' });
         }
 
-        console.info('contact: request sent', { leadCategory });
         return NextResponse.json({ success: true }, { status: 200 });
     } catch (error) {
         console.error('contact: unexpected error', { type: error instanceof Error ? error.name : 'unknown' });
