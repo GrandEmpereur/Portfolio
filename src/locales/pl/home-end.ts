@@ -32,6 +32,7 @@ export const homeEnd = {
             mail: 'Mail',
             linkedin: 'LinkedIn',
             github: 'GitHub',
+            instagram: 'Instagram',
         },
     },
 } as const;

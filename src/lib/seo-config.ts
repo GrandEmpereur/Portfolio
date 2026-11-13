@@ -26,7 +26,7 @@ export const seoConfig = {
     social: {
         github: 'https://github.com/GrandEmpereur',
         linkedin: 'https://www.linkedin.com/in/patrick-bartosik',
-        instagram: 'https://www.instagram.com/empereur.patrick/',
+        instagram: 'https://www.instagram.com/agencepatrickai/',
     },
     defaultLocale: 'fr' as const,
     locales: ['en', 'fr', 'pl'] as const,

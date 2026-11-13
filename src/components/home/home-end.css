@@ -96,9 +96,16 @@
   color: var(--mut);
 }
 
+/* Sized so the longest word ("Travaillons") fits its column on one line at every width. */
 .he-big {
   margin-top: 14px;
-  font-size: clamp(44px, 9.4vw, 150px);
+  font-size: clamp(34px, 11vw, 64px);
+}
+
+@media (min-width: 900px) {
+  .he-big {
+    font-size: clamp(64px, 7vw, 132px);
+  }
 }
 
 .he-big > span {

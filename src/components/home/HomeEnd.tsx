@@ -17,6 +17,12 @@ export const HomeEnd = async () => {
     { key: "mail", label: t("contact.facts.mail"), text: seoConfig.author.email, href: `mailto:${seoConfig.author.email}` },
     { key: "linkedin", label: t("contact.facts.linkedin"), text: pathOf(seoConfig.social.linkedin), href: seoConfig.social.linkedin },
     { key: "github", label: t("contact.facts.github"), text: pathOf(seoConfig.social.github).slice(1), href: seoConfig.social.github },
+    {
+      key: "instagram",
+      label: t("contact.facts.instagram"),
+      text: `@${pathOf(seoConfig.social.instagram).replace(/\//g, "")}`,
+      href: seoConfig.social.instagram,
+    },
   ] as const;
 
   return (
