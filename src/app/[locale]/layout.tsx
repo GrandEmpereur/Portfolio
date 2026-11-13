@@ -125,7 +125,6 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title,
       description,
-      creator: seoConfig.author.twitter,
       images: [`${seoConfig.baseUrl}${seoConfig.openGraph.image}`],
     },
   };

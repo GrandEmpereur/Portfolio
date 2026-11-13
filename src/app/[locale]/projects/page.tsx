@@ -59,7 +59,6 @@ export async function generateMetadata({
             title,
             description,
             images: [`${seoConfig.baseUrl}${seoConfig.openGraph.image}`],
-            creator: '@patrickbartosik',
         },
     };
 }
