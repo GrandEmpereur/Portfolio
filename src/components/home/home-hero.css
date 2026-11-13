@@ -1,0 +1,340 @@
+/* Hero + profile (hh-). Ported from the approved mockup. Colours come from the tokens in globals.css only.
+   Nothing here hides content: starting states are set by GSAP, and the `pinned` / `enter` classes only exist when JavaScript adds them. */
+
+.hh-motion {
+  display: contents;
+}
+
+.hh-root {
+  position: relative;
+}
+
+.hh-stage {
+  position: relative;
+  overflow: hidden;
+}
+
+/* ---------- portrait ---------- */
+.hh-band {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 62svh;
+  margin: 0;
+  overflow: hidden;
+  background: color-mix(in oklab, var(--color-bone) 8%, var(--color-ink));
+  clip-path: inset(0 0 0 0);
+}
+
+.hh-photo {
+  object-fit: cover;
+  object-position: 50% 20%;
+}
+
+.hh-band::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--color-ink) 45%, transparent),
+    color-mix(in oklab, var(--color-ink) 5%, transparent) 30%,
+    color-mix(in oklab, var(--color-ink) 15%, transparent) 62%,
+    var(--color-ink) 100%
+  );
+}
+
+.hh-caption {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  z-index: 3;
+  display: none;
+  color: color-mix(in oklab, var(--color-bone) 70%, transparent);
+}
+
+/* framing marks at the four corners of the portrait */
+.hh-vf {
+  position: absolute;
+  inset: 14px;
+  z-index: 3;
+  display: none;
+  pointer-events: none;
+  opacity: 0.6;
+  background:
+    linear-gradient(var(--color-bone), var(--color-bone)) left top / 16px 1px no-repeat,
+    linear-gradient(var(--color-bone), var(--color-bone)) left top / 1px 16px no-repeat,
+    linear-gradient(var(--color-bone), var(--color-bone)) right top / 16px 1px no-repeat,
+    linear-gradient(var(--color-bone), var(--color-bone)) right top / 1px 16px no-repeat,
+    linear-gradient(var(--color-bone), var(--color-bone)) left bottom / 16px 1px no-repeat,
+    linear-gradient(var(--color-bone), var(--color-bone)) left bottom / 1px 16px no-repeat,
+    linear-gradient(var(--color-bone), var(--color-bone)) right bottom / 16px 1px no-repeat,
+    linear-gradient(var(--color-bone), var(--color-bone)) right bottom / 1px 16px no-repeat;
+}
+
+/* ---------- poster ---------- */
+.hh-poster {
+  position: relative;
+  z-index: 2;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 120px var(--pad) 64px;
+}
+
+.hh-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-bottom: 18px;
+}
+
+.hh-left > * + * {
+  margin-top: 6px;
+}
+
+.hh-role {
+  font-weight: 400;
+}
+
+.hh-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: var(--color-ok);
+  vertical-align: baseline;
+}
+
+.hh-lede {
+  max-width: 40ch;
+  font-size: clamp(15px, 1.15vw, 18px);
+  line-height: 1.45;
+}
+
+.hh-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.hh-rule {
+  border: 0;
+  border-top: 1px solid var(--ln);
+  height: 0;
+}
+
+.hh-headline {
+  margin-top: 18px;
+  font-size: 12vw;
+}
+
+.hh-headline > span {
+  display: block;
+  clip-path: inset(-12% -4% -8% -4%);
+}
+
+.hh-l2 {
+  color: var(--acc);
+}
+
+.hh-wd {
+  white-space: nowrap;
+}
+
+/* the ampersand is outlined, like in the mockup */
+.hh-amp {
+  color: transparent;
+  -webkit-text-stroke: 0.016em var(--color-bone);
+}
+
+/* scroll invitation */
+.hh-cue {
+  position: absolute;
+  left: var(--pad);
+  top: 24vh;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: var(--mut);
+}
+
+.hh-cue span {
+  writing-mode: vertical-rl;
+  rotate: 180deg;
+}
+
+.hh-cue i {
+  width: 1px;
+  height: 56px;
+  background: var(--fg);
+  animation: hh-cue 2.2s cubic-bezier(0.7, 0, 0.2, 1) infinite;
+}
+
+@keyframes hh-cue {
+  0% {
+    scale: 1 0;
+    transform-origin: top;
+  }
+  45% {
+    scale: 1 1;
+    transform-origin: top;
+  }
+  55% {
+    scale: 1 1;
+    transform-origin: bottom;
+  }
+  100% {
+    scale: 1 0;
+    transform-origin: bottom;
+  }
+}
+
+/* ---------- profile ---------- */
+.hh-about {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding: 72px var(--pad);
+  background: var(--bg);
+}
+
+.hh-about-label {
+  color: var(--mut);
+}
+
+.hh-intro {
+  font-size: clamp(22px, 2.5vw, 38px);
+  line-height: 1.16;
+  letter-spacing: -0.02em;
+  color: var(--fnt);
+}
+
+.hh-intro em {
+  font-style: normal;
+  color: var(--fg);
+}
+
+.hh-facts > div {
+  display: grid;
+  grid-template-columns: minmax(110px, 1fr) 2fr;
+  gap: 16px;
+  align-items: baseline;
+  padding: 13px 0;
+  border-top: 1px solid var(--ln);
+}
+
+.hh-facts > div:last-child {
+  border-bottom: 1px solid var(--ln);
+}
+
+.hh-facts dt {
+  color: var(--mut);
+}
+
+.hh-facts dd {
+  text-align: right;
+  font-size: 13.5px;
+  line-height: 1.45;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* ---------- desktop layout (no pinning needed to read it) ---------- */
+@media (min-width: 900px) {
+  .hh-meta {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .hh-band {
+    height: 100svh;
+  }
+
+  .hh-band::after {
+    background: linear-gradient(
+      180deg,
+      color-mix(in oklab, var(--color-ink) 50%, transparent),
+      color-mix(in oklab, var(--color-ink) 18%, transparent) 38%,
+      color-mix(in oklab, var(--color-ink) 82%, transparent)
+    );
+  }
+
+  .hh-poster {
+    padding-bottom: 40px;
+  }
+
+  .hh-headline {
+    font-size: 9.9vw;
+  }
+
+  .hh-l2 {
+    text-align: right;
+  }
+}
+
+/* ---------- chapter mode: the `pinned` class is added to <html> by HomeHeroMotion (desktop, motion allowed) ---------- */
+.pinned .hh-stage {
+  display: block;
+  height: 100vh;
+  min-height: 0;
+}
+
+.pinned .hh-band {
+  inset: auto;
+  left: 25vw;
+  top: 2vh;
+  width: 29vw;
+  height: 98vh;
+  border-radius: 6px;
+}
+
+.pinned .hh-band::after {
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--color-ink) 28%, transparent),
+    transparent 40%,
+    color-mix(in oklab, var(--color-ink) 35%, transparent)
+  );
+}
+
+.pinned .hh-caption,
+.pinned .hh-vf {
+  display: block;
+}
+
+.pinned .hh-cue {
+  display: flex;
+}
+
+.pinned .hh-poster {
+  position: absolute;
+  inset: 0;
+  min-height: 0;
+  padding-top: 0;
+  padding-bottom: 34px;
+}
+
+.pinned .hh-about {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: var(--pad);
+  width: 53vw;
+  padding: 0;
+  justify-content: center;
+  background: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hh-cue i {
+    animation: none;
+  }
+}

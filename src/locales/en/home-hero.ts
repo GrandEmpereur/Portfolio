@@ -1,2 +1,33 @@
-// Filled by its own task; the shell keeps the three languages importable.
-export const homeHero = {} as const;
+export const homeHero = {
+    role: 'AI Engineer & freelance Full Stack developer in Paris',
+    headlineLine1: 'Web & AI',
+    headlineLine2: 'in production.',
+    lede: "I'm Patrick Bartosik. I build LLMs, agents and RAG into your products, and I develop SaaS platforms and websites with Next.js.",
+    ctaProjects: 'See my projects',
+    ctaContact: 'Contact me',
+    available: 'Available for new projects',
+    scroll: 'Scroll',
+    caption: 'Patrick Bartosik · Paris, FR ·',
+    portraitAlt: 'Portrait of Patrick Bartosik',
+    profile: {
+        label: '[02] Profile',
+        intro: {
+            part1: 'Five years of shipping software ',
+            em1: 'to production',
+            part2: '. Today I build ',
+            em2: 'SaaS',
+            part3: ' products, ',
+            em3: 'websites',
+            part4: ' and ',
+            em4: 'AI features',
+            part5: ', from the first mockup to deployment.',
+        },
+        facts: {
+            services: { label: 'Services', value: 'AI Engineering · SaaS development · Websites' },
+            experience: { label: 'Experience', value: '5+ years · 20+ projects delivered' },
+            base: { label: 'Base', value: 'Paris · remote across Europe · FR / EN / PL' },
+            availability: { label: 'Availability', value: 'New projects' },
+            stack: { label: 'Stack', value: 'Next.js · React · TypeScript · NestJS · PostgreSQL · Claude · OpenAI' },
+        },
+    },
+} as const;
