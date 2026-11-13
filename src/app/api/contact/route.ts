@@ -1,140 +1,81 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
-import { contactFormSchema, calculateLeadScore, categorizeLead, type ContactFormData } from '@/lib/contact-schema';
+import { categorizeLead, contactRequestSchema, scoreLead, singleLine } from '@/lib/contact-request';
+import { contactRateLimit, getClientIp } from '@/lib/rate-limit';
 import { ContactFormEmail } from '@/emails/ContactFormEmail';
-import { ContactFormConfirmation } from '@/emails/ContactFormConfirmation';
+import { ContactFormConfirmation, confirmationSubject } from '@/emails/ContactFormConfirmation';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const FROM = process.env.RESEND_FROM_EMAIL || 'Patrick Bartosik <contact@bartosik.fr>';
+const ADMIN = process.env.RESEND_ADMIN_EMAIL || 'contact@bartosik.fr';
 
-// Rate limiting simple (en mémoire)
-const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
-const RATE_LIMIT = 5;
-const RATE_LIMIT_WINDOW = 60 * 60 * 1000; // 1 heure
-
-function checkRateLimit(ip: string): boolean {
-    const now = Date.now();
-    const userLimit = rateLimitMap.get(ip);
-
-    if (!userLimit || now > userLimit.resetTime) {
-        rateLimitMap.set(ip, { count: 1, resetTime: now + RATE_LIMIT_WINDOW });
-        return true;
-    }
-
-    if (userLimit.count >= RATE_LIMIT) {
-        return false;
-    }
-
-    userLimit.count++;
-    return true;
-}
+const isFilled = (body: unknown, key: string): boolean =>
+    typeof body === 'object' && body !== null && typeof (body as Record<string, unknown>)[key] === 'string'
+    && ((body as Record<string, string>)[key]).trim() !== '';
 
 export async function POST(request: NextRequest) {
+    // 1. Rate limit
+    if (!contactRateLimit(getClientIp(request.headers))) {
+        return NextResponse.json({ error: 'rate_limit' }, { status: 429 });
+    }
+
+    let body: unknown;
     try {
-        // Rate limiting
-        const ip = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'unknown';
-        if (!checkRateLimit(ip)) {
-            return NextResponse.json(
-                { error: 'Too many requests. Please try again later.' },
-                { status: 429 }
-            );
-        }
+        body = await request.json();
+    } catch {
+        return NextResponse.json({ error: 'validation', fields: [] }, { status: 400 });
+    }
 
-        // Parse body
-        const body = await request.json();
+    // 2. Honeypot: pretend it worked, send nothing
+    if (isFilled(body, 'website')) {
+        return NextResponse.json({ success: true }, { status: 200 });
+    }
 
-        // Honeypot check
-        if (body.honeypot && body.honeypot !== '') {
-            console.warn('Honeypot triggered:', ip);
-            return NextResponse.json(
-                { success: true, message: 'Email sent successfully' },
-                { status: 200 }
-            );
-        }
+    // 3. Validation
+    const parsed = contactRequestSchema.safeParse(body);
+    if (!parsed.success) {
+        const fields = [...new Set(parsed.error.issues.map((issue) => String(issue.path[0] ?? '')).filter(Boolean))];
+        return NextResponse.json({ error: 'validation', fields }, { status: 400 });
+    }
+    const data = parsed.data;
 
-        // Validation Zod
-        const validationResult = contactFormSchema.safeParse(body);
+    // 4. Score
+    const leadScore = scoreLead(data);
+    const leadCategory = categorizeLead(leadScore);
 
-        if (!validationResult.success) {
-            return NextResponse.json(
-                {
-                    error: 'Validation failed',
-                    details: validationResult.error.format()
-                },
-                { status: 400 }
-            );
-        }
+    try {
+        const resend = new Resend(process.env.RESEND_API_KEY);
+        const fullName = singleLine([data.firstName, data.lastName].filter(Boolean).join(' '));
 
-        const data: ContactFormData = validationResult.data;
-
-        // Lead scoring
-        const leadScore = calculateLeadScore(data);
-        const leadCategory = categorizeLead(leadScore);
-
-        console.log(`New contact from ${data.firstName} ${data.lastName}:`, {
-            email: data.email,
-            company: data.companyName,
-            service: data.serviceType,
-            leadScore,
-            leadCategory,
-        });
-
-        // Sujet de l'email
-        const subject = `🚀 [${leadCategory.toUpperCase()}] New ${data.serviceType} project from ${data.firstName} (${data.companyName})`;
-
-        // 1. Email de notification à l'admin (avec lead score)
-        const { data: emailResult, error } = await resend.emails.send({
-            from: process.env.RESEND_FROM_EMAIL || 'Patrick Bartosik <contact@bartosik.fr>',
-            to: [process.env.RESEND_ADMIN_EMAIL || 'contact@bartosik.fr'],
-            subject,
-            react: ContactFormEmail({
-                ...data,
-                leadScore,
-                leadCategory,
-            }),
+        // 5. Email to Patrick (French). A failure is a failure for the visitor.
+        const { error } = await resend.emails.send({
+            from: FROM,
+            to: [ADMIN],
+            subject: `[${leadCategory.toUpperCase()}] Nouvelle demande de ${fullName}`,
+            react: ContactFormEmail({ ...data, leadScore, leadCategory }),
             replyTo: data.email,
         });
-
         if (error) {
-            console.error('Resend error (admin):', error);
-            return NextResponse.json(
-                { error: 'Failed to send email' },
-                { status: 500 }
-            );
+            console.error('contact: admin email failed', { type: error.name, leadCategory });
+            return NextResponse.json({ error: 'send_failed' }, { status: 500 });
         }
 
-        // 2. Email de confirmation au client
-        const { error: clientError } = await resend.emails.send({
-            from: process.env.RESEND_FROM_EMAIL || 'Patrick Bartosik <contact@bartosik.fr>',
-            to: [data.email],
-            subject: '✅ Demande de projet bien reçue - Patrick Bartosik',
-            react: ContactFormConfirmation({
-                firstName: data.firstName,
-                lastName: data.lastName,
-                companyName: data.companyName,
-                serviceType: data.serviceType,
-                budgetMin: data.budgetMin,
-                budgetMax: data.budgetMax,
-            }),
-        });
-
-        if (clientError) {
-            console.error('Resend error (client):', clientError);
-            // On continue quand même car l'email admin est envoyé
+        // 6. Confirmation to the visitor (own language). A failure is only logged.
+        try {
+            const { error: clientError } = await resend.emails.send({
+                from: FROM,
+                to: [data.email],
+                subject: confirmationSubject[data.locale],
+                react: ContactFormConfirmation({ firstName: data.firstName, needs: data.needs, locale: data.locale }),
+            });
+            if (clientError) console.error('contact: visitor email failed', { type: clientError.name });
+        } catch (clientError) {
+            console.error('contact: visitor email failed', { type: clientError instanceof Error ? clientError.name : 'unknown' });
         }
 
-        return NextResponse.json(
-            {
-                success: true,
-                message: 'Merci ! Votre message a été envoyé avec succès.',
-            },
-            { status: 200 }
-        );
-
+        console.info('contact: request sent', { leadCategory });
+        return NextResponse.json({ success: true }, { status: 200 });
     } catch (error) {
-        console.error('API error:', error);
-        return NextResponse.json(
-            { error: 'Internal server error' },
-            { status: 500 }
-        );
+        console.error('contact: unexpected error', { type: error instanceof Error ? error.name : 'unknown' });
+        return NextResponse.json({ error: 'send_failed' }, { status: 500 });
     }
 }

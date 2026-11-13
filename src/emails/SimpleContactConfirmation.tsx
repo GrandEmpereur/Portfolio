@@ -1,69 +1,63 @@
-import {
-    Body,
-    Container,
-    Head,
-    Heading,
-    Html,
-    Preview,
-    Section,
-    Text,
-    Hr,
-} from '@react-email/components';
+import { Body, Container, Head, Heading, Html, Preview, Section, Text } from '@react-email/components';
 import * as React from 'react';
 
-interface SimpleContactConfirmationProps {
+// Email clients cannot read CSS tokens: these are the only hard-coded colours of the project.
+const INK = '#0B0B0A';
+const BONE = '#ECE7DE';
+const ACCENT = '#EC2A45';
+const LINE = '#2A2927';
+
+type Locale = 'fr' | 'en' | 'pl';
+
+export interface SimpleContactConfirmationProps {
     name: string;
+    locale?: Locale;
 }
 
-export const SimpleContactConfirmation = ({
-    name,
-}: SimpleContactConfirmationProps) => {
+export const simpleConfirmationSubject: Record<Locale, string> = {
+    fr: 'Message bien reçu',
+    en: 'Message received',
+    pl: 'Wiadomość otrzymana',
+};
+
+const COPY: Record<Locale, { preview: string; greeting: (n: string) => string; body: string; reply: string; signoff: string }> = {
+    fr: {
+        preview: 'Votre message est bien reçu.',
+        greeting: (n) => `Bonjour ${n},`,
+        body: 'Merci pour votre message : je l\'ai bien reçu.',
+        reply: 'Je vous réponds sous 48 heures ouvrées.',
+        signoff: 'À très vite,',
+    },
+    en: {
+        preview: 'Your message has arrived.',
+        greeting: (n) => `Hi ${n},`,
+        body: 'Thanks for your message: it reached me.',
+        reply: 'I will reply within 48 working hours.',
+        signoff: 'Speak soon,',
+    },
+    pl: {
+        preview: 'Twoja wiadomość dotarła.',
+        greeting: (n) => `Cześć ${n},`,
+        body: 'Dziękuję za wiadomość: dotarła do mnie.',
+        reply: 'Odpowiem w ciągu 48 godzin roboczych.',
+        signoff: 'Do usłyszenia,',
+    },
+};
+
+export const SimpleContactConfirmation = ({ name, locale = 'fr' }: SimpleContactConfirmationProps) => {
+    const t = COPY[locale];
     return (
-        <Html>
+        <Html lang={locale}>
             <Head />
-            <Preview>Merci pour votre message - Patrick Bartosik</Preview>
+            <Preview>{t.preview}</Preview>
             <Body style={main}>
                 <Container style={container}>
-                    {/* Header */}
-                    <Section style={header}>
-                        <Heading style={logoText}>Patrick Bartosik</Heading>
-                        <Text style={subtitle}>Développeur Full-Stack</Text>
-                    </Section>
-
-                    {/* Main Content */}
                     <Section style={content}>
-                        <Heading style={h1}>Merci {name} ! 👋</Heading>
-
-                        <Text style={text}>
-                            J'ai bien reçu votre message et je vous remercie de l'intérêt que vous portez à mes services.
-                        </Text>
-
-                        <Text style={text}>
-                            Je prends le temps d'étudier attentivement chaque demande et je vous répondrai dans les <strong>24-48 heures</strong>.
-                        </Text>
-
-                        <Section style={highlightBox}>
-                            <Text style={highlightText}>
-                                💡 En attendant, n'hésitez pas à consulter mon portfolio pour découvrir mes réalisations récentes.
-                            </Text>
-                        </Section>
-
-                        <Text style={text}>
-                            À très bientôt,<br />
-                            <strong>Patrick Bartosik</strong>
-                        </Text>
-                    </Section>
-
-                    <Hr style={hr} />
-
-                    {/* Footer */}
-                    <Section style={footer}>
-                        <Text style={footerText}>
-                            Patrick Bartosik - Développeur Full-Stack E-commerce & Shopify Plus
-                        </Text>
-                        <Text style={footerText}>
-                            🌐 <a href="https://patrickbartosik.com" style={link}>patrickbartosik.com</a>
-                        </Text>
+                        <Heading style={h1}>{t.greeting(name)}</Heading>
+                        <Text style={paragraph}>{t.body}</Text>
+                        <Text style={paragraph}>{t.reply}</Text>
+                        <Text style={{ ...paragraph, marginTop: '24px' }}>{t.signoff}</Text>
+                        <Text style={sign}>Patrick Bartosik</Text>
                     </Section>
                 </Container>
             </Body>
@@ -73,100 +67,9 @@ export const SimpleContactConfirmation = ({
 
 export default SimpleContactConfirmation;
 
-// Styles
-const main = {
-    backgroundColor: '#f6f9fc',
-    fontFamily: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif',
-};
-
-const container = {
-    backgroundColor: '#ffffff',
-    margin: '0 auto',
-    padding: '20px 0 48px',
-    marginBottom: '64px',
-    maxWidth: '600px',
-};
-
-const header = {
-    padding: '32px 40px',
-    textAlign: 'center' as const,
-    backgroundColor: '#000000',
-};
-
-const logoText = {
-    color: '#ffffff',
-    fontSize: '28px',
-    fontWeight: '700',
-    margin: '0',
-    padding: '0',
-    letterSpacing: '-0.5px',
-};
-
-const subtitle = {
-    color: '#f97316',
-    fontSize: '14px',
-    fontWeight: '500',
-    margin: '8px 0 0',
-    padding: '0',
-    textTransform: 'uppercase' as const,
-    letterSpacing: '1px',
-};
-
-const content = {
-    padding: '40px 40px',
-};
-
-const h1 = {
-    color: '#1a1a1a',
-    fontSize: '32px',
-    fontWeight: '700',
-    margin: '0 0 24px',
-    padding: '0',
-    lineHeight: '1.2',
-};
-
-const text = {
-    color: '#4a5568',
-    fontSize: '16px',
-    lineHeight: '1.6',
-    margin: '0 0 16px',
-};
-
-const highlightBox = {
-    backgroundColor: '#fff7ed',
-    border: '2px solid #fed7aa',
-    borderRadius: '8px',
-    padding: '20px',
-    margin: '24px 0',
-};
-
-const highlightText = {
-    color: '#ea580c',
-    fontSize: '15px',
-    lineHeight: '1.6',
-    margin: '0',
-    fontWeight: '500',
-};
-
-const hr = {
-    borderColor: '#e2e8f0',
-    margin: '32px 0',
-};
-
-const footer = {
-    padding: '0 40px',
-    textAlign: 'center' as const,
-};
-
-const footerText = {
-    color: '#94a3b8',
-    fontSize: '13px',
-    lineHeight: '1.6',
-    margin: '4px 0',
-};
-
-const link = {
-    color: '#f97316',
-    textDecoration: 'none',
-};
-
+const main = { backgroundColor: INK, fontFamily: 'Helvetica, Arial, sans-serif', margin: 0, padding: '24px 0' };
+const container = { maxWidth: '560px', margin: '0 auto', backgroundColor: INK, border: `1px solid ${LINE}` };
+const content = { padding: '32px 28px' };
+const h1 = { color: BONE, fontSize: '22px', margin: '0 0 12px' };
+const paragraph = { color: BONE, fontSize: '15px', lineHeight: '1.6', margin: '0 0 10px' };
+const sign = { color: ACCENT, fontSize: '15px', fontWeight: 700, margin: 0 };

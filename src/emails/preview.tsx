@@ -1,40 +1,26 @@
 import { ContactFormEmail } from './ContactFormEmail';
 
-// Fichier de preview pour React Email
-// Pour lancer le serveur de preview : bun email
+// React Email preview file. Run the preview server with: bun email
 
-// Exemple de données pour la preview
 const PreviewContactFormEmail = () => (
     <ContactFormEmail
+        needs={['agent', 'rag']}
+        stage="specs"
+        timing="mois"
+        budget="enveloppe"
+        budgetAmount="Environ la moitié d'un budget annuel outillage"
+        message={'Bonjour Patrick,\n\nNous voulons un agent qui répond aux questions de nos équipes support à partir de notre base documentaire.\n\nSeriez-vous disponible pour un appel la semaine prochaine ?'}
+        link="https://exemple.test/cahier-des-charges"
         firstName="Sophie"
         lastName="Martin"
-        email="sophie.martin@example.com"
+        email="sophie.martin@exemple.test"
+        company="Atelier Test"
         phone="+33 6 12 34 56 78"
-        companyName="TechStart SAS"
-        companyWebsite="https://techstart.fr"
-        serviceType="saas"
-        helpType="creation"
-        budgetMin={15000}
-        budgetMax={25000}
-        discoverySource="google"
-        message="Hello Patrick,
-
-I came across your portfolio and I'm very impressed by your work, particularly your e-commerce projects.
-
-I'm the CEO of a growing startup and we're looking for a talented Full Stack Developer to build our SaaS platform. The project involves:
-- Modern React/Next.js frontend
-- Scalable backend architecture
-- Payment integration (Stripe/Lemon Squeezy)
-- Real-time features
-
-Would you be available for a call next week to discuss this opportunity in more detail?
-
-Best regards,
-Sophie"
+        channel="visio"
+        locale="fr"
         leadScore={85}
         leadCategory="hot"
     />
 );
 
 export default PreviewContactFormEmail;
-
