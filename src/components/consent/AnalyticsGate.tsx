@@ -32,10 +32,9 @@ export const AnalyticsGate = () => {
 
   if (!granted) return null;
 
-  return (
-    <>
-      {GTM_ID ? <GoogleTagManager gtmId={GTM_ID} /> : null}
-      {GA_ID ? <GoogleAnalytics gaId={GA_ID} /> : null}
-    </>
-  );
+  // The Tag Manager container already loads GA4 (its "GA4 - Configuration" tag). Mounting gtag.js
+  // next to it would configure the same property twice and count every page view twice,
+  // so GA4 is only loaded directly when there is no container.
+  if (GTM_ID) return <GoogleTagManager gtmId={GTM_ID} />;
+  return GA_ID ? <GoogleAnalytics gaId={GA_ID} /> : null;
 };

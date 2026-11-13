@@ -94,7 +94,7 @@ Uses **Lenis** for smooth scroll (package `lenis`, NOT `@studio-freight/lenis` w
 
 ### Consent and Analytics
 
-`src/lib/consent.ts` stores the choice (`granted` or `denied`, valid six months) in localStorage. Google Analytics and Google Tag Manager load only after "accept" (`AnalyticsGate`). `src/lib/track.ts` pushes the `contact_*` events to `dataLayer` once consent is granted. A "manage cookies" button in `SiteFooter` reopens the banner.
+`src/lib/consent.ts` stores the choice (`granted` or `denied`, valid six months) in localStorage. Google Tag Manager loads only after "accept" (`AnalyticsGate`) and carries GA4 through its "GA4 - Configuration" tag. gtag.js is loaded directly only when there is no `NEXT_PUBLIC_GTM_ID`: mounting both would count every page view twice. In the container, the `GA4 Event - Contact` tag forwards the `contact_*` events. `src/lib/track.ts` pushes the `contact_*` events to `dataLayer` once consent is granted. A "manage cookies" button in `SiteFooter` reopens the banner.
 
 ### Data Files
 
@@ -134,7 +134,7 @@ The `@/*` alias maps to `./src/*` (configured in `tsconfig.json`).
 ## Environment Variables
 
 Required in `.env.local`:
-- `NEXT_PUBLIC_GA_ID` - Google Analytics
+- `NEXT_PUBLIC_GA_ID` - Google Analytics (only used when `NEXT_PUBLIC_GTM_ID` is empty)
 - `NEXT_PUBLIC_GTM_ID` - Google Tag Manager
 - `NEXT_PUBLIC_SITE_URL` - Public site URL
 - `NEXT_PUBLIC_CAL_URL_FR`, `NEXT_PUBLIC_CAL_URL_EN`, `NEXT_PUBLIC_CAL_URL_PL` - Cal.com booking link per language (a language without a link shows no booking button)
