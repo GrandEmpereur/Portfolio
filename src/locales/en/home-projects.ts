@@ -37,6 +37,7 @@ export const homeProjects = {
             alt: '',
         },
     },
+    allCta: 'See all projects',
     agency: {
         title: 'At an agency',
         intro: 'Seven sites I worked on at W3lead, during my work-study placement',

@@ -37,6 +37,7 @@ export const homeProjects = {
             alt: '',
         },
     },
+    allCta: 'Voir tous les projets',
     agency: {
         title: 'En agence',
         intro: 'Sept sites sur lesquels j\'ai travaillé chez W3lead, en alternance',

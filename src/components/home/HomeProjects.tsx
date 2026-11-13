@@ -155,6 +155,11 @@ export const HomeProjects = async () => {
             );
           })}
         </ul>
+        <p className="hp-all">
+          <TransitionLink className="btn btn-ghost" href={localePath(locale, '/projects')} data-cursor="view">
+            {t('allCta')} <span aria-hidden="true">↗</span>
+          </TransitionLink>
+        </p>
       </div>
 
       <HomeProjectsMotion />
