@@ -14,6 +14,15 @@ bun run build
 # Start production server
 bun start
 
+# Unit tests (env files are not loaded)
+bun --no-env-file test
+
+# SEO smoke check against a running server (dev or production)
+bun --no-env-file scripts/seo-smoke.ts <url>
+
+# Render the Open Graph image again after a design change (writes public/og/og-image.png)
+bun --no-env-file scripts/render-og.ts
+
 # Email template development
 bun email
 ```
@@ -24,12 +33,38 @@ This project uses **Bun** as the package manager.
 
 ### Next.js 16 App Router with Internationalization
 
-The app uses `next-international` for i18n with a `[locale]` dynamic segment:
+The app uses `next-international` with a `[locale]` dynamic segment. French is the default language and lives at the root (`/`); English and Polish are prefixed (`/en`, `/pl`). `src/proxy.ts` rewrites unprefixed URLs to `/fr/*` and redirects `/fr/*` to the unprefixed path.
 
-- **Server-side**: `src/locales/serveur.ts` exports `getI18n`, `getScopedI18n`, `getStaticParams`
+- **Server-side**: `src/locales/serveur.ts` exports `getI18n`, `getScopedI18n`, `getStaticParams`, `getCurrentLocale`
 - **Client-side**: `src/locales/client.ts` exports `useI18n`, `useScopedI18n`, `useCurrentLocale`, `useChangeLocale`, `I18nProviderClient`
-- **Translation files**: `src/locales/{en,fr,pl}.ts` (French is the default locale)
+- **Translation files**: `src/locales/{fr,en,pl}.ts` assemble one file per domain from `src/locales/<lang>/` (`common`, `home-hero`, `home-projects`, `home-services`, `home-end`, `contact-page`, `legal-pages`, `services-page`). The three languages must expose the same keys (`src/locales/parity.test.ts`). `nav`, `projectDetail`, `footer`, `meta`, `notFound` still live inline in `fr.ts`, `en.ts`, `pl.ts`.
+- **Links**: internal links go through `localePath(locale, path)` (`src/lib/locale-path.ts`) so a visitor stays in their language
 - **Provider wrapper**: `src/app/[locale]/providers.tsx` wraps children with `I18nProviderClient`
+- **Static rendering**: `src/app/[locale]/layout.tsx` exports `generateStaticParams`, so every page is prerendered once per language. The layout checks the language by hand (`notFound()` for an unknown first segment); other params are rendered on demand, so unknown project slugs keep their localized 404 and their redirects. Do not read `headers()`, `cookies()` or `searchParams` in a page: it would make it dynamic again. A `not-found.tsx` receives no params and cannot call `getCurrentLocale()` during a prerender: use `LocalizedNotFound` (client).
+- All visible text is rendered server-side. Hidden initial states come from GSAP or from the `js`, `enter`, `pinned` classes that only JavaScript sets, never from CSS at rest.
+
+### Design System
+
+- **Fonts**: Archivo (variable, `--font-archivo`) for text and titles, Geist Mono (`--font-geist-mono`) for labels
+- **Tokens** in `src/app/[locale]/globals.css`: `ink` `#0B0B0A`, `bone` `#ECE7DE`, `accent` `#EC2A45`, `ok` `#22C55E`. This is the only place hexadecimal codes live; components use the tokens.
+- **Themes**: `.theme-dark` (default, on `<body>`) and `.theme-light`, set per section. They resolve `--bg`, `--fg`, `--acc`, `--mut`, `--fnt`, `--ln`, `--surface`, exposed as the classes `text-fg`, `text-mut`, `text-fnt`, `border-ln`, `bg-surface`, `text-acc`. The `dark` class stays on `<html>` for shadcn; there is no next-themes.
+- **Utilities**: `display` (titles), `mono-label` (labels), `pad-x` (page gutter); components `.btn` and `.btn-ghost`
+- The fixed header takes about 84px at the top of every page
+- Section styles live in co-located CSS files with a prefix: `hh-` hero, `hp-` projects, `hs-` services, `he-` end, `cx-` contact, `lg-` legal, `sv-` services page, `pj-`/`pd-` projects pages, `nf-` 404
+- A "stretched link" (`a::after { position: absolute; inset: 0 }`) must never sit under an ancestor that gets a transform on hover: put the hover shift on an inner span
+- `body` uses `overflow-x: clip`, not `hidden`, so `position: sticky` works
+
+### Components
+
+- `src/components/site/` - shell: `SiteHeader`, `SiteFooter`, `SiteCursor`, `RouteTransition`, `TransitionLink` (page fade, smooth same-page anchors)
+- `src/components/home/` - homepage chapters: hero and profile, projects, services, blog teaser, FAQ and contact call
+- `src/components/contact/` - contact screen: guided five-question flow, direct message, confirmation, dossier recap
+- `src/components/services/` - services page: head and index, one section per service, closing call to action
+- `src/components/legal/` - `LegalPage` layout for the four legal pages
+- `src/components/consent/` - consent banner and analytics gate
+- `src/components/ProjectCard.tsx`, `ProjectDetailContent.tsx`, `ProjectAnchor.tsx`, `NotFoundView.tsx` - `/projects`, `/projects/[slug]` and the 404 pages
+- `src/components/ui/` - shadcn/ui (New York style), only `sonner` is left. Add components with `bunx --bun shadcn@latest add <component-name>`
+- Icon library: `lucide-react`
 
 ### GSAP Animation System
 
@@ -39,49 +74,46 @@ All GSAP plugins (including premium plugins) are configured in `src/lib/gsap-con
 import { gsap, ScrollTrigger, SplitText, useGSAP } from '@/lib/gsap-config';
 ```
 
-Available plugins: ScrollTrigger, ScrollSmoother, SplitText, Flip, Draggable, Observer, MorphSVGPlugin, DrawSVGPlugin, TextPlugin, ScrambleTextPlugin, and more.
+Pinning, custom cursor, magnetic effects and parallax run only from 900px up, with a mouse, and without "reduced motion" (`src/lib/motion.ts`).
+
+Blocks that appear on scroll go through `riseOnScroll` (`src/lib/reveal.ts`): opacity only, so they stay in the tab order. Never set `limitCallbacks: true` on ScrollTrigger: a section that is jumped past (anchor link, restored scroll position) would never be revealed.
 
 ### Smooth Scrolling
 
-Uses **Lenis** for smooth scroll (package `lenis`, NOT `@studio-freight/lenis` which is deprecated).
+Uses **Lenis** for smooth scroll (package `lenis`, NOT `@studio-freight/lenis` which is deprecated). `src/lib/scroll.ts` wraps programmatic scrolling.
 
-### Dark Mode
+### Contact System
 
-Dark mode is hardcoded via `"dark"` class on HTML element (no next-themes).
+- Request schema, lead score (`scoreLead`, based on need, stage, timing and budget status, never an amount) and sanitizing helpers: `src/lib/contact-request.ts`
+- Three routes: `src/app/api/contact/route.ts` (guided request), `src/app/api/contact-simple/route.ts` (direct message, schema in `src/lib/simple-contact-schema.ts`), `src/app/api/contact-source/route.ts` (how the visitor found the site)
+- A honeypot field (`src/components/form/Honeypot.tsx`) silences bots: no e-mail is sent
+- Send limits in `src/lib/rate-limit.ts`: 5 sends per hour per IP, and confirmation e-mails to the visitor capped at 2 per address and 30 overall per hour. The client IP is read from platform headers only.
+- E-mail templates in `src/emails/` with `react-email`, sent through **Resend**
+- Booking link per language: `src/lib/booking.ts` (`NEXT_PUBLIC_CAL_URL_*`)
+- Forms use react-hook-form, `@hookform/resolvers` and Zod v4
 
-### UI Components
+### Consent and Analytics
 
-Uses **shadcn/ui** with New York style:
-- Components in `src/components/ui/`
-- Add new components with: `bunx --bun shadcn@latest add <component-name>`
-- Icon library: `lucide-react`
-
-### Contact Form System
-
-Two contact forms with different complexity levels:
-- **Full form**: `src/app/api/contact/route.ts` - includes lead scoring, budget sliders, service type selection
-- **Simple form**: `src/app/api/contact-simple/route.ts` - basic contact form
-- Email templates in `src/emails/` using `react-email`
-- Emails sent via **Resend** API
-- Form validation with **Zod v4** schemas in `src/lib/contact-schema.ts` and `src/lib/simple-contact-schema.ts`
-- Forms built with **react-hook-form** + `@hookform/resolvers`
+`src/lib/consent.ts` stores the choice (`granted` or `denied`, valid six months) in localStorage. Google Analytics and Google Tag Manager load only after "accept" (`AnalyticsGate`). `src/lib/track.ts` pushes the `contact_*` events to `dataLayer` once consent is granted. A "manage cookies" button in `SiteFooter` reopens the banner.
 
 ### Data Files
 
 Static data is stored in `src/lib/data/`:
-- `lastwork.data.ts` - Projects with type badges (freelance, internship, school)
-- `services.data.ts` - Service offerings
-- `testimonials.data.ts` - Client testimonials
-- `knowlege.data.ts` - Skills/knowledge items
-- `certifications.data.ts` - Certifications
+- `lastwork.data.ts` - Projects. `published: false` keeps a project out of the HTML, the sitemap and the structured data; `featured` and `featuredOrder` drive the homepage. Use `getPublishedProjects`, `getFeaturedProjects`, `getAgencyProjects`; `hasDetailPage` is true only for a project with no external link and a long description
+- `services.data.ts` - Service offerings (no prices anywhere on the site)
+- `service-details.data.ts` - Long-form content of each service for the services page (use cases, deliverables, steps, FAQ, related project)
+- `blog.data.ts` - Blog posts; the homepage teaser shows once there are three
+- `testimonials.data.ts` - Project testimonials
 
 ### SEO & Structured Data
 
 - Centralized SEO config in `src/lib/seo-config.ts` (base URL, author, social links, OG image, locales)
-- JSON-LD structured data in `src/lib/structured-data.ts` (`getFreelancerPersonSchema()` — uses Person, not Organization)
-- `robots.ts`, `sitemap.ts`, `manifest.ts` in `src/app/`
+- JSON-LD structured data in `src/lib/structured-data.ts` (`getFreelancerPersonSchema()` uses Person, not Organization)
+- Page titles are 60 characters at most, template included (`%s | Patrick Bartosik` comes from the layout, so a page title never repeats the name)
+- The Open Graph image is a static file, `public/og/og-image.png`, rendered by `scripts/render-og.ts`. Do not render it in a route: on Node.js `next/og` goes through sharp, and the Next.js image optimizer blocks SVG decoding in sharp for the whole process
+- There is no Twitter/X account: no `twitter.creator` in metadata
+- `robots.ts`, `sitemap.ts` in `src/app/`
 - `llms.txt` in `public/` for AI search engine optimization
-- XSS sanitization with `isomorphic-dompurify` (e.g., FAQSection)
 
 ### Path Aliases
 
@@ -89,11 +121,15 @@ The `@/*` alias maps to `./src/*` (configured in `tsconfig.json`).
 
 ## Pages
 
-- `/[locale]` - Homepage (Hero, About, Services, Projects, Stats, Knowledge, Testimonials, FAQ, Contact sections)
+- `/[locale]` - Homepage (hero and profile, projects, services, blog teaser, FAQ and contact call)
+- `/[locale]/services` - Services page (one anchored section per service; the homepage service rows link to `/services#<service-id>`)
 - `/[locale]/projects` - Projects page
+- `/[locale]/projects/[slug]` - Project detail (only projects with `hasDetailPage`)
 - `/[locale]/contact` - Contact page
-- `/[locale]/mentions-legales` - Legal mentions
+- `/[locale]/mentions-legales` - Legal notice
 - `/[locale]/politique-confidentialite` - Privacy policy
+- `/[locale]/politique-cookies` - Cookies policy
+- `/[locale]/conditions-utilisation` - Terms of use
 
 ## Environment Variables
 
@@ -101,6 +137,7 @@ Required in `.env.local`:
 - `NEXT_PUBLIC_GA_ID` - Google Analytics
 - `NEXT_PUBLIC_GTM_ID` - Google Tag Manager
 - `NEXT_PUBLIC_SITE_URL` - Public site URL
+- `NEXT_PUBLIC_CAL_URL_FR`, `NEXT_PUBLIC_CAL_URL_EN`, `NEXT_PUBLIC_CAL_URL_PL` - Cal.com booking link per language (a language without a link shows no booking button)
 - `RESEND_API_KEY` - Resend email service
 - `RESEND_FROM_EMAIL` - Sender email address
 - `RESEND_ADMIN_EMAIL` - Admin notification recipient

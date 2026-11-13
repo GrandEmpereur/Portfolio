@@ -1,33 +1,48 @@
 import type { Metadata } from "next";
-import { Anton, Inter } from "next/font/google";
+import { Archivo, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
-import { NavBar } from "@/components/NavBar";
+import { SiteHeader } from "@/components/site/SiteHeader";
 import { seoConfig, ogLocaleMap } from "@/lib/seo-config";
-import { getI18n } from "@/locales/serveur";
+import { getI18n, getStaticParams } from "@/locales/serveur";
 import { setStaticParamsLocale } from "next-international/server";
+import { notFound } from "next/navigation";
+import { LOCALES } from "@/lib/locale-path";
 import { Toaster } from "@/components/ui/sonner";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { Analytics as VercelAnalytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import { GoogleAnalytics } from '@next/third-parties/google'
-import { GoogleTagManager } from '@next/third-parties/google'
-import { CustomCursor } from "@/components/CustomCursor"
+import { AnalyticsGate } from "@/components/consent/AnalyticsGate";
+import { ConsentBanner } from "@/components/consent/ConsentBanner";
+import { SiteCursor } from "@/components/site/SiteCursor";
+import { RouteTransition } from "@/components/site/RouteTransition";
 
-const anton = Anton({
-  variable: "--font-anton",
+const archivo = Archivo({
+  variable: "--font-archivo",
   subsets: ["latin"],
-  weight: "400",
+  axes: ["wdth"],
   display: "swap",
-  adjustFontFallback: true,
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
   subsets: ["latin"],
   display: "swap",
-  adjustFontFallback: true,
 });
+
+// Every page is prerendered once per language (fr, en, pl). Other params are rendered on demand
+// (unknown project slugs keep their localized 404 and their redirects), so the language is checked
+// by hand below: an unknown first segment is a 404, never a crash in the dictionary lookup.
+const isKnownLocale = (value: string): boolean => LOCALES.some((locale) => locale === value);
+
+export function generateStaticParams() {
+  return getStaticParams();
+}
+
+// Runs before first paint. "js" unlocks the JavaScript-only states in the CSS.
+// "enter" (page hidden while the hero entrance prepares) only on 900px+ without reduced motion,
+// and is always removed after 2.5 s even if the main script never starts.
+const BOOT_SCRIPT = `(function(){var h=document.documentElement;h.classList.add('js');try{var n=performance.getEntriesByType('navigation')[0];if(n&&n.type!=='navigate'&&new RegExp('^/(en|pl)?/?$').test(location.pathname))history.scrollRestoration='manual'}catch(e){}if(!matchMedia('(min-width: 900px)').matches||matchMedia('(prefers-reduced-motion: reduce)').matches)return;h.classList.add('enter');setTimeout(function(){h.classList.remove('enter')},2500)})();`;
 
 export async function generateMetadata({
   params,
@@ -35,6 +50,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  if (!isKnownLocale(locale)) notFound();
   setStaticParamsLocale(locale);
   const t = await getI18n();
 
@@ -121,7 +137,6 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title,
       description,
-      creator: seoConfig.author.twitter,
       images: [`${seoConfig.baseUrl}${seoConfig.openGraph.image}`],
     },
   };
@@ -147,6 +162,7 @@ export default async function RootLayout({
   params: Promise<{ locale: string }>;
 }>) {
   const { locale } = await paramsPromise;
+  if (!isKnownLocale(locale)) notFound();
   setStaticParamsLocale(locale);
 
   const skipLinkText: Record<string, string> = {
@@ -156,34 +172,31 @@ export default async function RootLayout({
   };
 
   return (
-    <html lang={locale} className="dark" suppressHydrationWarning>
-      <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID || ''} />
+    <html
+      lang={locale}
+      className={`dark ${archivo.variable} ${geistMono.variable}`}
+      suppressHydrationWarning
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: BOOT_SCRIPT }} />
+      </head>
       <body
-        className={`${anton.variable} ${inter.variable} antialiased dark:bg-black bg-black`}
+        className="theme-dark antialiased"
         suppressHydrationWarning
       >
-        {process.env.NEXT_PUBLIC_GTM_ID && (
-          <noscript>
-            <iframe
-              src={`https://www.googletagmanager.com/ns.html?id=${process.env.NEXT_PUBLIC_GTM_ID}`}
-              height="0"
-              width="0"
-              style={{ display: 'none', visibility: 'hidden' }}
-              title="Google Tag Manager"
-            />
-          </noscript>
-        )}
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:rounded-lg focus:text-sm focus:font-medium"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-bone focus:text-ink focus:rounded-lg focus:text-sm focus:font-medium"
         >
           {skipLinkText[locale] ?? skipLinkText.en}
         </a>
         <Providers locale={locale}>
-          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || ''} />
+          <AnalyticsGate />
+          <ConsentBanner />
           <SmoothScroll>
-            <NavBar />
-            <CustomCursor />
+            <SiteHeader />
+            <SiteCursor />
+            <RouteTransition />
             {children}
             <Toaster />
             <VercelAnalytics />

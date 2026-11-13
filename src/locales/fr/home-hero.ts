@@ -1,0 +1,33 @@
+export const homeHero = {
+    role: 'AI Engineer & développeur Full Stack freelance à Paris',
+    headlineLine1: 'Web & IA',
+    headlineLine2: 'en production.',
+    lede: "Je suis Patrick Bartosik. J'intègre des LLM, des agents et du RAG dans vos produits, et je construis des SaaS et des sites web avec Next.js.",
+    ctaProjects: 'Voir mes projets',
+    ctaContact: 'Me contacter',
+    available: 'Disponible pour de nouveaux projets',
+    scroll: 'Défiler',
+    caption: 'Patrick Bartosik · Paris, FR ·',
+    portraitAlt: 'Portrait de Patrick Bartosik',
+    profile: {
+        label: '[02] Profil',
+        intro: {
+            part1: 'Cinq ans à livrer du logiciel ',
+            em1: 'en production',
+            part2: ". Aujourd'hui je construis des ",
+            em2: 'SaaS',
+            part3: ', des ',
+            em3: 'sites web',
+            part4: ' et des ',
+            em4: 'fonctionnalités IA',
+            part5: ', de la première maquette au déploiement.',
+        },
+        facts: {
+            services: { label: 'Services', value: 'AI Engineering · Création de SaaS · Sites web' },
+            experience: { label: 'Expérience', value: '5+ ans · 20+ projets livrés' },
+            base: { label: 'Base', value: 'Paris · à distance en Europe · FR / EN / PL' },
+            availability: { label: 'Disponibilité', value: 'Nouveaux projets' },
+            stack: { label: 'Stack', value: 'Next.js · React · TypeScript · NestJS · PostgreSQL · Claude · OpenAI' },
+        },
+    },
+} as const;

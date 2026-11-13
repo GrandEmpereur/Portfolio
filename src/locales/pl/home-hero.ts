@@ -1,0 +1,33 @@
+export const homeHero = {
+    role: 'AI Engineer i freelancer Full Stack w Paryżu',
+    headlineLine1: 'Web & AI',
+    headlineLine2: 'na produkcji.',
+    lede: 'Nazywam się Patrick Bartosik. Wdrażam LLM-y, agentów i RAG w Twoich produktach oraz tworzę aplikacje SaaS i strony internetowe w Next.js.',
+    ctaProjects: 'Zobacz moje projekty',
+    ctaContact: 'Napisz do mnie',
+    available: 'Dostępny dla nowych projektów',
+    scroll: 'Przewiń',
+    caption: 'Patrick Bartosik · Paryż, FR ·',
+    portraitAlt: 'Portret Patricka Bartosika',
+    profile: {
+        label: '[02] Profil',
+        intro: {
+            part1: 'Pięć lat dostarczam oprogramowanie ',
+            em1: 'na produkcję',
+            part2: '. Dziś tworzę ',
+            em2: 'aplikacje SaaS',
+            part3: ', ',
+            em3: 'strony internetowe',
+            part4: ' i ',
+            em4: 'funkcje oparte na AI',
+            part5: ', od pierwszej makiety po wdrożenie.',
+        },
+        facts: {
+            services: { label: 'Usługi', value: 'AI Engineering · Tworzenie SaaS · Strony internetowe' },
+            experience: { label: 'Doświadczenie', value: '5+ lat · 20+ zrealizowanych projektów' },
+            base: { label: 'Baza', value: 'Paryż · zdalnie w Europie · FR / EN / PL' },
+            availability: { label: 'Dostępność', value: 'Nowe projekty' },
+            stack: { label: 'Stack', value: 'Next.js · React · TypeScript · NestJS · PostgreSQL · Claude · OpenAI' },
+        },
+    },
+} as const;

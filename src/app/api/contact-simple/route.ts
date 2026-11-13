@@ -1,132 +1,82 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
-import { simpleContactSchema, type SimpleContactData } from '@/lib/simple-contact-schema';
-import { SimpleContactConfirmation } from '@/emails/SimpleContactConfirmation';
+import { safeDisplayName, singleLine } from '@/lib/contact-request';
+import { confirmationGate, contactRateLimit, getClientIp } from '@/lib/rate-limit';
+import { simpleContactSchema } from '@/lib/simple-contact-schema';
+import { SimpleContactConfirmation, simpleConfirmationSubject } from '@/emails/SimpleContactConfirmation';
 import { SimpleContactNotification } from '@/emails/SimpleContactNotification';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const FROM = process.env.RESEND_FROM_EMAIL || 'Patrick Bartosik <contact@bartosik.fr>';
+const ADMIN = process.env.RESEND_ADMIN_EMAIL || 'contact@bartosik.fr';
 
-// Rate limiting simple (en mémoire)
-const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
-const RATE_LIMIT = 5;
-const RATE_LIMIT_WINDOW = 60 * 60 * 1000; // 1 heure
-
-function checkRateLimit(ip: string): boolean {
-    const now = Date.now();
-    const userLimit = rateLimitMap.get(ip);
-
-    if (!userLimit || now > userLimit.resetTime) {
-        rateLimitMap.set(ip, { count: 1, resetTime: now + RATE_LIMIT_WINDOW });
-        return true;
-    }
-
-    if (userLimit.count >= RATE_LIMIT) {
-        return false;
-    }
-
-    userLimit.count++;
-    return true;
-}
+const isFilled = (body: unknown, key: string): boolean =>
+    typeof body === 'object' && body !== null && typeof (body as Record<string, unknown>)[key] === 'string'
+    && ((body as Record<string, string>)[key]).trim() !== '';
 
 export async function POST(request: NextRequest) {
+    // 1. Rate limit
+    if (!contactRateLimit(getClientIp(request.headers))) {
+        return NextResponse.json({ error: 'rate_limit' }, { status: 429 });
+    }
+
+    let body: unknown;
     try {
-        // Rate limiting
-        const ip = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'unknown';
-        if (!checkRateLimit(ip)) {
-            return NextResponse.json(
-                { error: 'Trop de requêtes. Veuillez réessayer plus tard.' },
-                { status: 429 }
-            );
-        }
+        body = await request.json();
+    } catch {
+        return NextResponse.json({ error: 'validation', fields: [] }, { status: 400 });
+    }
 
-        // Parse body
-        const body = await request.json();
+    // 2. Honeypot: pretend it worked, send nothing
+    if (isFilled(body, 'website')) {
+        return NextResponse.json({ success: true }, { status: 200 });
+    }
 
-        // Honeypot check
-        if (body.honeypot && body.honeypot !== '') {
-            console.warn('Honeypot triggered:', ip);
-            return NextResponse.json(
-                { success: true, message: 'Message envoyé avec succès' },
-                { status: 200 }
-            );
-        }
+    // 3. Validation
+    const parsed = simpleContactSchema.safeParse(body);
+    if (!parsed.success) {
+        const fields = [...new Set(parsed.error.issues.map((issue) => String(issue.path[0] ?? '')).filter(Boolean))];
+        return NextResponse.json({ error: 'validation', fields }, { status: 400 });
+    }
+    const data = parsed.data;
 
-        // Validation Zod
-        const validationResult = simpleContactSchema.safeParse(body);
+    try {
+        const resend = new Resend(process.env.RESEND_API_KEY);
+        const timestamp = new Date().toLocaleString('fr-FR', { dateStyle: 'full', timeStyle: 'short', timeZone: 'Europe/Paris' });
 
-        if (!validationResult.success) {
-            return NextResponse.json(
-                {
-                    error: 'Validation échouée',
-                    details: validationResult.error.format()
-                },
-                { status: 400 }
-            );
-        }
-
-        const data: SimpleContactData = validationResult.data;
-
-        console.log(`Nouveau message de contact simple de ${data.name}:`, {
-            email: data.email,
-            messageLength: data.message.length,
-        });
-
-        const timestamp = new Date().toLocaleString('fr-FR', {
-            dateStyle: 'full',
-            timeStyle: 'short',
-        });
-
-        // 1. Email de notification à l'admin
-        const { error: adminError } = await resend.emails.send({
-            from: process.env.RESEND_FROM_EMAIL || 'Patrick Bartosik <contact@bartosik.fr>',
-            to: [process.env.RESEND_ADMIN_EMAIL || 'contact@bartosik.fr'],
-            subject: `📬 Nouveau message de ${data.name}`,
-            react: SimpleContactNotification({
-                name: data.name,
-                email: data.email,
-                message: data.message,
-                timestamp,
-            }),
+        // 4. Email to Patrick (French). A failure is a failure for the visitor.
+        const { error } = await resend.emails.send({
+            from: FROM,
+            to: [ADMIN],
+            subject: `Nouveau message de ${singleLine(data.name, 100)}`,
+            react: SimpleContactNotification({ name: data.name, email: data.email, message: data.message, locale: data.locale, timestamp }),
             replyTo: data.email,
         });
-
-        if (adminError) {
-            console.error('Erreur envoi email admin:', adminError);
-            return NextResponse.json(
-                { error: 'Erreur lors de l\'envoi de l\'email' },
-                { status: 500 }
-            );
+        if (error) {
+            console.error('contact-simple: admin email failed', { type: error.name });
+            return NextResponse.json({ error: 'send_failed' }, { status: 500 });
         }
 
-        // 2. Email de confirmation au client
-        const { error: clientError } = await resend.emails.send({
-            from: process.env.RESEND_FROM_EMAIL || 'Patrick Bartosik <contact@bartosik.fr>',
-            to: [data.email],
-            subject: '✅ Message bien reçu - Patrick Bartosik',
-            react: SimpleContactConfirmation({
-                name: data.name,
-            }),
-        });
-
-        if (clientError) {
-            console.error('Erreur envoi email client:', clientError);
-            // On continue quand même car l'email admin est envoyé
+        // 5. Confirmation to the visitor (own language), capped per address and overall.
+        //    A failure is only logged. Over the cap: Patrick still has the message.
+        try {
+            if (!confirmationGate(data.email)) {
+                console.warn('contact-simple: visitor email skipped (cap)');
+                return NextResponse.json({ success: true }, { status: 200 });
+            }
+            const { error: clientError } = await resend.emails.send({
+                from: FROM,
+                to: [data.email],
+                subject: simpleConfirmationSubject[data.locale],
+                react: SimpleContactConfirmation({ name: safeDisplayName(data.name), locale: data.locale }),
+            });
+            if (clientError) console.error('contact-simple: visitor email failed', { type: clientError.name });
+        } catch (clientError) {
+            console.error('contact-simple: visitor email failed', { type: clientError instanceof Error ? clientError.name : 'unknown' });
         }
 
-        return NextResponse.json(
-            {
-                success: true,
-                message: 'Merci ! Votre message a été envoyé avec succès. Je vous répondrai sous 24-48h.',
-            },
-            { status: 200 }
-        );
-
+        return NextResponse.json({ success: true }, { status: 200 });
     } catch (error) {
-        console.error('Erreur API contact-simple:', error);
-        return NextResponse.json(
-            { error: 'Erreur interne du serveur' },
-            { status: 500 }
-        );
+        console.error('contact-simple: unexpected error', { type: error instanceof Error ? error.name : 'unknown' });
+        return NextResponse.json({ error: 'send_failed' }, { status: 500 });
     }
 }
-

@@ -6,31 +6,31 @@
  */
 export const seoConfig = {
     baseUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://patrick.bartosik.fr',
-    siteName: 'Patrick Bartosik - Full Stack Developer',
+    siteName: 'Patrick Bartosik',
 
     // Application metadata
     applicationName: 'Patrick Bartosik Portfolio',
     category: 'technology',
 
     // Theme configuration
-    themeColor: '#000000',
-    backgroundColor: '#000000',
+    themeColor: '#0B0B0A',
+    backgroundColor: '#0B0B0A',
 
     author: {
         name: 'Patrick Bartosik',
         email: 'contact@bartosik.fr',
-        jobTitle: 'Full Stack Developer',
+        jobTitle: 'AI Engineer & Full Stack Developer',
         url: 'https://patrick.bartosik.fr',
-        twitter: '@patrickbartosik',
     },
     social: {
         github: 'https://github.com/GrandEmpereur',
         linkedin: 'https://www.linkedin.com/in/patrick-bartosik',
-        instagram: 'https://www.instagram.com/empereur.patrick/',
+        instagram: 'https://www.instagram.com/agencepatrickai/',
     },
     defaultLocale: 'fr' as const,
     locales: ['en', 'fr', 'pl'] as const,
     openGraph: {
+        // Static file. Render it again after a design change: bun --no-env-file scripts/render-og.ts
         image: '/og/og-image.png',
         imageWidth: 1200,
         imageHeight: 630,

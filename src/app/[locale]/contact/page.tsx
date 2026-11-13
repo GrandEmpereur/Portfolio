@@ -1,9 +1,10 @@
-import { SimpleContactForm } from "@/components/SimpleContactForm";
-import { getI18n } from "@/locales/serveur";
+import { ContactExperience } from "@/components/contact/ContactExperience";
+import type { Locale } from "@/lib/locale-path";
+import { getI18n, getScopedI18n } from "@/locales/serveur";
 import { setStaticParamsLocale } from "next-international/server";
 import { Metadata } from "next";
 import { seoConfig, ogLocaleMap } from "@/lib/seo-config";
-import { getBreadcrumbSchema } from "@/lib/structured-data";
+import { getBreadcrumbSchema, serializeJsonLd } from "@/lib/structured-data";
 
 /**
  * Generate metadata for contact page
@@ -60,7 +61,6 @@ export async function generateMetadata({
             title,
             description,
             images: [`${seoConfig.baseUrl}${seoConfig.openGraph.image}`],
-            creator: '@patrickbartosik',
         },
     };
 }
@@ -71,13 +71,16 @@ export default async function ContactPage({
     params: Promise<{ locale: string }>;
 }) {
     const { locale } = await params;
+    setStaticParamsLocale(locale);
     const t = await getI18n();
+    const tc = await getScopedI18n('contactPage');
+    const pageLocale: Locale = locale === 'en' || locale === 'pl' ? locale : 'fr';
 
     // Generate breadcrumb structured data
     const breadcrumbSchema = getBreadcrumbSchema(
         [
-            { name: t('nav.home'), url: locale === seoConfig.defaultLocale ? '/' : `/${locale}` },
-            { name: t('nav.contact'), url: locale === seoConfig.defaultLocale ? '/contact' : `/${locale}/contact` },
+            { name: t('common.nav.chapters.accueil'), url: locale === seoConfig.defaultLocale ? '/' : `/${locale}` },
+            { name: t('common.nav.chapters.contact'), url: locale === seoConfig.defaultLocale ? '/contact' : `/${locale}/contact` },
         ],
         locale
     );
@@ -87,13 +90,19 @@ export default async function ContactPage({
             {/* JSON-LD Structured Data for SEO */}
             <script
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-                suppressHydrationWarning
+                dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbSchema) }}
             />
 
-            <main id="main-content" className="min-h-screen bg-black">
-                <h1 className="sr-only">Contact Patrick Bartosik</h1>
-                <SimpleContactForm />
+            <main id="main-content">
+                <ContactExperience
+                    locale={pageLocale}
+                    heading={
+                        // The page's only <h1>: visible, and rendered here so it is in the served HTML.
+                        <h1 className="display cx-h1">
+                            {tc('dossier.title1')} <span className="text-acc">{tc('dossier.title2')}</span>
+                        </h1>
+                    }
+                />
             </main>
         </>
     );

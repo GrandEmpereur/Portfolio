@@ -1,85 +1,98 @@
 import { seoConfig } from './seo-config';
-import { Project } from './data/lastwork.data';
+import { type Project, hasDetailPage } from './data/lastwork.data';
+import { services } from './data/services.data';
+import { LOCALES, localePath, type Locale } from './locale-path';
+
+const toLocale = (locale: string): Locale => (LOCALES as readonly string[]).includes(locale) ? (locale as Locale) : 'en';
+
+/** Absolute URL of a path in the given language (French has no prefix). */
+const absoluteUrl = (locale: string, path = '/'): string => {
+    const localized = localePath(toLocale(locale), path);
+    return `${seoConfig.baseUrl}${localized === '/' ? '' : localized}`;
+};
 
 /**
- * Person Schema for Profile
- * Génère le schéma JSON-LD pour le profil personnel
- * @param locale - Locale actuelle (en, fr, pl)
- * @returns Schema.org Person object
+ * Serializes a JSON-LD object for a <script type="application/ld+json"> tag.
+ * Escapes "<" (and the line separators) so a value can never close the tag.
  */
-export function getPersonSchema(locale: string) {
-    const jobTitles: Record<string, string> = {
-        en: 'Full Stack Developer',
-        fr: 'Développeur Full Stack',
-        pl: 'Full Stack Developer',
-    };
+export const serializeJsonLd = (data: unknown): string =>
+    JSON.stringify(data)
+        .replace(/</g, '\\u003c')
+        .split(String.fromCharCode(0x2028)).join('\\u2028')
+        .split(String.fromCharCode(0x2029)).join('\\u2029');
 
-    const descriptions: Record<string, string> = {
-        en: 'Freelance Full Stack Developer specializing in React, Next.js, TypeScript and Node.js applications',
-        fr: 'Développeur Full Stack freelance spécialisé en React, Next.js, TypeScript et Node.js',
-        pl: 'Freelance Full Stack Developer specjalizujacy sie w React, Next.js, TypeScript i Node.js',
+const PERSON_IMAGE = `${seoConfig.baseUrl}/images/portrait-studio.jpg`;
+
+const POSITIONING: Record<Locale, string> = {
+    fr: 'AI Engineer & développeur Full Stack freelance à Paris',
+    en: 'Freelance AI Engineer & Full Stack Developer in Paris',
+    pl: 'Freelance AI Engineer i programista Full Stack w Paryżu',
+};
+
+const KNOWS_ABOUT = [
+    'Artificial Intelligence',
+    'LLM integration',
+    'AI agents',
+    'Retrieval-augmented generation',
+    'Full Stack Development',
+    'SaaS Development',
+    'Next.js',
+    'React',
+    'TypeScript',
+    'Node.js',
+    'NestJS',
+    'PostgreSQL',
+    'Tailwind CSS',
+    'GSAP',
+];
+
+/** Person Schema (the author of the site). */
+export function getPersonSchema(locale: string) {
+    const l = toLocale(locale);
+    const descriptions: Record<Locale, string> = {
+        fr: 'AI Engineer et développeur Full Stack freelance à Paris : intégration de LLM, agents IA, RAG, SaaS, création et refonte de sites.',
+        en: 'Freelance AI Engineer and Full Stack developer in Paris: LLM integration, AI agents, RAG, SaaS, website creation and redesign.',
+        pl: 'Freelance AI Engineer i programista Full Stack w Paryżu: integracja LLM, agenci AI, RAG, SaaS, tworzenie i przebudowa stron.',
     };
 
     return {
         '@context': 'https://schema.org',
         '@type': 'Person',
+        '@id': `${seoConfig.baseUrl}/#person`,
         name: seoConfig.author.name,
-        url: seoConfig.author.url,
-        jobTitle: jobTitles[locale] || jobTitles.en,
-        description: descriptions[locale] || descriptions.en,
-        email: seoConfig.author.email,
-        image: `${seoConfig.baseUrl}/images/hero.webp`,
+        url: absoluteUrl(l),
+        jobTitle: POSITIONING[l],
+        description: descriptions[l],
+        email: `mailto:${seoConfig.author.email}`,
+        image: PERSON_IMAGE,
         knowsLanguage: ['fr', 'en', 'pl'],
-        sameAs: [
-            seoConfig.social.github,
-            seoConfig.social.linkedin,
-            seoConfig.social.instagram,
-        ],
-        knowsAbout: [
-            'Web Development',
-            'Full Stack Development',
-            'Next.js',
-            'React',
-            'Angular',
-            'TypeScript',
-            'Node.js',
-            'AdonisJS',
-            'NestJS',
-            'Shopify Plus',
-            'E-commerce',
-            'SaaS Development',
-            'API Development',
-            'MongoDB',
-            'Supabase',
-            'Tailwind CSS',
-            'GSAP',
-        ],
-        worksFor: {
-            '@type': 'Organization',
-            name: 'Freelance',
-        },
+        sameAs: [seoConfig.social.github, seoConfig.social.linkedin, seoConfig.social.instagram],
+        knowsAbout: KNOWS_ABOUT,
         address: {
             '@type': 'PostalAddress',
+            addressLocality: 'Paris',
             addressCountry: 'FR',
         },
     };
 }
 
-// Website Schema
+/** WebSite Schema. */
 export function getWebsiteSchema(locale: string) {
-    const descriptions = {
-        en: 'Full Stack Developer specializing in React, Next.js, TypeScript and Node.js applications',
-        fr: 'Développeur Full Stack spécialisé en React, Next.js, TypeScript et Node.js',
-        pl: 'Full Stack Developer specjalizujący się w React, Next.js, TypeScript i Node.js',
-    } as const;
+    const l = toLocale(locale);
+    const descriptions: Record<Locale, string> = {
+        fr: 'Site de Patrick Bartosik, AI Engineer et développeur Full Stack freelance à Paris.',
+        en: 'Website of Patrick Bartosik, freelance AI Engineer and Full Stack developer in Paris.',
+        pl: 'Strona Patricka Bartosika, freelance AI Engineera i programisty Full Stack w Paryżu.',
+    };
 
     return {
         '@context': 'https://schema.org',
         '@type': 'WebSite',
+        '@id': `${seoConfig.baseUrl}/#website`,
         name: seoConfig.siteName,
-        url: seoConfig.baseUrl,
-        description: descriptions[locale as keyof typeof descriptions] || descriptions.en,
-        inLanguage: locale,
+        url: absoluteUrl(l),
+        description: descriptions[l],
+        inLanguage: l,
         author: {
             '@type': 'Person',
             name: seoConfig.author.name,
@@ -88,33 +101,48 @@ export function getWebsiteSchema(locale: string) {
     };
 }
 
-// ItemList Schema for Projects
+/** The public URL of a project: its external link, or its detail page when it has one. */
+const projectUrl = (project: Project, locale: string): string | null => {
+    if (project.link) return project.link;
+    if (hasDetailPage(project)) return absoluteUrl(locale, `/projects/${project.slug}`);
+    return null;
+};
+
+/** ItemList Schema for projects. Projects with no public URL are left out. */
 export function getProjectsListSchema(projects: Project[], locale: string) {
+    const listed = projects
+        .map((project) => ({ project, url: projectUrl(project, locale) }))
+        .filter((entry): entry is { project: Project; url: string } => entry.url !== null);
+
     return {
         '@context': 'https://schema.org',
         '@type': 'ItemList',
-        itemListElement: projects.map((project, index) => ({
+        itemListElement: listed.map(({ project, url }, index) => ({
             '@type': 'ListItem',
             position: index + 1,
+            url,
             item: {
                 '@type': 'CreativeWork',
                 name: project.title,
-                description: project.description,
-                url: project.link || `${seoConfig.baseUrl}/${locale}/projects/${project.slug}`,
-                keywords: project.technologies.join(', '),
+                url,
+                ...(project.description ? { description: project.description } : {}),
+                ...(project.technologies.length > 0 ? { keywords: project.technologies.join(', ') } : {}),
+                ...(project.image ? { image: `${seoConfig.baseUrl}${project.image}` } : {}),
+                creator: { '@type': 'Person', name: seoConfig.author.name, url: seoConfig.author.url },
             },
         })),
     };
 }
 
-// CreativeWork Schema for individual Project detail pages
+/** CreativeWork Schema for an individual project detail page. */
 export function getProjectDetailSchema(project: Project, locale: string) {
+    const url = projectUrl(project, locale) ?? absoluteUrl(locale, `/projects/${project.slug}`);
     return {
         '@context': 'https://schema.org',
         '@type': 'CreativeWork',
         name: project.title,
         description: project.longDescription || project.description,
-        url: project.link || `${seoConfig.baseUrl}/${locale}/projects/${project.slug}`,
+        url,
         keywords: project.technologies.join(', '),
         author: {
             '@type': 'Person',
@@ -128,10 +156,10 @@ export function getProjectDetailSchema(project: Project, locale: string) {
     };
 }
 
-// BreadcrumbList Schema
+/** BreadcrumbList Schema. `url` is a path that already carries the language prefix. */
 export function getBreadcrumbSchema(
     items: Array<{ name: string; url: string }>,
-    locale: string
+    _locale?: string
 ) {
     return {
         '@context': 'https://schema.org',
@@ -140,76 +168,77 @@ export function getBreadcrumbSchema(
             '@type': 'ListItem',
             position: index + 1,
             name: item.name,
-            item: `${seoConfig.baseUrl}${item.url}`,
+            item: `${seoConfig.baseUrl}${item.url === '/' ? '' : item.url}`,
         })),
     };
 }
 
-// Person Schema (replaces Organization — this is a freelancer portfolio, not a company)
+/** Person Schema, language independent. */
 export function getFreelancerPersonSchema() {
     return {
         '@context': 'https://schema.org',
         '@type': 'Person',
         name: seoConfig.author.name,
         url: seoConfig.baseUrl,
-        image: `${seoConfig.baseUrl}/images/hero.webp`,
-        email: seoConfig.author.email,
+        image: PERSON_IMAGE,
+        email: `mailto:${seoConfig.author.email}`,
         jobTitle: seoConfig.author.jobTitle,
-        sameAs: [
-            seoConfig.social.github,
-            seoConfig.social.linkedin,
-            seoConfig.social.instagram,
-        ],
+        sameAs: [seoConfig.social.github, seoConfig.social.linkedin, seoConfig.social.instagram],
     };
 }
 
-// ProfessionalService Schema for Freelance Services
+/** ProfessionalService Schema. No price information of any kind. */
 export function getProfessionalServiceSchema(locale: string) {
-    const descriptions = {
-        en: 'Professional freelance full stack development services specializing in React, Next.js, TypeScript, Node.js, and Shopify Plus. SaaS development, e-commerce solutions, and custom web applications.',
-        fr: 'Services professionnels de développement full stack freelance spécialisés en React, Next.js, TypeScript, Node.js et Shopify Plus. Développement SaaS, solutions e-commerce et applications web sur mesure.',
-        pl: 'Profesjonalne usługi freelance full stack developer specjalizujące się w React, Next.js, TypeScript, Node.js i Shopify Plus. Rozwój SaaS, rozwiązania e-commerce i niestandardowe aplikacje webowe.',
-    } as const;
+    const l = toLocale(locale);
+    const names: Record<Locale, string> = {
+        fr: 'Patrick Bartosik, AI Engineer & développeur Full Stack freelance',
+        en: 'Patrick Bartosik, freelance AI Engineer & Full Stack developer',
+        pl: 'Patrick Bartosik, freelance AI Engineer i programista Full Stack',
+    };
+    const descriptions: Record<Locale, string> = {
+        fr: 'Services d\'AI engineering (intégration de LLM, agents IA, RAG) et de développement Full Stack (SaaS, création et refonte de site), en freelance depuis Paris.',
+        en: 'AI engineering (LLM integration, AI agents, RAG) and Full Stack development (SaaS, website creation and redesign) services, freelance from Paris.',
+        pl: 'Usługi AI engineeringu (integracja LLM, agenci AI, RAG) i rozwoju Full Stack (SaaS, tworzenie i przebudowa stron), freelance z Paryża.',
+    };
 
     return {
         '@context': 'https://schema.org',
         '@type': 'ProfessionalService',
-        name: 'Patrick Bartosik - Full Stack Development Services',
-        url: seoConfig.baseUrl,
-        description: descriptions[locale as keyof typeof descriptions] || descriptions.en,
+        '@id': `${seoConfig.baseUrl}/#service`,
+        name: names[l],
+        url: absoluteUrl(l),
+        image: PERSON_IMAGE,
+        description: descriptions[l],
+        email: `mailto:${seoConfig.author.email}`,
+        address: {
+            '@type': 'PostalAddress',
+            addressLocality: 'Paris',
+            addressCountry: 'FR',
+        },
         provider: {
             '@type': 'Person',
             name: seoConfig.author.name,
-            jobTitle: seoConfig.author.jobTitle,
-            email: seoConfig.author.email,
+            url: seoConfig.author.url,
         },
         areaServed: [
-            {
-                '@type': 'Country',
-                name: 'France',
-            },
-            {
-                '@type': 'Continent',
-                name: 'Europe',
-            },
+            { '@type': 'Country', name: 'France' },
+            { '@type': 'Place', name: 'Europe' },
         ],
-        serviceType: [
-            'Web Development',
-            'Full Stack Development',
-            'React Development',
-            'Next.js Development',
-            'Backend Development',
-            'Shopify Plus Development',
-            'E-commerce Development',
-            'SaaS Development',
-            'TypeScript Development',
-            'Node.js Development',
-        ],
-        priceRange: '$$-$$$',
+        availableLanguage: ['fr', 'en', 'pl'],
+        serviceType: ['AI engineering', 'Full Stack development'],
+        hasOfferCatalog: {
+            '@type': 'OfferCatalog',
+            name: names[l],
+            itemListElement: services.map((service) => ({
+                '@type': 'Service',
+                name: service.title[l],
+                description: service.description[l],
+            })),
+        },
     };
 }
 
-// FAQ Schema
+/** FAQPage Schema. */
 export function getFAQSchema(faqs: Array<{ question: string; answer: string }>) {
     return {
         '@context': 'https://schema.org',
@@ -224,4 +253,3 @@ export function getFAQSchema(faqs: Array<{ question: string; answer: string }>) 
         })),
     };
 }
-

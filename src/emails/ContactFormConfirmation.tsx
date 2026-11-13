@@ -1,141 +1,110 @@
-import {
-    Body,
-    Container,
-    Head,
-    Heading,
-    Html,
-    Preview,
-    Section,
-    Text,
-    Hr,
-} from '@react-email/components';
+import { Body, Container, Head, Heading, Html, Preview, Section, Text } from '@react-email/components';
 import * as React from 'react';
 
-interface ContactFormConfirmationProps {
-    firstName: string;
-    lastName: string;
-    companyName: string;
-    serviceType: string;
-    budgetMin?: number;
-    budgetMax?: number;
+// Email clients cannot read CSS tokens: these are the only hard-coded colours of the project.
+const INK = '#0B0B0A';
+const BONE = '#ECE7DE';
+const ACCENT = '#EC2A45';
+const MUTED = '#9E9A92';
+const LINE = '#2A2927';
+
+type Locale = 'fr' | 'en' | 'pl';
+type Need = 'llm' | 'agent' | 'rag' | 'saas' | 'site' | 'refonte' | 'avis';
+
+export interface ContactFormConfirmationProps {
+    /** Only pass a name that went through safeDisplayName. */
+    firstName?: string;
+    needs: readonly Need[];
+    locale: Locale;
 }
 
-export const ContactFormConfirmation = ({
-    firstName,
-    lastName,
-    companyName,
-    serviceType,
-    budgetMin,
-    budgetMax,
-}: ContactFormConfirmationProps) => {
-    const serviceLabels: Record<string, string> = {
-        web: '🌐 Site Web',
-        saas: '⚡ SaaS',
-        ecommerce: '🛍️ E-commerce',
-        mobile: '📱 Application Mobile',
-        autre: '✨ Autre',
-    };
+interface Copy {
+    preview: string;
+    greeting: (name?: string) => string;
+    intro: string;
+    recap: string;
+    stepsTitle: string;
+    steps: readonly [string, string, string];
+    signoff: string;
+    needs: Record<Need, string>;
+}
 
+export const confirmationSubject: Record<Locale, string> = {
+    fr: 'C\'est noté, votre demande est bien reçue',
+    en: 'Got it, your request has arrived',
+    pl: 'Przyjęte, Twoje zapytanie dotarło',
+};
+
+const COPY: Record<Locale, Copy> = {
+    fr: {
+        preview: 'Votre demande est bien reçue.',
+        greeting: (n) => (n ? `Bonjour ${n},` : 'Bonjour,'),
+        intro: 'Merci pour votre message : je l\'ai bien reçu et je le lis personnellement.',
+        recap: 'Votre besoin',
+        stepsTitle: 'Les trois prochaines étapes',
+        steps: [
+            'Je lis votre demande et je prépare mes questions.',
+            'Je vous réponds sous 48 heures ouvrées, par le moyen que vous avez choisi.',
+            'Nous échangeons pour cadrer le projet, sans engagement.',
+        ],
+        signoff: 'À très vite,',
+        needs: { llm: 'LLM / IA générative', agent: 'Agent IA', rag: 'RAG / base de connaissances', saas: 'SaaS', site: 'Site web', refonte: 'Refonte', avis: 'Avis / audit' },
+    },
+    en: {
+        preview: 'Your request has arrived.',
+        greeting: (n) => (n ? `Hi ${n},` : 'Hi,'),
+        intro: 'Thanks for your message: it reached me and I read it personally.',
+        recap: 'Your need',
+        stepsTitle: 'The next three steps',
+        steps: [
+            'I read your request and prepare my questions.',
+            'I reply within 48 working hours, through the channel you picked.',
+            'We talk to scope the project, no commitment.',
+        ],
+        signoff: 'Speak soon,',
+        needs: { llm: 'LLM / generative AI', agent: 'AI agent', rag: 'RAG / knowledge base', saas: 'SaaS', site: 'Website', refonte: 'Redesign', avis: 'Advice / audit' },
+    },
+    pl: {
+        preview: 'Twoje zapytanie dotarło.',
+        greeting: (n) => (n ? `Cześć ${n},` : 'Cześć,'),
+        intro: 'Dziękuję za wiadomość: dotarła do mnie i czytam ją osobiście.',
+        recap: 'Twoja potrzeba',
+        stepsTitle: 'Trzy kolejne kroki',
+        steps: [
+            'Czytam Twoje zapytanie i przygotowuję pytania.',
+            'Odpowiadam w ciągu 48 godzin roboczych, wybranym przez Ciebie kanałem.',
+            'Rozmawiamy, żeby określić zakres projektu, bez zobowiązań.',
+        ],
+        signoff: 'Do usłyszenia,',
+        needs: { llm: 'LLM / generatywna AI', agent: 'Agent AI', rag: 'RAG / baza wiedzy', saas: 'SaaS', site: 'Strona internetowa', refonte: 'Przebudowa', avis: 'Doradztwo / audyt' },
+    },
+};
+
+export const ContactFormConfirmation = ({ firstName, needs, locale }: ContactFormConfirmationProps) => {
+    const t = COPY[locale];
     return (
-        <Html>
+        <Html lang={locale}>
             <Head />
-            <Preview>Demande de projet bien reçue - Patrick Bartosik</Preview>
+            <Preview>{t.preview}</Preview>
             <Body style={main}>
                 <Container style={container}>
-                    {/* Header */}
-                    <Section style={header}>
-                        <Heading style={logoText}>Patrick Bartosik</Heading>
-                        <Text style={subtitle}>Développeur Full-Stack E-commerce & Shopify Plus</Text>
-                    </Section>
-
-                    {/* Success Badge */}
-                    <Section style={badgeSection}>
-                        <div style={successBadge}>
-                            ✅ Demande bien reçue
-                        </div>
-                    </Section>
-
-                    {/* Main Content */}
                     <Section style={content}>
-                        <Heading style={h1}>Merci {firstName} ! 🚀</Heading>
+                        <Heading style={h1}>{t.greeting(firstName)}</Heading>
+                        <Text style={paragraph}>{t.intro}</Text>
 
-                        <Text style={text}>
-                            Votre demande de projet a bien été enregistrée. Je suis ravi de l'intérêt que vous portez à mes services pour <strong>{companyName}</strong>.
-                        </Text>
+                        <Text style={label}>{t.recap}</Text>
+                        <Text style={paragraph}>{needs.map((n) => t.needs[n]).join(', ')}</Text>
 
-                        {/* Project Summary */}
-                        <Section style={summaryBox}>
-                            <Heading style={h2}>📋 Résumé de votre demande</Heading>
-
-                            <Section style={summaryItem}>
-                                <Text style={summaryLabel}>Contact</Text>
-                                <Text style={summaryValue}>{firstName} {lastName}</Text>
-                            </Section>
-
-                            <Section style={summaryItem}>
-                                <Text style={summaryLabel}>Entreprise</Text>
-                                <Text style={summaryValue}>{companyName}</Text>
-                            </Section>
-
-                            <Section style={summaryItem}>
-                                <Text style={summaryLabel}>Type de projet</Text>
-                                <Text style={summaryValue}>{serviceLabels[serviceType] || serviceType}</Text>
-                            </Section>
-
-                            {budgetMin && budgetMax && (
-                                <Section style={summaryItem}>
-                                    <Text style={summaryLabel}>Budget estimé</Text>
-                                    <Text style={summaryValue}>
-                                        {budgetMin.toLocaleString('fr-FR')}€ - {budgetMax.toLocaleString('fr-FR')}€
-                                    </Text>
-                                </Section>
-                            )}
-                        </Section>
-
-                        {/* Next Steps */}
-                        <Section style={stepsBox}>
-                            <Heading style={h3}>🎯 Prochaines étapes</Heading>
-
-                            <Text style={stepText}>
-                                <strong>1. Analyse de votre demande</strong><br />
-                                Je vais étudier en détail votre projet et vos besoins spécifiques.
+                        <Text style={label}>{t.stepsTitle}</Text>
+                        {t.steps.map((step, i) => (
+                            <Text key={step} style={paragraph}>
+                                <span style={num}>{`0${i + 1}`}</span>
+                                {` ${step}`}
                             </Text>
+                        ))}
 
-                            <Text style={stepText}>
-                                <strong>2. Proposition personnalisée</strong><br />
-                                Je vous enverrai une réponse détaillée sous 24-48h avec mes recommandations.
-                            </Text>
-
-                            <Text style={stepText}>
-                                <strong>3. Échange téléphonique</strong><br />
-                                Si votre projet correspond à mes expertises, nous planifierons un appel pour en discuter.
-                            </Text>
-                        </Section>
-
-                        <Hr style={hr} />
-
-                        <Text style={text}>
-                            En attendant ma réponse, n'hésitez pas à consulter mes réalisations récentes sur mon portfolio.
-                        </Text>
-
-                        <Text style={signature}>
-                            À très bientôt,<br />
-                            <strong>Patrick Bartosik</strong><br />
-                            <span style={signatureRole}>Développeur Full-Stack E-commerce</span>
-                        </Text>
-                    </Section>
-
-                    <Hr style={footerHr} />
-
-                    {/* Footer */}
-                    <Section style={footer}>
-                        <Text style={footerText}>
-                            📧 contact@bartosik.fr<br />
-                            🌐 <a href="https://patrickbartosik.com" style={link}>patrickbartosik.com</a>
-                        </Text>
-                        <Text style={footerNote}>
-                            💡 Ce message est envoyé automatiquement suite à votre demande de contact.
-                        </Text>
+                        <Text style={{ ...paragraph, marginTop: '24px' }}>{t.signoff}</Text>
+                        <Text style={sign}>Patrick Bartosik</Text>
                     </Section>
                 </Container>
             </Body>
@@ -145,185 +114,11 @@ export const ContactFormConfirmation = ({
 
 export default ContactFormConfirmation;
 
-// Styles
-const main = {
-    backgroundColor: '#f6f9fc',
-    fontFamily: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif',
-};
-
-const container = {
-    backgroundColor: '#ffffff',
-    margin: '0 auto',
-    padding: '0',
-    marginBottom: '64px',
-    maxWidth: '600px',
-};
-
-const header = {
-    padding: '40px 40px 32px',
-    textAlign: 'center' as const,
-    background: 'linear-gradient(135deg, #000000 0%, #1a1a1a 100%)',
-};
-
-const logoText = {
-    color: '#ffffff',
-    fontSize: '32px',
-    fontWeight: '700',
-    margin: '0',
-    padding: '0',
-    letterSpacing: '-0.5px',
-};
-
-const subtitle = {
-    color: '#f97316',
-    fontSize: '14px',
-    fontWeight: '500',
-    margin: '12px 0 0',
-    padding: '0',
-    textTransform: 'uppercase' as const,
-    letterSpacing: '1px',
-};
-
-const badgeSection = {
-    padding: '24px 40px 0',
-    textAlign: 'center' as const,
-};
-
-const successBadge = {
-    display: 'inline-block',
-    backgroundColor: '#dcfce7',
-    color: '#166534',
-    padding: '10px 20px',
-    borderRadius: '999px',
-    fontSize: '14px',
-    fontWeight: '600',
-    border: '2px solid #86efac',
-};
-
-const content = {
-    padding: '32px 40px 40px',
-};
-
-const h1 = {
-    color: '#1a1a1a',
-    fontSize: '32px',
-    fontWeight: '700',
-    margin: '0 0 24px',
-    padding: '0',
-    lineHeight: '1.2',
-};
-
-const h2 = {
-    color: '#1e293b',
-    fontSize: '20px',
-    fontWeight: '700',
-    margin: '0 0 20px',
-    padding: '0',
-};
-
-const h3 = {
-    color: '#1e293b',
-    fontSize: '18px',
-    fontWeight: '700',
-    margin: '0 0 16px',
-    padding: '0',
-};
-
-const text = {
-    color: '#4a5568',
-    fontSize: '16px',
-    lineHeight: '1.6',
-    margin: '0 0 16px',
-};
-
-const summaryBox = {
-    backgroundColor: '#f8fafc',
-    border: '2px solid #e2e8f0',
-    borderRadius: '12px',
-    padding: '24px',
-    margin: '24px 0',
-};
-
-const summaryItem = {
-    marginBottom: '16px',
-};
-
-const summaryLabel = {
-    color: '#64748b',
-    fontSize: '13px',
-    fontWeight: '600',
-    textTransform: 'uppercase' as const,
-    letterSpacing: '0.5px',
-    margin: '0 0 4px',
-};
-
-const summaryValue = {
-    color: '#1e293b',
-    fontSize: '16px',
-    fontWeight: '500',
-    margin: '0',
-};
-
-const stepsBox = {
-    backgroundColor: '#fff7ed',
-    border: '2px solid #fed7aa',
-    borderRadius: '12px',
-    padding: '24px',
-    margin: '24px 0',
-};
-
-const stepText = {
-    color: '#78350f',
-    fontSize: '15px',
-    lineHeight: '1.6',
-    margin: '0 0 16px',
-};
-
-const hr = {
-    borderColor: '#e2e8f0',
-    margin: '32px 0',
-};
-
-const footerHr = {
-    borderColor: '#e2e8f0',
-    margin: '0',
-};
-
-const signature = {
-    color: '#1e293b',
-    fontSize: '16px',
-    lineHeight: '1.6',
-    margin: '24px 0 0',
-};
-
-const signatureRole = {
-    color: '#64748b',
-    fontSize: '14px',
-};
-
-const footer = {
-    padding: '32px 40px',
-    textAlign: 'center' as const,
-    backgroundColor: '#f8fafc',
-};
-
-const footerText = {
-    color: '#64748b',
-    fontSize: '14px',
-    lineHeight: '1.8',
-    margin: '0 0 12px',
-};
-
-const footerNote = {
-    color: '#94a3b8',
-    fontSize: '12px',
-    lineHeight: '1.6',
-    margin: '0',
-};
-
-const link = {
-    color: '#f97316',
-    textDecoration: 'none',
-    fontWeight: '600',
-};
-
+const main = { backgroundColor: INK, fontFamily: 'Helvetica, Arial, sans-serif', margin: 0, padding: '24px 0' };
+const container = { maxWidth: '560px', margin: '0 auto', backgroundColor: INK, border: `1px solid ${LINE}` };
+const content = { padding: '32px 28px' };
+const h1 = { color: BONE, fontSize: '22px', margin: '0 0 12px' };
+const paragraph = { color: BONE, fontSize: '15px', lineHeight: '1.6', margin: '0 0 10px' };
+const label = { color: MUTED, fontSize: '11px', letterSpacing: '0.08em', textTransform: 'uppercase' as const, margin: '20px 0 4px' };
+const num = { color: ACCENT, fontWeight: 700 };
+const sign = { color: ACCENT, fontSize: '15px', fontWeight: 700, margin: 0 };

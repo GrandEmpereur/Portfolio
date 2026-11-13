@@ -1,16 +1,18 @@
-import { lastwork } from '@/lib/data/lastwork.data';
+import { getPublishedProjects, hasDetailPage } from '@/lib/data/lastwork.data';
 import { getI18n } from '@/locales/serveur';
 import { setStaticParamsLocale } from 'next-international/server';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { seoConfig, ogLocaleMap } from '@/lib/seo-config';
-import { getProjectDetailSchema, getBreadcrumbSchema } from '@/lib/structured-data';
+import { getProjectDetailSchema, getBreadcrumbSchema, serializeJsonLd } from '@/lib/structured-data';
 import { ProjectDetailContent } from '@/components/ProjectDetailContent';
+import { SiteFooter } from '@/components/site/SiteFooter';
+import { LOCALES, type Locale } from '@/lib/locale-path';
 
-// Generate static paths for all projects without external links
+// Detail pages exist only for published projects without external link that carry a long description
 export function generateStaticParams() {
-    return lastwork
-        .filter((p) => !p.link)
+    return getPublishedProjects()
+        .filter(hasDetailPage)
         .map((p) => ({ slug: p.slug }));
 }
 
@@ -22,10 +24,11 @@ export async function generateMetadata({
     const { locale, slug } = await params;
     setStaticParamsLocale(locale);
 
-    const project = lastwork.find((p) => p.slug === slug);
+    const project = getPublishedProjects().find((p) => p.slug === slug);
     if (!project) return {};
 
-    const title = `${project.title} | Portfolio Patrick Bartosik`;
+    // The layout title template already appends the site name
+    const title = project.title;
     const description = project.longDescription || project.description || '';
     const projectUrl =
         locale === seoConfig.defaultLocale
@@ -86,11 +89,13 @@ export default async function ProjectDetailPage({
 }: {
     params: Promise<{ locale: string; slug: string }>;
 }) {
-    const { locale, slug } = await params;
+    const { locale: rawLocale, slug } = await params;
+    const locale: Locale = LOCALES.find((l) => l === rawLocale) ?? 'fr';
     setStaticParamsLocale(locale);
     const t = await getI18n();
 
-    const project = lastwork.find((p) => p.slug === slug);
+    const published = getPublishedProjects();
+    const project = published.find((p) => p.slug === slug);
     if (!project) notFound();
 
     // If project has an external link, redirect (safety net)
@@ -99,24 +104,28 @@ export default async function ProjectDetailPage({
         redirect(project.link);
     }
 
-    // Find prev/next projects (among all projects)
-    const currentIndex = lastwork.findIndex((p) => p.slug === slug);
-    const prevProject = currentIndex > 0 ? lastwork[currentIndex - 1] : null;
+    // A project that is neither linked nor documented has no page: 404
+    if (!project.link && !hasDetailPage(project)) notFound();
+
+    // Find prev/next projects among the ones that lead somewhere (external link or detail page)
+    const reachable = published.filter((p) => p.link || hasDetailPage(p));
+    const currentIndex = reachable.findIndex((p) => p.slug === slug);
+    const prevProject = currentIndex > 0 ? reachable[currentIndex - 1] : null;
     const nextProject =
-        currentIndex < lastwork.length - 1 ? lastwork[currentIndex + 1] : null;
+        currentIndex < reachable.length - 1 ? reachable[currentIndex + 1] : null;
 
     const projectSchema = getProjectDetailSchema(project, locale);
     const breadcrumbSchema = getBreadcrumbSchema(
         [
             {
-                name: t('nav.home'),
+                name: t('common.nav.chapters.accueil'),
                 url:
                     locale === seoConfig.defaultLocale
                         ? '/'
                         : `/${locale}`,
             },
             {
-                name: t('nav.projects'),
+                name: t('common.nav.chapters.projets'),
                 url:
                     locale === seoConfig.defaultLocale
                         ? '/projects'
@@ -138,14 +147,14 @@ export default async function ProjectDetailPage({
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{
-                    __html: JSON.stringify(projectSchema),
+                    __html: serializeJsonLd(projectSchema),
                 }}
                 suppressHydrationWarning
             />
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{
-                    __html: JSON.stringify(breadcrumbSchema),
+                    __html: serializeJsonLd(breadcrumbSchema),
                 }}
                 suppressHydrationWarning
             />
@@ -153,6 +162,7 @@ export default async function ProjectDetailPage({
                 project={project}
                 prevProject={prevProject}
                 nextProject={nextProject}
+                locale={locale}
                 translations={{
                     role: t('projectDetail.role'),
                     technologies: t('projectDetail.technologies'),
@@ -164,6 +174,7 @@ export default async function ProjectDetailPage({
                     prevProjectLabel: t('projectDetail.prevProject'),
                 }}
             />
+            <SiteFooter />
         </>
     );
 }

@@ -1,0 +1,176 @@
+/* Home end (he-): FAQ and contact call. Colours come from the tokens in globals.css only.
+   Nothing is hidden here: hidden states are set by GSAP once the page is hydrated. */
+
+/* ---------- FAQ ---------- */
+.he-faq {
+  padding: clamp(72px, 9vw, 130px) var(--pad) 0;
+}
+
+.he-faq-title {
+  color: var(--mut);
+  margin-bottom: 18px;
+}
+
+.he-item {
+  border-top: 1px solid var(--ln);
+}
+
+.he-item:last-child {
+  border-bottom: 1px solid var(--ln);
+}
+
+.he-q {
+  display: grid;
+  grid-template-columns: 48px 1fr 20px;
+  gap: 16px;
+  padding: 19px 0;
+  align-items: baseline;
+  cursor: pointer;
+  list-style: none;
+}
+
+.he-q::-webkit-details-marker {
+  display: none;
+}
+
+.he-num {
+  color: var(--fnt);
+}
+
+.he-q-text {
+  font-weight: 500;
+  font-size: clamp(17px, 1.5vw, 22px);
+  letter-spacing: -0.01em;
+  transition: transform 0.3s;
+}
+
+.he-q:hover .he-q-text {
+  transform: translateX(8px);
+}
+
+.he-plus {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  align-self: center;
+  transition: transform 0.3s;
+}
+
+.he-plus::before,
+.he-plus::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+}
+
+.he-plus::after {
+  transform: rotate(90deg);
+}
+
+.he-item[open] .he-plus {
+  transform: rotate(45deg);
+}
+
+.he-item[open] .he-q-text {
+  color: var(--acc);
+}
+
+.he-a {
+  padding: 0 36px 24px 64px;
+  color: var(--mut);
+  max-width: 78ch;
+}
+
+/* ---------- Contact call ---------- */
+.he-contact {
+  padding: clamp(96px, 11vw, 170px) var(--pad) clamp(72px, 8vw, 120px);
+  display: grid;
+  gap: 40px;
+}
+
+.he-label {
+  color: var(--mut);
+}
+
+/* Sized so the longest word ("Travaillons") fits its column on one line at every width. */
+.he-big {
+  margin-top: 14px;
+  font-size: clamp(34px, 11vw, 64px);
+}
+
+@media (min-width: 900px) {
+  .he-big {
+    font-size: clamp(64px, 7vw, 132px);
+  }
+}
+
+.he-big > span {
+  display: block;
+}
+
+/* SplitText line masks: a little room so capitals are not clipped */
+.he-ln-mask {
+  padding: 0.1em 0 0.08em;
+  margin: -0.1em 0 -0.08em;
+}
+
+.he-text {
+  max-width: 40ch;
+  color: var(--mut);
+  margin-bottom: 22px;
+}
+
+.he-facts {
+  margin-top: 34px;
+}
+
+.he-facts > div {
+  display: grid;
+  grid-template-columns: minmax(110px, 1fr) 2fr;
+  gap: 16px;
+  padding: 13px 0;
+  border-top: 1px solid var(--ln);
+  align-items: baseline;
+}
+
+.he-facts > div:last-child {
+  border-bottom: 1px solid var(--ln);
+}
+
+.he-facts dt {
+  color: var(--mut);
+}
+
+.he-facts dd {
+  text-align: right;
+  font-size: 13.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.he-facts a {
+  transition: color 0.2s;
+}
+
+.he-facts a:hover {
+  color: var(--acc);
+}
+
+@media (min-width: 900px) {
+  .he-contact {
+    grid-template-columns: 1.55fr 1fr;
+    align-items: end;
+  }
+}
+
+@media (max-width: 899px) {
+  .he-a {
+    padding: 0 0 22px 0;
+  }
+}

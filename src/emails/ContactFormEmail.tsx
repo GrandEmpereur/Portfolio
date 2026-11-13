@@ -1,221 +1,90 @@
-import {
-    Body,
-    Button,
-    Container,
-    Head,
-    Heading,
-    Html,
-    Link,
-    Preview,
-    Row,
-    Section,
-    Text,
-    Hr,
-} from '@react-email/components';
+import { Body, Container, Head, Heading, Hr, Html, Preview, Section, Text } from '@react-email/components';
+import * as React from 'react';
 
-interface ContactFormEmailProps {
+// Email clients cannot read CSS tokens: these are the only hard-coded colours of the project.
+const INK = '#0B0B0A';
+const BONE = '#ECE7DE';
+const ACCENT = '#EC2A45';
+const MUTED = '#9E9A92';
+const LINE = '#2A2927';
+
+type Need = 'llm' | 'agent' | 'rag' | 'saas' | 'site' | 'refonte' | 'avis';
+
+export interface ContactFormEmailProps {
+    needs: readonly Need[];
+    stage: 'idee' | 'specs' | 'existant' | 'renfort';
+    timing: 'asap' | 'mois' | 'trimestre' | 'plus-tard';
+    budget: 'valide' | 'enveloppe' | 'inconnu';
+    budgetAmount?: string;
+    message: string;
+    link?: string;
     firstName: string;
-    lastName: string;
+    lastName?: string;
     email: string;
+    company?: string;
     phone?: string;
-    companyName: string;
-    companyWebsite?: string;
-    serviceType: string;
-    ecommerceCms?: string;
-    helpType: string;
-    budgetMin: number;
-    budgetMax: number;
-    discoverySource: string;
-    discoverySourceOther?: string;
-    message?: string;
-    leadScore?: number;
-    leadCategory?: string;
+    channel: 'email' | 'visio' | 'tel';
+    locale: 'fr' | 'en' | 'pl';
+    leadScore: number;
+    leadCategory: 'hot' | 'warm' | 'cold';
 }
 
-export const ContactFormEmail = ({
-    firstName,
-    lastName,
-    email,
-    phone,
-    companyName,
-    companyWebsite,
-    serviceType,
-    ecommerceCms,
-    helpType,
-    budgetMin,
-    budgetMax,
-    discoverySource,
-    discoverySourceOther,
-    message,
-    leadScore,
-    leadCategory,
-}: ContactFormEmailProps) => {
-    const name = `${firstName} ${lastName}`;
-    const previewText = `🚀 [${leadCategory?.toUpperCase()}] New ${serviceType} project from ${firstName}`;
+const NEEDS_FR: Record<Need, string> = {
+    llm: 'LLM / IA générative',
+    agent: 'Agent IA',
+    rag: 'RAG / base de connaissances',
+    saas: 'SaaS',
+    site: 'Site web',
+    refonte: 'Refonte',
+    avis: 'Avis / audit',
+};
+const STAGE_FR = { idee: 'Une idée', specs: 'Cahier des charges prêt', existant: 'Un existant à reprendre', renfort: 'Renfort d\'équipe' } as const;
+const TIMING_FR = { asap: 'Dès que possible', mois: 'Dans le mois', trimestre: 'Dans le trimestre', 'plus-tard': 'Plus tard' } as const;
+const BUDGET_FR = { valide: 'Budget validé', enveloppe: 'Enveloppe en tête', inconnu: 'Pas encore défini' } as const;
+const CHANNEL_FR = { email: 'E-mail', visio: 'Visio', tel: 'Téléphone' } as const;
+const LEVEL_FR = { hot: 'CHAUD', warm: 'TIÈDE', cold: 'FROID' } as const;
+const LOCALE_FR = { fr: 'Français', en: 'Anglais', pl: 'Polonais' } as const;
+
+const Row = ({ label, value }: { label: string; value: string }) => (
+    <Section style={row}>
+        <Text style={labelStyle}>{label}</Text>
+        <Text style={valueStyle}>{value}</Text>
+    </Section>
+);
+
+export const ContactFormEmail = (p: ContactFormEmailProps) => {
+    const fullName = [p.firstName, p.lastName].filter(Boolean).join(' ');
+    const budget = p.budgetAmount ? `${BUDGET_FR[p.budget]} (${p.budgetAmount})` : BUDGET_FR[p.budget];
 
     return (
-        <Html>
+        <Html lang="fr">
             <Head />
-            <Preview>{previewText}</Preview>
+            <Preview>{`Demande ${LEVEL_FR[p.leadCategory]} de ${fullName}`}</Preview>
             <Body style={main}>
                 <Container style={container}>
-                    {/* Header */}
                     <Section style={header}>
-                        <Heading style={logo}>Patrick Bartosik®</Heading>
-                        <Text style={tagline}>Full Stack Developer</Text>
+                        <Text style={badge}>{`${LEVEL_FR[p.leadCategory]} · ${p.leadScore}/100`}</Text>
+                        <Heading style={h1}>{`Nouvelle demande de ${fullName}`}</Heading>
                     </Section>
 
-                    {/* Lead Score Badge */}
-                    {leadScore !== undefined && (
-                        <Section style={alertSection}>
-                            <Text style={{
-                                ...alertBadge,
-                                backgroundColor: leadCategory === 'hot' ? '#10b981' : leadCategory === 'warm' ? '#f59e0b' : '#6b7280',
-                            }}>
-                                {leadCategory === 'hot' && '🔥'}
-                                {leadCategory === 'warm' && '⚡'}
-                                {leadCategory === 'cold' && '❄️'}
-                                {' '}
-                                Lead Score: {leadScore}/100 ({leadCategory?.toUpperCase()})
-                            </Text>
+                    <Section style={content}>
+                        <Row label="Besoins" value={p.needs.map((n) => NEEDS_FR[n]).join(', ')} />
+                        <Row label="Avancement" value={STAGE_FR[p.stage]} />
+                        <Row label="Démarrage" value={TIMING_FR[p.timing]} />
+                        <Row label="Budget déclaré" value={budget} />
+                        <Hr style={hr} />
+                        <Section style={row}>
+                            <Text style={labelStyle}>Message</Text>
+                            <Text style={messageStyle}>{p.message}</Text>
                         </Section>
-                    )}
-
-                    {/* Main Content */}
-                    <Section style={contentSection}>
-                        <Heading style={mainHeading}>
-                            Nouveau projet {serviceType} de {name}
-                        </Heading>
-
-                        {/* Contact Info */}
-                        <Section style={infoCard}>
-                            <Row>
-                                <Text style={infoLabel}>Contact</Text>
-                            </Row>
-                            <Row style={infoRow}>
-                                <Text style={infoKey}>Nom:</Text>
-                                <Text style={infoValue}>{name}</Text>
-                            </Row>
-                            <Row style={infoRow}>
-                                <Text style={infoKey}>Email:</Text>
-                                <Link href={`mailto:${email}`} style={emailLink}>
-                                    {email}
-                                </Link>
-                            </Row>
-                            {phone && (
-                                <Row style={infoRow}>
-                                    <Text style={infoKey}>Téléphone:</Text>
-                                    <Link href={`tel:${phone}`} style={emailLink}>
-                                        {phone}
-                                    </Link>
-                                </Row>
-                            )}
-                        </Section>
-
-                        {/* Company Info */}
-                        <Section style={infoCard}>
-                            <Row>
-                                <Text style={infoLabel}>Entreprise</Text>
-                            </Row>
-                            <Row style={infoRow}>
-                                <Text style={infoKey}>Marque:</Text>
-                                <Text style={infoValue}>{companyName}</Text>
-                            </Row>
-                            {companyWebsite && (
-                                <Row style={infoRow}>
-                                    <Text style={infoKey}>Site:</Text>
-                                    <Link href={companyWebsite} style={emailLink}>
-                                        {companyWebsite}
-                                    </Link>
-                                </Row>
-                            )}
-                        </Section>
-
-                        {/* Project Details */}
-                        <Section style={projectCard}>
-                            <Row>
-                                <Text style={infoLabel}>Détails du Projet</Text>
-                            </Row>
-                            <Row style={infoRow}>
-                                <Text style={infoKey}>Service:</Text>
-                                <Text style={infoValue}>
-                                    {serviceType === "web" && "🌐 Site Web"}
-                                    {serviceType === "saas" && "⚡ SaaS"}
-                                    {serviceType === "ecommerce" && "🛍️ E-commerce"}
-                                    {serviceType === "mobile" && "📱 Mobile"}
-                                    {serviceType === "ai" && "🤖 IA / Agents"}
-                                    {serviceType === "autre" && "✨ Autre"}
-                                </Text>
-                            </Row>
-                            {ecommerceCms && (
-                                <Row style={infoRow}>
-                                    <Text style={infoKey}>CMS:</Text>
-                                    <Text style={infoValue}>{ecommerceCms}</Text>
-                                </Row>
-                            )}
-                            <Row style={infoRow}>
-                                <Text style={infoKey}>Besoin:</Text>
-                                <Text style={infoValue}>
-                                    {helpType === "refonte" && "🔄 Refonte"}
-                                    {helpType === "creation" && "✨ Création"}
-                                    {helpType === "ui-ux" && "🎨 UI/UX Design"}
-                                    {helpType === "dev-integration" && "⚙️ Développement"}
-                                    {helpType === "ai-feature" && "🤖 Intégration IA produit"}
-                                    {helpType === "ai-agent" && "🦾 Agent / Chatbot"}
-                                    {helpType === "ai-rag" && "📚 RAG / Base de connaissances"}
-                                    {helpType === "ai-audit" && "🧭 Conseil & cadrage IA"}
-                                    {helpType === "autre" && "💡 Autre"}
-                                </Text>
-                            </Row>
-                            <Row style={infoRow}>
-                                <Text style={infoKey}>Budget:</Text>
-                                <Text style={infoValue}>
-                                    {budgetMin.toLocaleString()}€ - {budgetMax.toLocaleString()}€
-                                </Text>
-                            </Row>
-                            <Row style={infoRow}>
-                                <Text style={infoKey}>Découverte:</Text>
-                                <Text style={infoValue}>
-                                    {discoverySource === "google" && "🔍 Google"}
-                                    {discoverySource === "social" && "📱 Réseaux sociaux"}
-                                    {discoverySource === "recommendation" && "👥 Recommandation"}
-                                    {discoverySource === "event" && "🎪 Événement"}
-                                    {discoverySource === "autre" && discoverySourceOther ? `✨ ${discoverySourceOther}` : "✨ Autre"}
-                                </Text>
-                            </Row>
-                        </Section>
-
-                        {/* Message */}
-                        {message && (
-                            <Section>
-                                <Text style={messageLabel}>Message:</Text>
-                                <Section style={messageBox}>
-                                    <Text style={messageText}>{message}</Text>
-                                </Section>
-                            </Section>
-                        )}
-
-                        {/* CTA */}
-                        <Section style={buttonSection}>
-                            <Button href={`mailto:${email}`} style={button}>
-                                Répondre à {firstName}
-                            </Button>
-                        </Section>
-                    </Section>
-
-                    <Hr style={hr} />
-
-                    {/* Footer */}
-                    <Section style={footer}>
-                        <Text style={footerText}>
-                            Email envoyé automatiquement depuis votre formulaire de contact.
-                        </Text>
-                        <Text style={footerText}>
-                            bartosik.fr • Full Stack Developer • France
-                        </Text>
-                        <Text style={copyright}>
-                            © {new Date().getFullYear()} Patrick Bartosik®. All rights reserved.
-                        </Text>
+                        {p.link ? <Row label="Lien" value={p.link} /> : null}
+                        <Hr style={hr} />
+                        <Row label="Nom" value={fullName} />
+                        <Row label="E-mail" value={p.email} />
+                        {p.company ? <Row label="Société" value={p.company} /> : null}
+                        {p.phone ? <Row label="Téléphone" value={p.phone} /> : null}
+                        <Row label="Moyen de contact préféré" value={CHANNEL_FR[p.channel]} />
+                        <Row label="Langue du visiteur" value={LOCALE_FR[p.locale]} />
                     </Section>
                 </Container>
             </Body>
@@ -223,187 +92,16 @@ export const ContactFormEmail = ({
     );
 };
 
-// Styles
-const main = {
-    backgroundColor: '#f6f9fc',
-    fontFamily: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif',
-};
-
-const container = {
-    backgroundColor: '#ffffff',
-    margin: '0 auto',
-    padding: '20px 0 48px',
-    width: '580px',
-    maxWidth: '100%',
-};
-
-const header = {
-    padding: '32px 48px 24px',
-    textAlign: 'center' as const,
-    backgroundColor: '#0A0A0A',
-};
-
-const logo = {
-    fontSize: '32px',
-    fontWeight: '700',
-    color: '#ffffff',
-    margin: '0 0 8px',
-    letterSpacing: '-0.5px',
-};
-
-const tagline = {
-    fontSize: '14px',
-    color: '#ffffff',
-    opacity: 0.7,
-    margin: '0',
-    textTransform: 'uppercase' as const,
-    letterSpacing: '1px',
-};
-
-const alertSection = {
-    padding: '24px 48px 0',
-    textAlign: 'center' as const,
-};
-
-const alertBadge = {
-    display: 'inline-block',
-    color: '#ffffff',
-    fontSize: '13px',
-    fontWeight: '600',
-    padding: '8px 16px',
-    borderRadius: '20px',
-    margin: '0',
-};
-
-const contentSection = {
-    padding: '32px 48px',
-};
-
-const mainHeading = {
-    fontSize: '28px',
-    lineHeight: '1.3',
-    fontWeight: '700',
-    color: '#1a1a1a',
-    margin: '0 0 32px',
-};
-
-const infoCard = {
-    backgroundColor: '#f8f9fa',
-    borderRadius: '8px',
-    padding: '24px',
-    marginBottom: '32px',
-    border: '1px solid #e9ecef',
-};
-
-const projectCard = {
-    backgroundColor: '#fff5f0',
-    borderRadius: '8px',
-    padding: '24px',
-    marginBottom: '32px',
-    border: '2px solid #FF4925',
-};
-
-const infoLabel = {
-    fontSize: '12px',
-    fontWeight: '700',
-    color: '#6c757d',
-    textTransform: 'uppercase' as const,
-    letterSpacing: '0.5px',
-    margin: '0 0 16px',
-};
-
-const infoRow = {
-    marginBottom: '12px',
-};
-
-const infoKey = {
-    fontSize: '14px',
-    fontWeight: '600',
-    color: '#495057',
-    margin: '0',
-    display: 'inline-block',
-    width: '100px',
-};
-
-const infoValue = {
-    fontSize: '16px',
-    color: '#1a1a1a',
-    margin: '0',
-    display: 'inline-block',
-    fontWeight: '500',
-};
-
-const emailLink = {
-    fontSize: '16px',
-    color: '#FF4925',
-    textDecoration: 'none',
-    fontWeight: '500',
-};
-
-const messageLabel = {
-    fontSize: '14px',
-    fontWeight: '700',
-    color: '#495057',
-    margin: '0 0 12px',
-    textTransform: 'uppercase' as const,
-    letterSpacing: '0.5px',
-};
-
-const messageBox = {
-    backgroundColor: '#f8f9fa',
-    borderRadius: '8px',
-    padding: '24px',
-    marginBottom: '32px',
-    border: '1px solid #e9ecef',
-};
-
-const messageText = {
-    fontSize: '16px',
-    lineHeight: '1.6',
-    color: '#1a1a1a',
-    margin: '0',
-    whiteSpace: 'pre-wrap' as const,
-};
-
-const buttonSection = {
-    textAlign: 'center' as const,
-    marginTop: '32px',
-};
-
-const button = {
-    backgroundColor: '#0A0A0A',
-    borderRadius: '6px',
-    color: '#ffffff',
-    fontSize: '16px',
-    fontWeight: '600',
-    textDecoration: 'none',
-    textAlign: 'center' as const,
-    display: 'inline-block',
-    padding: '14px 32px',
-};
-
-const hr = {
-    borderColor: '#e9ecef',
-    margin: '0',
-};
-
-const footer = {
-    padding: '24px 48px',
-    textAlign: 'center' as const,
-};
-
-const footerText = {
-    fontSize: '14px',
-    color: '#6c757d',
-    lineHeight: '1.5',
-    margin: '4px 0',
-};
-
-const copyright = {
-    fontSize: '12px',
-    color: '#adb5bd',
-    margin: '16px 0 0',
-};
-
 export default ContactFormEmail;
 
+const main = { backgroundColor: INK, fontFamily: 'Helvetica, Arial, sans-serif', margin: 0, padding: '24px 0' };
+const container = { maxWidth: '600px', margin: '0 auto', backgroundColor: INK, border: `1px solid ${LINE}` };
+const header = { padding: '28px 28px 8px' };
+const badge = { color: ACCENT, fontSize: '12px', letterSpacing: '0.1em', fontWeight: 700, margin: '0 0 8px' };
+const h1 = { color: BONE, fontSize: '22px', lineHeight: '1.25', margin: 0 };
+const content = { padding: '12px 28px 28px' };
+const row = { margin: '0 0 12px' };
+const labelStyle = { color: MUTED, fontSize: '11px', letterSpacing: '0.08em', textTransform: 'uppercase' as const, margin: '0 0 2px' };
+const valueStyle = { color: BONE, fontSize: '15px', lineHeight: '1.5', margin: 0 };
+const messageStyle = { ...valueStyle, whiteSpace: 'pre-wrap' as const };
+const hr = { borderColor: LINE, margin: '16px 0' };

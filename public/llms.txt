@@ -1,61 +1,58 @@
-# Patrick Bartosik — Freelance Full Stack & AI Developer (Paris, France)
+# Patrick Bartosik, freelance AI Engineer and Full Stack developer in Paris
 
-> Patrick Bartosik is a freelance Full Stack Developer based in Paris, France, with 5+ years of experience. He designs, builds, and ships production web applications (Next.js, React, TypeScript, Node.js), Shopify Plus e-commerce, and AI features (LLM integration, autonomous agents, RAG, voice assistants). He works remotely worldwide, replies to inquiries within 24 hours, and offers a free 30-minute consultation.
+> Patrick Bartosik is a freelance AI Engineer and Full Stack developer based in Paris, France. He does two jobs: AI engineering (LLM integration, AI agents, RAG) and Full Stack development (SaaS products, website creation and redesign). He works remotely, replies to every request within 24 hours, and the first call is free and without obligation. The site is available in French (default, no URL prefix), English (/en) and Polish (/pl).
 
-## Key Facts
-- Name: Patrick Bartosik
-- Role: Freelance Full Stack & AI Developer
-- Location: Paris, France (remote work available worldwide)
-- Experience: 5+ years, 20+ projects shipped to production
+Key facts:
 - Languages: French (native), Polish (native), English (professional)
-- Response time: within 24 hours; detailed proposal within 48 hours
-- First consultation: free, 30 minutes, no commitment
+- Work mode: remote, video calls, mostly for clients in France and across Europe
+- Contact: contact@bartosik.fr
+- Typical lead times: website 2 to 8 weeks, LLM integration 2 to 6 weeks, AI agent 4 to 10 weeks, RAG 3 to 8 weeks, SaaS 8 to 16 weeks
+- Stack: React, Next.js, TypeScript, Tailwind CSS, Node.js, NestJS, PostgreSQL, Supabase, Prisma; Claude API, OpenAI API, Vercel AI SDK, MCP, pgvector
 
-## Notable Clients & References
-- Euroclear France — IT System Operator on critical financial market infrastructure (Angular, Azure CI/CD)
-- Isotoner — Shopify Plus migration from Magento, art direction, UX/UI
-- Balzac Paris — Shopify Plus, Cegid ERP integration, omnichannel retail (POS, Click & Collect)
-- Tartine & Chocolat — Shopify Plus migration from PrestaShop, Cegid Y2 ERP integration
-- Qwetch — Shopify Plus migration from WooCommerce, art direction
-- Odaje, Easy Clothes, Le-1.store — Shopify Plus / Shopify builds and migrations (with W3lead agency)
+## Main pages
 
-## AI Services (with starting prices)
-- AI & LLM Integration — chat interfaces, content generation, structured data extraction (Claude, GPT, Vercel AI SDK). From €4,000, 2–6 weeks.
-- AI Agents & Automation — autonomous agents with tool use (Claude Agent SDK, MCP), n8n workflows, support chatbots, lead qualification. From €6,000, 4–10 weeks.
-- RAG & Knowledge Bases — semantic search over private documents, cited answers, pgvector. From €5,000, 3–8 weeks.
-- AI Voice Assistants — Vapi-powered phone agents: 24/7 call answering, qualification, appointment booking, CRM follow-up. From €3,000, 2–5 weeks.
-- NFC & QR Code Automation — connected business cards, one-tap Google review collection, automated workflows. From €800, 1–3 weeks.
+- [Home, French](https://patrick.bartosik.fr/): the two jobs, services, featured projects, FAQ and contact
+- [Home, English](https://patrick.bartosik.fr/en): same content in English
+- [Home, Polish](https://patrick.bartosik.fr/pl): same content in Polish
+- [Services, French](https://patrick.bartosik.fr/services): each service in detail (when to consider it, what is delivered, how it goes, lead time, FAQ)
+- [Services, English](https://patrick.bartosik.fr/en/services)
+- [Services, Polish](https://patrick.bartosik.fr/pl/services)
+- [Contact, French](https://patrick.bartosik.fr/contact): a guided 2-minute brief or a direct message
+- [Contact, English](https://patrick.bartosik.fr/en/contact)
+- [Contact, Polish](https://patrick.bartosik.fr/pl/contact)
 
-## Software Services (with starting prices)
-- Custom Web Development — Next.js/React sites and web apps, sub-second load times, technical SEO. From €3,000, 2–8 weeks.
-- E-commerce — Shopify Plus builds and migrations (PrestaShop, Magento, WooCommerce → Shopify) without traffic loss; ERP integrations. Pricing on request.
-- SaaS Development — auth, Stripe subscriptions, dashboards, multi-tenant architecture. From €15,000, 8–16 weeks.
-- API & Integrations — REST/GraphQL APIs (NestJS, AdonisJS), webhooks, ERP/CRM sync. Pricing on request.
-- Headless CMS — Strapi or custom, multilingual content management. Pricing on request.
-- Maintenance & Support — monitoring, security updates, priority fixes. From €500/month.
+## Services
 
-## Process
-1. Discovery — business goals, audience, constraints scoped before any code.
-2. Design — UX/UI mockups and technical architecture validated together.
-3. Develop — iterative sprints, regular demos, continuous Git access.
-4. Deploy — testing, production rollout, monitoring, knowledge transfer.
+Each service has its own section on the services page of each language (linked above), and a summary on the home page.
 
-## Technologies
-- Frontend: React, Next.js (App Router), Angular, TypeScript, Tailwind CSS, GSAP
-- Backend: Node.js, NestJS, AdonisJS, Express, PostgreSQL, MongoDB, Supabase, Redis
-- AI: Claude API, OpenAI API, Azure AI Foundry, Vercel AI SDK, MCP, n8n, Vapi, pgvector
-- E-commerce: Shopify Plus, Shopify Liquid, ERP integrations (Cegid, Odoo)
-- Payments: Stripe, Lemon Squeezy, Polar
-- Quality: technical SEO, Core Web Vitals, WCAG accessibility, Sentry monitoring
+- AI engineering, LLM integration: Claude or GPT plugged into an existing product to answer customers or read documents
+- AI engineering, AI agents and automation: an agent that handles a business task from start to finish, such as qualifying a lead or answering support requests
+- AI engineering, RAG and knowledge bases: documents turned into a base that can be queried in plain language, with the source of every answer
+- Full Stack, SaaS development: a SaaS from idea to launch, with or without AI (user accounts, subscriptions, dashboard)
+- Full Stack, website development: a custom site built with Next.js, made to load fast and to be found on Google
+- Full Stack, website redesign: an existing site reworked for speed and search visibility, keeping its URLs and rankings
 
-## Pages
-- Homepage: https://patrick.bartosik.fr/ (services, projects, FAQ)
-- Projects: https://patrick.bartosik.fr/projects
-- Contact: https://patrick.bartosik.fr/contact (2-minute project brief form)
-- English version: https://patrick.bartosik.fr/en — Polish version: https://patrick.bartosik.fr/pl
+## Projects
 
-## Contact
-- Website: https://patrick.bartosik.fr
-- Email: contact@bartosik.fr
-- LinkedIn: https://www.linkedin.com/in/patrick-bartosik
-- GitHub: https://github.com/GrandEmpereur
+- [All projects, French](https://patrick.bartosik.fr/projects)
+- [All projects, English](https://patrick.bartosik.fr/en/projects)
+- [All projects, Polish](https://patrick.bartosik.fr/pl/projects)
+- [TraceGuard, English](https://patrick.bartosik.fr/en/projects/traceguard): a control layer between AI agents and the tools they call. Every call is allowed, blocked or sent to a person, then written to an exportable audit log. Personal demo, not a commercial product. Also in [French](https://patrick.bartosik.fr/projects/traceguard) and [Polish](https://patrick.bartosik.fr/pl/projects/traceguard)
+- [Bookish, English](https://patrick.bartosik.fr/en/projects/bookish): a social network for readers, with a Next.js web app and an iOS app. School project. Also in [French](https://patrick.bartosik.fr/projects/bookish) and [Polish](https://patrick.bartosik.fr/pl/projects/bookish)
+- [NutriCert](https://www.nutricert.fr/): a SaaS for restaurant owners (nutrition badges, allergens, QR code and NFC)
+- Ariane: an AI assistant that helps a team find its way through several thousand legacy programs (Python, agents, code graph, answer evaluation). Described on the projects page, no public link
+- Websites built at the W3lead agency (listed on the projects page): Odaje, Tartine & Chocolat, Qwetch, Easy Clothes, Balzac Paris, Isotoner, Le-1.store
+
+## Legal
+
+- [Legal notice](https://patrick.bartosik.fr/mentions-legales) ([en](https://patrick.bartosik.fr/en/mentions-legales), [pl](https://patrick.bartosik.fr/pl/mentions-legales))
+- [Privacy policy](https://patrick.bartosik.fr/politique-confidentialite) ([en](https://patrick.bartosik.fr/en/politique-confidentialite), [pl](https://patrick.bartosik.fr/pl/politique-confidentialite))
+- [Cookie policy](https://patrick.bartosik.fr/politique-cookies) ([en](https://patrick.bartosik.fr/en/politique-cookies), [pl](https://patrick.bartosik.fr/pl/politique-cookies))
+- [Terms of use](https://patrick.bartosik.fr/conditions-utilisation) ([en](https://patrick.bartosik.fr/en/conditions-utilisation), [pl](https://patrick.bartosik.fr/pl/conditions-utilisation))
+
+## Optional
+
+- [LinkedIn](https://www.linkedin.com/in/patrick-bartosik)
+- [GitHub](https://github.com/GrandEmpereur)
+- [Instagram](https://www.instagram.com/agencepatrickai/)
+- [Sitemap](https://patrick.bartosik.fr/sitemap.xml)

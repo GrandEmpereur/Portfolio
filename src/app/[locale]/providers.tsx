@@ -7,7 +7,7 @@ export const Providers = (props: PropsWithChildren<{ locale: string }>) => {
     return (
         <I18nProviderClient
             locale={props.locale}
-            fallback={<div className="min-h-screen bg-black" />}
+            fallback={<div className="min-h-screen bg-ink" />}
         >
             {props.children}
         </I18nProviderClient>

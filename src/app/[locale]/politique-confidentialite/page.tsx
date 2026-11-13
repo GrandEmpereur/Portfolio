@@ -1,199 +1,182 @@
-import { getI18n, getScopedI18n } from '@/locales/serveur';
+import type { Metadata } from 'next';
 import { setStaticParamsLocale } from 'next-international/server';
-import { Metadata } from 'next';
-import { seoConfig, ogLocaleMap } from '@/lib/seo-config';
-import Link from 'next/link';
-import { ArrowLeft, Shield, Lock, Eye, Database, UserCheck, Clock, FileText, Mail } from 'lucide-react';
+import { getScopedI18n } from '@/locales/serveur';
+import { providers, publisher, type ProviderId } from '@/lib/legal.data';
+import {
+  buildLegalMetadata,
+  ContactValue,
+  ExternalLink,
+  LegalFacts,
+  LegalLink,
+  LegalPage,
+  LegalSection,
+  toLocale,
+} from '@/components/legal/LegalPage';
+import { SiteFooter } from '@/components/site/SiteFooter';
 
-/**
- * Generate metadata for privacy policy page
- * @see .cursor/rules/seo.md for SEO best practices
- */
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}): Promise<Metadata> {
-  const { locale } = await params;
+const PATH = '/politique-confidentialite';
+const PROVIDER_ORDER: readonly ProviderId[] = ['vercel', 'cloudflare', 'ovh', 'resend', 'google', 'calcom'];
+
+type PageProps = { params: Promise<{ locale: string }> };
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const locale = toLocale((await params).locale);
   setStaticParamsLocale(locale);
-  const t = await getI18n();
-
-  const title = t('meta.privacy.title');
-  const description = t('meta.privacy.description');
-
-  return {
-    title,
-    description,
-    keywords: t('meta.privacy.keywords'),
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-      },
-    },
-    alternates: {
-      canonical: locale === seoConfig.defaultLocale
-        ? `${seoConfig.baseUrl}/politique-confidentialite`
-        : `${seoConfig.baseUrl}/${locale}/politique-confidentialite`,
-      languages: {
-        'fr-FR': `${seoConfig.baseUrl}/politique-confidentialite`,
-        'x-default': `${seoConfig.baseUrl}/politique-confidentialite`,
-      },
-    },
-    openGraph: {
-      title,
-      description,
-      url: locale === seoConfig.defaultLocale
-        ? `${seoConfig.baseUrl}/politique-confidentialite`
-        : `${seoConfig.baseUrl}/${locale}/politique-confidentialite`,
-      locale: ogLocaleMap[locale] ?? locale,
-      images: [
-        {
-          url: `${seoConfig.baseUrl}${seoConfig.openGraph.image}`,
-          width: seoConfig.openGraph.imageWidth,
-          height: seoConfig.openGraph.imageHeight,
-          alt: title,
-        },
-      ],
-    },
-  };
+  const t = await getScopedI18n('legalPages');
+  return buildLegalMetadata({
+    locale,
+    path: PATH,
+    title: t('privacy.meta.title'),
+    description: t('privacy.meta.description'),
+  });
 }
 
-export default async function PrivacyPolicyPage({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
-  const t = await getI18n();
-  const tPrivacy = await getScopedI18n('privacy.sections');
-  const currentDate = new Date().toLocaleDateString('fr-FR', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  });
-
-  const sections = [
-    { key: 'intro', icon: Shield },
-    { key: 'collected', icon: Database },
-    { key: 'usage', icon: Eye },
-    { key: 'security', icon: Lock },
-    { key: 'rights', icon: UserCheck },
-    { key: 'analytics', icon: FileText },
-    { key: 'retention', icon: Clock },
-    { key: 'changes', icon: FileText },
-  ] as const;
+export default async function PrivacyPolicyPage({ params }: PageProps) {
+  const locale = toLocale((await params).locale);
+  setStaticParamsLocale(locale);
+  const t = await getScopedI18n('legalPages');
+  const { address } = publisher;
 
   return (
-    <main id="main-content" className="relative min-h-screen w-full px-8 md:px-16 lg:px-24 py-32">
-      {/* Back button */}
-      <Link
-        href="/"
-        className="inline-flex items-center gap-2 text-white/70 hover:text-white transition-colors duration-300 mb-12"
+    <>
+      <LegalPage
+        locale={locale}
+        title={t('privacy.title')}
+        intro={t('privacy.intro')}
+        updatedLabel={t('common.updated')}
+        frenchNote={t('common.frenchPrevails')}
       >
-        <ArrowLeft className="w-5 h-5" />
-        Retour à l'accueil
-      </Link>
+        <LegalSection id="responsable" title={t('privacy.controller.title')}>
+          <p>{t('privacy.controller.text')}</p>
+          <LegalFacts
+            rows={[
+              { label: t('common.label.name'), value: `${publisher.name}, ${publisher.legalForm}` },
+              {
+                label: t('common.label.address'),
+                value: `${address.street}, ${address.postalCode} ${address.city}, ${address.country}`,
+              },
+              { label: t('common.label.email'), value: <a href={`mailto:${publisher.email}`}>{publisher.email}</a> },
+              { label: t('common.label.phone'), value: publisher.phone },
+            ]}
+          />
+        </LegalSection>
 
-      {/* Header */}
-      <div className="max-w-4xl mx-auto mb-16">
-        <div className="inline-flex items-center gap-3 bg-orange-500/10 border border-orange-500/20 rounded-full px-6 py-3 mb-6">
-          <Shield className="w-5 h-5 text-orange-500" />
-          <span className="text-orange-500 font-semibold">RGPD Compliant</span>
-        </div>
-        <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
-          {t('privacy.title')}
-        </h1>
-        <p className="text-white/50 text-lg">
-          {t('privacy.lastUpdated')} : {currentDate}
-        </p>
-      </div>
+        <LegalSection id="demandes-de-contact" title={t('privacy.contact.title')}>
+          <LegalFacts
+            rows={[
+              { label: t('privacy.label.purpose'), value: t('privacy.contact.purpose') },
+              { label: t('privacy.label.basis'), value: t('privacy.contact.basis') },
+              { label: t('privacy.label.data'), value: t('privacy.contact.data') },
+              { label: t('privacy.label.required'), value: t('privacy.contact.required') },
+              { label: t('privacy.label.scoring'), value: t('privacy.contact.scoring') },
+              { label: t('privacy.label.recipients'), value: t('privacy.contact.recipients') },
+              { label: t('privacy.label.retention'), value: t('privacy.contact.retention') },
+            ]}
+          />
+        </LegalSection>
 
-      {/* Content */}
-      <div className="max-w-4xl mx-auto space-y-12">
-        {sections.map(({ key, icon: Icon }) => (
-          <section
-            key={key}
-            className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-8 md:p-10 hover:bg-white/[0.07] transition-all duration-300"
-          >
-            <div className="flex items-start gap-4 mb-4">
-              <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center">
-                <Icon className="w-6 h-6 text-orange-500" />
-              </div>
-              <h2 className="text-2xl md:text-3xl font-bold text-orange-500 flex-1">
-                {tPrivacy(`${key}.title`)}
-              </h2>
-            </div>
-            <p className="text-white/80 leading-relaxed ml-16">
-              {tPrivacy(`${key}.content`)}
-            </p>
-          </section>
-        ))}
-      </div>
-
-      {/* Contact for Data Rights */}
-      <div className="max-w-4xl mx-auto mt-16">
-        <div className="bg-gradient-to-r from-orange-500/10 to-orange-600/10 border border-orange-500/20 rounded-2xl p-8 md:p-10">
-          <div className="flex items-start gap-4 mb-6">
-            <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center">
-              <Mail className="w-6 h-6 text-orange-500" />
-            </div>
-            <div className="flex-1">
-              <h3 className="text-2xl font-bold mb-2">Exercez vos droits</h3>
-              <p className="text-white/70 mb-6">
-                Pour toute demande concernant vos données personnelles (accès, rectification, suppression), contactez-nous directement :
-              </p>
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-6 ml-16">
-            <div className="bg-white/5 rounded-xl p-6">
-              <p className="text-sm text-white/50 mb-2">Email</p>
-              <a
-                href="mailto:contact@bartosik.fr"
-                className="text-lg font-semibold text-orange-500 hover:text-orange-400 transition-colors"
-              >
-                contact@bartosik.fr
-              </a>
-            </div>
-            <div className="bg-white/5 rounded-xl p-6">
-              <p className="text-sm text-white/50 mb-2">Délai de réponse</p>
-              <p className="text-lg font-semibold">
-                Maximum 30 jours
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Additional Resources */}
-      <div className="max-w-4xl mx-auto mt-12 grid md:grid-cols-2 gap-6">
-        <Link
-          href="/mentions-legales"
-          className="bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 p-6 hover:bg-white/[0.07] transition-all duration-300 group"
-        >
-          <h4 className="text-lg font-semibold mb-2 group-hover:text-orange-500 transition-colors">
-            Mentions Légales
-          </h4>
-          <p className="text-white/60 text-sm">
-            Informations sur l'éditeur et l'hébergement du site
+        <LegalSection id="mesure-d-audience" title={t('privacy.audience.title')}>
+          <LegalFacts
+            rows={[
+              { label: t('privacy.label.purpose'), value: t('privacy.audience.purpose') },
+              { label: t('privacy.label.basis'), value: t('privacy.audience.basis') },
+              { label: t('privacy.label.data'), value: t('privacy.audience.data') },
+              { label: t('privacy.label.recipients'), value: t('privacy.audience.recipients') },
+            ]}
+          />
+          <p>
+            <LegalLink locale={locale} path="/politique-cookies">
+              {t('common.links.cookies')}
+            </LegalLink>
           </p>
-        </Link>
+        </LegalSection>
 
-        <Link
-          href="/contact"
-          className="bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 p-6 hover:bg-white/[0.07] transition-all duration-300 group"
-        >
-          <h4 className="text-lg font-semibold mb-2 group-hover:text-orange-500 transition-colors">
-            Contact
-          </h4>
-          <p className="text-white/60 text-sm">
-            Posez-nous vos questions sur la confidentialité
+        <LegalSection id="mesure-de-performance" title={t('privacy.performance.title')}>
+          <LegalFacts
+            rows={[
+              { label: t('privacy.label.purpose'), value: t('privacy.performance.purpose') },
+              { label: t('privacy.label.basis'), value: t('privacy.performance.basis') },
+              { label: t('privacy.label.data'), value: t('privacy.performance.data') },
+              { label: t('privacy.label.recipients'), value: t('privacy.performance.recipients') },
+            ]}
+          />
+        </LegalSection>
+
+        <LegalSection id="rendez-vous" title={t('privacy.booking.title')}>
+          <LegalFacts
+            rows={[
+              { label: t('privacy.label.purpose'), value: t('privacy.booking.purpose') },
+              { label: t('privacy.label.basis'), value: t('privacy.booking.basis') },
+              { label: t('privacy.label.data'), value: t('privacy.booking.data') },
+              { label: t('privacy.label.recipients'), value: t('privacy.booking.recipients') },
+            ]}
+          />
+        </LegalSection>
+
+        <LegalSection id="journaux-techniques" title={t('privacy.logs.title')}>
+          <LegalFacts
+            rows={[
+              { label: t('privacy.label.purpose'), value: t('privacy.logs.purpose') },
+              { label: t('privacy.label.basis'), value: t('privacy.logs.basis') },
+              { label: t('privacy.label.data'), value: t('privacy.logs.data') },
+              { label: t('privacy.label.recipients'), value: t('privacy.logs.recipients') },
+            ]}
+          />
+        </LegalSection>
+
+        <LegalSection id="prestataires" title={t('privacy.processors.title')}>
+          <p>{t('privacy.processors.text')}</p>
+          {PROVIDER_ORDER.map((id) => {
+            const provider = providers[id];
+            return (
+              <article key={id} className="lg-card">
+                <h3>{provider.name}</h3>
+                <LegalFacts
+                  rows={[
+                    { label: t('providers.label.role'), value: t(`providers.${id}.role`) },
+                    { label: t('providers.label.entity'), value: provider.entity },
+                    { label: t('providers.label.address'), value: provider.address },
+                    { label: t('providers.label.country'), value: t(`providers.${id}.country`) },
+                    { label: t('providers.label.transfers'), value: t(`providers.${id}.transfers`) },
+                    {
+                      label: t('providers.label.contact'),
+                      value: id === 'ovh' ? t('providers.ovhContact') : <ContactValue value={provider.contact} />,
+                    },
+                  ]}
+                />
+                <p>
+                  <ExternalLink href={provider.url}>{t('common.moreInfo')}</ExternalLink>
+                </p>
+              </article>
+            );
+          })}
+        </LegalSection>
+
+        <LegalSection id="vos-droits" title={t('privacy.rights.title')}>
+          <p>{t('privacy.rights.text')}</p>
+          <ul className="lg-list">
+            <li>{t('privacy.rights.access')}</li>
+            <li>{t('privacy.rights.rectification')}</li>
+            <li>{t('privacy.rights.erasure')}</li>
+            <li>{t('privacy.rights.restriction')}</li>
+            <li>{t('privacy.rights.objection')}</li>
+            <li>{t('privacy.rights.portability')}</li>
+            <li>{t('privacy.rights.withdrawal')}</li>
+          </ul>
+          <p>{t('privacy.rights.how')}</p>
+          <p>
+            <a href={`mailto:${publisher.email}`}>{publisher.email}</a>
           </p>
-        </Link>
-      </div>
-    </main>
+        </LegalSection>
+
+        <LegalSection id="reclamation" title={t('privacy.complaint.title')}>
+          <p>{t('privacy.complaint.text')}</p>
+          <p>
+            <ExternalLink href="https://www.cnil.fr">www.cnil.fr</ExternalLink>
+          </p>
+        </LegalSection>
+      </LegalPage>
+      <SiteFooter />
+    </>
   );
 }

@@ -1,183 +1,225 @@
 ---
 name: Portfolio Patrick Bartosik
-description: Portfolio cinématique noir et blanc d'un développeur freelance (web + IA), typographie display massive et index éditorial.
+description: Portfolio d'auteur d'un AI Engineer et développeur Full Stack freelance, typographie display massive, index éditorial, un accent karmin, mouvement GSAP poussé.
 colors:
-  noir-pellicule: "#000000"
-  blanc-projecteur: "#FFFFFF"
-  blanc-lecture: "#FFFFFF99"
-  blanc-legende: "#FFFFFF66"
-  hairline: "#FFFFFF1A"
-  vert-signal: "#22C55E"
-  rouge-erreur: "#F87171"
+  ink: "#0B0B0A"
+  bone: "#ECE7DE"
+  accent: "#EC2A45"
+  accent-sur-clair: "#C8102E"
+  vert-disponibilite: "#22C55E"
+  ink-clair: "#12120F"
+  bone-mut: "#ECE7DEA8"
+  bone-fnt: "#ECE7DE85"
+  bone-ln: "#ECE7DE29"
+  bone-nav: "#ECE7DE8C"
+  bone-anneau: "#ECE7DE99"
+  ink-mut: "#12120FB3"
+  ink-fnt: "#12120F99"
+  ink-ln: "#12120F29"
 typography:
   display:
-    fontFamily: "Anton, sans-serif"
-    fontSize: "clamp(2.5rem, 5.5vw, 6.5rem)"
-    fontWeight: 400
-    lineHeight: 0.95
-    letterSpacing: "-0.025em"
+    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
+    fontSize: "clamp(2.75rem, 9.4vw, 9.375rem)"
+    fontWeight: 500
+    lineHeight: 0.9
+    letterSpacing: "-0.04em"
   headline:
-    fontFamily: "Anton, sans-serif"
-    fontSize: "clamp(2.25rem, 5vw, 4.5rem)"
-    fontWeight: 400
-    lineHeight: 0.95
-    letterSpacing: "-0.025em"
+    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
+    fontSize: "clamp(2.125rem, 5.4vw, 5.25rem)"
+    fontWeight: 500
+    lineHeight: 0.9
+    letterSpacing: "-0.04em"
   title:
-    fontFamily: "Anton, sans-serif"
-    fontSize: "1.5rem"
-    fontWeight: 400
-    lineHeight: 1.2
+    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
+    fontSize: "1.125rem"
+    fontWeight: 600
+    lineHeight: 1.3
+    letterSpacing: "-0.01em"
   body:
-    fontFamily: "Inter, sans-serif"
+    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
     fontSize: "1rem"
-    fontWeight: 300
-    lineHeight: 1.625
+    fontWeight: 400
+    lineHeight: 1.55
   label:
-    fontFamily: "Inter, sans-serif"
-    fontSize: "0.75rem"
-    fontWeight: 300
-    letterSpacing: "0.3em"
-  mono:
-    fontFamily: "ui-monospace, SFMono-Regular, monospace"
-    fontSize: "0.75rem"
-    letterSpacing: "0.1em"
+    fontFamily: "Geist Mono, ui-monospace, SFMono-Regular, Menlo, monospace"
+    fontSize: "0.6875rem"
+    fontWeight: 400
+    lineHeight: 1.5
+    letterSpacing: "0.08em"
 rounded:
   none: "0px"
-  lg: "0.65rem"
-  full: "9999px"
+  sm: "6px"
+  md: "8px"
+  lg: "10px"
+  full: "999px"
 spacing:
-  section-y: "clamp(6rem, 10vw, 10rem)"
-  container-x: "clamp(1.5rem, 5vw, 5rem)"
-  row-y: "2rem"
+  section-y: "clamp(4.5rem, 10vw, 9.375rem)"
+  container-x: "clamp(1rem, 2.2vw, 2.25rem)"
+  row-y: "1.25rem"
 components:
   button-primary:
-    backgroundColor: "{colors.blanc-projecteur}"
-    textColor: "{colors.noir-pellicule}"
+    backgroundColor: "{colors.bone}"
+    textColor: "{colors.ink}"
     rounded: "{rounded.full}"
-    padding: "14px 32px"
+    padding: "13px 22px"
   button-ghost:
     backgroundColor: "transparent"
-    textColor: "{colors.blanc-projecteur}"
+    textColor: "{colors.bone}"
     rounded: "{rounded.full}"
-    padding: "12px 24px"
+    padding: "13px 22px"
+  nav-pill:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.bone}"
+    rounded: "{rounded.full}"
+    padding: "7px 8px 7px 20px"
   input-underline:
     backgroundColor: "transparent"
-    textColor: "{colors.blanc-projecteur}"
+    textColor: "{colors.bone}"
     rounded: "{rounded.none}"
-    padding: "12px 0"
+    padding: "9px 0"
   tech-pill:
     backgroundColor: "transparent"
-    textColor: "{colors.blanc-legende}"
+    textColor: "{colors.bone-mut}"
     rounded: "{rounded.full}"
-    padding: "4px 12px"
+    padding: "4px 11px"
 ---
 
 # Design System: Portfolio Patrick Bartosik
 
 ## 1. Overview
 
-**Creative North Star: « Le Générique de Film »**
+**Creative North Star: « L'Affiche d'Auteur »**
 
-Le site se lit comme un générique de long-métrage : une image brumeuse plein écran, un nom en capitales massives (Anton) posé dessus comme un titre, puis des sections qui défilent comme des cartons — codes d'index en mono (`AI·01`, `[SE]`), filets hairline, texte de lecture en Inter léger. Le noir n'est pas un thème sombre : c'est la salle. La lumière vient des photos et du blanc typographique, dosé en paliers d'opacité.
+Le site se lit comme une affiche suivie d'un dossier : un portrait studio en couleurs naturelles, un titre en capitales larges posé à même le fond, puis des chapitres numérotés qui s'épinglent et se relaient au scroll. Les codes d'index en mono (`IA·01`, `FS·02`) et les filets fins structurent l'information ; la page se lit comme un document d'agence, pas comme une pile de cartes. Un seul accent, le karmin, signale ce qui est actif ou important.
 
-Le système rejette explicitement le portfolio flashy surchargé (3D gratuite, curseurs exotiques), le site corporate daté (stock photos, bleu corporate) et le template généré par IA (grilles de cartes identiques, glassmorphism, gradients décoratifs, hero à métriques). La confiance passe par la retenue : un seul moment fort par section, exécuté parfaitement.
+Le mouvement est poussé : textes qui se révèlent, entrées composées, défilement lissé, curseur point et anneau. Il reste une couche d'enrichissement : le contenu est complet sans JavaScript, et le waouh ne coûte jamais le LCP.
+
+Le système rejette le portfolio qui sacrifie la lisibilité et les Core Web Vitals à l'effet, le site corporate daté (stock photos, bleu corporate) et le template généré par IA (grilles de cartes identiques, glassmorphism, gradients décoratifs, hero à métriques).
 
 **Key Characteristics:**
-- Monochrome strict : noir + blanc en paliers d'opacité, vert réservé au statut, rouge aux erreurs.
-- Typographie display Anton uppercase comme signature ; Inter léger pour tout le reste.
-- Structure éditoriale : lignes d'index hairline plutôt que cartes, codes mono qui encodent une taxonomie réelle.
-- Motion GSAP « once » au scroll, un reveal par section, `prefers-reduced-motion` respecté.
+- Palette `ink` / `bone` avec un seul accent karmin ; vert réservé à la disponibilité.
+- Archivo large en capitales pour les titres, Geist Mono pour les codes et étiquettes.
+- Lignes d'index séparées par des filets plutôt que des cartes ; boutons et navigation en pilule.
+- Mouvement GSAP poussé, réservé aux grands écrans à souris ; sur mobile le hero s'affiche directement.
 - Contenu toujours visible sans JavaScript (SEO, crawlers non-JS).
 
 ## 2. Colors
 
-Palette monochrome de salle de projection : la couleur est bannie sauf quand elle signale un état.
+Deux thèmes posés par classe : `.theme-dark` (fond `ink`, texte `bone`) et `.theme-light` (fond `bone`, texte `ink`). Le thème clair est utilisé pour les services et la méthode.
 
 ### Primary
-- **Noir Pellicule** (#000000) : fond de toutes les sections (`bg-black`). Jamais adouci en gris foncé ; le noir pur est la salle.
-- **Blanc Projecteur** (#FFFFFF) : titres, CTA primaires, texte à pleine intensité. Sa version pleine est réservée à ce qui doit être lu en premier.
+- **Ink** (#0B0B0A) : fond du thème sombre, texte du thème clair, texte des boutons pleins.
+- **Bone** (#ECE7DE) : texte du thème sombre, fond du thème clair, fond des boutons pleins.
 
-### Neutral
-- **Blanc Lecture** (rgba(255,255,255,0.6) à 0.9) : corps de texte et descriptions. Plancher de lisibilité : ne jamais descendre sous 50 % d'opacité pour du texte courant.
-- **Blanc Légende** (rgba(255,255,255,0.3) à 0.5) : labels uppercase, codes mono, pills techno, placeholders. Réservé aux textes courts ou décoratifs, jamais à un paragraphe.
-- **Hairline** (rgba(255,255,255,0.1), 1px) : filets d'index, bordures de lignes et de pills. S'éclaircit à ~0.25 au hover.
+### Accent
+- **Karmin** (#EC2A45) : l'unique accent. Trait de progression, code actif, point du curseur, état coché, focus. Sur fond clair, le texte accent passe en **Karmin profond** (#C8102E) pour tenir le contraste.
+
+### Neutral (dérivés du texte)
+Trois paliers d'opacité du texte courant, dans les deux thèmes (`--mut`, `--fnt`, `--ln`).
+- **Secondaire** `--mut` : sombre `rgba(236,231,222,.66)`, clair `rgba(18,18,15,.7)`. Descriptions et corps secondaire.
+- **Discret** `--fnt` : sombre `rgba(236,231,222,.52)`, clair `rgba(18,18,15,.6)`. Codes mono, légendes, placeholders. Textes courts uniquement, jamais un paragraphe.
+- **Filet** `--ln` : sombre `rgba(236,231,222,.16)`, clair `rgba(18,18,15,.16)`. Filets d'index, bordures de pills, séparateurs. Passe à pleine intensité au hover d'une ligne.
+- Dans la barre de navigation sombre : liens et langues `rgba(236,231,222,.55)`, fond `rgba(18,18,16,.84)`. Anneau du curseur : `rgba(236,231,222,.6)`.
 
 ### Tertiary
-- **Vert Signal** (#22C55E) : uniquement le point « disponible » du hero. Aucun autre usage autorisé.
-- **Rouge Erreur** (#F87171) : uniquement les messages d'erreur de formulaire.
+- **Vert disponibilité** (#22C55E) : uniquement le point « disponible » (hero, réassurance du contact). Aucun autre usage.
 
 ### Named Rules
-**La Règle Monochrome.** Aucune couleur n'entre dans l'interface hors vert-statut et rouge-erreur. Les utilitaires `.text-gradient-orange` / `.text-gradient-purple` (globals.css) et l'accent ambre shadcn sont des legacy à éteindre, pas des options.
+**La Règle de l'Accent Unique.** Le karmin est la seule couleur de marque. Pas de second accent, pas de dégradé, pas de gradient text. Les jetons shadcn (`primary`, `border`, `foreground`…) sont redirigés vers cette palette ; aucun code hexadécimal dans les composants, seulement les jetons du bloc `@theme`.
 
 ## 3. Typography
 
-**Display Font:** Anton (fallback sans-serif)
-**Body Font:** Inter (fallback sans-serif)
-**Label/Mono Font:** ui-monospace (codes d'index ; la variable `--font-geist-mono` n'est pas chargée, le fallback système fait foi)
+**Display Font:** Archivo variable (axe de largeur `wdth`, fallback Helvetica Neue, Arial, sans-serif)
+**Body Font:** Archivo, largeur normale
+**Label/Mono Font:** Geist Mono (fallback ui-monospace)
 
-**Character:** Contraste maximal entre un display condensé qui crie (Anton, uppercase, interlignage 0.95) et un corps qui chuchote (Inter 300). C'est ce grand écart qui fait le ton cinématique.
+**Character:** des titres larges, serrés et en capitales, face à un texte courant sobre. Anton et Inter ne sont plus utilisées.
 
 ### Hierarchy
-- **Display** (400, clamp(2.5rem, 5.5vw, 6.5rem), 0.95) : nom du hero et titres monumentaux, uppercase, tracking-tight.
-- **Headline** (400, clamp(2.25rem, 5vw, 4.5rem), 0.95) : titres de section (h2), uppercase.
-- **Title** (400–600, 1.25–1.5rem) : titres de lignes d'index et de sous-blocs. En Inter semibold quand la ligne doit rester lisible et dense.
-- **Body** (300, 1rem, 1.625) : paragraphes en Inter light, largeur max ~65ch (`max-w-xl` / `max-w-2xl`).
-- **Label** (300, 0.75rem, tracking 0.3em, UPPERCASE) : eyebrows de section et légendes.
-- **Mono** (0.75rem, tracking large) : codes d'index `AI·01`, `[SE]`, légendes photo `PATRICK BARTOSIK · PARIS, FR`.
+- **Display** (500, largeur 112 %, clamp(2.75rem, 9.4vw, 9.375rem), 0.9, -0.04em) : grands titres, capitales. Le titre d'affiche du hero (≈ 9.9vw) et le titre géant de section (≈ 18.8vw) en sont des agrandissements, interligne jusqu'à 0.84.
+- **Headline** (500, largeur 112 %, clamp(2.125rem, 5.4vw, 5.25rem), 0.9, -0.04em) : titres de section et de bloc, capitales.
+- **Title** (600, 1.125rem, -0.01em) : titres de lignes d'index ; sous-titres de groupe en 500.
+- **Body** (400, 1rem, 1.55) : paragraphes, largeur max ~65ch.
+- **Label** (Geist Mono, 11px, 0.08em, capitales) : codes d'index `IA·01`, `FS·02`, étiquettes, compteurs, légendes.
 
 ### Named Rules
-**La Règle du Générique.** Anton est réservé aux titres. Jamais en corps de texte, jamais en bouton, jamais sous 1.5rem : un générique ne chuchote pas.
-**La Règle du Sens.** Codes et numérotations (`AI·01`, `01 Discovery`) n'apparaissent que quand ils encodent une taxonomie ou une séquence réelle. Un numéro décoratif est interdit.
+**La Règle du Sens.** Codes et numérotations n'apparaissent que quand ils encodent une taxonomie ou une séquence réelle. Un numéro décoratif est interdit.
+**La Règle de la Mesure.** Les titres ne descendent pas sous -0.04em d'interlettrage et ne sont jamais utilisés en corps de texte ni en bouton.
 
 ## 4. Elevation
 
-Système flat : aucune box-shadow structurelle. La profondeur vient de trois matériaux : l'image photographique (voiles `bg-black/50`, dégradés vers le noir), les paliers d'opacité du blanc, et les filets hairline 1px. Des lueurs subtiles (glow doux sur hover d'image ou de CTA) sont autorisées comme réponse à l'interaction, jamais comme état de repos.
+Aucune ombre portée décorative. La profondeur vient des filets, des paliers d'opacité du texte, des changements de thème (sombre vers clair) et de l'image. La barre de navigation en pilule et l'aperçu au survol portent un fin liseré, pas une ombre. Un effet de profondeur n'apparaît qu'en réponse à une interaction.
 
 ### Named Rules
-**La Règle Lueur-pas-Ombre.** Une surface au repos est plate. Si un effet de profondeur apparaît, c'est une lueur déclenchée par le hover/focus, pas une ombre portée permanente.
+**La Règle du Liseré.** Une surface se détache par un filet de 1px (`--ln`), jamais par une box-shadow.
 
 ## 5. Components
 
-Caractère : **affûtés et discrets**. Présence minimale au repos, réponse précise au hover (flèche qui apparaît, translation de 2px, bordure qui s'éclaircit).
-
-### Buttons
-- **Shape:** pill intégrale (border-radius 9999px)
-- **Primary:** fond Blanc Projecteur, texte noir, padding 14px 32px, flèche `ArrowUpRight` qui se décale au hover (`translate-x-0.5 -translate-y-0.5`)
-- **Hover / Focus:** `bg-white/90`, `active:scale-95`, focus visible au clavier
-- **Ghost:** bordure `white/20`, texte blanc, hover `bg-white/10` + bordure `white/40`
-
-### Index Rows (composant signature)
-- Ligne éditoriale : `border-t` hairline, code mono à gauche, titre semibold, description Blanc Lecture, pills techno en bas
-- Hover : bordure → `white/25`, titre `translate-x-2`, flèche `ArrowUpRight` qui apparaît
-- Utilisée pour les services, la FAQ et tout futur listing ; c'est l'alternative maison à la grille de cartes
-
-### Inputs / Fields
-- **Style:** soulignés uniquement (`border-b white/20`), fond transparent, pas de radius
-- **Focus:** bordure → `white/60`, aucun ring décoratif
-- **Error:** message `rouge-erreur` 0.75rem avec `role="alert"`, `aria-invalid` sur le champ
-
-### Chips (tech pills)
-- Bordure hairline, texte Blanc Légende 0.75rem, radius full ; hover : bordure et texte s'éclaircissent
+Caractère : **affirmés au repos, précis à l'interaction**. Un bouton se soulève de 2px, une ligne d'index décale son titre de 8px, le curseur annonce l'action.
 
 ### Navigation
-- Barre flottante arrondie avec fond sombre translucide, liens Inter, état actif en pill claire. Le gradient orange de l'état actif est un legacy hors doctrine (voir Règle Monochrome).
+- Barre en pilule fixe (rayon 999px, fond sombre translucide, liseré). Chapitres numérotés ; un trait karmin de progression se remplit sous les chapitres au scroll. Sur mobile, seul le chapitre courant est affiché, un appui ouvre la liste. Sur la page contact : retour, libellé, langues, « Fermer ».
 
-### Photo Captions
-- Légende mono sous les images (`PATRICK BARTOSIK · PARIS, FR`), séparateur « · » — jamais de tiret cadratin
+### Buttons
+- **Shape:** pilule (999px), 13px 22px, 14px en graisse 500.
+- **Primary:** fond `bone` (ou `ink` en thème clair), texte inverse. Hover : translation de -2px ; bouton aimanté de quelques pixels vers la souris sur grand écran.
+- **Ghost:** transparent, liseré `--ln`.
 
-## 6. Do's and Don'ts
+### Hero « affiche »
+- Portrait studio en couleurs naturelles, titre d'affiche en capitales larges, accroche, deux boutons, repères de cadrage aux quatre coins et heure de Paris. Le `<h1>` de positionnement reste visible en petites capitales mono.
+
+### Chapitres épinglés
+- Hero vers profil (l'affiche se défait, le profil s'allume mot à mot) et projets (un projet à la fois, compteur et segments de progression). Grands écrans à souris seulement.
+
+### Index Rows (composant signature)
+- Ligne séparée par un filet : code mono, titre, description, flèche. Hover : filet en pleine intensité, titre décalé de 8px, flèche visible. Sert pour les services, les options du contact, les articles et la liste d'agence.
+- **Liste d'agence :** un aperçu d'image suit la souris au survol ; sur écran tactile, une vignette est affichée dans la ligne.
+
+### Section claire
+- Services (deux groupes de trois, durée indicative, aucun prix), étapes de la méthode qui se remplissent au scroll, citation à onglets qui s'allume mot à mot.
+
+### FAQ
+- Accordéon `<details name="faq">` en lignes d'index ; signe plus qui pivote, question ouverte en karmin.
+
+### Footer
+- Nom géant qui défile en continu, liens légaux, gestion des cookies, réseaux.
+
+### Page contact
+- Écran fixe à partir de 900 px : « dossier » récapitulatif vivant à gauche, une question à la fois à droite avec progression. Options en lignes d'index, choix courts en pastilles, champs soulignés. En dessous de 900 px, la page défile normalement.
+
+### Inputs / Fields
+- **Style:** soulignés (`border-b` `--ln`), fond transparent, pas de radius. Focus : filet en pleine intensité. Erreur : message avec `role="alert"`, `aria-invalid` sur le champ.
+
+### Chips (tech pills)
+- Liseré `--ln`, texte `--mut`, 12px, radius full.
+
+### Curseur
+- Point karmin exact et anneau en léger retard ; l'anneau grossit sur les liens, boutons et libellés. Souris uniquement.
+
+## 6. Motion
+
+GSAP poussé : textes découpés qui se révèlent, entrées composées au chargement, défilement lissé (Lenis), boutons aimantés, parallaxe. Courbe de référence `cubic-bezier(.2,.7,.2,1)` pour les entrées et les survols, `cubic-bezier(.7,0,.2,1)` pour les barres de progression ; durées de 0,25 à 0,9 s.
+
+### Garde-fous
+- Rien n'est caché sans JavaScript : les états de départ sont posés par GSAP ou par des classes que seul JavaScript ajoute (`js`, `enter`, `pinned`).
+- Épinglage, curseur, aimantation, parallaxe et aperçu au survol : uniquement à partir de 900 px, avec une souris et sans `prefers-reduced-motion`.
+- Sur mobile, le hero s'affiche directement depuis le HTML servi.
+- Le waouh ne coûte jamais le LCP : LCP mobile de 2,5 s au plus, sinon c'est l'animation qui est allégée.
+
+## 7. Do's and Don'ts
 
 ### Do:
-- **Do** garder le corps de texte à ≥ 50 % d'opacité de blanc sur noir (AA 4.5:1) ; `white/30-40` seulement pour labels courts et décor.
-- **Do** un seul reveal GSAP par section (`once: true`, ease power3/power4.out), toujours doublé de `prefers-reduced-motion`.
-- **Do** livrer chaque contenu visible sans JavaScript : `gsap.from` uniquement, jamais d'état initial caché en CSS.
+- **Do** garder le texte courant au palier secondaire (66 %) ou au-dessus ; le palier discret (42 %) est réservé aux étiquettes courtes.
+- **Do** livrer chaque contenu visible sans JavaScript.
+- **Do** découper les textes après `document.fonts.ready`, avec `aria: 'auto'`.
 - **Do** décliner toute nouvelle copy en fr/en/pl simultanément.
-- **Do** utiliser les lignes d'index hairline pour tout listing (services, FAQ, projets).
+- **Do** utiliser des lignes d'index à filets pour tout listing (services, FAQ, projets, options).
+- **Do** passer par les jetons de couleur, jamais par un hexadécimal dans un composant.
 
 ### Don't:
 - **Don't** réintroduire le « template généré par IA » : grilles de cartes identiques, glassmorphism par défaut, gradients décoratifs, hero à métriques, eyebrow mécanique au-dessus de chaque section.
-- **Don't** utiliser de gradient text (`background-clip: text`) : les utilitaires orange/purple existants sont à retirer, pas à imiter.
-- **Don't** faire du « portfolio flashy surchargé » : pas de 3D gratuite, pas de curseur exotique, pas d'animation qui coûte le LCP.
+- **Don't** utiliser de gradient text (`background-clip: text`).
 - **Don't** écrire de tiret cadratin (—) dans la copy ; utiliser virgules, deux-points ou « · » dans les codes.
-- **Don't** poser de box-shadow au repos, de side-stripe coloré, ou de carte dans une carte.
-- **Don't** dépasser clamp max 6.5rem sur le display ni descendre le tracking sous -0.04em.
+- **Don't** poser de box-shadow décorative, de side-stripe coloré, ni de carte dans une carte.
+- **Don't** afficher de prix, ni d'e-commerce parmi les services.
+- **Don't** laisser une animation dégrader le LCP ou rendre un contenu invisible sans JavaScript.

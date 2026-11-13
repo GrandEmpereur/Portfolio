@@ -1,4 +1,5 @@
-export type ProjectType = 'freelance' | 'internship' | 'school';
+export type ProjectType = 'freelance' | 'internship' | 'school' | 'personal';
+export type ProjectCategory = 'ai' | 'saas' | 'web';
 
 export interface Project {
     title: string;
@@ -17,9 +18,64 @@ export interface Project {
     githubUrl?: string;
     features?: string[];
     year?: string;
+    // Homepage / publication
+    published?: boolean; // default true; false keeps the project out of the HTML, the sitemap and the structured data
+    featured?: boolean;
+    featuredOrder?: number;
+    category?: ProjectCategory;
 }
 
 export const lastwork: Project[] = [
+    {
+        title: "TraceGuard",
+        image: "/images/projects/traceguard.jpg",
+        bgColor: "#131311",
+        technologies: ["Agents IA", "Règles côté serveur", "Approbation humaine", "Journal d'audit", "Vue 3D"],
+        slug: "traceguard",
+        description: "Une couche de contrôle entre des agents IA et les outils qu'ils appellent - Démo personnelle",
+        type: "personal",
+        typeLabel: "Projet personnel",
+        longDescription: "TraceGuard est une couche de contrôle placée entre des agents IA et les outils qu'ils appellent. Chaque appel est autorisé, bloqué ou soumis à une personne, puis consigné dans un journal d'audit exportable. C'est une démo personnelle, sans but commercial : une ville en 3D représente les agents, les outils et les règles.",
+        role: "Conception et développement",
+        features: [
+            "Chaque appel d'outil est autorisé, bloqué ou soumis à une personne",
+            "Règles appliquées côté serveur",
+            "Journal d'audit exportable",
+            "Vue 3D des agents, des outils et des règles"
+        ],
+        year: "2026",
+        featured: true,
+        featuredOrder: 1,
+        category: "ai"
+    },
+    {
+        // No employer or client name anywhere in this entry. No link and no longDescription: no detail page.
+        title: "Ariane",
+        image: "/images/projects/ariane.jpg",
+        bgColor: "#131311",
+        technologies: ["Python", "Agents", "Graphe de code", "Évaluation des réponses"],
+        slug: "ariane",
+        description: "Un assistant IA qui aide une équipe à s'y retrouver dans plusieurs milliers de programmes hérités",
+        type: "personal",
+        typeLabel: "Assistant interne",
+        featured: true,
+        featuredOrder: 2,
+        category: "ai"
+    },
+    {
+        title: "NutriCert",
+        image: "/images/projects/nutricert.jpg",
+        bgColor: "#131311",
+        technologies: ["Next.js 16", "NestJS 11", "Prisma", "PostgreSQL", "Redis"],
+        link: "https://www.nutricert.fr/",
+        slug: "nutricert",
+        description: "SaaS pour restaurateurs : badges nutritionnels, allergènes, QR code et NFC",
+        type: "personal",
+        typeLabel: "SaaS en ligne",
+        featured: true,
+        featuredOrder: 3,
+        category: "saas"
+    },
     {
         title: "Euroclear France",
         image: "/images/projects/Euroclear.jpg",
@@ -109,7 +165,6 @@ export const lastwork: Project[] = [
         image: "/images/projects/-1Store.webp",
         bgColor: "#FF6B35",
         technologies: ["Shopify", "Direction artistique", "UX/UI Design", "Parcours utilisateur", "Design system", "Yotpo"],
-        link: "https://www.le-1.store",
         slug: "le-1-store",
         description: "Concept store - Développement plateforme e-commerce",
         type: "internship",
@@ -137,5 +192,26 @@ export const lastwork: Project[] = [
             "API REST avec AdonisJS"
         ],
         year: "2024",
+        featured: true,
+        featuredOrder: 4,
+        category: "web"
     }
 ]
+
+const isPublished = (project: Project): boolean => project.published !== false;
+
+/** Every project that may appear on the site (published !== false). */
+export const getPublishedProjects = (): Project[] => lastwork.filter(isPublished);
+
+/** Published, featured projects on the homepage, ordered by featuredOrder. */
+export const getFeaturedProjects = (): Project[] =>
+    getPublishedProjects()
+        .filter((project) => project.featured)
+        .sort((a, b) => (a.featuredOrder ?? Number.MAX_SAFE_INTEGER) - (b.featuredOrder ?? Number.MAX_SAFE_INTEGER));
+
+/** Published sites built at W3lead (the "En agence" list). */
+export const getAgencyProjects = (): Project[] =>
+    getPublishedProjects().filter((project) => project.company === 'W3lead');
+
+/** A detail page exists only for projects with no external link and a long description. */
+export const hasDetailPage = (project: Project): boolean => !project.link && Boolean(project.longDescription);

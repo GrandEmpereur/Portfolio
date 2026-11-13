@@ -1,0 +1,158 @@
+/* Legal pages (lg-). Colours come from the tokens in globals.css only. */
+
+.lg {
+  /* the fixed header pill takes about 84px at the top */
+  padding-top: calc(84px + clamp(40px, 7vw, 96px));
+  padding-bottom: clamp(72px, 10vw, 144px);
+  min-height: 70vh;
+}
+
+.lg-inner {
+  max-width: 76rem;
+  margin-inline: auto;
+}
+
+.lg-head {
+  display: grid;
+  gap: clamp(20px, 3vw, 36px);
+  padding-bottom: clamp(40px, 6vw, 80px);
+}
+
+.lg-title {
+  max-width: 18ch;
+  font-size: clamp(2.25rem, 7.5vw, 6rem);
+  line-height: 0.92;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.lg-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 24px;
+}
+
+.lg-intro {
+  max-width: 44rem;
+  font-size: clamp(1.0625rem, 1.4vw, 1.25rem);
+  line-height: 1.55;
+  color: var(--mut);
+}
+
+.lg-section {
+  display: grid;
+  gap: 16px;
+  padding-block: clamp(28px, 4vw, 48px);
+  border-top: 1px solid var(--ln);
+}
+
+.lg-section > h2 {
+  font-size: clamp(1.375rem, 2.2vw, 1.875rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.lg-body {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+  max-width: 46rem;
+  color: var(--mut);
+  line-height: 1.65;
+}
+
+.lg-body strong {
+  color: var(--fg);
+  font-weight: 500;
+}
+
+.lg-body a,
+.lg-intro a {
+  color: var(--fg);
+  text-decoration: underline;
+  text-decoration-color: var(--ln);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.2s, color 0.2s;
+  overflow-wrap: anywhere;
+}
+
+.lg-body a:hover,
+.lg-intro a:hover {
+  color: var(--acc);
+  text-decoration-color: currentColor;
+}
+
+.lg-list {
+  display: grid;
+  gap: 8px;
+  padding-left: 1.25em;
+  list-style: disc;
+}
+
+.lg-list li::marker {
+  color: var(--fnt);
+}
+
+.lg-facts {
+  display: grid;
+  margin: 0;
+}
+
+.lg-facts > div {
+  display: grid;
+  gap: 2px 24px;
+  padding-block: 12px;
+  border-top: 1px solid var(--ln);
+}
+
+.lg-facts > div:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.lg-facts dt {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1.6;
+  color: var(--fnt);
+}
+
+.lg-facts dd {
+  margin: 0;
+  color: var(--fg);
+  overflow-wrap: anywhere;
+}
+
+.lg-card {
+  display: grid;
+  gap: 12px;
+  padding: clamp(16px, 2vw, 24px);
+  border: 1px solid var(--ln);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+}
+
+.lg-card > h3 {
+  font-size: 1.125rem;
+  line-height: 1.25;
+  color: var(--fg);
+}
+
+.lg-note {
+  font-size: 0.9375rem;
+  color: var(--fnt);
+}
+
+@media (min-width: 900px) {
+  .lg-section {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: clamp(24px, 4vw, 64px);
+  }
+
+  .lg-facts > div {
+    grid-template-columns: minmax(8rem, 1fr) minmax(0, 2fr);
+    align-items: baseline;
+  }
+}

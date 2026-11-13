@@ -1,0 +1,458 @@
+/* Services page (sv-). Colours come from the theme variables only (.theme-dark / .theme-light).
+   Nothing is hidden at rest: GSAP sets the starting states of [data-sv-rise] once hydrated. */
+
+/* ---------- head ---------- */
+.sv-head {
+  /* the fixed header pill takes about 84px at the top */
+  padding: calc(84px + clamp(40px, 7vw, 96px)) var(--pad) clamp(56px, 8vw, 120px);
+}
+
+.sv-index {
+  color: var(--mut);
+}
+
+.sv-title {
+  margin-top: 14px;
+  max-width: 14ch;
+  font-size: clamp(2.5rem, 8.2vw, 7.5rem);
+  line-height: 0.92;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.sv-lede {
+  margin-top: clamp(20px, 3vw, 36px);
+  max-width: 44rem;
+  font-size: clamp(1.0625rem, 1.4vw, 1.25rem);
+  line-height: 1.55;
+  color: var(--mut);
+}
+
+/* ---------- in-page index ---------- */
+.sv-toc {
+  margin-top: clamp(48px, 7vw, 96px);
+}
+
+.sv-toc-label {
+  color: var(--mut);
+  margin-bottom: 28px;
+}
+
+.sv-toc-groups {
+  display: grid;
+  gap: 40px;
+}
+
+.sv-toc-group-title {
+  color: var(--mut);
+  margin-bottom: 12px;
+}
+
+.sv-toc-code {
+  color: var(--acc);
+}
+
+.sv-toc-rows li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  gap: 12px;
+  align-items: baseline;
+  padding: 16px 0;
+  border-top: 1px solid var(--ln);
+  transition: border-color 0.3s;
+}
+
+.sv-toc-rows li:last-child {
+  border-bottom: 1px solid var(--ln);
+}
+
+.sv-toc-n,
+.sv-toc-arrow {
+  color: var(--fnt);
+}
+
+.sv-toc-link {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: inherit;
+  text-decoration: none;
+}
+
+/* The whole row is the hit area. The hover shift sits on the inner span, never on an ancestor of the link:
+   a transformed ancestor would become the containing block of ::after and shrink the click area. */
+.sv-toc-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.sv-toc-link:focus-visible {
+  outline: none;
+}
+
+.sv-toc-rows li:has(.sv-toc-link:focus-visible) {
+  outline: 2px solid var(--acc);
+  outline-offset: 4px;
+}
+
+.sv-toc-text {
+  display: inline-block;
+  transition: transform 0.3s;
+}
+
+.sv-toc-arrow {
+  transition: color 0.3s;
+}
+
+@media (hover: hover) {
+  .sv-toc-rows li:hover {
+    border-top-color: var(--fg);
+  }
+
+  .sv-toc-rows li:hover .sv-toc-text {
+    transform: translateX(8px);
+  }
+
+  .sv-toc-rows li:hover .sv-toc-arrow {
+    color: var(--acc);
+  }
+}
+
+/* ---------- service groups and sections ---------- */
+.sv-svc {
+  /* No scroll-margin here: `scroll-padding-top` on <html> already clears the fixed header. */
+  display: grid;
+  gap: 40px;
+  padding: clamp(56px, 8vw, 120px) var(--pad);
+  border-top: 1px solid var(--ln);
+}
+
+.sv-code {
+  color: var(--acc);
+  font-size: 13px;
+}
+
+.sv-svc-title {
+  margin-top: 12px;
+  /* Sized so the longest word ("Automatisation") fits its column on one line: no hyphenation. */
+  font-size: clamp(1.75rem, 3.5vw, 3.5rem);
+  line-height: 0.95;
+  overflow-wrap: break-word;
+}
+
+.sv-intro {
+  margin-top: 20px;
+  max-width: 40rem;
+  font-size: clamp(1.0625rem, 1.3vw, 1.1875rem);
+  line-height: 1.55;
+  color: var(--mut);
+}
+
+.sv-facts {
+  margin: 28px 0 0;
+}
+
+.sv-facts > div {
+  display: grid;
+  gap: 8px;
+  padding: 14px 0;
+  border-top: 1px solid var(--ln);
+}
+
+.sv-facts dt {
+  color: var(--fnt);
+}
+
+.sv-facts dd {
+  margin: 0;
+}
+
+.sv-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.sv-chips li {
+  padding: 4px 11px;
+  border: 1px solid var(--ln);
+  border-radius: 999px;
+  font-size: 12px;
+  color: var(--mut);
+}
+
+.sv-cta {
+  margin-top: 20px;
+}
+
+/* ---------- long-form blocks ---------- */
+.sv-main {
+  display: grid;
+  gap: clamp(40px, 5vw, 64px);
+  min-width: 0;
+}
+
+.sv-block-title {
+  color: var(--mut);
+  margin-bottom: 14px;
+}
+
+.sv-rows li {
+  padding: 16px 0;
+  border-top: 1px solid var(--ln);
+  line-height: 1.5;
+}
+
+.sv-rows li:last-child {
+  border-bottom: 1px solid var(--ln);
+}
+
+.sv-steps li {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 4px 16px;
+  padding: 18px 0 20px;
+  border-top: 1px solid var(--ln);
+}
+
+.sv-steps li:last-child {
+  border-bottom: 1px solid var(--ln);
+}
+
+.sv-step-n {
+  grid-row: span 2;
+  font-size: clamp(32px, 3.6vw, 48px);
+  line-height: 0.9;
+  color: var(--acc);
+}
+
+.sv-steps h4 {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+.sv-steps p {
+  color: var(--mut);
+  max-width: 52ch;
+}
+
+/* related project: one row, one link */
+.sv-project {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 16px;
+  align-items: baseline;
+  padding: 18px 0;
+  border-block: 1px solid var(--ln);
+  transition: border-color 0.3s;
+}
+
+.sv-project-link {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: inherit;
+  text-decoration: none;
+}
+
+.sv-project-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.sv-project-link:focus-visible {
+  outline: none;
+}
+
+.sv-project:has(.sv-project-link:focus-visible) {
+  outline: 2px solid var(--acc);
+  outline-offset: 4px;
+}
+
+.sv-project-text {
+  display: inline-block;
+  transition: transform 0.3s;
+}
+
+.sv-project-text .mono-label {
+  display: block;
+  margin-top: 6px;
+  font-weight: 400;
+  color: var(--fnt);
+}
+
+.sv-arrow {
+  color: var(--fnt);
+  transition: color 0.3s;
+}
+
+@media (hover: hover) {
+  .sv-project:hover {
+    border-color: var(--fg);
+  }
+
+  .sv-project:hover .sv-project-text {
+    transform: translateX(8px);
+  }
+
+  .sv-project:hover .sv-arrow {
+    color: var(--acc);
+  }
+}
+
+/* ---------- FAQ (native details, same look as the homepage) ---------- */
+.sv-item {
+  border-top: 1px solid var(--ln);
+}
+
+.sv-item:last-child {
+  border-bottom: 1px solid var(--ln);
+}
+
+.sv-q {
+  display: grid;
+  grid-template-columns: 40px 1fr 20px;
+  gap: 12px;
+  padding: 18px 0;
+  align-items: baseline;
+  cursor: pointer;
+  list-style: none;
+}
+
+.sv-q::-webkit-details-marker {
+  display: none;
+}
+
+.sv-q:focus-visible {
+  outline: 2px solid var(--acc);
+  outline-offset: 4px;
+}
+
+.sv-q-n {
+  color: var(--fnt);
+}
+
+.sv-q-text {
+  display: inline-block;
+  font-weight: 500;
+  font-size: clamp(16px, 1.4vw, 20px);
+  letter-spacing: -0.01em;
+  transition: transform 0.3s, color 0.3s;
+}
+
+@media (hover: hover) {
+  .sv-q:hover .sv-q-text {
+    transform: translateX(8px);
+  }
+}
+
+.sv-plus {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  align-self: center;
+  transition: transform 0.3s;
+}
+
+.sv-plus::before,
+.sv-plus::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+}
+
+.sv-plus::after {
+  transform: rotate(90deg);
+}
+
+.sv-item[open] .sv-plus {
+  transform: rotate(45deg);
+}
+
+.sv-item[open] .sv-q-text {
+  color: var(--acc);
+}
+
+.sv-a {
+  padding: 0 32px 22px 52px;
+  max-width: 62ch;
+  color: var(--mut);
+}
+
+/* ---------- closing ---------- */
+.sv-close {
+  display: grid;
+  gap: 40px;
+  padding: clamp(96px, 11vw, 170px) var(--pad);
+  border-top: 1px solid var(--ln);
+}
+
+.sv-close-label {
+  color: var(--mut);
+}
+
+.sv-close-big {
+  margin-top: 14px;
+  font-size: clamp(34px, 11vw, 64px);
+}
+
+.sv-close-big > span {
+  display: block;
+}
+
+.sv-close-text {
+  max-width: 40ch;
+  color: var(--mut);
+  margin-bottom: 24px;
+}
+
+.sv-close-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* ---------- tablet and desktop ---------- */
+@media (min-width: 900px) {
+  .sv-toc-groups {
+    grid-template-columns: 1fr 1fr;
+    gap: 5vw;
+  }
+
+  .sv-svc {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: clamp(32px, 6vw, 96px);
+    align-items: start;
+  }
+
+  .sv-svc--short {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* summary stays in view while the long-form blocks scroll; no transform on it */
+  .sv-aside {
+    position: sticky;
+    top: 108px;
+  }
+
+  .sv-close {
+    grid-template-columns: 1.4fr 1fr;
+    align-items: end;
+  }
+
+  .sv-close-big {
+    font-size: clamp(64px, 7vw, 132px);
+  }
+}

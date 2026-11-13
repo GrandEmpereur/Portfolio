@@ -1,0 +1,53 @@
+export const common = {
+    nav: {
+        name: 'Patrick Bartosik',
+        label: 'Rozdziały',
+        chapters: {
+            accueil: 'Start',
+            profil: 'Profil',
+            projets: 'Projekty',
+            methode: 'Metoda',
+            blog: 'Blog',
+            contact: 'Kontakt',
+        },
+        contact: 'Skontaktuj się',
+        contactShort: 'Kontakt',
+        close: 'Zamknij',
+        back: 'Powrót na stronę główną',
+        home: 'Patrick Bartosik, powrót na stronę główną',
+        contactPage: 'Nowe zapytanie',
+        languages: 'Język',
+        openChapters: 'Otwórz listę rozdziałów',
+    },
+    footer: {
+        navLabel: 'Linki w stopce',
+        legal: {
+            mentions: 'Informacje prawne',
+            privacy: 'Prywatność',
+            cookies: 'Pliki cookie',
+            terms: 'Warunki korzystania',
+        },
+        manageCookies: 'Zarządzaj plikami cookie',
+        follow: 'Sieci',
+        social: {
+            linkedin: 'LinkedIn',
+            github: 'GitHub',
+            instagram: 'Instagram',
+            email: 'Email',
+        },
+        rights: '© {year} Patrick Bartosik',
+        backToTop: 'Wróć na górę',
+    },
+    cursor: {
+        view: 'Zobacz',
+        open: 'Otwórz',
+        read: 'Czytaj',
+    },
+    consent: {
+        title: 'Pliki cookie i pomiar odwiedzin',
+        body: 'Korzystam z Google Analytics i Google Tag Manager, aby zrozumieć, jak używana jest strona. Nic nie ładuje się przed Twoją zgodą, a decyzję możesz zmienić w dowolnym momencie w stopce.',
+        accept: 'Akceptuję',
+        refuse: 'Odrzucam',
+        policy: 'Dowiedz się więcej',
+    },
+} as const;

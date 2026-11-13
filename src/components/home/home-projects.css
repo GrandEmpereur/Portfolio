@@ -1,0 +1,439 @@
+/* Projects chapter (hp-). Colours come from the semantic variables of the theme class (--fg --bg --mut --fnt --ln --acc).
+   Nothing is hidden at rest: states that hide things come from GSAP or from the class hp-pinned, which only JavaScript sets. */
+
+.hp {
+  --hp-surface: color-mix(in oklab, var(--fg) 8%, var(--bg));
+}
+
+/* ---------- heading ---------- */
+.hp-head {
+  padding-top: clamp(72px, 10vw, 150px);
+}
+
+.hp-eyebrow {
+  color: var(--mut);
+}
+
+/* 132vw shared between the letters of the title, so "Projects" and "Projekty" fit like "Projets" */
+.hp-giant {
+  margin-top: 14px;
+  font-size: calc(132vw / var(--hp-chars, 7));
+}
+
+/* ---------- featured projects: stacked by default (mobile, reduced motion, no JavaScript) ---------- */
+.hp-stage {
+  display: grid;
+  gap: 56px;
+  padding: 48px var(--pad) 96px;
+}
+
+.hp-count,
+.hp-segs {
+  display: none;
+}
+
+.hp-proj {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.hp-proj-text {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.hp-type {
+  color: var(--mut);
+}
+
+.hp-proj-title {
+  font-size: clamp(30px, 4.2vw, 60px);
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+}
+
+.hp-desc {
+  color: var(--mut);
+  max-width: 38ch;
+}
+
+.hp-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 0;
+  list-style: none;
+}
+
+.hp-pills li {
+  font-size: 12px;
+  padding: 4px 11px;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1px var(--ln);
+  color: var(--mut);
+}
+
+.hp-link {
+  display: inline-block;
+  padding-bottom: 3px;
+  border-bottom: 1px solid var(--ln);
+  transition: border-color 0.3s;
+}
+
+.hp-link:hover {
+  border-bottom-color: var(--fg);
+}
+
+.hp-link:focus-visible,
+.hp-row-link:focus-visible {
+  outline: 2px solid var(--acc);
+  outline-offset: 4px;
+}
+
+.hp-fig {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 1;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--hp-surface);
+  order: -1;
+}
+
+.hp-fig-shot {
+  aspect-ratio: 16 / 10;
+}
+
+.hp-img {
+  object-fit: cover;
+}
+
+.hp-fig-shot .hp-img {
+  object-position: center top;
+}
+
+@media (min-width: 700px) {
+  .hp-stage {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 80px 24px;
+  }
+
+  .hp-proj:nth-of-type(odd) {
+    grid-column: 1 / 7;
+  }
+
+  .hp-proj:nth-of-type(even) {
+    grid-column: 8 / 13;
+    margin-top: 140px;
+  }
+}
+
+/* ---------- pinned chapter (900px+, mouse or not, motion allowed): one project at a time ---------- */
+.hp-pinned .hp-stage {
+  display: block;
+  position: relative;
+  height: 100vh;
+  padding: 0;
+  overflow: hidden;
+}
+
+.hp-pinned .hp-proj {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 4vw;
+  padding: 104px var(--pad) 128px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.45s, visibility 0.45s;
+}
+
+.hp-pinned .hp-proj.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.hp-pinned .hp-proj-text {
+  gap: 16px;
+}
+
+.hp-pinned .hp-proj-title {
+  font-size: 5.4vw;
+  white-space: nowrap;
+  clip-path: inset(-14% -2% -10% -2%);
+}
+
+.hp-pinned .hp-desc {
+  font-size: clamp(16px, 1.35vw, 21px);
+}
+
+.hp-pinned .hp-fig {
+  order: 0;
+  justify-self: center;
+  height: min(58vh, 42vw);
+}
+
+.hp-pinned .hp-fig-shot {
+  height: auto;
+  width: 100%;
+  max-width: 48vw;
+}
+
+.hp-pinned .hp-count {
+  display: block;
+  position: absolute;
+  left: var(--pad);
+  top: 88px;
+  z-index: 2;
+  color: var(--mut);
+}
+
+.hp-cur {
+  display: inline-block;
+}
+
+.hp-pinned .hp-cur {
+  color: var(--acc);
+}
+
+.hp-pinned .hp-segs {
+  display: grid;
+  position: absolute;
+  left: var(--pad);
+  right: var(--pad);
+  bottom: 66px;
+  gap: 14px;
+  z-index: 2;
+  padding: 0;
+  list-style: none;
+}
+
+.hp-segs li {
+  position: relative;
+  padding-top: 11px;
+  border-top: 1px solid var(--ln);
+  color: var(--fnt);
+  transition: color 0.3s;
+}
+
+.hp-segs li.is-on {
+  color: var(--fg);
+}
+
+.hp-segs li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: -1px;
+  width: 100%;
+  height: 1px;
+  background: var(--acc);
+  transform-origin: left;
+  transform: scaleX(var(--f, 0));
+}
+
+/* ---------- agency list ---------- */
+.hp-agency {
+  padding-top: clamp(72px, 8vw, 120px);
+  padding-bottom: clamp(88px, 10vw, 140px);
+}
+
+.hp-agency-head {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.hp-agency-title {
+  font-size: clamp(34px, 5.4vw, 84px);
+}
+
+.hp-agency-intro {
+  color: var(--mut);
+}
+
+.hp-rows {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hp-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  gap: 6px 16px;
+  align-items: baseline;
+  padding: 17px 0;
+  border-top: 1px solid var(--ln);
+  transition: border-color 0.3s;
+}
+
+.hp-row:last-child {
+  border-bottom: 1px solid var(--ln);
+}
+
+.hp-row-code {
+  color: var(--fnt);
+}
+
+.hp-row-name {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* The hover shift sits on the text, never on the h4 or the link: a transformed ancestor would
+   become the containing block of .hp-row-link::after and shrink the click area to the title. */
+.hp-row-text {
+  display: inline-block;
+  transition: transform 0.3s;
+}
+
+/* the whole row is the click target */
+.hp-row-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.hp-row-desc {
+  grid-column: 2;
+  color: var(--mut);
+  font-size: 15px;
+  max-width: 52ch;
+}
+
+.hp-row-arr {
+  opacity: 0.3;
+  transition: opacity 0.3s;
+}
+
+.hp-row-thumb {
+  display: none;
+}
+
+.hp-row:hover {
+  border-top-color: var(--fg);
+}
+
+.hp-row:hover .hp-row-text {
+  transform: translateX(8px);
+}
+
+.hp-row:hover .hp-row-arr {
+  opacity: 1;
+}
+
+@media (min-width: 900px) {
+  .hp-agency-head {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 24px;
+  }
+
+  .hp-row {
+    grid-template-columns: 64px minmax(200px, 1fr) 2.4fr auto;
+  }
+
+  .hp-row-desc {
+    grid-column: 3;
+    grid-row: 1;
+    max-width: none;
+  }
+
+  .hp-row-arr {
+    grid-column: 4;
+    grid-row: 1;
+  }
+}
+
+/* Hover preview that follows the mouse. The element only exists when JavaScript created it (fine pointer). */
+.hp-peek {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 40;
+  width: 240px;
+  aspect-ratio: 1;
+  border-radius: 10px;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s;
+  background: var(--hp-surface);
+  box-shadow: 0 0 0 1px color-mix(in oklab, var(--fg) 16%, transparent);
+  will-change: transform;
+}
+
+.hp-peek.is-on {
+  opacity: 1;
+}
+
+.hp-peek i {
+  position: absolute;
+  inset: 0;
+  background: center / cover no-repeat;
+  transform: scale(1.08);
+  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.hp-peek.is-on i {
+  transform: none;
+}
+
+/* Touch and tablet: no hover, so what hover revealed is shown from the start (a thumbnail in each row). */
+@media (hover: none) {
+  .hp-row-arr {
+    display: none;
+  }
+
+  .hp-row-thumb {
+    display: block;
+    width: 64px;
+    height: 64px;
+    border-radius: 8px;
+    object-fit: cover;
+    grid-column: 3;
+    grid-row: 1 / span 2;
+    align-self: center;
+  }
+}
+
+@media (hover: none) and (min-width: 900px) {
+  .hp-row-thumb {
+    grid-column: 4;
+    grid-row: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hp-row-name,
+  .hp-row,
+  .hp-row-arr,
+  .hp-peek,
+  .hp-peek i {
+    transition: none;
+  }
+}
+
+/* Link to the full projects page, under the agency list. */
+.hp-all {
+  margin-top: clamp(32px, 4vw, 56px);
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 899px) {
+  .hp-all {
+    justify-content: flex-start;
+  }
+}
