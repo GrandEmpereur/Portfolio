@@ -1,5 +1,20 @@
 // locales/pl.ts
+import { common } from './pl/common';
+import { homeHero } from './pl/home-hero';
+import { homeProjects } from './pl/home-projects';
+import { homeServices } from './pl/home-services';
+import { homeEnd } from './pl/home-end';
+import { contactPage } from './pl/contact-page';
+import { legalPages } from './pl/legal-pages';
+
 export default {
+    common,
+    homeHero,
+    homeProjects,
+    homeServices,
+    homeEnd,
+    contactPage,
+    legalPages,
     'hello': 'Cześć',
     'nav': {
         'home': 'Strona główna',

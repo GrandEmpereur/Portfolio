@@ -1,20 +1,15 @@
 import { getI18n } from "@/locales/serveur";
 import { setStaticParamsLocale } from "next-international/server";
 import { lastwork } from "@/lib/data/lastwork.data";
-import { projectTestimonials } from "@/lib/data/testimonials.data";
-import { services } from "@/lib/data/services.data";
 import { getPersonSchema, getWebsiteSchema, getProjectsListSchema, getProfessionalServiceSchema, getFAQSchema, getBreadcrumbSchema } from "@/lib/structured-data";
 import { Metadata } from "next";
 import { seoConfig, ogLocaleMap } from "@/lib/seo-config";
-import { HeroSection } from "@/components/HeroSection";
-import { ClientMarquee } from "@/components/ClientMarquee";
-import { AboutSection } from "@/components/AboutSection";
-import { SelectedWorkSection } from "@/components/SelectedWorkSection";
-import { ServicesSection } from "@/components/ServicesSection";
-import { TestimonialsSection } from "@/components/TestimonialsSection";
-import { ContactSection } from "@/components/ContactSection";
-import { FAQSection } from "@/components/FAQSection";
-import { Footer } from "@/components/Footer";
+import { HomeHero } from "@/components/home/HomeHero";
+import { HomeProjects } from "@/components/home/HomeProjects";
+import { HomeServices } from "@/components/home/HomeServices";
+import { HomeBlog } from "@/components/home/HomeBlog";
+import { HomeEnd } from "@/components/home/HomeEnd";
+import { SiteFooter } from "@/components/site/SiteFooter";
 
 export async function generateMetadata({
   params,
@@ -125,159 +120,14 @@ export default async function Home({
       />
 
       <main id="main-content" className="relative w-full">
-        {/* Hero Section - Split Text Animation */}
-        <HeroSection
-          name={t('hero.name')}
-          label={t('hero.label')}
-          tagline={t('hero.tagline')}
-          description={t('hero.description')}
-          ctaProjects={t('hero.cta.projects')}
-          ctaContact={t('hero.cta.contact')}
-          availableText={t('hero.available')}
-          scrollText={t('hero.scroll')}
-        />
-
-        {/* Client Marquee */}
-        <ClientMarquee
-          label={t('marquee.label')}
-          clients={[
-            "Euroclear France",
-            "Tartine & Chocolat",
-            "Balzac Paris",
-            "Qwetch",
-            "Odaje",
-            "Isotoner",
-            "Easy Clothes",
-            "Le-1.store",
-          ]}
-        />
-
-        {/* About Section */}
-        <AboutSection
-          label={t('about.label')}
-          text={t('about.text')}
-          text2={t('about.text2')}
-          facts={[t('about.fact1'), t('about.fact2'), t('about.fact3')]}
-        />
-
-        {/* Selected Work */}
-        <SelectedWorkSection
-          label={t('selectedWork.label')}
-          viewProjectText={t('selectedWork.viewProject')}
-          viewAllText={t('selectedWork.viewAll')}
-          projects={lastwork.slice(0, 5)}
-        />
-
-        {/* Services & Approach Section */}
-        <ServicesSection
-          label={t('services.label')}
-          heading={t('services.heading')}
-          categories={[
-            {
-              id: 'ai',
-              code: t('services.categoryAi.code'),
-              name: t('services.categoryAi.name'),
-              tagline: t('services.categoryAi.tagline'),
-              serviceIds: ['ai-integration', 'ai-agents', 'rag-knowledge', 'voice-assistants', 'nfc-qrcode-automation'],
-            },
-            {
-              id: 'software',
-              code: t('services.categorySoftware.code'),
-              name: t('services.categorySoftware.name'),
-              tagline: t('services.categorySoftware.tagline'),
-              serviceIds: ['web-development', 'saas-development', 'ecommerce', 'api-integration'],
-            },
-          ].map(category => ({
-            id: category.id,
-            code: category.code,
-            name: category.name,
-            tagline: category.tagline,
-            services: services
-              .filter(s => category.serviceIds.includes(s.id))
-              .map(s => ({
-                id: s.id,
-                title: s.title[locale as 'fr' | 'en' | 'pl'] || s.title.fr,
-                description: s.description[locale as 'fr' | 'en' | 'pl'] || s.description.fr,
-                features: s.features[locale as 'fr' | 'en' | 'pl'] || s.features.fr,
-                technologies: s.technologies,
-              })),
-          }))}
-          approachTitle={t('approach.title')}
-          approachSteps={[
-            { title: t('approach.step1.title'), desc: t('approach.step1.desc') },
-            { title: t('approach.step2.title'), desc: t('approach.step2.desc') },
-            { title: t('approach.step3.title'), desc: t('approach.step3.desc') },
-            { title: t('approach.step4.title'), desc: t('approach.step4.desc') },
-          ]}
-          ctaText={t('services.cta')}
-        />
-
-        {/* Testimonials Section */}
-        <TestimonialsSection
-          label={t('testimonials.label')}
-          testimonials={projectTestimonials.map(testimonial => ({
-            quote: testimonial.quote[locale as 'fr' | 'en' | 'pl'] || testimonial.quote.fr,
-            name: testimonial.author.name,
-            role: testimonial.author.role,
-            company: testimonial.author.company,
-          }))}
-        />
-
-        {/* Contact Section */}
-        <ContactSection
-          translations={{
-            title: t('contactCta.title'),
-            subtitle: t('contactCta.subtitle'),
-            nameLabel: t('contactCta.nameLabel'),
-            namePlaceholder: t('contactCta.namePlaceholder'),
-            emailLabel: t('contactCta.emailLabel'),
-            emailPlaceholder: t('contactCta.emailPlaceholder'),
-            messageLabel: t('contactCta.messageLabel'),
-            messagePlaceholder: t('contactCta.messagePlaceholder'),
-            submitButton: t('contactCta.submitButton'),
-            termsText: t('contactCta.termsText'),
-            termsLink: t('contactCta.termsLink'),
-            andText: t('contactCta.andText'),
-            privacyLink: t('contactCta.privacyLink'),
-          }}
-          socialLinks={{
-            linkedin: seoConfig.social.linkedin,
-            github: seoConfig.social.github,
-            instagram: seoConfig.social.instagram,
-            email: seoConfig.author.email,
-          }}
-        />
-
-        {/* FAQ Section */}
-        <FAQSection
-          title={t('faq.title')}
-          socialTitle={t('faq.socialTitle')}
-          faqs={faqs}
-          socialLinks={{
-            linkedin: seoConfig.social.linkedin,
-            github: seoConfig.social.github,
-            instagram: seoConfig.social.instagram,
-            email: seoConfig.author.email,
-          }}
-        />
-
+        <HomeHero />
+        <HomeProjects />
+        <HomeServices />
+        <HomeBlog />
+        <HomeEnd />
       </main>
 
-      {/* Footer */}
-      <Footer
-        translations={{
-          copyright: t('footer.copyright', { year: new Date().getFullYear().toString() }),
-          backToTop: t('footer.backToTop'),
-          legalTerms: t('footer.legalTerms'),
-          legalPrivacy: t('footer.legalPrivacy'),
-        }}
-        socialLinks={{
-          linkedin: seoConfig.social.linkedin,
-          github: seoConfig.social.github,
-          instagram: seoConfig.social.instagram,
-          email: seoConfig.author.email,
-        }}
-      />
+      <SiteFooter />
     </>
   );
 }

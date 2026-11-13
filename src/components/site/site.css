@@ -1,0 +1,324 @@
+/* Site shell: header (sh-), cursor (cur-), footer (sf-). Colours come from the tokens in globals.css only. */
+
+/* ---------- header: one dark pill, readable on dark and light sections ---------- */
+.sh {
+  position: fixed;
+  top: 12px;
+  left: var(--pad);
+  right: var(--pad);
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 7px 8px 7px 20px;
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--color-ink) 84%, transparent);
+  -webkit-backdrop-filter: blur(14px) saturate(1.3);
+  backdrop-filter: blur(14px) saturate(1.3);
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--color-bone) 10%, transparent);
+  color: var(--color-bone);
+  white-space: nowrap;
+}
+
+.sh-name {
+  padding: 9px 0;
+}
+
+.sh-nav {
+  display: contents;
+}
+
+.sh-ch {
+  display: flex;
+  gap: 2px;
+  position: relative;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sh-ch::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 1px;
+  height: 1px;
+  background: var(--color-accent);
+  transform-origin: left;
+  transform: scaleX(var(--p, 0));
+}
+
+.sh-ch button {
+  padding: 9px 12px;
+  color: color-mix(in oklab, var(--color-bone) 55%, transparent);
+  transition: color 0.25s;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+}
+
+.sh-ch button:hover,
+.sh-ch button.is-on {
+  color: var(--color-bone);
+}
+
+.sh-mid {
+  color: color-mix(in oklab, var(--color-bone) 66%, transparent);
+}
+
+.sh-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.sh-langs {
+  color: color-mix(in oklab, var(--color-bone) 55%, transparent);
+}
+
+.sh-langs a:hover,
+.sh-langs a.is-on {
+  color: var(--color-bone);
+}
+
+.sh-cta {
+  padding: 9px 16px;
+  border-radius: 999px;
+  background: var(--color-bone);
+  color: var(--color-ink);
+  font-size: 13px;
+  font-weight: 500;
+  transition: transform 0.25s;
+}
+
+.sh-short {
+  display: none;
+}
+
+@media (hover: none) {
+  .sh-ch button {
+    padding-top: 13px;
+    padding-bottom: 13px;
+  }
+
+  .sh-cta:active {
+    transform: scale(0.97);
+  }
+}
+
+/* below 900px the bar only shows the current chapter; a tap opens the list */
+@media (max-width: 899px) {
+  .sh {
+    padding: 6px 6px 6px 16px;
+    gap: 10px;
+  }
+
+  .sh-ch button:not(.is-on) {
+    display: none;
+  }
+
+  .sh-ch button {
+    padding: 9px 6px;
+  }
+
+  .sh-ch::after {
+    left: 6px;
+    right: 6px;
+  }
+
+  .sh-ch button.is-on::after {
+    content: " ▾";
+  }
+
+  .sh.is-open .sh-ch {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(100% + 8px);
+    flex-direction: column;
+    gap: 0;
+    padding: 8px;
+    border-radius: 18px;
+    background: color-mix(in oklab, var(--color-ink) 97%, transparent);
+    box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--color-bone) 10%, transparent);
+  }
+
+  .sh.is-open .sh-ch button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 13px 12px;
+  }
+
+  .sh.is-open .sh-ch button.is-on::after,
+  .sh.is-open .sh-ch::after {
+    display: none;
+  }
+
+  .sh-langs,
+  .sh-mid {
+    display: none;
+  }
+
+  .sh-long {
+    display: none;
+  }
+
+  .sh-short {
+    display: inline;
+  }
+
+  .sh-name {
+    padding: 11px 0;
+  }
+}
+
+/* ---------- cursor: exact dot + trailing ring, mouse only (class has-cursor is added by SiteCursor) ---------- */
+.cur-dot,
+.cur-ring {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 110;
+  pointer-events: none;
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.cur-dot {
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+  background: var(--color-accent);
+}
+
+.cur-ring {
+  width: 84px;
+  height: 84px;
+  margin: -42px 0 0 -42px;
+  scale: 0.48;
+  display: grid;
+  place-items: center;
+  box-shadow: inset 0 0 0 2px color-mix(in oklab, var(--color-bone) 60%, transparent);
+  mix-blend-mode: difference;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-bone);
+  transition: translate 0.16s cubic-bezier(0.2, 0.7, 0.2, 1), scale 0.25s cubic-bezier(0.2, 0.7, 0.2, 1),
+    background-color 0.25s, opacity 0.2s;
+}
+
+.has-cursor .cur-dot,
+.has-cursor .cur-ring {
+  opacity: 1;
+}
+
+.has-cursor,
+.has-cursor a,
+.has-cursor button,
+.has-cursor summary {
+  cursor: none;
+}
+
+.cur-ring.is-link {
+  scale: 0.74;
+}
+
+.cur-ring.is-label {
+  scale: 1;
+  mix-blend-mode: normal;
+  background: var(--color-ink);
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--color-bone) 45%, transparent);
+}
+
+.has-cursor .cur-ring.is-hidden {
+  opacity: 0;
+}
+
+/* ---------- footer: giant scrolling name + small print ---------- */
+.sf {
+  position: relative;
+}
+
+.sf-wm {
+  font-size: 9.3vw;
+  white-space: nowrap;
+  padding: 7vw var(--pad) 0;
+  line-height: 0.8;
+  text-align: center;
+  overflow: hidden;
+}
+
+.sf-track {
+  display: inline-flex;
+}
+
+.sf-sep,
+.sf-dup {
+  display: none;
+}
+
+/* "is-running" is only ever added by FooterMarquee (JavaScript, motion allowed) */
+.sf-wm.is-running {
+  font-size: 15vw;
+  text-align: left;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.sf-wm.is-running .sf-sep,
+.sf-wm.is-running .sf-dup {
+  display: inline;
+}
+
+.sf-sep {
+  color: var(--acc);
+  padding: 0 0.22em;
+}
+
+.sf-foot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px 24px;
+  padding: 22px var(--pad) 66px;
+  color: var(--fnt);
+}
+
+.sf-foot ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sf-foot a:hover,
+.sf-foot button:hover {
+  color: var(--fg);
+}
+
+.sf-foot button {
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  padding: 0;
+  color: inherit;
+}
+
+@media (max-width: 899px) {
+  .sf-foot {
+    padding-bottom: 64px;
+  }
+}

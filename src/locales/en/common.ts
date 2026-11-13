@@ -1,0 +1,53 @@
+export const common = {
+    nav: {
+        name: 'Patrick Bartosik',
+        label: 'Chapters',
+        chapters: {
+            accueil: 'Home',
+            profil: 'Profile',
+            projets: 'Projects',
+            methode: 'Method',
+            blog: 'Blog',
+            contact: 'Contact',
+        },
+        contact: 'Get in touch',
+        contactShort: 'Contact',
+        close: 'Close',
+        back: 'Back to home',
+        home: 'Patrick Bartosik, back to home',
+        contactPage: 'New request',
+        languages: 'Language',
+        openChapters: 'Open the chapter list',
+    },
+    footer: {
+        navLabel: 'Footer links',
+        legal: {
+            mentions: 'Legal notice',
+            privacy: 'Privacy',
+            cookies: 'Cookies',
+            terms: 'Terms of use',
+        },
+        manageCookies: 'Manage cookies',
+        follow: 'Social',
+        social: {
+            linkedin: 'LinkedIn',
+            github: 'GitHub',
+            instagram: 'Instagram',
+            email: 'Email',
+        },
+        rights: '© {year} Patrick Bartosik',
+        backToTop: 'Back to top',
+    },
+    cursor: {
+        view: 'View',
+        open: 'Open',
+        read: 'Read',
+    },
+    consent: {
+        title: 'Cookies and audience measurement',
+        body: 'I use Google Analytics and Google Tag Manager to understand how the site is used. Nothing loads before you agree, and you can change your mind at any time from the footer.',
+        accept: 'Accept',
+        refuse: 'Decline',
+        policy: 'Learn more',
+    },
+} as const;

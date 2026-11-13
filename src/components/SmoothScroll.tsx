@@ -1,16 +1,15 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import Lenis from "lenis";
 import { gsap, ScrollTrigger } from "@/lib/gsap-config";
+import { scroller } from "@/lib/scroll";
 
 interface SmoothScrollProps {
     children: React.ReactNode;
 }
 
 export const SmoothScroll = ({ children }: SmoothScrollProps) => {
-    const lenisRef = useRef<Lenis | null>(null);
-
     useEffect(() => {
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         if (prefersReducedMotion) return;
@@ -18,8 +17,7 @@ export const SmoothScroll = ({ children }: SmoothScrollProps) => {
         // Détection mobile pour ajuster les paramètres
         const isMobile = window.matchMedia('(max-width: 767px)').matches;
 
-        // Initialiser Lenis avec paramètres optimisés pour mobile
-        lenisRef.current = new Lenis({
+        const lenis = new Lenis({
             duration: isMobile ? 0.8 : 1.2,
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
             orientation: "vertical",
@@ -29,23 +27,23 @@ export const SmoothScroll = ({ children }: SmoothScrollProps) => {
             touchMultiplier: isMobile ? 1.5 : 2,
             infinite: false,
         });
+        scroller.lenis = lenis;
 
         // Intégration avec GSAP ScrollTrigger
-        lenisRef.current.on("scroll", ScrollTrigger.update);
+        lenis.on("scroll", ScrollTrigger.update);
 
-        gsap.ticker.add((time) => {
-            lenisRef.current?.raf(time * 1000);
-        });
-
+        const tick = (time: number) => {
+            lenis.raf(time * 1000);
+        };
+        gsap.ticker.add(tick);
         gsap.ticker.lagSmoothing(0);
 
-        // Cleanup
         return () => {
-            lenisRef.current?.destroy();
-            lenisRef.current = null;
+            gsap.ticker.remove(tick);
+            lenis.destroy();
+            if (scroller.lenis === lenis) scroller.lenis = null;
         };
     }, []);
 
     return <>{children}</>;
 };
-

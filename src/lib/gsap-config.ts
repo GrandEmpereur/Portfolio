@@ -9,6 +9,10 @@ import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
 gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText, CustomEase, ScrambleTextPlugin);
 
 if (typeof window !== "undefined") {
+    // Site-wide eases (names mirrored by EASE in @/lib/motion)
+    CustomEase.create("pb", ".2,.75,.2,1");
+    CustomEase.create("pbInOut", ".7,0,.2,1");
+
     // Configuration globale optimisée pour ScrollTrigger
     ScrollTrigger.config({
         limitCallbacks: true,

@@ -1,5 +1,20 @@
 // locales/en.ts
+import { common } from './en/common';
+import { homeHero } from './en/home-hero';
+import { homeProjects } from './en/home-projects';
+import { homeServices } from './en/home-services';
+import { homeEnd } from './en/home-end';
+import { contactPage } from './en/contact-page';
+import { legalPages } from './en/legal-pages';
+
 export default {
+    common,
+    homeHero,
+    homeProjects,
+    homeServices,
+    homeEnd,
+    contactPage,
+    legalPages,
     'hello': 'Hello',
     'nav': {
         'home': 'Home',

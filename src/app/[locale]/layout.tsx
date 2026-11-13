@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Anton, Inter } from "next/font/google";
+import { Archivo, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
-import { NavBar } from "@/components/NavBar";
+import { SiteHeader } from "@/components/site/SiteHeader";
 import { seoConfig, ogLocaleMap } from "@/lib/seo-config";
 import { getI18n } from "@/locales/serveur";
 import { setStaticParamsLocale } from "next-international/server";
@@ -12,22 +12,26 @@ import { Analytics as VercelAnalytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { GoogleTagManager } from '@next/third-parties/google'
-import { CustomCursor } from "@/components/CustomCursor"
+import { SiteCursor } from "@/components/site/SiteCursor";
+import { RouteTransition } from "@/components/site/RouteTransition";
 
-const anton = Anton({
-  variable: "--font-anton",
+const archivo = Archivo({
+  variable: "--font-archivo",
   subsets: ["latin"],
-  weight: "400",
+  axes: ["wdth"],
   display: "swap",
-  adjustFontFallback: true,
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
   subsets: ["latin"],
   display: "swap",
-  adjustFontFallback: true,
 });
+
+// Runs before first paint. "js" unlocks the JavaScript-only states in the CSS.
+// "enter" (page hidden while the hero entrance prepares) only on 900px+ without reduced motion,
+// and is always removed after 2.5 s even if the main script never starts.
+const BOOT_SCRIPT = `(function(){var h=document.documentElement;h.classList.add('js');if(!matchMedia('(min-width: 900px)').matches||matchMedia('(prefers-reduced-motion: reduce)').matches)return;h.classList.add('enter');setTimeout(function(){h.classList.remove('enter')},2500)})();`;
 
 export async function generateMetadata({
   params,
@@ -156,10 +160,17 @@ export default async function RootLayout({
   };
 
   return (
-    <html lang={locale} className="dark" suppressHydrationWarning>
+    <html
+      lang={locale}
+      className={`dark ${archivo.variable} ${geistMono.variable}`}
+      suppressHydrationWarning
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: BOOT_SCRIPT }} />
+      </head>
       <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID || ''} />
       <body
-        className={`${anton.variable} ${inter.variable} antialiased dark:bg-black bg-black`}
+        className="theme-dark antialiased"
         suppressHydrationWarning
       >
         {process.env.NEXT_PUBLIC_GTM_ID && (
@@ -175,15 +186,16 @@ export default async function RootLayout({
         )}
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:rounded-lg focus:text-sm focus:font-medium"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-bone focus:text-ink focus:rounded-lg focus:text-sm focus:font-medium"
         >
           {skipLinkText[locale] ?? skipLinkText.en}
         </a>
         <Providers locale={locale}>
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || ''} />
           <SmoothScroll>
-            <NavBar />
-            <CustomCursor />
+            <SiteHeader />
+            <SiteCursor />
+            <RouteTransition />
             {children}
             <Toaster />
             <VercelAnalytics />
