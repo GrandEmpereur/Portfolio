@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { seoConfig, ogLocaleMap } from '@/lib/seo-config';
-import { lastwork } from '@/lib/data/lastwork.data';
+import { getPublishedProjects, hasDetailPage } from '@/lib/data/lastwork.data';
 
 type ChangeFreq = 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never';
 
@@ -28,11 +28,10 @@ const buildLanguagesMap = (path: string): Record<string, string> => {
 export default function sitemap(): MetadataRoute.Sitemap {
     const lastModified = new Date();
 
-    // Project detail pages — only slugs with a real on-site page. Projects
-    // with an external `link` soft-redirect off-site (meta refresh), so they
-    // must stay out of the sitemap until they get real case-study pages.
-    const projectPages: PageEntry[] = lastwork
-        .filter((project) => !project.link)
+    // Project detail pages: only published projects that have a real on-site page.
+    // Projects with an external `link` leave the site, so they stay out of the sitemap.
+    const projectPages: PageEntry[] = getPublishedProjects()
+        .filter(hasDetailPage)
         .map((project) => ({
             path: `/projects/${project.slug}`,
             priority: 0.7,
@@ -44,11 +43,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
         { path: '/projects', priority: 0.9, changeFrequency: 'weekly' },
         { path: '/contact', priority: 0.8, changeFrequency: 'monthly' },
         ...projectPages,
-    ];
-
-    const frenchOnlyPages: PageEntry[] = [
         { path: '/mentions-legales', priority: 0.3, changeFrequency: 'yearly' },
         { path: '/politique-confidentialite', priority: 0.3, changeFrequency: 'yearly' },
+        { path: '/politique-cookies', priority: 0.3, changeFrequency: 'yearly' },
+        { path: '/conditions-utilisation', priority: 0.3, changeFrequency: 'yearly' },
     ];
 
     const urls: MetadataRoute.Sitemap = [];
@@ -64,22 +62,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
                 alternates: { languages },
             });
         }
-    }
-
-    for (const page of frenchOnlyPages) {
-        const frUrl = buildLocaleUrl(seoConfig.defaultLocale, page.path);
-        urls.push({
-            url: frUrl,
-            lastModified,
-            changeFrequency: page.changeFrequency,
-            priority: page.priority,
-            alternates: {
-                languages: {
-                    'fr-FR': frUrl,
-                    'x-default': frUrl,
-                },
-            },
-        });
     }
 
     return urls;

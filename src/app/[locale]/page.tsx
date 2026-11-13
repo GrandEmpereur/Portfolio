@@ -1,7 +1,9 @@
-import { getI18n } from "@/locales/serveur";
+import { getI18n, getScopedI18n } from "@/locales/serveur";
 import { setStaticParamsLocale } from "next-international/server";
-import { lastwork } from "@/lib/data/lastwork.data";
-import { getPersonSchema, getWebsiteSchema, getProjectsListSchema, getProfessionalServiceSchema, getFAQSchema, getBreadcrumbSchema } from "@/lib/structured-data";
+import { getPublishedProjects } from "@/lib/data/lastwork.data";
+import { HOME_FAQ_IDS } from "@/components/home/home-faq";
+import { HomeHashScroll } from "@/components/home/HomeHashScroll";
+import { getPersonSchema, getWebsiteSchema, getProjectsListSchema, getProfessionalServiceSchema, getFAQSchema, getBreadcrumbSchema, serializeJsonLd } from "@/lib/structured-data";
 import { Metadata } from "next";
 import { seoConfig, ogLocaleMap } from "@/lib/seo-config";
 import { HomeHero } from "@/components/home/HomeHero";
@@ -24,7 +26,8 @@ export async function generateMetadata({
   const description = t('meta.home.description');
 
   return {
-    title,
+    // absolute: the layout template would add the name a second time
+    title: { absolute: title },
     description,
     keywords: t('meta.home.keywords'),
     openGraph: {
@@ -60,64 +63,38 @@ export default async function Home({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const t = await getI18n()
+  setStaticParamsLocale(locale);
+  const t = await getI18n();
+  const tEnd = await getScopedI18n("homeEnd");
 
-  // Generate structured data
-  const personSchema = getPersonSchema(locale);
-  const websiteSchema = getWebsiteSchema(locale);
-  const projectsSchema = getProjectsListSchema(lastwork.slice(0, 5), locale);
-  const professionalServiceSchema = getProfessionalServiceSchema(locale);
+  const faqSchema = getFAQSchema(
+    HOME_FAQ_IDS.map((id) => ({
+      question: tEnd(`faq.${id}.question`),
+      answer: tEnd(`faq.${id}.answer`),
+    })),
+  );
 
-  // FAQ Schema
-  const faqs = [
-    { question: t('faq.question1'), answer: t('faq.answer1') },
-    { question: t('faq.question2'), answer: t('faq.answer2') },
-    { question: t('faq.question3'), answer: t('faq.answer3') },
-    { question: t('faq.question4'), answer: t('faq.answer4') },
-    { question: t('faq.question5'), answer: t('faq.answer5') },
-    { question: t('faq.question6'), answer: t('faq.answer6') },
-    { question: t('faq.question7'), answer: t('faq.answer7') },
+  const schemas = [
+    getPersonSchema(locale),
+    getWebsiteSchema(locale),
+    getProjectsListSchema(getPublishedProjects(), locale),
+    getProfessionalServiceSchema(locale),
+    faqSchema,
+    getBreadcrumbSchema(
+      [{ name: t("common.nav.chapters.accueil"), url: locale === seoConfig.defaultLocale ? "/" : `/${locale}` }],
+      locale,
+    ),
   ];
-  const faqSchema = getFAQSchema(faqs);
-
-  // Breadcrumb Schema
-  const breadcrumbSchema = getBreadcrumbSchema([
-    { name: t('footer.navHome'), url: locale === seoConfig.defaultLocale ? '/' : `/${locale}` },
-  ], locale);
 
   return (
     <>
-      {/* JSON-LD Structured Data for SEO */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
-        suppressHydrationWarning
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-        suppressHydrationWarning
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(projectsSchema) }}
-        suppressHydrationWarning
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(professionalServiceSchema) }}
-        suppressHydrationWarning
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-        suppressHydrationWarning
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-        suppressHydrationWarning
-      />
+      {schemas.map((schema, index) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(schema) }}
+        />
+      ))}
 
       <main id="main-content" className="relative w-full">
         <HomeHero />
@@ -128,6 +105,7 @@ export default async function Home({
       </main>
 
       <SiteFooter />
+      <HomeHashScroll />
     </>
   );
 }

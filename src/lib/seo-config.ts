@@ -6,20 +6,20 @@
  */
 export const seoConfig = {
     baseUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://patrick.bartosik.fr',
-    siteName: 'Patrick Bartosik - Full Stack Developer',
+    siteName: 'Patrick Bartosik',
 
     // Application metadata
     applicationName: 'Patrick Bartosik Portfolio',
     category: 'technology',
 
     // Theme configuration
-    themeColor: '#000000',
-    backgroundColor: '#000000',
+    themeColor: '#0B0B0A',
+    backgroundColor: '#0B0B0A',
 
     author: {
         name: 'Patrick Bartosik',
         email: 'contact@bartosik.fr',
-        jobTitle: 'Full Stack Developer',
+        jobTitle: 'AI Engineer & Full Stack Developer',
         url: 'https://patrick.bartosik.fr',
         twitter: '@patrickbartosik',
     },
@@ -31,7 +31,8 @@ export const seoConfig = {
     defaultLocale: 'fr' as const,
     locales: ['en', 'fr', 'pl'] as const,
     openGraph: {
-        image: '/og/og-image.png',
+        // Rendered by src/app/api/og/route.tsx, so the image always follows the current design.
+        image: '/api/og',
         imageWidth: 1200,
         imageHeight: 630,
         imageType: 'image/png',

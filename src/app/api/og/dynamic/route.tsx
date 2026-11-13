@@ -3,13 +3,18 @@ import { NextRequest } from 'next/server';
 
 export const runtime = 'edge';
 
+// Palette written out here: these routes cannot read the CSS tokens (ink, bone, accent).
+const INK = '#0B0B0A';
+const BONE = '#ECE7DE';
+const ACCENT = '#EC2A45';
+
 export async function GET(request: NextRequest) {
     try {
         const { searchParams } = new URL(request.url);
 
         // Paramètres dynamiques
         const title = searchParams.get('title') || 'Patrick Bartosik';
-        const subtitle = searchParams.get('subtitle') || 'Développeur Full-Stack';
+        const subtitle = searchParams.get('subtitle') || 'AI Engineer & Full Stack';
         const description = searchParams.get('description');
 
         return new ImageResponse(
@@ -22,7 +27,7 @@ export async function GET(request: NextRequest) {
                         flexDirection: 'column',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        backgroundColor: '#000000',
+                        backgroundColor: INK,
                         position: 'relative',
                     }}
                 >
@@ -35,7 +40,7 @@ export async function GET(request: NextRequest) {
                             width: '400px',
                             height: '400px',
                             borderRadius: '50%',
-                            background: 'radial-gradient(circle, rgba(255, 107, 53, 0.15) 0%, transparent 70%)',
+                            background: 'radial-gradient(circle, rgba(236, 42, 69, 0.15) 0%, transparent 70%)',
                         }}
                     />
                     <div
@@ -46,7 +51,7 @@ export async function GET(request: NextRequest) {
                             width: '360px',
                             height: '360px',
                             borderRadius: '50%',
-                            background: 'radial-gradient(circle, rgba(255, 140, 90, 0.15) 0%, transparent 70%)',
+                            background: 'radial-gradient(circle, rgba(236, 42, 69, 0.10) 0%, transparent 70%)',
                         }}
                     />
 
@@ -59,8 +64,8 @@ export async function GET(request: NextRequest) {
                             justifyContent: 'center',
                             width: '1040px',
                             padding: '60px',
-                            background: 'rgba(255, 255, 255, 0.05)',
-                            border: '2px solid rgba(255, 255, 255, 0.1)',
+                            background: 'rgba(236, 231, 222, 0.05)',
+                            border: '2px solid rgba(236, 231, 222, 0.16)',
                             borderRadius: '24px',
                         }}
                     >
@@ -72,7 +77,7 @@ export async function GET(request: NextRequest) {
                                 left: '80px',
                                 width: '170px',
                                 height: '4px',
-                                background: '#FF6B35',
+                                background: ACCENT,
                                 borderRadius: '2px',
                             }}
                         />
@@ -82,7 +87,7 @@ export async function GET(request: NextRequest) {
                             style={{
                                 fontSize: title.length > 20 ? '56px' : '72px',
                                 fontWeight: 'bold',
-                                background: 'linear-gradient(to right, #FFFFFF, rgba(255, 107, 53, 0.8))',
+                                background: 'linear-gradient(to right, #ECE7DE, rgba(236, 42, 69, 0.9))',
                                 backgroundClip: 'text',
                                 color: 'transparent',
                                 marginBottom: '16px',
@@ -98,7 +103,7 @@ export async function GET(request: NextRequest) {
                             style={{
                                 fontSize: '42px',
                                 fontWeight: '600',
-                                color: '#FFFFFF',
+                                color: BONE,
                                 opacity: 0.9,
                                 marginBottom: description ? '24px' : '40px',
                                 textAlign: 'center',
@@ -113,7 +118,7 @@ export async function GET(request: NextRequest) {
                                 style={{
                                     fontSize: '24px',
                                     fontWeight: '400',
-                                    color: '#FFFFFF',
+                                    color: BONE,
                                     opacity: 0.7,
                                     marginBottom: '40px',
                                     textAlign: 'center',
@@ -124,7 +129,7 @@ export async function GET(request: NextRequest) {
                             </div>
                         )}
 
-                        {/* Technologies badges */}
+                        {/* Badges */}
                         <div
                             style={{
                                 display: 'flex',
@@ -132,58 +137,21 @@ export async function GET(request: NextRequest) {
                                 marginTop: '20px',
                             }}
                         >
-                            <div
-                                style={{
-                                    padding: '12px 28px',
-                                    background: 'rgba(255, 255, 255, 0.1)',
-                                    border: '1.5px solid rgba(255, 255, 255, 0.2)',
-                                    borderRadius: '12px',
-                                    fontSize: '20px',
-                                    fontWeight: '500',
-                                    color: '#FFFFFF',
-                                }}
-                            >
-                                React
-                            </div>
-                            <div
-                                style={{
-                                    padding: '12px 28px',
-                                    background: 'rgba(255, 255, 255, 0.1)',
-                                    border: '1.5px solid rgba(255, 255, 255, 0.2)',
-                                    borderRadius: '12px',
-                                    fontSize: '20px',
-                                    fontWeight: '500',
-                                    color: '#FFFFFF',
-                                }}
-                            >
-                                Next.js
-                            </div>
-                            <div
-                                style={{
-                                    padding: '12px 28px',
-                                    background: 'rgba(255, 255, 255, 0.1)',
-                                    border: '1.5px solid rgba(255, 255, 255, 0.2)',
-                                    borderRadius: '12px',
-                                    fontSize: '20px',
-                                    fontWeight: '500',
-                                    color: '#FFFFFF',
-                                }}
-                            >
-                                TypeScript
-                            </div>
-                            <div
-                                style={{
-                                    padding: '12px 28px',
-                                    background: 'rgba(255, 107, 53, 0.2)',
-                                    border: '1.5px solid rgba(255, 107, 53, 0.4)',
-                                    borderRadius: '12px',
-                                    fontSize: '20px',
-                                    fontWeight: '500',
-                                    color: '#FF6B35',
-                                }}
-                            >
-                                Shopify Plus
-                            </div>
+                            {['AI Engineering', 'Full Stack'].map((label) => (
+                                <div
+                                    key={label}
+                                    style={{
+                                        padding: '12px 28px',
+                                        border: `1.5px solid ${label === 'Full Stack' ? ACCENT : 'rgba(236, 231, 222, 0.42)'}`,
+                                        borderRadius: '999px',
+                                        fontSize: '20px',
+                                        fontWeight: 500,
+                                        color: label === 'Full Stack' ? ACCENT : BONE,
+                                    }}
+                                >
+                                    {label}
+                                </div>
+                            ))}
                         </div>
 
                         {/* URL at bottom */}
@@ -193,11 +161,11 @@ export async function GET(request: NextRequest) {
                                 bottom: '50px',
                                 fontSize: '24px',
                                 fontWeight: '400',
-                                color: '#FFFFFF',
+                                color: BONE,
                                 opacity: 0.5,
                             }}
                         >
-                            patrickbartosik.com
+                            patrick.bartosik.fr
                         </div>
                     </div>
                 </div>

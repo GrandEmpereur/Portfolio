@@ -15,12 +15,12 @@ export async function GET(request: NextRequest) {
             description: 'Image principale du portfolio',
         },
         custom: {
-            url: '/api/og/dynamic?title=Mon%20Projet%20Shopify&subtitle=E-commerce%20-%202024',
+            url: '/api/og/dynamic?title=Mon%20Projet%20IA&subtitle=Agents%20-%202026',
             title: 'Image OG personnalisée',
             description: 'Exemple avec titre et sous-titre personnalisés',
         },
         long: {
-            url: '/api/og/dynamic?title=Un%20Projet%20avec%20un%20Tr%C3%A8s%20Long%20Titre%20pour%20Tester%20le%20Responsive&subtitle=Next.js%20%2B%20Shopify%20Plus&description=Description%20compl%C3%A8te%20du%20projet',
+            url: '/api/og/dynamic?title=Un%20Projet%20avec%20un%20Tr%C3%A8s%20Long%20Titre%20pour%20Tester%20le%20Responsive&subtitle=Next.js%20%2B%20Agents%20IA&description=Description%20compl%C3%A8te%20du%20projet',
             title: 'Image OG avec texte long',
             description: 'Test avec beaucoup de contenu',
         },
@@ -44,8 +44,8 @@ export async function GET(request: NextRequest) {
         }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-            color: #fff;
+            background: linear-gradient(135deg, #0B0B0A 0%, #1a1a18 100%);
+            color: #ECE7DE;
             padding: 40px 20px;
             min-height: 100vh;
         }
@@ -56,13 +56,13 @@ export async function GET(request: NextRequest) {
         h1 {
             font-size: 2.5rem;
             margin-bottom: 10px;
-            background: linear-gradient(to right, #fff, #FF6B35);
+            background: linear-gradient(to right, #ECE7DE, #EC2A45);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
         .subtitle {
-            color: #999;
+            color: #9A968D;
             margin-bottom: 40px;
             font-size: 1.1rem;
         }
@@ -77,18 +77,18 @@ export async function GET(request: NextRequest) {
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 8px;
-            color: #fff;
+            color: #ECE7DE;
             text-decoration: none;
             transition: all 0.3s;
             font-size: 0.95rem;
         }
         .tab:hover {
             background: rgba(255, 107, 53, 0.2);
-            border-color: #FF6B35;
+            border-color: #EC2A45;
         }
         .tab.active {
-            background: #FF6B35;
-            border-color: #FF6B35;
+            background: #EC2A45;
+            border-color: #EC2A45;
         }
         .preview {
             background: rgba(0, 0, 0, 0.3);
@@ -100,14 +100,14 @@ export async function GET(request: NextRequest) {
         .preview h2 {
             font-size: 1.5rem;
             margin-bottom: 10px;
-            color: #FF6B35;
+            color: #EC2A45;
         }
         .preview p {
-            color: #999;
+            color: #9A968D;
             margin-bottom: 20px;
         }
         .image-wrapper {
-            background: #000;
+            background: #0B0B0A;
             border: 2px solid rgba(255, 107, 53, 0.3);
             border-radius: 12px;
             overflow: hidden;
@@ -126,7 +126,7 @@ export async function GET(request: NextRequest) {
             margin-top: 30px;
         }
         .info h3 {
-            color: #FF6B35;
+            color: #EC2A45;
             margin-bottom: 15px;
             font-size: 1.2rem;
         }
@@ -141,14 +141,14 @@ export async function GET(request: NextRequest) {
             border-radius: 8px;
         }
         .info-label {
-            color: #999;
+            color: #9A968D;
             font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-bottom: 5px;
         }
         .info-value {
-            color: #fff;
+            color: #ECE7DE;
             font-family: 'Courier New', monospace;
             font-size: 0.9rem;
             word-break: break-all;
@@ -157,7 +157,7 @@ export async function GET(request: NextRequest) {
             background: rgba(0, 0, 0, 0.5);
             padding: 2px 6px;
             border-radius: 4px;
-            color: #FF6B35;
+            color: #EC2A45;
             font-size: 0.9em;
         }
         .tools {
@@ -165,7 +165,7 @@ export async function GET(request: NextRequest) {
         }
         .tools h3 {
             margin-bottom: 15px;
-            color: #FF6B35;
+            color: #EC2A45;
         }
         .tools-grid {
             display: grid;
@@ -185,17 +185,17 @@ export async function GET(request: NextRequest) {
             transform: translateY(-2px);
         }
         .tool-card h4 {
-            color: #fff;
+            color: #ECE7DE;
             margin-bottom: 8px;
             font-size: 1.1rem;
         }
         .tool-card p {
-            color: #999;
+            color: #9A968D;
             margin-bottom: 12px;
             font-size: 0.9rem;
         }
         .tool-card a {
-            color: #FF6B35;
+            color: #EC2A45;
             text-decoration: none;
             font-size: 0.9rem;
             display: inline-flex;
@@ -256,7 +256,7 @@ export async function GET(request: NextRequest) {
 
         <div class="tools">
             <h3>🔍 Outils de validation</h3>
-            <p style="color: #999; margin-bottom: 15px;">
+            <p style="color: #9A968D; margin-bottom: 15px;">
                 Testez votre image OG sur les différentes plateformes :
             </p>
             <div class="tools-grid">
