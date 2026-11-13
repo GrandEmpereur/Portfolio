@@ -3,6 +3,7 @@
 import { useRef, type ReactNode } from "react";
 import { gsap, ScrollTrigger, SplitText, useGSAP } from "@/lib/gsap-config";
 import { prefersReducedMotion, whenFontsReady } from "@/lib/motion";
+import { riseOnScroll } from "@/lib/reveal";
 
 interface MotionProps {
   children: ReactNode;
@@ -11,16 +12,7 @@ interface MotionProps {
 const split = (target: Element, vars: SplitText.Vars): SplitText => SplitText.create(target, { aria: "auto", ...vars });
 
 /** A block that rises and fades in when it enters the screen, in small staggered groups. */
-const rise = (targets: gsap.DOMTarget, y = 28): void => {
-  const els = gsap.utils.toArray<Element>(targets);
-  if (!els.length) return;
-  gsap.set(els, { y, autoAlpha: 0 });
-  ScrollTrigger.batch(els, {
-    start: "top 92%",
-    once: true,
-    onEnter: (batch) => gsap.to(batch, { y: 0, autoAlpha: 1, duration: 0.8, stagger: 0.07, overwrite: true }),
-  });
-};
+const rise = (targets: gsap.DOMTarget, y = 28): void => riseOnScroll(targets, { y });
 
 /** A big heading whose letters rise behind a mask, once. */
 const heading = (el: Element | null): void => {
@@ -88,15 +80,15 @@ export const HomeServicesMotion = ({ children }: MotionProps) => {
         if (grid && steps.length) {
           const numbers = root.querySelectorAll(".hs-step-n");
           const copy = root.querySelectorAll(".hs-step > h4, .hs-step > p");
-          gsap.set(numbers, { yPercent: 70, autoAlpha: 0 });
-          gsap.set(copy, { y: 22, autoAlpha: 0 });
+          gsap.set(numbers, { yPercent: 70, opacity: 0 });
+          gsap.set(copy, { y: 22, opacity: 0 });
           ScrollTrigger.create({
             trigger: grid,
             start: "top 86%",
             once: true,
             onEnter: () => {
-              gsap.to(numbers, { yPercent: 0, autoAlpha: 1, duration: 1, stagger: 0.13 });
-              gsap.to(copy, { y: 0, autoAlpha: 1, duration: 0.8, stagger: 0.06, delay: 0.15 });
+              gsap.to(numbers, { yPercent: 0, opacity: 1, duration: 1, stagger: 0.13 });
+              gsap.to(copy, { y: 0, opacity: 1, duration: 0.8, stagger: 0.06, delay: 0.15 });
             },
           });
           const fill = (progress: number) =>

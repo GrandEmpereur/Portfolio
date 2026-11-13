@@ -16,9 +16,10 @@ if (typeof window !== "undefined") {
     CustomEase.create("pb", ".2,.75,.2,1");
     CustomEase.create("pbInOut", ".7,0,.2,1");
 
-    // Configuration globale optimisée pour ScrollTrigger
+    // No `limitCallbacks: true` here. With it, a trigger that is passed in one jump (anchor link,
+    // scroll position restored after a reload, End key) fires no callback at all, and `once` then
+    // removes it: every reveal above the landing point would stay invisible for good.
     ScrollTrigger.config({
-        limitCallbacks: true,
         ignoreMobileResize: true,
     });
 

@@ -11,6 +11,7 @@ import {
   scrollState,
   whenFontsReady,
 } from '@/lib/motion';
+import { riseOnScroll } from '@/lib/reveal';
 
 interface HomeHeroMotionProps {
   locale: Locale;
@@ -82,16 +83,7 @@ export const HomeHeroMotion = ({ locale, children }: HomeHeroMotionProps) => {
                 scrollTrigger: { trigger: intro, start: 'top 88%', end: 'top 38%', scrub: true },
               });
             }
-            if (facts.length) {
-              gsap.set(facts, { y: 26, autoAlpha: 0 });
-              ScrollTrigger.batch(facts, {
-                start: 'top 92%',
-                once: true,
-                onEnter: (batch) => {
-                  gsap.to(batch, { y: 0, autoAlpha: 1, duration: 0.8, stagger: 0.07, overwrite: true });
-                },
-              });
-            }
+            riseOnScroll(facts, { y: 26 });
           }),
         );
         return;

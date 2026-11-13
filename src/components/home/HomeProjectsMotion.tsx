@@ -3,6 +3,7 @@
 import { useRef } from 'react';
 import { gsap, ScrollTrigger, SplitText, useGSAP } from '@/lib/gsap-config';
 import { EASE, canPin, isFinePointer, prefersReducedMotion, whenFontsReady } from '@/lib/motion';
+import { riseOnScroll } from '@/lib/reveal';
 
 const PEEK_SIZE = 240;
 // Each pinned project gets this share of the viewport height of scroll.
@@ -30,16 +31,7 @@ export const HomeProjectsMotion = () => {
         Array.from(from.querySelectorAll<HTMLElement>(selector));
 
       /* A block that rises and fades in when it enters the screen, in small staggered groups. */
-      const rise = (targets: HTMLElement[], y = 28) => {
-        if (!targets.length) return;
-        gsap.set(targets, { y, autoAlpha: 0 });
-        ScrollTrigger.batch(targets, {
-          start: 'top 92%',
-          end: 'max',
-          once: true,
-          onEnter: (batch) => gsap.to(batch, { y: 0, autoAlpha: 1, duration: 0.8, stagger: 0.07, ease: EASE.out, overwrite: true }),
-        });
-      };
+      const rise = (targets: HTMLElement[], y = 28) => riseOnScroll(targets, { y, ease: EASE.out });
 
       /* A giant title whose letters rise behind a line mask, once. Needs the final font metrics. */
       const reveal = (el: HTMLElement | null) => {

@@ -1,8 +1,9 @@
 "use client";
 
 import { useRef } from "react";
-import { gsap, ScrollTrigger, SplitText, useGSAP } from "@/lib/gsap-config";
+import { gsap, SplitText, useGSAP } from "@/lib/gsap-config";
 import { isFinePointer, prefersReducedMotion, whenFontsReady } from "@/lib/motion";
+import { riseOnScroll } from "@/lib/reveal";
 
 const MAGNET_X = 10;
 const MAGNET_Y = 8;
@@ -27,12 +28,7 @@ export const HomeEndMotion = () => {
       const rising = Array.from(
         root.querySelectorAll<HTMLElement>(".he-faq-title, .he-item, .he-label, .he-text, .he-cta, .he-facts > div"),
       );
-      gsap.set(rising, { y: 28, autoAlpha: 0 });
-      ScrollTrigger.batch(rising, {
-        start: "top 92%",
-        once: true,
-        onEnter: (batch) => gsap.to(batch, { y: 0, autoAlpha: 1, duration: 0.8, stagger: 0.07, overwrite: true, clearProps: "transform" }),
-      });
+      riseOnScroll(rising, { clearTransform: true });
 
       // ---- FAQ: height animation only enhances the native open/close ----
       const padding = new Map<HTMLDetailsElement, number>();
