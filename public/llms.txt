@@ -14,13 +14,16 @@ Key facts:
 - [Home, French](https://patrick.bartosik.fr/): the two jobs, services, featured projects, FAQ and contact
 - [Home, English](https://patrick.bartosik.fr/en): same content in English
 - [Home, Polish](https://patrick.bartosik.fr/pl): same content in Polish
+- [Services, French](https://patrick.bartosik.fr/services): each service in detail (when to consider it, what is delivered, how it goes, lead time, FAQ)
+- [Services, English](https://patrick.bartosik.fr/en/services)
+- [Services, Polish](https://patrick.bartosik.fr/pl/services)
 - [Contact, French](https://patrick.bartosik.fr/contact): a guided 2-minute brief or a direct message
 - [Contact, English](https://patrick.bartosik.fr/en/contact)
 - [Contact, Polish](https://patrick.bartosik.fr/pl/contact)
 
 ## Services
 
-All services are described on the home page of each language (section "Services" and FAQ).
+Each service has its own section on the services page of each language (linked above), and a summary on the home page.
 
 - AI engineering, LLM integration: Claude or GPT plugged into an existing product to answer customers or read documents
 - AI engineering, AI agents and automation: an agent that handles a business task from start to finish, such as qualifying a lead or answering support requests

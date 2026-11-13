@@ -6,16 +6,6 @@ import { TransitionLink } from '@/components/site/TransitionLink';
 import { HomeServicesMotion } from './HomeServicesMotion';
 import './home-services.css';
 
-// Which answer of the contact form's first question each service preselects.
-const NEED_BY_SERVICE: Record<string, string> = {
-  'llm-integration': 'llm',
-  'ai-agents': 'agent',
-  'rag-knowledge': 'rag',
-  'saas-development': 'saas',
-  'web-development': 'site',
-  'web-redesign': 'refonte',
-};
-
 const STEPS = [
   { title: 'step1Title', text: 'step1Text' },
   { title: 'step2Title', text: 'step2Text' },
@@ -64,7 +54,7 @@ export const HomeServices = async () => {
                         {/* The link covers the whole row (see .hs-link::after). */}
                         <TransitionLink
                           className="hs-link"
-                          href={localePath(locale, `/contact?need=${NEED_BY_SERVICE[service.id] ?? 'avis'}`)}
+                          href={localePath(locale, `/services#${service.id}`)}
                         >
                           <span className="hs-link-text">{service.title[locale]}</span>
                         </TransitionLink>

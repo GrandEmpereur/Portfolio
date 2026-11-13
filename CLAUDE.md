@@ -20,6 +20,9 @@ bun --no-env-file test
 # SEO smoke check against a running server (dev or production)
 bun --no-env-file scripts/seo-smoke.ts <url>
 
+# Render the Open Graph image again after a design change (writes public/og/og-image.png)
+bun --no-env-file scripts/render-og.ts
+
 # Email template development
 bun email
 ```
@@ -34,9 +37,10 @@ The app uses `next-international` with a `[locale]` dynamic segment. French is t
 
 - **Server-side**: `src/locales/serveur.ts` exports `getI18n`, `getScopedI18n`, `getStaticParams`, `getCurrentLocale`
 - **Client-side**: `src/locales/client.ts` exports `useI18n`, `useScopedI18n`, `useCurrentLocale`, `useChangeLocale`, `I18nProviderClient`
-- **Translation files**: `src/locales/{fr,en,pl}.ts` assemble one file per domain from `src/locales/<lang>/` (`common`, `home-hero`, `home-projects`, `home-services`, `home-end`, `contact-page`, `legal-pages`). The three languages must expose the same keys (`src/locales/parity.test.ts`). `nav`, `projectDetail`, `footer`, `meta`, `notFound` still live inline in `fr.ts`, `en.ts`, `pl.ts`.
+- **Translation files**: `src/locales/{fr,en,pl}.ts` assemble one file per domain from `src/locales/<lang>/` (`common`, `home-hero`, `home-projects`, `home-services`, `home-end`, `contact-page`, `legal-pages`, `services-page`). The three languages must expose the same keys (`src/locales/parity.test.ts`). `nav`, `projectDetail`, `footer`, `meta`, `notFound` still live inline in `fr.ts`, `en.ts`, `pl.ts`.
 - **Links**: internal links go through `localePath(locale, path)` (`src/lib/locale-path.ts`) so a visitor stays in their language
 - **Provider wrapper**: `src/app/[locale]/providers.tsx` wraps children with `I18nProviderClient`
+- **Static rendering**: `src/app/[locale]/layout.tsx` exports `generateStaticParams` and `dynamicParams = false`, so every page is prerendered once per language and an unknown first segment is a 404. Do not read `headers()`, `cookies()` or `searchParams` in a page: it would make it dynamic again. Project slugs stay open (`dynamicParams = true` in `projects/[slug]/page.tsx`) so old project URLs keep redirecting.
 - All visible text is rendered server-side. Hidden initial states come from GSAP or from the `js`, `enter`, `pinned` classes that only JavaScript sets, never from CSS at rest.
 
 ### Design System
@@ -46,13 +50,16 @@ The app uses `next-international` with a `[locale]` dynamic segment. French is t
 - **Themes**: `.theme-dark` (default, on `<body>`) and `.theme-light`, set per section. They resolve `--bg`, `--fg`, `--acc`, `--mut`, `--fnt`, `--ln`, `--surface`, exposed as the classes `text-fg`, `text-mut`, `text-fnt`, `border-ln`, `bg-surface`, `text-acc`. The `dark` class stays on `<html>` for shadcn; there is no next-themes.
 - **Utilities**: `display` (titles), `mono-label` (labels), `pad-x` (page gutter); components `.btn` and `.btn-ghost`
 - The fixed header takes about 84px at the top of every page
-- Section styles live in co-located CSS files with a prefix: `hh-` hero, `hp-` projects, `hs-` services, `he-` end, `cx-` contact, `lg-` legal, `pj-`/`pd-` projects pages, `nf-` 404
+- Section styles live in co-located CSS files with a prefix: `hh-` hero, `hp-` projects, `hs-` services, `he-` end, `cx-` contact, `lg-` legal, `sv-` services page, `pj-`/`pd-` projects pages, `nf-` 404
+- A "stretched link" (`a::after { position: absolute; inset: 0 }`) must never sit under an ancestor that gets a transform on hover: put the hover shift on an inner span
+- `body` uses `overflow-x: clip`, not `hidden`, so `position: sticky` works
 
 ### Components
 
 - `src/components/site/` - shell: `SiteHeader`, `SiteFooter`, `SiteCursor`, `RouteTransition`, `TransitionLink` (page fade, smooth same-page anchors)
 - `src/components/home/` - homepage chapters: hero and profile, projects, services, blog teaser, FAQ and contact call
 - `src/components/contact/` - contact screen: guided five-question flow, direct message, confirmation, dossier recap
+- `src/components/services/` - services page: head and index, one section per service, closing call to action
 - `src/components/legal/` - `LegalPage` layout for the four legal pages
 - `src/components/consent/` - consent banner and analytics gate
 - `src/components/ProjectCard.tsx`, `ProjectDetailContent.tsx`, `ProjectAnchor.tsx`, `NotFoundView.tsx` - `/projects`, `/projects/[slug]` and the 404 pages
@@ -68,6 +75,8 @@ import { gsap, ScrollTrigger, SplitText, useGSAP } from '@/lib/gsap-config';
 ```
 
 Pinning, custom cursor, magnetic effects and parallax run only from 900px up, with a mouse, and without "reduced motion" (`src/lib/motion.ts`).
+
+Blocks that appear on scroll go through `riseOnScroll` (`src/lib/reveal.ts`): opacity only, so they stay in the tab order. Never set `limitCallbacks: true` on ScrollTrigger: a section that is jumped past (anchor link, restored scroll position) would never be revealed.
 
 ### Smooth Scrolling
 
@@ -92,6 +101,7 @@ Uses **Lenis** for smooth scroll (package `lenis`, NOT `@studio-freight/lenis` w
 Static data is stored in `src/lib/data/`:
 - `lastwork.data.ts` - Projects. `published: false` keeps a project out of the HTML, the sitemap and the structured data; `featured` and `featuredOrder` drive the homepage. Use `getPublishedProjects`, `getFeaturedProjects`, `getAgencyProjects`; `hasDetailPage` is true only for a project with no external link and a long description
 - `services.data.ts` - Service offerings (no prices anywhere on the site)
+- `service-details.data.ts` - Long-form content of each service for the services page (use cases, deliverables, steps, FAQ, related project)
 - `blog.data.ts` - Blog posts; the homepage teaser shows once there are three
 - `testimonials.data.ts` - Project testimonials
 
@@ -100,7 +110,9 @@ Static data is stored in `src/lib/data/`:
 - Centralized SEO config in `src/lib/seo-config.ts` (base URL, author, social links, OG image, locales)
 - JSON-LD structured data in `src/lib/structured-data.ts` (`getFreelancerPersonSchema()` uses Person, not Organization)
 - Page titles are 60 characters at most, template included (`%s | Patrick Bartosik` comes from the layout, so a page title never repeats the name)
-- `robots.ts`, `sitemap.ts`, `manifest.ts` in `src/app/`
+- The Open Graph image is a static file, `public/og/og-image.png`, rendered by `scripts/render-og.ts`. Do not render it in a route: on Node.js `next/og` goes through sharp, and the Next.js image optimizer blocks SVG decoding in sharp for the whole process
+- There is no Twitter/X account: no `twitter.creator` in metadata
+- `robots.ts`, `sitemap.ts` in `src/app/`
 - `llms.txt` in `public/` for AI search engine optimization
 
 ### Path Aliases
@@ -110,6 +122,7 @@ The `@/*` alias maps to `./src/*` (configured in `tsconfig.json`).
 ## Pages
 
 - `/[locale]` - Homepage (hero and profile, projects, services, blog teaser, FAQ and contact call)
+- `/[locale]/services` - Services page (one anchored section per service; the homepage service rows link to `/services#<service-id>`)
 - `/[locale]/projects` - Projects page
 - `/[locale]/projects/[slug]` - Project detail (only projects with `hasDetailPage`)
 - `/[locale]/contact` - Contact page

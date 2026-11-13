@@ -6,6 +6,7 @@ import { homeServices } from './fr/home-services';
 import { homeEnd } from './fr/home-end';
 import { contactPage } from './fr/contact-page';
 import { legalPages } from './fr/legal-pages';
+import { servicesPage } from './fr/services-page';
 
 export default {
     common,
@@ -15,6 +16,7 @@ export default {
     homeEnd,
     contactPage,
     legalPages,
+    servicesPage,
     'projectDetail': {
         'role': 'Rôle',
         'technologies': 'Technologies',

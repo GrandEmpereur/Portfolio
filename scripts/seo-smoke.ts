@@ -21,7 +21,7 @@ const baseUrl = (process.argv[2] ?? 'http://localhost:3000').replace(/\/+$/, '')
 type FaqCopy = { faq: Record<string, string | { question: string; answer: string }> };
 const HOME_ENDS: Record<Locale, FaqCopy> = { fr: homeEndFr, en: homeEndEn, pl: homeEndPl };
 const LEGAL_PATHS = ['/mentions-legales', '/politique-confidentialite', '/politique-cookies', '/conditions-utilisation'] as const;
-const OTHER_PAGES = ['/contact', ...LEGAL_PATHS] as const;
+const OTHER_PAGES = ['/services', '/contact', ...LEGAL_PATHS] as const;
 const NAME = 'Patrick Bartosik';
 const MAX_TITLE = 60;
 
@@ -148,6 +148,44 @@ const checkOtherPage = async (path: string): Promise<void> => {
   if (page.status !== 200) return;
   const h1 = h1Count(page.body);
   check(`${path}: exactly one <h1>`, h1.total === 1, `found ${h1.total}`);
+};
+
+/** The services page: one anchored section per service, in every language, a short title and no price. */
+const checkServicesPage = async (locale: Locale): Promise<void> => {
+  const path = localePath(locale, '/services');
+  const page = await fetchPage(path);
+  if (!page) return;
+  const { status, body } = page;
+  check(`${path}: status 200`, status === 200, `got ${status}`);
+  if (status !== 200) return;
+
+  const h1 = h1Count(body);
+  check(`${path}: exactly one <h1>`, h1.total === 1, `found ${h1.total}`);
+  check(`${path}: <h1> not empty`, h1.filled >= 1);
+
+  const text = stripTags(body);
+  for (const service of services) {
+    check(`${path}: section #${service.id}`, body.includes(`id="${service.id}"`));
+    check(`${path}: service "${service.title[locale]}" present`, text.includes(normalize(service.title[locale])));
+  }
+  check(`${path}: no "€"`, !body.includes('€'));
+
+  const title = normalize(body.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1] ?? '');
+  check(`${path}: <title> at most ${MAX_TITLE} characters`, title.length <= MAX_TITLE, `${title.length}: ${title}`);
+  check(`${path}: <title> has "${NAME}" once`, title.split(NAME).length - 1 === 1, title);
+  check(`${path}: description present`, (metaContent(body, 'description') ?? '').length > 0);
+
+  const scripts = [...body.matchAll(/<script\b[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi)];
+  check(`${path}: has JSON-LD`, scripts.length > 0);
+  scripts.forEach((script, index) => {
+    try {
+      JSON.parse(script[1]);
+      check(`${path}: JSON-LD #${index + 1} is valid JSON`, true);
+    } catch {
+      check(`${path}: JSON-LD #${index + 1} is valid JSON`, false);
+    }
+    check(`${path}: JSON-LD #${index + 1} has no price`, !/"price(Range|Currency)?"|"offers"/.test(script[1]));
+  });
 };
 
 /** Path and query of a URL, so production URLs and tested-host URLs compare equal ("" becomes "/"). */
@@ -330,6 +368,7 @@ const main = async (): Promise<void> => {
   console.log(`seo-smoke against ${baseUrl}`);
   for (const locale of LOCALES) await checkHomepage(locale);
   for (const path of OTHER_PAGES) await checkOtherPage(path);
+  for (const locale of LOCALES) await checkServicesPage(locale);
   await checkRobots();
   await checkOgImage();
   const sitemapPaths = await checkSitemap();
