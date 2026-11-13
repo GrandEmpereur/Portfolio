@@ -1,0 +1,341 @@
+/* Services, method, quote (theme-light) and blog teaser (theme-dark).
+   Colours come from the theme variables only. No state is hidden at rest: GSAP sets the starting states. */
+
+/* ---------- shared ---------- */
+.hs-head {
+  padding: clamp(72px, 10vw, 150px) var(--pad) 0;
+}
+
+.hs-index {
+  color: var(--mut);
+}
+
+.hs-big {
+  font-size: clamp(44px, 9.4vw, 150px);
+  margin-top: 14px;
+}
+
+/* ---------- services ---------- */
+.hs-cats {
+  display: grid;
+  gap: 64px;
+  padding: 56px var(--pad) 0;
+}
+
+.hs-cat-head {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6px 18px;
+  align-items: baseline;
+  margin-bottom: 22px;
+}
+
+.hs-cat-code {
+  color: var(--acc);
+  font-size: 13px;
+}
+
+.hs-cat-head h3 {
+  font-size: clamp(24px, 2.6vw, 40px);
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+}
+
+.hs-cat-head p {
+  grid-column: 2;
+  color: var(--mut);
+  max-width: 44ch;
+}
+
+.hs-rows li {
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  gap: 6px 16px;
+  padding: 20px 0;
+  border-top: 1px solid var(--ln);
+  align-items: baseline;
+  transition: border-color 0.3s;
+}
+
+.hs-rows li:last-child {
+  border-bottom: 1px solid var(--ln);
+}
+
+.hs-code,
+.hs-duration {
+  color: var(--fnt);
+}
+
+.hs-rows h4 {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  transition: transform 0.3s;
+}
+
+.hs-rows p {
+  grid-column: 2;
+  color: var(--mut);
+  font-size: 15px;
+  max-width: 52ch;
+}
+
+.hs-duration {
+  grid-column: 2;
+  margin-top: 6px;
+}
+
+/* the arrow is a quiet hint at rest and darkens on hover; touch screens simply keep the resting look */
+.hs-arrow {
+  color: var(--fnt);
+  transition: color 0.3s;
+}
+
+@media (hover: hover) {
+  .hs-rows li:hover {
+    border-top-color: var(--fg);
+  }
+
+  .hs-rows li:hover h4 {
+    transform: translateX(8px);
+  }
+
+  .hs-rows li:hover .hs-arrow {
+    color: var(--acc);
+  }
+}
+
+/* ---------- method: the four steps are visible together, nothing hides behind the scroll ---------- */
+.hs-steps {
+  padding: clamp(88px, 10vw, 150px) var(--pad) 0;
+}
+
+.hs-steps-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+  margin-bottom: 36px;
+}
+
+.hs-steps-head h3 {
+  font-size: clamp(34px, 5.4vw, 84px);
+}
+
+.hs-steps-grid {
+  display: grid;
+}
+
+.hs-step {
+  position: relative;
+  padding: 22px 0 30px;
+  border-top: 1px solid var(--ln);
+}
+
+/* the accent rule fills with the scroll; without JavaScript it is simply complete */
+.hs-step::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -1px;
+  width: 100%;
+  height: 1px;
+  background: var(--acc);
+  transform-origin: left;
+  transform: scaleX(var(--f, 1));
+}
+
+.hs-step-n {
+  display: block;
+  font-size: clamp(64px, 8.4vw, 128px);
+  color: var(--acc);
+}
+
+.hs-step h4 {
+  font-size: clamp(22px, 2.1vw, 32px);
+  font-weight: 500;
+  font-stretch: 112%;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  margin-top: 18px;
+}
+
+.hs-step p {
+  color: var(--mut);
+  max-width: 32ch;
+  margin-top: 10px;
+  font-size: 15px;
+}
+
+/* ---------- quote ---------- */
+.hs-quote {
+  padding: clamp(96px, 12vw, 170px) var(--pad);
+}
+
+.hs-quote-item {
+  display: grid;
+  gap: 40px;
+}
+
+.hs-quote-item[hidden] {
+  display: none;
+}
+
+.hs-quote-mark {
+  display: block;
+  color: var(--acc);
+  font-family: Georgia, serif;
+  font-size: 120px;
+  line-height: 0.55;
+  height: 54px;
+}
+
+.hs-quote-pull {
+  font-size: clamp(40px, 7vw, 108px);
+  font-weight: 500;
+  font-stretch: 106%;
+  letter-spacing: -0.04em;
+  line-height: 0.96;
+}
+
+.hs-quote-full {
+  color: var(--mut);
+  max-width: 44ch;
+}
+
+.hs-quote-who {
+  margin-top: 16px;
+  font-weight: 600;
+}
+
+.hs-quote-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 48px;
+}
+
+.hs-quote-tabs button {
+  text-align: left;
+  padding-top: 12px;
+  border-top: 1px solid var(--ln);
+  color: var(--fnt);
+  cursor: pointer;
+  transition: color 0.3s, border-color 0.3s;
+}
+
+.hs-quote-tabs button[aria-pressed="true"] {
+  border-top-color: var(--acc);
+  color: var(--fg);
+}
+
+/* ---------- blog ---------- */
+.hs-blog-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+}
+
+.hs-posts {
+  padding: 44px var(--pad) clamp(88px, 10vw, 140px);
+}
+
+.hs-posts li {
+  border-top: 1px solid var(--ln);
+}
+
+.hs-posts li:last-child {
+  border-bottom: 1px solid var(--ln);
+}
+
+.hs-posts a {
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  gap: 8px 16px;
+  padding: 22px 0;
+  align-items: baseline;
+}
+
+.hs-post-n,
+.hs-post-tag {
+  color: var(--fnt);
+}
+
+.hs-posts h3 {
+  font-size: clamp(19px, 1.9vw, 28px);
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  transition: transform 0.3s;
+}
+
+.hs-posts p {
+  grid-column: 2;
+  grid-row: 2;
+  color: var(--mut);
+  font-size: 15px;
+  max-width: 60ch;
+}
+
+.hs-post-tag {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.hs-post-read {
+  grid-column: 3;
+  grid-row: 1;
+  color: var(--fg);
+}
+
+@media (hover: hover) {
+  .hs-posts a:hover h3 {
+    transform: translateX(8px);
+  }
+}
+
+/* ---------- tablet and desktop ---------- */
+@media (min-width: 900px) {
+  .hs-cats {
+    grid-template-columns: 1fr 1fr;
+    gap: 5vw;
+  }
+
+  .hs-steps-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+  }
+
+  .hs-quote-item {
+    grid-template-columns: 1.55fr 1fr;
+    align-items: end;
+  }
+
+  .hs-posts a {
+    grid-template-columns: 64px 1.25fr 1.5fr 150px auto;
+  }
+
+  .hs-posts p {
+    grid-column: 3;
+    grid-row: 1;
+  }
+
+  .hs-post-tag {
+    grid-column: 4;
+    grid-row: 1;
+  }
+
+  .hs-post-read {
+    grid-column: 5;
+    grid-row: 1;
+  }
+}
+
+/* ---------- mobile ---------- */
+@media (max-width: 899px) {
+  .hs-steps-head,
+  .hs-blog-head {
+    flex-direction: column;
+    gap: 8px;
+  }
+}

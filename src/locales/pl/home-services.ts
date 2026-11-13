@@ -1,2 +1,24 @@
-// Filled by its own task; the shell keeps the three languages importable.
-export const homeServices = {} as const;
+export const homeServices = {
+  index: '[04] Usługi i metoda',
+  titleLine1: 'Co',
+  titleLine2: 'buduję',
+  aiTitle: 'AI Engineering',
+  aiText: 'Funkcje AI, które naprawdę trafiają na produkcję, a nie demonstracje.',
+  fsTitle: 'Full Stack',
+  fsText: 'Solidne produkty webowe, od front-endu po infrastrukturę.',
+  methodTitle: 'Moje podejście',
+  methodHint: 'Cztery etapy, w tej kolejności',
+  step1Title: 'Discovery',
+  step1Text: 'Cele, odbiorcy, ograniczenia, budżet: projekt jest określony przed pierwszą linijką kodu.',
+  step2Title: 'Design',
+  step2Text: 'Makiety i architektura techniczna, zatwierdzone wspólnie przed rozpoczęciem prac.',
+  step3Title: 'Develop',
+  step3Text: 'Krótkie sprinty, demo co tydzień i kod widoczny w Git w każdej chwili.',
+  step4Title: 'Deploy',
+  step4Text: 'Testy, wdrożenie, monitoring, a potem szkolenie, byś zachował kontrolę.',
+  quoteLabel: 'Opinie',
+  blogIndex: '[05] Blog',
+  blogTitle: 'Artykuły',
+  blogHint: 'Trzy najnowsze',
+  blogRead: 'Czytaj',
+} as const;
