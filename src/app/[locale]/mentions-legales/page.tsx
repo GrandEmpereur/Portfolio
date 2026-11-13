@@ -1,197 +1,135 @@
-import { getI18n } from '@/locales/serveur';
+import type { Metadata } from 'next';
 import { setStaticParamsLocale } from 'next-international/server';
-import { Metadata } from 'next';
-import { seoConfig, ogLocaleMap } from '@/lib/seo-config';
-import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
+import { getScopedI18n } from '@/locales/serveur';
+import { providers, publisher } from '@/lib/legal.data';
+import {
+  buildLegalMetadata,
+  ContactValue,
+  LegalFacts,
+  LegalLink,
+  LegalPage,
+  LegalSection,
+  toLocale,
+} from '@/components/legal/LegalPage';
+import { SiteFooter } from '@/components/site/SiteFooter';
 
-/**
- * Generate metadata for legal notice page
- * @see .cursor/rules/seo.md for SEO best practices
- */
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}): Promise<Metadata> {
-  const { locale } = await params;
+const PATH = '/mentions-legales';
+
+type PageProps = { params: Promise<{ locale: string }> };
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const locale = toLocale((await params).locale);
   setStaticParamsLocale(locale);
-  const t = await getI18n();
-
-  const title = t('meta.legal.title');
-  const description = t('meta.legal.description');
-
-  return {
-    title,
-    description,
-    keywords: t('meta.legal.keywords'),
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-      },
-    },
-    alternates: {
-      canonical: locale === seoConfig.defaultLocale
-        ? `${seoConfig.baseUrl}/mentions-legales`
-        : `${seoConfig.baseUrl}/${locale}/mentions-legales`,
-      languages: {
-        'fr-FR': `${seoConfig.baseUrl}/mentions-legales`,
-        'x-default': `${seoConfig.baseUrl}/mentions-legales`,
-      },
-    },
-    openGraph: {
-      title,
-      description,
-      url: locale === seoConfig.defaultLocale
-        ? `${seoConfig.baseUrl}/mentions-legales`
-        : `${seoConfig.baseUrl}/${locale}/mentions-legales`,
-      locale: ogLocaleMap[locale] ?? locale,
-      images: [
-        {
-          url: `${seoConfig.baseUrl}${seoConfig.openGraph.image}`,
-          width: seoConfig.openGraph.imageWidth,
-          height: seoConfig.openGraph.imageHeight,
-          alt: title,
-        },
-      ],
-    },
-  };
+  const t = await getScopedI18n('legalPages');
+  return buildLegalMetadata({
+    locale,
+    path: PATH,
+    title: t('mentions.meta.title'),
+    description: t('mentions.meta.description'),
+  });
 }
 
-export default async function LegalNoticePage({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
-  const t = await getI18n();
-  const currentDate = new Date().toLocaleDateString('fr-FR', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  });
+export default async function LegalNoticePage({ params }: PageProps) {
+  const locale = toLocale((await params).locale);
+  setStaticParamsLocale(locale);
+  const t = await getScopedI18n('legalPages');
+  const { address } = publisher;
 
   return (
-    <main id="main-content" className="relative min-h-screen w-full px-8 md:px-16 lg:px-24 py-32">
-      {/* Back button */}
-      <Link
-        href="/"
-        className="inline-flex items-center gap-2 text-white/70 hover:text-white transition-colors duration-300 mb-12"
+    <>
+      <LegalPage
+        locale={locale}
+        title={t('mentions.title')}
+        intro={t('mentions.intro')}
+        updatedLabel={t('common.updated')}
+        frenchNote={t('common.frenchPrevails')}
       >
-        <ArrowLeft className="w-5 h-5" />
-        Retour à l'accueil
-      </Link>
+        <LegalSection id="editeur" title={t('mentions.publisher.title')}>
+          <p>{t('mentions.publisher.text')}</p>
+          <LegalFacts
+            rows={[
+              { label: t('common.label.name'), value: `${publisher.name}, ${publisher.legalForm}` },
+              {
+                label: t('common.label.address'),
+                value: `${address.street}, ${address.postalCode} ${address.city}, ${address.country}`,
+              },
+              { label: t('common.label.siren'), value: publisher.siren },
+              { label: t('common.label.siret'), value: publisher.siret },
+              { label: t('common.label.email'), value: <a href={`mailto:${publisher.email}`}>{publisher.email}</a> },
+              { label: t('common.label.phone'), value: publisher.phone },
+              { label: t('common.label.director'), value: publisher.publicationDirector },
+            ]}
+          />
+        </LegalSection>
 
-      {/* Header */}
-      <div className="max-w-4xl mx-auto mb-16">
-        <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
-          {t('legal.title')}
-        </h1>
-        <p className="text-white/50 text-lg">
-          {t('legal.lastUpdated')} : {currentDate}
-        </p>
-      </div>
+        <LegalSection id="hebergeur" title={t('mentions.host.title')}>
+          <p>{t('mentions.host.text')}</p>
+          <LegalFacts
+            rows={[
+              { label: t('common.label.company'), value: providers.vercel.entity },
+              { label: t('common.label.address'), value: providers.vercel.address },
+              { label: t('common.label.contact'), value: <ContactValue value={providers.vercel.contact} /> },
+            ]}
+          />
+        </LegalSection>
 
-      {/* Content */}
-      <div className="max-w-4xl mx-auto space-y-12">
-        {/* Editor */}
-        <section className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-8 md:p-10">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-orange-500">
-            {t('legal.sections.editor.title')}
-          </h2>
-          <div className="text-white/80 leading-relaxed space-y-4">
-            <p>{t('legal.sections.editor.content')}</p>
-            <div className="bg-white/5 rounded-lg p-4 mt-4">
-              <p><strong>Patrick Bartosik</strong></p>
-              <p>Développeur Full Stack Freelance</p>
-              <p>Email : <a href="mailto:contact@bartosik.fr" className="text-orange-500 hover:text-orange-400 transition-colors">contact@bartosik.fr</a></p>
-              <p>Site web : <a href="https://patrick.bartosik.fr" className="text-orange-500 hover:text-orange-400 transition-colors">patrick.bartosik.fr</a></p>
-            </div>
-          </div>
-        </section>
+        <LegalSection id="domaine" title={t('mentions.domain.title')}>
+          <p>{t('mentions.domain.text')}</p>
+          <LegalFacts
+            rows={[
+              { label: t('common.label.company'), value: providers.ovh.entity },
+              { label: t('common.label.address'), value: providers.ovh.address },
+              { label: t('common.label.contact'), value: t('providers.ovhContact') },
+            ]}
+          />
+        </LegalSection>
 
-        {/* Hosting */}
-        <section className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-8 md:p-10">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-orange-500">
-            {t('legal.sections.host.title')}
-          </h2>
-          <p className="text-white/80 leading-relaxed">
-            {t('legal.sections.host.content')}
+        <LegalSection id="reseau" title={t('mentions.network.title')}>
+          <p>{t('mentions.network.text')}</p>
+          <LegalFacts
+            rows={[
+              { label: t('common.label.company'), value: providers.cloudflare.entity },
+              { label: t('common.label.address'), value: providers.cloudflare.address },
+              { label: t('common.label.contact'), value: <ContactValue value={providers.cloudflare.contact} /> },
+            ]}
+          />
+        </LegalSection>
+
+        <LegalSection id="propriete-intellectuelle" title={t('mentions.ip.title')}>
+          <p>{t('mentions.ip.text1')}</p>
+          <p>{t('mentions.ip.text2')}</p>
+        </LegalSection>
+
+        <LegalSection id="signalement" title={t('mentions.report.title')}>
+          <p>{t('mentions.report.text')}</p>
+          <p>
+            <a href={`mailto:${publisher.email}`}>{publisher.email}</a>
           </p>
-          <div className="bg-white/5 rounded-lg p-4 mt-4">
-            <p><strong>Vercel Inc.</strong></p>
-            <p>440 N Barranca Ave #4133</p>
-            <p>Covina, CA 91723</p>
-            <p>États-Unis</p>
-            <p>Site web : <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" className="text-orange-500 hover:text-orange-400 transition-colors">vercel.com</a></p>
-          </div>
-        </section>
+        </LegalSection>
 
-        {/* Intellectual Property */}
-        <section className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-8 md:p-10">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-orange-500">
-            {t('legal.sections.property.title')}
-          </h2>
-          <p className="text-white/80 leading-relaxed">
-            {t('legal.sections.property.content')}
-          </p>
-        </section>
-
-        {/* Personal Data */}
-        <section className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-8 md:p-10">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-orange-500">
-            {t('legal.sections.data.title')}
-          </h2>
-          <p className="text-white/80 leading-relaxed">
-            {t('legal.sections.data.content')}
-          </p>
-          <p className="text-white/80 leading-relaxed mt-4">
-            Pour plus d'informations, consultez notre{' '}
-            <Link href="/politique-confidentialite" className="text-orange-500 hover:text-orange-400 transition-colors underline">
-              politique de confidentialité
-            </Link>.
-          </p>
-        </section>
-
-        {/* Cookies */}
-        <section className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-8 md:p-10">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-orange-500">
-            {t('legal.sections.cookies.title')}
-          </h2>
-          <p className="text-white/80 leading-relaxed">
-            {t('legal.sections.cookies.content')}
-          </p>
-        </section>
-
-        {/* Liability */}
-        <section className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-8 md:p-10">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-orange-500">
-            {t('legal.sections.liability.title')}
-          </h2>
-          <p className="text-white/80 leading-relaxed">
-            {t('legal.sections.liability.content')}
-          </p>
-        </section>
-      </div>
-
-      {/* Contact CTA */}
-      <div className="max-w-4xl mx-auto mt-16 text-center">
-        <div className="bg-gradient-to-r from-orange-500/10 to-orange-600/10 border border-orange-500/20 rounded-2xl p-8">
-          <h3 className="text-2xl font-bold mb-4">Questions ?</h3>
-          <p className="text-white/70 mb-6">
-            Pour toute question concernant ces mentions légales, n'hésitez pas à me contacter.
-          </p>
-          <Link
-            href="/contact"
-            className="inline-block px-8 py-4 bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl font-semibold text-black hover:scale-105 transition-transform duration-300"
-          >
-            Me contacter
-          </Link>
-        </div>
-      </div>
-    </main>
+        <LegalSection id="voir-aussi" title={t('mentions.data.title')}>
+          <p>{t('mentions.data.privacy')}</p>
+          <p>{t('mentions.data.cookies')}</p>
+          <ul className="lg-list">
+            <li>
+              <LegalLink locale={locale} path="/politique-confidentialite">
+                {t('common.links.privacy')}
+              </LegalLink>
+            </li>
+            <li>
+              <LegalLink locale={locale} path="/politique-cookies">
+                {t('common.links.cookies')}
+              </LegalLink>
+            </li>
+            <li>
+              <LegalLink locale={locale} path="/conditions-utilisation">
+                {t('common.links.terms')}
+              </LegalLink>
+            </li>
+          </ul>
+        </LegalSection>
+      </LegalPage>
+      <SiteFooter />
+    </>
   );
 }
