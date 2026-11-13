@@ -117,8 +117,8 @@ export const ContactExperience = ({ locale, heading }: ContactExperienceProps) =
       whenFontsReady(
         contextSafe(() => {
           if (cancelled) return;
-          // The title and the question are React-owned text: they are revealed as a whole, never split
-          // (splitting them emptied their letters as soon as React rendered again).
+          // The title and the question are text React renders and may render again: they are revealed
+          // as a whole, without splitting their DOM.
           if (title) {
             gsap.fromTo(
               title,

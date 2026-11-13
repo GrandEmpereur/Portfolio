@@ -25,7 +25,7 @@ const rise = (targets: gsap.DOMTarget, y = 28): void => {
 /** A big heading whose letters rise behind a mask, once. */
 const heading = (el: Element | null): void => {
   if (!el) return;
-  const lines = split(el, { type: "lines,chars", mask: "lines" });
+  const lines = split(el, { type: "lines,words,chars", mask: "lines" });
   gsap.from(lines.chars, {
     yPercent: 118,
     duration: 0.95,

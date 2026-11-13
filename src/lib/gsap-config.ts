@@ -2,7 +2,10 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { CustomEase } from "gsap/CustomEase";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { SplitText } from "gsap/SplitText";
+// Not "gsap/SplitText": in gsap 3.14.1 that build turns `[...segmenter.segment(word)]` into
+// `[].concat(...)`, which yields one empty character per word, so every title split by chars
+// renders blank. The source build keeps the real spread. Re-check when gsap is upgraded.
+import { SplitText } from "gsap/src/SplitText";
 import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
 
 // Register only the plugins that are actually used in the codebase

@@ -209,7 +209,7 @@ export const GuidedFlow = ({ locale, hidden, sending, onSubmit }: GuidedFlowProp
       const legend = active?.querySelector<HTMLElement>('legend');
       if (!active || !legend || prefersReducedMotion()) return;
       const dir = direction.current;
-      // The question is React-owned text: it is revealed as a whole, never split (splitting it emptied its letters).
+      // The question is text React renders and may render again: it is revealed as a whole, without splitting its DOM.
       gsap.fromTo(
         legend,
         { yPercent: 40 * dir, autoAlpha: 0 },

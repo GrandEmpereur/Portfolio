@@ -46,7 +46,7 @@ export const HomeProjectsMotion = () => {
         if (!el) return;
         whenFontsReady(
           safe(() => {
-            const split = SplitText.create(el, { type: 'lines,chars', mask: 'lines', aria: 'auto' });
+            const split = SplitText.create(el, { type: 'lines,words,chars', mask: 'lines', aria: 'auto' });
             gsap.from(split.chars, {
               yPercent: 118,
               duration: 0.95,

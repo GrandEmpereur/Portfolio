@@ -111,7 +111,7 @@ export const HomeEndMotion = () => {
         whenFontsReady(
           contextSafe(() => {
             if (cancelled) return;
-            const split = SplitText.create(title, { type: "lines,chars", mask: "lines", linesClass: "he-ln", aria: "auto" });
+            const split = SplitText.create(title, { type: "lines,words,chars", mask: "lines", linesClass: "he-ln", aria: "auto" });
             gsap.from(split.chars, {
               yPercent: 118,
               duration: 0.95,

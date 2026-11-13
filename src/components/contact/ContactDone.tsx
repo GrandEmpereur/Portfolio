@@ -41,7 +41,7 @@ export const ContactDone = ({ locale, firstName, email }: ContactDoneProps) => {
       const root = rootRef.current;
       const title = root?.querySelector<HTMLElement>('h2');
       if (!root || !title || prefersReducedMotion()) return;
-      // The title is React-owned text: it is revealed as a whole, never split (splitting it emptied its letters).
+      // The title is text React renders and may render again: it is revealed as a whole, without splitting its DOM.
       gsap.from(title, { yPercent: 40, autoAlpha: 0, duration: 0.9, ease: 'pb', clearProps: 'transform,opacity,visibility' });
       gsap.from(root.querySelectorAll('.cx-thanks, .cx-next li, .cx-actions, .cx-sub, .cx-chips, .cx-source-ok'), {
         y: 22,
