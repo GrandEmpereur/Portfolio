@@ -4,7 +4,7 @@ import { getI18n, getScopedI18n } from "@/locales/serveur";
 import { setStaticParamsLocale } from "next-international/server";
 import { Metadata } from "next";
 import { seoConfig, ogLocaleMap } from "@/lib/seo-config";
-import { getBreadcrumbSchema } from "@/lib/structured-data";
+import { getBreadcrumbSchema, serializeJsonLd } from "@/lib/structured-data";
 
 /**
  * Generate metadata for contact page
@@ -90,8 +90,7 @@ export default async function ContactPage({
             {/* JSON-LD Structured Data for SEO */}
             <script
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-                suppressHydrationWarning
+                dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbSchema) }}
             />
 
             <main id="main-content">

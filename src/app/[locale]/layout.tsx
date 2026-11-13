@@ -4,7 +4,7 @@ import "./globals.css";
 import { Providers } from "./providers";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { seoConfig, ogLocaleMap } from "@/lib/seo-config";
-import { getI18n } from "@/locales/serveur";
+import { getI18n, getStaticParams } from "@/locales/serveur";
 import { setStaticParamsLocale } from "next-international/server";
 import { Toaster } from "@/components/ui/sonner";
 import { SmoothScroll } from "@/components/SmoothScroll";
@@ -27,6 +27,13 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
   display: "swap",
 });
+
+// Every page is prerendered once per language (fr, en, pl). An unknown first segment is a 404.
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return getStaticParams();
+}
 
 // Runs before first paint. "js" unlocks the JavaScript-only states in the CSS.
 // "enter" (page hidden while the hero entrance prepares) only on 900px+ without reduced motion,

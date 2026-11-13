@@ -6,7 +6,7 @@ import { LOCALES, type Locale } from '@/lib/locale-path'
 import { setStaticParamsLocale } from 'next-international/server'
 import { Metadata } from 'next'
 import { seoConfig, ogLocaleMap } from '@/lib/seo-config'
-import { getProjectsListSchema, getBreadcrumbSchema } from '@/lib/structured-data'
+import { getProjectsListSchema, getBreadcrumbSchema, serializeJsonLd } from '@/lib/structured-data'
 
 export async function generateMetadata({
     params,
@@ -92,12 +92,12 @@ export default async function ProjectsPage({
             {/* JSON-LD Structured Data for SEO */}
             <script
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(projectsSchema) }}
+                dangerouslySetInnerHTML={{ __html: serializeJsonLd(projectsSchema) }}
                 suppressHydrationWarning
             />
             <script
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+                dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbSchema) }}
                 suppressHydrationWarning
             />
 

@@ -47,7 +47,7 @@ export const ProjectDetailContent = ({
             src={project.image}
             alt={project.title}
             fill
-            priority
+            preload
             quality={80}
             className="object-cover"
             sizes="(max-width: 1200px) 100vw, 1200px"

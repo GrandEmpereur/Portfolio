@@ -24,7 +24,7 @@ export const ProjectCard = ({ project, locale, priority = false }: ProjectCardPr
               src={project.image}
               alt=""
               fill
-              priority={priority}
+              preload={priority}
               className="pj-img object-cover"
               sizes="(max-width: 900px) 100vw, 50vw"
             />

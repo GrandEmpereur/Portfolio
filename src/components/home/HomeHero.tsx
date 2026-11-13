@@ -18,7 +18,7 @@ export const HomeHero = async () => {
               src="/images/portrait-studio.jpg"
               alt={t('portraitAlt')}
               fill
-              priority
+              preload
               sizes="(min-width: 900px) 36vw, 100vw"
               className="hh-photo"
             />
