@@ -2,17 +2,19 @@ import type { MetadataRoute } from 'next';
 import { seoConfig, ogLocaleMap } from '@/lib/seo-config';
 import { getPublishedProjects, hasDetailPage } from '@/lib/data/lastwork.data';
 
-type ChangeFreq = 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never';
+/**
+ * sitemap.xml: canonical URLs only, one entry per language, each with all its hreflang alternates
+ * (itself included) and x-default. Google ignores <priority> and <changefreq>, and only trusts <lastmod>
+ * when it is accurate: there is no per-page modification date in the project, so none is emitted
+ * rather than `new Date()` (which would change on every build and teach crawlers to ignore it).
+ * @see https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap
+ */
 
-type PageEntry = {
-    path: string;
-    priority: number;
-    changeFrequency: ChangeFreq;
-};
-
+// Same URL shape as the page metadata: French at the root ("/" for the homepage), en and pl prefixed.
 const buildLocaleUrl = (locale: string, path: string): string => {
     const base = seoConfig.baseUrl;
-    return locale === seoConfig.defaultLocale ? `${base}${path}` : `${base}/${locale}${path}`;
+    if (locale === seoConfig.defaultLocale) return `${base}${path || '/'}`;
+    return `${base}/${locale}${path}`;
 };
 
 const buildLanguagesMap = (path: string): Record<string, string> => {
@@ -26,43 +28,27 @@ const buildLanguagesMap = (path: string): Record<string, string> => {
 };
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const lastModified = new Date();
-
-    // Project detail pages: only published projects that have a real on-site page.
-    // Projects with an external `link` leave the site, so they stay out of the sitemap.
-    const projectPages: PageEntry[] = getPublishedProjects()
+    // Only projects with a real on-site page. Projects with an external `link` leave the site.
+    const projectPaths = getPublishedProjects()
         .filter(hasDetailPage)
-        .map((project) => ({
-            path: `/projects/${project.slug}`,
-            priority: 0.7,
-            changeFrequency: 'monthly' as ChangeFreq,
-        }));
+        .map((project) => `/projects/${project.slug}`);
 
-    const multilingualPages: PageEntry[] = [
-        { path: '', priority: 1.0, changeFrequency: 'weekly' },
-        { path: '/projects', priority: 0.9, changeFrequency: 'weekly' },
-        { path: '/contact', priority: 0.8, changeFrequency: 'monthly' },
-        ...projectPages,
-        { path: '/mentions-legales', priority: 0.3, changeFrequency: 'yearly' },
-        { path: '/politique-confidentialite', priority: 0.3, changeFrequency: 'yearly' },
-        { path: '/politique-cookies', priority: 0.3, changeFrequency: 'yearly' },
-        { path: '/conditions-utilisation', priority: 0.3, changeFrequency: 'yearly' },
+    const paths = [
+        '',
+        '/projects',
+        '/contact',
+        ...projectPaths,
+        '/mentions-legales',
+        '/politique-confidentialite',
+        '/politique-cookies',
+        '/conditions-utilisation',
     ];
 
-    const urls: MetadataRoute.Sitemap = [];
-
-    for (const page of multilingualPages) {
-        const languages = buildLanguagesMap(page.path);
-        for (const locale of seoConfig.locales) {
-            urls.push({
-                url: buildLocaleUrl(locale, page.path),
-                lastModified,
-                changeFrequency: page.changeFrequency,
-                priority: page.priority,
-                alternates: { languages },
-            });
-        }
-    }
-
-    return urls;
+    return paths.flatMap((path) => {
+        const languages = buildLanguagesMap(path);
+        return seoConfig.locales.map((locale) => ({
+            url: buildLocaleUrl(locale, path),
+            alternates: { languages },
+        }));
+    });
 }

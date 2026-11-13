@@ -1,49 +1,55 @@
-# Patrick Bartosik: freelance AI Engineer and Full Stack developer in Paris
+# Patrick Bartosik, freelance AI Engineer and Full Stack developer in Paris
 
-> Patrick Bartosik is a freelance AI Engineer and Full Stack developer based in Paris, France. He does two jobs: AI engineering (LLM integration, AI agents, RAG) and Full Stack development (SaaS products, website creation and redesign). He works remotely, replies to every request within 24 hours, and the first call is free. The site is available in French, English and Polish.
+> Patrick Bartosik is a freelance AI Engineer and Full Stack developer based in Paris, France. He does two jobs: AI engineering (LLM integration, AI agents, RAG) and Full Stack development (SaaS products, website creation and redesign). He works remotely, replies to every request within 24 hours, and the first call is free and without obligation. The site is available in French (default, no URL prefix), English (/en) and Polish (/pl).
 
-## Key facts
-- Name: Patrick Bartosik
-- Role: freelance AI Engineer and Full Stack developer
-- Location: Paris, France (remote work, video calls)
+Key facts:
 - Languages: French (native), Polish (native), English (professional)
-- Response time: within 24 hours
-- First call: free, no commitment
+- Work mode: remote, video calls, mostly for clients in France and across Europe
+- Contact: contact@bartosik.fr
+- Typical lead times: website 2 to 8 weeks, LLM integration 2 to 6 weeks, AI agent 4 to 10 weeks, RAG 3 to 8 weeks, SaaS 8 to 16 weeks
+- Stack: React, Next.js, TypeScript, Tailwind CSS, Node.js, NestJS, PostgreSQL, Supabase, Prisma; Claude API, OpenAI API, Vercel AI SDK, MCP, pgvector
 
-## AI engineering
-- LLM integration: Claude or GPT plugged into an existing product to answer customers or read documents. Typical lead time: 2 to 6 weeks.
-- AI agents and automation: an agent that handles a business task from start to finish, such as qualifying a lead or answering support requests. Typical lead time: 4 to 10 weeks.
-- RAG and knowledge bases: documents turned into a base that can be queried in plain language, with the source of every answer. Typical lead time: 3 to 8 weeks.
+## Main pages
 
-## Full Stack development
-- SaaS development: a SaaS from idea to launch, with or without AI (user accounts, subscriptions, dashboard). Typical lead time: 8 to 16 weeks.
-- Website development: a custom site built with Next.js, made to load fast and to be found on Google. Typical lead time: 2 to 8 weeks.
-- Website redesign: an existing site reworked for speed and search visibility, keeping its URLs and rankings.
+- [Home, French](https://patrick.bartosik.fr/): the two jobs, services, featured projects, FAQ and contact
+- [Home, English](https://patrick.bartosik.fr/en): same content in English
+- [Home, Polish](https://patrick.bartosik.fr/pl): same content in Polish
+- [Contact, French](https://patrick.bartosik.fr/contact): a guided 2-minute brief or a direct message
+- [Contact, English](https://patrick.bartosik.fr/en/contact)
+- [Contact, Polish](https://patrick.bartosik.fr/pl/contact)
+
+## Services
+
+All services are described on the home page of each language (section "Services" and FAQ).
+
+- AI engineering, LLM integration: Claude or GPT plugged into an existing product to answer customers or read documents
+- AI engineering, AI agents and automation: an agent that handles a business task from start to finish, such as qualifying a lead or answering support requests
+- AI engineering, RAG and knowledge bases: documents turned into a base that can be queried in plain language, with the source of every answer
+- Full Stack, SaaS development: a SaaS from idea to launch, with or without AI (user accounts, subscriptions, dashboard)
+- Full Stack, website development: a custom site built with Next.js, made to load fast and to be found on Google
+- Full Stack, website redesign: an existing site reworked for speed and search visibility, keeping its URLs and rankings
 
 ## Projects
-- TraceGuard: a control layer between AI agents and the tools they call. Every call is allowed, blocked or sent to a person, then written to an exportable audit log. Personal demo, not a commercial product. https://patrick.bartosik.fr/projects/traceguard
-- NutriCert: a SaaS for restaurant owners (nutrition badges, allergens, QR code and NFC). https://www.nutricert.fr/
-- Bookish: a social network for readers, with a Next.js web app and an iOS app. School project. https://patrick.bartosik.fr/projects/bookish
-- Euroclear France: work on financial market infrastructure (Angular, Azure CI/CD). https://www.euroclear.com/en.html
-- Websites built at the W3lead agency: Odaje, Tartine & Chocolat, Qwetch, Easy Clothes, Balzac Paris, Isotoner, Le-1.store.
-- All projects: https://patrick.bartosik.fr/projects
 
-## Technologies
-- Frontend: React, Next.js (App Router), TypeScript, Tailwind CSS, GSAP
-- Backend: Node.js, NestJS, PostgreSQL, Redis, Supabase, Prisma
-- AI: Claude API, OpenAI API, Azure AI Foundry, Vercel AI SDK, MCP, pgvector, n8n
+- [All projects, French](https://patrick.bartosik.fr/projects)
+- [All projects, English](https://patrick.bartosik.fr/en/projects)
+- [All projects, Polish](https://patrick.bartosik.fr/pl/projects)
+- [TraceGuard, English](https://patrick.bartosik.fr/en/projects/traceguard): a control layer between AI agents and the tools they call. Every call is allowed, blocked or sent to a person, then written to an exportable audit log. Personal demo, not a commercial product. Also in [French](https://patrick.bartosik.fr/projects/traceguard) and [Polish](https://patrick.bartosik.fr/pl/projects/traceguard)
+- [Bookish, English](https://patrick.bartosik.fr/en/projects/bookish): a social network for readers, with a Next.js web app and an iOS app. School project. Also in [French](https://patrick.bartosik.fr/projects/bookish) and [Polish](https://patrick.bartosik.fr/pl/projects/bookish)
+- [NutriCert](https://www.nutricert.fr/): a SaaS for restaurant owners (nutrition badges, allergens, QR code and NFC)
+- Ariane: an AI assistant that helps a team find its way through several thousand legacy programs (Python, agents, code graph, answer evaluation). Described on the projects page, no public link
+- Websites built at the W3lead agency (listed on the projects page): Odaje, Tartine & Chocolat, Qwetch, Easy Clothes, Balzac Paris, Isotoner, Le-1.store
 
-## Pages
-- French (default): https://patrick.bartosik.fr/
-- English: https://patrick.bartosik.fr/en
-- Polish: https://patrick.bartosik.fr/pl
-- Contact (guided 2-minute brief or direct message): https://patrick.bartosik.fr/contact, https://patrick.bartosik.fr/en/contact, https://patrick.bartosik.fr/pl/contact
-- Projects: https://patrick.bartosik.fr/projects, https://patrick.bartosik.fr/en/projects, https://patrick.bartosik.fr/pl/projects
-- Legal notice: https://patrick.bartosik.fr/mentions-legales
-- Privacy policy: https://patrick.bartosik.fr/politique-confidentialite
+## Legal
 
-## Contact
-- Contact form: https://patrick.bartosik.fr/contact
-- Email: contact@bartosik.fr
-- LinkedIn: https://www.linkedin.com/in/patrick-bartosik
-- GitHub: https://github.com/GrandEmpereur
+- [Legal notice](https://patrick.bartosik.fr/mentions-legales) ([en](https://patrick.bartosik.fr/en/mentions-legales), [pl](https://patrick.bartosik.fr/pl/mentions-legales))
+- [Privacy policy](https://patrick.bartosik.fr/politique-confidentialite) ([en](https://patrick.bartosik.fr/en/politique-confidentialite), [pl](https://patrick.bartosik.fr/pl/politique-confidentialite))
+- [Cookie policy](https://patrick.bartosik.fr/politique-cookies) ([en](https://patrick.bartosik.fr/en/politique-cookies), [pl](https://patrick.bartosik.fr/pl/politique-cookies))
+- [Terms of use](https://patrick.bartosik.fr/conditions-utilisation) ([en](https://patrick.bartosik.fr/en/conditions-utilisation), [pl](https://patrick.bartosik.fr/pl/conditions-utilisation))
+
+## Optional
+
+- [LinkedIn](https://www.linkedin.com/in/patrick-bartosik)
+- [GitHub](https://github.com/GrandEmpereur)
+- [Instagram](https://www.instagram.com/agencepatrickai/)
+- [Sitemap](https://patrick.bartosik.fr/sitemap.xml)
