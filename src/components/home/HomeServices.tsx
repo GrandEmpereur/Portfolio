@@ -1,8 +1,20 @@
 import { getCurrentLocale, getScopedI18n } from '@/locales/serveur';
 import { services, splitTestimonial, type ServiceCategory } from '@/lib/data/services.data';
 import { projectTestimonials } from '@/lib/data/testimonials.data';
+import { localePath } from '@/lib/locale-path';
+import { TransitionLink } from '@/components/site/TransitionLink';
 import { HomeServicesMotion } from './HomeServicesMotion';
 import './home-services.css';
+
+// Which answer of the contact form's first question each service preselects.
+const NEED_BY_SERVICE: Record<string, string> = {
+  'llm-integration': 'llm',
+  'ai-agents': 'agent',
+  'rag-knowledge': 'rag',
+  'saas-development': 'saas',
+  'web-development': 'site',
+  'web-redesign': 'refonte',
+};
 
 const STEPS = [
   { title: 'step1Title', text: 'step1Text' },
@@ -48,7 +60,15 @@ export const HomeServices = async () => {
                   .map((service) => (
                     <li key={service.id}>
                       <span className="mono-label hs-code">{service.code}</span>
-                      <h4>{service.title[locale]}</h4>
+                      <h4>
+                        {/* The link covers the whole row (see .hs-link::after). */}
+                        <TransitionLink
+                          className="hs-link"
+                          href={localePath(locale, `/contact?need=${NEED_BY_SERVICE[service.id] ?? 'avis'}`)}
+                        >
+                          {service.title[locale]}
+                        </TransitionLink>
+                      </h4>
                       <span className="hs-arrow" aria-hidden="true">
                         ↗
                       </span>

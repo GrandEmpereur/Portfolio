@@ -48,6 +48,7 @@
 }
 
 .hs-rows li {
+  position: relative;
   display: grid;
   grid-template-columns: 64px 1fr auto;
   gap: 6px 16px;
@@ -338,4 +339,26 @@
     flex-direction: column;
     gap: 8px;
   }
+}
+
+/* A service row is one link: the title carries it and its hit area covers the row. */
+.hs-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.hs-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.hs-link:focus-visible {
+  outline: none;
+}
+
+.hs-rows li:has(.hs-link:focus-visible) {
+  outline: 2px solid var(--acc);
+  outline-offset: 4px;
 }

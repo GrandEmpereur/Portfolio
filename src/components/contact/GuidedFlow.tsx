@@ -75,6 +75,13 @@ export const GuidedFlow = ({ locale, hidden, sending, onSubmit }: GuidedFlowProp
   const t = useScopedI18n('contactPage');
   const { register, setValue, getValues, handleSubmit, control } = useFormContext<GuidedValues>();
   const needs = useWatch({ control, name: 'needs' });
+
+  // Arriving from a service row (/contact?need=rag): that need is already ticked.
+  useEffect(() => {
+    const wanted = new URLSearchParams(window.location.search).get('need');
+    const need = NEEDS.find((id) => id === wanted);
+    if (need && getValues('needs').length === 0) setValue('needs', [need], { shouldDirty: true });
+  }, [getValues, setValue]);
   const stage = useWatch({ control, name: 'stage' });
   const timing = useWatch({ control, name: 'timing' });
   const budget = useWatch({ control, name: 'budget' });
