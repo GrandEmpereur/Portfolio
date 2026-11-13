@@ -80,8 +80,8 @@ export default async function ContactPage({
     // Generate breadcrumb structured data
     const breadcrumbSchema = getBreadcrumbSchema(
         [
-            { name: t('nav.home'), url: locale === seoConfig.defaultLocale ? '/' : `/${locale}` },
-            { name: t('nav.contact'), url: locale === seoConfig.defaultLocale ? '/contact' : `/${locale}/contact` },
+            { name: t('common.nav.chapters.accueil'), url: locale === seoConfig.defaultLocale ? '/' : `/${locale}` },
+            { name: t('common.nav.chapters.contact'), url: locale === seoConfig.defaultLocale ? '/contact' : `/${locale}/contact` },
         ],
         locale
     );

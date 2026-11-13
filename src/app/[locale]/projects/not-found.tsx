@@ -1,11 +1,20 @@
-import Link from 'next/link'
+import { NotFoundView } from '@/components/NotFoundView';
+import { getCurrentLocale, getScopedI18n } from '@/locales/serveur';
 
-export default function NotFound() {
-    return (
-        <div>
-            <h2>Not Found</h2>
-            <p>Could not find requested resource</p>
-            <Link href="/">Return Home</Link>
-        </div>
-    )
+export default async function NotFound() {
+  const [locale, t] = await Promise.all([getCurrentLocale(), getScopedI18n('notFound')]);
+
+  return (
+    <NotFoundView
+      locale={locale}
+      copy={{
+        title: t('title'),
+        heading: t('heading'),
+        description: t('description'),
+        homeButton: t('homeButton'),
+        projectsButton: t('projectsButton'),
+        contactButton: t('contactButton'),
+      }}
+    />
+  );
 }

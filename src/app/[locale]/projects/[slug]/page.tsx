@@ -6,6 +6,8 @@ import { notFound } from 'next/navigation';
 import { seoConfig, ogLocaleMap } from '@/lib/seo-config';
 import { getProjectDetailSchema, getBreadcrumbSchema } from '@/lib/structured-data';
 import { ProjectDetailContent } from '@/components/ProjectDetailContent';
+import { SiteFooter } from '@/components/site/SiteFooter';
+import { LOCALES, type Locale } from '@/lib/locale-path';
 
 // Detail pages exist only for published projects without external link that carry a long description
 export function generateStaticParams() {
@@ -25,7 +27,8 @@ export async function generateMetadata({
     const project = getPublishedProjects().find((p) => p.slug === slug);
     if (!project) return {};
 
-    const title = `${project.title} | Portfolio Patrick Bartosik`;
+    // The layout title template already appends the site name
+    const title = project.title;
     const description = project.longDescription || project.description || '';
     const projectUrl =
         locale === seoConfig.defaultLocale
@@ -86,7 +89,8 @@ export default async function ProjectDetailPage({
 }: {
     params: Promise<{ locale: string; slug: string }>;
 }) {
-    const { locale, slug } = await params;
+    const { locale: rawLocale, slug } = await params;
+    const locale: Locale = LOCALES.find((l) => l === rawLocale) ?? 'fr';
     setStaticParamsLocale(locale);
     const t = await getI18n();
 
@@ -114,14 +118,14 @@ export default async function ProjectDetailPage({
     const breadcrumbSchema = getBreadcrumbSchema(
         [
             {
-                name: t('nav.home'),
+                name: t('common.nav.chapters.accueil'),
                 url:
                     locale === seoConfig.defaultLocale
                         ? '/'
                         : `/${locale}`,
             },
             {
-                name: t('nav.projects'),
+                name: t('common.nav.chapters.projets'),
                 url:
                     locale === seoConfig.defaultLocale
                         ? '/projects'
@@ -158,6 +162,7 @@ export default async function ProjectDetailPage({
                 project={project}
                 prevProject={prevProject}
                 nextProject={nextProject}
+                locale={locale}
                 translations={{
                     role: t('projectDetail.role'),
                     technologies: t('projectDetail.technologies'),
@@ -169,6 +174,7 @@ export default async function ProjectDetailPage({
                     prevProjectLabel: t('projectDetail.prevProject'),
                 }}
             />
+            <SiteFooter />
         </>
     );
 }

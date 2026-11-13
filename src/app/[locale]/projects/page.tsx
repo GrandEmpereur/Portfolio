@@ -1,7 +1,8 @@
-import React from 'react'
 import { getPublishedProjects, hasDetailPage } from '@/lib/data/lastwork.data'
 import { ProjectCard } from '@/components/ProjectCard'
 import { getI18n } from '@/locales/serveur'
+import { SiteFooter } from '@/components/site/SiteFooter'
+import { LOCALES, type Locale } from '@/lib/locale-path'
 import { setStaticParamsLocale } from 'next-international/server'
 import { Metadata } from 'next'
 import { seoConfig, ogLocaleMap } from '@/lib/seo-config'
@@ -68,7 +69,9 @@ export default async function ProjectsPage({
 }: {
     params: Promise<{ locale: string }>;
 }) {
-    const { locale } = await params;
+    const { locale: rawLocale } = await params;
+    const locale: Locale = LOCALES.find((l) => l === rawLocale) ?? 'fr';
+    setStaticParamsLocale(locale);
     const t = await getI18n();
 
     const projects = getPublishedProjects();
@@ -79,8 +82,8 @@ export default async function ProjectsPage({
     );
     const breadcrumbSchema = getBreadcrumbSchema(
         [
-            { name: t('nav.home'), url: locale === seoConfig.defaultLocale ? '/' : `/${locale}` },
-            { name: t('nav.projects'), url: locale === seoConfig.defaultLocale ? '/projects' : `/${locale}/projects` },
+            { name: t('common.nav.chapters.accueil'), url: locale === seoConfig.defaultLocale ? '/' : `/${locale}` },
+            { name: t('common.nav.chapters.projets'), url: locale === seoConfig.defaultLocale ? '/projects' : `/${locale}/projects` },
         ],
         locale
     );
@@ -99,23 +102,19 @@ export default async function ProjectsPage({
                 suppressHydrationWarning
             />
 
-            <main id="main-content" className="relative min-h-screen w-full pt-20 pb-16">
-                {/* Header Section */}
-                <section className="px-8 md:px-16 lg:px-24 py-16">
-                    <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-[140px] leading-tight uppercase font-bold">
-                        {t('work.title')}.
-                    </h1>
-                </section>
-
-                {/* Projects Grid */}
-                <section className="px-8 md:px-16 lg:px-24 pb-16">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-10 max-w-[2200px] mx-auto">
-                        {projects.map((project) => (
-                            <ProjectCard key={project.slug} project={project} />
+            <main id="main-content" className="pj pad-x text-fg">
+                <div className="pj-inner">
+                    <header className="pj-head">
+                        <h1 className="display pj-title">{t('homeProjects.title')}</h1>
+                    </header>
+                    <ul className="pj-grid">
+                        {projects.map((project, index) => (
+                            <ProjectCard key={project.slug} project={project} locale={locale} priority={index < 2} />
                         ))}
-                    </div>
-                </section>
+                    </ul>
+                </div>
             </main>
+            <SiteFooter />
         </>
     )
 }
