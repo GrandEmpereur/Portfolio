@@ -13,6 +13,7 @@ import { homeEnd as homeEndFr } from '../src/locales/fr/home-end';
 import { homeEnd as homeEndEn } from '../src/locales/en/home-end';
 import { homeEnd as homeEndPl } from '../src/locales/pl/home-end';
 import { LOCALES, localePath, type Locale } from '../src/lib/locale-path';
+import { seoConfig } from '../src/lib/seo-config';
 
 const baseUrl = (process.argv[2] ?? 'http://localhost:3000').replace(/\/+$/, '');
 
@@ -149,13 +150,130 @@ const checkOtherPage = async (path: string): Promise<void> => {
   check(`${path}: exactly one <h1>`, h1.total === 1, `found ${h1.total}`);
 };
 
-const checkSitemap = async (): Promise<void> => {
-  const page = await fetchPage('/sitemap.xml');
+/** Path and query of a URL, so production URLs and tested-host URLs compare equal ("" becomes "/"). */
+const pathOf = (url: string): string => {
+  const parsed = new URL(url, baseUrl);
+  return `${parsed.pathname || '/'}${parsed.search}`;
+};
+
+/** A production URL rewritten onto the tested host. */
+const rebase = (url: string): string => `${baseUrl}${pathOf(url)}`;
+
+const FORM_ROUTES = ['/api/contact', '/api/contact-simple', '/api/contact-source'] as const;
+const OG_IMAGE = seoConfig.openGraph.image;
+
+/** The Open Graph image is a static file: it must be served as a PNG. */
+const checkOgImage = async (): Promise<void> => {
+  try {
+    const response = await fetch(`${baseUrl}${OG_IMAGE}`, { headers: { 'user-agent': 'seo-smoke' } });
+    const type = response.headers.get('content-type') ?? '';
+    check(`${OG_IMAGE}: status 200`, response.status === 200, `got ${response.status}`);
+    check(`${OG_IMAGE}: served as image/png`, type.startsWith('image/png'), `got "${type}"`);
+  } catch (error) {
+    check(`${OG_IMAGE} reachable`, false, error instanceof Error ? error.message : 'fetch failed');
+  }
+};
+
+/** Disallow rules of the `User-agent: *` group of a robots.txt body (comments stripped, groups merged). */
+const wildcardDisallows = (robots: string): string[] => {
+  const disallows: string[] = [];
+  let inGroup = false;
+  let previousWasAgent = false;
+  for (const rawLine of robots.split(/\r?\n/)) {
+    const line = rawLine.replace(/#.*$/, '').trim();
+    if (!line) continue;
+    const separator = line.indexOf(':');
+    if (separator === -1) continue;
+    const field = line.slice(0, separator).trim().toLowerCase();
+    const value = line.slice(separator + 1).trim();
+    if (field === 'user-agent') {
+      // Consecutive user-agent lines share one group; a user-agent after rules starts a new group.
+      inGroup = previousWasAgent ? inGroup || value === '*' : value === '*';
+      previousWasAgent = true;
+      continue;
+    }
+    previousWasAgent = false;
+    if (field === 'disallow' && inGroup && value) disallows.push(value);
+  }
+  return disallows;
+};
+
+/** True when a robots.txt Disallow value (prefix match, "*" and "$" wildcards) blocks the path. */
+const blocks = (rule: string, path: string): boolean => {
+  // Escape regex metacharacters except "*" and a trailing "$", which robots.txt gives a meaning.
+  const pattern = rule.replace(/[.+?^{}()|[\]\\]/g, '\\$&').replace(/\*/g, '.*');
+  return new RegExp(`^${pattern}`).test(path);
+};
+
+const checkRobots = async (): Promise<void> => {
+  const page = await fetchPage('/robots.txt');
   if (!page) return;
-  check('/sitemap.xml: status 200', page.status === 200, `got ${page.status}`);
+  check('/robots.txt: status 200', page.status === 200, `got ${page.status}`);
   if (page.status !== 200) return;
 
-  const locs = [...page.body.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
+  check('/robots.txt: declares a Sitemap', /^\s*sitemap:\s*\S+\/sitemap\.xml\s*$/im.test(page.body));
+  const disallows = wildcardDisallows(page.body);
+  check('/robots.txt: "*" group does not block "/"', !disallows.some((rule) => blocks(rule, '/')));
+  check('/robots.txt: "*" group does not block a page', !disallows.some((rule) => blocks(rule, '/projects')));
+  check(`/robots.txt: "*" group does not block ${OG_IMAGE}`, !disallows.some((rule) => blocks(rule, OG_IMAGE)));
+  for (const route of FORM_ROUTES) {
+    check(`/robots.txt: "*" group blocks ${route}`, disallows.some((rule) => blocks(rule, route)));
+  }
+};
+
+/** Absolute links of a markdown body that point at the site itself, as paths. */
+const internalLinkPaths = (markdown: string): string[] => {
+  const siteOrigin = new URL(baseUrl).origin;
+  const productionOrigin = new URL(seoConfig.baseUrl).origin;
+  const paths = new Set<string>();
+  for (const match of markdown.matchAll(/\]\((https?:\/\/[^)\s]+)\)/g)) {
+    const url = new URL(match[1]);
+    if (url.origin === siteOrigin || url.origin === productionOrigin) paths.add(pathOf(match[1]));
+  }
+  return [...paths];
+};
+
+const checkLlms = async (sitemapPaths: Set<string>): Promise<void> => {
+  const page = await fetchPage('/llms.txt');
+  if (!page) return;
+  check('/llms.txt: status 200', page.status === 200, `got ${page.status}`);
+  if (page.status !== 200) return;
+
+  check('/llms.txt: starts with an H1', /^﻿?# \S/.test(page.body), page.body.slice(0, 40));
+  check('/llms.txt: no "€"', !page.body.includes('€'));
+  check('/llms.txt: no "Shopify"', !/shopify/i.test(page.body));
+
+  for (const path of internalLinkPaths(page.body)) {
+    if (sitemapPaths.has(path)) {
+      check(`/llms.txt: ${path} in the sitemap`, true);
+      continue;
+    }
+    const target = await fetchPage(path);
+    check(`/llms.txt: ${path} in the sitemap or answers 200`, target?.status === 200, `got ${target?.status ?? 'no response'}`);
+  }
+};
+
+const canonicalOf = (html: string): string | null => {
+  for (const match of html.matchAll(/<link\b[^>]*>/gi)) {
+    const attrs = attributesOf(match[0]);
+    if (attrs.rel === 'canonical' && attrs.href) return attrs.href;
+  }
+  return null;
+};
+
+/** Returns the sitemap paths (production host swapped for the tested host) so other checks can reuse them. */
+const checkSitemap = async (): Promise<Set<string>> => {
+  const sitemapPaths = new Set<string>();
+  const page = await fetchPage('/sitemap.xml');
+  if (!page) return sitemapPaths;
+  check('/sitemap.xml: status 200', page.status === 200, `got ${page.status}`);
+  if (page.status !== 200) return sitemapPaths;
+
+  const entries = [...page.body.matchAll(/<url>([\s\S]*?)<\/url>/g)].map((m) => m[1]);
+  const locs = entries.map((entry) => entry.match(/<loc>([^<]+)<\/loc>/)?.[1] ?? '');
+  check('/sitemap.xml: has entries', locs.length > 0);
+  for (const loc of locs) sitemapPaths.add(pathOf(loc));
+
   for (const path of LEGAL_PATHS) {
     for (const locale of LOCALES) {
       const suffix = localePath(locale, path);
@@ -165,13 +283,58 @@ const checkSitemap = async (): Promise<void> => {
   for (const project of lastwork.filter((item) => item.published === false)) {
     check(`/sitemap.xml: unpublished "${project.slug}" absent`, !page.body.includes(`/projects/${project.slug}`));
   }
+  check('/sitemap.xml: no /fr/ URL', ![...sitemapPaths].some((path) => path === '/fr' || path.startsWith('/fr/')));
+  check('/sitemap.xml: no API URL', ![...sitemapPaths].some((path) => path.startsWith('/api/')));
+
+  // hreflang: every entry lists all its alternates, itself and x-default included.
+  entries.forEach((entry, index) => {
+    const loc = locs[index];
+    const hrefs = [...entry.matchAll(/<xhtml:link\b[^>]*>/g)].map((m) => attributesOf(m[0]));
+    const self = hrefs.some((attrs) => attrs.href && pathOf(attrs.href) === pathOf(loc));
+    check(`/sitemap.xml: ${pathOf(loc)} lists itself in its hreflang alternates`, self);
+    check(
+      `/sitemap.xml: ${pathOf(loc)} has x-default`,
+      hrefs.some((attrs) => attrs.hreflang === 'x-default'),
+    );
+  });
+
+  // Every URL answers 200 and its canonical link is the URL itself.
+  for (const loc of locs) {
+    const target = await fetchPage(pathOf(loc));
+    if (!target) continue;
+    const label = `/sitemap.xml: ${pathOf(loc)}`;
+    check(`${label} answers 200`, target.status === 200, `got ${target.status}`);
+    if (target.status !== 200) continue;
+    const canonical = canonicalOf(target.body);
+    check(
+      `${label} canonical is itself`,
+      canonical !== null && rebase(canonical) === rebase(loc),
+      `canonical ${canonical ?? 'missing'}`,
+    );
+  }
+  return sitemapPaths;
+};
+
+/** A missing page must answer 404 with a <title> (Next.js adds the noindex itself). */
+const checkNotFound = async (): Promise<void> => {
+  for (const path of ['/seo-smoke-missing-page', '/en/seo-smoke-missing-page']) {
+    const page = await fetchPage(path);
+    if (!page) continue;
+    check(`${path}: status 404`, page.status === 404, `got ${page.status}`);
+    const title = normalize(page.body.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1] ?? '');
+    check(`${path}: 404 page has a <title>`, title.length > 0);
+  }
 };
 
 const main = async (): Promise<void> => {
   console.log(`seo-smoke against ${baseUrl}`);
   for (const locale of LOCALES) await checkHomepage(locale);
   for (const path of OTHER_PAGES) await checkOtherPage(path);
-  await checkSitemap();
+  await checkRobots();
+  await checkOgImage();
+  const sitemapPaths = await checkSitemap();
+  await checkLlms(sitemapPaths);
+  await checkNotFound();
 
   for (const failure of failures) console.log(`FAIL ${failure}`);
   console.log(failures.length === 0 ? `OK ${total} checks passed` : `${failures.length} failed out of ${total} checks`);

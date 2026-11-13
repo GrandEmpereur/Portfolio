@@ -21,7 +21,6 @@ export const seoConfig = {
         email: 'contact@bartosik.fr',
         jobTitle: 'AI Engineer & Full Stack Developer',
         url: 'https://patrick.bartosik.fr',
-        twitter: '@patrickbartosik',
     },
     social: {
         github: 'https://github.com/GrandEmpereur',
@@ -31,8 +30,8 @@ export const seoConfig = {
     defaultLocale: 'fr' as const,
     locales: ['en', 'fr', 'pl'] as const,
     openGraph: {
-        // Rendered by src/app/api/og/route.tsx, so the image always follows the current design.
-        image: '/api/og',
+        // Static file. Render it again after a design change: bun --no-env-file scripts/render-og.ts
+        image: '/og/og-image.png',
         imageWidth: 1200,
         imageHeight: 630,
         imageType: 'image/png',
